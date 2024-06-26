@@ -9,14 +9,24 @@
     background-size: cover;
     justify-content: center;
     gap: 30px;
+    border-radius: 5px;
 }
 
 h1 {
     margin: 0;
     width: 100%;
-    max-width: 540px;
+    max-width: 620px;
     line-height: 1.5;
     text-align: left;
+    /* font-family: "Manrope", sans-serif; */
+
     font-family: 'FortuneC';
     color: white;
+    letter-spacing: 2px;
+    font-weight: 200;
+}
+
+.welcome button {
+    font-size: 18px;
+    letter-spacing: 1px;
 }

@@ -1,16 +1,19 @@
-import AllGoods from "./AllGoods";
+// import AllGoods from "./AllGoods";
 import Brands from "./Brands";
-import Footer from "./Footer";
-import PromoGoods from "./PromoGoods";
+import Goods from "./Goods";
+// import PromoGoods from "./PromoGoods";
 import Welcome from "./Welcome";
 
+import { promoGoods } from "./utils";
 export default function Home() {
+    
     return (
-        <main>
+        <>
             <Welcome></Welcome>
-            <PromoGoods></PromoGoods>
-            <AllGoods></AllGoods>
+            <Goods category="Интересное" goods={promoGoods}></Goods>
+            {/* <PromoGoods></PromoGoods>
+            <AllGoods></AllGoods> */}
             <Brands></Brands>
-        </main>
+        </>
     )
 }
