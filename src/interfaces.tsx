@@ -3,6 +3,7 @@ export interface GoodInterface {
   cover: string,
   price: number,
   colors?: string[],
+  favourite?: boolean,
   // herf: string,
   seller: {
     // href: string,
@@ -12,5 +13,6 @@ export interface GoodInterface {
 
 export interface GoodsInterface {
   category: string,
-  goods: GoodInterface[]
+  goods: GoodInterface[],
+  changeGoodsFunction: React.Dispatch<React.SetStateAction<any>>
 }

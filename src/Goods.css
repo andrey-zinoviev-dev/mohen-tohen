@@ -1,0 +1,43 @@
+.goods {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.goods__ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px, 1fr));
+    gap: 10px;
+    list-style: none;
+}
+.goods__ul-li-img {
+    width: 100%;
+    max-width: 180px;
+    align-self: center;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.goods__ul-li {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; 
+    align-items: start;
+    box-sizing: border-box;
+    padding: 15px 30px;
+    transition: all 0.3s ease-in-out;
+    min-height: 380px;
+
+}
+.goods__ul-li:hover {
+    box-shadow: 0px 0px 15px rgba(96, 96, 96, 0.3);
+}
+.goods__ul-li-heart {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.goods__ul-li-heart-svg {
+    fill: none;
+    stroke: gray;
+}

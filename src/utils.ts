@@ -27,7 +27,7 @@ export const promoGoods:GoodInterface[] = [
   },
   {
     title: "Набор посуды киберпанк",
-    cover: "https://pics.livejournal.com/rexton9000/pic/0005hq3f",
+    cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
     price: 17000,
     seller: {
       name: "Hoven Studio",
