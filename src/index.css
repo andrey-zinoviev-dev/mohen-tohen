@@ -75,6 +75,10 @@ input {
   border-bottom: 1px solid black;
 }
 
+p {
+  margin: 0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import PromoGoods from './PromoGoods.tsx';
 import Home from './Home.tsx';
 
 const router = createBrowserRouter([
@@ -15,10 +14,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />
       },
-      {
-        path: "goods/:id",
-        element: <PromoGoods />
-      }
     ]
   }
 ])

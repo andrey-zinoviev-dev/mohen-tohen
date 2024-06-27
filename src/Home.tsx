@@ -10,14 +10,14 @@ export default function Home() {
 
     const [promoGoodsArray, setPromoGoodsArray] = React.useState<GoodInterface[]>(promoGoods)
 
-    React.useEffect(() => {
-        console.log(promoGoodsArray);
-    }, [promoGoodsArray])
+    // React.useEffect(() => {
+    //     console.log(promoGoodsArray);
+    // }, [promoGoodsArray])
     
     return (
         <>
             <Welcome></Welcome>
-            <Goods category="Интересное" changeGoodsFunction={setPromoGoodsArray} goods={promoGoodsArray}></Goods>
+            <Goods category="Интересное" goods={promoGoodsArray}></Goods>
             <Brands></Brands>
         </>
     )

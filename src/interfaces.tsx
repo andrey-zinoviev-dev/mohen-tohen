@@ -14,5 +14,4 @@ export interface GoodInterface {
 export interface GoodsInterface {
   category: string,
   goods: GoodInterface[],
-  changeGoodsFunction: React.Dispatch<React.SetStateAction<any>>
 }
