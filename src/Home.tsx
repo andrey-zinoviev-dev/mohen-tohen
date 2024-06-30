@@ -4,21 +4,23 @@ import Brands from "./Brands";
 import Goods from "./Goods";
 // import PromoGoods from "./PromoGoods";
 import Welcome from "./Welcome";
-import { GoodInterface } from "./interfaces";
+import { HomeInterface } from "./interfaces";
 import { promoGoods } from "./utils";
-export default function Home() {
+import Header from "./Header";
+import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
 
-    const [promoGoodsArray, setPromoGoodsArray] = React.useState<GoodInterface[]>(promoGoods)
-
+export default function Home({basket}:HomeInterface) {
     // React.useEffect(() => {
     //     console.log(promoGoodsArray);
     // }, [promoGoodsArray])
     
     return (
         <>
-            <Welcome></Welcome>
-            <Goods category="Интересное" goods={promoGoodsArray}></Goods>
-            <Brands></Brands>
+            <Header basket={basket}></Header>
+            <Outlet></Outlet>
+
+            <Footer></Footer>
         </>
     )
 }

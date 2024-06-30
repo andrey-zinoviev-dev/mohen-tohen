@@ -1,4 +1,4 @@
-import { GoodInterface } from "./interfaces";
+import { BrandsInterface, GoodInterface } from "./interfaces";
 
 export const promoGoods:GoodInterface[] = [
   {
@@ -33,4 +33,27 @@ export const promoGoods:GoodInterface[] = [
       name: "Hoven Studio",
     }
   },
+]
+
+export const brands:BrandsInterface[] = [
+  {name: "Alexey Soldatov",
+  },
+  {
+    name: "Варвара Алексеева"
+  },
+  {
+    name: "Сати Альбертовна",
+  },
+  {
+    name: "Hoven Studio"
+  },
+  {
+    name: "Сергей Пономаренко",
+  },
+  {
+    name: "PAVLINA",
+  },
+  {
+    name: "Иван Муртыгин"
+  }
 ]

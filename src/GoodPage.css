@@ -1,0 +1,33 @@
+.good {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px;
+}
+.good__text {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    text-align: left;
+    gap: 30px;
+    
+}
+.img {
+    aspect-ratio: 1/1;
+    max-width: 570px;
+
+}
+.butt {
+    background-color: #A7A7A7;
+
+}
+.butt:hover {
+    background-color: #FF8261;
+}
+.cvet {
+    font-weight: 400;
+}
+.line1 {
+    display: flex;
+    justify-content: space-between;
+   align-items: center;
+}
