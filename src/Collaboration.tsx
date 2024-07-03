@@ -4,7 +4,7 @@ import "./Collaboration.css"
 export default function Collaboration () {
     return (
         <section className="collaboration">
-            <h3>Вы дизайнер? Давайте сотрудничать!</h3>
+            <h2>Вы дизайнер? Давайте сотрудничать!</h2>
             <div className="collaboration__wrapper">
                 <form className="collaboration__form">
                     <input placeholder="ваша почта..."></input>
@@ -21,4 +21,4 @@ export default function Collaboration () {
             </div>
         </section>
     )
-};
+}

@@ -1,5 +1,6 @@
 import { BrandsInterface, GoodInterface } from "./interfaces";
-
+import { IconDefinition, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faVk } from "@fortawesome/free-brands-svg-icons";
 export const promoGoods:GoodInterface[] = [
   {
     title: "Картина угольная гора",
@@ -55,5 +56,75 @@ export const brands:BrandsInterface[] = [
   },
   {
     name: "Иван Муртыгин"
+  }
+];
+
+export const links:{icon: IconDefinition, href: string, name: string}[] = [
+  {
+    icon: faPaperPlane,
+    href: "google.com",
+    name: "Whatsapp",
+  },
+  {
+    icon: faVk,
+    href: "vk.com",
+    name: "VK"
+  }
+];
+
+export const commonLinks: {href: string, name: string}[] = [
+  {
+    href: "",
+    name: "Политика обработки пероснальных данных"
+  },
+  {
+    href: "",
+    name: "Политика конфиденциальности"
+  },
+  {
+    href: "",
+    name: "Сотрудничество"
+  },
+  {
+    href: "",
+    name: "Мероприятия"
+  },
+  {
+    href: "",
+    name: "Часто задаваемые вопросы"
+  },
+];
+
+export const buyerLinks:{href: string, name: string}[] = [
+  {
+    href: "",
+    name: "Почему нет самовывоза"
+  },
+  {
+    href: "",
+    name: "Доставка и оплата"
+  },
+  {
+    href: "",
+    name: "Возврат"
+  }
+]
+
+export const sellerLinks:{href: string, name: string}[] = [
+  {
+    href: "",
+    name: "Личный кабинет"
+  },
+  {
+    href: "",
+    name: "Соглашение с партнерами о доставке"
+  },
+  {
+    href: "",
+    name: "Производство на мощностях платформы"
+  },
+  {
+    href: "",
+    name: "Система честной сделки"
   }
 ]
