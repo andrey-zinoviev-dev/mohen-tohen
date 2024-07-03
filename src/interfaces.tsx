@@ -14,7 +14,7 @@ export interface GoodInterface {
 export interface GoodsInterface {
   category: string,
   goods: GoodInterface[],
-  setGoods: React.Dispatch<React.SetStateAction<GoodInterface[]>>
+  // setGoods: React.Dispatch<React.SetStateAction<GoodInterface[]>>
 }
 
 export interface BrandsInterface {

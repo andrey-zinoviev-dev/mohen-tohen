@@ -1,0 +1,33 @@
+.collaboration {
+    padding: 50px 25px;
+    background-color: #3D3B3A;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.collaboration__wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    align-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 540px;
+    text-align: left;
+}
+
+.collaboration__form {
+    display: flex;
+    justify-content: baseline;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.collaboration__form input {
+    border-bottom: 2px solid white;
+    min-width: 540px;
+}

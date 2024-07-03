@@ -1,10 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass, faShoppingBag } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
-
-import { HeaderInterface } from "./interfaces";
+import { useAppSelector } from "./hooks";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-export default function Header({basket}: HeaderInterface) {
+export default function Header() {
+    //redux state
+    const basketState = useAppSelector((state) => {
+        return state.basket;
+    });
+    const favouriteState = useAppSelector((state) => {
+        return state.favourites
+    })
+
     return (
         <header className="header">
             <form>
@@ -16,11 +23,14 @@ export default function Header({basket}: HeaderInterface) {
             <div>
                 <button>
                     <FontAwesomeIcon icon={faHeart} />
+                    <span>{favouriteState.favouriteGoods}</span>
                 </button>
                 <button>Войти</button>
-                <button>
+                <button onClick={() => {
+                    console.log(basketState);
+                }}>
                     <FontAwesomeIcon icon={faShoppingBag} />
-                    <span>{basket.length}</span>
+                    <span>{basketState.goods.length}</span>
                 </button>
             </div>
         </header>

@@ -56,9 +56,16 @@
     /* align-items: center; */
     align-items: flex-start;
 }
+.goods__ul-li-heart button, .goods__ul-li-heart button:hover {
+    border: none;
+}
 .goods__ul-li-heart-svg {
     fill: none;
     stroke: gray;
+}
+
+.goods__ul-li-heart-svg:active {
+    color: red;
 }
 
 .goods__ul-li-title {
