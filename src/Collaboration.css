@@ -1,12 +1,12 @@
 .collaboration {
-    /* padding: 50px 25px; */
+    padding: 50px 75px;
     background-color: #3D3B3A;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    /* border-radius: 5px 5px 0 0; */
+    border-radius: 5px 5px 0 0;
 }
 
 .collaboration__wrapper {

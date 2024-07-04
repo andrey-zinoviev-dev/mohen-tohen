@@ -1,16 +1,20 @@
 import Welcome from "./Welcome"
 import Goods from "./Goods"
 import Brands from "./Brands"
-import { promoGoods } from "./utils"
-// import Collaboration from "./Collaboration"
+import { useAppSelector } from "./hooks"
+import Collaboration from "./Collaboration"
 
 export default function HomeContent() {
+    const promoGoodsState = useAppSelector((state) => {
+        return state.goods.goods;
+    });
+
     return (
         <>
             <Welcome></Welcome>    
-            <Goods category="Интересное" goods={promoGoods}></Goods>
+            <Goods category="Интересное" goods={promoGoodsState}></Goods>
             <Brands></Brands>
-            {/* <Collaboration></Collaboration> */}
+            <Collaboration></Collaboration>
         </>          
     )
 }

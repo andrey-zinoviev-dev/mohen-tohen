@@ -17,13 +17,29 @@ export const basketSlice = createSlice({
             state.goods.push(action.payload);
         },
         remove: (state, action: PayloadAction<GoodInterface>) => {
-            state.goods.filter((good) => {
+            const newBasket = state.goods.filter((good) => {
                 return good.title !== action.payload.title;
             })
-        }
+
+            state.goods = newBasket;
+        },
+        addOne: (state, action: PayloadAction<GoodInterface>) => {
+            const newBasket = state.goods.map((good) => {
+                return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity + 1} : good;
+            });
+
+            state.goods = newBasket;
+        },
+        removeOne: (state, action: PayloadAction<GoodInterface>) => {
+            const newBasket = state.goods.map((good) => {
+                return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity - 1} : good;
+            });
+
+            state.goods = newBasket;
+        },
     }
 })
 
-export const { add, remove } = basketSlice.actions;
+export const { add, remove, addOne, removeOne } = basketSlice.actions;
 
 export default basketSlice.reducer;

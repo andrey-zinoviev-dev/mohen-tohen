@@ -2,14 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass, faShoppingBag } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
 import { useAppSelector } from "./hooks";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 export default function Header() {
     //redux state
     const basketState = useAppSelector((state) => {
         return state.basket;
     });
     const favouriteState = useAppSelector((state) => {
-        return state.favourites
+        return state.goods.favourties;
     })
 
     return (
@@ -21,17 +22,15 @@ export default function Header() {
             </form>
             <h3 className="header__headline">Mohen-Tohen</h3>
             <div>
-                <button>
+                <Link to="../favs">
                     <FontAwesomeIcon icon={faHeart} />
-                    <span>{favouriteState.favouriteGoods}</span>
-                </button>
+                    <span>{favouriteState.length}</span>
+                </Link>
                 <button>Войти</button>
-                <button onClick={() => {
-                    console.log(basketState);
-                }}>
+                <Link to="../basket">
                     <FontAwesomeIcon icon={faShoppingBag} />
                     <span>{basketState.goods.length}</span>
-                </button>
+                </Link>
             </div>
         </header>
     )

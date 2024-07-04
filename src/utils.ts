@@ -8,7 +8,9 @@ export const promoGoods:GoodInterface[] = [
     price: 7500,
     seller: {
       name: "Алексей Солдатов",
-    }
+    },
+    material: "Акрил",
+    width: [180],
   },
   {
     title: "Стул AMS 2104",
@@ -16,7 +18,8 @@ export const promoGoods:GoodInterface[] = [
     price: 3900,
     seller: {
       name: "Варвара Алексеева",
-    }
+    },
+    material: "Хромированная основа"
   },
   {
     title: "Свеча Манго-Базилик",
@@ -24,7 +27,8 @@ export const promoGoods:GoodInterface[] = [
     price: 1600,
     seller: {
       name: "Сати Альбертовна",
-    }
+    },
+    material: "Соевый воск"
   },
   {
     title: "Посуда киберпанк",
@@ -32,7 +36,9 @@ export const promoGoods:GoodInterface[] = [
     price: 17000,
     seller: {
       name: "Hoven Studio",
-    }
+    },
+    material: "Керамическая основа",
+    colors: ["угольный", "черный", "золотой", "зеленый"]
   },
 ]
 

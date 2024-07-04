@@ -62,7 +62,7 @@ button {
   /* background-color: transparent; */
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #FF8261;
 }
 button:focus,
 button:focus-visible {

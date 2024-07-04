@@ -4,6 +4,8 @@ import './App.css'
 import Home from './Home'
 import GoodPage from './GoodPage'
 import HomeContent from './HomeContent'
+import Cart from './Cart'
+import Favourites from './Favourites'
 
 function App() {
 
@@ -19,6 +21,14 @@ function App() {
         {
           path: "/goods/:goodID",
           element: <GoodPage />
+        },
+        {
+          path: "/basket",
+          element: <Cart></Cart>
+        },
+        {
+          path: "/favs",
+          element: <Favourites></Favourites>
         }
       ]
     },

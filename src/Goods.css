@@ -29,6 +29,7 @@
     padding: 15px;
     transition: all 0.3s ease-in-out;
     min-height: 380px;
+    cursor: pointer;
 
 }
 .goods__ul-li:hover {
@@ -60,12 +61,8 @@
     border: none;
 }
 .goods__ul-li-heart-svg {
-    fill: none;
-    stroke: gray;
-}
-
-.goods__ul-li-heart-svg:active {
-    color: red;
+    stroke: black;
+    stroke-width: 25px;
 }
 
 .goods__ul-li-title {

@@ -8,7 +8,10 @@ export interface GoodInterface {
   seller: {
     // href: string,
     name: string,
-  }
+  },
+  material?:string,
+  width?: number[],
+  quantity?: number,
 }
 
 export interface GoodsInterface {
