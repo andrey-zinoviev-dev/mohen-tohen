@@ -17,6 +17,7 @@ export interface GoodInterface {
   material?:string,
   width?: number[],
   quantity?: number,
+  selectedColor?: ColorInterface,
 }
 
 export interface GoodsInterface {

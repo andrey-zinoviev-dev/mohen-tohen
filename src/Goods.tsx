@@ -42,7 +42,7 @@ export default function Goods({ category, goods }:GoodsInterface) {
               <img className="goods__ul-li-img" src={good.cover}></img>
             <button className="goods__ul-li-btn" onClick={(evt) => {
               evt.stopPropagation();
-              dispatch(add({...good, quantity: 1}));
+              dispatch(add({...good, quantity: 1, selectedColor: good.colors && good.colors[0]}));
             }}>
               <FontAwesomeIcon icon={faShoppingBag} />
             </button>

@@ -11,7 +11,6 @@ import { useAppDispatch } from "./hooks";
 export default function GoodPage() {
     const location = useLocation();
     const state = location.state as GoodInterface;
-    console.log(state);
     const dispatch = useAppDispatch();
     // const basketState = useAppSelector((state) => {
     //     return state.basket.goods;
