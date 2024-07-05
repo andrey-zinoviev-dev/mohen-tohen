@@ -55,6 +55,31 @@
     object-fit: cover;
     border-radius: 5px;
 }
+.good__colors {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.good__colors-li {
+    border: 3px solid transparent;
+    box-sizing: border-box;
+    padding: 2px;
+    border-radius: 9px;
+}
+.good__colors-li_active {
+    border: 3px solid black;
+}
+.good__colors li button {
+    border-radius: 7px;
+    aspect-ratio: 1/1;
+    outline: none;
+    border: none;
+}
+.good__colors li button.butt:hover { 
+    border: none;
+}
 .butt {
     /* background-color: #A7A7A7; */
     color: black;

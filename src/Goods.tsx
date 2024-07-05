@@ -36,6 +36,8 @@ export default function Goods({ category, goods }:GoodsInterface) {
                   </button>
                 </div>
                 <span>{good.price}</span>
+                {good.colors && <span>Цвета: {good.colors.length}</span>}
+
               </div>
               <img className="goods__ul-li-img" src={good.cover}></img>
             <button className="goods__ul-li-btn" onClick={(evt) => {

@@ -1,8 +1,13 @@
+export interface ColorInterface  {
+  title: string, 
+  colorCode: string
+}
+
 export interface GoodInterface {
   title: string,
   cover: string,
   price: number,
-  colors?: string[],
+  colors?: ColorInterface[],
   favourite?: boolean,
   // herf: string,
   seller: {

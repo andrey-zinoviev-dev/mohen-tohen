@@ -38,7 +38,7 @@ export const promoGoods:GoodInterface[] = [
       name: "Hoven Studio",
     },
     material: "Керамическая основа",
-    colors: ["угольный", "черный", "золотой", "зеленый"]
+    colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}]
   },
 ]
 
