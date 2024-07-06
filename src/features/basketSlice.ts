@@ -3,7 +3,7 @@ import { GoodInterface } from "../interfaces";
 
 export interface BasketSliceInterface {
     goods: GoodInterface[],
-};
+}
 
 const initialState:BasketSliceInterface = {
     goods: [],
@@ -37,9 +37,16 @@ export const basketSlice = createSlice({
 
             state.goods = newBasket;
         },
+        editGood: (state, action: PayloadAction<GoodInterface>) => {
+            const newBasket = state.goods.map((good) => {
+                return good.title === action.payload.title ? {...good, selectedColor: action.payload.selectedColor} : good;
+            });
+
+            state.goods = newBasket;
+        }
     }
 })
 
-export const { add, remove, addOne, removeOne } = basketSlice.actions;
+export const { add, remove, addOne, removeOne, editGood } = basketSlice.actions;
 
 export default basketSlice.reducer;

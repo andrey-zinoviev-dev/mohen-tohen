@@ -3,6 +3,10 @@ export interface ColorInterface  {
   colorCode: string
 }
 
+export interface ColorsInterface {
+  colors: ColorInterface[],
+}
+
 export interface GoodInterface {
   title: string,
   cover: string,
@@ -46,4 +50,9 @@ export interface HomeInterface {
 
 export interface HomeContentInterface {
   setBasket: React.Dispatch<React.SetStateAction<GoodInterface[]>>,
+}
+
+export interface PopupInterface {
+  children: React.ReactNode,
+  setClose: React.Dispatch<React.SetStateAction<boolean>>
 }

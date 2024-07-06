@@ -1,19 +1,36 @@
+import React from "react";
 import "./Cart.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { addOne, remove, removeOne } from "./features/basketSlice";
+import { addOne, editGood, remove, removeOne } from "./features/basketSlice";
 import Popup from "./Popup";
+import { ColorInterface, GoodInterface } from "./interfaces";
+import GoodColors from "./GoodColors";
 
-export default function Cart() {
-
+export default function Cart() {    
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
 
-    console.log(cartState);
-
     const dispatch = useAppDispatch();
+
+    //state
+    const [changeColor, setChangeColor] = React.useState<boolean>(false);
+    const [selectedGoodName, setSelectedGoodName] = React.useState<string | null>(null);
+    const [newColor, setNewColor] = React.useState<ColorInterface | undefined>(undefined);
+
+    //derived state
+    const selectedGood:GoodInterface | undefined = cartState.find((good) => {
+        return good.title === selectedGoodName;
+    });
+
+    //functions
+    function closePopup() {
+        setChangeColor(false);
+        setSelectedGoodName(null);
+        setNewColor(undefined);
+    }
 
     return (
         <>
@@ -28,8 +45,8 @@ export default function Cart() {
                     {cartState.map((cartGood) => {
                         return <li className="cart__ul-li" key={cartGood.title}>
                             <button className="cart__ul-li-delete" onClick={() => {
-                                        dispatch(remove(cartGood));
-                                    }}>
+                                dispatch(remove(cartGood));
+                            }}>
                                 <FontAwesomeIcon icon={faXmark} />
                             </button>
                             <div className="cart__ul-li-details">
@@ -43,7 +60,10 @@ export default function Cart() {
                                             <span>{cartGood.material && cartGood.material}</span>
                                             {cartGood.selectedColor && <div className="cart__ul-li-text-specs-colors">
                                                 <span className="cart__ul-li-text-specs-colors-title">{cartGood.selectedColor?.title}</span>
-                                                <button className="cart__ul-li-text-specs-colors-thumbnail" style={{backgroundColor: cartGood.selectedColor?.colorCode}}></button>
+                                                <button onClick={() => {
+                                                    setChangeColor(true);
+                                                    setSelectedGoodName(cartGood.title);
+                                                }} className="cart__ul-li-text-specs-colors-thumbnail" style={{backgroundColor: cartGood.selectedColor?.colorCode}}></button>
                                             </div>}
                                         </div>
                                     </div>
@@ -70,7 +90,28 @@ export default function Cart() {
                 <p>Ваша корзина пуста, но ее можно наполнить</p>
                 }
             </section>
-            <Popup></Popup>
+            {changeColor && <Popup setClose={closePopup}>
+                <h3>Редактировать товар в корзине</h3>
+                <h3>{selectedGood?.title}</h3>
+                {selectedGood?.colors && 
+                <>
+                    <h5>Цвет- <span>{selectedGood.selectedColor?.title}</span></h5>
+                    <GoodColors colors={selectedGood.colors}></GoodColors>
+                    {/* <ul>
+                        {selectedGood.colors && selectedGood.colors.map((color) => {
+                            return <li>
+                                <button onClick={() => {
+                                    setNewColor(color);
+                                }} style={{backgroundColor: color.colorCode}}></button>
+                            </li>
+                        })}
+                    </ul> */}
+                    <button onClick={() => {
+                        dispatch(editGood({...selectedGood, selectedColor: newColor}));
+                        closePopup();
+                    }}>Обновить {selectedGood.title}</button>
+                </>}
+            </Popup>}
         </>
     )
 }
