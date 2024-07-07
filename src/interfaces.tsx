@@ -5,6 +5,7 @@ export interface ColorInterface  {
 
 export interface ColorsInterface {
   colors: ColorInterface[],
+  updateColor: React.Dispatch<React.SetStateAction<ColorInterface | undefined>>,
 }
 
 export interface GoodInterface {

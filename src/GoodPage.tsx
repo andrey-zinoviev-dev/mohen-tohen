@@ -1,28 +1,19 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faHeart } from "@fortawesome/free-solid-svg-icons"
+import { faHeart, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
 import { useLocation } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 import { toggleFavourite } from "./features/goodsSlice";
 import { add } from "./features/basketSlice"
 import { useAppDispatch } from "./hooks";
+import GoodColors from "./GoodColors"
 
 export default function GoodPage() {
+
     const location = useLocation();
     const state = location.state as GoodInterface;
     const dispatch = useAppDispatch();
-    // const basketState = useAppSelector((state) => {
-    //     return state.basket.goods;
-    // });
-
-    //derived state
-    // const goodInBasket = basketState.find((good) => {
-    //     return good.title === state.title;
-    // });
-
-    // console.log(goodInBasket);
-    
 
     //local state
     const [clickedFavourite, setClickedFavourite] = React.useState<boolean>(false);
@@ -54,22 +45,20 @@ export default function GoodPage() {
                 <h5>Материал- <span className="cvet">{state.material}</span></h5>
                 {state.colors && <div>
                     <h5>Цвет-<span className="cvet">{selectedColor?.title}</span></h5>
-                    <ul className="good__colors">
-                        {state.colors.map((color) => {
-                            
-                            return <li className={`good__colors-li ${selectedColor?.title === color.title && 'good__colors-li_active'}`}>
-                                <button onClick={() => {
-                                    setSelectedColor(color);
-                                }} style={{backgroundColor: color.colorCode}}>
-
-                                </button>
-                            </li>
-                        })}
-                    </ul>
+                    <GoodColors updateColor={setSelectedColor} colors={state.colors} />
                 </div>
                 }
+                <div>
+                    <button>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                    <span>1</span>
+                    <button>
+                        <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                </div>
                 <button className="butt" onClick={() => {
-                    dispatch(add(state));
+                    dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }));
                     setAddedToBasket(true);
                 }}>
                     <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>

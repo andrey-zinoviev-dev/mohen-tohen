@@ -96,16 +96,7 @@ export default function Cart() {
                 {selectedGood?.colors && 
                 <>
                     <h5>Цвет- <span>{selectedGood.selectedColor?.title}</span></h5>
-                    <GoodColors colors={selectedGood.colors}></GoodColors>
-                    {/* <ul>
-                        {selectedGood.colors && selectedGood.colors.map((color) => {
-                            return <li>
-                                <button onClick={() => {
-                                    setNewColor(color);
-                                }} style={{backgroundColor: color.colorCode}}></button>
-                            </li>
-                        })}
-                    </ul> */}
+                    <GoodColors updateColor={setNewColor} colors={selectedGood.colors}></GoodColors>
                     <button onClick={() => {
                         dispatch(editGood({...selectedGood, selectedColor: newColor}));
                         closePopup();

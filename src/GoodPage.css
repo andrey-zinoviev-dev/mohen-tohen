@@ -29,7 +29,7 @@
     flex-direction: column;
     max-width: 400px;
     text-align: left;
-    gap: 30px;
+    gap: 10px;
     
 }
 
@@ -100,4 +100,8 @@
     display: flex;
     justify-content: space-between;
    align-items: center;
+}
+
+.line1 h3 {
+    margin: 0;
 }
