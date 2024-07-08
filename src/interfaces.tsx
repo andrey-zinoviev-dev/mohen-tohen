@@ -15,10 +15,7 @@ export interface GoodInterface {
   colors?: ColorInterface[],
   favourite?: boolean,
   // herf: string,
-  seller: {
-    // href: string,
-    name: string,
-  },
+  seller: BrandsInterface,
   material?:string,
   width?: number[],
   quantity?: number,
@@ -27,13 +24,16 @@ export interface GoodInterface {
 
 export interface GoodsInterface {
   category: string,
-  goods: GoodInterface[],
+  goods: GoodInterface[] | undefined,
   // setGoods: React.Dispatch<React.SetStateAction<GoodInterface[]>>
 }
 
 export interface BrandsInterface {
   name: string,
+  description: string,
   href?: string,
+  cover: string,
+  goodsCollection?: GoodInterface[] | undefined,
 }
 
 export interface HeaderInterface {

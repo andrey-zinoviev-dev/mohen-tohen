@@ -43,7 +43,7 @@ export default function GoodPage() {
                     </button>
                 </div>
                 <span>{state.price}</span>
-                <Link to={`/profile/${state.seller.name}`}>
+                <Link to={`/profile/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
                     {state.seller.name}
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>

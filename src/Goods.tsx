@@ -18,11 +18,12 @@ export default function Goods({ category, goods }:GoodsInterface) {
   return (
     <section className="goods">
       <h3>{category}</h3>
-      {goods.length > 0 ? <ul className="goods__ul">
-        {goods.map((good) => {
+      {goods && goods.length > 0 ? <ul className="goods__ul">
+        {goods && goods.map((good) => {
           return <li key={good.title} className="goods__ul-li" onClick={() => {
             navigate(`/goods/${good.title}`, {
               state: good,
+              preventScrollReset: false,
             })
           }}>
               <div className="goods__ul-li-text-wrapper">
