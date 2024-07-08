@@ -9,6 +9,7 @@ import { add } from "./features/basketSlice";
 // import { addToFavourite } from "./features/favouriteSlice"
 import { useAppDispatch } from "./hooks"
 import { toggleFavourite } from "./features/goodsSlice"
+import { changeMessage } from "./features/notificationSlice"
 
 export default function Goods({ category, goods }:GoodsInterface) {
   const dispatch = useAppDispatch();
@@ -30,7 +31,8 @@ export default function Goods({ category, goods }:GoodsInterface) {
                   <button onClick={(evt) => {
                     evt.stopPropagation();
                     // dispatch(addToFavourite());
-                    dispatch(toggleFavourite({...good, quantity: 1}))
+                    dispatch(toggleFavourite({...good, quantity: 1}));
+                    dispatch(changeMessage(`Товар ${good.title} добавлен в избранное`))
                   }}>
                     <FontAwesomeIcon className="goods__ul-li-heart-svg" style={{color: good.favourite ? "#FF8261" : "#F7F7F7"}} icon={faHeart}/>
                   </button>
@@ -43,6 +45,7 @@ export default function Goods({ category, goods }:GoodsInterface) {
             <button className="goods__ul-li-btn" onClick={(evt) => {
               evt.stopPropagation();
               dispatch(add({...good, quantity: 1, selectedColor: good.colors && good.colors[0]}));
+              dispatch(changeMessage(`Товар ${good.title} добавлен в корзину`))
             }}>
               <FontAwesomeIcon icon={faShoppingBag} />
             </button>

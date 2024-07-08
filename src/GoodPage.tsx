@@ -1,13 +1,14 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faHeart, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
-import { useLocation } from "react-router-dom"
+import { faArrowRight, faHeart, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { Link, useLocation } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 import { toggleFavourite } from "./features/goodsSlice";
 import { add } from "./features/basketSlice"
 import { useAppDispatch } from "./hooks";
 import GoodColors from "./GoodColors"
+import { changeMessage } from "./features/notificationSlice"
 
 export default function GoodPage() {
 
@@ -36,12 +37,16 @@ export default function GoodPage() {
                         setClickedFavourite((prevValue) => {
                             return !prevValue;
                         })
+                        dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
                     }}>
                         <FontAwesomeIcon className="good__text-button-svg" style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}} icon={faHeart} />
                     </button>
                 </div>
                 <span>{state.price}</span>
-                <span>{state.seller.name}</span>
+                <Link to={`/profile/${state.seller.name}`}>
+                    {state.seller.name}
+                    <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
                 <h5>Материал- <span className="cvet">{state.material}</span></h5>
                 {state.colors && <div>
                     <h5>Цвет-<span className="cvet">{selectedColor?.title}</span></h5>
@@ -59,6 +64,7 @@ export default function GoodPage() {
                 </div>
                 <button className="butt" onClick={() => {
                     dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }));
+                    dispatch(changeMessage(`Товар ${state.title} добавлен`));
                     setAddedToBasket(true);
                 }}>
                     <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>

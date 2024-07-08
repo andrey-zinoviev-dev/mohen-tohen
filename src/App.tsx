@@ -6,6 +6,7 @@ import GoodPage from './GoodPage'
 import HomeContent from './HomeContent'
 import Cart from './Cart'
 import Favourites from './Favourites'
+import SellerPage from './SellerPage'
 
 function App() {
 
@@ -29,6 +30,10 @@ function App() {
         {
           path: "/favs",
           element: <Favourites></Favourites>
+        },
+        {
+          path: "/profile/:profileID",
+          element: <SellerPage></SellerPage>
         }
       ]
     },

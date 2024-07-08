@@ -5,7 +5,7 @@ import { promoGoods } from "../utils";
 export interface GoodsSliceInterface {
     goods: GoodInterface[],
     favourties: GoodInterface[],
-};
+}
 
 const initialState:GoodsSliceInterface = {
     goods: promoGoods,

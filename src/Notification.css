@@ -1,0 +1,14 @@
+.notification {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  padding: 15px 50px;
+  z-index: 50;
+  background-color: #CCCDD0;
+  border-radius: 5px;
+}
+
+.notification h3 {
+  margin: 0;
+  font-weight: 400;
+}
