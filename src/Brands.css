@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0;
-    gap: 78px;
+    gap: 15px;
 }
 
 .brands__ul-li {
