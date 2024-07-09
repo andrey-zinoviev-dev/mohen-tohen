@@ -10,7 +10,6 @@ export default function Home() {
         return state.notification.message;
     });
 
-    console.log(notificationState);
     return (
         <>
             <Header></Header>

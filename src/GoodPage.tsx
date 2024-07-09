@@ -9,7 +9,7 @@ import { add } from "./features/basketSlice"
 import { useAppDispatch } from "./hooks";
 import GoodColors from "./GoodColors"
 import { changeMessage } from "./features/notificationSlice"
-
+import { dimensionTranslations } from "./utils"
 export default function GoodPage() {
 
     const location = useLocation();
@@ -27,6 +27,7 @@ export default function GoodPage() {
                 <img className="img" src={state.cover}></img>
                 <div className="good__parameters-features">
                     <span className="good__parameters-features-feature">{state.material}</span>
+                    {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>}
                 </div>
             </div>
             <div className="good__text">
@@ -49,9 +50,26 @@ export default function GoodPage() {
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
                 <p>Вот тут будет описание товара, история создания, вот тут прям да красивый текст про товар</p>
-                <h5>Материал- <span className="cvet">{state.material}</span></h5>
-                {state.colors && <div>
-                    <h5>Цвет-<span className="cvet">{selectedColor?.title}</span></h5>
+                {state.dimensions && <ul className="good__text-dimensions">
+                    {Object.keys(state.dimensions).map((key) => {
+                        const translstedDimension = dimensionTranslations.find((dimension) => {
+                            return dimension.title === key;
+                        });
+                        return <li>
+                            <h4>{translstedDimension?.translation}:</h4> 
+                            <span>{state.dimensions && state.dimensions[key]}</span>
+                        </li>
+                    })}
+                </ul>
+                //  <div className="">
+                //     <h4>Размеры</h4>
+                //     <span>Ширина: {state.dimensions.width}</span>
+                //     <span>Высота: {state.dimensions.height}</span> 
+                // </div>
+                }
+                <h4>Материал- <span className="cvet">{state.material}</span></h4>
+                {state.colors && <div className="good__text-colors-div">
+                    <h4>Цвет-<span className="cvet">{selectedColor?.title}</span></h4>
                     <GoodColors updateColor={setSelectedColor} colors={state.colors} />
                 </div>
                 }

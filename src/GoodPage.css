@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    gap: 10px;
 }
 
 .good__parameters-features-feature {
@@ -31,12 +32,34 @@
     text-align: left;
     gap: 10px;
     width: 100%;
-    
+    justify-content: space-between;
 }
 
-.good__text h5 {
+.good__text h4 {
     margin: 0;
 }
+
+.good__text-dimensions {
+    display: flex;
+    flex-direction: column;
+    list-style-image: none;
+    padding: 0;
+    list-style: none;
+    gap: 5px;
+    margin: 0;
+}
+
+.good__text-dimensions li {
+    display: flex;
+    text-transform: capitalize;
+    gap: 5px;
+
+}
+
+.good__text-dimensions li h4 {
+    min-width: 75px;
+}
+
 .good__text-button {
     background-color: transparent;
     padding: 0;
@@ -63,6 +86,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    
 }
 .good__colors-li {
     border: 3px solid transparent;
@@ -125,4 +149,10 @@
 
 .good__text a svg {
     rotate: -45deg;
+}
+
+.good__text-colors-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

@@ -3,6 +3,20 @@ export interface ColorInterface  {
   colorCode: string
 }
 
+export interface DimensionsInterface {
+  // height?: number,
+  // width?: number,
+  // depth?: number,
+  // diameter?: number,
+  // volume?: number,
+  [key: string]: number,
+}
+
+export interface DimensionTranslateInterface {
+  title: string,
+  translation: string,
+}
+
 export interface ColorsInterface {
   colors: ColorInterface[],
   updateColor: React.Dispatch<React.SetStateAction<ColorInterface | undefined>>,
@@ -17,9 +31,9 @@ export interface GoodInterface {
   // herf: string,
   seller: BrandsInterface,
   material?:string,
-  width?: number[],
   quantity?: number,
   selectedColor?: ColorInterface,
+  dimensions?: DimensionsInterface,
 }
 
 export interface GoodsInterface {
