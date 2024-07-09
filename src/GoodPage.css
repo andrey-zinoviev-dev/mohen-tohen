@@ -118,6 +118,11 @@
     text-decoration: underline;
 }
 
+.good__text a img {
+    max-width: 45px;
+    border-radius: 50%;
+}
+
 .good__text a svg {
     rotate: -45deg;
 }

@@ -12,7 +12,7 @@ export default function Notification() {
   React.useEffect(() => {
     const timeOut = setTimeout(() => {
       dispatch(changeMessage(null))
-    }, 1500);
+    }, 3000);
 
     return () => {
       clearTimeout(timeOut);

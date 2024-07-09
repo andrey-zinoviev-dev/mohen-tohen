@@ -44,9 +44,11 @@ export default function GoodPage() {
                 </div>
                 <span>{state.price}</span>
                 <Link to={`/profile/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
+                    <img src={state.seller.cover}></img>
                     {state.seller.name}
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
+                <p>Вот тут будет описание товара, история создания, вот тут прям да красивый текст про товар</p>
                 <h5>Материал- <span className="cvet">{state.material}</span></h5>
                 {state.colors && <div>
                     <h5>Цвет-<span className="cvet">{selectedColor?.title}</span></h5>
