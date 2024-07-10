@@ -139,7 +139,7 @@
     gap: 10px;
     color: black;
     font-weight: 400;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 .good__text a img {
@@ -149,6 +149,24 @@
 
 .good__text a svg {
     rotate: -45deg;
+}
+
+.good__text-a-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: stretch;
+}
+
+.good__text-a-name div {
+    background-color: #20232c;
+    height: 2px;
+    width: 0%;
+    transition: all 0.25s ease-in-out;
+}
+
+.good__text a:hover .good__text-a-name div {
+    width: 100%;
 }
 
 .good__text-colors-div {

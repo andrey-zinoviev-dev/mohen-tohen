@@ -28,7 +28,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  /* color: #535bf2; */
 }
 
 body {
@@ -95,7 +95,7 @@ section {
   }
   a:hover {
     /* color: #747bff; */
-    color: #FF8261;
+    /* color: #FF8261; */
   }
   /* button {
     background-color: #f9f9f9;

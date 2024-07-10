@@ -628,21 +628,29 @@ export const dimensionTranslations:DimensionTranslateInterface[] = [
   {
     title: "width",
     translation: "ширина",
+    unit: "см"
   },
   {
     title: "height",
     translation: "высота",
+    unit: "см"
+
   },
   {
     title: "volume",
-    translation: "объем"
+    translation: "объем",
+    unit: "мл"
+
   },
   {
     title: "depth",
-    translation: "глубина"
+    translation: "глубина",
+    unit: "см"
+
   },
   {
     title: "diameter",
     translation: "диаметр",
+    unit: "см"
   }
 ]

@@ -15,6 +15,7 @@ export interface DimensionsInterface {
 export interface DimensionTranslateInterface {
   title: string,
   translation: string,
+  unit: string,
 }
 
 export interface ColorsInterface {

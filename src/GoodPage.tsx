@@ -28,6 +28,7 @@ export default function GoodPage() {
                 <div className="good__parameters-features">
                     <span className="good__parameters-features-feature">{state.material}</span>
                     {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>}
+                    
                 </div>
             </div>
             <div className="good__text">
@@ -46,7 +47,10 @@ export default function GoodPage() {
                 <span>{state.price}</span>
                 <Link to={`/profile/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
                     <img src={state.seller.cover}></img>
-                    {state.seller.name}
+                    <div className="good__text-a-name">
+                        <span>{state.seller.name}</span>
+                        <div></div>
+                    </div>
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
                 <p>Вот тут будет описание товара, история создания, вот тут прям да красивый текст про товар</p>
@@ -57,7 +61,7 @@ export default function GoodPage() {
                         });
                         return <li>
                             <h4>{translstedDimension?.translation}:</h4> 
-                            <span>{state.dimensions && state.dimensions[key]}</span>
+                            <span>{state.dimensions && state.dimensions[key]}<span style={{textTransform: "lowercase"}}>{translstedDimension?.unit}</span></span>
                         </li>
                     })}
                 </ul>
@@ -67,9 +71,9 @@ export default function GoodPage() {
                 //     <span>Высота: {state.dimensions.height}</span> 
                 // </div>
                 }
-                <h4>Материал- <span className="cvet">{state.material}</span></h4>
+                <h4>Материал: <span className="cvet">{state.material}</span></h4>
                 {state.colors && <div className="good__text-colors-div">
-                    <h4>Цвет-<span className="cvet">{selectedColor?.title}</span></h4>
+                    <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>
                     <GoodColors updateColor={setSelectedColor} colors={state.colors} />
                 </div>
                 }
@@ -89,6 +93,16 @@ export default function GoodPage() {
                 }}>
                     <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
                 </button>
+                <ul>
+                    <li key="delivery">
+                        <span>Доставка</span>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </li>
+                    <li>
+                        <span>Эксплуатация</span>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </li>
+                </ul>
             </div>
         </section>
     )
