@@ -72,3 +72,8 @@ export interface PopupInterface {
   children: React.ReactNode,
   setClose: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface TermInterface {
+  question: string,
+  answer: string,
+}

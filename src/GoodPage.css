@@ -2,13 +2,14 @@
     display: flex;
     justify-content: space-between;
     /* padding: 100px; */
-    padding: 25px 100px;
+    /* padding: 25px 100px; */
+    padding: 25px 0;
 }
 
 .good__parameters {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .good__parameters-features {
@@ -28,11 +29,12 @@
 .good__text {
     display: flex;
     flex-direction: column;
-    max-width: 240px;
+    /* max-width: 240px; */
+    max-width: 380px;
     text-align: left;
-    gap: 10px;
+    gap: 15px;
     width: 100%;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .good__text h4 {
@@ -174,3 +176,26 @@
     flex-direction: column;
     gap: 10px;
 }
+
+/* .good__text-terms {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    align-items: stretch;
+    gap: 5px;
+}
+
+.good__text-terms li {
+    border-bottom: 1px solid #20232c;
+    box-sizing: border-box;
+    padding: 15px 0;
+}
+
+.good__text-terms li button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+} */

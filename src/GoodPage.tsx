@@ -10,12 +10,13 @@ import { useAppDispatch } from "./hooks";
 import GoodColors from "./GoodColors"
 import { changeMessage } from "./features/notificationSlice"
 import { dimensionTranslations } from "./utils"
+import Terms from "./Terms"
 export default function GoodPage() {
 
     const location = useLocation();
     const state = location.state as GoodInterface;
     const dispatch = useAppDispatch();
-
+    console.log(state.dimensions);
     //local state
     const [clickedFavourite, setClickedFavourite] = React.useState<boolean>(false);
     const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
@@ -28,7 +29,7 @@ export default function GoodPage() {
                 <div className="good__parameters-features">
                     <span className="good__parameters-features-feature">{state.material}</span>
                     {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>}
-                    
+                    {state.dimensions && <span className="good__parameters-features-feature">{Object.values(state.dimensions)}</span>}
                 </div>
             </div>
             <div className="good__text">
@@ -44,7 +45,7 @@ export default function GoodPage() {
                         <FontAwesomeIcon className="good__text-button-svg" style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}} icon={faHeart} />
                     </button>
                 </div>
-                <span>{state.price}</span>
+                <h4>Цена: <span className="cvet">{state.price}</span></h4>
                 <Link to={`/profile/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
                     <img src={state.seller.cover}></img>
                     <div className="good__text-a-name">
@@ -93,16 +94,21 @@ export default function GoodPage() {
                 }}>
                     <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
                 </button>
-                <ul>
+                <Terms></Terms>
+                {/* <ul className="good__text-terms">
                     <li key="delivery">
-                        <span>Доставка</span>
-                        <FontAwesomeIcon icon={faPlus} />
+                        <button>
+                            <span>Доставка</span>
+                            <FontAwesomeIcon icon={faPlus} />
+                        </button>
                     </li>
                     <li>
+                        <button>
                         <span>Эксплуатация</span>
-                        <FontAwesomeIcon icon={faPlus} />
+                            <FontAwesomeIcon icon={faPlus} />
+                        </button>
                     </li>
-                </ul>
+                </ul> */}
             </div>
         </section>
     )

@@ -1,0 +1,41 @@
+.terms {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-items: stretch;
+  gap: 5px;
+}
+
+.terms li {
+  border-bottom: 1px solid #20232c;
+  box-sizing: border-box;
+  padding: 15px 0;
+}
+
+.terms li button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.terms li button:hover { 
+  border: none;
+}
+
+.terms li button div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.terms li button span {
+  text-align: left;
+}

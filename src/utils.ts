@@ -1,11 +1,10 @@
-import { BrandsInterface, DimensionTranslateInterface, GoodInterface } from "./interfaces";
+import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface } from "./interfaces";
 import { IconDefinition, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faVk } from "@fortawesome/free-brands-svg-icons";
 import seller1 from "./assets/2024-07-08 23.47.33.jpg";
 import seller2 from "./assets/2024-07-08 23.48.06.jpg";
 import selle3 from "./assets/2024-07-08 23.48.25.jpg";
 import selle4 from "./assets/2024-07-08 23.48.52.jpg";
-import { height } from "@fortawesome/free-brands-svg-icons/fa42Group";
 
 export const promoGoods:GoodInterface[] = [
   {
@@ -652,5 +651,20 @@ export const dimensionTranslations:DimensionTranslateInterface[] = [
     title: "diameter",
     translation: "диаметр",
     unit: "см"
+  }
+]
+
+export const terms:TermInterface[] = [
+  {
+    question: "Доставка",
+    answer: "Мы используем партнера СДЭК для доставки как в пределах Москвы, так и по всем регионам России"
+  },
+  {
+    question: "Гарантия",
+    answer: "Гарантия на товары распространяется до получения товара, далее все вопросы по товарам перенаправляются продавцу"
+  },
+  {
+    question: "Страхование",
+    answer: "Наш партнер СДЭК предоставляет услугу доставки товаров при транспортировке, что позволяет при ЧП или причинени вреда товару вернуть деньги"
   }
 ]
