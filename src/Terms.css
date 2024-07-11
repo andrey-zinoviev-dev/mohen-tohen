@@ -23,6 +23,7 @@
   border: none;
   flex-direction: column;
   gap: 15px;
+  padding: 0;
 }
 
 .terms li button:hover { 

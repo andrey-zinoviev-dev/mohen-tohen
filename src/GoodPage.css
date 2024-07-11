@@ -30,7 +30,8 @@
     display: flex;
     flex-direction: column;
     /* max-width: 240px; */
-    max-width: 380px;
+    /* max-width: 380px; */
+    max-width: 420px;
     text-align: left;
     gap: 15px;
     width: 100%;
@@ -69,12 +70,25 @@
 }
 
 .good__text-quantity button{
-    /* border: none; */
     background-color: transparent;
+    border: 2px solid black;
+    box-sizing: border-box;
+    padding: 0;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
 }
 
 .good__text-quantity button:hover {
-    border: 1px solid #FF8261;
+    border: 2px solid #FF8261;
+    color: #FF8261;
+}
+
+.good__text-quantity button:disabled {
+    color: #CCCDD0;
+    border: 2px solid #CCCDD0;
+    pointer-events: none;
+    /* background-color: #CCCDD0; */
 }
 
 .good__text-button {
@@ -123,18 +137,32 @@
 .good__colors li button.butt:hover { 
     border: none;
 }
+
+.good__text-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    gap: 25px;
+}
+
 .butt {
     /* background-color: #A7A7A7; */
     color: black;
     border: 2px solid #FF8261;
     transition: all 0.25s ease-in-out;
     background-color: #FF8261;
-
+    width: 100%;
 }
 .butt:hover {
     border: 2px solid transparent;
     background-color: #20232c;
     color: white;
+}
+
+.good__text-buttons svg {
+    font-size: 28px;
+    /* aspect-ratio: 1/1; */
 }
 .cvet {
     font-weight: 400;
@@ -195,7 +223,13 @@
 .good__text-delivery {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.good__text-delivery svg {
+    height: 24px;
+    color: #FF8261;
 }
 
 /* .good__text-terms {

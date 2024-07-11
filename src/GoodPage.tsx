@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faArrowRight, faCheck, faCheckCircle, faHeart, faMinus, faPlus, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
 import { Link, useLocation } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 import { toggleFavourite } from "./features/goodsSlice";
@@ -9,8 +9,8 @@ import { add } from "./features/basketSlice"
 import { useAppDispatch } from "./hooks";
 import GoodColors from "./GoodColors"
 import { changeMessage } from "./features/notificationSlice"
-import { dimensionTranslations } from "./utils"
 import Terms from "./Terms"
+
 export default function GoodPage() {
 
     const location = useLocation();
@@ -22,7 +22,7 @@ export default function GoodPage() {
     const [clickedFavourite, setClickedFavourite] = React.useState<boolean>(false);
     const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
     const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
-    const [quantity, setQuantity] = React.useState<number>(0);
+    const [quantity, setQuantity] = React.useState<number>(1);
 
     return (
         <section className="good">
@@ -39,7 +39,7 @@ export default function GoodPage() {
             <div className="good__text">
                 <div className="line1"> 
                     <h3>{state.title}</h3>
-                    <button className="good__text-button" onClick={() => {
+                    {/* <button className="good__text-button" onClick={() => {
                         dispatch(toggleFavourite(state));
                         setClickedFavourite((prevValue) => {
                             return !prevValue;
@@ -47,7 +47,7 @@ export default function GoodPage() {
                         dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
                     }}>
                         <FontAwesomeIcon className="good__text-button-svg" style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}} icon={faHeart} />
-                    </button>
+                    </button> */}
                 </div>
                 <h4>Цена: <span className="cvet">{state.price}</span></h4>
                 <Link to={`/profile/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
@@ -67,25 +67,7 @@ export default function GoodPage() {
                 :
                 <h4>Размеры: <span className="cvet">{`${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}</span></h4>
                 }
-                {/* {state.dimensions && 
-                <ul className="good__text-dimensions">
 
-                    {Object.keys(state.dimensions).map((key) => {
-                        const translstedDimension = dimensionTranslations.find((dimension) => {
-                            return dimension.title === key;
-                        });
-                        return <li>
-                            <h4>{translstedDimension?.translation}:</h4> 
-                            <span>{state.dimensions && state.dimensions[key]}<span style={{textTransform: "lowercase"}}>{translstedDimension?.unit}</span></span>
-                        </li>
-                    })}
-                </ul>
-                 <div className="">
-                    <h4>Размеры</h4>
-                    <span>Ширина: {state.dimensions.width}</span>
-                    <span>Высота: {state.dimensions.height}</span> 
-                </div>
-                } */}
                 <h4>Материал: <span className="cvet">{state.material}</span></h4>
                 {state.colors && <div className="good__text-colors-div">
                     <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>
@@ -101,7 +83,7 @@ export default function GoodPage() {
                         <FontAwesomeIcon icon={faPlus} />
                     </button>
                     <span>{quantity}</span>
-                    <button onClick={() => {
+                    <button disabled={quantity < 2 ? true : false} onClick={() => {
                         setQuantity((prevValue) => {
                             return prevValue - 1;
                         })
@@ -109,13 +91,25 @@ export default function GoodPage() {
                         <FontAwesomeIcon icon={faMinus} />
                     </button>
                 </div>
-                <button className="butt" onClick={() => {
-                    dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }));
-                    dispatch(changeMessage(`Товар ${state.title} добавлен`));
-                    setAddedToBasket(true);
-                }}>
-                    <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
-                </button>
+                <div className="good__text-buttons">
+                    <button className="butt" onClick={() => {
+                        dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }));
+                        dispatch(changeMessage(`Товар ${state.title} добавлен`));
+                        setAddedToBasket(true);
+                    }}>
+                        <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
+                    </button>
+                    <button className="good__text-button" onClick={() => {
+                        dispatch(toggleFavourite(state));
+                        setClickedFavourite((prevValue) => {
+                            return !prevValue;
+                        })
+                        dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
+                    }}>
+                        <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}}/>
+                    </button>
+                </div>
+
                 <Terms></Terms>
                 {/* <ul className="good__text-terms">
                     <li key="delivery">
