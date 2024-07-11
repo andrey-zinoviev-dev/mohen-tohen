@@ -35,6 +35,9 @@ export interface GoodInterface {
   quantity?: number,
   selectedColor?: ColorInterface,
   dimensions?: DimensionsInterface,
+  candle?: boolean,
+  stock: number,
+  madeToOrder: boolean,
 }
 
 export interface GoodsInterface {

@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faArrowRight, faHeart, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faCheck, faCheckCircle, faHeart, faMinus, faPlus, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
 import { Link, useLocation } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 import { toggleFavourite } from "./features/goodsSlice";
@@ -16,11 +16,13 @@ export default function GoodPage() {
     const location = useLocation();
     const state = location.state as GoodInterface;
     const dispatch = useAppDispatch();
-    console.log(state.dimensions);
+    // console.log(state.dimensions);
     //local state
+    // const [good, setGood] = React.useState<GoodInterface | undefined>(state);
     const [clickedFavourite, setClickedFavourite] = React.useState<boolean>(false);
     const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
     const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
+    const [quantity, setQuantity] = React.useState<number>(0);
 
     return (
         <section className="good">
@@ -29,7 +31,9 @@ export default function GoodPage() {
                 <div className="good__parameters-features">
                     <span className="good__parameters-features-feature">{state.material}</span>
                     {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>}
-                    {state.dimensions && <span className="good__parameters-features-feature">{Object.values(state.dimensions)}</span>}
+                    {state.dimensions && <span className="good__parameters-features-feature">
+                        {state.candle ? `${state.dimensions && state.dimensions.volume}мл` : `${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}
+                    </span>}
                 </div>
             </div>
             <div className="good__text">
@@ -55,7 +59,17 @@ export default function GoodPage() {
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
                 <p>Вот тут будет описание товара, история создания, вот тут прям да красивый текст про товар</p>
-                {state.dimensions && <ul className="good__text-dimensions">
+                <div className="good__text-delivery">
+                    <FontAwesomeIcon icon={state.stock > 0 ? faCheckCircle : faTruckRampBox} />
+                    <span>{!state.madeToOrder ? `В наличии ${state.stock}` : "Товар делается под заказ и будет доставлен в течение 2-5 дней после производства"}</span>
+                </div>
+                {state.candle ? <h4>Объем: <span className="cvet">{state.dimensions && state.dimensions.volume}мл</span></h4>
+                :
+                <h4>Размеры: <span className="cvet">{`${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}</span></h4>
+                }
+                {/* {state.dimensions && 
+                <ul className="good__text-dimensions">
+
                     {Object.keys(state.dimensions).map((key) => {
                         const translstedDimension = dimensionTranslations.find((dimension) => {
                             return dimension.title === key;
@@ -66,24 +80,32 @@ export default function GoodPage() {
                         </li>
                     })}
                 </ul>
-                //  <div className="">
-                //     <h4>Размеры</h4>
-                //     <span>Ширина: {state.dimensions.width}</span>
-                //     <span>Высота: {state.dimensions.height}</span> 
-                // </div>
-                }
+                 <div className="">
+                    <h4>Размеры</h4>
+                    <span>Ширина: {state.dimensions.width}</span>
+                    <span>Высота: {state.dimensions.height}</span> 
+                </div>
+                } */}
                 <h4>Материал: <span className="cvet">{state.material}</span></h4>
                 {state.colors && <div className="good__text-colors-div">
                     <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>
                     <GoodColors updateColor={setSelectedColor} colors={state.colors} />
                 </div>
                 }
-                <div>
-                    <button>
+                <div className="good__text-quantity">
+                    <button onClick={() => {
+                        setQuantity((prevValue) => {
+                            return prevValue + 1;
+                        })
+                    }}>
                         <FontAwesomeIcon icon={faPlus} />
                     </button>
-                    <span>1</span>
-                    <button>
+                    <span>{quantity}</span>
+                    <button onClick={() => {
+                        setQuantity((prevValue) => {
+                            return prevValue - 1;
+                        })
+                    }}>
                         <FontAwesomeIcon icon={faMinus} />
                     </button>
                 </div>
