@@ -2,21 +2,23 @@ import React from "react";
 import "./Cart.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faPen, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { addOne, editGood, remove, removeOne } from "./features/basketSlice";
 import Popup from "./Popup";
 import { ColorInterface, GoodInterface } from "./interfaces";
 import GoodColors from "./GoodColors";
+import { openPopup } from "./features/popupSlice";
 
 export default function Cart() {    
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
 
+
     const dispatch = useAppDispatch();
 
     //state
-    const [changeColor, setChangeColor] = React.useState<boolean>(false);
+    const [changeSpec, setChangeSpec] = React.useState<boolean>(false);
     const [selectedGoodName, setSelectedGoodName] = React.useState<string | null>(null);
     const [newColor, setNewColor] = React.useState<ColorInterface | undefined>(undefined);
 
@@ -27,7 +29,8 @@ export default function Cart() {
 
     //functions
     function closePopup() {
-        setChangeColor(false);
+        setChangeSpec(false);
+        // setChangeColor(false);
         setSelectedGoodName(null);
         setNewColor(undefined);
     }
@@ -44,7 +47,7 @@ export default function Cart() {
                     </li>
                     {cartState.map((cartGood) => {
                         return <li className="cart__ul-li" key={cartGood.title}>
-                            <button className="cart__ul-li-delete" onClick={() => {
+                            <button className="cart__ul-li-delete cart__button" onClick={() => {
                                 dispatch(remove(cartGood));
                             }}>
                                 <FontAwesomeIcon icon={faXmark} />
@@ -59,23 +62,26 @@ export default function Cart() {
                                         <div className="cart__ul-li-text-specs">
                                             <span>{cartGood.material && cartGood.material}</span>
                                             {cartGood.selectedColor && <div className="cart__ul-li-text-specs-colors">
-                                                <span className="cart__ul-li-text-specs-colors-title">{cartGood.selectedColor?.title}</span>
-                                                <button onClick={() => {
-                                                    setChangeColor(true);
-                                                    setSelectedGoodName(cartGood.title);
-                                                }} className="cart__ul-li-text-specs-colors-thumbnail" style={{backgroundColor: cartGood.selectedColor?.colorCode}}></button>
+                                                <span>{cartGood.selectedColor?.title}</span>
+                                                <div className="cart__ul-li-text-specs-colors-thumbnail" style={{backgroundColor: cartGood.selectedColor?.colorCode}}></div>
                                             </div>}
+                                            <button className="cart__button" onClick={() => {
+                                                setChangeSpec(true);
+                                            }}>
+                                                <span>Изменить</span>
+                                            {/* <FontAwesomeIcon icon={faPen} /> */}
+                                        </button>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <button onClick={() => {
+                                <div className="cart__ul-li-quantity">
+                                    <button className="cart__button" onClick={() => {
                                         dispatch(addOne(cartGood))
                                     }}>
                                         <FontAwesomeIcon icon={faPlus} />
                                     </button>
                                     <span>{cartGood.quantity}</span>
-                                    <button onClick={() => {
+                                    <button className="cart__button" onClick={() => {
                                         dispatch(removeOne(cartGood))
                                     }}>
                                         <FontAwesomeIcon icon={faMinus} />
@@ -90,9 +96,10 @@ export default function Cart() {
                 <p>Ваша корзина пуста, но ее можно наполнить</p>
                 }
             </section>
-            {changeColor && <Popup setClose={closePopup}>
+            
+            {changeSpec && <Popup setClose={closePopup}>
                 <h3>Редактировать товар в корзине</h3>
-                <h3>{selectedGood?.title}</h3>
+                {/* <h3>{selectedGood?.title}</h3>
                 {selectedGood?.colors && 
                 <>
                     <h5>Цвет- <span>{selectedGood.selectedColor?.title}</span></h5>
@@ -101,7 +108,7 @@ export default function Cart() {
                         dispatch(editGood({...selectedGood, selectedColor: newColor}));
                         closePopup();
                     }}>Обновить {selectedGood.title}</button>
-                </>}
+                </>} */}
             </Popup>}
         </>
     )

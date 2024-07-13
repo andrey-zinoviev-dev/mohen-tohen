@@ -9,7 +9,6 @@ import Favourites from './Favourites'
 import SellerPage from './SellerPage'
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/",

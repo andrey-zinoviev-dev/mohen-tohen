@@ -109,3 +109,27 @@
     border-radius: 7px;
     padding: 0;
 }
+
+.cart__button {
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    transition: all 0.25s ease-in-out;
+}
+
+.cart__button span {
+    background: none;
+}
+
+.cart__button:hover {
+    border: 2px solid #F87545;
+    color: #F87545;
+}
+
+.cart__ul-li-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

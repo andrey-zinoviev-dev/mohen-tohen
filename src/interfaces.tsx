@@ -72,7 +72,7 @@ export interface HomeContentInterface {
 }
 
 export interface PopupInterface {
-  children: React.ReactNode,
+  children?: React.ReactNode,
   setClose: React.Dispatch<React.SetStateAction<boolean>>
 }
 

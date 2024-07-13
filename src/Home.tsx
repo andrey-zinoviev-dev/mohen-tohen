@@ -2,7 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import Notification from "./Notification";
-
+import Popup from "./Popup";
 import { useAppSelector } from "./hooks";
 
 export default function Home() {
@@ -10,12 +10,16 @@ export default function Home() {
         return state.notification.message;
     });
 
+
     return (
         <>
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
             {notificationState && <Notification></Notification>}
+            {/* {popupState && <Popup>
+                <h3>Войти или зарегистрироваться</h3>    
+            </Popup>} */}
         </>
     )
 }
