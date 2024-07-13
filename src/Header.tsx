@@ -2,11 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass, faShoppingBag } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import { useAppSelector } from "./hooks";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { login } from "./features/userSlice";
-import { openPopup } from "./features/popupSlice";
+// import { login } from "./features/userSlice";
+// import { openPopup } from "./features/popupSlice";
 import Popup from "./Popup";
 import heading from "./assets/mh-1.png"
 import { categories } from "./utils";
@@ -25,6 +25,7 @@ export default function Header() {
 
     //localState
     const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
+    const [category, setCategory] = React.useState<string | null>("");
 
     return (
         <>
@@ -33,14 +34,10 @@ export default function Header() {
                     <form>
                         <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                         <input placeholder="Поиск"></input>
-                        {/* <button>найти</button> */}
                     </form>
                     <img className="header__img" src={heading}></img>
-                    {/* <h3 className="header__headline">Mohen-Tohen</h3> */}
                     <div className="header__links">
-                        {/* <Link to="../homestaging">
-                            <span>Декорирование на заказ</span>
-                        </Link> */}
+                        
                         <Link to="../favs">
                             <FontAwesomeIcon icon={faHeart} />
                             <span>{favouriteState.length}</span>
@@ -59,11 +56,16 @@ export default function Header() {
                 </div>
                 <ul className="header__categories">
                     {categories.map((category) => {
-                        return <li key={category}>
-                            <span>{category}</span>
+                        return <li key={category} >
+                            <span onMouseOver={() => {
+                            setCategory(category);
+                        }} onMouseLeave={() => {
+                            setCategory(null);
+                        }}>{category}</span>
                         </li>
                     })}
                 </ul>
+                <p>{category}</p>
             </header>
             {popupOpened && <Popup setClose={setPopupOpened}>
                 <h3>Войти или зарегистрироваться</h3>
