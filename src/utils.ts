@@ -1,4 +1,4 @@
-import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface } from "./interfaces";
+import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface, CategoryInterface } from "./interfaces";
 import { IconDefinition, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faVk } from "@fortawesome/free-brands-svg-icons";
 import seller1 from "./assets/2024-07-08 23.47.33.jpg";
@@ -679,10 +679,115 @@ export const terms:TermInterface[] = [
   }
 ];
 
-export const categories:string[] = [
-  "Мебель",
-  "Свет",
-  "Декор",
-  "Винтаж",
-  "Декорирование"
-]
+export const categories:CategoryInterface[] = [
+  // {
+  //   title: "Мебель",
+  //   links: [
+  //     {title:}
+  //   ]
+  // }
+  // "Мебель",
+  // "Свет",
+  // "Декор",
+  // "Винтаж",
+  // "Декорирование"
+  {
+    title: "Свет",
+    links: [
+      {
+        title: "Лампы",
+        href: "",
+      },
+      {
+        title: "Люстры",
+        href: "",
+      },
+      {
+        title: "Наружное освещение",
+        href: ""
+      },
+      {
+        title: "Настенное освещение",
+        href: "",
+      },
+      {
+        title: "Настольное освещение",
+        href: "",
+      }
+    ]
+  },
+  {
+    title: "Домашний декор",
+    links: [
+      {
+        title: "Скульптуры",
+        href: "",
+      },
+      {
+        title: "Вазы",
+        href: "",
+      },
+      {
+        title: "Подсвечники",
+        href: ""
+      },
+    ]
+  },
+  {
+    title: "Настенный декор",
+    links: [
+      {
+        title: "Картины",
+        href: "",
+      },
+      {
+        title: "Принты",
+        href: "",
+      },
+      {
+        title: "Фотографии",
+        href: ""
+      },
+    ]
+  },
+  {
+    title: "Спа, ванна, ароматы для дома",
+    links: [
+      {
+        title: "Свечи",
+        href: "",
+      },
+      {
+        title: "Диффузоры",
+        href: "",
+      },
+      {
+        title: "Саше",
+        href: ""
+      },
+    ]
+  },
+  {
+    title: "Текстиль, кожа",
+    links: [
+      {
+        title: "Ковры",
+        href: "",
+      },
+      {
+        title: "Постельное белье",
+        href: "",
+      },
+      {
+        title: "Пледы",
+        href: ""
+      },
+    ]
+  }
+];
+
+export const fixedHeaderLinks:string[] = [
+  "Декорирование на заказ",
+  "Подарочные сертификаты",
+  "Наборы сделай сам",
+];

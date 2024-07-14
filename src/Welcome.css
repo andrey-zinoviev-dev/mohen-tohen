@@ -18,9 +18,9 @@ h1 {
     max-width: 620px;
     line-height: 1.5;
     text-align: left;
-    /* font-family: "Manrope", sans-serif; */
+    font-family: "Manrope", sans-serif;
 
-    font-family: 'FortuneC';
+    /* font-family: 'FortuneC'; */
     color: white;
     letter-spacing: 2px;
     font-weight: 200;

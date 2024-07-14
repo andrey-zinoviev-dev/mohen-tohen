@@ -80,3 +80,11 @@ export interface TermInterface {
   question: string,
   answer: string,
 }
+
+export interface CategoryInterface {
+  title: string,
+  links: {
+    title: string,
+    href: string,
+  }[]
+}

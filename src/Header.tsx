@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 // import { openPopup } from "./features/popupSlice";
 import Popup from "./Popup";
 import heading from "./assets/mh-1.png"
-import { categories } from "./utils";
+import { categories, fixedHeaderLinks } from "./utils";
+import { CategoryInterface } from "./interfaces";
 
 export default function Header() {
     //redux state
@@ -25,7 +26,7 @@ export default function Header() {
 
     //localState
     const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
-    const [category, setCategory] = React.useState<string | null>("");
+    const [category, setCategory] = React.useState<CategoryInterface | null>(null);
 
     return (
         <>
@@ -56,16 +57,28 @@ export default function Header() {
                 </div>
                 <ul className="header__categories">
                     {categories.map((category) => {
-                        return <li key={category} >
-                            <span onMouseOver={() => {
+                        return <li key={category.title} onMouseOver={() => {
                             setCategory(category);
-                        }} onMouseLeave={() => {
-                            setCategory(null);
-                        }}>{category}</span>
+                        }}>
+                            <span>{category.title}</span>
+                            <div></div>
                         </li>
                     })}
                 </ul>
-                <p>{category}</p>
+                <div className="header__extension">
+                    <ul>
+                        {fixedHeaderLinks.map((link) => {
+                            return <li key={link}>{link}</li>
+                        })}
+                    </ul>
+                    {category?.links && <ul>
+                        {category.links.map((link) => {
+                            return <li key={link.href}>
+                                <span>{link.title}</span>
+                            </li>
+                        })}
+                    </ul>}
+                </div>
             </header>
             {popupOpened && <Popup setClose={setPopupOpened}>
                 <h3>Войти или зарегистрироваться</h3>
