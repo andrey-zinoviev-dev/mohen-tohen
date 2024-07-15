@@ -11,12 +11,6 @@ export default function Popup({ children, setClose }:PopupInterface) {
     return (
         <section className="popup">
             <div className="popup__content">
-                <button onClick={() => {
-                    setClose(false);
-                    // setClose && setClose(false);
-                }} className="popup__close">
-                    <FontAwesomeIcon icon={faXmark} />
-                </button>
                 {children}
             </div>
         </section>

@@ -7,6 +7,7 @@ import HomeContent from './HomeContent'
 import Cart from './Cart'
 import Favourites from './Favourites'
 import SellerPage from './SellerPage'
+import Account from './Account'
 
 function App() {
   const router = createBrowserRouter([
@@ -32,8 +33,9 @@ function App() {
         },
         {
           path: "/profile/:profileID",
-          element: <SellerPage></SellerPage>
-        }
+          element: <Account />
+          // element: <SellerPage></SellerPage>
+        },
       ]
     },
 

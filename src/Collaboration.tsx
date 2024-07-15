@@ -8,6 +8,7 @@ export default function Collaboration () {
             <div className="collaboration__wrapper">
                 <form className="collaboration__form">
                     <input placeholder="ваша почта..."></input>
+                    <input placeholder="ваше имя..."></input>
                     <button>
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>

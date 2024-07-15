@@ -81,10 +81,18 @@ export interface TermInterface {
   answer: string,
 }
 
+export interface LinkInterface {
+  title: string,
+  href: string,
+}
+
+export interface LinksInterface {
+  links: LinkInterface[],
+  title: string,
+}
+
 export interface CategoryInterface {
   title: string,
-  links: {
-    title: string,
-    href: string,
-  }[]
+  links: LinkInterface[],
+  designers: LinkInterface[],
 }

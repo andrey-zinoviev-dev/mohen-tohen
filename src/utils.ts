@@ -1,10 +1,11 @@
-import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface, CategoryInterface } from "./interfaces";
+import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface, CategoryInterface, LinkInterface } from "./interfaces";
 import { IconDefinition, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faVk } from "@fortawesome/free-brands-svg-icons";
 import seller1 from "./assets/2024-07-08 23.47.33.jpg";
 import seller2 from "./assets/2024-07-08 23.48.06.jpg";
 import selle3 from "./assets/2024-07-08 23.48.25.jpg";
 import selle4 from "./assets/2024-07-08 23.48.52.jpg";
+import { UserInterface } from "./features/userSlice";
 
 export const promoGoods:GoodInterface[] = [
   {
@@ -714,10 +715,24 @@ export const categories:CategoryInterface[] = [
         title: "Настольное освещение",
         href: "",
       }
+    ],
+    designers: [
+      {
+        title: "Алексей Солдатов",
+        href: "",
+      },
+      {
+        title: "Варвара Алексеева",
+        href: "",
+      },
+      {
+        title: "Сати Альбретовна",
+        href: "",
+      }
     ]
   },
   {
-    title: "Домашний декор",
+    title: "Декор",
     links: [
       {
         title: "Скульптуры",
@@ -731,44 +746,82 @@ export const categories:CategoryInterface[] = [
         title: "Подсвечники",
         href: ""
       },
-    ]
-  },
-  {
-    title: "Настенный декор",
-    links: [
+    ],
+    designers: [
       {
-        title: "Картины",
-        href: "",
-      },
-      {
-        title: "Принты",
-        href: "",
-      },
-      {
-        title: "Фотографии",
+        title: "Андрей Зиновьев",
         href: ""
       },
-    ]
-  },
-  {
-    title: "Спа, ванна, ароматы для дома",
-    links: [
       {
-        title: "Свечи",
+        title: "Sergey Sergo",
         href: "",
       },
       {
-        title: "Диффузоры",
+        title: "Le Gontieux",
         href: "",
-      },
-      {
-        title: "Саше",
-        href: ""
-      },
+      }
     ]
   },
+  // {
+  //   title: "Настенный декор",
+  //   links: [
+  //     {
+  //       title: "Картины",
+  //       href: "",
+  //     },
+  //     {
+  //       title: "Принты",
+  //       href: "",
+  //     },
+  //     {
+  //       title: "Фотографии",
+  //       href: ""
+  //     },
+  //   ],
+  //   designers: [
+  //     {
+  //       title: "Alice Kroops",
+  //       href: "",
+  //     },
+  //     {
+  //       title: "Маша Каша",
+  //       href: "",
+  //     },
+  //     {
+  //       title: "Andrey Daukshis",
+  //       href: "",
+  //     },
+  //     {
+  //       title: "Daria Zhezher",
+  //       href: "",
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: "Спа, ванна, ароматы для дома",
+  //   links: [
+  //     {
+  //       title: "Свечи",
+  //       href: "",
+  //     },
+  //     {
+  //       title: "Диффузоры",
+  //       href: "",
+  //     },
+  //     {
+  //       title: "Саше",
+  //       href: ""
+  //     },
+  //   ],
+  //   designers: [
+  //     {
+  //       title: "Сати Альбретовна",
+  //       href: "",
+  //     }
+  //   ]
+  // },
   {
-    title: "Текстиль, кожа",
+    title: "Текстиль",
     links: [
       {
         title: "Ковры",
@@ -782,12 +835,108 @@ export const categories:CategoryInterface[] = [
         title: "Пледы",
         href: ""
       },
+    ],
+    designers: [
+      {
+        title: "Stiff Boots",
+        href: "",
+      },
+      {
+        title: "Elektrozavod",
+        href: "",
+      },
+      {
+        title: "Байкал",
+        href: "",
+      }
+    ]
+  },
+  {
+    title: 'Мебель',
+    links: [
+      
+    ],
+    designers: [
+
+    ]
+  },
+  {
+    title: 'Сервировка',
+    links: [
+      
+    ],
+    designers: [
+
+    ]
+  },
+  {
+    title: 'Атмосфера',
+    links: [
+      
+    ],
+    designers: [
+
+    ]
+  },
+  {
+    title: 'Подарки',
+    links: [
+      
+    ],
+    designers: [
+
+    ]
+  },
+  {
+    title: 'Идеи',
+    links: [
+      
+    ],
+    designers: [
+
+    ]
+  },
+  {
+    title: 'Услуги',
+    links: [
+      
+    ],
+    designers: [
+
     ]
   }
 ];
 
-export const fixedHeaderLinks:string[] = [
-  "Декорирование на заказ",
-  "Подарочные сертификаты",
-  "Наборы сделай сам",
+export const fixedHeaderLinks:LinkInterface[] = [
+  {
+    title: "Декорирование на заказ",
+    href: ""
+  },
+  {
+    title: "Подарочные сертификаты",
+    href: "",
+  },
+  {
+    title: "Набобры сделай сам",
+    href: "",
+  }
 ];
+
+export const buyerUser:UserInterface = {
+  name: "Алексей Солдатов",
+  loggedIn: false,
+  phone: "+79031513045",
+  email: "alexey2194@mail.ru",
+  favourites: [],
+  seller: false,
+};
+
+export const sellerUser:UserInterface = {
+  name: "Сергей Ильич",
+  loggedIn: false,
+  phone: "+79269311555",
+  email: "super_whore@mail.ru",
+  favourites: [],
+  seller: true,
+  goodsCollection: []
+}

@@ -8,11 +8,14 @@
   display: flex;
   justify-content: flex-end;
   padding: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  
 }
 
 .popup__content {
   background-color: #F3F3F3;
-  width: 50%;
+  width: 35%;
   border-radius: 12px 0 0 12px;
   display: flex;
   flex-direction: column;

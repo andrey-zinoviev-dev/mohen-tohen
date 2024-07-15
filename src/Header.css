@@ -95,12 +95,15 @@
     margin: 0;
     min-height: 240px;
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 15px;
     transition: all 0.25s ease-in-out;
+    box-sizing: border-box;
+    padding: 30px 0;
+    justify-content: center;
 }
 
-.header__extension ul {
+/* .header__extension ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -112,13 +115,92 @@
 
 .header__extension ul:not(:last-of-type) {
     border-right: 1px solid #20232c;
-}
+} */
 
 /* .header__categories li:hover {
     text-decoration: underline;
 } */
 
-.header__categories:hover + .header__extension {
+.header__row-2 {
+    position: relative;
+}
+
+.header__row-2:hover .header__extension {
     opacity: 1;
     pointer-events: all;
+}
+
+.header__popup-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 320px;
+    text-align: left;
+}
+
+.header__popup-close {
+    background-color: transparent;
+    /* border: 2px solid #20232c; */
+    color: #20232c;
+    align-self: flex-end;
+    transition: all 0.25s ease-in-out;
+    font-size: 20px;
+    border: none;
+}
+
+.header__popup-close:hover {
+    border: none;
+    color: #FF8261;
+}
+
+.header__popup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.header__popup-form h3 {
+    margin: 0;
+}
+
+.header__popup-form div {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.header__popup-form input {
+    outline: none;
+    border-bottom: 2px solid #20232c;
+    width: 100%;
+    font-size: 16px;
+    font-family: "Manrope", sans-serif;
+    box-sizing: border-box;
+}
+
+.header__popup-form div span {
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    padding: 0 5px 0px 0;
+}
+
+.header__popup-form button {
+    background-color: #FF8261;
+    transition: all 0.25s ease-in-out;
+    border: none;
+}
+
+.header__popup-form button:hover {
+    background-color: #20232c;
+    color: white;
+}
+
+.header__popup-wrapper-p {
+    font-size: 12px;
+    color: rgb(131, 131, 131);
 }
