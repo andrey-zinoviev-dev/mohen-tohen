@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMagnifyingGlass, faShoppingBag } from "@fortawesome/free-solid-svg-icons"
+import { faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -46,16 +46,18 @@ export default function Header() {
                     </form>
                     <img className="header__img" src={heading}></img>
                     <div className="header__links">
-                        
                         <Link to="../favs">
                             <FontAwesomeIcon icon={faHeart} />
                             <span>{favouriteState.length}</span>
                         </Link>
                         <button onClick={() => {
-                            setPopupOpened(true);
+                            userState.loggedIn ? 
+                                navigate(`profile/${1223}`)
+                                :
+                                setPopupOpened(true);
                             // dispatch(login({name: "Андрей", email: "sttrog_810@mail.ru", favourites: [], phone: "+79588280774", seller: false, loggedIn: true}))
                         }}>
-                            {!userState.loggedIn ? "Войти" : `${userState.name}`}
+                            {!userState.loggedIn ? <span>Войти</span> : <span>{userState.name && userState.name[0]} <FontAwesomeIcon icon={faUser} /></span>}
                         </button>
                         <Link to="../basket">
                             <FontAwesomeIcon icon={faShoppingBag} />
@@ -117,7 +119,7 @@ export default function Header() {
                             </div>
                             <button type="button" onClick={() => {
                                 setPopupOpened(false);
-                                navigate(`profile/${1223}`);
+                                // navigate(`profile/${1223}`);
                                 dispatch(login(buyerUser))
                                 // dispatch(login(sellerUser));
                             }}>Получить код</button>

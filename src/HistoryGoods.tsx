@@ -9,13 +9,13 @@ export default function HistoryGoods() {
   return (
     <section className="history">
       <h3>История {!userState.seller ? "покупок" : "продаж"}</h3>
-      <ul>
+      {/* <ul>
         {userState.history.map((transaction) => {
           return <li key={transaction.title}>
             <span>{transaction.title}</span>
           </li>
         })}
-      </ul>
+      </ul> */}
     </section>
   )
 }

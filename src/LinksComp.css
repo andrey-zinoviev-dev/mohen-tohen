@@ -10,6 +10,11 @@
     gap: 5px;
 }
 
+.links_inAccount {
+    padding: 0;
+    border-right: none;
+}
+
 .links h3 {
     margin: 0;
     font-weight: 100;
@@ -23,4 +28,13 @@
     gap: 5px;
     /* font-weight: 100; */
     /* border-right: 1px solid black; */
+}
+
+.links__ul li:hover {
+    color: #FF8261;
+}
+
+.links_inAccount ul {
+    gap: 20px;
+    font-size: 18px;
 }

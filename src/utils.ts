@@ -910,21 +910,21 @@ export const categories:CategoryInterface[] = [
 export const fixedHeaderLinks:LinkInterface[] = [
   {
     title: "Декорирование на заказ",
-    href: ""
+    href: "../homestaging"
   },
   {
     title: "Подарочные сертификаты",
-    href: "",
+    href: "../gifts",
   },
   {
     title: "Набобры сделай сам",
-    href: "",
+    href: "../diy",
   }
 ];
 
 export const buyerUser:UserInterface = {
   name: "Алексей Солдатов",
-  loggedIn: false,
+  loggedIn: true,
   phone: "+79031513045",
   email: "alexey2194@mail.ru",
   favourites: [
@@ -957,11 +957,26 @@ export const buyerUser:UserInterface = {
 
 export const sellerUser:UserInterface = {
   name: "Сергей Ильич",
-  loggedIn: false,
+  loggedIn: true,
   phone: "+79269311555",
   email: "super_whore@mail.ru",
   favourites: [],
   seller: true,
   goodsCollection: [],
   history: [],
-}
+};
+
+export const accountLinks:LinkInterface[] = [
+  {
+    title: "Избранное",
+    href: "favs"
+  },
+  {
+    title: "История покупок",
+    href: "history"
+  },
+  {
+    title: "Настройки",
+    href: "prefs"
+  }
+]

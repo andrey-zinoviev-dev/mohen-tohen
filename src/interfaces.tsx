@@ -89,7 +89,8 @@ export interface LinkInterface {
 
 export interface LinksInterface {
   links: LinkInterface[],
-  title: string,
+  title?: string,
+  inAccount?: boolean,
 }
 
 export interface CategoryInterface {

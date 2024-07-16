@@ -8,6 +8,8 @@ import Cart from './Cart'
 import Favourites from './Favourites'
 import SellerPage from './SellerPage'
 import Account from './Account'
+import HistoryGoods from './HistoryGoods'
+import Settings from './Settings'
 
 function App() {
   const router = createBrowserRouter([
@@ -27,18 +29,31 @@ function App() {
           path: "/basket",
           element: <Cart></Cart>
         },
-        {
-          path: "/favs",
-          element: <Favourites></Favourites>
-        },
+        // {
+        //   path: "/favs",
+        //   element: <Favourites></Favourites>
+        // },
         {
           path: "/profile/:profileID",
-          element: <Account />
+          element: <Account />,
+          children: [
+            {
+              path: "favs",
+              element: <Favourites></Favourites>
+            },
+            {
+              path: "history",
+              element: <HistoryGoods></HistoryGoods>
+            },
+            {
+              path: "prefs",
+              element: <Settings></Settings>
+            }
+          ]
           // element: <SellerPage></SellerPage>
         },
       ]
     },
-
   ], {
     basename:"/mohen-tohen"
   });

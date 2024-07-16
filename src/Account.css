@@ -4,6 +4,15 @@
     align-items: flex-start;
 }
 
+.account__navigation-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    width: 100%;
+    max-width: 220px;
+}
+
 .account__goods-wrapper {
     display: flex;
     flex-direction: column;
@@ -14,10 +23,11 @@
 .account__user-wrapper {
     /* align-self: flex-end; */
     display: flex;
-    gap: 15px;
+    /* gap: 15px; */
     align-items: center;
     justify-content: space-between;
-    min-width: 220px;
+    width: 100%;
+    /* min-width: 220px; */
 }
 
 .account__user-wrapper h3 {

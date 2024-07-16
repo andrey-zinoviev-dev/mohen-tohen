@@ -5,8 +5,11 @@ export default function Favourites() {
         return state.goods.favourties;
     });
     return (
-        <section>
-            <Goods category="избранное" goods={favsState}></Goods>
-        </section>
+        <div>
+            <h3>Избранное</h3>
+        </div>
+        // <section>
+        //     <Goods category="избранное" goods={favsState}></Goods>
+        // </section>
     )
 }
