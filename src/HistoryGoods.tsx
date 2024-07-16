@@ -9,13 +9,21 @@ export default function HistoryGoods() {
   return (
     <section className="history">
       <h3>История {!userState.seller ? "покупок" : "продаж"}</h3>
-      {/* <ul>
+      {/* <Goods goods={userState.history}></Goods> */}
+      <ul className="history__ul">
         {userState.history.map((transaction) => {
-          return <li key={transaction.title}>
-            <span>{transaction.title}</span>
+          return <li className="history__ul-li" key={transaction.title}>
+            <p className="history__ul-li-p">Номер заказа</p>
+            <div className="history__ul-li-order-wrapper">
+              <img src={transaction.cover}></img>
+              <span>{transaction.title}</span>
+              <span>Дата заказа</span>
+              <span>Количество: {transaction.quantity}</span>
+              <span>Сумма: {transaction.price}</span>
+            </div>
           </li>
         })}
-      </ul> */}
+      </ul>
     </section>
   )
 }

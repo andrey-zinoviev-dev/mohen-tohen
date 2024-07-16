@@ -3,9 +3,8 @@ import "./Account.css";
 // import Goods from "./Goods";
 import { useAppSelector } from "./hooks";
 import { faArrowLeft, faPen } from "@fortawesome/free-solid-svg-icons";
-import HistoryGoods from "./HistoryGoods";
-import { accountLinks } from "./utils";
-import { Link, Outlet } from "react-router-dom";
+import { accountLinks, accountSellerLinks } from "./utils";
+import { Outlet, useNavigate } from "react-router-dom";
 import LinksComp from "./LinksComp";
 
 export default function Account() {
@@ -17,10 +16,15 @@ export default function Account() {
     //dispatch
     // const dispatch = useAppDispatch();
 
+    //navigate
+    const navigate = useNavigate();
+
     return (
         <section className="account">
             <div className="account__navigation-wrapper">
-                <button>
+                <button onClick={() => {
+                    navigate("../");
+                }}>
                     <FontAwesomeIcon icon={faArrowLeft} />
                     <span>Назад</span>
                 </button>
@@ -30,23 +34,11 @@ export default function Account() {
                         <FontAwesomeIcon icon={faPen} />
                     </button>
                 </div>}
-                <LinksComp inAccount={true} links={accountLinks} />
-                {/* <ul>
-                    {accountLinks.map((link) => {
-                        return <li key={link.title}>
-                            <Link to={link.href}>
-                                {link.title}
-                            </Link>
-                        </li>
-                    })}
-                </ul> */}
+                <LinksComp inAccount={true} links={!userState.seller ? accountLinks : accountSellerLinks} />
             </div>
 
             <div className="account__goods-wrapper">
                 <Outlet></Outlet>
-                {/* <HistoryGoods></HistoryGoods> */}
-                {/* {userState.seller && <Goods inAccountPage={true} category="Ваши товары" goods={userState.goodsCollection}></Goods>} */}
-                {/* <Goods inAccountPage={true} category={userState.seller ? "История продаж" : "История покупок" } goods={userState.seller ? [] : userState.history}></Goods> */}
             </div>
 
         </section>

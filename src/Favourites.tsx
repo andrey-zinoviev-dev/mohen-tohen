@@ -7,6 +7,7 @@ export default function Favourites() {
     return (
         <div>
             <h3>Избранное</h3>
+            <Goods goods={favsState}></Goods>
         </div>
         // <section>
         //     <Goods category="избранное" goods={favsState}></Goods>

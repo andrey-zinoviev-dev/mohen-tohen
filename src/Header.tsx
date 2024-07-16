@@ -46,13 +46,13 @@ export default function Header() {
                     </form>
                     <img className="header__img" src={heading}></img>
                     <div className="header__links">
-                        <Link to="../favs">
+                        <Link to={`profile/${1223}/favs`}>
                             <FontAwesomeIcon icon={faHeart} />
                             <span>{favouriteState.length}</span>
                         </Link>
                         <button onClick={() => {
                             userState.loggedIn ? 
-                                navigate(`profile/${1223}`)
+                                navigate(`profile/${1223}/history`)
                                 :
                                 setPopupOpened(true);
                             // dispatch(login({name: "Андрей", email: "sttrog_810@mail.ru", favourites: [], phone: "+79588280774", seller: false, loggedIn: true}))
@@ -79,19 +79,8 @@ export default function Header() {
                     <div className="header__extension">
                         <LinksComp title="Интересное" links={fixedHeaderLinks}></LinksComp>
                         {category && <LinksComp title="Что можно купить" links={category.links}></LinksComp>}
-                        {category && <LinksComp title="Выбрать по дизайнеру" links={category.designers}></LinksComp>}
-                        {/* <ul>
-                            {fixedHeaderLinks.map((link) => {
-                                return <li key={link.href}>{link.title}</li>
-                            })}
-                        </ul>
-                        {category?.links && <ul>
-                            {category.links.map((link) => {
-                                return <li key={link.href}>
-                                    <span>{link.title}</span>
-                                </li>
-                            })}
-                        </ul>} */}
+                        {/* {category && <LinksComp title="Выбрать по дизайнеру" links={category.designers}></LinksComp>} */}
+
                     </div>
                 </div>
                 
@@ -120,8 +109,8 @@ export default function Header() {
                             <button type="button" onClick={() => {
                                 setPopupOpened(false);
                                 // navigate(`profile/${1223}`);
-                                dispatch(login(buyerUser))
-                                // dispatch(login(sellerUser));
+                                // dispatch(login(buyerUser))
+                                dispatch(login(sellerUser));
                             }}>Получить код</button>
                     </form>
                     <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>

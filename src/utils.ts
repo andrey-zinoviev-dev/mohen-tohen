@@ -948,6 +948,28 @@ export const buyerUser:UserInterface = {
           
         ]
       },
+      quantity: 1,
+      material: "Акрил",
+      stock: 4, 
+      madeToOrder: false,
+    },
+    {
+      title: "Картина угольная гора",
+      cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+      price: 7500,
+      dimensions: {
+        width: 180,
+        height: 45,
+      },
+      seller: {
+        name: "Алексей Солдатов",
+        cover: seller2,
+        description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+        goodsCollection: [
+          
+        ]
+      },
+      quantity: 1,
       material: "Акрил",
       stock: 4, 
       madeToOrder: false,
@@ -973,6 +995,21 @@ export const accountLinks:LinkInterface[] = [
   },
   {
     title: "История покупок",
+    href: "history"
+  },
+  {
+    title: "Настройки",
+    href: "prefs"
+  }
+];
+
+export const accountSellerLinks:LinkInterface[] = [
+  {
+    title: "Избранное",
+    href: "favs"
+  },
+  {
+    title: "История продаж",
     href: "history"
   },
   {

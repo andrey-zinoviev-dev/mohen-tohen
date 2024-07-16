@@ -40,8 +40,12 @@ export interface GoodInterface {
   madeToOrder: boolean,
 }
 
+export interface HistoryInterface {
+  
+}
+
 export interface GoodsInterface {
-  category: string,
+  // category: string,
   goods: GoodInterface[] | undefined,
   inAccountPage?: boolean,
   // setGoods: React.Dispatch<React.SetStateAction<GoodInterface[]>>
