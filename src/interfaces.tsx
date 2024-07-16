@@ -43,6 +43,7 @@ export interface GoodInterface {
 export interface GoodsInterface {
   category: string,
   goods: GoodInterface[] | undefined,
+  inAccountPage?: boolean,
   // setGoods: React.Dispatch<React.SetStateAction<GoodInterface[]>>
 }
 
@@ -95,4 +96,8 @@ export interface CategoryInterface {
   title: string,
   links: LinkInterface[],
   designers: LinkInterface[],
+}
+
+export interface AccountHistoryInterface {
+  seller: boolean,
 }

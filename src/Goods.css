@@ -1,7 +1,21 @@
 .goods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     /* max-width: 1024px;
     margin: 0 auto; */
 }
+.goods_inaccount {
+    padding: 0;
+}
+
+.goods h3 {
+    margin: 0;
+}
+
+/* .goods_inaccount h3 {
+    margin: 0;
+} */
 .goods__ul {
     display: grid;
     /* grid-template-columns: repeat(auto-fit,minmax(150px, 1fr)); */
@@ -9,6 +23,7 @@
     gap: 10px;
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 .goods__ul-li-img {
     width: 100%;

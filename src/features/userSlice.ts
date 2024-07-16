@@ -8,7 +8,8 @@ export interface UserInterface {
     email: string | null,
     seller: boolean,
     goodsCollection?: GoodInterface[],
-    favourites: GoodInterface[] | [],
+    favourites: GoodInterface[],
+    history: GoodInterface[],
 }
 
 const initialState:UserInterface = {
@@ -17,6 +18,7 @@ const initialState:UserInterface = {
     phone: null,
     email: null,
     seller: false,
+    history: [],
     favourites: [],
 }
 

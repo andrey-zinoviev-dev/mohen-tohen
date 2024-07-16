@@ -16,7 +16,8 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    min-width: 180px;
+    justify-content: space-between;
+    min-width: 220px;
 }
 
 .account__user-wrapper h3 {
