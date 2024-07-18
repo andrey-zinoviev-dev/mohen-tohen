@@ -1,3 +1,4 @@
+import "./Favourites.css"
 import Goods from "./Goods";
 import { useAppSelector } from "./hooks"
 export default function Favourites() {
@@ -5,7 +6,7 @@ export default function Favourites() {
         return state.goods.favourties;
     });
     return (
-        <div>
+        <div className={favsState.length > 0 ? "favs" : "favs favs_empty"}>
             <h3>Избранное</h3>
             <Goods goods={favsState}></Goods>
         </div>

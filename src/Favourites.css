@@ -1,0 +1,15 @@
+.favs {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 25px;
+}
+
+.favs_empty {
+    align-items: flex-start;
+}
+
+.favs h3 {
+    margin: 0;
+    align-self: flex-start;
+}

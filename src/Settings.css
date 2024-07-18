@@ -1,0 +1,11 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 25px;
+}
+
+.settings  h3 {
+    margin: 0;
+    align-self: flex-start;
+}

@@ -1,0 +1,27 @@
+.account__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.account__links-li-link {
+    color: #213547;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    transition: all 0.25s ease-in-out;
+}
+
+.account__links-li-link:hover {
+    border: 1px solid #213547;
+}
+
+.account__links-li-link_active {
+    background-color: rgb(33, 53, 71);
+    color: white;
+}

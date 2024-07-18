@@ -8,6 +8,7 @@
 
 .history h3 {
   margin: 0;
+  align-self: flex-start;
 }
 
 .history ul {

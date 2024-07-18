@@ -30,11 +30,29 @@
     /* border-right: 1px solid black; */
 }
 
-.links__ul li:hover {
+/* .links__ul li:hover {
     color: #FF8261;
-}
+} */
 
 .links_inAccount ul {
     gap: 20px;
     font-size: 18px;
+}
+
+.links__ul a {
+    color: black;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.links__ul a div {
+    width: 0%;
+    height: 1px;
+    background-color: #213547;
+    transition: all 0.25s ease-in-out;
+}
+
+.links__ul a:hover div{
+    width: 100%;
 }

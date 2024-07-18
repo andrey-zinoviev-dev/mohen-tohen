@@ -1,6 +1,7 @@
+import "./Settings.css"
 export default function Settings() {
     return (
-        <div>
+        <div className="settings">
             <h3>Настройки</h3>
         </div>
     )

@@ -7,11 +7,11 @@ export default function HistoryGoods() {
   });
 
   return (
-    <section className="history">
+    <div className="history">
       <h3>История {!userState.seller ? "покупок" : "продаж"}</h3>
       {/* <Goods goods={userState.history}></Goods> */}
       <ul className="history__ul">
-        {userState.history.map((transaction) => {
+        {userState.history.length > 0 ? userState.history.map((transaction) => {
           return <li className="history__ul-li" key={transaction.title}>
             <p className="history__ul-li-p">Номер заказа</p>
             <div className="history__ul-li-order-wrapper">
@@ -22,8 +22,13 @@ export default function HistoryGoods() {
               <span>Сумма: {transaction.price}</span>
             </div>
           </li>
-        })}
+        })
+        :
+        <li className="history__ul-li" key="empty-history">
+          <span>История {!userState.seller ? "покупок" : "продаж"} пуста, но вы всегда можете ее заполнить</span>
+        </li>
+        }
       </ul>
-    </section>
+    </div>
   )
 }
