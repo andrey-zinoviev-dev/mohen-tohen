@@ -10,7 +10,7 @@ export const store = configureStore({
     reducer: {
         user: userSlice,
         basket: basketSlice,
-        favourites: favouriteSlice,
+        // favourites: favouriteSlice,
         goods: goodsSlice,
         notification: notificationSlice,
         popup: popupSlice,

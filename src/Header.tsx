@@ -19,9 +19,9 @@ export default function Header() {
     const basketState = useAppSelector((state) => {
         return state.basket;
     });
-    const favouriteState = useAppSelector((state) => {
-        return state.goods.favourties;
-    });
+    // const favouriteState = useAppSelector((state) => {
+    //     return state.goods.favourties;
+    // });
     const userState = useAppSelector((state) => {
         return state.user;
     });
@@ -44,11 +44,13 @@ export default function Header() {
                         <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                         <input placeholder="Поиск"></input>
                     </form>
-                    <img className="header__img" src={heading}></img>
+                    <Link to={`../`}>
+                        <img className="header__img" src={heading}></img>
+                    </Link>
                     <div className="header__links">
                         <Link to={`profile/${1223}/favs`}>
                             <FontAwesomeIcon icon={faHeart} />
-                            <span>{favouriteState.length}</span>
+                            <span>{userState.favourites.length}</span>
                         </Link>
                         <button onClick={() => {
                             userState.loggedIn ? 

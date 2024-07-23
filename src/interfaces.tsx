@@ -54,7 +54,7 @@ export interface GoodsInterface {
 export interface BrandsInterface {
   name: string,
   description: string,
-  href?: string,
+  // href: string,
   cover: string,
   goodsCollection?: GoodInterface[] | undefined,
 }
@@ -105,4 +105,8 @@ export interface CategoryInterface {
 
 export interface AccountHistoryInterface {
   seller: boolean,
+}
+
+export interface GoodComponentInterface {
+  good: GoodInterface,
 }

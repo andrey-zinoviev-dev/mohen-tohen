@@ -1,6 +1,7 @@
 .footer {
   padding: 50px 75px;
-  background-color: #3D3B3A;
+  /* background-color: #3D3B3A; */
+  background-color: #213547;
   color: white;
   border-radius: 5px;
   display: flex;

@@ -10,6 +10,7 @@ import SellerPage from './SellerPage'
 import Account from './Account'
 import HistoryGoods from './HistoryGoods'
 import Settings from './Settings'
+import ApplicationForm from './AppliactionForm'
 
 function App() {
   const router = createBrowserRouter([
@@ -28,6 +29,10 @@ function App() {
         {
           path: "/basket",
           element: <Cart></Cart>
+        },
+        {
+          path: "brands/:brandID",
+          element: <SellerPage></SellerPage>,
         },
         // {
         //   path: "/favs",
@@ -53,6 +58,10 @@ function App() {
           // element: <SellerPage></SellerPage>
         },
       ]
+    },
+    {
+      path: "application",
+      element: <ApplicationForm></ApplicationForm>
     },
   ], {
     basename:"/mohen-tohen"

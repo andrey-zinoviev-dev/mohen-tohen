@@ -3,7 +3,7 @@ import Goods from "./Goods";
 import { useAppSelector } from "./hooks"
 export default function Favourites() {
     const favsState = useAppSelector((state) => {
-        return state.goods.favourties;
+        return state.user.favourites;
     });
     return (
         <div className={favsState.length > 0 ? "favs" : "favs favs_empty"}>

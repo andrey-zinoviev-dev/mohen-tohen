@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Brands.css'
 import { brands } from "./utils"
 export default function Brands() {
@@ -7,7 +8,7 @@ export default function Brands() {
             <ul className='brands__ul'>
                 {brands.map((brand) => {
                     return <li className='brands__ul-li'>
-                        <p>{brand.name}</p>
+                        <Link to={`../brands/${brand.name}`} state={brand}>{brand.name}</Link>
                     </li>
                 })}
             </ul>

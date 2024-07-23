@@ -1,12 +1,46 @@
 .collaboration {
     padding: 50px 75px;
-    background-color: #3D3B3A;
+    /* background-color: #3D3B3A; */
+    background-color: #213547;
     color: white;
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: flex-start; */
+    align-items: stretch;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+}
+
+.collaboration__headline-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    border-radius: 5px 5px 0 0;
+    gap: 15px;
+}
+
+.collaboration__headline-wrapper a {
+    color: #7c7c7c;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.25s ease-in-out;
+}
+
+.collaboration__headline-wrapper a:hover {
+    color: #FF8261;
+}
+
+.collaboration__headline-wrapper a svg {
+    rotate: -45deg;
+}
+
+.collaboration h2 {
+    font-size: 36px;
+    font-weight: 200;
+    max-width: 420px;
+    text-align: left;
+    line-height: 1.5;
+    margin: 0;
 }
 
 .collaboration__wrapper {
@@ -16,9 +50,14 @@
     align-content: center;
     flex-direction: column;
     align-items: flex-start;
-    /* max-width: 540px; */
+    max-width: 540px;
     text-align: left;
     width: 100%;
+    flex-direction: column;
+}
+
+.collaboration__wrapper h3 {
+    margin: 0;
 }
 
 .collaboration__form {
@@ -26,10 +65,69 @@
     justify-content: baseline;
     align-items: stretch;
     justify-content: space-between;
-    gap: 25px;
+    /* gap: 25px; */
+    gap: 50px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.collaboration__form-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.colalboration__form-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+}
+
+.colalboration__form-input-wrapper label {
+    font-size: 16px;
 }
 
 .collaboration__form input {
+    outline: none;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    /* padding: 10px 10px; */
+    padding: 5px 10px 10px 0;
+    width: 100%;
     border-bottom: 2px solid white;
-    min-width: 540px;
+    transition: all 0.25s ease-in-out;
+    /* min-width: 540px; */
+}
+
+.collaboration__form input:focus {
+    border-bottom: 2px solid #FF8261;
+}
+
+.collaboration__form input::placeholder {
+    color: #7c7c7c;
+    font-size: 16px;
+    font-family: "Manrope", sans-serif;
+
+}
+
+.collaboration__form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    align-self: flex-start;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    transition: all 0.25s ease-in-out;
+}
+
+.collaboration__form button:hover {
+    border: 2px solid #FF8261;
+    color: #FF8261;
+    cursor: pointer;
 }

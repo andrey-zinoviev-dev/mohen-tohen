@@ -2,6 +2,8 @@ import { useLocation } from "react-router-dom"
 import { BrandsInterface } from "./interfaces";
 import "./SellerPage.css";
 import Goods from "./Goods";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 export default function SellerPage() {
   const location = useLocation();
@@ -14,13 +16,18 @@ export default function SellerPage() {
         <div className="seller__wrapper_details">
           <h3>{state.name}</h3>
           <p>{state.description}</p>
-          <div>
-          <span>5.0</span> <span>53 отзыва</span>
+          <div className="seller__wrapper_details-rating">
+            <span>5.0</span>
+            <FontAwesomeIcon className="seller__wrapper_details-rating-svg" icon={faStar} />
+            <span>53 отзыва</span>
           </div>
-          <button>Сделать персональный заказ</button>
+          <button className="seller__warpper-button">Сделать персональный заказ</button>
         </div>
       </div>
-      <Goods category="Что можно приобрести" goods={state.goodsCollection} />
+      <div className="seller__goods">
+        <h3>Что можно приобрести</h3>
+        <Goods goods={state.goodsCollection} />
+      </div>
     </section>
   )
 }

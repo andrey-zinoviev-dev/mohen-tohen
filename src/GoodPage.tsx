@@ -50,7 +50,7 @@ export default function GoodPage() {
                     </button> */}
                 </div>
                 <h4>Цена: <span className="cvet">{state.price}</span></h4>
-                <Link to={`/profile/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
+                <Link to={`/brands/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
                     <img src={state.seller.cover}></img>
                     <div className="good__text-a-name">
                         <span>{state.seller.name}</span>
@@ -94,7 +94,7 @@ export default function GoodPage() {
                 <div className="good__text-buttons">
                     <button className="butt" onClick={() => {
                         dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }));
-                        dispatch(changeMessage(`Товар ${state.title} добавлен`));
+                        // dispatch(changeMessage(`Товар ${state.title} добавлен`));
                         setAddedToBasket(true);
                     }}>
                         <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
@@ -104,7 +104,7 @@ export default function GoodPage() {
                         setClickedFavourite((prevValue) => {
                             return !prevValue;
                         })
-                        dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
+                        // dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
                     }}>
                         <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}}/>
                     </button>

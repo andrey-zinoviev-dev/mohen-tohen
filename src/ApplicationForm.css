@@ -1,0 +1,99 @@
+.application {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+}
+
+.application__heading {
+    max-width: 360px;
+}
+
+.application h2 {
+    margin: 0;
+}
+
+/* .application__buttons {
+    display: inline-flex;
+    gap: 50px;
+    width: 100%;
+    max-width: 540px;
+    align-items: center;
+}
+
+.application__buttons button {
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: 1px solid black;
+} */
+
+.application__form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.application__form textarea{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid black;
+    min-height: 90px;
+    padding: 20px;
+    outline: none;
+    border-radius: 10px;
+    resize: none;
+}
+
+
+.application__form-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 540px;
+    /* gap: 15px; */
+    gap: 20px;
+    /* border-top: 1px solid black; */
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    padding: 15px 0;
+}
+
+.application__form-div h3 {
+    margin: 0;
+    font-size: 21px;
+    display: flex;
+    gap: 15px;
+    align-self: flex-start;
+    align-items: center;
+}
+
+.application__form-div h3 span {
+    box-sizing: border-box;
+    /* padding: 10px; */
+    aspect-ratio: 1/1;
+    background-color: #C8CCCF;
+    border-radius: 50%;
+    width: 51px;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.application__form-div input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 10px 10px 0;
+    font-size: 16px;
+    outline: none;
+}
+
+.application__form-div input:focus {
+    /* border-bottom: ; */
+}

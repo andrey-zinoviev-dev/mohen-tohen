@@ -1,3 +1,10 @@
+.seller {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 50px;
+}
+
 .seller__warpper {
   display: flex;
   /* justify-content: space-between; */
@@ -22,9 +29,48 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 25px;
+  /* gap: 25px; */
+  gap: 15px;
 }
 
 .seller__wrapper_details h3 {
+  margin: 0;
+}
+
+.seller__warpper-button {
+  /* background-color: transparent; */
+  background-color: #213547;
+  color: white;
+  transition: all 0.25s ease-in-out;
+  /* border: 2px solid #213547; */
+}
+
+.seller__warpper-button:hover {
+ background-color: #FF8261;
+ color: black;
+}
+
+.seller__wrapper_details-rating {
+  display: flex;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.seller__wrapper_details-rating-svg {
+  color: #FF8261;
+}
+
+.seller__wrapper_details-rating span {
+  line-height: 1;
+}
+
+.seller__goods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.seller__goods h3 {
   margin: 0;
 }

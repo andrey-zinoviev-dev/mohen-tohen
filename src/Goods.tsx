@@ -1,4 +1,4 @@
-import { GoodsInterface } from "./interfaces"
+import { GoodInterface, GoodsInterface } from "./interfaces"
 import './Goods.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
@@ -7,13 +7,23 @@ import { faShoppingBag } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
 import { add } from "./features/basketSlice";
 // import { addToFavourite } from "./features/favouriteSlice"
-import { useAppDispatch } from "./hooks"
+import { useAppDispatch, useAppSelector } from "./hooks"
 import { toggleFavourite } from "./features/goodsSlice"
 import { changeMessage } from "./features/notificationSlice"
+import { addRemoveToFavUser } from "./features/userSlice"
+import Good from "./Good"
 
 export default function Goods({ goods, inAccountPage }:GoodsInterface) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  //redux
+  const userStateFavs = useAppSelector((state) => {
+    return state.user.favourites;
+  })
+
+  //local state
+  // const [selectedGood, setSelectedGood] = React.useState<GoodInterface | null>(null);
 
   return (
     // <section className={!inAccountPage ? "goods" : "goods goods_inaccount"}>
@@ -66,17 +76,23 @@ export default function Goods({ goods, inAccountPage }:GoodsInterface) {
               preventScrollReset: false,
             })
           }}>
-              <div className="goods__ul-li-text-wrapper">
+            <Good good={good}></Good>
+              {/* <div className="goods__ul-li-text-wrapper">
                 <div className="goods__ul-li-heart">
                   <p className="goods__ul-li-title">{good.title}</p>
-                  {!inAccountPage && <button onClick={(evt) => {
+                  <button onClick={(evt) => {
                     evt.stopPropagation();
+                    dispatch(addRemoveToFavUser(good));
                     // dispatch(addToFavourite());
-                    dispatch(toggleFavourite({...good, quantity: 1}));
-                    dispatch(changeMessage(`Товар ${good.title} добавлен в избранное`))
+                    // dispatch(toggleFavourite({...good, quantity: 1}));
+                    dispatch(changeMessage(userStateFavs.find((favGood) => {
+                      return favGood.title === good.title;
+                    }) ? `Товар ${good.title} убран из избранных` : `Товар ${good.title} добавлен в избранное`))
                   }}>
-                    <FontAwesomeIcon className="goods__ul-li-heart-svg" style={{color: good.favourite ? "#FF8261" : "#F7F7F7"}} icon={faHeart}/>
-                  </button>}
+                    <FontAwesomeIcon className="goods__ul-li-heart-svg" style={{color: userStateFavs.find((favGood) => {
+                      return favGood.title === good.title;
+                    }) ? "#FF8261" : "#F7F7F7"}} icon={faHeart}/>
+                  </button>
                 </div>
                 <span>{good.price}</span>
                 {good.colors && <span>Цвета: {good.colors.length}</span>}
@@ -89,7 +105,7 @@ export default function Goods({ goods, inAccountPage }:GoodsInterface) {
               dispatch(changeMessage(`Товар ${good.title} добавлен в корзину`))
             }}>
               <FontAwesomeIcon icon={faShoppingBag} />
-            </button>}
+            </button>} */}
           </li>
         })}
       </ul>

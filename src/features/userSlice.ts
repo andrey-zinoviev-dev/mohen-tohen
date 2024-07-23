@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { GoodInterface } from '../interfaces';
+// import { toggleFavourite } from './goodsSlice';
 
 export interface UserInterface {
     loggedIn: boolean,
@@ -29,10 +30,24 @@ export const userSlice = createSlice({
         login: (state, action: PayloadAction<UserInterface>) => {
             const newUser = action.payload;
             return state = newUser;
+        },
+        addRemoveToFavUser: (state, action: PayloadAction<GoodInterface>) => {
+            // console.log(action.payload);
+            if(state.favourites.find((fav) => {
+                return fav.title === action.payload.title
+            })) {
+                const newFavourites = state.favourites.filter((fav) => {
+                    return fav.title !== action.payload.title;
+                });
+
+                state.favourites = newFavourites;
+            } else {
+                state.favourites.push(action.payload);
+            }
         }
     }
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login } = userSlice.actions;
+export const { login, addRemoveToFavUser } = userSlice.actions;
 export default userSlice.reducer;
