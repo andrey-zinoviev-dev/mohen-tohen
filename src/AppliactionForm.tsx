@@ -33,7 +33,7 @@ export default function ApplicationForm() {
                     </>
                     :
                     <>
-                        <div>
+                        <div className="application__form-wrapper">
                             <h3>Анкета сотрудничества</h3>
                             <form className="application__form">
                                 <div className="application__form-div">
@@ -70,7 +70,14 @@ export default function ApplicationForm() {
                                         <option value="Услуги">Услуги</option>
                                     </select>
                                         {/* <input placeholder="Название"></input> */}
-                                        <textarea placeholder="Описание продукции...."></textarea>
+                                        <div>
+                                            <label htmlFor="description"></label>
+                                            <textarea id="description" placeholder="Описание продукции..."></textarea>
+                                        </div>
+                                        <div>
+                                            <label htmlFor="description"></label>
+                                            <textarea id="description" placeholder="Описание продукции..."></textarea>
+                                        </div>
                                         <textarea></textarea>
                                 </div>
                                 <div className="application__form-div">
@@ -105,7 +112,7 @@ export default function ApplicationForm() {
                                 Отправить анкету
                             </button>
                         </div>
-                        <div>
+                        <div className="application__wrapper-content">
                             <h3>Вот тут финальный документ</h3>
                         </div>
                     </>}

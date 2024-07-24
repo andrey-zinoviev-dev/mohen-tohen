@@ -111,8 +111,8 @@ export default function Header() {
                             <button type="button" onClick={() => {
                                 setPopupOpened(false);
                                 // navigate(`profile/${1223}`);
-                                dispatch(login(buyerUser))
-                                // dispatch(login(sellerUser));
+                                // dispatch(login(buyerUser))
+                                dispatch(login(sellerUser));
                             }}>Получить код</button>
                     </form>
                     <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>
