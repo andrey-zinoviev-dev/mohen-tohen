@@ -11,9 +11,61 @@
     max-width: 360px;
 }
 
+.application h3 {
+    margin: 0;
+}
+
+.application__wrapper_welcome {
+    /* background-color: #C8CCCF;
+    border-radius: 15px; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+.application__wrapper_welcome img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.application__wrapper_welcome-text {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 25px;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 15px 75px;
+}
+
+.application__wrapper_welcome-text h3 {
+    font-size: 36px;
+}
+
+.application__wrapper_welcome-text button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #20232c;
+    border: none;
+    color: white;
+    transition: all 0.25s ease-in-out;
+    gap: 15px;
+    align-self: flex-start;
+}
+
+.application__wrapper_welcome-text button:hover {
+    background-color: #FF8261;
+    color: black;
+}
+
 .application h2 {
     margin: 0;
 }
+
+
 
 /* .application__buttons {
     display: inline-flex;
