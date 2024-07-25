@@ -47,6 +47,7 @@ export default function ApplicationForm() {
                                     </li>
                                 </ul>
                             </div>
+                            <p>После прохождения этих этапов анкеты вы станете частью платформы Mohen - Tohen и сможете сконцентрироваться только на творчестве и производвстве!</p>
                             <button onClick={() => {
                                 setStartedApplication(true);
                             }}>Заполнить анкету
@@ -93,23 +94,50 @@ export default function ApplicationForm() {
                                         <option value="Услуги">Услуги</option>
                                     </select>
                                         {/* <input placeholder="Название"></input> */}
-                                        <div>
-                                            <label htmlFor="description"></label>
-                                            <textarea id="description" placeholder="Описание продукции..."></textarea>
-                                        </div>
-                                        <div>
-                                            <label htmlFor="description"></label>
-                                            <textarea id="description" placeholder="Описание продукции..."></textarea>
-                                        </div>
-                                        <textarea></textarea>
+                                    <div className="application__form-data-wrapper">
+                                        <label htmlFor="description">Опишите себя</label>
+                                        <textarea id="description" placeholder="Меня зовут Алексей Солдатов, я керамист-художник с 5-летним стажем..."></textarea>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label htmlFor="description">Опишите свою продукцию и процесс производства</label>
+                                        <textarea id="description" placeholder="Я произвожу керамические вазы, посуду из кристаллической керамики и природных каменй и красителей..."></textarea>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label>Сроки производства товаров</label>
+                                        {/* <input></input> */}
+                                        <select>
+                                            <option>Выберите минимальные сроки</option>
+                                            <select>1 - 5 дней</select>
+                                            <select>6-10 дней</select>
+                                            <select>11-15 дней</select>
+                                            <select>15 - 20 дней</select>
+                                            <select>25 - 30 дней</select>
+                                        </select>
+                                    </div>
+                                        {/* <textarea></textarea> */}
                                 </div>
                                 <div className="application__form-div">
                                     <h3>
                                         <span>03</span>Фото товара
                                     </h3>
-                                    <ul>
-                                        <li key="empty-photos">
+                                    <ul className="application__form-div-photos">
+                                        <li>
                                             <button>
+                                                <FontAwesomeIcon icon={faPlusCircle} />
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button>
+                                                <FontAwesomeIcon icon={faPlusCircle} />
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button>
+                                                <FontAwesomeIcon icon={faPlusCircle} />
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button id="add_photo">
                                                 <FontAwesomeIcon icon={faPlusCircle} />
                                             </button>
                                         </li>
