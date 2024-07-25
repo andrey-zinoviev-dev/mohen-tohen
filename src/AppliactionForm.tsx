@@ -7,6 +7,8 @@ import Footer from "./Footer";
 
 export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
+
+    
     return (
         <>
             <section className="application">
@@ -23,7 +25,28 @@ export default function ApplicationForm() {
                         <img src="https://i.pinimg.com/564x/27/48/e1/2748e1f1db7df1111d8c96ad2890179b.jpg"></img>
                         <div className="application__wrapper_welcome-text">
                             <h3>Добро пожаловать, Сергей!</h3>
-                            <p>Мы рады приветствовать вас на нашей торговой площадке ,где продаются особенные вещи сделанные с любовью.Здесь каждый товай - это предмет искусства!</p>
+                            <p>Мы рады приветствовать вас на нашей торговой площадке, где продаются особенные вещи сделанные с любовью. Здесь каждый товай - это предмет искусства!</p>
+                            <div>
+                                <p>Регистрация на платформе состоит из 4 основных этапов:</p>
+                                <ul className="application__wrapper-progress">
+                                    <li className="application__wrapper-progress-step">
+                                        <span className="application__wrapper-progress-step-index">01</span>
+                                        <span>Этап 1</span>
+                                    </li>
+                                    <li className="application__wrapper-progress-step">
+                                        <span className="application__wrapper-progress-step-index">02</span>
+                                        <span>Этап 2</span>
+                                    </li>
+                                    <li className="application__wrapper-progress-step">
+                                        <span className="application__wrapper-progress-step-index">03</span>
+                                        <span>Этап 3</span>
+                                    </li>
+                                    <li className="application__wrapper-progress-step">
+                                        <span className="application__wrapper-progress-step-index">04</span>
+                                        <span>Этап 4</span>
+                                    </li>
+                                </ul>
+                            </div>
                             <button onClick={() => {
                                 setStartedApplication(true);
                             }}>Заполнить анкету

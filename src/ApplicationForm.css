@@ -70,6 +70,43 @@
     margin: 0;
 }
 
+.application__wrapper-progress {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.application__wrapper-progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.application__wrapper-progress-step:not(:last-of-type):after {
+    content: "";
+    background-color: #F87545;
+    width: 150%;
+    height: 2px;
+    position: absolute;
+    top: 25%;
+    right: -175%;
+}
+
+.application__wrapper-progress-step-index {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: #F87545;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
 .application__wrapper-content {
     background-color: white;
     border-radius: 15px;
