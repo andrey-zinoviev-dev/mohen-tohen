@@ -17,6 +17,10 @@ export default function ApplicationForm() {
         productionLength: "",
         productionProcess: "",
     });
+
+    //variables
+    const date = new Date().toLocaleString();
+    // console.log(date);
     
     return (
         <>
@@ -76,32 +80,45 @@ export default function ApplicationForm() {
                                         <span>01</span>
                                         Персональные данные
                                     </h3>
-                                    <input onChange={(evt) => {
-                                        setApplicationData((prevValue) => {
-                                            return {...prevValue, name: evt.target.value};
-                                        })
-                                    }} placeholder="Ваше ФИО..." type="text"></input>
-                                    {/* <input placeholder="Ваша фамилия..." type="text"></input> */}
-                                    <input onChange={(evt) => {
-                                        setApplicationData((prevValue) => {
-                                            return {...prevValue, email: evt.target.value};
-                                        })
-                                    }} placeholder="Ваша почта..." type="email"></input>
-                                    <input onChange={(evt) => {
-                                        setApplicationData((prevValue) => {
-                                            return {...prevValue, phone: evt.target.value};
-                                        })
-                                    }} placeholder="Ваш телефон" type="phone"></input>
-                                    <select onChange={(evt) => {
+                                    <div className="application__form-data-wrapper">
+                                        <label>Твое ФИО</label>
+                                        <input onChange={(evt) => {
+                                            setApplicationData((prevValue) => {
+                                                return {...prevValue, name: evt.target.value};
+                                            })
+                                        }} placeholder="Солдатов Алексей Михайлович..." type="text"></input>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label>Твоя почта</label>
+                                        <input onChange={(evt) => {
+                                            setApplicationData((prevValue) => {
+                                                return {...prevValue, email: evt.target.value};
+                                            })
+                                        }} placeholder="email@operator.org" type="email"></input>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label>Твой телефон</label>
+                                        <input onChange={(evt) => {
+                                            setApplicationData((prevValue) => {
+                                                return {...prevValue, phone: evt.target.value};
+                                            })
+                                        }} placeholder="+790335153046" type="phone"></input>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label>В каком городе ты находишься?</label>
+                                        <select onChange={(evt) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, city: evt.target.value};
                                             })
                                         }}>
-                                        <option value="default">Ваш город</option>
-                                        <option value="Москва">Москва</option>
-                                        <option value="Московская область">Московская область</option>
-                                        <option value="Санкт-Петербург">Санкт-Петербург</option>
-                                    </select>
+                                            <option value="default">Ваш город</option>
+                                            <option value="Москва">Москва</option>
+                                            <option value="Московская область">Московская область</option>
+                                            <option value="Санкт-Петербург">Санкт-Петербург</option>
+                                        </select>
+                                    </div>
+                                    
+                                    
                                 </div>
                                 <div className="application__form-div">
                                     <h3>
@@ -126,7 +143,7 @@ export default function ApplicationForm() {
                                     </select>
                                         {/* <input placeholder="Название"></input> */}
                                     <div className="application__form-data-wrapper">
-                                        <label htmlFor="description">Опишите себя</label>
+                                        <label htmlFor="description">Расскажите о своем творчестве</label>
                                         <textarea onChange={(evt) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, description: evt.target.value}
@@ -142,7 +159,7 @@ export default function ApplicationForm() {
                                         }} id="description" placeholder="Я произвожу керамические вазы, посуду из кристаллической керамики и природных каменй и красителей..."></textarea>
                                     </div>
                                     <div className="application__form-data-wrapper">
-                                        <label>Сроки производства товаров</label>
+                                        <label>Сроки изготовления товаров</label>
                                         {/* <input></input> */}
                                         <select onChange={(evt) => {
                                             setApplicationData((prevValue) => {
@@ -156,6 +173,61 @@ export default function ApplicationForm() {
                                             <option>15 - 20 дней</option>
                                             <option>25 - 30 дней</option>
                                         </select>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <div>
+                                        <label>Вы планиурете делатать кастомные заказы?</label>
+                                        <label>
+                                            <input type="radio" name="customorder"></input>
+                                            Да
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="customorder"></input>
+                                            Нет
+                                        </label>
+                                        </div>
+                                        <div>
+                                            <label>Опишите максимально все особенности товаров, которые вы сможете произвести для индивидуальных заказов</label>
+                                            <textarea name="" id="" placeholder="Для индивидуальных заказов я могу предожить кастомные габариты в зависимости от запроса, цвета, материалы и т.д"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <div>
+                                            <div>
+                                                <label>Сколько стоит твоя продукция?</label>
+                                                <select>
+                                                    <option>От 1 до 3 тысяч</option>
+                                                    <option>От 3 до 7 тысяч</option>
+                                                    <option>От 7 до 10 тысяч</option>
+                                                    <option>От 10 до 20 тысяч</option>
+                                                    <option>От 20 до 50 тысяч</option>
+                                                    <option>От 50 до 70 тысяч</option>
+                                                    <option>От 70 до 100 тысяч</option>
+                                                    <option>Больше 100 тысяч</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label>Какой у твоей продукции тираж?</label>
+                                                <select>
+                                                    <option>От 1 до 10 штук</option>
+                                                    <option>От 10 до 20 штук</option>
+                                                    <option>Больше 20 штук</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="application__form-data-wrapper">
+                                            <label>Какие габариты у твоей продукции?</label>
+                                            <label>
+                                                Продукция подлежит сборке (модульная)
+                                                <input type="checkbox"></input>
+                                            </label>
+                                            <select>
+                                                <option>Малогабаритная продукция</option>
+                                                <option>Среднегабаритная продукция</option>
+                                                <option>Крупногабаритная продукция</option>
+                                            </select>
+                                        </div>
+
                                     </div>
                                         {/* <textarea></textarea> */}
                                 </div>
@@ -202,9 +274,9 @@ export default function ApplicationForm() {
                                     <button>Договор сотрудничества</button>
                                 </div>
                             </div>
-                            <button>
+                            {/* <button>
                                 Отправить анкету
-                            </button>
+                            </button> */}
                         </div>
                         <div className="application__wrapper-content">
                             <h3>Итоговая анкета</h3>
@@ -225,6 +297,10 @@ export default function ApplicationForm() {
                                     <label>Город</label>
                                     <span>{applicationData.city.length > 0 ? applicationData.city : "Не заполнено"}</span>
                                 </div>
+                                <div className="application__wrapper-content-data-wrapper">
+                                    <label>Категория товаров</label>
+                                    <span>{applicationData.category.length > 0 ? applicationData.category : "Не заполнено"}</span>
+                                </div>
                             </div>
                             <div className="application__wrapper-content-data-wrapper">
                                 <label>Описание</label>
@@ -233,6 +309,14 @@ export default function ApplicationForm() {
                             <div className="application__wrapper-content-data-wrapper">
                                 <label>Описание продукции</label>
                                 <p>{applicationData.productionProcess.length > 0 ? applicationData.productionProcess : "Не заполнено"}</p>
+                            </div>
+                            <div className="application__wrapper-content-data-wrapper">
+                                <label>Средние сроки изготовления</label>
+                                <span>{applicationData.productionLength.length > 0 ? applicationData.productionLength : "Не заполнено"}</span>
+                            </div>
+                            <div className="application__wrapper-content-data-wrapper">
+                                <label>Дата заполнения</label>
+                                <span>{date.split(", ")[0]}</span>
                             </div>
                         </div>
                     </>}
