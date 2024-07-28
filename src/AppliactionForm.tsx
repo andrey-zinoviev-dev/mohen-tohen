@@ -1,13 +1,15 @@
 import React from "react";
-import { faAngleDown, faArrowRight, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationForm.css"
 import heading from "./assets/mh-1.png"
 import Footer from "./Footer";
+import SelectElement from "./SelectElement";
+import { applicationCitySelect } from "./utils";
 
 export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
-    const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
+    // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
     const [applicationData, setApplicationData] = React.useState<{name: string, email: string, phone: string, city: string, category: string, description: string, productionProcess: string, productionLength: string} >({
         name: "",
         email: "",
@@ -22,6 +24,10 @@ export default function ApplicationForm() {
     //variables
     const date = new Date().toLocaleString();
     // console.log(date);
+
+    React.useEffect(() => {
+        console.log(applicationData);
+    }, [applicationData])
     
     return (
         <>
@@ -106,7 +112,8 @@ export default function ApplicationForm() {
                                         }} placeholder="+790335153046" type="phone"></input>
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
-                                        <label>Выбери город, в котором ты находишься</label>
+                                        <SelectElement label="Выбери город, в котором ты находишься" name="city" options={applicationCitySelect} updateApplication={setApplicationData}></SelectElement>
+                                        {/* <label>Выбери город, в котором ты находишься</label>
                                         <button onClick={() => {
                                             setOpenedSelect(!openedSelect);
                                         }}>В каком городе ты находишься?
@@ -129,7 +136,7 @@ export default function ApplicationForm() {
                                                 <input id="spb" name="city" type="radio" />
                                                 <label htmlFor="spb">Санкт-Петербург</label>
                                             </li>
-                                        </ul>
+                                        </ul> */}
                                         {/* <select className="application__form-data-wrapper-input" onChange={(evt) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, city: evt.target.value};
@@ -183,7 +190,10 @@ export default function ApplicationForm() {
                                         }} id="description" placeholder="Я произвожу керамические вазы, посуду из кристаллической керамики и природных каменй и красителей..."></textarea>
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
-                                        <label>Сколько стоит твоя продукция?</label>
+                                        {/* <SelectElement>
+
+                                        </SelectElement> */}
+                                        {/* <label>Сколько стоит твоя продукция?</label>
                                         <button onClick={() => {
                                             setOpenedSelect(!openedSelect);
                                         }}>Выбрать диапазон
@@ -226,7 +236,7 @@ export default function ApplicationForm() {
                                                 <input id="9" name="price" type="radio" />
                                                 <label htmlFor="9">Больше 100 тысяч</label>
                                             </li>
-                                        </ul>
+                                        </ul> */}
                                         {/* <select>
                                             <option>От 1 до 3 тысяч</option>
                                             <option>От 3 до 7 тысяч</option>

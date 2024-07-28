@@ -1,4 +1,4 @@
-import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface, CategoryInterface, LinkInterface } from "./interfaces";
+import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface, CategoryInterface, LinkInterface, OptionInterface } from "./interfaces";
 import { IconDefinition, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faVk } from "@fortawesome/free-brands-svg-icons";
 import seller1 from "./assets/2024-07-08 23.47.33.jpg";
@@ -1027,4 +1027,15 @@ export const accountSellerLinks:LinkInterface[] = [
     title: "Настройки",
     href: "prefs"
   }
+]
+
+export const applicationCitySelect:OptionInterface[] = [
+  {
+    id: "moscow",
+    label: "Москва"
+  },
+  {
+    id: "spb",
+    label: "Санкт-Петербург"
+  },
 ]

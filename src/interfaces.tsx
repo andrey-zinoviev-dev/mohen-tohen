@@ -110,3 +110,16 @@ export interface AccountHistoryInterface {
 export interface GoodComponentInterface {
   good: GoodInterface,
 }
+
+export interface OptionInterface {
+  value?: string, 
+  id: string, 
+  label: string
+}
+
+export interface SelectInterface {
+  label: string,
+  name: string,
+  options: OptionInterface[],
+  updateApplication: React.Dispatch<React.SetStateAction<{name: string, email: string, phone: string, city: string, category: string, description: string, productionProcess: string, productionLength: string}>>
+}
