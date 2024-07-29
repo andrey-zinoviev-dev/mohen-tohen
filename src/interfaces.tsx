@@ -117,9 +117,26 @@ export interface OptionInterface {
   label: string
 }
 
+export interface CollaborationInterface {
+  name: string,
+  email: string,
+  phone: string,
+  sell?: string,
+  category: string[],
+}
+
+export interface ApplicationInterface extends CollaborationInterface {
+  city?: string,
+  description?: string,
+  productionLength?: string,
+  productionProcess?: string,
+  stock?: string,
+  size?: string,
+}
+
 export interface SelectInterface {
   label: string,
   name: string,
   options: OptionInterface[],
-  updateApplication: React.Dispatch<React.SetStateAction<{name: string, email: string, phone: string, city: string, category: string, description: string, productionProcess: string, productionLength: string}>>
+  updateApplication: React.Dispatch<React.SetStateAction<ApplicationInterface>>
 }

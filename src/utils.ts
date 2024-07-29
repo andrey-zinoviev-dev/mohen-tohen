@@ -1029,6 +1029,17 @@ export const accountSellerLinks:LinkInterface[] = [
   }
 ]
 
+export const inquerySellSelect: OptionInterface[] = [
+  {
+    id: "да",
+    label: "Да"
+  },
+  {
+    id: "нет",
+    label: "Нет"
+  }
+];
+
 export const applicationCitySelect:OptionInterface[] = [
   {
     id: "moscow",
@@ -1038,4 +1049,62 @@ export const applicationCitySelect:OptionInterface[] = [
     id: "spb",
     label: "Санкт-Петербург"
   },
-]
+];
+
+export const applicationCategoriesSelect:OptionInterface[] = [
+  {
+    id: "light",
+    label: "Свет"
+  },
+  {
+    label: "Декор",
+    id: "decore",
+  },
+  {
+    label: "Текстиль",
+    id: "textile",
+  },
+  {
+    label: "Мебель",
+    id: "furniture",
+  },
+  {
+    label: "Сервировка",
+    id: "dishes"
+  },
+  {
+    label: "Атмосфера",
+    id: "atmosphere"
+  },
+  {
+    label: "Подарки",
+    id: "gifts"
+  },
+  {
+    label: "Идеи",
+    id: "ideas"
+  },
+  {
+    label: "Услуги",
+    id: "services"
+  }
+];
+
+export const applicationStockSelect:OptionInterface[] = [
+  {
+    id: "1",
+    label: "Один"
+  },
+  {
+    id: "1-10",
+    label: "От 1 до 10"
+  },
+  {
+    id: "10-20",
+    label: "От 10 до 20"
+  },
+  {
+    id: "20+",
+    label: "Больше 20"
+  }
+];

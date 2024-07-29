@@ -1,30 +1,46 @@
+import "./SelectElement.css";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SelectInterface } from "./interfaces";
+import { OptionInterface, SelectInterface } from "./interfaces";
 import React from "react"
 export default function SelectElement({label, name, options, updateApplication}:SelectInterface) {
   //states
-  const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
-
+  // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
+  // const [selectedOption, setSelectedOption] = React.useState<OptionInterface>(options[0])
+  const [selectState, setSelectState] = React.useState<{opened: boolean, selectedOption: OptionInterface}>({opened: false, selectedOption:options[0]})
   return(
     <>
       <label>{label}</label>
       <button onClick={() => {
-        setOpenedSelect(!openedSelect);
+        setSelectState((prevValue) => {
+          return {...prevValue, opened: !prevValue.opened};
+        })
+        // setOpenedSelect(!openedSelect);
       }}>
-        Выбрать диапазон
+        {selectState.selectedOption.label}
         <FontAwesomeIcon icon={faAngleDown} />
       </button>
-      {openedSelect && <ul>
+      {selectState.opened && <ul className="select">
         {/* <li>Пункт 1</li> */}
         {options.map((option) => {
           return <li key={option.label}>
-            <input id={option.id} type="radio" name={name} />
-            <label onClick={() => {
+            <button onClick={() => {
+              setSelectState((prevValue) => {
+                return {...prevValue, opened: false, selectedOption: option};
+              });
               updateApplication((prevValue) => {
                 return {...prevValue, city: option.label};
               })
-            }} htmlFor={option.id}>{option.label}</label>
+            }}>
+              {option.label}
+            </button>
+            {/* <input id={option.id} type="radio" name={name} />
+            <label onClick={() => {
+              setSelectedOption(option);
+              updateApplication((prevValue) => {
+                return {...prevValue, city: option.label};
+              })
+            }} htmlFor={option.id}>{option.label}</label> */}
           </li>
         })}
       </ul>}

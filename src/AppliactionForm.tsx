@@ -5,20 +5,22 @@ import "./ApplicationForm.css"
 import heading from "./assets/mh-1.png"
 import Footer from "./Footer";
 import SelectElement from "./SelectElement";
-import { applicationCitySelect } from "./utils";
+import { applicationCategoriesSelect, applicationCitySelect, applicationStockSelect } from "./utils";
+import { ApplicationInterface } from "./interfaces";
 
 export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
     // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
-    const [applicationData, setApplicationData] = React.useState<{name: string, email: string, phone: string, city: string, category: string, description: string, productionProcess: string, productionLength: string} >({
+    const [applicationData, setApplicationData] = React.useState<ApplicationInterface>({
         name: "",
         email: "",
         phone: "",
         city: "",
         description: "",
-        category: "",
+        category: [],
         productionLength: "",
         productionProcess: "",
+        stock: "",
     });
 
     //variables
@@ -113,66 +115,33 @@ export default function ApplicationForm() {
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
                                         <SelectElement label="Выбери город, в котором ты находишься" name="city" options={applicationCitySelect} updateApplication={setApplicationData}></SelectElement>
-                                        {/* <label>Выбери город, в котором ты находишься</label>
-                                        <button onClick={() => {
-                                            setOpenedSelect(!openedSelect);
-                                        }}>В каком городе ты находишься?
-                                            <FontAwesomeIcon icon={faAngleDown} />
-                                        </button>
-                                        <ul className={!openedSelect ? "application__form-data-wrapper-select" : "application__form-data-wrapper-select application__form-data-wrapper-select-active"}>
-                                            <li>
-                                                <input id="choose" name="city" type="radio" />
-                                                <label htmlFor="choose">Выбери город</label>
-                                            </li>
-                                            <li>
-                                                <input id="moscow" name="city" type="radio" />
-                                                <label htmlFor="moscow">Москва</label>
-                                            </li>
-                                            <li>
-                                                <input id="moscowreg" name="city" type="radio" />
-                                                <label htmlFor="moscowreg">Московская область</label>
-                                            </li>
-                                            <li>
-                                                <input id="spb" name="city" type="radio" />
-                                                <label htmlFor="spb">Санкт-Петербург</label>
-                                            </li>
-                                        </ul> */}
-                                        {/* <select className="application__form-data-wrapper-input" onChange={(evt) => {
-                                            setApplicationData((prevValue) => {
-                                                return {...prevValue, city: evt.target.value};
-                                            })
-                                        }}>
-                                            <option value="default">Ваш город</option>
-                                            <option value="Москва">Москва</option>
-                                            <option value="Московская область">Московская область</option>
-                                            <option value="Санкт-Петербург">Санкт-Петербург</option>
-                                        </select> */}
                                     </div>
-                                    
-                                    
                                 </div>
                                 <div className="application__form-div">
                                     <h3>
                                         <span>02</span>
-                                        Что вы производите?
+                                        Что ты производите?
                                     </h3>
-                                    <select onChange={(evt) => {
-                                            setApplicationData((prevValue) => {
-                                                return {...prevValue, category: evt.target.value};
-                                            })
-                                        }}>
-                                        <option value="default">Категория товара</option>
-                                        <option value="Свет">Свет</option>
-                                        <option value="Декор">Декор</option>
-                                        <option value="Текстиль">Текстиль</option>
-                                        <option value="Мебель">Мебель</option>
-                                        <option value="Сервировка">Сервировка</option>
-                                        <option value="Атмосфера">Атмосфера</option>
-                                        <option value="Подарки">Подарки</option>
-                                        <option value="Идеи">Идеи</option>
-                                        <option value="Услуги">Услуги</option>
-                                    </select>
-                                        {/* <input placeholder="Название"></input> */}
+                                    <div className="application__form-data-wrapper">
+                                        <label>Какие товары ты производишь?</label>
+                                        <ul className="application__form-data-wrapper-categories">
+                                            {applicationCategoriesSelect.map((option) => {
+                                                return <li>
+                                                    <button onClick={() => {
+                                                        setApplicationData((prevValue) => {
+                                                            return {...prevValue, category: prevValue.category.find((prevCategory) => {
+                                                                return prevCategory === option.label; 
+                                                            }) ? prevValue.category.filter((prevCategory) => {
+                                                                return prevCategory !== option.label;
+                                                            }) : [...prevValue.category, option.label]}
+                                                        })
+                                                    }} className={applicationData.category.find((category) => {
+                                                        return category === option.label; 
+                                                    }) ? "application__form-data-wrapper-categories-button_active application__form-data-wrapper-button" : "application__form-data-wrapper-button"}>{option.label}</button>
+                                                </li>
+                                            })}
+                                        </ul>
+                                    </div>                                    
                                     <div className="application__form-data-wrapper">
                                         <label htmlFor="description">Расскажи о своем творчестве</label>
                                         <textarea onChange={(evt) => {
@@ -249,12 +218,13 @@ export default function ApplicationForm() {
                                         </select> */}
                                     </div>
                                     <div className="application__form-data-wrapper">
-                                        <label>Какой тираж у твоей продукции?</label>
+                                        <SelectElement name="stock" label="Какой тираж у твоей продукции?" updateApplication={setApplicationData} options={applicationStockSelect} />
+                                        {/* <label>Какой тираж у твоей продукции?</label>
                                         <select>
                                             <option>От 1 до 10 штук</option>
                                             <option>От 10 до 20 штук</option>
                                             <option>Больше 20 штук</option>
-                                        </select>
+                                        </select> */}
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label>Какие габариты у твоей продукции?</label>
@@ -367,24 +337,48 @@ export default function ApplicationForm() {
                                 </div>
                                 <div className="application__wrapper-content-data-wrapper">
                                     <label>Город</label>
-                                    <span>{applicationData.city.length > 0 ? applicationData.city : "Не заполнено"}</span>
+                                    <span>{applicationData.city && applicationData.city.length > 0 ? applicationData.city : "Не заполнено"}</span>
                                 </div>
                                 <div className="application__wrapper-content-data-wrapper">
-                                    <label>Категория товаров</label>
-                                    <span>{applicationData.category.length > 0 ? applicationData.category : "Не заполнено"}</span>
+                                    <label>Категории товаров</label>
+                                    <ul className="application__wrapper-content-data-wrapper-categories">
+                                        {applicationData.category.length > 0 ? applicationData.category.map((category) => {
+                                            return <li key={category}>
+                                                {category}
+                                            </li> 
+                                        })  
+                                        :
+                                        <li key="no categories">
+                                            Не выбрано
+                                        </li>
+                                        } 
+                                    </ul>
+                                    {/* <span>{applicationData.category.length > 0 ? applicationData.category : "Не заполнено"}</span> */}
                                 </div>
                             </div>
                             <div className="application__wrapper-content-data-wrapper">
                                 <label>Описание</label>
-                                <p>{applicationData.description.length > 0 ? applicationData.description : "Не заполнено"}</p>
+                                <p>{applicationData.description && applicationData.description.length > 0 ? applicationData.description : "Не заполнено"}</p>
                             </div>
                             <div className="application__wrapper-content-data-wrapper">
                                 <label>Описание продукции</label>
-                                <p>{applicationData.productionProcess.length > 0 ? applicationData.productionProcess : "Не заполнено"}</p>
+                                <p>{applicationData.productionProcess && applicationData.productionProcess.length > 0 ? applicationData.productionProcess : "Не заполнено"}</p>
+                            </div>
+                            <div className="application__wrapper-content-data-wrapper">
+                                <label>Тираж продукции</label>
+                                <span>{applicationData.stock && applicationData.stock.length > 0 ? applicationData.stock : "Не заполнено" }</span>
+                            </div>
+                            <div className="application__wrapper-content-data-wrapper">
+                                <label>Габариты продукции</label>
+                                <span>{applicationData.size && applicationData.size.length > 0 ? applicationData.size : "Не заполнено"}</span>
+                            </div>
+                            <div className="application__wrapper-content-data-wrapper">
+                                <label>Продукция сборная (модульная)</label>
+                                <span>Да=Нет</span>
                             </div>
                             <div className="application__wrapper-content-data-wrapper">
                                 <label>Средние сроки изготовления</label>
-                                <span>{applicationData.productionLength.length > 0 ? applicationData.productionLength : "Не заполнено"}</span>
+                                <span>{applicationData.productionLength && applicationData.productionLength.length > 0 ? applicationData.productionLength : "Не заполнено"}</span>
                             </div>
                             <div className="application__wrapper-content-data-wrapper">
                                 <label>Дата заполнения</label>

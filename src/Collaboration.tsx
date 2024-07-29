@@ -1,7 +1,22 @@
+import React from "react";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Collaboration.css"
+import SelectElement from "./SelectElement";
+import { inquerySellSelect } from "./utils";
+import { CollaborationInterface } from "./interfaces";
 export default function Collaboration () {
+    //state
+    const [formData, setFormData] = React.useState<CollaborationInterface>(
+        {
+            name: "",
+            email: "",
+            category: [],
+            phone: "",
+            sell: "",
+        }
+    );
+
     return (
         <section className="collaboration">
             <div className="collaboration__headline-wrapper">
@@ -13,7 +28,9 @@ export default function Collaboration () {
             </div>
             <div className="collaboration__wrapper">
                 <h3>Данные для заявки</h3>
-                <form className="collaboration__form">
+                <form className="collaboration__form" onSubmit={(evt) => {
+                    evt.preventDefault();
+                }}>
                     <div className="collaboration__form-inputs">
                         <div className="colalboration__form-input-wrapper">
                             <label htmlFor="email">
@@ -42,7 +59,15 @@ export default function Collaboration () {
                             <input id="name" placeholder="ваше имя..."></input>
                         </div>
                     </div>
-                    
+                    <div className="collaboration__form-inputs">
+                        <div className="colalboration__form-input-wrapper">
+                            <SelectElement name="sell" label="Опыт продаж твоей продукции" options={inquerySellSelect} updateApplication={setFormData} />
+                            {/* <label htmlFor="phone">
+                                    Почта
+                            </label>
+                            <input id="phone" placeholder="ваш телефон..."></input> */}
+                        </div>
+                    </div>
                     <button>
                         <span>Отправить заявку </span>
                         <FontAwesomeIcon icon={faArrowRight} />
