@@ -122,7 +122,8 @@
     flex-direction: column;
     gap: 25px;
     box-shadow: 0 0 25px #C8CCCF;
-    max-height: 720px;
+    /* max-height: 720px; */
+    max-height: 90vh;
     overflow: auto;
 }
 

@@ -122,7 +122,7 @@ export interface CollaborationInterface {
   email: string,
   phone: string,
   sell?: string,
-  category: string[],
+  subject?:string,
 }
 
 export interface ApplicationInterface extends CollaborationInterface {
@@ -135,6 +135,7 @@ export interface ApplicationInterface extends CollaborationInterface {
   offerAgreement?: boolean,
   personalDataAgreement?: boolean,
   shippingPartnerAgreement?: boolean,
+  category: string[],
 }
 
 export interface SelectInterface {
@@ -142,4 +143,10 @@ export interface SelectInterface {
   options: OptionInterface[],
   updateApplication: (arg:string) => void,
   // updateApplication: React.Dispatch<React.SetStateAction<ApplicationInterface>>
+}
+
+export interface CheckboxInterface {
+  label: string,
+  checked: boolean | undefined,
+  updateState: () => void;
 }

@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import SelectElement from "./SelectElement";
 import { applicationCategoriesSelect, applicationCitySelect, applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect } from "./utils";
 import { ApplicationInterface } from "./interfaces";
+import CheckboxElement from "./CheckboxElement";
 
 export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
@@ -242,37 +243,51 @@ export default function ApplicationForm() {
                                     <ul className="application__form-div-agreements">
                                         <li>
                                             <a href="#">Публичная офферта Mohen - Tohen</a>
-                                            <label>
+                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.offerAgreement} updateState={() => {
+                                                setApplicationData((prevValue) => {
+                                                    return {...prevValue, offerAgreement: !prevValue.offerAgreement}
+                                                })
+                                            }}></CheckboxElement>
+                                            {/* <label>
                                                 <input type="checkbox" onChange={() => {
                                                     setApplicationData((prevValue) => {
                                                         return {...prevValue, offerAgreement: !prevValue.offerAgreement}
                                                     })
                                                 }} />
                                                 <span>Прочитал и соглашаюсь</span>
-                                            </label>
-                                            {/*  */}
+                                            </label> */}
                                         </li>
                                         <li>
                                             <a href="#">Политика обработки персональных данных</a>
-                                            <label>
+                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.personalDataAgreement} updateState={() => {
+                                                setApplicationData((prevValue) => {
+                                                    return {...prevValue, personalDataAgreement: !prevValue.personalDataAgreement}
+                                                })
+                                            }}></CheckboxElement>
+                                            {/* <label>
                                                 <input onChange={(() => {
                                                     setApplicationData((prevValue) => {
                                                         return {...prevValue, personalDataAgreement: !prevValue.personalDataAgreement}
                                                     })
                                                 })} type="checkbox" />
                                                 <span>Прочитал и соглашаюсь</span>
-                                            </label>
+                                            </label> */}
                                         </li>
                                         <li>
                                             <span>Доставкой, транспортировкой и логистикой занимается третья сторона-партнер СДЭК</span>
-                                            <label>
+                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.shippingPartnerAgreement} updateState={() => {
+                                                setApplicationData((prevValue) => {
+                                                    return {...prevValue, shippingPartnerAgreement: !prevValue.shippingPartnerAgreement}
+                                                })
+                                            }}></CheckboxElement>
+                                            {/* <label>
                                                 <input type="checkbox" onChange={() => {
                                                     setApplicationData((prevValue) => {
                                                         return {...prevValue, shippingPartnerAgreement: !prevValue.shippingPartnerAgreement}
                                                     })
                                                 }} />
                                                 <span>Прочитал и соглашаюсь</span>
-                                            </label>
+                                            </label> */}
                                         </li>
                                     </ul>
                                 </div>
