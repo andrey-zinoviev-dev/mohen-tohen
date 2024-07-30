@@ -11,6 +11,15 @@ export default function Brands() {
                         <Link to={`../brands/${brand.name}`} state={brand}>{brand.name}</Link>
                     </li>
                 })}
+                {/* {brands.map((brand) => {
+                    return <li className='brands__ul-li'>
+                        <Link to={`../brands/${brand.name}`} state={brand}>{brand.name}</Link>
+                    </li>
+                })}{brands.map((brand) => {
+                    return <li className='brands__ul-li'>
+                        <Link to={`../brands/${brand.name}`} state={brand}>{brand.name}</Link>
+                    </li>
+                })} */}
             </ul>
         </section>
     )

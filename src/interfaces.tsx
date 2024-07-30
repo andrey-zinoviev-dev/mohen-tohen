@@ -132,6 +132,9 @@ export interface ApplicationInterface extends CollaborationInterface {
   productionProcess?: string,
   stock?: string,
   size?: string,
+  offerAgreement?: boolean,
+  personalDataAgreement?: boolean,
+  shippingPartnerAgreement?: boolean,
 }
 
 export interface SelectInterface {

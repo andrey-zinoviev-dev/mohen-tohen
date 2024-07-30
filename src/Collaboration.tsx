@@ -33,35 +33,36 @@ export default function Collaboration () {
                 }}>
                     <div className="collaboration__form-inputs">
                         <div className="colalboration__form-input-wrapper">
+                            <label htmlFor="name">
+                                Имя
+                            </label>
+                            <input id="name" placeholder="Алексей Солдатов"></input>
+                        </div>
+                        <div className="colalboration__form-input-wrapper">
+                            <label htmlFor="phone">
+                                Телефон
+                            </label>
+                            <input id="phone" placeholder="+79031513045"></input>
+                        </div>
+                    </div>
+                    <div className="collaboration__form-inputs">
+                        <div className="colalboration__form-input-wrapper">
                             <label htmlFor="email">
                                 Почта
                             </label>
-                            <input id="email" placeholder="ваша почта..."></input>
+                            <input id="email" placeholder="example@mail.org"></input>
                         </div>
                         <div className="colalboration__form-input-wrapper">
                             <label htmlFor="subject">
                                 Направление
                             </label>
-                            <input id="subject" placeholder="ваше направление..."></input>
+                            <input id="subject" placeholder="например, керамика"></input>
                         </div>
                     </div>
+                    
                     <div className="collaboration__form-inputs">
                         <div className="colalboration__form-input-wrapper">
-                            <label htmlFor="phone">
-                                Почта
-                            </label>
-                            <input id="phone" placeholder="ваш телефон..."></input>
-                        </div>
-                        <div className="colalboration__form-input-wrapper">
-                            <label htmlFor="name">
-                                Почта
-                            </label>
-                            <input id="name" placeholder="ваше имя..."></input>
-                        </div>
-                    </div>
-                    <div className="collaboration__form-inputs">
-                        <div className="colalboration__form-input-wrapper">
-                            <SelectElement name="sell" label="Опыт продаж твоей продукции" options={inquerySellSelect} updateApplication={setFormData} />
+                            <SelectElement name="sell" label="Продавал ли ты свои товары ранее?" options={inquerySellSelect} updateApplication={setFormData} />
                             {/* <label htmlFor="phone">
                                     Почта
                             </label>

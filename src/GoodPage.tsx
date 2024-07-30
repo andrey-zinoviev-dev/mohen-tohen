@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faShareNodes, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
 import { Link, useLocation } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 import { toggleFavourite } from "./features/goodsSlice";
@@ -107,6 +107,9 @@ export default function GoodPage() {
                         // dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
                     }}>
                         <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}}/>
+                    </button>
+                    <button>
+                        <FontAwesomeIcon icon={faShareNodes} />
                     </button>
                 </div>
 

@@ -21,10 +21,14 @@ export default function ApplicationForm() {
         productionLength: "",
         productionProcess: "",
         stock: "",
+        offerAgreement: false,
+        personalDataAgreement: false,
+        shippingPartnerAgreement: false,
     });
 
     //variables
     const date = new Date().toLocaleString();
+    // const readyToSubmit = 
 
     //functions
     // function updateCity<T>(arg: T):T {
@@ -230,34 +234,49 @@ export default function ApplicationForm() {
                                         </li>
                                     </ul>
                                 </div>
+                                <div className="application__form-div">
+                                    {/* <h3>Информация для справки</h3> */}
+                                    <h3>
+                                        <span>04</span>Необоходимые соглашения
+                                    </h3>
+                                    <ul className="application__form-div-agreements">
+                                        <li>
+                                            <a href="#">Публичная офферта Mohen - Tohen</a>
+                                            <label>
+                                                <input type="checkbox" onChange={() => {
+                                                    setApplicationData((prevValue) => {
+                                                        return {...prevValue, offerAgreement: !prevValue.offerAgreement}
+                                                    })
+                                                }} />
+                                                <span>Прочитал и соглашаюсь</span>
+                                            </label>
+                                            {/*  */}
+                                        </li>
+                                        <li>
+                                            <a href="#">Политика обработки персональных данных</a>
+                                            <label>
+                                                <input onChange={(() => {
+                                                    setApplicationData((prevValue) => {
+                                                        return {...prevValue, personalDataAgreement: !prevValue.personalDataAgreement}
+                                                    })
+                                                })} type="checkbox" />
+                                                <span>Прочитал и соглашаюсь</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <span>Доставкой, транспортировкой и логистикой занимается третья сторона-партнер СДЭК</span>
+                                            <label>
+                                                <input type="checkbox" onChange={() => {
+                                                    setApplicationData((prevValue) => {
+                                                        return {...prevValue, shippingPartnerAgreement: !prevValue.shippingPartnerAgreement}
+                                                    })
+                                                }} />
+                                                <span>Прочитал и соглашаюсь</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
                             </form>
-                            <div>
-                                <h3>Информация для справки</h3>
-                                <ul>
-                                    <li>
-                                        <a href="#">Публичная офферта Mohen - Tohen</a>
-                                        <label>
-                                            <input type="checkbox" />
-                                            <span>Прочитал и соглашаюсь</span>
-                                        </label>
-                                        {/*  */}
-                                    </li>
-                                    <li>
-                                        <a href="#">Политика обработки персональных данных</a>
-                                        <label>
-                                            <input type="checkbox" />
-                                            <span>Прочитал и соглашаюсь</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <span>Доставкой, транспортировкой и логистикой занимается третья сторона-партнер СДЭК</span>
-                                        <label>
-                                            <input type="checkbox" />
-                                            <span>Прочитал и соглашаюсь</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
                             {/* <button>
                                 Отправить анкету
                             </button> */}
@@ -326,6 +345,7 @@ export default function ApplicationForm() {
                                 <label>Дата заполнения</label>
                                 <span>{date.split(", ")[0]}</span>
                             </div>
+                            {applicationData.offerAgreement && applicationData.personalDataAgreement && applicationData.shippingPartnerAgreement && <button>Анкета запонена верно</button>}
                         </div>
                     </>}
                 </div>

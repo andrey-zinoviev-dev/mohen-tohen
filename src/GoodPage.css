@@ -4,12 +4,14 @@
     /* padding: 100px; */
     /* padding: 25px 100px; */
     padding: 25px 0;
+    gap: 50px;
 }
 
 .good__parameters {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
 }
 
 .good__parameters-features {
@@ -106,10 +108,11 @@
     stroke-width: 25px;
 }
 .img {
-    aspect-ratio: 1/1;
-    max-width: 570px;
-    object-fit: cover;
+    /* aspect-ratio: 1/1; */
+    /* max-width: 570px; */
+    object-fit: contain;
     border-radius: 5px;
+    width: 100%;
 }
 .good__colors {
     padding: 0;

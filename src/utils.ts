@@ -1080,14 +1080,6 @@ export const applicationCategoriesSelect:OptionInterface[] = [
     label: "Подарки",
     id: "gifts"
   },
-  {
-    label: "Идеи",
-    id: "ideas"
-  },
-  {
-    label: "Услуги",
-    id: "services"
-  }
 ];
 
 export const applicationStockSelect:OptionInterface[] = [

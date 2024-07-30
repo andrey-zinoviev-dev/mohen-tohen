@@ -66,7 +66,7 @@
     align-items: stretch;
     justify-content: space-between;
     /* gap: 25px; */
-    gap: 50px;
+    gap: 25px;
     flex-direction: column;
     width: 100%;
 }
@@ -93,18 +93,19 @@
 
 .collaboration__form input {
     outline: none;
-    border-bottom: 2px solid transparent;
+    /* border-bottom: 2px solid transparent; */
     box-sizing: border-box;
+    border-radius: 9px;
     /* padding: 10px 10px; */
-    padding: 5px 10px 10px 0;
+    padding: 15px;
     width: 100%;
-    border-bottom: 2px solid white;
+    border: 2px solid white;
     transition: all 0.25s ease-in-out;
     /* min-width: 540px; */
 }
 
 .collaboration__form input:focus {
-    border-bottom: 2px solid #FF8261;
+    border: 2px solid #FF8261;
 }
 
 .collaboration__form input::placeholder {

@@ -16,11 +16,11 @@ export default function SellerPage() {
         <div className="seller__wrapper_details">
           <h3>{state.name}</h3>
           <p>{state.description}</p>
-          <div className="seller__wrapper_details-rating">
+          {/* <div className="seller__wrapper_details-rating">
             <span>5.0</span>
             <FontAwesomeIcon className="seller__wrapper_details-rating-svg" icon={faStar} />
             <span>53 отзыва</span>
-          </div>
+          </div> */}
           <button className="seller__warpper-button">Сделать персональный заказ</button>
         </div>
       </div>
