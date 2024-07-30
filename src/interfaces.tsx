@@ -136,7 +136,7 @@ export interface ApplicationInterface extends CollaborationInterface {
 
 export interface SelectInterface {
   label: string,
-  name: string,
   options: OptionInterface[],
-  updateApplication: React.Dispatch<React.SetStateAction<ApplicationInterface>>
+  updateApplication: (arg:string) => void,
+  // updateApplication: React.Dispatch<React.SetStateAction<ApplicationInterface>>
 }

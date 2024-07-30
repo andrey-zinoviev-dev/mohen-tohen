@@ -3,11 +3,11 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { OptionInterface, SelectInterface } from "./interfaces";
 import React from "react"
-export default function SelectElement({label, name, options, updateApplication}:SelectInterface) {
+export default function SelectElement({label, options, updateApplication}:SelectInterface) {
   //states
   // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
   // const [selectedOption, setSelectedOption] = React.useState<OptionInterface>(options[0])
-  const [selectState, setSelectState] = React.useState<{opened: boolean, selectedOption: OptionInterface}>({opened: false, selectedOption:options[0]})
+  const [selectState, setSelectState] = React.useState<{opened: boolean, selectedOption: OptionInterface}>({opened: false, selectedOption: options[0]})
   return(
     <>
       <label>{label}</label>
@@ -28,9 +28,10 @@ export default function SelectElement({label, name, options, updateApplication}:
               setSelectState((prevValue) => {
                 return {...prevValue, opened: false, selectedOption: option};
               });
-              updateApplication((prevValue) => {
-                return {...prevValue, city: option.label};
-              })
+              updateApplication(option.label);
+              // updateApplication((prevValue) => {
+              //   return {...prevValue, city: option.label};
+              // })
             }}>
               {option.label}
             </button>

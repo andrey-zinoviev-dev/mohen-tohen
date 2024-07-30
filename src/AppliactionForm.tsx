@@ -5,7 +5,7 @@ import "./ApplicationForm.css"
 import heading from "./assets/mh-1.png"
 import Footer from "./Footer";
 import SelectElement from "./SelectElement";
-import { applicationCategoriesSelect, applicationCitySelect, applicationStockSelect } from "./utils";
+import { applicationCategoriesSelect, applicationCitySelect, applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect } from "./utils";
 import { ApplicationInterface } from "./interfaces";
 
 export default function ApplicationForm() {
@@ -25,7 +25,12 @@ export default function ApplicationForm() {
 
     //variables
     const date = new Date().toLocaleString();
-    // console.log(date);
+
+    //functions
+    // function updateCity<T>(arg: T):T {
+    //     return arg;
+    //     // console.log(city);
+    // }
 
     React.useEffect(() => {
         console.log(applicationData);
@@ -114,7 +119,11 @@ export default function ApplicationForm() {
                                         }} placeholder="+790335153046" type="phone"></input>
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
-                                        <SelectElement label="Выбери город, в котором ты находишься" name="city" options={applicationCitySelect} updateApplication={setApplicationData}></SelectElement>
+                                        <SelectElement label="Выбери город, в котором ты находишься" options={applicationCitySelect} updateApplication={(city:string) => {
+                                            setApplicationData((prevValue) => {
+                                                return {...prevValue, city: city}
+                                            })
+                                        }}></SelectElement>
                                     </div>
                                 </div>
                                 <div className="application__form-div">
@@ -158,120 +167,41 @@ export default function ApplicationForm() {
                                             })
                                         }} id="description" placeholder="Я произвожу керамические вазы, посуду из кристаллической керамики и природных каменй и красителей..."></textarea>
                                     </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label>Сколько стоит твоя продукция?</label>
+                                        <div className="application__form-data-wrapper-price">
+                                            <label>
+                                                от
+                                                <input className="application__form-data-wrapper-input" type="number" min={1000} placeholder="1000"></input>
+                                            </label>
+                                            <label>
+                                                до
+                                                <input className="application__form-data-wrapper-input" type="number" max={100000} placeholder="100 000"></input>
+                                            </label>
+                                        </div>
+                                    </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
-                                        {/* <SelectElement>
-
-                                        </SelectElement> */}
-                                        {/* <label>Сколько стоит твоя продукция?</label>
-                                        <button onClick={() => {
-                                            setOpenedSelect(!openedSelect);
-                                        }}>Выбрать диапазон
-                                            <FontAwesomeIcon icon={faAngleDown} />
-                                        </button>
-                                        <ul className={!openedSelect ? "application__form-data-wrapper-select" : "application__form-data-wrapper-select application__form-data-wrapper-select-active"}>
-                                            <li>
-                                                <input id="default" name="price" type="radio" />
-                                                <label htmlFor="default">Не выбрано</label>
-                                            </li>
-                                            <li>
-                                                <input id="1" name="price" type="radio" />
-                                                <label htmlFor="1">От 1 до 3 тысяч</label>
-                                            </li>
-                                            <li>
-                                                <input id="2" name="price" type="radio" />
-                                                <label htmlFor="2">От 3 до 7 тысяч</label>
-                                            </li>
-                                            <li>
-                                                <input id="3" name="price" type="radio" />
-                                                <label htmlFor="3">От 7 до 10 тысяч</label>
-                                            </li>
-                                            <li>
-                                                <input id="5" name="price" type="radio" />
-                                                <label htmlFor="4">От 10 до 20 тысяч</label>
-                                            </li>
-                                            <li>
-                                                <input id="6" name="price" type="radio" />
-                                                <label htmlFor="6">От 20 до 50 тысяч</label>
-                                            </li>
-                                            <li>
-                                                <input id="7" name="price" type="radio" />
-                                                <label htmlFor="7">От 50 до 70 тысяч</label>
-                                            </li>
-                                            <li>
-                                                <input id="8" name="price" type="radio" />
-                                                <label htmlFor="8">От 70 до 100 тысяч</label>
-                                            </li>
-                                            <li>
-                                                <input id="9" name="price" type="radio" />
-                                                <label htmlFor="9">Больше 100 тысяч</label>
-                                            </li>
-                                        </ul> */}
-                                        {/* <select>
-                                            <option>От 1 до 3 тысяч</option>
-                                            <option>От 3 до 7 тысяч</option>
-                                            <option>От 7 до 10 тысяч</option>
-                                            <option>От 10 до 20 тысяч</option>
-                                            <option>От 20 до 50 тысяч</option>
-                                            <option>От 50 до 70 тысяч</option>
-                                            <option>От 70 до 100 тысяч</option>
-                                            <option>Больше 100 тысяч</option>
-                                        </select> */}
-                                    </div>
-                                    <div className="application__form-data-wrapper">
-                                        <SelectElement name="stock" label="Какой тираж у твоей продукции?" updateApplication={setApplicationData} options={applicationStockSelect} />
-                                        {/* <label>Какой тираж у твоей продукции?</label>
-                                        <select>
-                                            <option>От 1 до 10 штук</option>
-                                            <option>От 10 до 20 штук</option>
-                                            <option>Больше 20 штук</option>
-                                        </select> */}
-                                    </div>
-                                    <div className="application__form-data-wrapper">
-                                        <label>Какие габариты у твоей продукции?</label>
-                                        <label>
-                                            Продукция подлежит сборке (модульная)
-                                            <input type="checkbox"></input>
-                                        </label>
-                                        <select>
-                                            <option>Малогабаритная продукция</option>
-                                            <option>Среднегабаритная продукция</option>
-                                            <option>Крупногабаритная продукция</option>
-                                        </select>
-                                    </div>
-                                    <div className="application__form-data-wrapper">
-                                        <label>Сроки изготовления товаров</label>
-                                        {/* <input></input> */}
-                                        <select onChange={(evt) => {
+                                        <SelectElement label="Какой тираж у твоей продукции?" updateApplication={(stock) => {
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, productionLength: evt.target.value};
+                                                return {...prevValue, stock: stock};
+                                            })
+                                        }} options={applicationStockSelect} />
+                                    </div>
+                                    <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
+                                        <SelectElement label="Какие габариты у твоей продукции?" options={applicationSizeSelect} updateApplication={(size) => {
+                                            setApplicationData((prevValue) => {
+                                                return {...prevValue, size: size}
+                                            })
+                                        }}></SelectElement>
+                                    </div>
+                                    <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
+                                        <SelectElement label="Сколько по времени ты производишь продукцию?" options={applicationProdTimeSelect} updateApplication={(time) => {
+                                            setApplicationData((prevValue) => {
+                                                return {...prevValue, productionLength: time};
                                             })
                                         }}>
-                                            <option>Выбери минимальные сроки</option>
-                                            <option>1 - 5 дней</option>
-                                            <option>6-10 дней</option>
-                                            <option>11-15 дней</option>
-                                            <option>15 - 20 дней</option>
-                                            <option>25 - 30 дней</option>
-                                        </select>
+                                        </SelectElement>
                                     </div>
-                                    <div className="application__form-data-wrapper">
-                                        <div>
-                                        <label>Ты планиурешь делатать кастомные заказы?</label>
-                                        <label>
-                                            <input type="radio" name="customorder"></input>
-                                            Да
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="customorder"></input>
-                                            Нет
-                                        </label>
-                                        </div>
-                                        <div>
-                                            <label>Опиши максимально все особенности товаров, которые сможешь произвести для индивидуальных заказов</label>
-                                            <textarea name="" id="" placeholder="Для индивидуальных заказов я могу предожить кастомные габариты в зависимости от запроса, цвета, материалы и т.д"></textarea>
-                                        </div>
-                                    </div>
-                                    
                                 </div>
                                 <div className="application__form-div">
                                     <h3>
@@ -300,21 +230,33 @@ export default function ApplicationForm() {
                                         </li>
                                     </ul>
                                 </div>
-                                {/* <div className="application__form-flex">
-                                    
-                                </div> */}
                             </form>
                             <div>
                                 <h3>Информация для справки</h3>
                                 <ul>
-                                    <li>Пункт номер 1</li>
-                                    <li>Пункт номер 2</li>
-                                    <li>Пункт номер 3</li>
+                                    <li>
+                                        <a href="#">Публичная офферта Mohen - Tohen</a>
+                                        <label>
+                                            <input type="checkbox" />
+                                            <span>Прочитал и соглашаюсь</span>
+                                        </label>
+                                        {/*  */}
+                                    </li>
+                                    <li>
+                                        <a href="#">Политика обработки персональных данных</a>
+                                        <label>
+                                            <input type="checkbox" />
+                                            <span>Прочитал и соглашаюсь</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <span>Доставкой, транспортировкой и логистикой занимается третья сторона-партнер СДЭК</span>
+                                        <label>
+                                            <input type="checkbox" />
+                                            <span>Прочитал и соглашаюсь</span>
+                                        </label>
+                                    </li>
                                 </ul>
-                                <div>
-                                    <button>Условия сотрудичества</button>
-                                    <button>Договор сотрудничества</button>
-                                </div>
                             </div>
                             {/* <button>
                                 Отправить анкету

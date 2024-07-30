@@ -1108,3 +1108,45 @@ export const applicationStockSelect:OptionInterface[] = [
     label: "Больше 20"
   }
 ];
+
+export const applicationSizeSelect:OptionInterface[] = [
+  {
+    id: "Малый",
+    label: "Малые габариты"
+  },
+  {
+    id: "Средний",
+    label: "Средние габариты"
+  },
+  {
+    id: "Большой",
+    label: "Большие габариты"
+  },
+];
+
+export const applicationProdTimeSelect:OptionInterface[] = [
+  {
+    id: "1-5",
+    label: "От 1 до 5 дней"
+  },
+  {
+    id: "6-10",
+    label: "От 6 до 10 дней"
+  },
+  {
+    id: "11-15",
+    label: "От 11 до 15 дней",
+  },
+  {
+    id: "15-20",
+    label: "От 15 до 20 дней"
+  },
+  {
+    id: "20-25",
+    label: "От 20 до 25 дней"
+  },
+  {
+    id: "25-30",
+    label: "От 25 до 35 дней"
+  },
+]
