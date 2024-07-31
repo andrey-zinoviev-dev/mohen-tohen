@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Notification from "./Notification";
 import Popup from "./Popup";
 import { useAppSelector } from "./hooks";
@@ -17,6 +17,7 @@ export default function Home() {
             <Outlet></Outlet>
             <Footer></Footer>
             {notificationState && <Notification></Notification>}
+            <ScrollRestoration></ScrollRestoration>
             {/* {popupState && <Popup>
                 <h3>Войти или зарегистрироваться</h3>    
             </Popup>} */}

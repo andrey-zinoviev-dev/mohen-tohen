@@ -7,6 +7,7 @@ export default function HomeContent() {
 
     return (
         <>
+            
             <Welcome></Welcome>    
             <PromoSection></PromoSection>
             <Brands></Brands>

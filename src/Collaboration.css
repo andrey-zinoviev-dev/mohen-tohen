@@ -123,14 +123,17 @@
     gap: 15px;
     align-self: flex-start;
     background-color: transparent;
-    color: white;
+    color: black;
     border: 2px solid white;
+    background-color: white;
     transition: all 0.25s ease-in-out;
+    pointer-events: all;
 }
 
 .collaboration__form button:hover {
-    border: 2px solid #FF8261;
-    color: #FF8261;
+    /* border: 2px solid #FF8261; */
+    background-color: #FF8261;
+    color: white;
     cursor: pointer;
 }
 
@@ -138,6 +141,7 @@
     color: #7c7c7c;
     border: 2px solid #7c7c7c;
     pointer-events: none;
+    background-color: transparent;
 }
 
 /* .collaboration__form-btn:hover {
