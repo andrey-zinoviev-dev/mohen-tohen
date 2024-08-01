@@ -1,5 +1,5 @@
 import React from "react";
-import { faArrowRight, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faCheck, faPaperPlane, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationForm.css"
 import heading from "./assets/mh-1.png"
@@ -8,6 +8,8 @@ import SelectElement from "./SelectElement";
 import { applicationCategoriesSelect, applicationCitySelect, applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect } from "./utils";
 import { ApplicationInterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
+import ApplicationOverview from "./ApplicationOverview";
+import ApplicationFiles from "./ApplicationFiles";
 
 export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
@@ -27,8 +29,8 @@ export default function ApplicationForm() {
         shippingPartnerAgreement: false,
     });
 
+
     //variables
-    const date = new Date().toLocaleString();
     // const readyToSubmit = 
 
     //functions
@@ -37,9 +39,9 @@ export default function ApplicationForm() {
     //     // console.log(city);
     // }
 
-    React.useEffect(() => {
-        console.log(applicationData);
-    }, [applicationData])
+    // React.useEffect(() => {
+    //     console.log(applicationData);
+    // }, [applicationData])
     
     return (
         <>
@@ -209,7 +211,8 @@ export default function ApplicationForm() {
                                     </div>
                                 </div>
                                 <div className="application__form-div">
-                                    <h3>
+                                    <ApplicationFiles></ApplicationFiles>
+                                    {/* <h3>
                                         <span>03</span>Фото товара
                                     </h3>
                                     <ul className="application__form-div-photos">
@@ -233,7 +236,7 @@ export default function ApplicationForm() {
                                                 <FontAwesomeIcon icon={faPlusCircle} />
                                             </button>
                                         </li>
-                                    </ul>
+                                    </ul> */}
                                 </div>
                                 <div className="application__form-div">
                                     {/* <h3>Информация для справки</h3> */}
@@ -297,7 +300,8 @@ export default function ApplicationForm() {
                             </button> */}
                         </div>
                         <div className="application__wrapper-content">
-                            <h3>Итоговая анкета</h3>
+                            <ApplicationOverview applicationData={applicationData}></ApplicationOverview>
+                            {/* <h3>Итоговая анкета</h3>
                             <div className="application__wrapper-content-grid">
                                 <div className="application__wrapper-content-data-wrapper">
                                     <label>ФИО</label>
@@ -329,7 +333,6 @@ export default function ApplicationForm() {
                                         </li>
                                         } 
                                     </ul>
-                                    {/* <span>{applicationData.category.length > 0 ? applicationData.category : "Не заполнено"}</span> */}
                                 </div>
                             </div>
                             <div className="application__wrapper-content-data-wrapper">
@@ -360,7 +363,19 @@ export default function ApplicationForm() {
                                 <label>Дата заполнения</label>
                                 <span>{date.split(", ")[0]}</span>
                             </div>
-                            {applicationData.offerAgreement && applicationData.personalDataAgreement && applicationData.shippingPartnerAgreement && <button>Анкета запонена верно</button>}
+                            {applicationData.offerAgreement && applicationData.personalDataAgreement && applicationData.shippingPartnerAgreement && <>
+                                {!readyToSubmit ? <button onClick={() => {
+                                    setReadyToSubmit(true);
+                                }}>
+                                    Анкета запонена верно
+                                    <FontAwesomeIcon icon={faCheck} />
+                                </button> 
+                                : 
+                                <button>Отправить анкету
+                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                </button>}
+                            </>} */}
+
                         </div>
                     </>}
                 </div>

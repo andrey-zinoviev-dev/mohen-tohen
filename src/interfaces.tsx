@@ -150,3 +150,13 @@ export interface CheckboxInterface {
   checked: boolean | undefined,
   updateState: () => void;
 }
+
+export interface OverviewInterface {
+  applicationData: ApplicationInterface,
+  // updateApplicationData: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
+}
+
+export interface FileInterface {
+  file?: File,
+  addPhoto?: React.Dispatch<React.SetStateAction<File[]>>
+}
