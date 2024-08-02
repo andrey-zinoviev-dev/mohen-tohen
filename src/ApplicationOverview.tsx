@@ -87,9 +87,19 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                     <FontAwesomeIcon icon={faCheck} />
                 </button> 
                     : 
-                <button onClick={() => {
+                <button type="submit" onClick={() => {
                     console.table(applicationData);
                     console.log('send data to api');
+                    // fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+                    //     method: "POST",
+                    //     headers: {
+                    //         "Content-Type":"application/json",
+                    //     },
+                    //     body: JSON.stringify({
+                    //         chat_id: 471930242,
+                    //         text: "Новая заявка- Алекс",
+                    //     })
+                    // })
                 }}>
                     Отправить анкету
                     <FontAwesomeIcon icon={faPaperPlane} />

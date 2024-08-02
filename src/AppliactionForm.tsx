@@ -1,5 +1,5 @@
 import React from "react";
-import { faArrowRight, faCheck, faPaperPlane, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationForm.css"
 import heading from "./assets/mh-1.png"
@@ -10,6 +10,7 @@ import { ApplicationInterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 import ApplicationOverview from "./ApplicationOverview";
 import ApplicationFiles from "./ApplicationFiles";
+// import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
 export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
@@ -95,6 +96,7 @@ export default function ApplicationForm() {
                             <h3>Анкета сотрудничества</h3>
                             <form onSubmit={(evt) => {
                                 evt.preventDefault();
+                                
                             }} className="application__form">
                                 <div className="application__form-div">
                                     <h3>
@@ -379,10 +381,8 @@ export default function ApplicationForm() {
                         </div>
                     </>}
                 </div>
-                 
-                
-
             </section>
+            {/* <ApplicationPhotoPopup url=""></ApplicationPhotoPopup> */}
             <Footer></Footer>
         </>
 

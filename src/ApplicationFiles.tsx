@@ -1,10 +1,12 @@
 import React from "react";
 import ApplicationAddFile from "./ApplicationAddFile";
 import ApplicationFile from "./ApplicationFile";
+import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
 export default function ApplicationFiles() {
     //states
     const [addedFiles, setAddedFiles] = React.useState<File[]>([]);
+    const [selectedPhoto, setSelectedPhoto] = React.useState<File | null>(null);
     return (
         <>
             <h3>
@@ -13,7 +15,7 @@ export default function ApplicationFiles() {
             <ul className="application__form-div-photos">
                 {addedFiles.length > 0 && addedFiles.map((file) => {
                     return <li className="application-file" key={file.name}>
-                        <ApplicationFile file={file}></ApplicationFile>
+                        <ApplicationFile removePhoto={setAddedFiles} selectPhoto={setSelectedPhoto} file={file}></ApplicationFile>
                     </li>
                     // return <ApplicationFile file={file}></ApplicationFile>
                     // return <li className="application-file" key={file.file.name}>
@@ -44,6 +46,7 @@ export default function ApplicationFiles() {
                     </button>
                 </li> */}
             </ul>
+            {selectedPhoto && <ApplicationPhotoPopup file={selectedPhoto} closePopup={setSelectedPhoto}></ApplicationPhotoPopup>}
         </>
     )
 }

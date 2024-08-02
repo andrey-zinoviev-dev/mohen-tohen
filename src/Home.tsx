@@ -2,7 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import Notification from "./Notification";
-import Popup from "./Popup";
+// import Popup from "./Popup";
 import { useAppSelector } from "./hooks";
 
 export default function Home() {

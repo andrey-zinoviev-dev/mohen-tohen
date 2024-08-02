@@ -158,5 +158,7 @@ export interface OverviewInterface {
 
 export interface FileInterface {
   file?: File,
-  addPhoto?: React.Dispatch<React.SetStateAction<File[]>>
+  addPhoto?: React.Dispatch<React.SetStateAction<File[]>>,
+  removePhoto?: React.Dispatch<React.SetStateAction<File[]>>,
+  selectPhoto?: React.Dispatch<React.SetStateAction<File | null>>,
 }
