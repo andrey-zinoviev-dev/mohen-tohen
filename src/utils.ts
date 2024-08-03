@@ -1142,3 +1142,5 @@ export const applicationProdTimeSelect:OptionInterface[] = [
     label: "От 25 до 35 дней"
   },
 ]
+
+export const baseApi = "http://localhost:3001"

@@ -11,6 +11,7 @@ import Account from './Account'
 import HistoryGoods from './HistoryGoods'
 import Settings from './Settings'
 import ApplicationForm from './AppliactionForm'
+import ApplicationRender from './ApplicationRender'
 
 function App() {
   const router = createBrowserRouter([
@@ -63,6 +64,10 @@ function App() {
       path: "application",
       element: <ApplicationForm></ApplicationForm>
     },
+    {
+      path: "showApplication/:applicationID",
+      element: <ApplicationRender />
+    }
   ], {
     basename:"/mohen-tohen"
   });

@@ -3,12 +3,14 @@ import "./ApplicationOverview.css";
 import { OverviewInterface } from "./interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { sendApplication } from "./api";
 export default function ApplicationOverview({applicationData}:OverviewInterface){
     //date
     const date = new Date().toLocaleString();
 
     //state
     const [readyToSubmit, setReadyToSubmit] = React.useState<boolean>(false);
+
 
     return (
         <>
@@ -88,8 +90,13 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                 </button> 
                     : 
                 <button type="submit" onClick={() => {
-                    console.table(applicationData);
-                    console.log('send data to api');
+                    // console.table(applicationData);
+                    sendApplication(applicationData)
+                    .then((data) => {
+                        console.log(data);
+                        console.log("send notification to telegram");
+                    })
+                    // console.log('send data to api');
                     // fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
                     //     method: "POST",
                     //     headers: {
