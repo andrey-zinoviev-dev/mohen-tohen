@@ -14,9 +14,9 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
 
     return (
         <>
-            <div className="overview__wrapper">
-                <h3>Итоговая анкета</h3>
-                <div className="application__wrapper-content-grid">
+            {/* <div className="overview__wrapper">
+                <h3>Итоговая анкета</h3> */}
+                {/* <div className="application__wrapper-content-grid">
                     <div className="application__wrapper-content-data-wrapper">
                         <label>ФИО</label>
                         <span>{applicationData.name.length > 0 ? applicationData.name : "Не заполнено"}</span>
@@ -76,9 +76,9 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                 <div className="application__wrapper-content-data-wrapper">
                     <label>Дата заполнения</label>
                     <span>{date.split(", ")[0]}</span>
-                </div>
+                </div> */}
                
-            </div>
+            {/* </div> */}
              {/*   */}
              {applicationData.offerAgreement && applicationData.personalDataAgreement && applicationData.shippingPartnerAgreement && <>
                 {/* <button>Анкета заполнена верно</button> */}
@@ -97,16 +97,28 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                         console.log("send notification to telegram");
                     })
                     // console.log('send data to api');
-                    // fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
-                    //     method: "POST",
-                    //     headers: {
-                    //         "Content-Type":"application/json",
-                    //     },
-                    //     body: JSON.stringify({
-                    //         chat_id: 471930242,
-                    //         text: "Новая заявка- Алекс",
-                    //     })
-                    // })
+                    fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type":"application/json",
+                        },
+                        body: JSON.stringify({
+                            // chat_id: 471930242,
+                            "chat_id": 2104151994,
+                            "text": "Новая заявка- Алекс",
+                            "parse_mode" : "markdown",
+                            "reply_markup" : {
+                                "inline_keyboard" : [
+                                    [
+                                        {
+                                            "text" : "Open link",
+                                            "url" : "https://google.com"
+                                        }
+                                    ]
+                                ]
+                            }
+                        })
+                    })
                 }}>
                     Отправить анкету
                     <FontAwesomeIcon icon={faPaperPlane} />
