@@ -9,17 +9,17 @@ export default function Collaboration () {
     //state
     const [formData, setFormData] = React.useState<CollaborationInterface>(
         {
-            name: "",
-            email: "",
-            subject: "",
-            phone: "",
+            name: {value: "", textarea: false, label: "Имя"},
+            email: {value: "", textarea: false, label: "Почта"},
+            subject: {value: "", textarea: false, label: "Направление"},
+            phone: {value: "", textarea: false, label: "Телефон"},
             // sell: "",
         }
     );
 
     //variables
     const formValues = Object.values(formData);
-    console.log(formValues);
+    // console.log(formValues);
     const formIsCompleted = formValues.every((entry) => {
         return entry.length > 0;
     });
@@ -47,7 +47,7 @@ export default function Collaboration () {
                             </label>
                             <input id="name" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, name: evt.target.value};
+                                    return {...prevValue, name: {...prevValue.name, value: evt.target.value}};
                                 })
                             }} placeholder="Алексей Солдатов"></input>
                         </div>
@@ -57,7 +57,7 @@ export default function Collaboration () {
                             </label>
                             <input id="phone" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, phone: evt.target.value};
+                                    return {...prevValue, phone: {...prevValue.phone, value: evt.target.value}};
                                 })
                             }} placeholder="+79031513045"></input>
                         </div>
@@ -69,7 +69,7 @@ export default function Collaboration () {
                             </label>
                             <input id="email" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, email: evt.target.value};
+                                    return {...prevValue, email: {...prevValue.email, value: evt.target.value}};
                                 })
                             }} placeholder="example@mail.org"></input>
                         </div>
@@ -79,7 +79,7 @@ export default function Collaboration () {
                             </label>
                             <input id="subject" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, subject: evt.target.value};
+                                    return {...prevValue, subject: prevValue.subject && {...prevValue.subject, value: evt.target.value}}
                                 })
                             }} placeholder="например, керамика"></input>
                         </div>

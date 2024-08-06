@@ -4,16 +4,16 @@ import { OverviewInterface } from "./interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { sendApplication } from "./api";
+import ApplicationRender from "./ApplicationRender";
 export default function ApplicationOverview({applicationData}:OverviewInterface){
-    //date
-    const date = new Date().toLocaleString();
-
     //state
     const [readyToSubmit, setReadyToSubmit] = React.useState<boolean>(false);
 
-
     return (
         <>
+            <ApplicationRender applicationData={applicationData}>
+
+            </ApplicationRender>
             {/* <div className="overview__wrapper">
                 <h3>Итоговая анкета</h3> */}
                 {/* <div className="application__wrapper-content-grid">
@@ -80,7 +80,7 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                
             {/* </div> */}
              {/*   */}
-             {applicationData.offerAgreement && applicationData.personalDataAgreement && applicationData.shippingPartnerAgreement && <>
+             {applicationData.offerAgreement.value && applicationData.personalDataAgreement.value && applicationData.shippingPartnerAgreement.value && <>
                 {/* <button>Анкета заполнена верно</button> */}
                 {!readyToSubmit ? <button onClick={() => {
                     setReadyToSubmit(true);
@@ -90,35 +90,59 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                 </button> 
                     : 
                 <button type="submit" onClick={() => {
-                    // console.table(applicationData);
+                    console.log(applicationData);
                     sendApplication(applicationData)
                     .then((data) => {
                         console.log(data);
                         console.log("send notification to telegram");
+                        fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type":"application/json",
+                            },
+                            body: JSON.stringify({
+                                // chat_id: 471930242,
+                                "chat_id": 2104151994,
+                                "text": "Новая заявка- Алекс",
+                                "parse_mode" : "markdown",
+                                "reply_markup" : {
+                                    "inline_keyboard" : [
+                                        [
+                                            {
+                                                "text" : "Open link",
+                                                "url" : "https://google.com"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            })
+                        })
+                        // console.log(import.meta.env.VITE_BOT_TOKEN);
+
                     })
                     // console.log('send data to api');
-                    fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type":"application/json",
-                        },
-                        body: JSON.stringify({
-                            // chat_id: 471930242,
-                            "chat_id": 2104151994,
-                            "text": "Новая заявка- Алекс",
-                            "parse_mode" : "markdown",
-                            "reply_markup" : {
-                                "inline_keyboard" : [
-                                    [
-                                        {
-                                            "text" : "Open link",
-                                            "url" : "https://google.com"
-                                        }
-                                    ]
-                                ]
-                            }
-                        })
-                    })
+                    // fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+                    //     method: "POST",
+                    //     headers: {
+                    //         "Content-Type":"application/json",
+                    //     },
+                    //     body: JSON.stringify({
+                    //         // chat_id: 471930242,
+                    //         "chat_id": 2104151994,
+                    //         "text": "Новая заявка- Алекс",
+                    //         "parse_mode" : "markdown",
+                    //         "reply_markup" : {
+                    //             "inline_keyboard" : [
+                    //                 [
+                    //                     {
+                    //                         "text" : "Open link",
+                    //                         "url" : "https://google.com"
+                    //                     }
+                    //                 ]
+                    //             ]
+                    //         }
+                    //     })
+                    // })
                 }}>
                     Отправить анкету
                     <FontAwesomeIcon icon={faPaperPlane} />

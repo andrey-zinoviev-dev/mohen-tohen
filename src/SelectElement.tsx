@@ -11,7 +11,7 @@ export default function SelectElement({label, options, updateApplication}:Select
   return(
     <>
       <label>{label}</label>
-      <button onClick={() => {
+      <button type="button" onClick={() => {
         setSelectState((prevValue) => {
           return {...prevValue, opened: !prevValue.opened};
         })

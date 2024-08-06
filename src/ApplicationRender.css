@@ -1,5 +1,11 @@
-.application-show__logo{
-    max-width: 360px;
-    margin: 0 auto;
-    translate: -20px;
+.application-render {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-height: 70vh;
+    overflow: auto;
+    box-shadow: 0 0 25px #C8CCCF;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: left;
 }

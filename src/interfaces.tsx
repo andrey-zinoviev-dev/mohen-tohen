@@ -118,24 +118,27 @@ export interface OptionInterface {
 }
 
 export interface CollaborationInterface {
-  name: string,
-  email: string,
-  phone: string,
+  name: {value: string, textarea: boolean, label: string},
+  email: {value: string, textarea: boolean, label: string},
+  phone: {value: string, textarea: boolean, label: string},
   sell?: string,
-  subject?:string,
+  subject?:{value: string, textarea: boolean, label: string},
 }
 
 export interface ApplicationInterface extends CollaborationInterface {
-  city?: string,
-  description?: string,
-  productionLength?: string,
-  productionProcess?: string,
-  stock?: string,
-  size?: string,
-  offerAgreement?: boolean,
-  personalDataAgreement?: boolean,
-  shippingPartnerAgreement?: boolean,
-  category: string[],
+  city: {value: string, textarea: boolean, label: string},
+  description: {value: string, textarea: boolean, label: string} | undefined,
+  productionLength: {value: string, textarea: boolean, label: string},
+  productionProcess: {value: string, textarea: boolean, label: string},
+  stock: {value: string, textarea: boolean, label: string},
+  size: {value: string, textarea: boolean, label: string},
+  offerAgreement: {value: boolean, checkbox: boolean},
+  personalDataAgreement: {value: boolean, checkbox: boolean},
+  shippingPartnerAgreement: {value: boolean, checkbox: boolean},
+  category: {value: string[], textarea: boolean, label: string},
+  dateOfFill: {value: string, textarea: boolean,}
+  photos: File[],
+  showApplication?: boolean,
 }
 
 export interface SelectInterface {
@@ -158,7 +161,7 @@ export interface OverviewInterface {
 
 export interface FileInterface {
   file?: File,
-  addPhoto?: React.Dispatch<React.SetStateAction<File[]>>,
-  removePhoto?: React.Dispatch<React.SetStateAction<File[]>>,
+  addPhoto?: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
+  removePhoto?: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
   selectPhoto?: React.Dispatch<React.SetStateAction<File | null>>,
 }

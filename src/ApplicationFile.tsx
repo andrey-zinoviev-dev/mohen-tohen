@@ -8,9 +8,9 @@ export default function ApplicationFile({file, removePhoto, selectPhoto}:FileInt
         <>
             <button onClick={() => {
                 removePhoto && removePhoto((prevValue) => {
-                    return prevValue.filter((prevPhoto) => {
+                    return {...prevValue, photos: prevValue.photos.filter((prevPhoto) => {
                         return prevPhoto.name !== file?.name;
-                    })
+                    })}
                 })
             }} className="application-file__delete">
                 <FontAwesomeIcon icon={faXmark} />

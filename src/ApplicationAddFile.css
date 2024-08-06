@@ -5,6 +5,7 @@
     justify-content: space-between;
     gap: 10px;
     align-items: stretch;
+    position: relative;
 }
 
 .application-file__delete {
@@ -16,6 +17,24 @@
     padding: 0;
     background: transparent;
     font-size: 16px;
+    position: absolute;
+    border: 2px solid #FF8261;
+    /* color: red; */
+    /* padding: 10px; */
+    width: 25px;
+    aspect-ratio: 1/1;
+    /* height: 20px; */
+    /* padding: 5px; */
+    border-radius: 50%;
+    background-color: #FF8261;
+    color: black;
+    top: 5px;
+    right: 5px;
+    transition: all 0.25s ease-in-out;
+}
+
+.application-file__delete:hover { 
+    color: white;
 }
 
 .application-file__label {

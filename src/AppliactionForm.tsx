@@ -16,18 +16,21 @@ export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
     // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
     const [applicationData, setApplicationData] = React.useState<ApplicationInterface>({
-        name: "",
-        email: "",
-        phone: "",
-        city: "",
-        description: "",
-        category: [],
-        productionLength: "",
-        productionProcess: "",
-        stock: "",
-        offerAgreement: false,
-        personalDataAgreement: false,
-        shippingPartnerAgreement: false,
+        name: {value: "", textarea: false, label: "Имя"},
+        email: {value: "", textarea: false, label: "Почта"},
+        phone: {value: "", textarea: false, label: "Телефон"},
+        city: {value: "", textarea: false, label: "Город"},
+        description: {value: "", textarea: true, label: "Расскажите о себе"},
+        category: {value: [], textarea: false, label: "Что вы производите"},
+        productionLength: {value: "", textarea: false, label: "Сколько по времени занимает производство товара"},
+        productionProcess: {value: "", textarea: true, label: "Как происходит процесс производства"},
+        stock: {value: "", textarea: false, label: "Тираж товаров"},
+        size: {value: "", textarea: false, label: "Размеры твоих товаров"},
+        offerAgreement: {value: false, checkbox: true},
+        personalDataAgreement: {value: false, checkbox: true},
+        shippingPartnerAgreement: {value: false, checkbox: true},
+        dateOfFill: {value: new Date().toLocaleDateString(), textarea: false},
+        photos: [],
     });
 
 
@@ -48,12 +51,6 @@ export default function ApplicationForm() {
         <>
             <section className="application">
                 <img className="application__heading" src={heading}></img>
-                {/* <div className="application__buttons">
-                    <button>Ваши данные</button>
-                    <button>Ваши товары</button>
-                    <button>информация</button>
-                </div> */}
-                 
                 <div className="application__wrapper_welcome">
                     {!startedApplication ?
                     <>
@@ -107,7 +104,7 @@ export default function ApplicationForm() {
                                         <label>Твое ФИО</label>
                                         <input className="application__form-data-wrapper-input" onChange={(evt) => {
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, name: evt.target.value};
+                                                return {...prevValue, name: {...prevValue.name, value: evt.target.value}};
                                             })
                                         }} placeholder="Солдатов Алексей Михайлович..." type="text"></input>
                                     </div>
@@ -115,7 +112,7 @@ export default function ApplicationForm() {
                                         <label>Твоя почта</label>
                                         <input className="application__form-data-wrapper-input" onChange={(evt) => {
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, email: evt.target.value};
+                                                return {...prevValue, email: {...prevValue.email, value: evt.target.value}};
                                             })
                                         }} placeholder="email@operator.org" type="email"></input>
                                     </div>
@@ -123,14 +120,17 @@ export default function ApplicationForm() {
                                         <label>Твой телефон</label>
                                         <input className="application__form-data-wrapper-input" onChange={(evt) => {
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, phone: evt.target.value};
+                                                return {...prevValue, phone: {...prevValue. phone, value: evt.target.value}};
                                             })
                                         }} placeholder="+790335153046" type="phone"></input>
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
                                         <SelectElement label="Выбери город, в котором ты находишься" options={applicationCitySelect} updateApplication={(city:string) => {
+                                            // setApplicationData((prevValue) => {
+                                            //     return {...prevValue, city: {...prevValue.city, value: city}}
+                                            // })
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, city: city}
+                                                return {...prevValue, city: {...prevValue.city, value: city}};
                                             })
                                         }}></SelectElement>
                                     </div>
@@ -147,35 +147,19 @@ export default function ApplicationForm() {
                                                 return <li>
                                                     <button onClick={() => {
                                                         setApplicationData((prevValue) => {
-                                                            return {...prevValue, category: prevValue.category.find((prevCategory) => {
+                                                            return {...prevValue, category: {...prevValue.category, value: prevValue.category.value.find((prevCategory) => {
                                                                 return prevCategory === option.label; 
-                                                            }) ? prevValue.category.filter((prevCategory) => {
+                                                            }) ? prevValue.category.value.filter((prevCategory) => {
                                                                 return prevCategory !== option.label;
-                                                            }) : [...prevValue.category, option.label]}
+                                                            }) : [...prevValue.category.value, option.label]}}
                                                         })
-                                                    }} className={applicationData.category.find((category) => {
+                                                    }} className={applicationData.category.value.find((category) => {
                                                         return category === option.label; 
                                                     }) ? "application__form-data-wrapper-categories-button_active application__form-data-wrapper-button" : "application__form-data-wrapper-button"}>{option.label}</button>
                                                 </li>
                                             })}
                                         </ul>
                                     </div>                                    
-                                    <div className="application__form-data-wrapper">
-                                        <label htmlFor="description">Расскажи о своем творчестве</label>
-                                        <textarea onChange={(evt) => {
-                                            setApplicationData((prevValue) => {
-                                                return {...prevValue, description: evt.target.value}
-                                            })
-                                        }} id="description" placeholder="Меня зовут Алексей Солдатов, я керамист-художник с 5-летним стажем..."></textarea>
-                                    </div>
-                                    <div className="application__form-data-wrapper">
-                                        <label htmlFor="description">Опиши свою продукцию и процесс производства</label>
-                                        <textarea onChange={(evt) => {
-                                            setApplicationData((prevValue) => {
-                                                return {...prevValue, productionProcess: evt.target.value}
-                                            })
-                                        }} id="description" placeholder="Я произвожу керамические вазы, посуду из кристаллической керамики и природных каменй и красителей..."></textarea>
-                                    </div>
                                     <div className="application__form-data-wrapper">
                                         <label>Сколько стоит твоя продукция?</label>
                                         <div className="application__form-data-wrapper-price">
@@ -192,28 +176,46 @@ export default function ApplicationForm() {
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
                                         <SelectElement label="Какой тираж у твоей продукции?" updateApplication={(stock) => {
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, stock: stock};
+                                                return {...prevValue, stock: {...prevValue.stock, value: stock}};
                                             })
                                         }} options={applicationStockSelect} />
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
                                         <SelectElement label="Какие габариты у твоей продукции?" options={applicationSizeSelect} updateApplication={(size) => {
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, size: size}
+                                                return {...prevValue, size: {...prevValue.size, value: size}};
                                             })
                                         }}></SelectElement>
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
                                         <SelectElement label="Сколько по времени ты производишь продукцию?" options={applicationProdTimeSelect} updateApplication={(time) => {
                                             setApplicationData((prevValue) => {
-                                                return {...prevValue, productionLength: time};
+                                                return {...prevValue, productionLength: {...prevValue.productionLength, value: time}};
                                             })
                                         }}>
                                         </SelectElement>
                                     </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label htmlFor="description">Расскажи о своем творчестве</label>
+                                        <textarea onChange={(evt) => {
+                                            setApplicationData((prevValue) => {
+                                                
+                                                return {...prevValue, description: prevValue.description && {...prevValue.description, value: evt.target.value}};
+                                            })
+                                        }} id="description" placeholder="Меня зовут Алексей Солдатов, я керамист-художник с 5-летним стажем..."></textarea>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label htmlFor="description">Опиши свою продукцию и процесс производства</label>
+                                        <textarea onChange={(evt) => {
+                                            // applicationData.productionProcess && 
+                                            setApplicationData((prevValue) => {
+                                                return {...prevValue, productionProcess: prevValue.productionProcess && {...prevValue.productionProcess, value: evt.target.value}}
+                                            })
+                                        }} id="description" placeholder="Я произвожу керамические вазы, посуду из кристаллической керамики и природных каменй и красителей..."></textarea>
+                                    </div>
                                 </div>
                                 <div className="application__form-div">
-                                    <ApplicationFiles></ApplicationFiles>
+                                    <ApplicationFiles photos={applicationData.photos} updatePhotos={setApplicationData}></ApplicationFiles>
                                     {/* <h3>
                                         <span>03</span>Фото товара
                                     </h3>
@@ -248,9 +250,9 @@ export default function ApplicationForm() {
                                     <ul className="application__form-div-agreements">
                                         <li>
                                             <a href="#">Публичная офферта Mohen - Tohen</a>
-                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.offerAgreement} updateState={() => {
+                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.offerAgreement.value} updateState={() => {
                                                 setApplicationData((prevValue) => {
-                                                    return {...prevValue, offerAgreement: !prevValue.offerAgreement}
+                                                    return {...prevValue, offerAgreement: {...prevValue.offerAgreement, value: !prevValue.offerAgreement.value}};
                                                 })
                                             }}></CheckboxElement>
                                             {/* <label>
@@ -264,9 +266,9 @@ export default function ApplicationForm() {
                                         </li>
                                         <li>
                                             <a href="#">Политика обработки персональных данных</a>
-                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.personalDataAgreement} updateState={() => {
+                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.personalDataAgreement.value} updateState={() => {
                                                 setApplicationData((prevValue) => {
-                                                    return {...prevValue, personalDataAgreement: !prevValue.personalDataAgreement}
+                                                    return {...prevValue, personalDataAgreement: {...prevValue.personalDataAgreement, value: !prevValue.personalDataAgreement.value}};
                                                 })
                                             }}></CheckboxElement>
                                             {/* <label>
@@ -280,9 +282,9 @@ export default function ApplicationForm() {
                                         </li>
                                         <li>
                                             <span>Доставкой, транспортировкой и логистикой занимается третья сторона-партнер СДЭК</span>
-                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.shippingPartnerAgreement} updateState={() => {
+                                            <CheckboxElement label="Прочитал и соглашаюсь" checked={applicationData.shippingPartnerAgreement.value} updateState={() => {
                                                 setApplicationData((prevValue) => {
-                                                    return {...prevValue, shippingPartnerAgreement: !prevValue.shippingPartnerAgreement}
+                                                    return {...prevValue, shippingPartnerAgreement: {...prevValue.shippingPartnerAgreement, value: !prevValue.shippingPartnerAgreement.value}}
                                                 })
                                             }}></CheckboxElement>
                                             {/* <label>
