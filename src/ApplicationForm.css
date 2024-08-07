@@ -458,9 +458,13 @@
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 160px));
+    /* grid-template-columns: repeat(auto-fill, minmax(120px, 160px));
+    width: 100%;
+    gap: 15px; */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 170px));
     width: 100%;
     gap: 15px;
+    justify-content: center;
 }
 
 /* .application__form-div-photos li {

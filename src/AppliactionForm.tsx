@@ -29,8 +29,8 @@ export default function ApplicationForm() {
         offerAgreement: {value: false, checkbox: true},
         personalDataAgreement: {value: false, checkbox: true},
         shippingPartnerAgreement: {value: false, checkbox: true},
-        dateOfFill: {value: new Date().toLocaleDateString(), textarea: false},
-        photos: [],
+        dateOfFill: {value: new Date().toLocaleDateString(), textarea: false, date: true},
+        photos: {value: [], photo: true},
     });
 
 
@@ -215,32 +215,10 @@ export default function ApplicationForm() {
                                     </div>
                                 </div>
                                 <div className="application__form-div">
-                                    <ApplicationFiles photos={applicationData.photos} updatePhotos={setApplicationData}></ApplicationFiles>
-                                    {/* <h3>
+                                    <h3>
                                         <span>03</span>Фото товара
                                     </h3>
-                                    <ul className="application__form-div-photos">
-                                        <li>
-                                            <button>
-                                                <FontAwesomeIcon icon={faPlusCircle} />
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button>
-                                                <FontAwesomeIcon icon={faPlusCircle} />
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button>
-                                                <FontAwesomeIcon icon={faPlusCircle} />
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button id="add_photo">
-                                                <FontAwesomeIcon icon={faPlusCircle} />
-                                            </button>
-                                        </li>
-                                    </ul> */}
+                                    <ApplicationFiles photos={applicationData.photos} updatePhotos={setApplicationData}></ApplicationFiles>
                                 </div>
                                 <div className="application__form-div">
                                     {/* <h3>Информация для справки</h3> */}

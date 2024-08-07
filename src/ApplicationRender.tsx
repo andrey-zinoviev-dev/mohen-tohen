@@ -1,31 +1,11 @@
-import React from "react";
-import Footer from "./Footer";
-import logo from "./assets/mh-1.png";
 import "./ApplicationRender.css";
-import { getApplication } from "./api";
-import { useParams } from "react-router-dom";
 import { ApplicationInterface } from "./interfaces";
 import ApplicationDataWrapper from "./ApplicationDataWrapper";
+import ApplicationFiles from "./ApplicationFiles";
 
-export default function ApplicationRender({applicationData}:{applicationData:ApplicationInterface,}) {
+export default function ApplicationRender({applicationData, showPhotos}:{applicationData:ApplicationInterface, showPhotos: boolean}) {
     //variables
-    const valuesOfApplication:{value: string, textarea?: boolean, label?: string, checkbox?: boolean}[] = Object.values(applicationData);
-    // const inputs
-    // //state
-    // const [loadedApplication, setLoadedApplication] = React.useState<ApplicationInterface | null>(null);
-
-    // const { applicationID } = useParams();
-
-    // React.useEffect(() => {
-    //     applicationID && getApplication(applicationID)
-    //     .then((data) => {
-    //         setLoadedApplication(data);
-    //     })
-    // } ,[]);
-
-    // React.useEffect(() => {
-    //     console.log(loadedApplication);
-    // }, [loadedApplication])
+    const valuesOfApplication:{value: string, textarea?: boolean, label?: string, checkbox?: boolean, date?: boolean, photo? :boolean}[] = Object.values(applicationData);
 
     return (
         <>
@@ -34,18 +14,31 @@ export default function ApplicationRender({applicationData}:{applicationData:App
                 <h3>Анкета</h3>
                 <div className="application__wrapper-content-grid">
                     {valuesOfApplication.filter((value) => {
-                        return !value.textarea && !value.checkbox;
+                        return !value.textarea && !value.checkbox && !value.date && !value.photo;
                     }).map((value) => {
-                        return <ApplicationDataWrapper label={value.label} data={value.value} textarea={value.textarea}></ApplicationDataWrapper>
+                        return <ApplicationDataWrapper>
+                            <label>{value.label}</label>
+                            <span>{ value.value.length > 0 ? value.value : "Не заполнено" }</span>
+                        </ApplicationDataWrapper>
                     })}
                 </div>
                 {valuesOfApplication.filter((value) => {
                         return value.textarea;
                     }).map((value) => {
-                        return <ApplicationDataWrapper label={value.label} data={value.value} textarea={value.textarea}></ApplicationDataWrapper>
+                        return <ApplicationDataWrapper>
+                            <label>{value.label}</label>
+                            <p>{ value.value.length > 0 ? value.value : "Не заполнено" }</p>
+                        </ApplicationDataWrapper>
                     })
                 }
-                <ApplicationDataWrapper label="Дата заоплнения" data={applicationData.dateOfFill.value} textarea={false}></ApplicationDataWrapper>
+                {showPhotos && <ApplicationDataWrapper>
+                    <label>Фото продукции</label>
+                    <ApplicationFiles photos={applicationData.photos} showPhotos={showPhotos}/>
+                </ApplicationDataWrapper>}
+                <ApplicationDataWrapper>
+                    <label>Дата заполнения</label>
+                    <span>{applicationData.dateOfFill.value}</span>
+                </ApplicationDataWrapper>
                 
             </div>
         </>

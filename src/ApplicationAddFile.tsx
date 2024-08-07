@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import "./ApplicationAddFile.css";
+import "./ApplicationFile.css";
 import { FileInterface } from "./interfaces";
 
 export default function ApplicationAddFile({addPhoto}:FileInterface) {
@@ -14,7 +14,7 @@ export default function ApplicationAddFile({addPhoto}:FileInterface) {
 
                     if(file) {
                         addPhoto && addPhoto((prevValue) => {
-                            return {...prevValue, photos: [...prevValue.photos, file]};
+                            return {...prevValue, photos: {...prevValue.photos, value: [...prevValue.photos.value, file]}};
                         })
                     }
                     

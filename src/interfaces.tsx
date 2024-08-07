@@ -136,8 +136,8 @@ export interface ApplicationInterface extends CollaborationInterface {
   personalDataAgreement: {value: boolean, checkbox: boolean},
   shippingPartnerAgreement: {value: boolean, checkbox: boolean},
   category: {value: string[], textarea: boolean, label: string},
-  dateOfFill: {value: string, textarea: boolean,}
-  photos: File[],
+  dateOfFill: {value: string, textarea: boolean, date: boolean},
+  photos: {value: File[], photo: boolean},
   showApplication?: boolean,
 }
 
@@ -161,6 +161,7 @@ export interface OverviewInterface {
 
 export interface FileInterface {
   file?: File,
+  showPhotos: boolean | undefined,
   addPhoto?: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
   removePhoto?: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
   selectPhoto?: React.Dispatch<React.SetStateAction<File | null>>,

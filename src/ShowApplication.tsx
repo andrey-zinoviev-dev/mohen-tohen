@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getApplication } from "./api";
 import { ApplicationInterface } from "./interfaces";
 import ApplicationRender from "./ApplicationRender";
-import "./ShowApplication.css"
+import "./ShowApplication.css";
 export default function ShowApplication() {
     const { applicationID } = useParams();
 
@@ -17,14 +17,10 @@ export default function ShowApplication() {
             setLoadedApplication(data);
         })
     } ,[]);
-
-    React.useEffect(() => {
-        console.log(loadedApplication);
-    }, [loadedApplication]);
     
     return (
         <section className="show-application">
-            {loadedApplication && <ApplicationRender applicationData={loadedApplication}></ApplicationRender>}
+            {loadedApplication && <ApplicationRender applicationData={loadedApplication} showPhotos={true}></ApplicationRender>}
         </section>
     )
-};
+}

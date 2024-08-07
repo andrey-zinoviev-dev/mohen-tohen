@@ -11,7 +11,7 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
 
     return (
         <>
-            <ApplicationRender applicationData={applicationData}>
+            <ApplicationRender applicationData={applicationData} showPhotos={false}>
 
             </ApplicationRender>
             {/* <div className="overview__wrapper">
@@ -117,32 +117,7 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                                 }
                             })
                         })
-                        // console.log(import.meta.env.VITE_BOT_TOKEN);
-
                     })
-                    // console.log('send data to api');
-                    // fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
-                    //     method: "POST",
-                    //     headers: {
-                    //         "Content-Type":"application/json",
-                    //     },
-                    //     body: JSON.stringify({
-                    //         // chat_id: 471930242,
-                    //         "chat_id": 2104151994,
-                    //         "text": "Новая заявка- Алекс",
-                    //         "parse_mode" : "markdown",
-                    //         "reply_markup" : {
-                    //             "inline_keyboard" : [
-                    //                 [
-                    //                     {
-                    //                         "text" : "Open link",
-                    //                         "url" : "https://google.com"
-                    //                     }
-                    //                 ]
-                    //             ]
-                    //         }
-                    //     })
-                    // })
                 }}>
                     Отправить анкету
                     <FontAwesomeIcon icon={faPaperPlane} />
