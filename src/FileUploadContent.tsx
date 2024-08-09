@@ -31,43 +31,52 @@ export default function FileUploadContent ({label, photos, updateStatus}: {label
   // console.log(fileToUpload);
 
   React.useEffect(() => {
-    // const uploadS3 = new Upload({
-    //   client: S3,
-    //   params: {
-    //     Bucket: import.meta.env.VITE_AWS_NAME,
-    //     Key: fileToUpload.name,
-    //     Body: fileToUpload,
-    //     ContentType: fileToUpload.type,
-    //   }
-    // });
-
-    // uploadS3.on("httpUploadProgress", (progress) => {
-    //   console.log(progress);
-    // });
-
-    // uploadS3.done()
-    // .then(() => {
-    //   setIndex((prevValue) => {
-    //     return prevValue + 1;
-    //   })
-    // })
-    // console.log(index);
-    const timeout = setTimeout(() => {
-      if(index < photos.length -1 ) {
-        setIndex((prevValue) => {
-          return prevValue + 1;
-        })
-      } else {
-        console.log("finish upload");
-        updateStatus((prevValue) => {
-          return {...prevValue, submitted: false, finished: true};
-        })
-      }
-    }, 3000)
-    
-    return () => {
-      clearTimeout(timeout);
+    if(fileToUpload) {
+      const uploadS3 = new Upload({
+        client: S3,
+        params: {
+          Bucket: import.meta.env.VITE_AWS_NAME,
+          Key: fileToUpload.name,
+          Body: fileToUpload,
+          ContentType: fileToUpload.type,
+        }
+      });
+  
+      uploadS3.on("httpUploadProgress", (progress) => {
+        console.log(progress);
+      });
+  
+      uploadS3.done()
+      .then(() => {
+        if(index < photos.length -1 ) {
+          setIndex((prevValue) => {
+            return prevValue + 1;
+          })
+        } 
+      })
+    } 
+    else {
+      updateStatus((prevValue) => {
+        return {...prevValue, submitted: false, finished: true};
+      })
     }
+    // console.log(index);
+    // const timeout = setTimeout(() => {
+    //   if(index < photos.length -1 ) {
+    //     setIndex((prevValue) => {
+    //       return prevValue + 1;
+    //     })
+    //   } else {
+    //     console.log("finish upload");
+    //     updateStatus((prevValue) => {
+    //       return {...prevValue, submitted: false, finished: true};
+    //     })
+    //   }
+    // }, 3000)
+    
+    // return () => {
+    //   clearTimeout(timeout);
+    // }
   }, [index]);
 
   return (
