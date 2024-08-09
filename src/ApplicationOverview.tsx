@@ -25,7 +25,7 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                     <FontAwesomeIcon icon={faCheck} />
                 </button> 
                     : 
-                <button type="submit" onClick={() => {
+                !submitStatus.finished ? <button type="submit" onClick={() => {
                     console.log(applicationData);
                     setSubmitStatus((prevValue) => {
                         return {...prevValue, submitted: true};
@@ -58,10 +58,12 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                     //     })
                     // })
                 }}>
-                    Отправить анкету
+                    <span>Отправить анкету</span>
                     <FontAwesomeIcon icon={faPaperPlane} />
-                </button>}
-                {submitStatus.submitted && <FileUpload photos={applicationData.photos.value} />}
+                </button>
+                    :
+                <span>Форма отправлена</span>}
+                {submitStatus.submitted && <FileUpload photos={applicationData.photos.value} updateStatus={setSubmitStatus}/>}
             </>}
         </>
 

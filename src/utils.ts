@@ -1143,4 +1143,4 @@ export const applicationProdTimeSelect:OptionInterface[] = [
   },
 ]
 
-export const baseApi = "http://localhost:3001"
+export const baseApi = "http://localhost:3001";
