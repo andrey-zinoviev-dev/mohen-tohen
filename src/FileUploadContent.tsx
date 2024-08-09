@@ -1,46 +1,56 @@
 import React from "react";
+import "./FileUploadContent.css";
+import { Upload } from "@aws-sdk/lib-storage";
+import { S3Client } from "@aws-sdk/client-s3";
 export default function FileUploadContent ({label, photos}: {label: string, photos: File[]}) {
+  // console.log(photos);
   //state
   // const [uploadStatus, setUploadStatus] = React.useState<{started: boolean, finished: boolean}>({started: true, finished: false});
-  const [fileIndex, setFileIndex] = React.useState<number>(0);
-  const [uploadFileProgress, setUploadFileProgress] = React.useState<number>(0);
+  // const [fileIndex, setFileIndex] = React.useState<number>(0);
+  // const [uploadingFile, setUploadingFile] = React.useState<{file: File, progress: number} | null>(null);
+  const [index, setIndex] = React.useState<number>(0);
+  // const [uploadFileProgress, setUploadFileProgress] = React.useState<number>(0);
   // const [loadingFile, setLoadingFile] = React.useState<File | null>(null);
 
   // React.useEffect(() => {
-  //   photos.map((photo) => {
-  //     return setLoadingFile(photo);
-  //   })
+  //   console.log(uploadingFile);
   // }, []);
 
-  // React.useEffect(() => {
-  //   console.log(loadingFile);
-  // }, [loadingFile]);
+  //s3
+  // const S3 = new S3Client({
+  //   region: import.meta.env.AWS_REGION,
+  //   bucketEndpoint: 
+  // })
 
-  // React.useEffect(() => {
+  //derived state
+  const fileToUpload = photos[index];
+  console.log(fileToUpload);
+
+  React.useEffect(() => {
+    // console.log(index);
+    const timeout = setTimeout(() => {
+      if(index < photos.length -1 ) {
+        setIndex((prevValue) => {
+          return prevValue + 1;
+        })
+      }
+    }, 3000)
     
-  //     const timeout = setTimeout(() => {
-  //       if(fileIndex < photos.length - 1) {
-  //         setFileIndex((prevValue) => {
-  //           return prevValue + 1;
-  //         });
-  //       }
-  //     }, 3000);
-  
-  //     return () => {
-  //       clearTimeout(timeout);
-  //     }
-  // }, [fileIndex, photos.length]);
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [index]);
 
-
-  
   return (
-    <div>
-      <button>Закрыть</button>
-      <span>{label}</span>
-      <span>Всего {photos.length} файлов</span>
-      <span>Грузится {photos[fileIndex].name} файл</span>
-      {/* <span>{loadingFile?.name}</span> */}
-      <progress max={100} value={uploadFileProgress}></progress>
-    </div>
+    <section className="file-upload">
+      <div className="file-upload__content">
+        {/* <button>Закрыть</button> */}
+        <span>{label}</span>
+        <span>Грузится {index + 1} файл из {photos.length}</span>
+        {/* <span>Грузится {photos[fileIndex].name} файл</span> */}
+        {/* <span>{loadingFile?.name}</span> */}
+        {/* <progress max={100} value={uploadFileProgress}></progress> */}
+      </div>
+    </section>
   )
 }

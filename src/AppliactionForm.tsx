@@ -58,25 +58,27 @@ export default function ApplicationForm() {
                         <div className="application__wrapper_welcome-text">
                             <h3>Добро пожаловать, Сергей!</h3>
                             <p>Мы рады приветствовать вас на нашей торговой площадке, где продаются особенные вещи сделанные с любовью. Здесь каждый товай - это предмет искусства!</p>
+                            {/* <p>Мы рады пригласить тебя к сотрудничеству с нашим инновационным маркетплейсом предметного дизайна, который создан специально для того, чтобы облегчить тебе путь от творчества до продажи твоих уникальных произведений. */}
+                            {/* </p> */}
                             <div>
                                 <p>Регистрация на платформе состоит из 4 основных этапов:</p>
                                 <ul className="application__wrapper-progress">
                                     <li className="application__wrapper-progress-step">
                                         <span className="application__wrapper-progress-step-index">01</span>
-                                        <span>Этап 1</span>
+                                        <span>Отправка анкеты</span>
                                     </li>
                                     <li className="application__wrapper-progress-step">
                                         <span className="application__wrapper-progress-step-index">02</span>
-                                        <span>Этап 2</span>
+                                        <span>Контакт с представителем Mohen-Tohen</span>
                                     </li>
                                     <li className="application__wrapper-progress-step">
                                         <span className="application__wrapper-progress-step-index">03</span>
-                                        <span>Этап 3</span>
+                                        <span>Создание твоего личного кабинета</span>
                                     </li>
-                                    <li className="application__wrapper-progress-step">
+                                    {/* <li className="application__wrapper-progress-step">
                                         <span className="application__wrapper-progress-step-index">04</span>
                                         <span>Этап 4</span>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                             <p>После прохождения этих этапов анкеты вы станете частью платформы Mohen - Tohen и сможете сконцентрироваться только на творчестве и производвстве!</p>
