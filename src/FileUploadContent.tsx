@@ -2,14 +2,15 @@ import React from "react";
 import "./FileUploadContent.css";
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3Client } from "@aws-sdk/client-s3";
-export default function FileUploadContent ({label, photos, updateStatus}: {label: string, photos: File[], updateStatus: React.Dispatch<React.SetStateAction<{ready: boolean, submitted: boolean, finished: boolean}>>}) {
+import SuccessWrapper from "./SuccessWrapper";
+export default function FileUploadContent ({label, photos, submitStatus, updateStatus}: {label: string, photos: File[], submitStatus: {ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}, updateStatus: React.Dispatch<React.SetStateAction<{ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}>>}) {
   // console.log(photos);
   //state
   // const [uploadStatus, setUploadStatus] = React.useState<{started: boolean, finished: boolean}>({started: true, finished: false});
   // const [fileIndex, setFileIndex] = React.useState<number>(0);
   // const [uploadingFile, setUploadingFile] = React.useState<{file: File, progress: number} | null>(null);
   const [index, setIndex] = React.useState<number>(0);
-  // const [uploadFileProgress, setUploadFileProgress] = React.useState<number>(0);
+  const [uploadFileProgress, setUploadFileProgress] = React.useState<number>(0);
   // const [loadingFile, setLoadingFile] = React.useState<File | null>(null);
 
   // React.useEffect(() => {
@@ -43,7 +44,11 @@ export default function FileUploadContent ({label, photos, updateStatus}: {label
       });
   
       uploadS3.on("httpUploadProgress", (progress) => {
-        console.log(progress);
+        if(progress.loaded && progress.total) {
+          setUploadFileProgress((progress.loaded / progress.total * 100));
+        }
+        // (progress.loaded && progress.total) && setUploadFileProgress(Math.ceil((progress.loaded / progress.total * 100)));
+        // setUploadFileProgress(progress.loaded/)
       });
   
       uploadS3.done()
@@ -57,37 +62,61 @@ export default function FileUploadContent ({label, photos, updateStatus}: {label
     } 
     else {
       updateStatus((prevValue) => {
-        return {...prevValue, submitted: false, finished: true};
-      })
+        return {...prevValue, filesUploaded: true};
+      });
+      // setFinishedUpload(true);
     }
-    // console.log(index);
-    // const timeout = setTimeout(() => {
-    //   if(index < photos.length -1 ) {
-    //     setIndex((prevValue) => {
-    //       return prevValue + 1;
-    //     })
-    //   } else {
-    //     console.log("finish upload");
-    //     updateStatus((prevValue) => {
-    //       return {...prevValue, submitted: false, finished: true};
-    //     })
-    //   }
-    // }, 3000)
-    
-    // return () => {
-    //   clearTimeout(timeout);
-    // }
   }, [index]);
+
+  // React.useEffect(() => {
+  //   console.log(uploadFileProgress);
+  // }, [uploadFileProgress])
 
   return (
     <section className="file-upload">
       <div className="file-upload__content">
+        {!submitStatus.applicationSent ? 
+        <>
+          {!submitStatus.filesUploaded ? 
+          <>
+            <span>{label}</span>
+            <span>Грузится {index < photos.length - 1 ? index + 1 : index} файл из {photos.length}</span>
+            <progress max={100} value={uploadFileProgress}></progress>
+          </> 
+          : 
+          <>
+            <SuccessWrapper label="Файлы успешно загружены" />
+          </> }
+        </>
+        :
+        <>  
+          {!submitStatus.finished ? 
+          <>
+          <span>Анкета отправляется</span>
+          </> 
+            : 
+          <>
+            <SuccessWrapper label="Анкета успешно отправлена" />
+            <p>Поздравляем, ты- молодец! Твоя анкета будет рассмотрена в течение 1-2 дней, а пока мы его изучаем, приглашаем в <a href="#">наш блог о декоре и об искусстве</a></p>
+            <p>Мы свяжемся с тобой в самое ближайшее время, спасибо, что проявил интерес к Mohen-Tohen и что хочешь сделать этот мир красивее!</p>
+          </>}
+          {/* {submitStatus.} */}
+        
+        </>}
         {/* <button>Закрыть</button> */}
-        <span>{label}</span>
-        <span>Грузится {index + 1} файл из {photos.length}</span>
-        {/* <span>Грузится {photos[fileIndex].name} файл</span> */}
-        {/* <span>{loadingFile?.name}</span> */}
-        <progress max={100} value={37}></progress>
+        {/* {!submitStatus.filesUploaded ? <>
+          <span>{label}</span>
+          <span>Грузится {index < photos.length - 1 ? index + 1 : index} файл из {photos.length}</span>
+          <progress max={100} value={uploadFileProgress}></progress>
+        </>
+        :
+        <>
+          {!submitStatus.applicationSent ? <SuccessWrapper label="Файлы успешно загружены" />
+          :
+          }
+
+        </>
+        } */}
       </div>
     </section>
   )

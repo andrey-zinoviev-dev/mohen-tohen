@@ -10,17 +10,17 @@ export default function ShowApplication() {
     //state
     const [loadedApplication, setLoadedApplication] = React.useState<ApplicationInterface | null>(null);
 
-
     React.useEffect(() => {
         applicationID && getApplication(applicationID)
         .then((data) => {
+            console.log(data);
             setLoadedApplication(data);
         })
     } ,[]);
     
     return (
         <section className="show-application">
-            {loadedApplication && <ApplicationRender applicationData={loadedApplication} showPhotos={true}></ApplicationRender>}
+            {loadedApplication && <ApplicationRender applicationData={loadedApplication} showPhotos={false}></ApplicationRender>}
         </section>
     )
 }

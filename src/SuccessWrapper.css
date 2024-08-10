@@ -1,0 +1,20 @@
+.success-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.success-wrapper label {
+  font-weight: 500;
+  font-size: 24px;
+
+}
+
+.success-wrapper svg {
+  font-size: 24px;
+  stroke: #F87545;
+  stroke-width: 5px;
+  fill: transparent;
+  color: #F87545;
+  box-sizing: border-box;
+}

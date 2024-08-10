@@ -6,7 +6,7 @@ import ApplicationFiles from "./ApplicationFiles";
 export default function ApplicationRender({applicationData, showPhotos}:{applicationData:ApplicationInterface, showPhotos: boolean}) {
     //variables
     const valuesOfApplication:{value: string, textarea?: boolean, label?: string, checkbox?: boolean, date?: boolean, photo? :boolean}[] = Object.values(applicationData);
-
+    // console.log(valuesOfApplication);
     return (
         <>
             <div className="application-render">
