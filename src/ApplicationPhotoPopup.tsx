@@ -2,20 +2,21 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationPhotoPopup.css";
 
-export default function ApplicationPhotoPopup({file, closePopup}:{file: File, closePopup: React.Dispatch<React.SetStateAction<File | null>>,
+export default function ApplicationPhotoPopup({photo, file, closePhoto, closePopup}:{photo?: {name: string, type: string, path?: string}, file?: File, closePhoto?: React.Dispatch<React.SetStateAction<{name: string, type: string} | null>>, closePopup?: React.Dispatch<React.SetStateAction<File |null>>,
 }) {
-  const path = window.URL.createObjectURL(file);
+  const path = file && window.URL.createObjectURL(file);
 
   return (
     <section className="photo-popup">
       <div className="photo-popup__wrapper">
         <button onClick={() => {
-          closePopup(null);
+          closePopup && closePopup(null);
+          closePhoto && closePhoto(null);
         }}>
           <FontAwesomeIcon icon={faXmark} />
         </button>
-        <img src={path} onLoad={() => {
-          window.URL.revokeObjectURL(path);
+        <img src={file ? path : photo?.path} onLoad={() => {
+          file && path && window.URL.revokeObjectURL(path);
         }}></img>
       </div>
 
