@@ -1,7 +1,8 @@
 import "./ApplicationRender.css";
 import { ApplicationInterface } from "./interfaces";
 import ApplicationDataWrapper from "./ApplicationDataWrapper";
-import ApplicationFiles from "./ApplicationFiles";
+// import ApplicationFiles from "./ApplicationFiles";
+import ShowApplicationPhotos from "./ShowApplicationPhotos";
 
 export default function ApplicationRender({applicationData, showPhotos}:{applicationData:ApplicationInterface, showPhotos: boolean}) {
     //variables
@@ -33,7 +34,10 @@ export default function ApplicationRender({applicationData, showPhotos}:{applica
                 }
                 {showPhotos && <ApplicationDataWrapper>
                     <label>Фото продукции</label>
-                    <ApplicationFiles photos={applicationData.photos} showPhotos={showPhotos}/>
+                    <ShowApplicationPhotos photos={applicationData.photos.value}>
+
+                    </ShowApplicationPhotos>
+                    {/* <ApplicationFiles photos={applicationData.photos.value} showPhotos={showPhotos}/> */}
                 </ApplicationDataWrapper>}
                 <ApplicationDataWrapper>
                     <label>Дата заполнения</label>

@@ -3,7 +3,7 @@ import "./FileUploadContent.css";
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3Client } from "@aws-sdk/client-s3";
 import SuccessWrapper from "./SuccessWrapper";
-export default function FileUploadContent ({label, photos, submitStatus, updateStatus}: {label: string, photos: File[], submitStatus: {ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}, updateStatus: React.Dispatch<React.SetStateAction<{ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}>>}) {
+export default function FileUploadContent ({label, files, submitStatus, updateStatus}: {label: string, files: File[], submitStatus: {ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}, updateStatus: React.Dispatch<React.SetStateAction<{ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}>>}) {
   // console.log(photos);
   //state
   // const [uploadStatus, setUploadStatus] = React.useState<{started: boolean, finished: boolean}>({started: true, finished: false});
@@ -28,7 +28,7 @@ export default function FileUploadContent ({label, photos, submitStatus, updateS
   });
 
   //derived state
-  const fileToUpload = photos[index];
+  const fileToUpload = files[index];
   // console.log(fileToUpload);
 
   React.useEffect(() => {
@@ -53,7 +53,7 @@ export default function FileUploadContent ({label, photos, submitStatus, updateS
   
       uploadS3.done()
       .then(() => {
-        if(index < photos.length -1 ) {
+        if(index < files.length -1 ) {
           setIndex((prevValue) => {
             return prevValue + 1;
           })
@@ -80,7 +80,7 @@ export default function FileUploadContent ({label, photos, submitStatus, updateS
           {!submitStatus.filesUploaded ? 
           <>
             <span>{label}</span>
-            <span>Грузится {index < photos.length - 1 ? index + 1 : index} файл из {photos.length}</span>
+            <span>Грузится {index < files.length - 1 ? index + 1 : index} файл из {files.length}</span>
             <progress max={100} value={uploadFileProgress}></progress>
           </> 
           : 
@@ -97,8 +97,10 @@ export default function FileUploadContent ({label, photos, submitStatus, updateS
             : 
           <>
             <SuccessWrapper label="Анкета успешно отправлена" />
-            <p>Поздравляем, ты- молодец! Твоя анкета будет рассмотрена в течение 1-2 дней, а пока мы его изучаем, приглашаем в <a href="#">наш блог о декоре и об искусстве</a></p>
-            <p>Мы свяжемся с тобой в самое ближайшее время, спасибо, что проявил интерес к Mohen-Tohen и что хочешь сделать этот мир красивее!</p>
+            <p>Поздравляем, ты молодец! Твоя анкета будет рассмотрена в течение 1-3 дней. Пока мы её изучаем, предлагаем посмотреть наш блог о декоре и искусстве. Мы свяжемся с тобой в самое ближайшее время.</p>
+            <p>Спасибо, что выбрал MOHEN I TOHEN. Вместе мы сделаем этот мир ещё красивее!</p>
+            {/* <p>Поздравляем, ты- молодец! Твоя анкета будет рассмотрена в течение 1-2 дней, а пока мы его изучаем, приглашаем в <a href="#">наш блог о декоре и об искусстве</a></p>
+            <p>Мы свяжемся с тобой в самое ближайшее время, спасибо, что проявил интерес к Mohen-Tohen и что хочешь сделать этот мир красивее!</p> */}
           </>}
           {/* {submitStatus.} */}
         

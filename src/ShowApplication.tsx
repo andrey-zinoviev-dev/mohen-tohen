@@ -20,7 +20,7 @@ export default function ShowApplication() {
     
     return (
         <section className="show-application">
-            {loadedApplication && <ApplicationRender applicationData={loadedApplication} showPhotos={false}></ApplicationRender>}
+            {loadedApplication && <ApplicationRender applicationData={loadedApplication} showPhotos={true}></ApplicationRender>}
         </section>
     )
 }

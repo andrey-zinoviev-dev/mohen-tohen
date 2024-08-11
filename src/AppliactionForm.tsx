@@ -33,6 +33,7 @@ export default function ApplicationForm() {
         photos: {value: [], photo: true},
     });
 
+    const [files, setFiles] = React.useState<File[]>([]);
 
     //variables
     // const readyToSubmit = 
@@ -220,7 +221,7 @@ export default function ApplicationForm() {
                                     <h3>
                                         <span>03</span>Фото товара
                                     </h3>
-                                    <ApplicationFiles photos={applicationData.photos} updatePhotos={setApplicationData}></ApplicationFiles>
+                                    <ApplicationFiles photos={applicationData.photos} files={files} updatePhotos={setApplicationData} updateFiles={setFiles}></ApplicationFiles>
                                 </div>
                                 <div className="application__form-div">
                                     {/* <h3>Информация для справки</h3> */}
@@ -251,14 +252,6 @@ export default function ApplicationForm() {
                                                     return {...prevValue, personalDataAgreement: {...prevValue.personalDataAgreement, value: !prevValue.personalDataAgreement.value}};
                                                 })
                                             }}></CheckboxElement>
-                                            {/* <label>
-                                                <input onChange={(() => {
-                                                    setApplicationData((prevValue) => {
-                                                        return {...prevValue, personalDataAgreement: !prevValue.personalDataAgreement}
-                                                    })
-                                                })} type="checkbox" />
-                                                <span>Прочитал и соглашаюсь</span>
-                                            </label> */}
                                         </li>
                                         <li>
                                             <span>Доставкой, транспортировкой и логистикой занимается третья сторона-партнер СДЭК</span>
@@ -267,14 +260,6 @@ export default function ApplicationForm() {
                                                     return {...prevValue, shippingPartnerAgreement: {...prevValue.shippingPartnerAgreement, value: !prevValue.shippingPartnerAgreement.value}}
                                                 })
                                             }}></CheckboxElement>
-                                            {/* <label>
-                                                <input type="checkbox" onChange={() => {
-                                                    setApplicationData((prevValue) => {
-                                                        return {...prevValue, shippingPartnerAgreement: !prevValue.shippingPartnerAgreement}
-                                                    })
-                                                }} />
-                                                <span>Прочитал и соглашаюсь</span>
-                                            </label> */}
                                         </li>
                                     </ul>
                                 </div>
@@ -284,87 +269,11 @@ export default function ApplicationForm() {
                             </button> */}
                         </div>
                         <div className="application__wrapper-content">
-                            <ApplicationOverview applicationData={applicationData}></ApplicationOverview>
-                            {/* <h3>Итоговая анкета</h3>
-                            <div className="application__wrapper-content-grid">
-                                <div className="application__wrapper-content-data-wrapper">
-                                    <label>ФИО</label>
-                                    <span>{applicationData.name.length > 0 ? applicationData.name : "Не заполнено"}</span>
-                                </div>
-                                <div className="application__wrapper-content-data-wrapper">
-                                    <label>Почта</label>
-                                    <span>{applicationData.email.length > 0 ? applicationData.email : "Не заполнено"}</span>
-                                </div>
-                                <div className="application__wrapper-content-data-wrapper">
-                                    <label>Телефон</label>
-                                    <span>{applicationData.phone.length > 0 ? applicationData.phone : "Не заполнено"}</span>
-                                </div>
-                                <div className="application__wrapper-content-data-wrapper">
-                                    <label>Город</label>
-                                    <span>{applicationData.city && applicationData.city.length > 0 ? applicationData.city : "Не заполнено"}</span>
-                                </div>
-                                <div className="application__wrapper-content-data-wrapper">
-                                    <label>Категории товаров</label>
-                                    <ul className="application__wrapper-content-data-wrapper-categories">
-                                        {applicationData.category.length > 0 ? applicationData.category.map((category) => {
-                                            return <li key={category}>
-                                                {category}
-                                            </li> 
-                                        })  
-                                        :
-                                        <li key="no categories">
-                                            Не выбрано
-                                        </li>
-                                        } 
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="application__wrapper-content-data-wrapper">
-                                <label>Описание</label>
-                                <p>{applicationData.description && applicationData.description.length > 0 ? applicationData.description : "Не заполнено"}</p>
-                            </div>
-                            <div className="application__wrapper-content-data-wrapper">
-                                <label>Описание продукции</label>
-                                <p>{applicationData.productionProcess && applicationData.productionProcess.length > 0 ? applicationData.productionProcess : "Не заполнено"}</p>
-                            </div>
-                            <div className="application__wrapper-content-data-wrapper">
-                                <label>Тираж продукции</label>
-                                <span>{applicationData.stock && applicationData.stock.length > 0 ? applicationData.stock : "Не заполнено" }</span>
-                            </div>
-                            <div className="application__wrapper-content-data-wrapper">
-                                <label>Габариты продукции</label>
-                                <span>{applicationData.size && applicationData.size.length > 0 ? applicationData.size : "Не заполнено"}</span>
-                            </div>
-                            <div className="application__wrapper-content-data-wrapper">
-                                <label>Продукция сборная (модульная)</label>
-                                <span>Да=Нет</span>
-                            </div>
-                            <div className="application__wrapper-content-data-wrapper">
-                                <label>Средние сроки изготовления</label>
-                                <span>{applicationData.productionLength && applicationData.productionLength.length > 0 ? applicationData.productionLength : "Не заполнено"}</span>
-                            </div>
-                            <div className="application__wrapper-content-data-wrapper">
-                                <label>Дата заполнения</label>
-                                <span>{date.split(", ")[0]}</span>
-                            </div>
-                            {applicationData.offerAgreement && applicationData.personalDataAgreement && applicationData.shippingPartnerAgreement && <>
-                                {!readyToSubmit ? <button onClick={() => {
-                                    setReadyToSubmit(true);
-                                }}>
-                                    Анкета запонена верно
-                                    <FontAwesomeIcon icon={faCheck} />
-                                </button> 
-                                : 
-                                <button>Отправить анкету
-                                    <FontAwesomeIcon icon={faPaperPlane} />
-                                </button>}
-                            </>} */}
-
+                            <ApplicationOverview applicationData={applicationData} files={files}></ApplicationOverview>
                         </div>
                     </>}
                 </div>
             </section>
-            {/* <ApplicationPhotoPopup url=""></ApplicationPhotoPopup> */}
             <Footer></Footer>
         </>
 

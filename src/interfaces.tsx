@@ -137,7 +137,7 @@ export interface ApplicationInterface extends CollaborationInterface {
   shippingPartnerAgreement: {value: boolean, checkbox: boolean},
   category: {value: string[], textarea: boolean, label: string},
   dateOfFill: {value: string, textarea: boolean, date: boolean},
-  photos: {value: File[], photo: boolean},
+  photos: {value: {name: string, type: string}[], photo: boolean},
   showApplication?: boolean,
 }
 
@@ -156,6 +156,8 @@ export interface CheckboxInterface {
 
 export interface OverviewInterface {
   applicationData: ApplicationInterface,
+  files: File[],
+  // updateFiles: React.Dispatch<React.SetStateAction<File[]>>,
   // updateApplicationData: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
 }
 
@@ -165,4 +167,6 @@ export interface FileInterface {
   addPhoto?: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
   removePhoto?: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
   selectPhoto?: React.Dispatch<React.SetStateAction<File | null>>,
+  addFile?: React.Dispatch<React.SetStateAction<File[]>>,
+  removeFile?: React.Dispatch<React.SetStateAction<File[]>>,
 }

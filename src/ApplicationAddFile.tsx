@@ -4,7 +4,7 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import "./ApplicationFile.css";
 import { FileInterface } from "./interfaces";
 
-export default function ApplicationAddFile({addPhoto}:FileInterface) {
+export default function ApplicationAddFile({addPhoto, addFile}:FileInterface) {
     return (
         <li className="application-file">
             <label className="application-file__label">
@@ -14,7 +14,11 @@ export default function ApplicationAddFile({addPhoto}:FileInterface) {
 
                     if(file) {
                         addPhoto && addPhoto((prevValue) => {
-                            return {...prevValue, photos: {...prevValue.photos, value: [...prevValue.photos.value, file]}};
+                            return {...prevValue, photos: {...prevValue.photos, value:[...prevValue.photos.value, {name: file.name, type: file.type}]}}
+                            // return {...prevValue, files: {...prevValue.photos, files: [...prevValue.photos.value, file]}};
+                        });
+                        addFile && addFile((prevValue) => {
+                            return [...prevValue, file];
                         })
                     }
                     

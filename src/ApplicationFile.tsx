@@ -3,7 +3,7 @@ import { FileInterface } from "./interfaces";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./ApplicationFile.css";
 
-export default function ApplicationFile({file, showPhotos, removePhoto, selectPhoto}:FileInterface) {
+export default function ApplicationFile({file, showPhotos, removePhoto, removeFile, selectPhoto}:FileInterface) {
     const path = file && window.URL.createObjectURL(file);
     return (
         <>
@@ -12,6 +12,12 @@ export default function ApplicationFile({file, showPhotos, removePhoto, selectPh
                     return {...prevValue, photos: {...prevValue.photos, value: prevValue.photos.value.filter((prevPhoto) => {
                         return prevPhoto.name !== file?.name;
                     })}};
+                });
+
+                removeFile && removeFile((prevValue) => {
+                    return prevValue.filter((prevFile) => {
+                        return prevFile.name !== file?.name;
+                    })
                 })
             }} className="application-file__delete">
                 <FontAwesomeIcon icon={faXmark} />
