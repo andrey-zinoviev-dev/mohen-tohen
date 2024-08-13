@@ -3,6 +3,50 @@
     margin: 0 auto;
 }
 
-.show-application .application-render {
+/* .show-application .application-render {
     min-height: 100vh;
+} */
+
+.show-application__buttons {
+    margin: 25px 0 0 0;
+    display: flex;
+    width: fit-content;
+    gap: 15px;
+    align-items: center;
+}
+
+.show-application__buttons button{
+    display: flex;
+    align-items: center;
+    min-width: 140px;
+    justify-content: center;
+    gap: 5px;
+    background-color: transparent;
+    border: 2px solid #C8CCCF;
+    transition: 0.25s ease-in-out;
+}
+
+.show-application__buttons button:first-of-type:hover {
+    border: 2px solid #51d2aa;
+}
+
+.show-application__buttons button:last-of-type:hover {
+    border: 2px solid tomato;
+}
+
+.show-application__buttons button:first-of-type svg {
+    /* background-color: #51d2aa; */
+    color: #51d2aa;
+}
+
+.show-application__buttons button:last-of-type svg {
+    color: tomato;
+}
+
+.show-application__buttons button span {
+    font-size: 16px;
+} 
+
+.show-application__buttons button svg {
+    font-size: 28px;
 }
