@@ -21,3 +21,18 @@ export function sendApplication(applicationData:ApplicationInterface) {
         return res.json();
     })
 };
+
+export function decideApplication(id:string, decision:boolean) {
+    return fetch(`${baseApi}/applications/decideApplication/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type":"application/json",
+        },
+        body: JSON.stringify({
+            decision: decision,
+        })
+    })
+    .then((res) => {
+        return res.json();
+    })
+};

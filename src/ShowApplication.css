@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-.show-application__buttons button{
+.show-application__button{
     display: flex;
     align-items: center;
     min-width: 140px;
@@ -26,27 +26,57 @@
     transition: 0.25s ease-in-out;
 }
 
-.show-application__buttons button:first-of-type:hover {
+.show-application__button:first-of-type:hover {
     border: 2px solid #51d2aa;
 }
 
-.show-application__buttons button:last-of-type:hover {
+.show-application__button:last-of-type:hover {
     border: 2px solid tomato;
 }
 
-.show-application__buttons button:first-of-type svg {
+.show-application__button:first-of-type svg {
     /* background-color: #51d2aa; */
     color: #51d2aa;
 }
 
-.show-application__buttons button:last-of-type svg {
+.show-application__button:last-of-type svg {
     color: tomato;
 }
 
-.show-application__buttons button span {
+.show-application__button span {
     font-size: 16px;
 } 
 
-.show-application__buttons button svg {
+.show-application__button svg {
     font-size: 28px;
+}
+
+.show-application__button_accept {
+    background-color: #51d2aa;
+    color: white;
+    border: 2px solid #51d2aa;
+}
+
+.show-application__button_accept:first-of-type svg {
+    color: white;
+}
+
+.show-application__button_reject {
+    background-color: tomato;
+    color: white;
+    border: 2px solid tomato;
+}
+
+.show-application__button_reject:last-of-type svg {
+    color: white;
+}
+
+.show-application__button:disabled {
+    border: 2px solid #7c7c7c;
+    color: #7c7c7c;
+    pointer-events: none;
+}
+
+.show-application__button:disabled svg {
+    color: #7c7c7c;
 }
