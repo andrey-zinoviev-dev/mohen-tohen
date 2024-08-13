@@ -6,7 +6,7 @@ import ShowApplicationPhotos from "./ShowApplicationPhotos";
 
 export default function ApplicationRender({applicationData, showPhotos}:{applicationData:ApplicationInterface, showPhotos: boolean}) {
     //variables
-    const valuesOfApplication:{value: string, textarea?: boolean, label?: string, checkbox?: boolean, date?: boolean, photo? :boolean}[] = Object.values(applicationData);
+    const valuesOfApplication:{value: string, textarea?: boolean, label?: string, checkbox?: boolean, date?: boolean, photo? :boolean, approved?: boolean}[] = Object.values(applicationData);
     // console.log(valuesOfApplication);
     return (
         <>
@@ -15,7 +15,7 @@ export default function ApplicationRender({applicationData, showPhotos}:{applica
                 <h3>Анкета</h3>
                 <div className="application__wrapper-content-grid">
                     {valuesOfApplication.filter((value) => {
-                        return !value.textarea && !value.checkbox && !value.date && !value.photo;
+                        return !value.textarea && !value.checkbox && !value.date && !value.photo && !value.approved;
                     }).map((value) => {
                         return <ApplicationDataWrapper>
                             <label>{value.label}</label>

@@ -16,6 +16,7 @@ export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
     // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
     const [applicationData, setApplicationData] = React.useState<ApplicationInterface>({
+        approved: {value: {approved: false, declined: false}, approved: true},
         name: {value: "", textarea: false, label: "Имя"},
         email: {value: "", textarea: false, label: "Почта"},
         phone: {value: "", textarea: false, label: "Телефон"},

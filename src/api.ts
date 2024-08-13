@@ -7,7 +7,7 @@ export function getApplication(id:string) {
     .then((res) => {
         return res.json();
     })
-};
+}
 
 export function sendApplication(applicationData:ApplicationInterface) {
     return fetch(`${baseApi}/applications/sendApplication`, {
@@ -20,9 +20,9 @@ export function sendApplication(applicationData:ApplicationInterface) {
     .then((res) => {
         return res.json();
     })
-};
+}
 
-export function decideApplication(id:string, decision:boolean) {
+export function decideApplication(id:string, decision:{approved?: boolean, declined?: boolean}) {
     return fetch(`${baseApi}/applications/decideApplication/${id}`, {
         method: "PUT",
         headers: {
@@ -35,4 +35,4 @@ export function decideApplication(id:string, decision:boolean) {
     .then((res) => {
         return res.json();
     })
-};
+}

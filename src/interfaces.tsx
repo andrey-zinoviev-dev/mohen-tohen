@@ -126,6 +126,7 @@ export interface CollaborationInterface {
 }
 
 export interface ApplicationInterface extends CollaborationInterface {
+  approved: {value: {approved?: boolean, declined?: boolean}, approved: boolean},
   city: {value: string, textarea: boolean, label: string},
   description: {value: string, textarea: boolean, label: string} | undefined,
   productionLength: {value: string, textarea: boolean, label: string},
