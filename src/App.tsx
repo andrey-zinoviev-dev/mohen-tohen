@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
 import './App.css'
 
 import Home from './Home'
@@ -11,7 +11,6 @@ import Account from './Account'
 import HistoryGoods from './HistoryGoods'
 import Settings from './Settings'
 import ApplicationForm from './AppliactionForm'
-import ApplicationRender from './ApplicationRender'
 import ShowApplication from './ShowApplication'
 import HomeStaging from './HomeStaging'
 
@@ -37,10 +36,7 @@ function App() {
           path: "brands/:brandID",
           element: <SellerPage></SellerPage>,
         },
-        {
-          path: "homestaging",
-          element: <HomeStaging></HomeStaging>,
-        },
+
         // {
         //   path: "/favs",
         //   element: <Favourites></Favourites>
@@ -73,7 +69,11 @@ function App() {
     {
       path: "showApplication/:applicationID",
       element: <ShowApplication />
-    }
+    },
+    {
+      path: "homestaging",
+      element: <HomeStaging></HomeStaging>,
+    },
   ], {
     basename:"/mohen-tohen"
   });

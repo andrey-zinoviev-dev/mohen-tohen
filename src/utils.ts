@@ -1,6 +1,6 @@
 import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface, CategoryInterface, LinkInterface, OptionInterface } from "./interfaces";
 import { IconDefinition, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { faVk } from "@fortawesome/free-brands-svg-icons";
+import { faVk, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import seller1 from "./assets/2024-07-08 23.47.33.jpg";
 import seller2 from "./assets/2024-07-08 23.48.06.jpg";
 import selle3 from "./assets/2024-07-08 23.48.25.jpg";
@@ -586,12 +586,17 @@ export const links:{icon: IconDefinition, href: string, name: string}[] = [
   {
     icon: faPaperPlane,
     href: "google.com",
-    name: "Whatsapp",
+    name: "Telegram",
   },
   {
     icon: faVk,
     href: "vk.com",
     name: "VK"
+  },
+  {
+    icon: faWhatsapp,
+    href: "whatsapp.com",
+    name: "Whatsapp"
   }
 ];
 

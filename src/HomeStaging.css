@@ -2,34 +2,41 @@
 
 }
 
+.homestaging__logo {
+    max-width: 240px;
+    translate: -4px;
+}
+
 .homestaging__action {
     display: grid;
-    grid-template-columns: 40% 1fr;
+    /* grid-template-columns: 40% 1fr; */
+    grid-template-columns: 1fr 45%;
+    min-height: 80vh;
+    align-items: center;
 }
 
 .homestaging__action-text {
     box-sizing: border-box;
-    padding: 15px 90px;
+    /* padding: 15px 90px; */
+    padding: 0 180px 0 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
     text-align: left;
-    align-self: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    /* align-self: flex-start; */
 }
 
+.homestaging__action-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 .homestaging__action-text h2 {
     margin: 0;
-}
-
-.homestaging__action-img {
-    width: 100%;
-    border-radius: 12px;
-    aspect-ratio: 16/10;
-}
-
-.homestaging__action-text p {
-    color: #5d5d5d;
-    font-size: 14px;
+    font-size: 36px;
+    font-weight: 300;
 }
 
 .homestaging__action-text-span {
@@ -37,20 +44,68 @@
     border-radius: 21px;
     box-sizing: border-box;
     padding: 0px 5px;
-    border: 2px solid #FF8261;
+    /* border: 2px solid #FF8261; */
+    /* font-weight: 500; */
+    font-weight: 400;
+    color: #FF8261;
+}
+
+.homestaging__action-img {
+    width: 100%;
+    border-radius: 12px;
+    /* aspect-ratio: 16/10; */
+    height: 100%;
+    object-fit: cover;
+}
+
+.homestaging__action-text p {
+    /* color: #5d5d5d; */
+    /* font-size: 14px; */
 }
 
 
-.homestaging__action-text button{
+
+
+.homestaging__action-text button {
     background-color: #FF8261;
-    font-size: 14px;
+    /* font-size: 14px; */
+    font-size: 16px;
     display: flex;
-    gap: 5px;
+    /* gap: 5px; */
+    gap: 10px;
     align-items: center;
     justify-content: center;
-    padding: 15px 5px;
+    padding: 15px 20px;
+    transition: all 0.25s ease-in-out;
+    width: fit-content;
 }
 
 .homestaging__action-text button svg {
     font-size: 20px;
+}
+
+.homestaging__action-text button:hover {
+    color: white;
+}
+
+.homestaging__action-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    width: fit-content;
+    list-style: none;
+    padding: 0;
+}
+
+.homestaging__action-links-link a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: black;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.homestaging__action-links-link a svg {
+    rotate: -45deg;
 }
