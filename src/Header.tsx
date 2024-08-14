@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -48,23 +48,29 @@ export default function Header() {
                         <img className="header__img" src={heading}></img>
                     </Link>
                     <div className="header__links">
-                        <Link to={`profile/${1223}/favs`}>
-                            <FontAwesomeIcon icon={faHeart} />
-                            <span>{userState.favourites.length}</span>
+                        <Link className="header__links-homestaging" to={"homestaging"}>
+                            <span>Подбор декора</span>
+                            <FontAwesomeIcon icon={faArrowRight} />
                         </Link>
-                        <button onClick={() => {
-                            userState.loggedIn ? 
-                                navigate(`profile/${1223}/history`)
-                                :
-                                setPopupOpened(true);
-                            // dispatch(login({name: "Андрей", email: "sttrog_810@mail.ru", favourites: [], phone: "+79588280774", seller: false, loggedIn: true}))
-                        }}>
-                            {!userState.loggedIn ? <span>Войти</span> : <span>{userState.name && userState.name[0]} <FontAwesomeIcon icon={faUser} /></span>}
-                        </button>
-                        <Link to="../basket">
-                            <FontAwesomeIcon icon={faShoppingBag} />
-                            <span>{basketState.goods.length}</span>
-                        </Link>
+                        <div className="header__links-navigation">
+                            <Link to={`profile/${1223}/favs`}>
+                                <FontAwesomeIcon icon={faHeart} />
+                                <span>{userState.favourites.length}</span>
+                            </Link>
+                            <button onClick={() => {
+                                userState.loggedIn ? 
+                                    navigate(`profile/${1223}/history`)
+                                    :
+                                    setPopupOpened(true);
+                                // dispatch(login({name: "Андрей", email: "sttrog_810@mail.ru", favourites: [], phone: "+79588280774", seller: false, loggedIn: true}))
+                            }}>
+                                {!userState.loggedIn ? <span>Войти</span> : <span>{userState.name && userState.name[0]} <FontAwesomeIcon icon={faUser} /></span>}
+                            </button>
+                            <Link to="../basket">
+                                <FontAwesomeIcon icon={faShoppingBag} />
+                                <span>{basketState.goods.length}</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
                 <div className="header__row-2">
@@ -78,29 +84,24 @@ export default function Header() {
                             </li>
                         })}
                     </ul>
+
                     <div className="header__extension">
                         <LinksComp title="Интересное" links={fixedHeaderLinks}></LinksComp>
                         {category && <LinksComp title="Что можно купить" links={category.links}></LinksComp>}
-                        {/* {category && <LinksComp title="Выбрать по дизайнеру" links={category.designers}></LinksComp>} */}
-
                     </div>
                 </div>
                 
                 
             </header>
-            {popupOpened && <Popup setClose={setPopupOpened}>
+            {/* {popupOpened && <Popup setClose={setPopupOpened}>
                 <div className="header__popup-wrapper">
                     <button onClick={() => {
                         setPopupOpened(false);
-                            // setClose(false);
-                            // setClose && setClose(false);
                         }} className="header__popup-close">
                             <FontAwesomeIcon icon={faXmark} />
                     </button>
                     <form className="header__popup-form" onSubmit={(evt) => {
                             evt.preventDefault();
-                            // setPopupOpened(false);
-                            // navigate(`profile/${1223}`)
                         }}>
                             <h3>Войти или зарегистрироваться</h3>
                             <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
@@ -110,14 +111,12 @@ export default function Header() {
                             </div>
                             <button type="button" onClick={() => {
                                 setPopupOpened(false);
-                                // navigate(`profile/${1223}`);
-                                // dispatch(login(buyerUser))
                                 dispatch(login(sellerUser));
                             }}>Получить код</button>
                     </form>
                     <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>
                 </div>
-            </Popup>}
+            </Popup>} */}
         </>
 
     )

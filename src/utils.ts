@@ -911,7 +911,7 @@ export const categories:CategoryInterface[] = [
     designers: [
 
     ]
-  }
+  },
 ];
 
 export const fixedHeaderLinks:LinkInterface[] = [

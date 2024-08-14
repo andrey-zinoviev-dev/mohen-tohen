@@ -26,7 +26,34 @@ h1 {
     font-weight: 200;
 }
 
-.welcome button {
+.welcome__button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    border-radius: 25px;
+    background-color: #FF8261;
+    transition: 0.25s ease-in-out;
+}
+
+.welcome__button:hover {
+    color: white;
+}
+
+/* .welcome__link {
     font-size: 18px;
-    letter-spacing: 1px;
+    border: 2px solid #FF8261;
+    box-sizing: border-box;
+    padding: 5px 15px;
+    border-radius: 22px;
+    background-color: #FF8261;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: black;
+} */
+
+.welcome__link svg {
+    rotate: -45deg;
 }

@@ -1,0 +1,56 @@
+.homestaging {
+
+}
+
+.homestaging__action {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+}
+
+.homestaging__action-text {
+    box-sizing: border-box;
+    padding: 15px 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    align-self: flex-start;
+}
+
+.homestaging__action-text h2 {
+    margin: 0;
+}
+
+.homestaging__action-img {
+    width: 100%;
+    border-radius: 12px;
+    aspect-ratio: 16/10;
+}
+
+.homestaging__action-text p {
+    color: #5d5d5d;
+    font-size: 14px;
+}
+
+.homestaging__action-text-span {
+    background-color: transparent;
+    border-radius: 21px;
+    box-sizing: border-box;
+    padding: 0px 5px;
+    border: 2px solid #FF8261;
+}
+
+
+.homestaging__action-text button{
+    background-color: #FF8261;
+    font-size: 14px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 5px;
+}
+
+.homestaging__action-text button svg {
+    font-size: 20px;
+}

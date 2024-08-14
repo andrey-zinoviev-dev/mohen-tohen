@@ -13,6 +13,7 @@ import Settings from './Settings'
 import ApplicationForm from './AppliactionForm'
 import ApplicationRender from './ApplicationRender'
 import ShowApplication from './ShowApplication'
+import HomeStaging from './HomeStaging'
 
 function App() {
   const router = createBrowserRouter([
@@ -35,6 +36,10 @@ function App() {
         {
           path: "brands/:brandID",
           element: <SellerPage></SellerPage>,
+        },
+        {
+          path: "homestaging",
+          element: <HomeStaging></HomeStaging>,
         },
         // {
         //   path: "/favs",
