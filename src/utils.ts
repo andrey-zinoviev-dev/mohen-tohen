@@ -6,6 +6,9 @@ import seller2 from "./assets/2024-07-08 23.48.06.jpg";
 import selle3 from "./assets/2024-07-08 23.48.25.jpg";
 import selle4 from "./assets/2024-07-08 23.48.52.jpg";
 import { UserInterface } from "./features/userSlice";
+import service1 from "./assets/1269_00005.png";
+import service2 from "./assets/1288 _000005.png";
+import service3 from "./assets/1289 _00005.png";
 
 export const promoGoods:GoodInterface[] = [
   {
@@ -1146,6 +1149,12 @@ export const applicationProdTimeSelect:OptionInterface[] = [
     id: "25-30",
     label: "От 25 до 35 дней"
   },
+];
+
+export const homestagingServices: {title: string, descirption: string, cover: string}[]= [
+  {title: "Создание декор-концепции", descirption: "Профессиональное решение для помещений, требующих только минимального вмешательства, с акцентом на стильное декорирование и преображение пространство и подчеркнуть его лучшие качества.", cover: service1},
+  {title: "Косметический ремонт", descirption: "Выполнение мелких ремонтных работ, чтобы придать помещению свежий и современный вид без необходимости проведения капитальных ремонтных работ.", cover: service2},
+  {title: "Капитальный ремонт", descirption: "Комплексное обновление вашего интерьера, включающее все необходимые работы для создания стильного и функционального пространства, с учетом вашего бюджета и предпочтений.", cover: service3},
 ]
 
 export const baseApi = "http://localhost:3001";

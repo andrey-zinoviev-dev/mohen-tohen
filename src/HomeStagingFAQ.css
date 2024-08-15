@@ -1,0 +1,17 @@
+.application-faq h2 {
+    font-size: 36px;
+    font-weight: 300;
+    text-align: left;
+    margin: 0 0 40px 0;
+}
+
+.application-faq h2 span {
+    font-weight: 400;
+    color: #FF8261;
+}
+
+.application-faq__ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
