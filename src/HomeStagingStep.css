@@ -1,0 +1,23 @@
+.step-span {
+  font-size: 48px;
+  font-weight: 500;
+  color: #FF8261;
+  /* background-color: #C8CCCF;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2px; */
+}
+
+.step-header {
+  margin: 0;
+  /* min-height: 56px; */
+}
+
+.step-description {
+  color: #a4a4a4;
+  font-size: 14px;
+}

@@ -27,13 +27,13 @@ export default function Header() {
     });
 
     //dispatch
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
 
     //navigate
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     //localState
-    const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
+    // const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
     const [category, setCategory] = React.useState<CategoryInterface | null>(null);
 
     return (
@@ -58,10 +58,10 @@ export default function Header() {
                                 <span>{userState.favourites.length}</span>
                             </Link>
                             <button onClick={() => {
-                                userState.loggedIn ? 
-                                    navigate(`profile/${1223}/history`)
-                                    :
-                                    setPopupOpened(true);
+                                // userState.loggedIn ? 
+                                //     navigate(`profile/${1223}/history`)
+                                //     :
+                                    // setPopupOpened(true);
                                 // dispatch(login({name: "Андрей", email: "sttrog_810@mail.ru", favourites: [], phone: "+79588280774", seller: false, loggedIn: true}))
                             }}>
                                 {!userState.loggedIn ? <span>Войти</span> : <span>{userState.name && userState.name[0]} <FontAwesomeIcon icon={faUser} /></span>}

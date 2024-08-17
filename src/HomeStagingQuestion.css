@@ -9,6 +9,7 @@
     width: 100%;
     border-radius: 0;
     background-color: transparent;
+    text-align: left;
 }
 .faq__question:hover {
     border: none;

@@ -8,7 +8,7 @@ import { toggleFavourite } from "./features/goodsSlice";
 import { add } from "./features/basketSlice"
 import { useAppDispatch } from "./hooks";
 import GoodColors from "./GoodColors"
-import { changeMessage } from "./features/notificationSlice"
+// import { changeMessage } from "./features/notificationSlice"
 import Terms from "./Terms"
 
 export default function GoodPage() {

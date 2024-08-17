@@ -1,0 +1,13 @@
+.homeStagingFooter {
+  background-color: #3e3e3e;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 30px 50px;
+}
+
+.homeStagingFooter__logo {
+  max-width: 240px;
+}
