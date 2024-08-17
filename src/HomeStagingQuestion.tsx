@@ -3,22 +3,22 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./HomeStagingQuestion.css";
 
-export default function HomeStagingQuestion() {
+export default function HomeStagingQuestion({question, answer}: {question: string, answer: string}) {
     //state
-    const [answer, setAnswer] = useState<boolean>(false);
+    const [answerClicked, setAnswerClicked] = useState<boolean>(false);
     return (
         <>
-            <div className="faq__question">
-                <span>Вопрос</span>
-                <button onClick={() => {
-                    setAnswer((prevValue) => {
-                        return !prevValue;
-                    })
-                }}>
-                    <FontAwesomeIcon icon={faPlusCircle} />
-                </button>
-            </div>
-            {answer && <span className="faq__answer">Ответ</span>}
+            <button onClick={() => {
+                setAnswerClicked((prevValue) => {
+                    return !prevValue;
+                })
+            }} className="faq__question">
+                <span>{question}</span>
+                <FontAwesomeIcon icon={faPlusCircle} />
+            </button>
+            {answerClicked && <div className="faq__answer">
+                <span>{answer}</span>
+            </div>}
         </>
     )
 }

@@ -48,7 +48,7 @@ export default function Header() {
                         <img className="header__img" src={heading}></img>
                     </Link>
                     <div className="header__links">
-                        <Link className="header__links-homestaging" to={"homestaging"}>
+                        <Link className="header__links-homestaging" to="/homestaging">
                             <span>Подбор декора</span>
                             <FontAwesomeIcon icon={faArrowRight} />
                         </Link>

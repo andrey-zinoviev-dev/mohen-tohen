@@ -62,16 +62,16 @@ function App() {
         },
       ]
     },
-    {
-      path: "application",
-      element: <ApplicationForm></ApplicationForm>
-    },
+    // {
+    //   path: "application",
+    //   element: <ApplicationForm></ApplicationForm>
+    // },
     {
       path: "showApplication/:applicationID",
       element: <ShowApplication />
     },
     {
-      path: "homestaging",
+      path: "/homestaging",
       element: <HomeStaging></HomeStaging>,
     },
   ], {

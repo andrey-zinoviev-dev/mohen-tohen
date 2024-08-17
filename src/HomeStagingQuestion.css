@@ -2,15 +2,38 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: none;
     border-bottom: 2px solid black;
     box-sizing: border-box;
-    padding: 15px 0;
+    padding: 20px 0;
+    width: 100%;
+    border-radius: 0;
+    background-color: transparent;
+}
+.faq__question:hover {
+    border: none;
+    border-bottom: 2px solid #FF8261;
+    /* border-bottom: 2px solid black; */
 }
 
-.faq__question button {
+.faq__question svg {
     font-size: 32px;
     background-color: transparent;
     padding: 0;
-    color: #FF8261;
+    color:  black;
     display: flex;
+}
+
+.faq__question:hover svg {
+    color: #FF8261;
+}
+
+.faq__answer {
+    padding: 25px 0;
+    text-align: left;
+}
+
+.faq__first-letter {
+    color: #FF8261;
+    font-weight: 500;
 }

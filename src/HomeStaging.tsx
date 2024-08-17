@@ -1,5 +1,6 @@
 import HomeStagingAction from "./HomeStagingAction";
 import HomeStagingFAQ from "./HomeStagingFAQ";
+import HomeStagingProcess from "./HomeStagingProcess";
 import HomeStagingServices from "./HomeStagingServices";
 
 export default function HomeStaging() {
@@ -7,6 +8,7 @@ export default function HomeStaging() {
         <>
             <HomeStagingAction></HomeStagingAction>
             <HomeStagingServices></HomeStagingServices>
+            <HomeStagingProcess></HomeStagingProcess>
             <HomeStagingFAQ></HomeStagingFAQ>
         </>
         // <section className="homestaging">

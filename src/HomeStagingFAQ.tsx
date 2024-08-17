@@ -1,14 +1,20 @@
 import HomeStagingQuestion from "./HomeStagingQuestion";
 import "./HomeStagingFAQ.css";
+import { questions } from "./utils";
 
 export default function HomeStagingFAQ() {
     return (
         <section className="application-faq">
-            <h2>Часто задаваемые вопросы (и <span>ответы</span> на них)</h2>
+            <h2>Часто задаваемые <span>вопросы</span></h2>
             <ul className="application-faq__ul">
-                <li>
+                {questions.map((question) => {
+                    return <li key={question.question}>
+                        <HomeStagingQuestion answer={question.answer} question={question.question}></HomeStagingQuestion>
+                    </li>
+                })}
+                {/* <li>
                     <HomeStagingQuestion></HomeStagingQuestion>
-                </li>
+                </li> */}
             </ul>
         </section>
     )
