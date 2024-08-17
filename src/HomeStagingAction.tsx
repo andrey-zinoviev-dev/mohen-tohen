@@ -45,11 +45,8 @@ export default function HomeStagingAction() {
             </div>
             <img className="homestaging-action__img" src={pic}></img>
             {openedForm && createPortal(<PortalComp>
-                <button className="portal__close" onClick={() => {
-                    setOpenedForm(false);
-                                // setSelectedPhoto(null);
-                }}></button>
-                <HomeStagingForm />
+                <label></label>
+                <HomeStagingForm closePortal={setOpenedForm} />
             </PortalComp>, document.body)}
     </section>
     )

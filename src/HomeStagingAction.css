@@ -99,3 +99,34 @@
     height: 100%;
     object-fit: cover;   
 }
+
+@media screen and (max-width: 1023px) {
+    .homestaging-action__text {
+        padding: 0 15px 0 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .homestaging-action {
+        grid-template-columns: 1fr;
+    }
+    .homestaging-action__text {
+        padding: 0;
+    }
+    .homestaging-action__text-wrapper button svg, .homestaging-action__img {
+        display: none;
+    }
+    .homestaging-action__text-wrapper h2 {
+        font-size: 36px;
+    }
+
+    .homestaging-action__text-wrapper button {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .homestaging-action__text-wrapper h2 {
+        font-size: 32px;
+    }
+}

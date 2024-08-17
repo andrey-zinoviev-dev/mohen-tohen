@@ -46,6 +46,18 @@
 
 .homestaging-services__ul-li p {
     color: #a4a4a4;
-    height: 105px;
+    min-height: 105px;
     font-size: 14px;
+}
+
+@media screen and (max-width: 1279px) {
+    .homestaging-services__ul-li p {
+        min-height: 210px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .homestaging-services__ul {
+        grid-template-columns: 1fr;
+    }
 }

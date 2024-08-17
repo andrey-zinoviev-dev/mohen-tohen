@@ -37,3 +37,19 @@
   text-align: left;
   min-height: 280px;
 }
+
+@media screen and (max-width: 767px) {
+  .process__ul {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
+
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .process__ul {
+    /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+  }
+}

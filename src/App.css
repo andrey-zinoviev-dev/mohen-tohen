@@ -41,3 +41,15 @@
 .read-the-docs {
   color: #888;
 }
+
+@media screen and (max-width: 1279px) {
+  #root {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  #root {
+    max-width: 768px;
+  }
+}
