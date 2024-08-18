@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, ScrollRestoration, } from 'react-router-dom'
 import './App.css'
 
 import Home from './Home'
@@ -62,10 +62,10 @@ function App() {
         },
       ]
     },
-    // {
-    //   path: "application",
-    //   element: <ApplicationForm></ApplicationForm>
-    // },
+    {
+      path: "application",
+      element: <ApplicationForm></ApplicationForm>
+    },
     {
       path: "showApplication/:applicationID",
       element: <ShowApplication />
@@ -79,8 +79,12 @@ function App() {
   });
 
   return (
-    <RouterProvider router={router}>
-    </RouterProvider>
+    <>
+      <RouterProvider router={router}>
+        
+      </RouterProvider>
+    </>
+
     // <>
     //   <Header></Header>
     //   <main>

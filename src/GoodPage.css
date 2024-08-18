@@ -113,6 +113,7 @@
     object-fit: contain;
     border-radius: 5px;
     width: 100%;
+    aspect-ratio: 16/10;
 }
 .good__colors {
     padding: 0;

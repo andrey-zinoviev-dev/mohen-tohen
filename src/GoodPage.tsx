@@ -4,11 +4,12 @@ import "./GoodPage.css"
 import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faShareNodes, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
 import { Link, useLocation } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
-import { toggleFavourite } from "./features/goodsSlice";
-import { add } from "./features/basketSlice"
-import { useAppDispatch } from "./hooks";
+// import { toggleFavourite } from "./features/goodsSlice";
+import { addRemoveToFavUser } from "./features/userSlice"
+import { add, remove } from "./features/basketSlice"
+import { useAppDispatch, useAppSelector } from "./hooks";
 import GoodColors from "./GoodColors"
-// import { changeMessage } from "./features/notificationSlice"
+import { changeMessage } from "./features/notificationSlice"
 import Terms from "./Terms"
 
 export default function GoodPage() {
@@ -23,6 +24,28 @@ export default function GoodPage() {
     const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
     const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
+
+    const userStateFavs = useAppSelector((state) => {
+        return state.user.favourites;
+    });
+    const basketState = useAppSelector((state) => {
+        return state.basket.goods;
+    });
+
+    //derived state
+    const goodInFavourites = userStateFavs.find((favGood) => {
+        return favGood.title === state.title;
+    });
+    
+    const goodInBasket = basketState.find((basketGood) => {
+        return basketGood.title === state.title;
+    });
+
+    // console.log(userStateFavs, );
+
+    // console.log(state);
+
+    console.log(goodInFavourites, goodInBasket);
 
     return (
         <section className="good">
@@ -93,20 +116,29 @@ export default function GoodPage() {
                 </div>
                 <div className="good__text-buttons">
                     <button className="butt" onClick={() => {
-                        dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }));
+                        !goodInBasket ? dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }))
+                        :
+                        dispatch(remove(state));
                         // dispatch(changeMessage(`Товар ${state.title} добавлен`));
                         setAddedToBasket(true);
+                        dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
+
                     }}>
-                        <span>{!addedToBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
+                        <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
                     </button>
                     <button className="good__text-button" onClick={() => {
-                        dispatch(toggleFavourite(state));
+                        dispatch(addRemoveToFavUser(state));
+
+                        // dispatch(toggleFavourite(state));
                         setClickedFavourite((prevValue) => {
                             return !prevValue;
                         })
+
+                        dispatch(changeMessage({message: goodInFavourites ? `Товар ${state.title} убран из избранных` : `Товар ${state.title} добавлен в избранное`}))
+
                         // dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
                     }}>
-                        <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}}/>
+                        <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: goodInFavourites ? "#FF8261" : "#F7F7F7"}}/>
                     </button>
                     <button>
                         <FontAwesomeIcon icon={faShareNodes} />

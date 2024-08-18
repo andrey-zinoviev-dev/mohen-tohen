@@ -36,6 +36,7 @@ export default function Good({good}:GoodComponentInterface) {
                   <button onClick={(evt) => {
                     evt.stopPropagation();
                     dispatch(addRemoveToFavUser(good));
+                    dispatch(changeMessage({message: goodInFavourites ? `Товар ${good.title} убран из избранных` : `Товар ${good.title} добавлен в избранное`}))
                     // dispatch(addToFavourite());
                     // dispatch(toggleFavourite({...good, quantity: 1}));
                     // dispatch(changeMessage(goodInFavourites ? {message: `Товар ${good.title} убран из избранных` : `Товар ${good.title} добавлен в избранное`}))
@@ -56,6 +57,7 @@ export default function Good({good}:GoodComponentInterface) {
 
                     // navigate("/basket")
                 }
+                dispatch(changeMessage({message: goodInBasket ? `Товар ${good.title} убран из корзины` : `Товар ${good.title} добавлен в корзину`}))
                 // dispatch(changeMessage(goodInBasket ? `Товар ${good.title} убран из корзины` : `Товар ${good.title} добавлен в корзину`))
             }}>
                 {goodInBasket ? <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon> : <FontAwesomeIcon icon={faShoppingBag} />}

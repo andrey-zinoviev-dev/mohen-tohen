@@ -8,6 +8,7 @@ import "./HomeStagingAction.css";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import HomeStagingForm from "./HomeStagingForm";
+import PortalMultimedia from "./PortalMultimedia";
 // import { useAppDispatch } from "./hooks";
 // import { openForm } from "./features/homeStagingSlice";
 export default function HomeStagingAction() {
@@ -44,10 +45,10 @@ export default function HomeStagingAction() {
                 </ul>
             </div>
             <img className="homestaging-action__img" src={pic}></img>
-            {openedForm && createPortal(<PortalComp>
+            {openedForm && createPortal(<PortalMultimedia>
                 <label></label>
                 <HomeStagingForm closePortal={setOpenedForm} />
-            </PortalComp>, document.body)}
+            </PortalMultimedia>, document.body)}
     </section>
     )
 }

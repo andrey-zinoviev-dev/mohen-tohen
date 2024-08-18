@@ -13,6 +13,9 @@ import { buyerUser, categories, fixedHeaderLinks, sellerUser } from "./utils";
 import { CategoryInterface } from "./interfaces";
 import LinksComp from "./LinksComp";
 import { login } from "./features/userSlice";
+import { createPortal } from "react-dom";
+import PortalComp from "./PortalComp";
+import getOTPCode from "./userApi";
 
 export default function Header() {
     //redux state
@@ -35,6 +38,11 @@ export default function Header() {
     //localState
     // const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
     const [category, setCategory] = React.useState<CategoryInterface | null>(null);
+    const [openPortal, setOpenPortal] = React.useState<boolean>(false);
+    const [loginStatus, setLoginStatus] = React.useState<{codeRequested: boolean, finished: boolean}>({codeRequested: false, finished: false});
+
+    //refs
+    const inputRef = React.useRef<HTMLInputElement | null>(null);
 
     return (
         <>
@@ -58,6 +66,7 @@ export default function Header() {
                                 <span>{userState.favourites.length}</span>
                             </Link>
                             <button onClick={() => {
+                                setOpenPortal(true);
                                 // userState.loggedIn ? 
                                 //     navigate(`profile/${1223}/history`)
                                 //     :
@@ -90,8 +99,49 @@ export default function Header() {
                         {category && <LinksComp title="Что можно купить" links={category.links}></LinksComp>}
                     </div>
                 </div>
-                
-                
+                {openPortal && createPortal(<PortalComp>
+                    <button className="protal__close" onClick={() => {
+                        setOpenPortal(false);
+                    }}>
+                        <FontAwesomeIcon icon={faXmark} />
+                    </button>
+                    <form className="header__popup-form" onSubmit={(evt) => {
+                            evt.preventDefault();
+                    }}>
+                        <h3>Войти или зарегистрироваться</h3>
+                        
+                        {!loginStatus.codeRequested ? <>
+                            <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
+                            <div>
+                                <span>+7</span>
+                                <input type="tel" ref={inputRef} placeholder="ваш телефон..."></input>
+                            </div>
+                            <button type="button" onClick={() => {
+
+                                inputRef.current && getOTPCode(inputRef.current?.value)
+                                .then((data) => {
+                                    setLoginStatus((prevValue) => {
+                                        return {...prevValue, codeRequested: true};
+                                    });
+                                    console.log(data);
+                                })
+                                    
+                                    // setPopupOpened(false);
+                                    // dispatch(login(sellerUser));
+                            }}>Получить код</button>
+                        </>
+                        :
+                        <>
+                            <p>Введите проверочный код, отправленный на Ваш телефон</p>
+                            <input type="text" placeholder="1 2 3 4"></input>
+                            {/* <button>
+
+                            </button> */}
+                        </>}
+
+                    </form>
+                    <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>
+                </PortalComp>, document.body)}
             </header>
             {/* {popupOpened && <Popup setClose={setPopupOpened}>
                 <div className="header__popup-wrapper">

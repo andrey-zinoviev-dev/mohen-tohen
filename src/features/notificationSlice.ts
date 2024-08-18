@@ -2,7 +2,7 @@ import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export interface NotificationInterface {
   message: string | undefined,
-  removed?: boolean,
+  // removed?: boolean,
 }
 
 const initialState:NotificationInterface = {
@@ -15,9 +15,9 @@ export const NotificationSlice = createSlice({
   reducers: {
     changeMessage: (state, action: PayloadAction<NotificationInterface | undefined>) => {
       state.message = action.payload?.message
-      if(action.payload?.removed) {
-        state.removed = action.payload.removed;
-      }
+      // if(action.payload?.removed) {
+      //   state.removed = action.payload.removed;
+      // }
     }
     // show: (state, action)
   }

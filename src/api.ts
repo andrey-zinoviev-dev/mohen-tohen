@@ -35,4 +35,5 @@ export function decideApplication(id:string, decision:{approved?: boolean, decli
     .then((res) => {
         return res.json();
     })
-}
+};
+

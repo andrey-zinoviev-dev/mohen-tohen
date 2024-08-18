@@ -65,12 +65,11 @@ export default function Cart() {
                                                 <span>{cartGood.selectedColor?.title}</span>
                                                 <div className="cart__ul-li-text-specs-colors-thumbnail" style={{backgroundColor: cartGood.selectedColor?.colorCode}}></div>
                                             </div>}
-                                            <button className="cart__button" onClick={() => {
+                                            {/* <button className="cart__button" onClick={() => {
                                                 setChangeSpec(true);
                                             }}>
                                                 <span>Изменить</span>
-                                            {/* <FontAwesomeIcon icon={faPen} /> */}
-                                        </button>
+                                            </button> */}
                                         </div>
                                     </div>
                                 </div>
