@@ -57,6 +57,7 @@ export interface BrandsInterface {
   // href: string,
   cover: string,
   goodsCollection?: GoodInterface[] | undefined,
+  _id: string,
 }
 
 export interface HeaderInterface {

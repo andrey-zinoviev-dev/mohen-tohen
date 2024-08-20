@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GoodInterface } from "../interfaces";
-import { promoGoods } from "../utils";
+// import { promoGoods } from "../utils";
 
 export interface GoodsSliceInterface {
     goods: GoodInterface[],
@@ -8,7 +8,7 @@ export interface GoodsSliceInterface {
 }
 
 const initialState:GoodsSliceInterface = {
-    goods: promoGoods,
+    goods: [],
     favourties: [],
 };
 

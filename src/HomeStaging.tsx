@@ -5,6 +5,7 @@ import HomeStagingFooter from "./HomeStagingFooter";
 import HomeStagingProcess from "./HomeStagingProcess";
 import HomeStagingServices from "./HomeStagingServices";
 // import { useAppSelector } from "./hooks";
+import Spline from "@splinetool/react-spline"
 
 export default function HomeStaging() {
 
@@ -15,6 +16,7 @@ export default function HomeStaging() {
             <HomeStagingServices></HomeStagingServices>
             <HomeStagingProcess></HomeStagingProcess>
             <HomeStagingFAQ></HomeStagingFAQ>
+            <Spline scene="https://prod.spline.design/iGAaCt8eAkF-D8Zm/scene.splinecode"></Spline>
             <HomeStagingFooter></HomeStagingFooter>
         </>
         

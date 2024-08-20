@@ -45,7 +45,7 @@ export const userSlice = createSlice({
                 state.favourites.push(action.payload);
             }
         }
-    }
+    },
 })
 
 // export const { loggin } = UserSlice.actions;

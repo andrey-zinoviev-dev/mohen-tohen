@@ -9,13 +9,13 @@ import { Link, useNavigate } from "react-router-dom";
 // import { openPopup } from "./features/popupSlice";
 import Popup from "./Popup";
 import heading from "./assets/mh-1.png"
-import { buyerUser, categories, fixedHeaderLinks, sellerUser } from "./utils";
+import { categories, fixedHeaderLinks, sellerUser } from "./utils";
 import { CategoryInterface } from "./interfaces";
 import LinksComp from "./LinksComp";
 import { login } from "./features/userSlice";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
-import getOTPCode from "./userApi";
+import { getOTPCode } from "./userApi";
 
 export default function Header() {
     //redux state

@@ -10,315 +10,315 @@ import service1 from "./assets/1269_00005.png";
 import service2 from "./assets/1288 _000005.png";
 import service3 from "./assets/1289 _00005.png";
 
-export const promoGoods:GoodInterface[] = [
-  {
-    title: "Картина угольная гора",
-    cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-    price: 7500,
-    dimensions: {
-      width: 180,
-      height: 45,
-      depth: 3,
-    },
-    seller: {
-      name: "Алексей Солдатов",
-      cover: seller2,
-      description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-      goodsCollection: [
-        // {
-        //   title: "Картина угольная гора",
-        //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        //   price: 7500,
-        //   seller: {
-        //     name: "Алексей Солдатов",
-        //     cover: seller2,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+// export const promoGoods:GoodInterface[] = [
+//   {
+//     title: "Картина угольная гора",
+//     cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//     price: 7500,
+//     dimensions: {
+//       width: 180,
+//       height: 45,
+//       depth: 3,
+//     },
+//     seller: {
+//       name: "Алексей Солдатов",
+//       cover: seller2,
+//       description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//       goodsCollection: [
+//         // {
+//         //   title: "Картина угольная гора",
+//         //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         //   price: 7500,
+//         //   seller: {
+//         //     name: "Алексей Солдатов",
+//         //     cover: seller2,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Акрил",
-        // },
-        // {
-        //   title: "Картина угольная гора",
-        //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        //   price: 7500,
-        //   seller: {
-        //     name: "Алексей Солдатов",
-        //     cover: seller2,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Акрил",
+//         // },
+//         // {
+//         //   title: "Картина угольная гора",
+//         //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         //   price: 7500,
+//         //   seller: {
+//         //     name: "Алексей Солдатов",
+//         //     cover: seller2,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Акрил",
-        // },
-        // {
-        //   title: "Картина угольная гора",
-        //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        //   price: 7500,
-        //   seller: {
-        //     name: "Алексей Солдатов",
-        //     cover: seller2,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Акрил",
+//         // },
+//         // {
+//         //   title: "Картина угольная гора",
+//         //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         //   price: 7500,
+//         //   seller: {
+//         //     name: "Алексей Солдатов",
+//         //     cover: seller2,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Акрил",
-        // },
-        // {
-        //   title: "Картина угольная гора",
-        //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        //   price: 7500,
-        //   seller: {
-        //     name: "Алексей Солдатов",
-        //     cover: seller2,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Акрил",
+//         // },
+//         // {
+//         //   title: "Картина угольная гора",
+//         //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         //   price: 7500,
+//         //   seller: {
+//         //     name: "Алексей Солдатов",
+//         //     cover: seller2,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Акрил",
-        // },
-        // {
-        //   title: "Картина угольная гора",
-        //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        //   price: 7500,
-        //   seller: {
-        //     name: "Алексей Солдатов",
-        //     cover: seller2,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Акрил",
+//         // },
+//         // {
+//         //   title: "Картина угольная гора",
+//         //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         //   price: 7500,
+//         //   seller: {
+//         //     name: "Алексей Солдатов",
+//         //     cover: seller2,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Акрил",
-        // },
-        // {
-        //   title: "Картина угольная гора",
-        //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        //   price: 7500,
-        //   seller: {
-        //     name: "Алексей Солдатов",
-        //     cover: seller2,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Акрил",
+//         // },
+//         // {
+//         //   title: "Картина угольная гора",
+//         //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         //   price: 7500,
+//         //   seller: {
+//         //     name: "Алексей Солдатов",
+//         //     cover: seller2,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Акрил",
-        // },
-        // {
-        //   title: "Картина угольная гора",
-        //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        //   price: 7500,
-        //   seller: {
-        //     name: "Алексей Солдатов",
-        //     cover: seller2,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Акрил",
+//         // },
+//         // {
+//         //   title: "Картина угольная гора",
+//         //   cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         //   price: 7500,
+//         //   seller: {
+//         //     name: "Алексей Солдатов",
+//         //     cover: seller2,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Акрил",
-        // }
-      ]
-    },
-    stock: 2,
-    madeToOrder: false,
-    material: "Акрил",
-  },
-  {
-    title: "Стул AMS 2104",
-    cover: "https://www.ib-gallery.ru/off-line/mebel_file_1/205/205624/file_L.jpg",
-    price: 3900,
-    dimensions: {
-      width: 95,
-      height: 180,
-      depth: 45
-    },
-    seller: {
-      name: "Варвара Алексеева",
-      cover: seller1,
-      description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-      goodsCollection: [
-        // {
-        //   title: "Стул AMS 2104",
-        //   cover: "https://www.ib-gallery.ru/off-line/mebel_file_1/205/205624/file_L.jpg",
-        //   price: 3900,
-        //   seller: {
-        //     name: "Варвара Алексеева",
-        //     cover: seller1,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Акрил",
+//         // }
+//       ]
+//     },
+//     stock: 2,
+//     madeToOrder: false,
+//     material: "Акрил",
+//   },
+//   {
+//     title: "Стул AMS 2104",
+//     cover: "https://www.ib-gallery.ru/off-line/mebel_file_1/205/205624/file_L.jpg",
+//     price: 3900,
+//     dimensions: {
+//       width: 95,
+//       height: 180,
+//       depth: 45
+//     },
+//     seller: {
+//       name: "Варвара Алексеева",
+//       cover: seller1,
+//       description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//       goodsCollection: [
+//         // {
+//         //   title: "Стул AMS 2104",
+//         //   cover: "https://www.ib-gallery.ru/off-line/mebel_file_1/205/205624/file_L.jpg",
+//         //   price: 3900,
+//         //   seller: {
+//         //     name: "Варвара Алексеева",
+//         //     cover: seller1,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   dimensions: {
-        //     width: 95,
-        //     height: 180,
-        //     depth: 45
-        //   },
-        //   material: "Хромированная основа"
-        // },
-      ]
-    },
-    stock: 0,
-    madeToOrder: true,
-    material: "Хромированная основа"
-  },
-  {
-    title: "Свеча Манго-Базилик",
-    cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
-    price: 1600,
-    dimensions: {
-      volume: 190,
-    },
-    seller: {
-      name: "Сати Альбертовна",
-      cover: selle3,
-      description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-      goodsCollection: [
-        // {
-        //   title: "Свеча Манго-Базилик",
-        //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
-        //   price: 1600,
-        //   dimensions: {
-        //     volume: 250,
-        //     // height: 180,
-        //   },
-        //   seller: {
-        //     name: "Сати Альбертовна",
-        //     cover: selle3,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: []
-        //   },
-        //   material: "Соевый воск"
-        // },
-        // {
-        //   title: "Свеча Манго-Базилик",
-        //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
-        //   price: 1600,
-        //   dimensions: {
-        //     volume: 250,
-        //     // height: 180,
-        //   },
-        //   seller: {
-        //     name: "Сати Альбертовна",
-        //     cover: selle3,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: []
-        //   },
-        //   material: "Соевый воск"
-        // },
-        // {
-        //   title: "Свеча Манго-Базилик",
-        //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
-        //   price: 1600,
-        //   dimensions: {
-        //     volume: 250,
-        //     // height: 180,
-        //   },
-        //   seller: {
-        //     name: "Сати Альбертовна",
-        //     cover: selle3,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: []
-        //   },
-        //   material: "Соевый воск"
-        // },
-        // {
-        //   title: "Свеча Манго-Базилик",
-        //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
-        //   price: 1600,
-        //   dimensions: {
-        //     volume: 250,
-        //     // height: 180,
-        //   },
-        //   seller: {
-        //     name: "Сати Альбертовна",
-        //     cover: selle3,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: []
-        //   },
-        //   material: "Соевый воск"
-        // },
-      ]
-    },
-    candle: true,
-    material: "Соевый воск",
-    stock: 3,
-    madeToOrder: false,
-  },
-  {
-    title: "Посуда киберпанк",
-    cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
-    price: 17000,
-    dimensions: {
-      width: 30,
-      height: 5,
-      depth: 5,
-      diameter: 45,
-    },
-    seller: {
-      name: "Hoven Studio",
-      cover: selle4,
-      description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-      goodsCollection: [
-        // {
-        //   title: "Посуда киберпанк",
-        //   cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
-        //   price: 17000,
-        //   seller: {
-        //     name: "Hoven Studio",
-        //     cover: selle4,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   dimensions: {
+//         //     width: 95,
+//         //     height: 180,
+//         //     depth: 45
+//         //   },
+//         //   material: "Хромированная основа"
+//         // },
+//       ]
+//     },
+//     stock: 0,
+//     madeToOrder: true,
+//     material: "Хромированная основа"
+//   },
+//   {
+//     title: "Свеча Манго-Базилик",
+//     cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
+//     price: 1600,
+//     dimensions: {
+//       volume: 190,
+//     },
+//     seller: {
+//       name: "Сати Альбертовна",
+//       cover: selle3,
+//       description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//       goodsCollection: [
+//         // {
+//         //   title: "Свеча Манго-Базилик",
+//         //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
+//         //   price: 1600,
+//         //   dimensions: {
+//         //     volume: 250,
+//         //     // height: 180,
+//         //   },
+//         //   seller: {
+//         //     name: "Сати Альбертовна",
+//         //     cover: selle3,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: []
+//         //   },
+//         //   material: "Соевый воск"
+//         // },
+//         // {
+//         //   title: "Свеча Манго-Базилик",
+//         //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
+//         //   price: 1600,
+//         //   dimensions: {
+//         //     volume: 250,
+//         //     // height: 180,
+//         //   },
+//         //   seller: {
+//         //     name: "Сати Альбертовна",
+//         //     cover: selle3,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: []
+//         //   },
+//         //   material: "Соевый воск"
+//         // },
+//         // {
+//         //   title: "Свеча Манго-Базилик",
+//         //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
+//         //   price: 1600,
+//         //   dimensions: {
+//         //     volume: 250,
+//         //     // height: 180,
+//         //   },
+//         //   seller: {
+//         //     name: "Сати Альбертовна",
+//         //     cover: selle3,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: []
+//         //   },
+//         //   material: "Соевый воск"
+//         // },
+//         // {
+//         //   title: "Свеча Манго-Базилик",
+//         //   cover: "https://extra-v.store/upload/iblock/b97/oy4vzf9lm60aaobna8lt87d0yitwc0nm.jpg",
+//         //   price: 1600,
+//         //   dimensions: {
+//         //     volume: 250,
+//         //     // height: 180,
+//         //   },
+//         //   seller: {
+//         //     name: "Сати Альбертовна",
+//         //     cover: selle3,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: []
+//         //   },
+//         //   material: "Соевый воск"
+//         // },
+//       ]
+//     },
+//     candle: true,
+//     material: "Соевый воск",
+//     stock: 3,
+//     madeToOrder: false,
+//   },
+//   {
+//     title: "Посуда киберпанк",
+//     cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
+//     price: 17000,
+//     dimensions: {
+//       width: 30,
+//       height: 5,
+//       depth: 5,
+//       diameter: 45,
+//     },
+//     seller: {
+//       name: "Hoven Studio",
+//       cover: selle4,
+//       description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//       goodsCollection: [
+//         // {
+//         //   title: "Посуда киберпанк",
+//         //   cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
+//         //   price: 17000,
+//         //   seller: {
+//         //     name: "Hoven Studio",
+//         //     cover: selle4,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Керамика",
-        //   colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}]
-        // },
-        // {
-        //   title: "Посуда киберпанк",
-        //   cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
-        //   price: 17000,
-        //   seller: {
-        //     name: "Hoven Studio",
-        //     cover: selle4,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Керамика",
+//         //   colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}]
+//         // },
+//         // {
+//         //   title: "Посуда киберпанк",
+//         //   cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
+//         //   price: 17000,
+//         //   seller: {
+//         //     name: "Hoven Studio",
+//         //     cover: selle4,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Керамика",
-        //   colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}]
-        // },
-        // {
-        //   title: "Посуда киберпанк",
-        //   cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
-        //   price: 17000,
-        //   seller: {
-        //     name: "Hoven Studio",
-        //     cover: selle4,
-        //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        //     goodsCollection: [
+//         //     ]
+//         //   },
+//         //   material: "Керамика",
+//         //   colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}]
+//         // },
+//         // {
+//         //   title: "Посуда киберпанк",
+//         //   cover: "https://i.pinimg.com/564x/79/e6/84/79e684d7caf173adc6ddb865fcd53944.jpg",
+//         //   price: 17000,
+//         //   seller: {
+//         //     name: "Hoven Studio",
+//         //     cover: selle4,
+//         //     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         //     goodsCollection: [
               
-        //     ]
-        //   },
-        //   material: "Керамика",
-        //   colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}]
-        // },
-      ]
-    },
-    material: "Керамика",
-    colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}],
-    stock: 4,
-    madeToOrder: false,
-  },
-];
+//         //     ]
+//         //   },
+//         //   material: "Керамика",
+//         //   colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}]
+//         // },
+//       ]
+//     },
+//     material: "Керамика",
+//     colors: [{title:"угольный", colorCode: "#20232c"}, {title: "черный", colorCode: "black"}, {title: "золотой", colorCode: "#E7B462"}, {title: "коралловый", colorCode: "#D96363"}],
+//     stock: 4,
+//     madeToOrder: false,
+//   },
+// ];
 
 export const commonGoods:GoodInterface[] = [
   // {
@@ -521,69 +521,69 @@ export const commonGoods:GoodInterface[] = [
   // },
 ];
 
-export const brands:BrandsInterface[] = [
-  {
-    name: "Alexey Soldatov",
-    cover: seller1,
-    description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-    goodsCollection: [
-      {
-        title: "Картина угольная гора",
-        cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-        price: 7500,
-        dimensions: {
-          width: 180,
-          height: 45,
-        },
-        seller: {
-          name: "Алексей Солдатов",
-          cover: seller2,
-          description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-          goodsCollection: [
+// export const brands:BrandsInterface[] = [
+//   {
+//     name: "Alexey Soldatov",
+//     cover: seller1,
+//     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//     goodsCollection: [
+//       {
+//         title: "Картина угольная гора",
+//         cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//         price: 7500,
+//         dimensions: {
+//           width: 180,
+//           height: 45,
+//         },
+//         seller: {
+//           name: "Алексей Солдатов",
+//           cover: seller2,
+//           description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//           goodsCollection: [
             
-          ]
-        },
-        material: "Акрил",
-        stock: 4,
-        madeToOrder: false,
-      },
-    ],
-  },
-  {
-    name: "Варвара Алексеева",
-    cover: seller2,
-    description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//           ]
+//         },
+//         material: "Акрил",
+//         stock: 4,
+//         madeToOrder: false,
+//       },
+//     ],
+//   },
+//   {
+//     name: "Варвара Алексеева",
+//     cover: seller2,
+//     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
 
-  },
-  {
-    name: "Сати Альбертовна",
-    cover: selle3,
-    description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//   },
+//   {
+//     name: "Сати Альбертовна",
+//     cover: selle3,
+//     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
 
-  },
-  {
-    name: "Hoven Studio",
-    cover: selle4,
-    description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//   },
+//   {
+//     name: "Hoven Studio",
+//     cover: selle4,
+//     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
 
-  },
-  {
-    name: "Сергей Пономаренко",
-    cover: seller1,
-    description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//   },
+//   {
+//     name: "Сергей Пономаренко",
+//     cover: seller1,
+//     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
 
-  },
-  {
-    name: "PAVLINA",
-    cover: seller2,
-    description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-  },
-  {
-    name: "Иван Муртыгин",
-    cover: selle3,
-    description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-  }
-];
+//   },
+//   {
+//     name: "PAVLINA",
+//     cover: seller2,
+//     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//   },
+//   {
+//     name: "Иван Муртыгин",
+//     cover: selle3,
+//     description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//   }
+// ];
 
 export const links:{icon: IconDefinition, href: string, name: string}[] = [
   {
@@ -937,60 +937,60 @@ export const fixedHeaderLinks:LinkInterface[] = [
   }
 ];
 
-export const buyerUser:UserInterface = {
-  name: "Алексей Солдатов",
-  loggedIn: true,
-  phone: "+79031513045",
-  email: "alexey2194@mail.ru",
-  favourites: [
+// export const buyerUser:UserInterface = {
+//   name: "Алексей Солдатов",
+//   loggedIn: true,
+//   phone: "+79031513045",
+//   email: "alexey2194@mail.ru",
+//   favourites: [
     
-  ],
-  seller: false,
-  history: [
-    {
-      title: "Картина угольная гора",
-      cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-      price: 7500,
-      dimensions: {
-        width: 180,
-        height: 45,
-      },
-      seller: {
-        name: "Алексей Солдатов",
-        cover: seller2,
-        description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        goodsCollection: [
+//   ],
+//   seller: false,
+//   history: [
+//     {
+//       title: "Картина угольная гора",
+//       cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//       price: 7500,
+//       dimensions: {
+//         width: 180,
+//         height: 45,
+//       },
+//       seller: {
+//         name: "Алексей Солдатов",
+//         cover: seller2,
+//         description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         goodsCollection: [
           
-        ]
-      },
-      quantity: 1,
-      material: "Акрил",
-      stock: 4, 
-      madeToOrder: false,
-    },
-    {
-      title: "Картина угольная гора",
-      cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
-      price: 7500,
-      dimensions: {
-        width: 180,
-        height: 45,
-      },
-      seller: {
-        name: "Алексей Солдатов",
-        cover: seller2,
-        description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
-        goodsCollection: [
+//         ]
+//       },
+//       quantity: 1,
+//       material: "Акрил",
+//       stock: 4, 
+//       madeToOrder: false,
+//     },
+//     {
+//       title: "Картина угольная гора",
+//       cover: "https://media.istockphoto.com/id/1270760632/photo/honister-pass-in-lake-district-cumbria-uk.jpg?s=612x612&w=0&k=20&c=G0_penqUEzFwfdaTUlBiRO_-loL7HkcqXtCIiCaebAI=",
+//       price: 7500,
+//       dimensions: {
+//         width: 180,
+//         height: 45,
+//       },
+//       seller: {
+//         name: "Алексей Солдатов",
+//         cover: seller2,
+//         description: "Уникальный художник-визионер Алексей Солдатов вобрал в себя техники работы со светом Караваджо и с формами Кандинского. Уникальный творец Херсонской улицы",
+//         goodsCollection: [
           
-        ]
-      },
-      quantity: 1,
-      material: "Акрил",
-      stock: 4, 
-      madeToOrder: false,
-    },
-  ]
-};
+//         ]
+//       },
+//       quantity: 1,
+//       material: "Акрил",
+//       stock: 4, 
+//       madeToOrder: false,
+//     },
+//   ]
+// };
 
 export const sellerUser:UserInterface = {
   name: "Сергей Ильич",
