@@ -5,7 +5,8 @@ import basketSlice from "../features/basketSlice";
 import goodsSlice from "../features/goodsSlice";
 import notificationSlice from "../features/notificationSlice";
 import popupSlice from "../features/popupSlice";
-
+import { apiSlice } from "../features/apiSlice";
+import { ListenerMiddleware } from "@reduxjs/toolkit";
 export const store = configureStore({
     reducer: {
         user: userSlice,
@@ -14,7 +15,10 @@ export const store = configureStore({
         goods: goodsSlice,
         notification: notificationSlice,
         popup: popupSlice,
-    }
+        [apiSlice.reducerPath]: apiSlice.reducer,
+    },
+    middleware: getDefaultMiddleware => 
+        getDefaultMiddleware().concat(apiSlice.middleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>

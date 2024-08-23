@@ -15,7 +15,8 @@ import LinksComp from "./LinksComp";
 import { login } from "./features/userSlice";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
-import { getOTPCode } from "./userApi";
+// import { getOTPCode } from "./userApi";
+import { useGetOTPCodeMutation } from "./features/apiSlice";
 
 export default function Header() {
     //redux state
@@ -29,8 +30,12 @@ export default function Header() {
         return state.user;
     });
 
+    const [getOTPCode, { isLoading }] = useGetOTPCodeMutation();
+
+    // const {data: user}
+
     //dispatch
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     //navigate
     // const navigate = useNavigate();
@@ -110,7 +115,9 @@ export default function Header() {
                     }}>
                         <h3>Войти или зарегистрироваться</h3>
                         
-                        {!loginStatus.codeRequested ? <>
+                        {/* {!loginStatus.codeRequested ?  */}
+                        {!userState.loggedIn ?
+                        <>
                             <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
                             <div>
                                 <span>+7</span>
@@ -118,13 +125,19 @@ export default function Header() {
                             </div>
                             <button type="button" onClick={() => {
 
-                                inputRef.current && getOTPCode(inputRef.current?.value)
+                                inputRef.current && getOTPCode(inputRef.current.value).unwrap()
                                 .then((data) => {
-                                    setLoginStatus((prevValue) => {
-                                        return {...prevValue, codeRequested: true};
-                                    });
                                     console.log(data);
+                                    dispatch(login({...data, loggedIn: true}));
                                 })
+        
+                                // getOTPCode(inputRef.current?.value)
+                                // .then((data) => {
+                                //     setLoginStatus((prevValue) => {
+                                //         return {...prevValue, codeRequested: true};
+                                //     });
+                                //     console.log(data);
+                                // })
                                     
                                     // setPopupOpened(false);
                                     // dispatch(login(sellerUser));
@@ -132,12 +145,14 @@ export default function Header() {
                         </>
                         :
                         <>
-                            <p>Введите проверочный код, отправленный на Ваш телефон</p>
-                            <input type="text" placeholder="1 2 3 4"></input>
-                            {/* <button>
-
-                            </button> */}
-                        </>}
+                            <span>Вы вошли</span>
+                        </>
+                        // <>
+                        //     <p>Введите проверочный код, отправленный на Ваш телефон</p>
+                        //     <input type="text" placeholder="1 2 3 4"></input>
+                            
+                        // </>
+                        }
 
                     </form>
                     <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>

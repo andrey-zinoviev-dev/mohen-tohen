@@ -11,6 +11,8 @@ export interface UserInterface {
     goodsCollection?: GoodInterface[],
     favourites: GoodInterface[],
     history: GoodInterface[],
+    // basket: 
+    _id: string | null,
 }
 
 const initialState:UserInterface = {
@@ -21,6 +23,7 @@ const initialState:UserInterface = {
     seller: false,
     history: [],
     favourites: [],
+    _id: null,
 }
 
 export const userSlice = createSlice({

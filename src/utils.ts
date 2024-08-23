@@ -992,16 +992,16 @@ export const fixedHeaderLinks:LinkInterface[] = [
 //   ]
 // };
 
-export const sellerUser:UserInterface = {
-  name: "Сергей Ильич",
-  loggedIn: true,
-  phone: "+79269311555",
-  email: "super_whore@mail.ru",
-  favourites: [],
-  seller: true,
-  goodsCollection: [],
-  history: [],
-};
+// export const sellerUser:UserInterface = {
+//   name: "Сергей Ильич",
+//   loggedIn: true,
+//   phone: "+79269311555",
+//   email: "super_whore@mail.ru",
+//   favourites: [],
+//   seller: true,
+//   goodsCollection: [],
+//   history: [],
+// };
 
 export const accountLinks:LinkInterface[] = [
   {
