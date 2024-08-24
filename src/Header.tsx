@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import { openPopup } from "./features/popupSlice";
 import Popup from "./Popup";
 import heading from "./assets/mh-1.png"
-import { categories, fixedHeaderLinks, sellerUser } from "./utils";
+import { categories, fixedHeaderLinks } from "./utils";
 import { CategoryInterface } from "./interfaces";
 import LinksComp from "./LinksComp";
 import { login } from "./features/userSlice";
@@ -38,7 +38,7 @@ export default function Header() {
     const dispatch = useAppDispatch();
 
     //navigate
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     //localState
     // const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
@@ -71,10 +71,11 @@ export default function Header() {
                                 <span>{userState.favourites.length}</span>
                             </Link>
                             <button onClick={() => {
-                                setOpenPortal(true);
-                                // userState.loggedIn ? 
-                                //     navigate(`profile/${1223}/history`)
-                                //     :
+                                userState.loggedIn ? 
+                                    navigate(`profile/${userState._id}/history`)
+                                    :
+                                    setOpenPortal(true);
+
                                     // setPopupOpened(true);
                                 // dispatch(login({name: "Андрей", email: "sttrog_810@mail.ru", favourites: [], phone: "+79588280774", seller: false, loggedIn: true}))
                             }}>
@@ -116,7 +117,7 @@ export default function Header() {
                         <h3>Войти или зарегистрироваться</h3>
                         
                         {/* {!loginStatus.codeRequested ?  */}
-                        {!userState.loggedIn ?
+                        
                         <>
                             <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
                             <div>
@@ -129,6 +130,7 @@ export default function Header() {
                                 .then((data) => {
                                     console.log(data);
                                     dispatch(login({...data, loggedIn: true}));
+                                    setOpenPortal(false);
                                 })
         
                                 // getOTPCode(inputRef.current?.value)
@@ -143,16 +145,14 @@ export default function Header() {
                                     // dispatch(login(sellerUser));
                             }}>Получить код</button>
                         </>
-                        :
-                        <>
-                            <span>Вы вошли</span>
-                        </>
-                        // <>
+
+
+                        {/* // <>
                         //     <p>Введите проверочный код, отправленный на Ваш телефон</p>
                         //     <input type="text" placeholder="1 2 3 4"></input>
                             
-                        // </>
-                        }
+                        // </> */}
+                        
 
                     </form>
                     <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>

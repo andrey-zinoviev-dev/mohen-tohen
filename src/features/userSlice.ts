@@ -10,7 +10,7 @@ export interface UserInterface {
     seller: boolean,
     goodsCollection?: GoodInterface[],
     favourites: GoodInterface[],
-    history: GoodInterface[],
+    ordersHistory: GoodInterface[],
     // basket: 
     _id: string | null,
 }
@@ -21,7 +21,7 @@ const initialState:UserInterface = {
     phone: null,
     email: null,
     seller: false,
-    history: [],
+    ordersHistory: [],
     favourites: [],
     _id: null,
 }

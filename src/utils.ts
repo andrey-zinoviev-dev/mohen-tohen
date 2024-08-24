@@ -1012,10 +1012,10 @@ export const accountLinks:LinkInterface[] = [
     title: "История покупок",
     href: "history"
   },
-  {
-    title: "Настройки",
-    href: "prefs"
-  }
+  // {
+  //   title: "Настройки",
+  //   href: "prefs"
+  // }
 ];
 
 export const accountSellerLinks:LinkInterface[] = [
@@ -1031,10 +1031,10 @@ export const accountSellerLinks:LinkInterface[] = [
     title: "Мои товары",
     href: "mygoods",
   },
-  {
-    title: "Настройки",
-    href: "prefs"
-  }
+  // {
+  //   title: "Настройки",
+  //   href: "prefs"
+  // }
 ]
 
 export const inquerySellSelect: OptionInterface[] = [

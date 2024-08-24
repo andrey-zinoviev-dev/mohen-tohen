@@ -37,7 +37,7 @@ export default function Account() {
                     <FontAwesomeIcon icon={faArrowLeft} />
                     <span>Назад</span>
                 </button>
-                {userState.name && <div className="account__user-wrapper">
+                {/* {userState.name && <div className="account__user-wrapper">
                     <div>
                         <h3>{userState.name}</h3>
                         <span>{userState.phone}</span>
@@ -45,7 +45,7 @@ export default function Account() {
                     <button>
                         <FontAwesomeIcon icon={faPen} />
                     </button>
-                </div>}
+                </div>} */}
                 <AccountLinks links={links}></AccountLinks>
                 {/* <ul>
                     {links.map((link) => {

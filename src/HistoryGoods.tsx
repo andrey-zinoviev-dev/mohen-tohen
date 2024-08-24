@@ -6,12 +6,14 @@ export default function HistoryGoods() {
     return state.user;
   });
 
+  console.log(userState);
+
   return (
     <div className="history">
       <h3>История {!userState.seller ? "покупок" : "продаж"}</h3>
       {/* <Goods goods={userState.history}></Goods> */}
       <ul className="history__ul">
-        {userState.history.length > 0 ? userState.history.map((transaction) => {
+        {userState.ordersHistory.length > 0 ? userState.ordersHistory.map((transaction) => {
           return <li className="history__ul-li" key={transaction.title}>
             <p className="history__ul-li-p">Номер заказа</p>
             <div className="history__ul-li-order-wrapper">
