@@ -5,6 +5,7 @@ import "./Collaboration.css"
 // import SelectElement from "./SelectElement";
 // import { inquerySellSelect } from "./utils";
 import { CollaborationInterface } from "./interfaces";
+import SuccessWrapper from "./SuccessWrapper";
 export default function Collaboration () {
     //state
     const [formData, setFormData] = React.useState<CollaborationInterface>(
@@ -17,11 +18,13 @@ export default function Collaboration () {
         }
     );
 
+    const [formSent, setFormSent] = React.useState<boolean>(false);
+
     //variables
     const formValues = Object.values(formData);
     // console.log(formValues);
     const formIsCompleted = formValues.every((entry) => {
-        return entry.length > 0;
+        return entry.value.length > 0;
     });
 
     // console.log(formIsCompleted);
@@ -37,8 +40,25 @@ export default function Collaboration () {
             </div>
             <div className="collaboration__wrapper">
                 <h3>Данные для заявки</h3>
-                <form className="collaboration__form" onSubmit={(evt) => {
+                {!formSent ? <form className="collaboration__form" onSubmit={(evt) => {
                     evt.preventDefault();
+                    console.log(formData);
+                    fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type":"application/json",
+                        },
+                        body: JSON.stringify({
+                            // chat_id: 471930242,
+                            "chat_id": 2104151994,
+                            "text": `Новая заявка на сотрудничество!\nИмя- ${formData.name.value}\nТелефон- <a href="tel:${formData.phone.value}">${formData.phone.value}</a>\nПочта- ${formData.email.value}\nНаправление- ${formData.subject?.value}
+                            `,
+                            "parse_mode" : "html",
+                        })
+                    })
+                    .then(() => {
+                        setFormSent(true);
+                    })
                 }}>
                     <div className="collaboration__form-inputs">
                         <div className="colalboration__form-input-wrapper">
@@ -96,6 +116,8 @@ export default function Collaboration () {
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>
                 </form>
+                :
+                <SuccessWrapper label="Заявка успешно отправлена!"></SuccessWrapper>}
                 {/* <div className="collaboration__wrapper">
                     <p>По кнопке ниже Вы можете ознакомиться со всеми условиями сотрудичества с нами, чтобы люди быстрее смогли приобрести Ваши товары</p>
                     <button>

@@ -28,11 +28,14 @@
     border: 1px solid #FF8261;
 }
 
-.account__goods-wrapper {
+.account__wrapper {
     /* display: flex;
     flex-direction: column;
     gap: 20px; */
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    align-items: flex-start;
 }
 
 .account__user-wrapper {

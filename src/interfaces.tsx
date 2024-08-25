@@ -1,3 +1,5 @@
+import { UserInterface } from "./features/userSlice";
+
 export interface ColorInterface  {
   title: string, 
   colorCode: string
@@ -38,10 +40,14 @@ export interface GoodInterface {
   candle?: boolean,
   stock: number,
   madeToOrder: boolean,
+  _id: boolean,
 }
 
-export interface HistoryInterface {
-  
+export interface TransactionInterface {
+  parties : string[],
+  goods: GoodInterface[] | string[],
+  price: number,
+  _id: string,
 }
 
 export interface GoodsInterface {

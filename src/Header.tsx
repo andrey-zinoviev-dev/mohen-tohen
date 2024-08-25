@@ -72,7 +72,7 @@ export default function Header() {
                             </Link>
                             <button onClick={() => {
                                 userState.loggedIn ? 
-                                    navigate(`profile/${userState._id}/history`)
+                                    navigate(`profile/${userState._id}`)
                                     :
                                     setOpenPortal(true);
 

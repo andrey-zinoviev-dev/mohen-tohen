@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseApi } from "../utils";
 // import { UserInterface } from "./userSlice";
 
-import { BrandsInterface, GoodInterface } from "../interfaces";
+import { BrandsInterface, GoodInterface, TransactionInterface } from "../interfaces";
 import { UserInterface } from "./userSlice";
 export const apiSlice = createApi({
     reducerPath: "api",
@@ -18,14 +18,14 @@ export const apiSlice = createApi({
                 body: { phone: phone },
             })
         }),
-        getSellers: builder.query<BrandsInterface[], void>({
+        getSellers: builder.query<UserInterface[], void>({
             query: () => {
-                return "/brands/showBrands"
+                return "/users/sellers"
             }
         }),
-        getSeller: builder.query<BrandsInterface, string>({
+        getSeller: builder.query<UserInterface, string>({
             query: (sellerId) => {
-                return `/brands/showBrand/${sellerId}`
+                return `/users/sellers/${sellerId}`
             }
         }),
         getGoods: builder.query<GoodInterface[], void>({
@@ -33,7 +33,12 @@ export const apiSlice = createApi({
                 return "/goods/showGoods"
             }
         }),
+        getTransactions: builder.query<TransactionInterface[], string>({
+            query: (id) => {
+                return `/transactions/${id}/show`
+            }
+        })
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, } = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetTransactionsQuery} = apiSlice;

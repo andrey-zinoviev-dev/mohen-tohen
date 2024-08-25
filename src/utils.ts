@@ -1009,7 +1009,7 @@ export const accountLinks:LinkInterface[] = [
     href: "favs"
   },
   {
-    title: "История покупок",
+    title: "История",
     href: "history"
   },
   // {
@@ -1019,14 +1019,14 @@ export const accountLinks:LinkInterface[] = [
 ];
 
 export const accountSellerLinks:LinkInterface[] = [
-  {
-    title: "Избранное",
-    href: "favs"
-  },
-  {
-    title: "История продаж",
-    href: "history"
-  },
+  // {
+  //   title: "Избранное",
+  //   href: "favs"
+  // },
+  // {
+  //   title: "История продаж",
+  //   href: "history"
+  // },
   {
     title: "Мои товары",
     href: "mygoods",
@@ -1035,7 +1035,7 @@ export const accountSellerLinks:LinkInterface[] = [
   //   title: "Настройки",
   //   href: "prefs"
   // }
-]
+].concat(accountLinks);
 
 export const inquerySellSelect: OptionInterface[] = [
   {

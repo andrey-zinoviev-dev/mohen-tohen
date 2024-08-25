@@ -3,6 +3,7 @@ import "./Footer.css";
 import { buyerLinks, links, sellerLinks } from "./utils";
 
 export default function Footer() {
+
     return (
         <footer className="footer">
             {/* <Collaboration></Collaboration> */}

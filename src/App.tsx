@@ -13,6 +13,8 @@ import Settings from './Settings'
 import ApplicationForm from './AppliactionForm'
 import ShowApplication from './ShowApplication'
 import HomeStaging from './HomeStaging'
+import AccountGoods from './AccountGoods'
+
 
 function App() {
   const router = createBrowserRouter([
@@ -49,6 +51,14 @@ function App() {
               path: "favs",
               element: <Favourites></Favourites>
             },
+            // {
+            //   path: "historyBuy",
+            //   element: <AccountHistoryBuy></AccountHistoryBuy>
+            // },
+            // {
+            //   path: "historySell",
+            //   element: <AccountHistorySell></AccountHistorySell>
+            // },
             {
               path: "history",
               element: <HistoryGoods></HistoryGoods>
@@ -56,6 +66,10 @@ function App() {
             {
               path: "prefs",
               element: <Settings></Settings>
+            },
+            {
+              path: "mygoods",
+              element: <AccountGoods></AccountGoods>
             }
           ]
           // element: <SellerPage></SellerPage>

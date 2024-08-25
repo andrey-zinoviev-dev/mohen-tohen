@@ -1,14 +1,16 @@
 .brands__ul {
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
+    /* justify-content: space-between; */
     padding: 0;
     gap: 15px;
 }
 
 .brands__ul-li {
     aspect-ratio: 1/1;
-    width: 210px;
+    min-width: 210px;
     border-radius: 50%;
     /* border-radius: 16px; */
     display: flex;
@@ -28,4 +30,6 @@
     justify-content: center;
     height: 100%;
     color: #213547;
+    /* border: 2px solid #F87545; */
+    border-radius: 50%;
 }
