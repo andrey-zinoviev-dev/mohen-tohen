@@ -1,4 +1,5 @@
-import { createBrowserRouter, RouterProvider, ScrollRestoration, } from 'react-router-dom'
+import { useEffect } from 'react'
+import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
 import './App.css'
 
 import Home from './Home'
@@ -15,8 +16,18 @@ import ShowApplication from './ShowApplication'
 import HomeStaging from './HomeStaging'
 import AccountGoods from './AccountGoods'
 
+import { useGetLoggedUserQuery } from './features/apiSlice'
+import { useDispatch } from 'react-redux'
+import { login, UserInterface } from './features/userSlice'
+import { useAppDispatch } from './hooks'
 
 function App() {
+  //dispatch
+  const dispatch = useDispatch();
+
+  //getUser
+  const {data: user = {} as UserInterface} = useGetLoggedUserQuery();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -91,6 +102,10 @@ function App() {
   ], {
     basename:"/mohen-tohen"
   });
+
+  useEffect(() => {
+      dispatch(login({...user, loggedIn: true}))
+  } ,[user])
 
   return (
     <>

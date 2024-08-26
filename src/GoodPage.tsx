@@ -5,12 +5,15 @@ import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faShareNodes, fa
 import { Link, useLocation } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 // import { toggleFavourite } from "./features/goodsSlice";
-import { addRemoveToFavUser } from "./features/userSlice"
-import { add, remove } from "./features/basketSlice"
+import { addRemoveToFavUser, addRemoveToBasket } from "./features/userSlice"
+// import { add, remove } from "./features/basketSlice"
 import { useAppDispatch, useAppSelector } from "./hooks";
 import GoodColors from "./GoodColors"
 import { changeMessage } from "./features/notificationSlice"
 import Terms from "./Terms"
+
+import { usePostGoodToBasketMutation, usePostGoodToFavouriteMutation } from "./features/apiSlice";
+
 
 export default function GoodPage() {
 
@@ -25,19 +28,19 @@ export default function GoodPage() {
     const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
 
-    const userStateFavs = useAppSelector((state) => {
-        return state.user.favourites;
-    });
-    const basketState = useAppSelector((state) => {
-        return state.basket.goods;
+    const [postGoodToBasket, { isLoading }] = usePostGoodToBasketMutation();
+    const [postGoodToFavourites] = usePostGoodToFavouriteMutation();
+
+    const userState = useAppSelector((state) => {
+        return state.user;
     });
 
     //derived state
-    const goodInFavourites = userStateFavs.find((favGood) => {
+    const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
         return favGood.title === state.title;
     });
     
-    const goodInBasket = basketState.find((basketGood) => {
+    const goodInBasket = userState.basket && userState.basket.find((basketGood) => {
         return basketGood.title === state.title;
     });
 
@@ -45,7 +48,7 @@ export default function GoodPage() {
 
     // console.log(state);
 
-    console.log(goodInFavourites, goodInBasket);
+    // console.log(goodInFavourites, goodInBasket);
 
     return (
         <section className="good">
@@ -116,12 +119,20 @@ export default function GoodPage() {
                 </div>
                 <div className="good__text-buttons">
                     <button className="butt" onClick={() => {
-                        !goodInBasket ? dispatch(add({ ...state, selectedColor: selectedColor, quantity: 1 }))
-                        :
-                        dispatch(remove(state));
-                        // dispatch(changeMessage(`Товар ${state.title} добавлен`));
-                        setAddedToBasket(true);
-                        dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
+                        userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: 1}, userId: userState._id})
+                        .then((data) => {
+                            console.log(data);
+                            // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
+                            // :
+                            // dispatch(addRemoveToBasket(state));
+                        
+                            // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
+                        })
+                        // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
+                        // :
+                        // dispatch(addRemoveToBasket(state));
+                     
+                        // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
 
                     }}>
                         <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
@@ -130,9 +141,9 @@ export default function GoodPage() {
                         dispatch(addRemoveToFavUser(state));
 
                         // dispatch(toggleFavourite(state));
-                        setClickedFavourite((prevValue) => {
-                            return !prevValue;
-                        })
+                        // setClickedFavourite((prevValue) => {
+                        //     return !prevValue;
+                        // })
 
                         dispatch(changeMessage({message: goodInFavourites ? `Товар ${state.title} убран из избранных` : `Товар ${state.title} добавлен в избранное`}))
 
@@ -146,20 +157,6 @@ export default function GoodPage() {
                 </div>
 
                 <Terms></Terms>
-                {/* <ul className="good__text-terms">
-                    <li key="delivery">
-                        <button>
-                            <span>Доставка</span>
-                            <FontAwesomeIcon icon={faPlus} />
-                        </button>
-                    </li>
-                    <li>
-                        <button>
-                        <span>Эксплуатация</span>
-                            <FontAwesomeIcon icon={faPlus} />
-                        </button>
-                    </li>
-                </ul> */}
             </div>
         </section>
     )

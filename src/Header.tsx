@@ -16,19 +16,22 @@ import { login } from "./features/userSlice";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 // import { getOTPCode } from "./userApi";
-import { useGetOTPCodeMutation } from "./features/apiSlice";
+import { useGetOTPCodeMutation, useGetLoggedUserQuery } from "./features/apiSlice";
+import { UserInterface } from "./features/userSlice";
 
 export default function Header() {
     //redux state
-    const basketState = useAppSelector((state) => {
-        return state.basket;
-    });
+    // const basketState = useAppSelector((state) => {
+    //     return state.basket;
+    // });
     // const favouriteState = useAppSelector((state) => {
     //     return state.goods.favourties;
     // });
     const userState = useAppSelector((state) => {
         return state.user;
     });
+
+    // console.log(userState);
 
     const [getOTPCode, { isLoading }] = useGetOTPCodeMutation();
 
@@ -68,7 +71,7 @@ export default function Header() {
                         <div className="header__links-navigation">
                             <Link to={`profile/${1223}/favs`}>
                                 <FontAwesomeIcon icon={faHeart} />
-                                <span>{userState.favourites.length}</span>
+                                <span>{userState.favourites && userState.favourites.length}</span>
                             </Link>
                             <button onClick={() => {
                                 userState.loggedIn ? 
@@ -83,7 +86,7 @@ export default function Header() {
                             </button>
                             <Link to="../basket">
                                 <FontAwesomeIcon icon={faShoppingBag} />
-                                <span>{basketState.goods.length}</span>
+                                <span>{userState.basket && userState.basket.length}</span>
                             </Link>
                         </div>
                     </div>

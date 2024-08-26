@@ -10,18 +10,22 @@ export default function Good({good}:GoodComponentInterface) {
     //redux
     const dispatch = useAppDispatch();
     
-    const userStateFavs = useAppSelector((state) => {
-        return state.user.favourites;
-    });
-    const basketState = useAppSelector((state) => {
-        return state.basket.goods;
+    // const userStateFavs = useAppSelector((state) => {
+    //     return state.user.favourites;
+    // });
+    // const basketState = useAppSelector((state) => {
+    //     return state.basket.goods;
+    // })
+
+    const userState = useAppSelector((state) => {
+        return state.user;
     })
 
     //derived state
-    const goodInFavourites = userStateFavs.find((favGood) => {
+    const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
         return favGood.title === good.title;
     });
-    const goodInBasket = basketState.find((basketGood) => {
+    const goodInBasket = userState.basket && userState.basket.find((basketGood) => {
         return basketGood.title === good.title;
     });
 

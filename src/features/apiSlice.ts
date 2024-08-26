@@ -12,8 +12,9 @@ export const apiSlice = createApi({
             query: (phone) => ({
                 url: "/users/otp",
                 method: "POST",
+                credentials: "include",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: { phone: phone },
             })
@@ -34,11 +35,40 @@ export const apiSlice = createApi({
             }
         }),
         getTransactions: builder.query<TransactionInterface[], string>({
-            query: (id) => {
-                return `/transactions/${id}/show`
-            }
-        })
+            query: (id) => ({
+                url: `/transactions/${id}/show`,
+                credentials: "include"
+            })
+        }),
+        getLoggedUser: builder.query<UserInterface, void>({
+            query: () => ({
+                url: `/users/me`,
+                credentials: "include",
+            })
+        }),
+        postGoodToFavourite: builder.mutation<GoodInterface, {good: GoodInterface, userId: string}>({
+            query: (good) => ({
+                url:`/users/me/favourites`,
+                method: "POST",
+                body: {good: good},
+                credentials: "include",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            })
+        }),
+        postGoodToBasket: builder.mutation<GoodInterface, {good: GoodInterface, userId: string}>({
+            query: (good) => ({
+                url:`/users/me/basket`,
+                method: "POST",
+                body: {good: good},
+                credentials: "include",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            })
+        }),
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetTransactionsQuery} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation} = apiSlice;

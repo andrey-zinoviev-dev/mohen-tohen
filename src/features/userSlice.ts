@@ -13,6 +13,7 @@ export interface UserInterface {
     ordersHistory: GoodInterface[],
     sellsHistory: GoodInterface[],
     description?:string,
+    basket: GoodInterface[],
     // basket: 
     _id: string | null,
 }
@@ -26,6 +27,7 @@ const initialState:UserInterface = {
     ordersHistory: [],
     favourites: [],
     sellsHistory: [],
+    basket: [],
     _id: null,
 }
 
@@ -50,10 +52,13 @@ export const userSlice = createSlice({
             } else {
                 state.favourites.push(action.payload);
             }
+        },
+        addRemoveToBasket: (state, action: PayloadAction<GoodInterface>) => {
+            console.log(action.payload);
         }
     },
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket } = userSlice.actions;
 export default userSlice.reducer;
