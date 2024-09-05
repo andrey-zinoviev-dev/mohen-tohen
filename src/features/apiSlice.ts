@@ -19,6 +19,19 @@ export const apiSlice = createApi({
                 body: { phone: phone },
             })
         }),
+        userLogout: builder.mutation<boolean, void>({
+            query: () => (
+                {
+                    url: "/users/logout",
+                    credentials: "include",
+                    method: "PUT",  
+                    headers: {
+                        "Content-Type":"application/json",
+                    },
+                    // return "/users/sellers"
+                }
+            )
+        }),
         getSellers: builder.query<UserInterface[], void>({
             query: () => {
                 return "/users/sellers"
@@ -68,7 +81,18 @@ export const apiSlice = createApi({
                 },
             })
         }),
+        postGoodToServer: builder.mutation<GoodInterface, boolean>({
+            query: (good) => ({
+                url: "/goods/addGood",
+                method: "POST",
+                body: {good: good},
+                credentials: "include",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            })
+        })
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation} = apiSlice;

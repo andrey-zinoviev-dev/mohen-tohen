@@ -5,7 +5,7 @@ import ApplicationFile from "./ApplicationFile";
 import { ApplicationInterface } from "./interfaces";
 import "./ApplicationFiles.css";
 import { createPortal } from "react-dom";
-import PortalComp from "./PortalComp";
+// import PortalComp from "./PortalComp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import PortalMultimedia from "./PortalMultimedia";

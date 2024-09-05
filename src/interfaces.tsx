@@ -1,4 +1,4 @@
-import { UserInterface } from "./features/userSlice";
+// import { UserInterface } from "./features/userSlice";
 
 export interface ColorInterface  {
   title: string, 

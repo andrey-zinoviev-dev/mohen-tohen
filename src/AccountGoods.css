@@ -1,0 +1,15 @@
+.accountGoods-ul {
+  display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.accountGoods-ul__btn {
+  width: 100%;
+  min-height: 240px;
+  border: 1px solid #C8CCCF;
+  border-radius: 5px;
+  font-size: 24px;
+}

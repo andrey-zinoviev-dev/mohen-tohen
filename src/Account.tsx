@@ -6,16 +6,19 @@ import "./Account.css";
 import { Outlet } from "react-router-dom";
 // import LinksComp from "./LinksComp";
 import { AccountLinks } from "./AccountLinks";
+import { useUserLogoutMutation } from "./features/apiSlice";
+import { useAppDispatch } from "./hooks";
+import { userLogout } from "./features/userSlice";
 
 export default function Account() {
-
+    const [logout] = useUserLogoutMutation();
     // //links
     // const links = !userState.seller ? accountLinks : accountSellerLinks;
 
     // console.log(address);
     // console.log(userState);
     //dispatch
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     //navigate
     // const navigate = useNavigate();
@@ -30,6 +33,19 @@ export default function Account() {
                     <span>Назад</span>
                 </button> */}
                 <AccountLinks></AccountLinks>
+                <button onClick={() => {
+                    logout()
+                    .then((data) => {
+                        if(data) {
+                            dispatch(userLogout())
+                        }
+                        // if(data.loggedOut) {
+
+                        // }
+                    })
+                }}>
+                    Выйти
+                </button>
                 {/* <ul>
                     {links.map((link) => {
                         return <li key={link.title}>

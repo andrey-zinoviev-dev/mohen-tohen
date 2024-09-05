@@ -55,10 +55,14 @@ export const userSlice = createSlice({
         },
         addRemoveToBasket: (state, action: PayloadAction<GoodInterface>) => {
             console.log(action.payload);
+        },
+        userLogout: (state) => {
+            console.log(state);
+            return state = initialState;
         }
     },
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket, userLogout, } = userSlice.actions;
 export default userSlice.reducer;

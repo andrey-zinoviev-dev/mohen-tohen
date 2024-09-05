@@ -1,7 +1,7 @@
 import "./HistoryGoods.css"
 import { useAppSelector } from "./hooks"
 import { useLocation } from "react-router-dom";
-import { GoodInterface, TransactionInterface } from "./interfaces";
+// import { GoodInterface, TransactionInterface } from "./interfaces";
 import { useGetTransactionsQuery } from "./features/apiSlice";
 export default function HistoryGoods() {
   //redux
@@ -43,9 +43,9 @@ export default function HistoryGoods() {
     //   </ul>
     // </div>
     <>
-      {/* <h3>{state.headline}</h3> */}
+      <h3>{state.headline}</h3>
       <ul className="history__ul">
-        {transactions ? transactions.map((transaction) => {
+        {transactions && transactions.length > 0 ? transactions.map((transaction) => {
           return <li className="history__ul-li" key={transaction._id}>
             <p className="history__ul-li-p">{transaction._id}</p>
             <div className="history__ul-li-order-wrapper">
