@@ -17,13 +17,14 @@ import HomeStaging from './HomeStaging'
 import AccountGoods from './AccountGoods'
 
 import { useGetLoggedUserQuery } from './features/apiSlice'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import { login, UserInterface } from './features/userSlice'
 import { useAppDispatch } from './hooks'
+import AccountAddGood from './AccountAddGood'
 
 function App() {
   //dispatch
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   //getUser
   const {data: user = {} as UserInterface} = useGetLoggedUserQuery();
@@ -80,8 +81,15 @@ function App() {
             },
             {
               path: "mygoods",
-              element: <AccountGoods></AccountGoods>
-            }
+              element: <AccountGoods></AccountGoods>,
+              children: [
+                {
+                  path:"addGood",
+                  element: <AccountAddGood></AccountAddGood>
+                }
+              ]
+            },
+
           ]
           // element: <SellerPage></SellerPage>
         },
@@ -104,7 +112,9 @@ function App() {
   });
 
   useEffect(() => {
+    if(user._id) {
       dispatch(login({...user, loggedIn: true}))
+    }
   } ,[user])
 
   return (

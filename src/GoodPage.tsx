@@ -119,15 +119,16 @@ export default function GoodPage() {
                 </div>
                 <div className="good__text-buttons">
                     <button className="butt" onClick={() => {
-                        userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: 1}, userId: userState._id})
-                        .then((data) => {
-                            console.log(data);
-                            // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
-                            // :
-                            // dispatch(addRemoveToBasket(state));
+                        console.log(state, quantity);
+                        // userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: quantity}, userId: userState._id})
+                        // .then((data) => {
+                        //     console.log(data);
+                        //     // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
+                        //     // :
+                        //     // dispatch(addRemoveToBasket(state));
                         
-                            // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
-                        })
+                        //     // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
+                        // })
                         // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
                         // :
                         // dispatch(addRemoveToBasket(state));
@@ -138,14 +139,15 @@ export default function GoodPage() {
                         <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
                     </button>
                     <button className="good__text-button" onClick={() => {
-                        dispatch(addRemoveToFavUser(state));
+                        console.log(state, quantity);
+                        // dispatch(addRemoveToFavUser(state));
 
                         // dispatch(toggleFavourite(state));
                         // setClickedFavourite((prevValue) => {
                         //     return !prevValue;
                         // })
 
-                        dispatch(changeMessage({message: goodInFavourites ? `Товар ${state.title} убран из избранных` : `Товар ${state.title} добавлен в избранное`}))
+                        // dispatch(changeMessage({message: goodInFavourites ? `Товар ${state.title} убран из избранных` : `Товар ${state.title} добавлен в избранное`}))
 
                         // dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
                     }}>

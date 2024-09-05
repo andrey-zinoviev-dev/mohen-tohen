@@ -11,7 +11,7 @@ export default function ApplicationOverview({applicationData, files}:OverviewInt
     const [submitStatus, setSubmitStatus] = React.useState<{ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}>({ready: false, submitted: false, filesUploaded: false, applicationSent: false, finished: false});
 
     React.useEffect(() => {
-        if(submitStatus.filesUploaded) {
+        if(submitStatus.submitted) {
             setSubmitStatus((prevValue) => {
                 return {...prevValue, applicationSent: true};
             })
@@ -22,31 +22,31 @@ export default function ApplicationOverview({applicationData, files}:OverviewInt
                 })
                 console.log(data);
                 console.log("send notification to telegram");
-                        // fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
-                        //     method: "POST",
-                        //     headers: {
-                        //         "Content-Type":"application/json",
-                        //     },
-                        //     body: JSON.stringify({
-                        //         // chat_id: 471930242,
-                        //         "chat_id": 2104151994,
-                        //         "text": `Новая заявка- Алекс`,
-                        //         "parse_mode" : "markdown",
-                        //         "reply_markup" : {
-                        //             "inline_keyboard" : [
-                        //                 [
-                        //                     {
-                        //                         "text" : "Open link",
-                        //                         "url" : "https://google.com"
-                        //                     }
-                        //                 ]
-                        //             ]
-                        //         }
-                        //     })
-                        // })
+                        fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type":"application/json",
+                            },
+                            body: JSON.stringify({
+                                // chat_id: 471930242,
+                                "chat_id": 2104151994,
+                                "text": `Новая заявка- Алекс`,
+                                "parse_mode" : "markdown",
+                                "reply_markup" : {
+                                    "inline_keyboard" : [
+                                        [
+                                            {
+                                                "text" : "Open link",
+                                                "url" : "https://google.com"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            })
+                        })
             })
         }
-    }, [submitStatus.filesUploaded]);
+    }, [submitStatus.submitted]);
 
     return (
         <>

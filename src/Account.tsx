@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Account.css";
 // import Goods from "./Goods";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+// import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 // import { accountLinks, accountSellerLinks } from "./utils";
-import { Outlet, useNavigate, useLocation, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 // import LinksComp from "./LinksComp";
 import { AccountLinks } from "./AccountLinks";
 
@@ -18,17 +18,17 @@ export default function Account() {
     // const dispatch = useAppDispatch();
 
     //navigate
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <section className="account">
             <div className="account__navigation-wrapper">
-                <button className="account__back" onClick={() => {
+                {/* <button className="account__back" onClick={() => {
                     navigate("../");
                 }}>
                     <FontAwesomeIcon icon={faArrowLeft} />
                     <span>Назад</span>
-                </button>
+                </button> */}
                 <AccountLinks></AccountLinks>
                 {/* <ul>
                     {links.map((link) => {

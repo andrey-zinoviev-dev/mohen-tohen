@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, useLocation } from "react-router-dom"
-import { LinksInterface } from "./interfaces"
+// import { LinksInterface } from "./interfaces"
 import { useAppSelector } from "./hooks";
 import { accountLinks, accountSellerLinks } from "./utils";
 
@@ -14,7 +14,7 @@ export function AccountLinks () {
     //links
     const links = userState.seller ? accountSellerLinks : accountLinks;
     const finalLinks = userState.loggedIn ? links : links.filter((link) => {
-        return  link.title.includes("Избранное");
+        return link.title.includes("Избранное");
     })
 
     // const accountLinks = userState.loggedIn ? links : links.filter((link) => {
