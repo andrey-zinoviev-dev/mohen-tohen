@@ -1,0 +1,35 @@
+.addGoodform {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+  width: fit-content;
+  align-items: center;
+  min-width: 320px;
+  width: 100%;
+}
+
+.addGoodform__text-wrapper {
+  width: 100%;
+  max-width: 320px;
+}
+
+.addGoodform__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+.addGoodform__label input {
+  background-color: white;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  border: 1px solid transparent;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+}

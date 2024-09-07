@@ -9,6 +9,7 @@ import { AccountLinks } from "./AccountLinks";
 import { useUserLogoutMutation } from "./features/apiSlice";
 import { useAppDispatch } from "./hooks";
 import { userLogout } from "./features/userSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Account() {
     const [logout] = useUserLogoutMutation();
@@ -17,6 +18,9 @@ export default function Account() {
 
     // console.log(address);
     // console.log(userState);
+    //navigate
+    const navigate = useNavigate();
+
     //dispatch
     const dispatch = useAppDispatch();
 
@@ -37,7 +41,9 @@ export default function Account() {
                     logout()
                     .then((data) => {
                         if(data) {
-                            dispatch(userLogout())
+                            dispatch(userLogout());
+                            navigate('/');
+                            navigate(0);
                         }
                         // if(data.loggedOut) {
 

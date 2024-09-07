@@ -100,9 +100,7 @@ function App() {
       path: "/homestaging",
       element: <HomeStaging></HomeStaging>,
     },
-  ], {
-    basename:"/mohen-tohen"
-  });
+  ]);
 
   useEffect(() => {
     if(user._id) {
