@@ -1,16 +1,24 @@
+import React from "react";
 import AddButton from "./AddButton";
 import "./ListGrid.css";
 import ListGridPhoto from "./ListGridPhoto";
-export default function ListGrid({ gridElements, openInput }: { gridElements: {title: string, file: File}[], openInput: () => void }) {
+export default function ListGrid({ gridElements, openInput, removePhoto }: { gridElements: File[], openInput: () => void, removePhoto: (file: File) => void }) {
+  
   return (
-    <ul className="ulgrid">
-      {gridElements.map((gridElement) => {
-        return <li key={gridElement.title}>
-          <ListGridPhoto file={gridElement.file}></ListGridPhoto>
+    <>
+      <ul className="ulgrid">
+        {gridElements.map((gridElement) => {
+          return <li key={gridElement.name}>
+            <ListGridPhoto file={gridElement} removePhoto={removePhoto}></ListGridPhoto>
+          </li>
+        })}
+        <li key={"add-photo"}>
+          <AddButton openInput={openInput}></AddButton>
         </li>
-      })}
-      <AddButton openInput={openInput}></AddButton>
-      {/* {children} */}
-    </ul>
+        {/* {children} */}
+      </ul>
+
+    </>
+
   )
 }

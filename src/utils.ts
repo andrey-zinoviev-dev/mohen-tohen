@@ -1036,10 +1036,6 @@ export const accountSellerLinks:LinkInterface[] = [
     href: "mygoods",
   },
   {
-    title: "Добавить товар",
-    href: "addGood"
-  },
-  {
     title: "Избранное",
     href: "favs"
   },

@@ -36,6 +36,11 @@
     flex-direction: column;
     width: 100%;
     align-items: flex-start;
+    gap: 15px;
+}
+
+.account__wrapper h3 {
+    margin: 0;
 }
 
 .account__user-wrapper {

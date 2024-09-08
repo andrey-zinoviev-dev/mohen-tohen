@@ -13,3 +13,19 @@
   border-radius: 5px;
   font-size: 24px;
 }
+
+.addgoodbtn {
+  background-color: #FF8261;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.25s ease-in-out;
+  font-size: 16px;
+  padding: 10px 15px;
+  color: black;
+  border-radius: 22px;
+}
+
+.addgoodbtn:hover {
+  color: white;
+}

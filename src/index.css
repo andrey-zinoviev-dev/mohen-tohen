@@ -68,11 +68,11 @@ button:focus-visible {
 input {
   background: transparent;
   border: none;
-  border-bottom: 1px solid black;
+  border: 1px solid black;
 }
 
 input:focus {
-  border-bottom: 1px solid #FF8261;
+  border: 1px solid #FF8261;
 }
 
 p {

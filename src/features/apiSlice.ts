@@ -81,11 +81,11 @@ export const apiSlice = createApi({
                 },
             })
         }),
-        postGoodToServer: builder.mutation<GoodInterface, boolean>({
+        postGoodToServer: builder.mutation<boolean, {title: string, description: string, material: string, dimensions: string, photos: File[], price: number}>({
             query: (good) => ({
-                url: "/goods/addGood",
+                url: "/goods/add",
                 method: "POST",
-                body: {good: good},
+                body: {good},
                 credentials: "include",
                 headers: {
                     "Content-Type":"application/json",

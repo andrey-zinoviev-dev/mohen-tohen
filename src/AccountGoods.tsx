@@ -9,6 +9,10 @@ import "./AccountGoods.css";
 // import AddButtonState from "./AddButtonState";
 import ListGrid from "./ListGrid";
 import { useAppSelector } from "./hooks";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import LinkCompAction from "./LinkCompAction";
 
 export default function AccountGoods() {
     //redux
@@ -40,6 +44,11 @@ export default function AccountGoods() {
                 :
                 <span>Товаров пока нет, но вы можете их добавить</span>
             }
+            <LinkCompAction to="../AddGood" text="Добавить товар" icon={faPlusCircle} />
+            {/* <Link to={"../addGood"} className="addgoodbtn">
+                <span>Добавить товар</span>
+                <FontAwesomeIcon icon={faPlusCircle} />
+            </Link> */}
         </>
     )
 }

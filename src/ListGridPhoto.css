@@ -1,0 +1,34 @@
+.button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: 1px solid #C8CCCF;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    position: relative;
+}
+
+.button__close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    padding: 0;
+    border: 0;
+    transition: all 0.25 ease-in-out;
+}
+
+.button__close:hover {
+    color: #FF8261;
+    /* scale: 1.1; */
+}
+
+.img {
+    width: 100%;
+    object-fit: contain;
+    /* width: 100%;
+    height: 100%;
+    object-fit: cover; */
+
+}
