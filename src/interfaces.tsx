@@ -40,7 +40,7 @@ export interface GoodInterface {
   candle?: boolean,
   stock: number,
   madeToOrder: boolean,
-  _id: boolean,
+  _id: string,
 }
 
 export interface TransactionInterface {

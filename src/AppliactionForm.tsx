@@ -222,7 +222,7 @@ export default function ApplicationForm() {
                                     <h3>
                                         <span>03</span>Фото товара
                                     </h3>
-                                    <ApplicationFiles photos={applicationData.photos} files={files} updatePhotos={setApplicationData} updateFiles={setFiles}></ApplicationFiles>
+                                    {/* <ApplicationFiles photos={applicationData.photos} files={files} updatePhotos={setApplicationData} updateFiles={setFiles}></ApplicationFiles> */}
                                 </div>
                                 <div className="application__form-div">
                                     {/* <h3>Информация для справки</h3> */}

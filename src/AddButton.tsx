@@ -4,7 +4,8 @@ import "./AddButton.css";
 
 export default function AddButton({openInput}: {openInput: () => void}) {
   return (
-    <button className="addButton" type="button" onClick={() => {
+    <button className="addButton" type="button" onClick={(evt) => {
+      evt.stopPropagation();
       // addElement(true);
       openInput();
     }}>

@@ -1028,14 +1028,27 @@ export const accountSellerLinks:LinkInterface[] = [
   //   href: "history"
   // },
   {
+    title: "История",
+    href: "history"
+  },
+  {
     title: "Мои товары",
     href: "mygoods",
   },
+  {
+    title: "Добавить товар",
+    href: "addGood"
+  },
+  {
+    title: "Избранное",
+    href: "favs"
+  },
+
   // {
   //   title: "Настройки",
   //   href: "prefs"
   // }
-].concat(accountLinks);
+];
 
 export const inquerySellSelect: OptionInterface[] = [
   {

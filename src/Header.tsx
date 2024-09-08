@@ -64,10 +64,10 @@ export default function Header() {
                         <img className="header__img" src={heading}></img>
                     </Link>
                     <div className="header__links">
-                        <Link className="header__links-homestaging" to="/homestaging">
+                        {/* <Link className="header__links-homestaging" to="/homestaging">
                             <span>Подбор декора</span>
                             <FontAwesomeIcon icon={faArrowRight} />
-                        </Link>
+                        </Link> */}
                         <div className="header__links-navigation">
                             <Link to={`profile/${1223}/favs`}>
                                 <FontAwesomeIcon icon={faHeart} />
@@ -75,7 +75,7 @@ export default function Header() {
                             </Link>
                             <button onClick={() => {
                                 userState.loggedIn ? 
-                                    navigate(`profile/${userState._id}`)
+                                    navigate(`profile/${userState._id}/history`)
                                     :
                                     setOpenPortal(true);
 
@@ -101,12 +101,18 @@ export default function Header() {
                                 <div></div>
                             </li>
                         })}
+                        <li key={"homestage"}>
+                            <Link className="header__links-homestaging" to="/homestaging">
+                                <span>Подбор декора</span>
+                                <FontAwesomeIcon icon={faArrowRight} />
+                            </Link>
+                        </li>
                     </ul>
 
-                    <div className="header__extension">
+                    {/* <div className="header__extension">
                         <LinksComp title="Интересное" links={fixedHeaderLinks}></LinksComp>
                         {category && <LinksComp title="Что можно купить" links={category.links}></LinksComp>}
-                    </div>
+                    </div> */}
                 </div>
                 {openPortal && createPortal(<PortalComp>
                     <button className="protal__close" onClick={() => {

@@ -1,7 +1,10 @@
-export default function InputEl({name, type}: {name: string, type?:string}) {
+export default function InputEl<T>({name, type, updateState}: {name: string, type?:string, updateState: React.Dispatch<React.SetStateAction<T>>}) {
   return (
-    <input name={name} type={type} onChange={() => {
-      console.log(name);
+    <input name={name} type={type} onChange={(evt) => {
+      // console.log(name);
+      updateState((prevValue) => {
+        return {...prevValue, [name]: evt.target.value};
+      })
     }}></input>
   )
 }

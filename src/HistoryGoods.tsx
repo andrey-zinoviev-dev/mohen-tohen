@@ -43,9 +43,10 @@ export default function HistoryGoods() {
     //   </ul>
     // </div>
     <>
-      <h3>{state.headline}</h3>
-      <ul className="history__ul">
-        {transactions && transactions.length > 0 ? transactions.map((transaction) => {
+      {/* <h3>{state.headline}</h3> */}
+      <h3>История</h3>
+      {transactions && transactions.length > 0 ? <ul className="history__ul">
+         {transactions.map((transaction) => {
           return <li className="history__ul-li" key={transaction._id}>
             <p className="history__ul-li-p">{transaction._id}</p>
             <div className="history__ul-li-order-wrapper">
@@ -54,13 +55,10 @@ export default function HistoryGoods() {
               <span>Сумма: {transaction.price}</span>
             </div>
           </li>
-        })
-        :
-        <li className="history__ul-li" key="empty-history">
-          <span>{state.headline} пуста, но вы всегда можете ее заполнить</span>
-        </li>
-        }
+        })}
       </ul>
+      :
+      <span>История товаров пуста, но вы всегда можете ее заполнить</span>}
     </>
   )
 }

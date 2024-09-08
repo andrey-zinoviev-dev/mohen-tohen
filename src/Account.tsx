@@ -37,6 +37,7 @@ export default function Account() {
                     <span>Назад</span>
                 </button> */}
                 <AccountLinks></AccountLinks>
+
                 <button onClick={() => {
                     logout()
                     .then((data) => {
@@ -52,16 +53,6 @@ export default function Account() {
                 }}>
                     Выйти
                 </button>
-                {/* <ul>
-                    {links.map((link) => {
-                        return <li key={link.title}>
-                            <Link to={link.href}>
-                                {link.title}
-                            </Link>
-                        </li>
-                    })}
-                </ul> */}
-                {/* <LinksComp inAccount={true} links={!userState.seller ? accountLinks : accountSellerLinks} /> */}
             </div>
 
             <div className="account__wrapper">

@@ -20,6 +20,7 @@ import { useGetLoggedUserQuery } from './features/apiSlice'
 // import { useDispatch } from 'react-redux'
 import { login, UserInterface } from './features/userSlice'
 import { useAppDispatch } from './hooks'
+import AccountAddGood from './AccountAddGood'
 
 function App() {
   //dispatch
@@ -82,7 +83,10 @@ function App() {
               path: "mygoods",
               element: <AccountGoods></AccountGoods>,
             },
-
+            {
+              path: "addGood",
+              element: <AccountAddGood></AccountAddGood>
+            }
           ]
           // element: <SellerPage></SellerPage>
         },

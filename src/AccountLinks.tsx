@@ -49,7 +49,7 @@ export function AccountLinks () {
                 return <li key={link.title}>
                     {<Link onClick={() => {
                         // setSelectedlink(link); 
-                    }} to={link.href} state={{ headline: link.title }} className={matchedLink?.title === link.title ? "account__links-li-link_active account__links-li-link" : "account__links-li-link"}>
+                    }} to={link.href} className={matchedLink?.title === link.title ? "account__links-li-link_active account__links-li-link" : "account__links-li-link"}>
                         {link.title}
                     </Link>}
                 </li>

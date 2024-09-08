@@ -118,6 +118,12 @@
     flex-direction: column;
     justify-content: center;
     gap: 5px;
+    /* box-sizing: border-box;
+    transition: all 0.5s ease-in-out;
+    padding: 3px; */
+    /* padding: 1px 5px;
+    border-radius: 16px;
+    border: 2px solid transparent; */
 }
 
 .header__categories li div {
