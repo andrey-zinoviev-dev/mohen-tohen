@@ -2,15 +2,27 @@ import { useEffect, useState } from "react"
 import FileUpload from "./FileUpload";
 import SuccessWrapper from "./SuccessWrapper";
 import Loader from "./Loader";
+import { usePostGoodToServerMutation } from "./features/apiSlice";
 
-export default function UploadComp({formData}: {formData: {title: string, description: string, material: string, dimensions: string, photos: File[], price: number}}) {
+export default function UploadComp({formData}: {formData: {title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number}}) {
   // console.log(formData.photos);
   //state
   const [uploadStatus, setUploadStatus] = useState<string>("started");
 
-  useEffect(() => {
+  //RTK
+  const [addGood] = usePostGoodToServerMutation();
 
-  }, []);
+  useEffect(() => {
+    if(uploadStatus === 'files_uploaded') {
+      // console.log(formData);
+      addGood(formData)
+      .then((data) => {
+        if(data) {
+          setUploadStatus("finished");
+        }
+      })
+    }
+  }, [uploadStatus]);
 
   //switch
   function showComponent() {
@@ -18,7 +30,7 @@ export default function UploadComp({formData}: {formData: {title: string, descri
       case "started":
         return <FileUpload files={formData.photos} setUploadStatus={setUploadStatus}></FileUpload>
       case "files_uploaded":
-        return <Loader setUploadStatus={setUploadStatus}></Loader>
+        return <Loader text="Файлы загрузились, товар выгружается" setUploadStatus={setUploadStatus}></Loader>
       case "finished":
         return <SuccessWrapper label="Успешная выгрузка"></SuccessWrapper>
     }

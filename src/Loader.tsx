@@ -1,18 +1,12 @@
 import { useEffect } from "react"
-
-export default function Loader({ setUploadStatus }: { setUploadStatus: React.Dispatch<React.SetStateAction<string>> }) {
-  
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setUploadStatus("finished");
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeOut);
-    }
-  }, []);
+import "./Loader.css";
+export default function Loader({ text, setUploadStatus }: { text: string, setUploadStatus: React.Dispatch<React.SetStateAction<string>> }) {
 
   return (
-    <h3>тут будет прелоудер и сообщение про загрузку на сайт</h3>
+    <div className="loader">
+      <div className="spinner"></div>
+      <h3>{text}</h3>
+    </div>
+
   )
 }

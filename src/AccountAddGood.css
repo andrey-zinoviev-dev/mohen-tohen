@@ -5,12 +5,13 @@
 .addGoodform {
   display: flex;
   /* flex-direction: column; */
-  gap: 50px;
+  /* gap: 50px; */
   width: fit-content;
   /* align-items: center; */
   align-items: flex-start;
   min-width: 320px;
   width: 100%;
+  justify-content: space-between;
 }
 
 .addGoodform__text-wrapper {
@@ -28,12 +29,21 @@
   border: 2px solid #FF8261;
   transition: all 0.25s ease-in-out;
   background-color: #FF8261;
+  pointer-events: all;
 }
 
 .addGoodform__text-wrapper button:hover {
   /* border: 2px solid transparent;
   background-color: #20232c; */
   color: white;
+}
+
+.addGoodform__text-wrapper button:disabled {
+  background-color: #C8CCCF;
+  color: rgb(101, 101, 101);
+  border: 2px solid #C8CCCF;
+  pointer-events: none;
+  /* filter: grayscale(0.75); */
 }
 
 .addGoodform__label {
@@ -46,7 +56,7 @@
 }
 
 .addGoodform__label input {
-  background-color: white;
+  /* background-color: white;
   box-sizing: border-box;
   padding: 10px;
   border-radius: 12px;
@@ -56,7 +66,7 @@
   border-radius: 5px;
   width: 100%;
   font-size: 16px;
-  outline: none;
+  outline: none; */
 }
 
 .addGoodform__label input:focus {

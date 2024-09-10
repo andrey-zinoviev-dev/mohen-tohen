@@ -5,7 +5,7 @@ import { S3Client } from "@aws-sdk/client-s3";
 
 // export default function FileUpload({files, submitStatus, updateStatus}: {files: File[],  submitStatus: {ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean},  updateStatus: React.Dispatch<React.SetStateAction<{ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}>>}) {
   //state
-export default function FileUpload({ files, setUploadStatus }: { files: File[], setUploadStatus: React.Dispatch<React.SetStateAction<string>> }) {
+export default function FileUpload({ files, setUploadStatus }: { files: {title: string, file: File}[], setUploadStatus: React.Dispatch<React.SetStateAction<string>> }) {
 
   //s3Client
   const S3 = new S3Client({
@@ -30,9 +30,9 @@ export default function FileUpload({ files, setUploadStatus }: { files: File[], 
         client: S3,
         params: {
           Bucket: import.meta.env.VITE_AWS_NAME,
-          Key: file.name,
-          Body: file,
-          ContentType: file.type,
+          Key: file.title,
+          Body: file.file,
+          ContentType: file.file.type,
         }
       });
 
@@ -63,7 +63,7 @@ export default function FileUpload({ files, setUploadStatus }: { files: File[], 
   return (
     <>
       <h3>Вот тут будет вся логика выгрузки файлов и форм</h3>
-      <p>Название: {files[index] && files[index].name}</p>
+      <p>Название: {files[index] && files[index].title}</p>
       <progress max={100} value={uploadProgress}></progress>
       </>
     // createPortal(<FileUploadContent label="Загрузка файлов" files={files} submitStatus={submitStatus} updateStatus={updateStatus}></FileUploadContent>, document.body)

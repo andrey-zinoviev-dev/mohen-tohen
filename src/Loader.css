@@ -1,0 +1,25 @@
+@keyframes spinner-c7wet2 {
+    100% {
+       transform: rotate(1turn);
+    }
+}
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.spinner {
+   width: 72px;
+   height: 72px;
+   border-radius: 50%;
+   background: radial-gradient(farthest-side,#ff8261 94%,#0000) top/11.5px 11.5px no-repeat,
+          conic-gradient(#0000 30%,#ff8261);
+   -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 11.5px),#000 0);
+   animation: spinner-c7wet2 1.2s infinite linear;
+}
+
+

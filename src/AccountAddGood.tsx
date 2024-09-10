@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import InputEl from "./InputEl";
@@ -18,7 +18,7 @@ export default function AccountAddGood() {
   const [uploadGood] = usePostGoodToServerMutation();
 
   //states
-  const [formData, setFormData] = React.useState<{title: string, description: string, material: string, dimensions: string, photos: File[], price: number}>({
+  const [formData, setFormData] = React.useState<{title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number}>({
     title: "",
     description: "",
     material: "",
@@ -46,19 +46,35 @@ export default function AccountAddGood() {
     const fileuploaded = evt.target.files && evt.target.files[0];
     
     fileuploaded && setFormData((prevValue) => {
-      return {...prevValue, photos: [...prevValue.photos, fileuploaded]}
+      return {...prevValue, photos: [...prevValue.photos, {title: fileuploaded.name, file: fileuploaded}]}
+      // return {...prevValue, photos: [...prevValue.photos, fileuploaded]}
     })
   }
 
   function removePhoto(file:File) {
     setFormData((prevValue) => {
-      return {...prevValue, photos: prevValue.photos.filter((photo) => {
-        return photo.name !== file.name;
-      })}
+      return {
+        ...prevValue, photos: prevValue.photos.filter((photo) => {
+          return photo.title !== file.name;
+        })
+      }
+      // return {...prevValue, photos: prevValue.photos.filter((photo) => {
+      //   return photo.name !== file.name;
+      // })}
     });
   }
 
+  const formNotCompleted = Object.values(formData).filter((entry) => {
+    return typeof entry === 'string';
+  }).some((entry) => {
+    return entry.length === 0;
+  });
 
+  useEffect(() => {
+
+  }, [uploadStatus]);
+
+  // console.log(formNotCompleted);
   
   return (
     <>
@@ -104,7 +120,7 @@ export default function AccountAddGood() {
             <InputEl updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
           </label>
 
-          <button type="submit">
+          <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
             Отправить товар
           </button>
         </div>
