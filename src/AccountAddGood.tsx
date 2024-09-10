@@ -10,6 +10,8 @@ import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
+import FileUpload from "./FileUpload";
+import UploadComp from "./UploadComp";
 
 export default function AccountAddGood() {
   //RTK
@@ -38,7 +40,7 @@ export default function AccountAddGood() {
   //functions
   function openInput() {
     fileInputRef.current && fileInputRef.current.click();
-  };
+  }
 
   function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
     const fileuploaded = evt.target.files && evt.target.files[0];
@@ -46,7 +48,7 @@ export default function AccountAddGood() {
     fileuploaded && setFormData((prevValue) => {
       return {...prevValue, photos: [...prevValue.photos, fileuploaded]}
     })
-  };
+  }
 
   function removePhoto(file:File) {
     setFormData((prevValue) => {
@@ -54,13 +56,9 @@ export default function AccountAddGood() {
         return photo.name !== file.name;
       })}
     });
-  };
+  }
 
-  React.useEffect(() => {
-    if(uploadStatus.filesUplaoded) {
-      console.log("send files to node server");
-    }
-  }, [uploadStatus.filesUplaoded]);
+
   
   return (
     <>
@@ -121,7 +119,8 @@ export default function AccountAddGood() {
       {uploadStatus.started && createPortal(<PortalMultimedia>
         {/* <button></button> */}
         <PortalContainer>
-          <p>Вот тут будет отправка сначала в бакет яндекс, потом на сервер node</p>
+          <UploadComp formData={formData}></UploadComp>
+          {/* <FileUpload></FileUpload> */}
         </PortalContainer>
       </PortalMultimedia>, document.body)}
     </>

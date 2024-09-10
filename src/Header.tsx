@@ -17,7 +17,7 @@ import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 // import { getOTPCode } from "./userApi";
 import { useGetOTPCodeMutation, useGetLoggedUserQuery } from "./features/apiSlice";
-import { UserInterface } from "./features/userSlice";
+// import { UserInterface } from "./features/userSlice";
 
 export default function Header() {
     //redux state
@@ -33,7 +33,7 @@ export default function Header() {
 
     // console.log(userState);
 
-    const [getOTPCode, { isLoading }] = useGetOTPCodeMutation();
+    const [getOTPCode] = useGetOTPCodeMutation();
 
     // const {data: user}
 
@@ -45,9 +45,9 @@ export default function Header() {
 
     //localState
     // const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
-    const [category, setCategory] = React.useState<CategoryInterface | null>(null);
+    // const [category, setCategory] = React.useState<CategoryInterface | null>(null);
     const [openPortal, setOpenPortal] = React.useState<boolean>(false);
-    const [loginStatus, setLoginStatus] = React.useState<{codeRequested: boolean, finished: boolean}>({codeRequested: false, finished: false});
+    // const [loginStatus, setLoginStatus] = React.useState<{codeRequested: boolean, finished: boolean}>({codeRequested: false, finished: false});
 
     //refs
     const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -95,7 +95,7 @@ export default function Header() {
                     <ul className="header__categories">
                         {categories.map((category) => {
                             return <li key={category.title} onMouseOver={() => {
-                                setCategory(category);
+                                // setCategory(category);
                             }}>
                                 <span>{category.title}</span>
                                 <div></div>
@@ -131,7 +131,7 @@ export default function Header() {
                             <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
                             <div>
                                 <span>+7</span>
-                                <input type="tel" ref={inputRef} placeholder="ваш телефон..."></input>
+                                <input autoFocus={true} type="tel" ref={inputRef} placeholder="ваш телефон..."></input>
                             </div>
                             <button type="button" onClick={() => {
 
