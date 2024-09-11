@@ -53,6 +53,12 @@ export const apiSlice = createApi({
                 credentials: "include"
             })
         }),
+        getAccountGoods: builder.query<GoodInterface[], void>({
+            query: () => ({
+                url: `/goods/showGoods/user`,
+                credentials: "include",
+            })
+        }),
         getLoggedUser: builder.query<UserInterface, void>({
             query: () => ({
                 url: `/users/me`,
@@ -95,4 +101,4 @@ export const apiSlice = createApi({
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation} = apiSlice;

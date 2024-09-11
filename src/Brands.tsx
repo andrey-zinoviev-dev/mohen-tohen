@@ -12,9 +12,9 @@ export default function Brands() {
         data: brands,
     } = useGetSellersQuery();
 
-    let content:ReactNode;
+    // let content:ReactNode;
 
-    console.log(brands);
+    // console.log(brands);
     //state
     // const [brands, setBrands] = useState<BrandsInterface[]>([]);
 

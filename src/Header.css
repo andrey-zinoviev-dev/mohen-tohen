@@ -231,8 +231,8 @@
 }
 
 .header__popup-form input {
-    outline: none;
-    border-bottom: 2px solid #20232c;
+    /* outline: none;
+    border-bottom: 2px solid #20232c; */
     width: 100%;
     font-size: 16px;
     font-family: "Manrope", sans-serif;
@@ -242,7 +242,7 @@
 .header__popup-form div span {
     border-bottom: 1px solid black;
     box-sizing: border-box;
-    padding: 0 5px 0px 0;
+    padding: 10px 5px;
 }
 
 .header__popup-form button {
@@ -254,6 +254,13 @@
 .header__popup-form button:hover {
     background-color: #20232c;
     color: white;
+}
+
+.header__popup-form button:disabled {
+    background-color: #C8CCCF;
+    color: rgb(101, 101, 101);
+    border: 2px solid #C8CCCF;
+    pointer-events: none;
 }
 
 .header__popup-wrapper-p {

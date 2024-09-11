@@ -5,18 +5,15 @@ import InputEl from "./InputEl";
 import "./AccountAddGood.css"
 import ListGrid from "./ListGrid";
 import LinkCompBack from "./LinkCompBack";
-import { usePostGoodToServerMutation } from "./features/apiSlice";
+// import { usePostGoodToServerMutation } from "./features/apiSlice";
 import { createPortal } from "react-dom";
-import PortalComp from "./PortalComp";
+// import PortalComp from "./PortalComp";
 import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
-import FileUpload from "./FileUpload";
+// import FileUpload from "./FileUpload";
 import UploadComp from "./UploadComp";
 
 export default function AccountAddGood() {
-  //RTK
-  const [uploadGood] = usePostGoodToServerMutation();
-
   //states
   const [formData, setFormData] = React.useState<{title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number}>({
     title: "",

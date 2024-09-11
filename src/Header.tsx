@@ -17,6 +17,7 @@ import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 // import { getOTPCode } from "./userApi";
 import { useGetOTPCodeMutation, useGetLoggedUserQuery } from "./features/apiSlice";
+import InputEl from "./InputEl";
 // import { UserInterface } from "./features/userSlice";
 
 export default function Header() {
@@ -47,10 +48,15 @@ export default function Header() {
     // const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
     // const [category, setCategory] = React.useState<CategoryInterface | null>(null);
     const [openPortal, setOpenPortal] = React.useState<boolean>(false);
+    const [phone, setPhone] = React.useState<{tel: string}>({tel: ""});
     // const [loginStatus, setLoginStatus] = React.useState<{codeRequested: boolean, finished: boolean}>({codeRequested: false, finished: false});
 
     //refs
-    const inputRef = React.useRef<HTMLInputElement | null>(null);
+    // const inputRef = React.useRef<HTMLInputElement | null>(null);
+
+    React.useEffect(() => {
+        console.log(phone);
+    }, [phone])
 
     return (
         <>
@@ -131,11 +137,13 @@ export default function Header() {
                             <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
                             <div>
                                 <span>+7</span>
-                                <input autoFocus={true} type="tel" ref={inputRef} placeholder="ваш телефон..."></input>
+                                <InputEl name="tel" type="tel" placeHolder="9991234567" autoFocus={true} underLine={true} updateState={setPhone}></InputEl>
+                                {/* <input autoFocus={true} type="tel" ref={inputRef} placeholder="ваш телефон..."></input> */}
                             </div>
-                            <button type="button" onClick={() => {
+                            <button type="button" disabled={phone.tel.length === 10 ? false : true} onClick={() => {
 
-                                inputRef.current && getOTPCode(inputRef.current.value).unwrap()
+                                // inputRef.current && getOTPCode(inputRef.current.value).unwrap()
+                                getOTPCode(phone.tel).unwrap()
                                 .then((data) => {
                                     console.log(data);
                                     dispatch(login({...data, loggedIn: true}));
@@ -152,7 +160,7 @@ export default function Header() {
                                     
                                     // setPopupOpened(false);
                                     // dispatch(login(sellerUser));
-                            }}>Получить код</button>
+                            }}>Войти</button>
                         </>
 
 

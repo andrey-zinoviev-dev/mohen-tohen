@@ -34,12 +34,12 @@ export interface GoodInterface {
   // herf: string,
   seller: BrandsInterface,
   material?:string,
-  quantity?: number,
+  // quantity?: number,
   selectedColor?: ColorInterface,
   dimensions?: DimensionsInterface,
-  candle?: boolean,
-  stock: number,
-  madeToOrder: boolean,
+  // candle?: boolean,
+  // stock: number,
+  // madeToOrder: boolean,
   _id: string,
 }
 

@@ -12,3 +12,14 @@
     font-size: 16px;
     outline: none;
 }
+
+.input_underline {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #C8CCCF;
+}
+
+.input_underline:focus {
+    border: none;
+    border-bottom: 2px solid #FF8261;
+}

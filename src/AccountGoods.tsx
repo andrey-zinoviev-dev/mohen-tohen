@@ -7,18 +7,16 @@ import React from "react";
 import "./AccountGoods.css";
 // import AddButton from "./AddButton";
 // import AddButtonState from "./AddButtonState";
-import ListGrid from "./ListGrid";
-import { useAppSelector } from "./hooks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import LinkCompAction from "./LinkCompAction";
-
+import { useGetAccountGoodsQuery } from "./features/apiSlice";
+import { GoodInterface } from "./interfaces";
 export default function AccountGoods() {
-    //redux
-    const userGoods = useAppSelector((state) => {
-        return state.user.goods;
-    })
+    //RTK
+    const {
+        data: goods = [] as GoodInterface[]
+    } = useGetAccountGoodsQuery()
+
     // console.log("yes");
     // const { data: goods } = useGetSellerQuery(); 
     // const location = useLocation();
@@ -34,10 +32,11 @@ export default function AccountGoods() {
     return (
         <>
             <h3>Мои товары</h3>
-            {userGoods && userGoods.length > 0 ? 
+            {goods.length > 0 ? 
             
-                userGoods.map((good) => {
+            goods.map((good) => {
                     return <li key={good._id}>
+                        <img src={good.cover}></img>
                         <h3>{good.title}</h3>
                     </li>
                 })

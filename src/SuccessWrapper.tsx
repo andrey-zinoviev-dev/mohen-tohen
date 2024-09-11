@@ -6,8 +6,8 @@ import "./SuccessWrapper.css";
 export default function SuccessWrapper({label}: {label: string}) {
   return (
     <div className="success-wrapper">
-      <label>{label}</label>
       <FontAwesomeIcon icon={faCheckCircle} />
+      <label>{label}</label>
     </div>
   )
 }

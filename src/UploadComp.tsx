@@ -3,6 +3,7 @@ import FileUpload from "./FileUpload";
 import SuccessWrapper from "./SuccessWrapper";
 import Loader from "./Loader";
 import { usePostGoodToServerMutation } from "./features/apiSlice";
+import LinkCompBack from "./LinkCompBack";
 
 export default function UploadComp({formData}: {formData: {title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number}}) {
   // console.log(formData.photos);
@@ -30,9 +31,12 @@ export default function UploadComp({formData}: {formData: {title: string, descri
       case "started":
         return <FileUpload files={formData.photos} setUploadStatus={setUploadStatus}></FileUpload>
       case "files_uploaded":
-        return <Loader text="Файлы загрузились, товар выгружается" setUploadStatus={setUploadStatus}></Loader>
+        return <Loader text="Файлы загрузились, товар выгружается"></Loader>
       case "finished":
-        return <SuccessWrapper label="Успешная выгрузка"></SuccessWrapper>
+        return <>
+          <SuccessWrapper label="Успешная выгрузка"></SuccessWrapper>
+          <LinkCompBack to="../mygoods" text="Вернуться к товарам" />
+        </>
     }
   }
 
