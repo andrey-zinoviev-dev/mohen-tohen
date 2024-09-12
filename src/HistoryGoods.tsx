@@ -3,6 +3,7 @@ import { useAppSelector } from "./hooks"
 import { useLocation } from "react-router-dom";
 // import { GoodInterface, TransactionInterface } from "./interfaces";
 import { useGetTransactionsQuery } from "./features/apiSlice";
+import ListColumn from "./ListColumn";
 export default function HistoryGoods() {
   //redux
   const userState = useAppSelector((state) => {
@@ -45,18 +46,40 @@ export default function HistoryGoods() {
     <>
       {/* <h3>{state.headline}</h3> */}
       <h3>История</h3>
-      {transactions && transactions.length > 0 ? <ul className="history__ul">
-         {transactions.map((transaction) => {
-          return <li className="history__ul-li" key={transaction._id}>
-            <p className="history__ul-li-p">{transaction._id}</p>
-            <div className="history__ul-li-order-wrapper">
-              <span>Дата заказа</span>
-              <span>Количество товаров: {transaction.goods.length}</span>
-              <span>Сумма: {transaction.price}</span>
-            </div>
+      {transactions ?
+      <ListColumn>
+        {transactions.map((transaction) => {
+          return <li key={transaction._id}>
+            <span className="list-column__id-span">{transaction._id}</span>
+            <h3>{transaction._id}</h3>
+            <div className="list-column__wrapper">
+              <div className="list-column__content-wrapper">
+                <img className="list-column__cover"></img>
+                <div className="list-column__details-wrapper">
+                  <h3>{}</h3>
+                  {/* <div className="list-column__materials-wrapper">
+                    <span className="list-column__id-span">{}</span>
+                    <span className="list-column__id-span">{}</span>
+                  </div> */}
+                </div>
+              </div>
+              <span className="list-column__price-span">{}</span>
+            </div>          
           </li>
         })}
-      </ul>
+      </ListColumn>
+      // transactions.length > 0 ? <ul className="history__ul">
+      //    {transactions.map((transaction) => {
+      //     return <li className="history__ul-li" key={transaction._id}>
+      //       <p className="history__ul-li-p">{transaction._id}</p>
+      //       <div className="history__ul-li-order-wrapper">
+      //         <span>Дата заказа</span>
+      //         <span>Количество товаров: {transaction.goods.length}</span>
+      //         <span>Сумма: {transaction.price}</span>
+      //       </div>
+      //     </li>
+      //   })}
+      // </ul>
       :
       <span>История товаров пуста, но вы всегда можете ее заполнить</span>}
     </>

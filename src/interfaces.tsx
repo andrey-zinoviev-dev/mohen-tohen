@@ -14,11 +14,11 @@ export interface DimensionsInterface {
   [key: string]: number,
 }
 
-export interface DimensionTranslateInterface {
-  title: string,
-  translation: string,
-  unit: string,
-}
+// export interface DimensionTranslateInterface {
+//   title: string,
+//   translation: string,
+//   unit: string,
+// }
 
 export interface ColorsInterface {
   colors: ColorInterface[],
@@ -36,7 +36,8 @@ export interface GoodInterface {
   material?:string,
   // quantity?: number,
   selectedColor?: ColorInterface,
-  dimensions?: DimensionsInterface,
+  dimensions: string,
+  photos?: {title: string, url: string}[],
   // candle?: boolean,
   // stock: number,
   // madeToOrder: boolean,
