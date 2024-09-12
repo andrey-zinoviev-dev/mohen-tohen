@@ -10,7 +10,6 @@ export default function Home() {
         return state.notification.message;
     });
 
-
     return (
         <>
             <Header></Header>

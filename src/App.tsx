@@ -21,6 +21,7 @@ import { useGetLoggedUserQuery } from './features/apiSlice'
 import { login, UserInterface } from './features/userSlice'
 import { useAppDispatch } from './hooks'
 import AccountAddGood from './AccountAddGood'
+import ProtectedRoute from './ProtectedRoute'
 
 function App() {
   //dispatch
@@ -71,22 +72,27 @@ function App() {
             //   path: "historySell",
             //   element: <AccountHistorySell></AccountHistorySell>
             // },
+
+            // {
+            //   path: "prefs",
+            //   element: <Settings></Settings>
+            // },
             {
-              path: "history",
-              element: <HistoryGoods></HistoryGoods>
+              element: <ProtectedRoute></ProtectedRoute>,
+              children: [            {
+                path: "mygoods",
+                element: <AccountGoods></AccountGoods>,
+              },
+              {
+                path: "addGood",
+                element: <AccountAddGood></AccountAddGood>
+              },
+              {
+                path: "history",
+                element: <HistoryGoods></HistoryGoods>
+              }]
             },
-            {
-              path: "prefs",
-              element: <Settings></Settings>
-            },
-            {
-              path: "mygoods",
-              element: <AccountGoods></AccountGoods>,
-            },
-            {
-              path: "addGood",
-              element: <AccountAddGood></AccountAddGood>
-            }
+
           ]
           // element: <SellerPage></SellerPage>
         },

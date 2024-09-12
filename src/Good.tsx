@@ -55,7 +55,7 @@ export default function Good({good}:GoodComponentInterface) {
             <button className="goods__ul-li-btn" onClick={(evt) => {
                 evt.stopPropagation();
                 {!goodInBasket ? 
-                    dispatch(add({...good, quantity: 1, selectedColor: good.colors && good.colors[0]})) 
+                    dispatch(add({...good, selectedColor: good.colors && good.colors[0]})) 
                     :
                     dispatch(remove(good)) 
 

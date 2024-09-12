@@ -1,10 +1,11 @@
 import Goods from "./Goods";
 // import { promoGoods } from "./utils";
 import { useGetGoodsQuery } from "./features/apiSlice";
+import { GoodInterface } from "./interfaces";
 
 export default function PromoSection() {
   const {
-    data: goods,
+    data: goods = [] as GoodInterface[],
   } = useGetGoodsQuery();
 
   return (

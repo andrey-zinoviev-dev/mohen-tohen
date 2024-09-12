@@ -70,8 +70,8 @@ export default function Goods({ goods, inAccountPage }:GoodsInterface) {
     <>
     {goods && goods.length > 0 ? <ul className="goods__ul">
         {goods && goods.map((good) => {
-          return <li key={good.title} className="goods__ul-li" onClick={() => {
-            navigate(`/goods/${good.title}`, {
+          return <li key={good._id} className="goods__ul-li" onClick={() => {
+            navigate(`/goods/${good._id}`, {
               state: good,
               preventScrollReset: false,
             })

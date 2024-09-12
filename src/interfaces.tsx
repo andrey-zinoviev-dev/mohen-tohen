@@ -27,6 +27,7 @@ export interface ColorsInterface {
 
 export interface GoodInterface {
   title: string,
+  description: string,
   cover: string,
   price: number,
   colors?: ColorInterface[],
@@ -37,7 +38,7 @@ export interface GoodInterface {
   // quantity?: number,
   selectedColor?: ColorInterface,
   dimensions: string,
-  photos?: {title: string, url: string}[],
+  photos: {title: string, url: string}[],
   // candle?: boolean,
   // stock: number,
   // madeToOrder: boolean,

@@ -2,7 +2,7 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
 import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faShareNodes, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 // import { toggleFavourite } from "./features/goodsSlice";
 import { addRemoveToFavUser, addRemoveToBasket } from "./features/userSlice"
@@ -12,10 +12,19 @@ import GoodColors from "./GoodColors"
 import { changeMessage } from "./features/notificationSlice"
 import Terms from "./Terms"
 
-import { usePostGoodToBasketMutation, usePostGoodToFavouriteMutation } from "./features/apiSlice";
+import { useGetGoodQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation } from "./features/apiSlice";
 
 
 export default function GoodPage() {
+
+    const { goodID } = useParams();
+
+    //RTK
+    const {
+        data: good = {} as GoodInterface
+    } = useGetGoodQuery(goodID!);
+
+    console.log(good);
 
     const location = useLocation();
     const state = location.state as GoodInterface;
@@ -23,10 +32,11 @@ export default function GoodPage() {
     // console.log(state.dimensions);
     //local state
     // const [good, setGood] = React.useState<GoodInterface | undefined>(state);
-    const [clickedFavourite, setClickedFavourite] = React.useState<boolean>(false);
-    const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
+    // const [clickedFavourite, setClickedFavourite] = React.useState<boolean>(false);
+    // const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
     const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
+    const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0)
 
     const [postGoodToBasket, { isLoading }] = usePostGoodToBasketMutation();
     const [postGoodToFavourites] = usePostGoodToFavouriteMutation();
@@ -53,12 +63,24 @@ export default function GoodPage() {
     return (
         <section className="good">
             <div className="good__parameters">
-                <img className="img" src={state.cover}></img>
+                <img className="img" src={good.photos && good.photos[selectedPhoto].url}></img>
+                <ul className="good__photos">
+                    {good.photos && good.photos.map((photo, index) => {
+                        return <li key={photo.url}>
+                            <button onClick={() => {
+                                setSelectedPhoto(index);
+                            }}>
+                                <img src={photo.url}></img>
+                            </button>
+                        </li>
+                    })}
+                </ul>
                 <div className="good__parameters-features">
                     <span className="good__parameters-features-feature">{state.material}</span>
-                    {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>}
-                    {state.dimensions && <span className="good__parameters-features-feature">
-                        {state.candle ? `${state.dimensions && state.dimensions.volume}мл` : `${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}
+                    {/* {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>} */}
+                    {good.dimensions && <span className="good__parameters-features-feature">
+                        {good.dimensions}
+                        {/* {state.candle ? `${state.dimensions && state.dimensions.volume}мл` : `${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`} */}
                     </span>}
                 </div>
             </div>
@@ -79,27 +101,28 @@ export default function GoodPage() {
                 <Link to={`/brands/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
                     <img src={state.seller.cover}></img>
                     <div className="good__text-a-name">
-                        <span>{state.seller.name}</span>
+                        <span>{good.seller && good.seller.name}</span>
                         <div></div>
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
-                <p>Вот тут будет описание товара, история создания, вот тут прям да красивый текст про товар</p>
-                <div className="good__text-delivery">
+                <p>{good.description}</p>
+                {/* <div className="good__text-delivery">
                     <FontAwesomeIcon icon={state.stock > 0 ? faCheckCircle : faTruckRampBox} />
                     <span>{!state.madeToOrder ? `В наличии ${state.stock}` : "Товар делается под заказ и будет доставлен в течение 2-5 дней после производства"}</span>
-                </div>
-                {state.candle ? <h4>Объем: <span className="cvet">{state.dimensions && state.dimensions.volume}мл</span></h4>
+                </div> */}
+                {/* <span>Материал{}</span> */}
+                {/* {state.candle ? <h4>Объем: <span className="cvet">{state.dimensions && state.dimensions.volume}мл</span></h4>
                 :
                 <h4>Размеры: <span className="cvet">{`${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}</span></h4>
-                }
+                } */}
 
                 <h4>Материал: <span className="cvet">{state.material}</span></h4>
-                {state.colors && <div className="good__text-colors-div">
+                {/* {state.colors && <div className="good__text-colors-div">
                     <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>
                     <GoodColors updateColor={setSelectedColor} colors={state.colors} />
                 </div>
-                }
+                } */}
                 <div className="good__text-quantity">
                     <button onClick={() => {
                         setQuantity((prevValue) => {

@@ -12,7 +12,6 @@ export default function HomeContent() {
             <PromoSection></PromoSection>
             <RandomGoods></RandomGoods>
             <Brands></Brands>
-
             <Collaboration></Collaboration>
         </>          
     )
