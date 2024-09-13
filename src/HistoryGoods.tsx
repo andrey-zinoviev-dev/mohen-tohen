@@ -1,21 +1,22 @@
 import "./HistoryGoods.css"
 import { useAppSelector } from "./hooks"
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 // import { GoodInterface, TransactionInterface } from "./interfaces";
 import { useGetTransactionsQuery } from "./features/apiSlice";
 import ListColumn from "./ListColumn";
+import { TransactionInterface } from "./interfaces";
 export default function HistoryGoods() {
   //redux
   const userState = useAppSelector((state) => {
     return state.user;
   });
 
-  const { data: transactions } = useGetTransactionsQuery(userState._id!);
+  const { data: transactions = [] as TransactionInterface[] } = useGetTransactionsQuery(userState._id!);
   
   // console.log(goods);
   //location
-  const location = useLocation();
-  const state = location.state as { headline: string};
+  // const location = useLocation();
+  // const state = location.state as { headline: string};
   // console.log(location);
 
   // console.log(userState);
@@ -46,7 +47,7 @@ export default function HistoryGoods() {
     <>
       {/* <h3>{state.headline}</h3> */}
       <h3>История</h3>
-      {transactions ?
+      {transactions.length > 0 ?
       <ListColumn>
         {transactions.map((transaction) => {
           return <li key={transaction._id}>
@@ -68,6 +69,14 @@ export default function HistoryGoods() {
           </li>
         })}
       </ListColumn>
+
+      :
+      <span>История товаров пуста, но вы всегда можете ее заполнить</span>}
+    </>
+  )
+}
+
+
       // transactions.length > 0 ? <ul className="history__ul">
       //    {transactions.map((transaction) => {
       //     return <li className="history__ul-li" key={transaction._id}>
@@ -80,8 +89,3 @@ export default function HistoryGoods() {
       //     </li>
       //   })}
       // </ul>
-      :
-      <span>История товаров пуста, но вы всегда можете ее заполнить</span>}
-    </>
-  )
-}

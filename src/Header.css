@@ -19,6 +19,20 @@
     justify-content: space-between;
 }
 
+.header__search {
+    border: none;
+    border-bottom: 2px solid #C8CCCF;
+    box-sizing: border-box;
+    padding: 7px 15px;
+    outline: none;
+    font-size: 16px;
+}
+
+.header__search:focus {
+    border: none;
+    border-bottom: 2px solid #FF8261;
+}
+
 .header form {
     display: flex;
     align-items: center;

@@ -64,7 +64,8 @@ export default function Header() {
                 <div className="header__wrapper">
                     <form>
                         <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-                        <input placeholder="Поиск"></input>
+                        <input className="header__search" placeholder="Поиск"></input>
+                        {/* <InputEl name="find" type="text" placeHolder="Поиск" autoFocus={true} underLine={true} updateState={setPhone}></InputEl> */}
                     </form>
                     <Link to={`../`}>
                         <img className="header__img" src={heading}></img>
