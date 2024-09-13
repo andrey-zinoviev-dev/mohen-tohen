@@ -53,6 +53,7 @@ export const apiSlice = createApi({
                 credentials: "include"
             })
         }),
+
         getTransactions: builder.query<TransactionInterface[], string>({
             query: (id) => ({
                 url: `/transactions/${id}/show`,
@@ -71,22 +72,22 @@ export const apiSlice = createApi({
                 credentials: "include",
             })
         }),
-        postGoodToFavourite: builder.mutation<GoodInterface, {good: GoodInterface, userId: string}>({
-            query: (good) => ({
+        postGoodToFavourite: builder.mutation<{addedToFavs: boolean}, string>({
+            query: (id) => ({
                 url:`/users/me/favourites`,
                 method: "POST",
-                body: {good: good},
+                body: {id: id},
                 credentials: "include",
                 headers: {
                     "Content-Type":"application/json",
                 },
             })
         }),
-        postGoodToBasket: builder.mutation<GoodInterface, {good: GoodInterface, userId: string}>({
-            query: (good) => ({
+        postGoodToBasket: builder.mutation<{addedToBasket: boolean}, string>({
+            query: (id) => ({
                 url:`/users/me/basket`,
                 method: "POST",
-                body: {good: good},
+                body: {id: id},
                 credentials: "include",
                 headers: {
                     "Content-Type":"application/json",

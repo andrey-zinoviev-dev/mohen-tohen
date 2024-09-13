@@ -8,7 +8,7 @@ export interface UserInterface {
     phone: string | null,
     email: string | null,
     seller: boolean,
-    goods?: GoodInterface[],
+    goods?: string[],
     favourites: GoodInterface[],
     ordersHistory: GoodInterface[],
     sellsHistory: GoodInterface[],
@@ -42,10 +42,10 @@ export const userSlice = createSlice({
         addRemoveToFavUser: (state, action: PayloadAction<GoodInterface>) => {
             // console.log(action.payload);
             if(state.favourites.find((fav) => {
-                return fav.title === action.payload.title
+                return fav._id === action.payload._id
             })) {
                 const newFavourites = state.favourites.filter((fav) => {
-                    return fav.title !== action.payload.title;
+                    return fav._id !== action.payload._id;
                 });
 
                 state.favourites = newFavourites;
@@ -54,7 +54,17 @@ export const userSlice = createSlice({
             }
         },
         addRemoveToBasket: (state, action: PayloadAction<GoodInterface>) => {
-            console.log(action.payload);
+            if(state.basket.find((fav) => {
+                return fav._id === action.payload._id
+            })) {
+                const newFavourites = state.basket.filter((fav) => {
+                    return fav._id !== action.payload._id;
+                });
+
+                state.basket = newFavourites;
+            } else {
+                state.basket.push(action.payload);
+            }        
         },
         userLogout: (state) => {
             console.log(state);
@@ -64,5 +74,5 @@ export const userSlice = createSlice({
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket, userLogout, } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket, userLogout } = userSlice.actions;
 export default userSlice.reducer;

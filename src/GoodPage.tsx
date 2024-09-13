@@ -5,7 +5,7 @@ import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faShareNodes, fa
 import { Link, useLocation, useParams } from "react-router-dom"
 import { ColorInterface, GoodInterface } from "./interfaces";
 // import { toggleFavourite } from "./features/goodsSlice";
-import { addRemoveToFavUser, addRemoveToBasket } from "./features/userSlice"
+// import { addRemoveToFavUser, addRemoveToBasket } from "./features/userSlice"
 // import { add, remove } from "./features/basketSlice"
 import { useAppDispatch, useAppSelector } from "./hooks";
 import GoodColors from "./GoodColors"
@@ -13,6 +13,7 @@ import { changeMessage } from "./features/notificationSlice"
 import Terms from "./Terms"
 
 import { useGetGoodQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation } from "./features/apiSlice";
+import LikeButton from "./LikeButton"
 
 
 export default function GoodPage() {
@@ -46,13 +47,13 @@ export default function GoodPage() {
     });
 
     //derived state
-    const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
-        return favGood.title === state.title;
-    });
+    // const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
+    //     return favGood.title === state.title;
+    // });
     
-    const goodInBasket = userState.basket && userState.basket.find((basketGood) => {
-        return basketGood.title === state.title;
-    });
+    // const goodInBasket = userState.basket && userState.basket.find((basketGood) => {
+    //     return basketGood.title === state.title;
+    // });
 
     // console.log(userStateFavs, );
 
@@ -99,7 +100,7 @@ export default function GoodPage() {
                 </div>
                 <h4>Цена: <span className="cvet">{state.price}</span></h4>
                 <Link to={`/brands/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
-                    <img src={state.seller.cover}></img>
+                    {/* <img src={state.seller.cover}></img> */}
                     <div className="good__text-a-name">
                         <span>{good.seller && good.seller.name}</span>
                         <div></div>
@@ -118,20 +119,15 @@ export default function GoodPage() {
                 } */}
 
                 <h4>Материал: <span className="cvet">{state.material}</span></h4>
+                <h4>Цвет: <span className="cvet">{state.color}</span></h4>
+                <h4>Наличие: <span className="cvet">{state.batch}</span></h4>
                 {/* {state.colors && <div className="good__text-colors-div">
                     <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>
                     <GoodColors updateColor={setSelectedColor} colors={state.colors} />
                 </div>
                 } */}
                 <div className="good__text-quantity">
-                    <button onClick={() => {
-                        setQuantity((prevValue) => {
-                            return prevValue + 1;
-                        })
-                    }}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </button>
-                    <span>{quantity}</span>
+                    
                     <button disabled={quantity < 2 ? true : false} onClick={() => {
                         setQuantity((prevValue) => {
                             return prevValue - 1;
@@ -139,10 +135,17 @@ export default function GoodPage() {
                     }}>
                         <FontAwesomeIcon icon={faMinus} />
                     </button>
+                    <span>{quantity}</span>
+                    <button disabled={quantity < good.batch ? false : true} onClick={() => {
+                        setQuantity((prevValue) => {
+                            return prevValue + 1;
+                        })
+                    }}>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
                 </div>
                 <div className="good__text-buttons">
                     <button className="butt" onClick={() => {
-                        console.log(state, quantity);
                         // userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: quantity}, userId: userState._id})
                         // .then((data) => {
                         //     console.log(data);
@@ -159,23 +162,25 @@ export default function GoodPage() {
                         // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
 
                     }}>
-                        <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
+                        Добавить в корзину
+                        {/* <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span> */}
                     </button>
-                    <button className="good__text-button" onClick={() => {
+                    {/* <button className="good__text-button" onClick={() => {
                         console.log(state, quantity);
-                        // dispatch(addRemoveToFavUser(state));
+                        dispatch(addRemoveToFavUser(state));
 
-                        // dispatch(toggleFavourite(state));
-                        // setClickedFavourite((prevValue) => {
-                        //     return !prevValue;
-                        // })
+                        dispatch(toggleFavourite(state));
+                        setClickedFavourite((prevValue) => {
+                            return !prevValue;
+                        })
 
-                        // dispatch(changeMessage({message: goodInFavourites ? `Товар ${state.title} убран из избранных` : `Товар ${state.title} добавлен в избранное`}))
+                        dispatch(changeMessage({message: goodInFavourites ? `Товар ${state.title} убран из избранных` : `Товар ${state.title} добавлен в избранное`}))
 
-                        // dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
+                        dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
                     }}>
                         <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: goodInFavourites ? "#FF8261" : "#F7F7F7"}}/>
-                    </button>
+                    </button> */}
+                    <LikeButton good={good}></LikeButton>
                     <button>
                         <FontAwesomeIcon icon={faShareNodes} />
                     </button>

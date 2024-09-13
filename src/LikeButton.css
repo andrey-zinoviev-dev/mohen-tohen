@@ -1,0 +1,10 @@
+.button-like {
+    color: transparent;
+    stroke: black;
+    stroke-width: 30px;
+}
+
+.button-like_clicked {
+    stroke: #FF8261;
+    color: #FF8261;
+}

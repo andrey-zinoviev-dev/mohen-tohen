@@ -1,14 +1,21 @@
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { addRemoveToFavUser } from "./features/userSlice";
+// import { addRemoveToFavUser } from "./features/userSlice";
 import { changeMessage } from "./features/notificationSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faHeart, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { GoodComponentInterface } from "./interfaces";
 import { add, remove } from "./features/basketSlice";
 import { useNavigate } from "react-router-dom";
+import LikeButton from "./LikeButton";
+import BasketButton from "./BasketButton";
+import { usePostGoodToFavouriteMutation } from "./features/apiSlice";
 export default function Good({good}:GoodComponentInterface) {
-    //redux
-    const dispatch = useAppDispatch();
+
+
+    //RTK
+    // const {
+    //     data: addedToFavs = false as boolean
+    // } = usePostGoodToFavouriteMutation(good._id!)
     
     // const userStateFavs = useAppSelector((state) => {
     //     return state.user.favourites;
@@ -22,12 +29,12 @@ export default function Good({good}:GoodComponentInterface) {
     })
 
     //derived state
-    const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
-        return favGood.title === good.title;
-    });
-    const goodInBasket = userState.basket && userState.basket.find((basketGood) => {
-        return basketGood.title === good.title;
-    });
+    // const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
+    //     return favGood.title === good.title;
+    // });
+    // const goodInBasket = userState.basket && userState.basket.find((basketGood) => {
+    //     return basketGood.title === good.title;
+    // });
 
     //navigate
     const navigate = useNavigate();
@@ -37,35 +44,33 @@ export default function Good({good}:GoodComponentInterface) {
             <div className="goods__ul-li-text-wrapper">
                 <div className="goods__ul-li-heart">
                   <p className="goods__ul-li-title">{good.title}</p>
-                  <button onClick={(evt) => {
+                  <LikeButton good={ good } />
+                  {/* <button onClick={(evt) => {
                     evt.stopPropagation();
                     dispatch(addRemoveToFavUser(good));
                     dispatch(changeMessage({message: goodInFavourites ? `Товар ${good.title} убран из избранных` : `Товар ${good.title} добавлен в избранное`}))
-                    // dispatch(addToFavourite());
-                    // dispatch(toggleFavourite({...good, quantity: 1}));
-                    // dispatch(changeMessage(goodInFavourites ? {message: `Товар ${good.title} убран из избранных` : `Товар ${good.title} добавлен в избранное`}))
+
                   }}>
                     <FontAwesomeIcon className="goods__ul-li-heart-svg" style={{color: goodInFavourites ? "#FF8261" : "#F7F7F7"}} icon={faHeart}/>
-                  </button>
+                  </button> */}
                 </div>
                 <span>{good.price}</span>
                 {good.colors && <span>Цвета: {good.colors.length}</span>}
             </div>
             <img className="goods__ul-li-img" src={good.cover}></img>
-            <button className="goods__ul-li-btn" onClick={(evt) => {
+            <BasketButton good={good} />
+            {/* <button className="goods__ul-li-btn" onClick={(evt) => {
                 evt.stopPropagation();
                 {!goodInBasket ? 
                     dispatch(add({...good, selectedColor: good.colors && good.colors[0]})) 
                     :
                     dispatch(remove(good)) 
 
-                    // navigate("/basket")
                 }
                 dispatch(changeMessage({message: goodInBasket ? `Товар ${good.title} убран из корзины` : `Товар ${good.title} добавлен в корзину`}))
-                // dispatch(changeMessage(goodInBasket ? `Товар ${good.title} убран из корзины` : `Товар ${good.title} добавлен в корзину`))
             }}>
                 {goodInBasket ? <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon> : <FontAwesomeIcon icon={faShoppingBag} />}
-            </button>
+            </button> */}
         </>
     )
 }

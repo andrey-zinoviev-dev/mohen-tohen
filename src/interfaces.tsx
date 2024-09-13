@@ -31,6 +31,7 @@ export interface GoodInterface {
   cover: string,
   price: number,
   colors?: ColorInterface[],
+  color: string,
   favourite?: boolean,
   // herf: string,
   seller: BrandsInterface,
@@ -43,6 +44,7 @@ export interface GoodInterface {
   // stock: number,
   // madeToOrder: boolean,
   _id: string,
+  batch: number,
 }
 
 export interface TransactionInterface {

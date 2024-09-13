@@ -10,7 +10,7 @@ import { add } from "./features/basketSlice";
 import { useAppDispatch, useAppSelector } from "./hooks"
 import { toggleFavourite } from "./features/goodsSlice"
 import { changeMessage } from "./features/notificationSlice"
-import { addRemoveToFavUser } from "./features/userSlice"
+// import { addRemoveToFavUser } from "./features/userSlice"
 import Good from "./Good"
 
 export default function Goods({ goods, inAccountPage }:GoodsInterface) {

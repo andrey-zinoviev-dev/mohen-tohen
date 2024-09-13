@@ -37,7 +37,7 @@ export default function SellerPage() {
       </div>
       <div className="seller__goods">
         <h3>Что можно приобрести</h3>
-        <Goods goods={brand && brand.goods} />
+        {/* <Goods goods={brand && brand.goods} /> */}
       </div>
     </section>
   )

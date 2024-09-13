@@ -113,6 +113,10 @@ export default function AccountAddGood() {
             <InputEl updateState={setFormData} placeHolder="125(Ш)x60(В)x90(Г)" name="dimensions"></InputEl>
           </label>
           <label className="addGoodform__label">
+            Тираж
+            <InputEl updateState={setFormData} placeHolder="5" name="batch"></InputEl>
+          </label>
+          <label className="addGoodform__label">
             Цена
             <InputEl updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
           </label>
