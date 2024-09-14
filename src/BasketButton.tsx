@@ -1,4 +1,4 @@
-import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePostGoodToBasketMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
@@ -16,15 +16,20 @@ export default function BasketButton({ good }: {good: GoodInterface}) {
     //dispatch
     const dispatch = useAppDispatch();
 
+    //variables
+    const goodInBasket = userBasketState.find((basketGood) => {
+        return basketGood._id === good._id;
+    })
+
     return (
         <button onClick={(evt) => {
             evt.stopPropagation();
             updateBasket(good._id)
-            .then((data) => {
+            .then(() => {
                 dispatch(addRemoveToBasket(good));
             })
         }}>
-            <FontAwesomeIcon icon={faShoppingBag} />
+            <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} />
         </button>
     )
 }

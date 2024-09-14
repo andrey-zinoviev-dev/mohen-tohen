@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 // import { addRemoveToFavUser } from "./features/userSlice";
 import { changeMessage } from "./features/notificationSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faHeart, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpFromBracket, faCheck, faCirclePlus, faHeart, faShare, faShareNodes, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { GoodComponentInterface } from "./interfaces";
 import { add, remove } from "./features/basketSlice";
 import { useNavigate } from "react-router-dom";
@@ -41,24 +41,36 @@ export default function Good({good}:GoodComponentInterface) {
 
     return (
         <>
-            <div className="goods__ul-li-text-wrapper">
-                <div className="goods__ul-li-heart">
+            {/* <div className="goods__ul-li-text-wrapper">
+                
+                
+
+            </div> */}
+                            {/* <div className="goods__ul-li-heart">
                   <p className="goods__ul-li-title">{good.title}</p>
                   <LikeButton good={ good } />
-                  {/* <button onClick={(evt) => {
-                    evt.stopPropagation();
-                    dispatch(addRemoveToFavUser(good));
-                    dispatch(changeMessage({message: goodInFavourites ? `Товар ${good.title} убран из избранных` : `Товар ${good.title} добавлен в избранное`}))
-
-                  }}>
-                    <FontAwesomeIcon className="goods__ul-li-heart-svg" style={{color: goodInFavourites ? "#FF8261" : "#F7F7F7"}} icon={faHeart}/>
-                  </button> */}
-                </div>
-                <span>{good.price}</span>
-                {good.colors && <span>Цвета: {good.colors.length}</span>}
+                </div> */}
+                {/* <span>{good.price}</span> */}
+                {/* {good.colors && <span>Цвета: {good.colors.length}</span>} */}
+            <div className="goods__ul-li-actions-wrapper">
+                    <img className="goods__ul-li-img" src={good.cover}></img>
+                    <div className="goods__ul-li-buttons">
+                        <LikeButton good={ good } />
+                        <button>
+                            <FontAwesomeIcon icon={faArrowUpFromBracket} />
+                        </button>
+                    </div>
             </div>
-            <img className="goods__ul-li-img" src={good.cover}></img>
-            <BasketButton good={good} />
+            <h3>{good.title}</h3>
+            <p>{good.description}</p>
+            <div className="goods__ul-li-price-wrapper">
+                <h4>{good.price}р.</h4>
+                <button>
+                    <FontAwesomeIcon icon={faCirclePlus} />
+                    Добавить в корзину
+                </button>
+                {/* <BasketButton good={good} /> */}
+            </div>
             {/* <button className="goods__ul-li-btn" onClick={(evt) => {
                 evt.stopPropagation();
                 {!goodInBasket ? 
