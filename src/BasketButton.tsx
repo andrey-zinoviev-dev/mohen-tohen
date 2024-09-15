@@ -1,9 +1,9 @@
-import { faCheckCircle, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePostGoodToBasketMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { addRemoveToBasket } from "./features/userSlice";
+import { changeMessage } from "./features/notificationSlice";
+import "./BasketButton.css";
 
 export default function BasketButton({ good }: {good: GoodInterface}) {
     const [updateBasket] = usePostGoodToBasketMutation();
@@ -22,14 +22,16 @@ export default function BasketButton({ good }: {good: GoodInterface}) {
     })
 
     return (
-        <button onClick={(evt) => {
+        <button className="basket-button" onClick={(evt) => {
             evt.stopPropagation();
             updateBasket(good._id)
             .then(() => {
                 dispatch(addRemoveToBasket(good));
+                dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
             })
         }}>
-            <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} />
+            {goodInBasket ? "Уже в корзине" : "Добавить в корзину"}
+            {/* <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} /> */}
         </button>
     )
 }

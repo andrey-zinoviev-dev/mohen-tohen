@@ -1,19 +1,31 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faArrowRight, faCheckCircle, faHeart, faMinus, faPlus, faShareNodes, faTruckRampBox } from "@fortawesome/free-solid-svg-icons"
-import { Link, useLocation, useParams } from "react-router-dom"
-import { ColorInterface, GoodInterface } from "./interfaces";
+import { faMinus, faPlus, faShareNodes, 
+    // faTruckRampBox 
+} from "@fortawesome/free-solid-svg-icons"
+import { 
+    // Link, 
+    // useLocation,
+     useParams } from "react-router-dom"
+import { 
+    // ColorInterface, 
+    GoodInterface } from "./interfaces";
 // import { toggleFavourite } from "./features/goodsSlice";
 // import { addRemoveToFavUser, addRemoveToBasket } from "./features/userSlice"
 // import { add, remove } from "./features/basketSlice"
-import { useAppDispatch, useAppSelector } from "./hooks";
-import GoodColors from "./GoodColors"
-import { changeMessage } from "./features/notificationSlice"
+// import { useAppDispatch, useAppSelector } from "./hooks";
+// import GoodColors from "./GoodColors"
+// import { changeMessage } from "./features/notificationSlice"
 import Terms from "./Terms"
 
-import { useGetGoodQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation } from "./features/apiSlice";
+import { useGetGoodQuery, 
+    // usePostGoodToBasketMutation, 
+    // usePostGoodToFavouriteMutation 
+} from "./features/apiSlice";
 import LikeButton from "./LikeButton"
+import BasketButton from "./BasketButton"
+import ShareButton from "./ShareButton"
 
 
 export default function GoodPage() {
@@ -25,26 +37,26 @@ export default function GoodPage() {
         data: good = {} as GoodInterface
     } = useGetGoodQuery(goodID!);
 
-    console.log(good);
+    // console.log(good);
 
-    const location = useLocation();
-    const state = location.state as GoodInterface;
-    const dispatch = useAppDispatch();
+    // const location = useLocation();
+    // const state = location.state as GoodInterface;
+    // const dispatch = useAppDispatch();
     // console.log(state.dimensions);
     //local state
     // const [good, setGood] = React.useState<GoodInterface | undefined>(state);
     // const [clickedFavourite, setClickedFavourite] = React.useState<boolean>(false);
     // const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
-    const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
+    // const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
     const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0)
 
-    const [postGoodToBasket, { isLoading }] = usePostGoodToBasketMutation();
-    const [postGoodToFavourites] = usePostGoodToFavouriteMutation();
+    // const [postGoodToBasket, { isLoading }] = usePostGoodToBasketMutation();
+    // const [postGoodToFavourites] = usePostGoodToFavouriteMutation();
 
-    const userState = useAppSelector((state) => {
-        return state.user;
-    });
+    // const userState = useAppSelector((state) => {
+    //     return state.user;
+    // });
 
     //derived state
     // const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
@@ -60,6 +72,10 @@ export default function GoodPage() {
     // console.log(state);
 
     // console.log(goodInFavourites, goodInBasket);
+
+    React.useEffect(() => {
+        console.log(good);
+    }, [good])
 
     return (
         <section className="good">
@@ -77,7 +93,7 @@ export default function GoodPage() {
                     })}
                 </ul>
                 <div className="good__parameters-features">
-                    <span className="good__parameters-features-feature">{state.material}</span>
+                    <span className="good__parameters-features-feature">{good.material}</span>
                     {/* {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>} */}
                     {good.dimensions && <span className="good__parameters-features-feature">
                         {good.dimensions}
@@ -87,7 +103,7 @@ export default function GoodPage() {
             </div>
             <div className="good__text">
                 <div className="line1"> 
-                    <h3>{state.title}</h3>
+                    <h3>{good.title}</h3>
                     {/* <button className="good__text-button" onClick={() => {
                         dispatch(toggleFavourite(state));
                         setClickedFavourite((prevValue) => {
@@ -98,15 +114,14 @@ export default function GoodPage() {
                         <FontAwesomeIcon className="good__text-button-svg" style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}} icon={faHeart} />
                     </button> */}
                 </div>
-                <h4>Цена: <span className="cvet">{state.price}</span></h4>
-                <Link to={`/brands/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
-                    {/* <img src={state.seller.cover}></img> */}
+                <h4>Цена: <span className="cvet">{good.price}</span></h4>
+                {/* <Link to={`/brands/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
                     <div className="good__text-a-name">
                         <span>{good.seller && good.seller.name}</span>
                         <div></div>
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} />
-                </Link>
+                </Link> */}
                 <p>{good.description}</p>
                 {/* <div className="good__text-delivery">
                     <FontAwesomeIcon icon={state.stock > 0 ? faCheckCircle : faTruckRampBox} />
@@ -118,9 +133,9 @@ export default function GoodPage() {
                 <h4>Размеры: <span className="cvet">{`${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}</span></h4>
                 } */}
 
-                <h4>Материал: <span className="cvet">{state.material}</span></h4>
-                <h4>Цвет: <span className="cvet">{state.color}</span></h4>
-                <h4>Наличие: <span className="cvet">{state.batch}</span></h4>
+                <h4>Материал: <span className="cvet">{good.material}</span></h4>
+                <h4>Цвет: <span className="cvet">{good.color}</span></h4>
+                <h4>Наличие: <span className="cvet">{good.batch}</span></h4>
                 {/* {state.colors && <div className="good__text-colors-div">
                     <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>
                     <GoodColors updateColor={setSelectedColor} colors={state.colors} />
@@ -145,26 +160,27 @@ export default function GoodPage() {
                     </button>
                 </div>
                 <div className="good__text-buttons">
-                    <button className="butt" onClick={() => {
-                        // userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: quantity}, userId: userState._id})
-                        // .then((data) => {
-                        //     console.log(data);
-                        //     // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
-                        //     // :
-                        //     // dispatch(addRemoveToBasket(state));
+                    <BasketButton good={ good } />
+                    {/* <button className="butt" onClick={() => {
+                        userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: quantity}, userId: userState._id})
+                        .then((data) => {
+                            console.log(data);
+                            // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
+                            // :
+                            // dispatch(addRemoveToBasket(state));
                         
-                        //     // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
-                        // })
-                        // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
-                        // :
-                        // dispatch(addRemoveToBasket(state));
+                            // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
+                        })
+                        !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
+                        :
+                        dispatch(addRemoveToBasket(state));
                      
-                        // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
+                        dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
 
                     }}>
                         Добавить в корзину
-                        {/* <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span> */}
-                    </button>
+                        <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
+                    </button> */}
                     {/* <button className="good__text-button" onClick={() => {
                         console.log(state, quantity);
                         dispatch(addRemoveToFavUser(state));
@@ -181,9 +197,10 @@ export default function GoodPage() {
                         <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: goodInFavourites ? "#FF8261" : "#F7F7F7"}}/>
                     </button> */}
                     <LikeButton good={good}></LikeButton>
-                    <button>
+                    <ShareButton href={window.location.href} />
+                    {/* <button>
                         <FontAwesomeIcon icon={faShareNodes} />
-                    </button>
+                    </button> */}
                 </div>
 
                 <Terms></Terms>

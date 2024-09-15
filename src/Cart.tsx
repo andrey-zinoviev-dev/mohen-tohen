@@ -11,28 +11,29 @@ import { openPopup } from "./features/popupSlice";
 
 export default function Cart() {    
     const cartState = useAppSelector((state) => {
-        return state.basket.goods;
+        return state.user.basket;
     });
 
+    console.log(cartState);
 
     const dispatch = useAppDispatch();
 
     //state
     const [changeSpec, setChangeSpec] = React.useState<boolean>(false);
-    const [selectedGoodName, setSelectedGoodName] = React.useState<string | null>(null);
-    const [newColor, setNewColor] = React.useState<ColorInterface | undefined>(undefined);
+    // const [selectedGoodName, setSelectedGoodName] = React.useState<string | null>(null);
+    // const [newColor, setNewColor] = React.useState<ColorInterface | undefined>(undefined);
 
     //derived state
-    const selectedGood:GoodInterface | undefined = cartState.find((good) => {
-        return good.title === selectedGoodName;
-    });
+    // const selectedGood:GoodInterface | undefined = cartState.find((good) => {
+    //     return good.title === selectedGoodName;
+    // });
 
     //functions
     function closePopup() {
         setChangeSpec(false);
         // setChangeColor(false);
-        setSelectedGoodName(null);
-        setNewColor(undefined);
+        // setSelectedGoodName(null);
+        // setNewColor(undefined);
     }
 
     return (
@@ -79,7 +80,7 @@ export default function Cart() {
                                     }}>
                                         <FontAwesomeIcon icon={faPlus} />
                                     </button>
-                                    <span>{cartGood.quantity}</span>
+                                    {/* <span>{cartGood.quantity}</span> */}
                                     <button className="cart__button" onClick={() => {
                                         dispatch(removeOne(cartGood))
                                     }}>

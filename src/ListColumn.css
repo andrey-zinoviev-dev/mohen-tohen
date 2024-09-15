@@ -70,6 +70,19 @@
     align-items: flex-start;
 }
 
+.list-column__price-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    align-self: stretch;
+    justify-content: space-between;
+}
+
 .list-column__price-span {
     font-weight: 700;
+}
+
+.list-column__price-wrapper button {
+    background-color: #FF8261;
 }

@@ -31,7 +31,8 @@
 
 .goods__ul-li {
     background-color: white;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-radius: 9px;
     display: flex;
     flex-direction: column; 
     align-items: start;
@@ -157,6 +158,11 @@
     margin: 0;
 }
 
+.goods__ul-li-author {
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .goods__ul-li-price-wrapper {
     display: flex;
     align-items: center;
@@ -165,7 +171,7 @@
     gap: 15px;
 }
 
-.goods__ul-li-price-wrapper button {
+/* .goods__ul-li-price-wrapper button {
     background-color: #FF8261;
     box-sizing: border-box;
     padding: 10px;
@@ -174,4 +180,5 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-}
+    width: 100%;
+} */

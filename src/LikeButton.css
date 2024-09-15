@@ -2,6 +2,16 @@
     color: transparent;
     stroke: black;
     stroke-width: 30px;
+
+    box-sizing: border-box;
+    /* padding: 5px; */
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button-like_clicked {
