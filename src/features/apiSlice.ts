@@ -50,7 +50,7 @@ export const apiSlice = createApi({
         getGood: builder.query<GoodInterface, string>({
             query: (id) => ({
                 url: `/goods/showGoods/${id}`,
-                credentials: "include"
+                // credentials: "include"
             })
         }),
 

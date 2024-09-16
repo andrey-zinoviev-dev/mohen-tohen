@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 import { useGetSellerQuery } from "./features/apiSlice";
+import { UserInterface } from "./features/userSlice";
 
 export default function SellerPage() {
   const { brandID } = useParams();
@@ -14,11 +15,11 @@ export default function SellerPage() {
   // const state = location.state as BrandsInterface;
   // console.log(state);
   const {
-    data: brand,
+    data: brand = {} as UserInterface,
 
   } = useGetSellerQuery(brandID!);
 
-  // console.log(brand);
+  console.log(brand);
 
   return (
     <section className="seller">
@@ -27,6 +28,7 @@ export default function SellerPage() {
         <div className="seller__wrapper_details">
           <h3>{brand && brand.name}</h3>
           <p>{brand && brand.description}</p>
+
           {/* <div className="seller__wrapper_details-rating">
             <span>5.0</span>
             <FontAwesomeIcon className="seller__wrapper_details-rating-svg" icon={faStar} />
@@ -37,7 +39,7 @@ export default function SellerPage() {
       </div>
       <div className="seller__goods">
         <h3>Что можно приобрести</h3>
-        {/* <Goods goods={brand && brand.goods} /> */}
+        <Goods goods={brand && brand.goods} />
       </div>
     </section>
   )

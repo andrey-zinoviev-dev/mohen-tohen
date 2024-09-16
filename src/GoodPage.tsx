@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faMinus, faPlus, faShareNodes, 
+import { faMinus, faPlus, faArrowRight, 
     // faTruckRampBox 
 } from "@fortawesome/free-solid-svg-icons"
 import { 
@@ -10,7 +10,9 @@ import {
      useParams } from "react-router-dom"
 import { 
     // ColorInterface, 
-    GoodInterface } from "./interfaces";
+GoodInterface } from "./interfaces";
+
+import { Link } from "react-router-dom"
 // import { toggleFavourite } from "./features/goodsSlice";
 // import { addRemoveToFavUser, addRemoveToBasket } from "./features/userSlice"
 // import { add, remove } from "./features/basketSlice"
@@ -37,7 +39,7 @@ export default function GoodPage() {
         data: good = {} as GoodInterface
     } = useGetGoodQuery(goodID!);
 
-    // console.log(good);
+    console.log(good.seller);
 
     // const location = useLocation();
     // const state = location.state as GoodInterface;
@@ -73,9 +75,9 @@ export default function GoodPage() {
 
     // console.log(goodInFavourites, goodInBasket);
 
-    React.useEffect(() => {
-        console.log(good);
-    }, [good])
+    // React.useEffect(() => {
+    //     console.log(good);
+    // }, [good])
 
     return (
         <section className="good">
@@ -115,9 +117,16 @@ export default function GoodPage() {
                     </button> */}
                 </div>
                 <h4>Цена: <span className="cvet">{good.price}</span></h4>
-                {/* <Link to={`/brands/${state.seller.name}`} state={state.seller} preventScrollReset={false}>
+                <Link to={`/brands/${good.seller && good.seller._id}`}>
                     <div className="good__text-a-name">
                         <span>{good.seller && good.seller.name}</span>
+                        <div></div>
+                    </div>
+                    <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+                {/* <Link to={`/brands/${good && good.seller._id}`} preventScrollReset={false}>
+                    <div className="good__text-a-name">
+                        <span>{good.seller.name && good.seller.name}</span>
                         <div></div>
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} />

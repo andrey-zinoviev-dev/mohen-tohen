@@ -8,7 +8,7 @@ export interface UserInterface {
     phone: string | null,
     email: string | null,
     seller: boolean,
-    goods?: string[],
+    goods?: GoodInterface[],
     favourites: GoodInterface[],
     ordersHistory: GoodInterface[],
     sellsHistory: GoodInterface[],
