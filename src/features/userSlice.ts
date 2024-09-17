@@ -66,6 +66,11 @@ export const userSlice = createSlice({
                 state.basket.push(action.payload);
             }        
         },
+        updateAccountGoodBatch: (state, action: PayloadAction<{id: string, batchSize: number}>) => {
+            state.goods = state.goods && state.goods.map((good) => {
+                return good._id === action.payload.id ? {...good, batch: action.payload.batchSize} : good;
+            })
+        },
         userLogout: (state) => {
             console.log(state);
             return state = initialState;
@@ -74,5 +79,5 @@ export const userSlice = createSlice({
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket, userLogout } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket, updateAccountGoodBatch, userLogout } = userSlice.actions;
 export default userSlice.reducer;

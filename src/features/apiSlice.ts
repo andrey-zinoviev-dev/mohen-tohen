@@ -104,8 +104,19 @@ export const apiSlice = createApi({
                     "Content-Type":"application/json",
                 },
             })
+        }),
+        updateGoodBatch: builder.mutation<{updatedBatch: number}, {id: string, batchSize: number}>({
+            query:(batchParams) => ({
+                url: `/goods//updateBatch/${batchParams.id}`,
+                method: "PUT",
+                body: {id: batchParams.id, size: batchParams.batchSize},
+                credentials: "include",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            })
         })
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetGoodQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetGoodQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation} = apiSlice;

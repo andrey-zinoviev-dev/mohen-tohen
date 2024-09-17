@@ -9,7 +9,7 @@ import "./AccountGoods.css";
 // import AddButtonState from "./AddButtonState";
 import { faPlusCircle, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import LinkCompAction from "./LinkCompAction";
-import { useGetAccountGoodsQuery } from "./features/apiSlice";
+import { useGetAccountGoodsQuery, useUpdateGoodBatchMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
 import ListColumn from "./ListColumn";
 import { createPortal } from "react-dom";
@@ -17,11 +17,23 @@ import PortalComp from "./PortalComp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputEl from "./InputEl";
 import FormEl from "./FormEl";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { changeMessage } from "./features/notificationSlice";
+import { updateAccountGoodBatch } from "./features/userSlice";
 export default function AccountGoods() {
+    //dispatch
+    const dispatch = useAppDispatch();
+
+    //redux
+    const accountGoods = useAppSelector((state) => {
+        return state.user.goods;
+    })
     //RTK
-    const {
-        data: goods = [] as GoodInterface[]
-    } = useGetAccountGoodsQuery()
+    // const {
+    //     data: goods = [] as GoodInterface[]
+    // } = useGetAccountGoodsQuery();
+
+    const [updateBatch] = useUpdateGoodBatchMutation();
 
     // console.log("yes");
     // const { data: goods } = useGetSellerQuery(); 
@@ -33,23 +45,35 @@ export default function AccountGoods() {
     // console.log(state);
 
     //state
-    const [addNewGood, setAddNewGood] = React.useState<boolean>(false);
-    const [newBatch, setNewBatch] = React.useState<number>(0);
+    // const [addNewGood, setAddNewGood] = React.useState<boolean>(false);
+    const [newBatch, setNewBatch] = React.useState<{batch: number}>({batch: 0});
+    const [goodId, setGoodId] = React.useState<string | null>(null);
 
     //functions
     function submitForm() {
-        console.log("submit batch");
-        console.log(newBatch);
-    }
+        goodId && updateBatch({id: goodId, batchSize: newBatch.batch})
+        .then((data) => {
+            if(data.data?.updatedBatch) {
+                dispatch(updateAccountGoodBatch({id: goodId, batchSize: data.data?.updatedBatch}))
+                dispatch(changeMessage({message: "Остаток товара обновлен!"}));
+                setGoodId(null);
+            }
+        })
+    };
+
+    // React.useEffect(() => {
+    //     goods.length > 0 && dispatch()
+    //     console.log(goods);
+    // }, [goods])
 
     return (
         <>
             <h3>Мои товары</h3>
             <LinkCompAction to="../AddGood" text="Добавить товар" icon={faPlusCircle} />
-            {goods.length > 0 ? 
+            {accountGoods && accountGoods.length > 0 ? 
             
             <ListColumn>
-                {goods.map((good:GoodInterface) => {
+                {accountGoods.map((good:GoodInterface) => {
                     return <li key={good._id}>
                         <span className="list-column__id-span">{good._id}</span>
                         <div className="list-column__wrapper">
@@ -67,7 +91,8 @@ export default function AccountGoods() {
                             <div className="list-column__price-wrapper">
                                 <span className="list-column__price-span">{good.price}</span>
                                 <button onClick={() => {
-                                    setAddNewGood(true);
+                                    // setAddNewGood(true);
+                                    setGoodId(good._id);
                                 }}>
                                     Обновить наличие
                                 </button>
@@ -89,9 +114,10 @@ export default function AccountGoods() {
                 <span>Добавить товар</span>
                 <FontAwesomeIcon icon={faPlusCircle} />
             </Link> */}
-            {addNewGood && createPortal(<PortalComp>
+            {goodId && createPortal(<PortalComp>
                 <button onClick={() => {
-                    setAddNewGood(false);
+                    setGoodId(null);
+                    // setAddNewGood(false);
                 }}>
                     <FontAwesomeIcon icon={faXmarkCircle} />
                 </button>
