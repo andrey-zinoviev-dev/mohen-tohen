@@ -7,12 +7,21 @@ import { Outlet } from "react-router-dom";
 // import LinksComp from "./LinksComp";
 import { AccountLinks } from "./AccountLinks";
 import { useUserLogoutMutation } from "./features/apiSlice";
-import { useAppDispatch } from "./hooks";
+import { useAppDispatch, useAppSelector } from "./hooks";
 import { userLogout } from "./features/userSlice";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpFromBracket, faPen } from "@fortawesome/free-solid-svg-icons";
+import EditButton from "./EditButton";
+import ShareButton from "./ShareButton";
 
 export default function Account() {
     const [logout] = useUserLogoutMutation();
+    //redux
+    const userState = useAppSelector((state) => {
+        return state.user;
+    });
+
     // //links
     // const links = !userState.seller ? accountLinks : accountSellerLinks;
 
@@ -36,6 +45,20 @@ export default function Account() {
                     <FontAwesomeIcon icon={faArrowLeft} />
                     <span>Назад</span>
                 </button> */}
+                {/* <div>
+                    <div>
+                        <span>{userState.phone}</span>
+                        <span>{userState.name}</span>
+                    </div>
+                    <div>
+                        <button>
+                            <FontAwesomeIcon icon={faPen} />
+                        </button>
+                        <button>
+                            <FontAwesomeIcon icon={faArrowUpFromBracket} />
+                        </button>
+                    </div>
+                </div> */}
                 <AccountLinks></AccountLinks>
 
                 <button onClick={() => {
@@ -56,6 +79,20 @@ export default function Account() {
             </div>
 
             <div className="account__wrapper">
+                <div className="account__wrapper-user">
+                    <div className="account__wrapper-user-text">
+                        <h3>Здравствуйте, {userState.name}</h3>
+                        <span>С возвращением в Mohen-Tohen!</span>
+                    </div>
+                    <EditButton />
+                    <ShareButton href={`${window.location.origin}/brands/${userState._id}`} />
+                    {/* <button>
+                        <FontAwesomeIcon icon={faPen} />
+                    </button>
+                    <button>
+                        <FontAwesomeIcon icon={faArrowUpFromBracket} />
+                    </button> */}
+                </div>
                 <Outlet></Outlet>
             </div>
 

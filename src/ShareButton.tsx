@@ -1,6 +1,6 @@
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GoodInterface } from "./interfaces";
+// import { GoodInterface } from "./interfaces";
 import { useAppDispatch } from "./hooks";
 import { changeMessage } from "./features/notificationSlice";
 
