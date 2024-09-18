@@ -108,13 +108,14 @@ export default function Header() {
                                 <div></div>
                             </li>
                         })}
-                        <li key={"homestage"}>
-                            <Link className="header__links-homestaging" to="/homestaging">
-                                <span>Подбор декора</span>
-                                <FontAwesomeIcon icon={faArrowRight} />
-                            </Link>
-                        </li>
+                        {/* <li key={"homestage"}>
+                            
+                        </li> */}
                     </ul>
+                    <Link className="header__links-homestaging" to="/homestaging">
+                        <span>Подбор декора</span>
+                        <FontAwesomeIcon icon={faArrowRight} />
+                    </Link>
 
                     {/* <div className="header__extension">
                         <LinksComp title="Интересное" links={fixedHeaderLinks}></LinksComp>

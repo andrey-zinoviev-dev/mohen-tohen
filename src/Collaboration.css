@@ -148,3 +148,26 @@
     color: #7c7c7c;
     border: 2px solid #7c7c7c;
 } */
+
+@media screen and (max-width: 1279px) {
+    .collaboration {
+        padding: 30px;
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .collaboration {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .collaboration h2 {
+        font-size: 24px;
+        max-width: 360px;
+    }
+    .collaboration__form-inputs {
+        flex-direction: column;
+    }
+}
