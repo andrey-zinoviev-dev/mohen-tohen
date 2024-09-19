@@ -197,6 +197,10 @@
     text-decoration: underline;
 } */
 
+.header__menu {
+    display: none;
+}
+
 .header__row-2 {
     position: relative;
     display: flex;
@@ -306,5 +310,15 @@
 @media screen and (max-width: 1023px) {
     .header__categories {
         display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header__links {
+        display: none;
+    }
+
+    .header__menu {
+        display: block;
     }
 }

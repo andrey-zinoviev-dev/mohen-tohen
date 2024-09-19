@@ -4,6 +4,7 @@ import { Outlet, ScrollRestoration } from "react-router-dom";
 import Notification from "./Notification";
 // import Popup from "./Popup";
 import { useAppSelector } from "./hooks";
+import HomeStagingFooter from "./HomeStagingFooter";
 
 export default function Home() {
     const notificationState = useAppSelector((state) => {
@@ -14,7 +15,8 @@ export default function Home() {
         <>
             <Header></Header>
             <Outlet></Outlet>
-            <Footer></Footer>
+            <HomeStagingFooter></HomeStagingFooter>
+            {/* <Footer></Footer> */}
             {notificationState && <Notification></Notification>}
             <ScrollRestoration></ScrollRestoration>
             {/* {popupState && <Popup>

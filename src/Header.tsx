@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowRight, faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBars, faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -49,6 +49,7 @@ export default function Header() {
     // const [category, setCategory] = React.useState<CategoryInterface | null>(null);
     const [openPortal, setOpenPortal] = React.useState<boolean>(false);
     const [phone, setPhone] = React.useState<{tel: string}>({tel: ""});
+    const [openMenu, setOpenMenu] = React.useState<boolean>(false);
     // const [loginStatus, setLoginStatus] = React.useState<{codeRequested: boolean, finished: boolean}>({codeRequested: false, finished: false});
 
     //refs
@@ -97,6 +98,11 @@ export default function Header() {
                             </Link>
                         </div>
                     </div>
+                    <button onClick={() => {
+                        setOpenMenu(true);
+                    }} className="header__menu">
+                        <FontAwesomeIcon icon={faBars} />
+                    </button>
                 </div>
                 <div className="header__row-2">
                     <ul className="header__categories">
@@ -142,7 +148,7 @@ export default function Header() {
                                 <InputEl name="tel" type="tel" placeHolder="9991234567" autoFocus={true} underLine={true} updateState={setPhone}></InputEl>
                                 {/* <input autoFocus={true} type="tel" ref={inputRef} placeholder="ваш телефон..."></input> */}
                             </div>
-                            <button type="button" disabled={phone.tel.length === 10 ? false : true} onClick={() => {
+                            <button disabled={phone.tel.length === 10 ? false : true} onClick={() => {
 
                                 // inputRef.current && getOTPCode(inputRef.current.value).unwrap()
                                 getOTPCode(phone.tel).unwrap()
@@ -177,6 +183,13 @@ export default function Header() {
                     <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>
                 </PortalComp>, document.body)}
             </header>
+            {openMenu && createPortal(<PortalComp>
+                <button className="protal__close" onClick={() => {
+                    setOpenMenu(false);
+                }}>
+                    <FontAwesomeIcon icon={faXmark} />
+                </button>
+            </PortalComp>, document.body)}
             {/* {popupOpened && <Popup setClose={setPopupOpened}>
                 <div className="header__popup-wrapper">
                     <button onClick={() => {

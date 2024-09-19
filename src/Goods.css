@@ -202,3 +202,9 @@
         align-items: flex-start;
     } */
 }
+
+@media screen and (max-width: 768px) {
+    .goods__ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

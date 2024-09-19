@@ -71,3 +71,10 @@
   object-fit: contain;
   height: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .portal__content {
+    max-width: 320px;
+    padding: 30px;
+  }
+}
