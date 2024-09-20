@@ -5,12 +5,15 @@
     align-items: center;
     /* justify-content: space-between; */
     padding: 0;
+    margin: 0;
     gap: 15px;
 }
 
 .brands__ul-li {
     aspect-ratio: 1/1;
-    min-width: 210px;
+    width: 100%;
+    /* min-width: 210px; */
+    max-width: 180px;
     border-radius: 50%;
     /* border-radius: 16px; */
     display: flex;
@@ -32,4 +35,28 @@
     color: #213547;
     /* border: 2px solid #F87545; */
     border-radius: 50%;
+}
+
+@media screen and (max-width: 767px) {
+    .brands__ul {
+        overflow: auto;
+        box-sizing: border-box;
+        padding: 30px 0;
+    }
+
+    .brands__ul-li {
+        min-width: 180px;
+        border: 2px solid #C8CCCF;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .brands__ul-li {
+        min-width: 120px;
+        border: 2px solid #C8CCCF;
+    }
+
+    .brands__ul-li a {
+        font-size: 14px;
+    }
 }

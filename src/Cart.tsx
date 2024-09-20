@@ -40,7 +40,7 @@ export default function Cart() {
         <>
             <section className="cart">
                 <h3>корзина</h3>
-                {cartState.length > 0 ? <ul className="cart__ul">
+                {/* {cartState.length > 0 ? <ul className="cart__ul">
                     <li className="cart__ul-li cart__ul-li_first" key="parameters">
                         <span className="cart__ul-li-span">Товар</span>
                         <span>Количество</span>
@@ -66,11 +66,7 @@ export default function Cart() {
                                                 <span>{cartGood.selectedColor?.title}</span>
                                                 <div className="cart__ul-li-text-specs-colors-thumbnail" style={{backgroundColor: cartGood.selectedColor?.colorCode}}></div>
                                             </div>}
-                                            {/* <button className="cart__button" onClick={() => {
-                                                setChangeSpec(true);
-                                            }}>
-                                                <span>Изменить</span>
-                                            </button> */}
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +76,6 @@ export default function Cart() {
                                     }}>
                                         <FontAwesomeIcon icon={faPlus} />
                                     </button>
-                                    {/* <span>{cartGood.quantity}</span> */}
                                     <button className="cart__button" onClick={() => {
                                         dispatch(removeOne(cartGood))
                                     }}>
@@ -94,7 +89,7 @@ export default function Cart() {
                 </ul>
                 :
                 <p>Ваша корзина пуста, но ее можно наполнить</p>
-                }
+                } */}
             </section>
             
             {changeSpec && <Popup setClose={closePopup}>

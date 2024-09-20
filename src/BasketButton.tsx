@@ -5,7 +5,12 @@ import { addRemoveToBasket } from "./features/userSlice";
 import { changeMessage } from "./features/notificationSlice";
 import "./BasketButton.css";
 
-export default function BasketButton({ good }: {good: GoodInterface}) {
+//interface
+interface goodPageInt extends GoodInterface {
+    quantity: number,
+}
+
+export default function BasketButton({ good }: {good: goodPageInt}) {
     const [updateBasket] = usePostGoodToBasketMutation();
 
     //redux
@@ -24,7 +29,8 @@ export default function BasketButton({ good }: {good: GoodInterface}) {
     return (
         <button className="basket-button" onClick={(evt) => {
             evt.stopPropagation();
-            updateBasket(good._id)
+            // console.log(good);
+            updateBasket({good: good})
             .then(() => {
                 dispatch(addRemoveToBasket(good));
                 dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))

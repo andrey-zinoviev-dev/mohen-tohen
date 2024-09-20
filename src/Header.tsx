@@ -7,11 +7,11 @@ import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 // import { login } from "./features/userSlice";
 // import { openPopup } from "./features/popupSlice";
-import Popup from "./Popup";
+// import Popup from "./Popup";
 import heading from "./assets/mh-1.png"
 import { categories, fixedHeaderLinks } from "./utils";
-import { CategoryInterface } from "./interfaces";
-import LinksComp from "./LinksComp";
+// import { CategoryInterface } from "./interfaces";
+// import LinksComp from "./LinksComp";
 import { login } from "./features/userSlice";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
@@ -68,7 +68,7 @@ export default function Header() {
                         <input className="header__search" placeholder="Поиск"></input>
                         {/* <InputEl name="find" type="text" placeHolder="Поиск" autoFocus={true} underLine={true} updateState={setPhone}></InputEl> */}
                     </form>
-                    <Link to={`../`}>
+                    <Link className="header__home" to={`../`}>
                         <img className="header__img" src={heading}></img>
                     </Link>
                     <div className="header__links">

@@ -33,6 +33,10 @@
     border-bottom: 2px solid #FF8261;
 }
 
+.header__home {
+    display: flex;
+}
+
 .header form {
     display: flex;
     align-items: center;
@@ -314,11 +318,23 @@
 }
 
 @media screen and (max-width: 768px) {
+    .header {
+        gap: 0;
+        padding: 10px 0;
+    }
+    .header form {
+        display: none;
+    }
+
     .header__links {
         display: none;
     }
 
     .header__menu {
         display: block;
+    }
+
+    .header__links-homestaging {
+        display: none;
     }
 }

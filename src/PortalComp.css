@@ -78,3 +78,9 @@
     padding: 30px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .portal__content {
+    max-width: 240px;
+  }
+}

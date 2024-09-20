@@ -29,7 +29,6 @@ import LikeButton from "./LikeButton"
 import BasketButton from "./BasketButton"
 import ShareButton from "./ShareButton"
 
-
 export default function GoodPage() {
 
     const { goodID } = useParams();
@@ -38,8 +37,6 @@ export default function GoodPage() {
     const {
         data: good = {} as GoodInterface
     } = useGetGoodQuery(goodID!);
-
-    console.log(good.seller);
 
     // const location = useLocation();
     // const state = location.state as GoodInterface;
@@ -169,7 +166,7 @@ export default function GoodPage() {
                     </button>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton good={ good } />
+                    <BasketButton good={ {good: good, quantity: quantity} } />
                     {/* <button className="butt" onClick={() => {
                         userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: quantity}, userId: userState._id})
                         .then((data) => {
