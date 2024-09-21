@@ -47,6 +47,11 @@ export interface GoodInterface {
   batch: number,
 }
 
+export interface goodPageInt {
+  good: GoodInterface,
+  quantity: number,
+}
+
 export interface TransactionInterface {
   parties : string[],
   goods: GoodInterface[] | string[],

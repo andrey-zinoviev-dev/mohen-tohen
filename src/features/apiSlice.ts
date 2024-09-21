@@ -83,11 +83,11 @@ export const apiSlice = createApi({
                 },
             })
         }),
-        postGoodToBasket: builder.mutation<{addedToBasket: boolean}, {good: GoodInterface}>({
+        postGoodToBasket: builder.mutation<{addedToBasket: boolean}, {good: GoodInterface, quantity: number}>({
             query: (good) => ({
                 url:`/users/me/basket`,
                 method: "POST",
-                body: {good: good.good},
+                body: {good: good.good, quantity: good.quantity},
                 credentials: "include",
                 headers: {
                     "Content-Type":"application/json",

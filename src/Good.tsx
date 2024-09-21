@@ -23,7 +23,7 @@ export default function Good({ good }:GoodComponentInterface) {
             {/* <p>{good.description}</p> */}
             <div className="goods__ul-li-price-wrapper">
                 <h4>{good.price}р.</h4>
-                <BasketButton good={good} />
+                <BasketButton good={{ ...good, quantity: 1}} />
             </div>
         </>
     )

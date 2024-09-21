@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { GoodInterface } from '../interfaces';
+import { GoodInterface, goodPageInt } from '../interfaces';
 // import { toggleFavourite } from './goodsSlice';
 
 export interface UserInterface {
@@ -13,7 +13,7 @@ export interface UserInterface {
     ordersHistory: GoodInterface[],
     sellsHistory: GoodInterface[],
     description?:string,
-    basket: GoodInterface[],
+    basket: goodPageInt[],
     // basket: 
     _id: string | null,
 }
@@ -53,12 +53,12 @@ export const userSlice = createSlice({
                 state.favourites.push(action.payload);
             }
         },
-        addRemoveToBasket: (state, action: PayloadAction<GoodInterface>) => {
+        addRemoveToBasket: (state, action: PayloadAction<goodPageInt>) => {
             if(state.basket.find((fav) => {
-                return fav._id === action.payload._id
+                return fav.good._id === action.payload.good._id
             })) {
                 const newFavourites = state.basket.filter((fav) => {
-                    return fav._id !== action.payload._id;
+                    return fav.good._id !== action.payload.good._id;
                 });
 
                 state.basket = newFavourites;
