@@ -66,6 +66,18 @@ export const userSlice = createSlice({
                 state.basket.push(action.payload);
             }        
         },
+        deleteBasketGood: (state, action: PayloadAction<GoodInterface>) => {
+            const newBasket = state.basket.filter((basketItem) => {
+                return basketItem.good._id !== action.payload._id;
+            });
+            state.basket = newBasket;
+        },
+        updateBasketGoodQuantity: (state, action: PayloadAction<goodPageInt>) => {
+            const newBasket = state.basket.map((basketItem) => {
+                return basketItem.good._id === action.payload.good._id ? {...basketItem, quantity: action.payload.quantity} : basketItem;
+            });
+            state.basket = newBasket;
+        },
         updateAccountGoodBatch: (state, action: PayloadAction<{id: string, batchSize: number}>) => {
             state.goods = state.goods && state.goods.map((good) => {
                 return good._id === action.payload.id ? {...good, batch: action.payload.batchSize} : good;
@@ -79,5 +91,5 @@ export const userSlice = createSlice({
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket, updateAccountGoodBatch, userLogout } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout } = userSlice.actions;
 export default userSlice.reducer;

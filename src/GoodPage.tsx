@@ -166,7 +166,7 @@ export default function GoodPage() {
                     </button>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton good={{ ...good, quantity: quantity}} />
+                    <BasketButton good={good} quantity={quantity} />
                     {/* <button className="butt" onClick={() => {
                         userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: quantity}, userId: userState._id})
                         .then((data) => {

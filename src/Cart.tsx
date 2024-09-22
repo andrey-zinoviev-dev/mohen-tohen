@@ -8,6 +8,8 @@ import Popup from "./Popup";
 import { ColorInterface, GoodInterface } from "./interfaces";
 import GoodColors from "./GoodColors";
 import { openPopup } from "./features/popupSlice";
+import { deleteBasketGood, updateBasketGoodQuantity } from "./features/userSlice";
+import { useDeleteBasketItemMutation, useUpdateBasketItemMutation } from "./features/apiSlice";
 
 // interface goodPageInt extends GoodInterface {
 //     quantity: number,
@@ -18,9 +20,12 @@ export default function Cart() {
         return state.user.basket;
     });
 
-    console.log(cartState);
+    //RTK
+    const [updateBasket] = useUpdateBasketItemMutation();
+    const [deleteItem] = useDeleteBasketItemMutation();
+    // console.log(cartState);
 
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     //state
     // const [changeSpec, setChangeSpec] = React.useState<boolean>(false);
@@ -54,6 +59,11 @@ export default function Cart() {
                         return <li className="cart__ul-li" 
                         key={cartGood.good._id}>
                             <button className="cart__ul-li-delete cart__button" onClick={() => {
+                                deleteItem(cartGood.good._id)
+                                .then((data) => {
+                                    data.data && dispatch(deleteBasketGood(cartGood.good))
+                                })
+                                // dispatch(deleteBasketGood(cartGood.good));
                                 // dispatch(remove(cartGood));
                             }}>
                                 <FontAwesomeIcon icon={faXmark} />
@@ -77,15 +87,27 @@ export default function Cart() {
                                 </div>
                                 <div className="cart__ul-li-quantity">
                                     <button className="cart__button" onClick={() => {
-                                        // dispatch(addOne(cartGood))
-                                    }}>
-                                        <FontAwesomeIcon icon={faPlus} />
-                                    </button>
-                                    <span>{cartGood.quantity}</span>
-                                    <button className="cart__button" onClick={() => {
+                                        updateBasket({id: cartGood.good._id, quantity: -1})
+                                        .then((data) => {
+                                            // console.log(data.data?.quantity)
+
+                                            data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
+                                        })
                                         // dispatch(removeOne(cartGood))
                                     }}>
                                         <FontAwesomeIcon icon={faMinus} />
+                                    </button>
+                                    <span>{cartGood.quantity}</span>
+                                    <button className="cart__button" onClick={() => {
+                                        updateBasket({id: cartGood.good._id, quantity: 1})
+                                        .then((data) => {
+                                            // console.log(data.data?.quantity)
+                                            data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
+                                        })
+                                        // dispatch(updateBasketGoodQuantity({ good: cartGood.good, quantity: 1 }))
+                                        // dispatch(addOne(cartGood))
+                                    }}>
+                                        <FontAwesomeIcon icon={faPlus} />
                                     </button>
                                 </div>
                                 <span>{cartGood.good.price}</span>
