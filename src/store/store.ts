@@ -7,6 +7,7 @@ import notificationSlice from "../features/notificationSlice";
 import popupSlice from "../features/popupSlice";
 import { apiSlice } from "../features/apiSlice";
 import { ListenerMiddleware } from "@reduxjs/toolkit";
+// import orderSlice from "../features/orderSlice";
 export const store = configureStore({
     reducer: {
         user: userSlice,
@@ -15,6 +16,7 @@ export const store = configureStore({
         goods: goodsSlice,
         notification: notificationSlice,
         popup: popupSlice,
+        // order: orderSlice,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },
     middleware: getDefaultMiddleware => 

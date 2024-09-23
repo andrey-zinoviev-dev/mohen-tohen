@@ -22,6 +22,7 @@ import { login, UserInterface } from './features/userSlice'
 import { useAppDispatch } from './hooks'
 import AccountAddGood from './AccountAddGood'
 import ProtectedRoute from './ProtectedRoute'
+import CreateOrder from "./CreateOrder";
 
 function App() {
   //dispatch
@@ -51,7 +52,11 @@ function App() {
           path: "brands/:brandID",
           element: <SellerPage></SellerPage>,
         },
-
+        {
+          path: "createOrder",
+          element: <CreateOrder />
+          // element: <CreateOrder></CreateOrder>
+        },
         // {
         //   path: "/favs",
         //   element: <Favourites></Favourites>

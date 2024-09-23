@@ -1,0 +1,8 @@
+.order-create {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-create__block {
+    width: 100%;
+}

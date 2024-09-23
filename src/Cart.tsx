@@ -10,6 +10,7 @@ import GoodColors from "./GoodColors";
 import { openPopup } from "./features/popupSlice";
 import { deleteBasketGood, updateBasketGoodQuantity } from "./features/userSlice";
 import { useDeleteBasketItemMutation, useUpdateBasketItemMutation } from "./features/apiSlice";
+import { Link } from "react-router-dom";
 
 // interface goodPageInt extends GoodInterface {
 //     quantity: number,
@@ -49,7 +50,8 @@ export default function Cart() {
         <>
             <section className="cart">
                 <h3>корзина</h3>
-                {cartState.length > 0 ? <ul className="cart__ul">
+                {cartState.length > 0 ? <>
+                    <ul className="cart__ul">
                     <li className="cart__ul-li cart__ul-li_first" key="parameters">
                         <span className="cart__ul-li-span">Товар</span>
                         <span>Количество</span>
@@ -115,6 +117,12 @@ export default function Cart() {
                         </li>
                     })}
                 </ul>
+                <Link to={"../createOrder"} onClick={() => {
+                    console.log(cartState);
+                }} className="cart__submit-btn">
+                    Оформить заказ
+                </Link>
+                </>
                 :
                 <p>Ваша корзина пуста, но ее можно наполнить</p>
                 }
