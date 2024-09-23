@@ -1,8 +1,34 @@
+.order-logo {
+    max-width: 210px;
+}
+
 .order-create {
     display: flex;
     justify-content: space-between;
+    gap: 50px;
+    align-items: flex-start;
+    margin: 50px 0 0 0;
 }
 
 .order-create__block {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 50px;
+}
+
+.order-create__submit-btn {
+    background-color: #F87545;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    transition: all 0.25s ease-in-out;
+}
+
+.order-create__submit-btn:hover {
+    color: white;
 }

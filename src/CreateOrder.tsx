@@ -1,29 +1,26 @@
 import React from "react"
-import OrderStep1 from "./OrderStep1";
-import { useAppSelector } from "./hooks";
-import OrderStep2 from "./OrderStep2";
-import OrderStep3 from "./OrderStep3";
+import OrderStep from "./OrderStep";
+
 import "./CreateOrder.css"
+import { locationInputs, recipientInputs } from "./utils";
+import heading from "./assets/mh-1.png"
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Cart from "./Cart";
 
 export default function CreateOrder() {
-    //redux
-    const cartState = useAppSelector((state) => {
-        return state.user.basket;
+    //state
+    const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string}>({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        zipcode: "",
     });
 
-    //state
-    const [orderDetails, setOrderDetails] = React.useState<{client: {name: string, phone: string, email: string}, address: {address: string, zipcode: string}, payment: string}>({
-        client: {
-            name: "",
-            phone: "",
-            email: "",
-        },
-        address: {
-            address: "",
-            zipcode: ""
-        },
-        payment: "",
-    });
+    //navigate
+    const navigate = useNavigate();
 
     // console.log(cartState);
 
@@ -39,35 +36,37 @@ export default function CreateOrder() {
     //         case 0: 
     //         return <OrderStep1 showResults={showStepResults} />
     //     }
-    // }
+    // 
     
     return (
-        <section className="order-create">
-            <div className="order-create__block">
-                <OrderStep1<{name: string, phone: string, email: string}> updateStatus={}></OrderStep1>
-                <OrderStep1<{address: string, flat: string}> updateStatus={setOrderDetails}></OrderStep1>
-                {/* <OrderStep2<{address: string, flat: string}> updateDetails={setOrderDetails}></OrderStep2> */}
-                {/* <OrderStep3 updateDetails={setOrderDetails} /> */}
+        <section>
+            <img className="order-logo" src={heading}></img>
+            <div className="order-create">
                 <button onClick={() => {
-                    console.log(orderDetails);
+                    navigate(-1);
                 }}>
-                    Перейти к оплате
+                    <FontAwesomeIcon icon={faArrowLeft} />
                 </button>
+                <div className="order-create__block">
+                    <OrderStep headline="Ваши контактные данные" step={1} inputs={recipientInputs} updateState={setOrderDetails}>
+
+                    </OrderStep>
+                    <OrderStep headline="Ваш адрес" step={2} inputs={locationInputs} updateState={setOrderDetails}>
+
+                    </OrderStep>
+
+                    <button className="order-create__submit-btn" onClick={() => {
+                        console.log(orderDetails);
+                    }}>
+                        Перейти к оплате
+                        <FontAwesomeIcon icon={faArrowRight} />
+                    </button>
+                </div>
+                <div className="order-create__block">
+                    <span>Ваш заказ</span>
+                {/* <Cart /> */}
+                </div>
             </div>
-            <div className="order-create__block">
-                <span>Ваш заказ</span>
-                <ul>
-                    {cartState.map((cartGood) => {
-                        return <li key={cartGood.good._id}>
-                            <img src={cartGood.good.cover}></img>
-                            <span>{cartGood.good.title}</span>
-                            <span>{cartGood.quantity}</span>
-                        </li>
-                    })}
-                </ul>
-                {/* <p>{orderState.}</p> */}
-            </div>
-            {/* {renderStep()} */}
         </section>
     )
 }

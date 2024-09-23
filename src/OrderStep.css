@@ -2,4 +2,33 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 15px;
+}
+
+.order__form h3 {
+    margin: 0;
+    font-size: 24px;
+    display: flex;
+    gap: 15px;
+}
+
+.order__form h3 span {
+    /* border: 2px solid #C8CCCF; */
+    background-color: #C8CCCF;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    /* padding: 5px; */
+    border-radius: 50%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+}
+
+.order__form-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

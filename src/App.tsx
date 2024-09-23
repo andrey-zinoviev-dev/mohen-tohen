@@ -52,11 +52,6 @@ function App() {
           path: "brands/:brandID",
           element: <SellerPage></SellerPage>,
         },
-        {
-          path: "createOrder",
-          element: <CreateOrder />
-          // element: <CreateOrder></CreateOrder>
-        },
         // {
         //   path: "/favs",
         //   element: <Favourites></Favourites>
@@ -102,6 +97,11 @@ function App() {
           // element: <SellerPage></SellerPage>
         },
       ]
+    },
+    {
+      path: "createOrder",
+      element: <CreateOrder />
+      // element: <CreateOrder></CreateOrder>
     },
     {
       path: "application",

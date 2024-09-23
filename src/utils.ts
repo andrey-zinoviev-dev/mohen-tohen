@@ -1224,3 +1224,23 @@ export const stepsOfProcess:{title: string, descirption: string}[] = [
 ]
 
 export const baseApi = "http://localhost:3001";
+
+export const recipientInputs = [{
+  name: "name",
+  placeHolder: "Иван Алексеев"
+},
+{
+  name: "phone",
+  placeHolder: "+79031513045",
+}]
+
+export const locationInputs = [
+  {
+    name: "address",
+    placeHolder: "Москва, улица Пушкина, дом Колотушкина"
+  },
+  {
+    name: "flat",
+    placeHolder: "Квартира 34"
+  }
+]
