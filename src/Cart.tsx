@@ -11,6 +11,7 @@ import { openPopup } from "./features/popupSlice";
 import { deleteBasketGood, updateBasketGoodQuantity } from "./features/userSlice";
 import { useDeleteBasketItemMutation, useUpdateBasketItemMutation } from "./features/apiSlice";
 import { Link } from "react-router-dom";
+import CartContents from "./CartContents";
 
 // interface goodPageInt extends GoodInterface {
 //     quantity: number,
@@ -51,7 +52,13 @@ export default function Cart() {
             <section className="cart">
                 <h3>корзина</h3>
                 {cartState.length > 0 ? <>
-                    <ul className="cart__ul">
+                    <li className="cart__ul-li cart__ul-li_first" key="parameters">
+                        <span className="cart__ul-li-span">Товар</span>
+                        <span>Количество</span>
+                        <span>Цена</span>
+                    </li>
+                    <CartContents />
+                    {/* <ul className="cart__ul">
                     <li className="cart__ul-li cart__ul-li_first" key="parameters">
                         <span className="cart__ul-li-span">Товар</span>
                         <span>Количество</span>
@@ -65,8 +72,7 @@ export default function Cart() {
                                 .then((data) => {
                                     data.data && dispatch(deleteBasketGood(cartGood.good))
                                 })
-                                // dispatch(deleteBasketGood(cartGood.good));
-                                // dispatch(remove(cartGood));
+                                
                             }}>
                                 <FontAwesomeIcon icon={faXmark} />
                             </button>
@@ -74,15 +80,11 @@ export default function Cart() {
                                 <div className="cart__ul-li-details-params">
                                     <img className="cart__ul-li-img" src={cartGood.good.cover}></img>
                                     <div className="cart__ul-li-text">
-                                        {/* <span className="cart__ul-li-text-author">{cartGood.good.seller.name}</span> */}
                                         <span className="cart__ul-li-text-title">{cartGood.good.title}</span>
                                         <span className="cart__ul-li-text-refid">Артикул: {cartGood.good._id}</span>
                                         <div className="cart__ul-li-text-specs">
                                             <span>{cartGood.good.material && cartGood.good.material}</span>
-                                            {/* {cartGood.selectedColor && <div className="cart__ul-li-text-specs-colors">
-                                                <span>{cartGood.selectedColor?.title}</span>
-                                                <div className="cart__ul-li-text-specs-colors-thumbnail" style={{backgroundColor: cartGood.selectedColor?.colorCode}}></div>
-                                            </div>} */}
+                                            
                                            
                                         </div>
                                     </div>
@@ -91,11 +93,9 @@ export default function Cart() {
                                     <button className="cart__button" onClick={() => {
                                         updateBasket({id: cartGood.good._id, quantity: -1})
                                         .then((data) => {
-                                            // console.log(data.data?.quantity)
 
                                             data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
                                         })
-                                        // dispatch(removeOne(cartGood))
                                     }}>
                                         <FontAwesomeIcon icon={faMinus} />
                                     </button>
@@ -103,11 +103,9 @@ export default function Cart() {
                                     <button className="cart__button" onClick={() => {
                                         updateBasket({id: cartGood.good._id, quantity: 1})
                                         .then((data) => {
-                                            // console.log(data.data?.quantity)
                                             data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
                                         })
-                                        // dispatch(updateBasketGoodQuantity({ good: cartGood.good, quantity: 1 }))
-                                        // dispatch(addOne(cartGood))
+                                       
                                     }}>
                                         <FontAwesomeIcon icon={faPlus} />
                                     </button>
@@ -116,7 +114,7 @@ export default function Cart() {
                             </div>
                         </li>
                     })}
-                </ul>
+                </ul> */}
                 <Link to={"../createOrder"} onClick={() => {
                     console.log(cartState);
                 }} className="cart__submit-btn">

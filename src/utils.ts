@@ -1243,4 +1243,23 @@ export const locationInputs = [
     name: "flat",
     placeHolder: "Квартира 34"
   }
-]
+];
+
+export const paymentInputs = [
+  {
+    name: "payment",
+    value: "SBP",
+    id: "sbp",
+    text: "СБП",
+    placeHolder: "",
+    type: "radio"
+  },
+  {
+    name: "payment",
+    value: "card",
+    id: "card",
+    text: "Банковская карта",
+    placeHolder: "",
+    type: "radio"
+  },
+];

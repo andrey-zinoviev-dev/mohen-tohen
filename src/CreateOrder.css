@@ -18,6 +18,19 @@
     gap: 50px;
 }
 
+.order-create__block:last-of-type {
+    gap: 15px;
+    border: 2px solid #C8CCCF;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    max-width: 480px;
+}
+
+.order-create__block h3 {
+    margin: 0;
+}
+
 .order-create__submit-btn {
     background-color: #F87545;
     align-self: flex-start;

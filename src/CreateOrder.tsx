@@ -2,14 +2,18 @@ import React from "react"
 import OrderStep from "./OrderStep";
 
 import "./CreateOrder.css"
-import { locationInputs, recipientInputs } from "./utils";
+import { locationInputs, paymentInputs, recipientInputs } from "./utils";
 import heading from "./assets/mh-1.png"
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Cart from "./Cart";
+import CartContents from "./CartContents";
+import LinkCompBack from "./LinkCompBack";
 
 export default function CreateOrder() {
+    //redux
+
     //state
     const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string}>({
         name: "",
@@ -41,19 +45,20 @@ export default function CreateOrder() {
     return (
         <section>
             <img className="order-logo" src={heading}></img>
+            <h2>Создание заказа</h2>
             <div className="order-create">
-                <button onClick={() => {
+                {/* <button onClick={() => {
                     navigate(-1);
-                }}>
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                </button>
+                }}> */}
+                <LinkCompBack to="/basket" text="Корзина"></LinkCompBack>
                 <div className="order-create__block">
                     <OrderStep headline="Ваши контактные данные" step={1} inputs={recipientInputs} updateState={setOrderDetails}>
 
                     </OrderStep>
                     <OrderStep headline="Ваш адрес" step={2} inputs={locationInputs} updateState={setOrderDetails}>
-
                     </OrderStep>
+
+                    {/* <OrderStep headline="Способ оплаты" step={3} updateState={setOrderDetails}></OrderStep> */}
 
                     <button className="order-create__submit-btn" onClick={() => {
                         console.log(orderDetails);
@@ -63,8 +68,9 @@ export default function CreateOrder() {
                     </button>
                 </div>
                 <div className="order-create__block">
-                    <span>Ваш заказ</span>
-                {/* <Cart /> */}
+                    <h3>Что в корзине</h3>
+                    <CartContents />
+                    {/* <Cart /> */}
                 </div>
             </div>
         </section>
