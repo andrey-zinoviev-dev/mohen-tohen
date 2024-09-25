@@ -4,6 +4,45 @@
   align-items: center;
 }
 
+.label-radio__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.label-radio input {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+
+.label-radio input::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  /* box-shadow: inset 15px 15px black; */
+  background-color: #FF8261;
+  scale: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.label-radio input:checked {
+  border: 2px solid #FF8261;
+
+}
+
+.label-radio input:checked::before {
+  scale: 1;
+}
+
 .label-radio img {
   width: 100%;
   max-width: 75px;

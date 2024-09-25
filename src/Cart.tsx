@@ -22,12 +22,9 @@ export default function Cart() {
         return state.user.basket;
     });
 
-    //RTK
-    const [updateBasket] = useUpdateBasketItemMutation();
-    const [deleteItem] = useDeleteBasketItemMutation();
+
     // console.log(cartState);
 
-    const dispatch = useAppDispatch();
 
     //state
     // const [changeSpec, setChangeSpec] = React.useState<boolean>(false);
@@ -52,11 +49,11 @@ export default function Cart() {
             <section className="cart">
                 <h3>корзина</h3>
                 {cartState.length > 0 ? <>
-                    <li className="cart__ul-li cart__ul-li_first" key="parameters">
+                    {/* <li className="cart__ul-li cart__ul-li_first" key="parameters">
                         <span className="cart__ul-li-span">Товар</span>
                         <span>Количество</span>
                         <span>Цена</span>
-                    </li>
+                    </li> */}
                     <CartContents />
                     {/* <ul className="cart__ul">
                     <li className="cart__ul-li cart__ul-li_first" key="parameters">
@@ -115,11 +112,17 @@ export default function Cart() {
                         </li>
                     })}
                 </ul> */}
+                {/* <div>
+                    <span>Предварительный итог: {calculateTotal()}</span>
+                    
+                </div> */}
+
                 <Link to={"../createOrder"} onClick={() => {
                     console.log(cartState);
                 }} className="cart__submit-btn">
                     Оформить заказ
                 </Link>
+
                 </>
                 :
                 <p>Ваша корзина пуста, но ее можно наполнить</p>

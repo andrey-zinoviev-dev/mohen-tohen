@@ -15,13 +15,14 @@ import UploadComp from "./UploadComp";
 
 export default function AccountAddGood() {
   //states
-  const [formData, setFormData] = React.useState<{title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number}>({
+  const [formData, setFormData] = React.useState<{title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number}>({
     title: "",
     description: "",
     material: "",
     dimensions: "",
     photos: [],
     price: 0,
+    batch: 0,
   });
   const [uploadStatus, setUploadStatus] = React.useState<{started: boolean, filesUplaoded: boolean, finished: boolean}>({
     started: false,
