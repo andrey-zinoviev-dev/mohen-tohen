@@ -9,6 +9,8 @@ import { UserInterface } from "./features/userSlice";
 import service1 from "./assets/1269_00005.png";
 import service2 from "./assets/1288 _000005.png";
 import service3 from "./assets/1289 _00005.png";
+import sbpLogo from "./assets/СБП_логотип.svg.png";
+import cardLogo from "./assets/debit-card.svg"
 
 // export const promoGoods:GoodInterface[] = [
 //   {
@@ -1227,32 +1229,41 @@ export const baseApi = "http://localhost:3001";
 
 export const recipientInputs = [{
   name: "name",
-  placeHolder: "Иван Алексеев"
+  placeHolder: "Иван Алексеев",
+  type: "text",
+  text: "",
 },
 {
   name: "phone",
   placeHolder: "+79031513045",
+  type: "text",
+  text: "",
 }]
 
 export const locationInputs = [
   {
     name: "address",
-    placeHolder: "Москва, улица Пушкина, дом Колотушкина"
+    placeHolder: "Москва, улица Пушкина, дом Колотушкина",
+    type: "text",
+    text: "",
   },
   {
     name: "flat",
-    placeHolder: "Квартира 34"
+    placeHolder: "Квартира 34",
+    type: "text",
+    text: "",
   }
 ];
 
 export const paymentInputs = [
   {
     name: "payment",
-    value: "SBP",
+    value: "sbp",
     id: "sbp",
     text: "СБП",
     placeHolder: "",
-    type: "radio"
+    type: "radio",
+    icon: sbpLogo,
   },
   {
     name: "payment",
@@ -1260,6 +1271,7 @@ export const paymentInputs = [
     id: "card",
     text: "Банковская карта",
     placeHolder: "",
-    type: "radio"
+    type: "radio",
+    icon: cardLogo
   },
 ];

@@ -13,17 +13,16 @@
 }
 
 .order__form h3 span {
-    /* border: 2px solid #C8CCCF; */
-    background-color: #C8CCCF;
+    /* background-color: #C8CCCF;
     box-sizing: border-box;
     aspect-ratio: 1 / 1;
-    /* padding: 5px; */
     border-radius: 50%;
     width: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     font-weight: 400;
+    letter-spacing: 3px;
 }
 
 .order__form-form {

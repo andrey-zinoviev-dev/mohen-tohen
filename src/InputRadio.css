@@ -1,0 +1,11 @@
+.label-radio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label-radio img {
+  width: 100%;
+  max-width: 75px;
+  aspect-ratio: 16/9;
+}

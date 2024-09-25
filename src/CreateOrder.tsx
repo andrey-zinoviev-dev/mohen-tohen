@@ -15,12 +15,13 @@ export default function CreateOrder() {
     //redux
 
     //state
-    const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string}>({
+    const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string, payment: string}>({
         name: "",
         phone: "",
         email: "",
         address: "",
         zipcode: "",
+        payment: "",
     });
 
     //navigate
@@ -58,7 +59,7 @@ export default function CreateOrder() {
                     <OrderStep headline="Ваш адрес" step={2} inputs={locationInputs} updateState={setOrderDetails}>
                     </OrderStep>
 
-                    {/* <OrderStep headline="Способ оплаты" step={3} updateState={setOrderDetails}></OrderStep> */}
+                    <OrderStep headline="Способ оплаты" step={3} inputs={paymentInputs} updateState={setOrderDetails}></OrderStep>
 
                     <button className="order-create__submit-btn" onClick={() => {
                         console.log(orderDetails);
