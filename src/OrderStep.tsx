@@ -17,7 +17,7 @@ export default function OrderStep({ inputs, step, headline, updateState  }: { in
 
     return (
         <div className="order__form">
-            <h3><span>{step}/3</span>{headline}</h3>
+            <h3><span>{step}</span>{headline}</h3>
             <form className="order__form-form" onSubmit={(evt) => {
                 evt.preventDefault();
             }}>

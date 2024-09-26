@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GoodInterface } from "../interfaces";
+import { GoodInterface, goodPageInt } from "../interfaces";
+
+//local storage
+const cartContent = localStorage.getItem("cart");
+console.log(cartContent);
 
 export interface BasketSliceInterface {
-    goods: GoodInterface[],
+    goods: goodPageInt[],
 }
 
 const initialState:BasketSliceInterface = {
@@ -14,35 +18,35 @@ export const basketSlice = createSlice({
     initialState: initialState,
     reducers: {
         add: (state, action: PayloadAction<GoodInterface>) => {
-            state.goods.push(action.payload);
+            // state.goods.push(action.payload);
         },
         remove: (state, action: PayloadAction<GoodInterface>) => {
-            const newBasket = state.goods.filter((good) => {
-                return good.title !== action.payload.title;
-            })
+            // const newBasket = state.goods.filter((good) => {
+            //     return good.title !== action.payload.title;
+            // })
 
-            state.goods = newBasket;
+            // state.goods = newBasket;
         },
         addOne: (state, action: PayloadAction<GoodInterface>) => {
-            const newBasket = state.goods.map((good) => {
-                return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity + 1} : good;
-            });
+            // const newBasket = state.goods.map((good) => {
+            //     return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity + 1} : good;
+            // });
 
-            state.goods = newBasket;
+            // state.goods = newBasket;
         },
         removeOne: (state, action: PayloadAction<GoodInterface>) => {
-            const newBasket = state.goods.map((good) => {
-                return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity - 1} : good;
-            });
+            // const newBasket = state.goods.map((good) => {
+            //     return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity - 1} : good;
+            // });
 
-            state.goods = newBasket;
+            // state.goods = newBasket;
         },
         editGood: (state, action: PayloadAction<GoodInterface>) => {
-            const newBasket = state.goods.map((good) => {
-                return good.title === action.payload.title ? {...good, selectedColor: action.payload.selectedColor} : good;
-            });
+            // const newBasket = state.goods.map((good) => {
+            //     return good.title === action.payload.title ? {...good, selectedColor: action.payload.selectedColor} : good;
+            // });
 
-            state.goods = newBasket;
+            // state.goods = newBasket;
         }
     }
 })
