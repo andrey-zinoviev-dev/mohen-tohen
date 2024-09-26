@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 import { addRemoveToBasket } from "./features/userSlice";
 import { changeMessage } from "./features/notificationSlice";
 import "./BasketButton.css";
+import { add, remove } from "./features/basketSlice";
 
 //interface
 interface goodPageInt {
@@ -16,7 +17,8 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
 
     //redux
     const userBasketState = useAppSelector((state) => {
-        return state.user.basket;
+        return state.basket.goods;
+        // return state.user.basket;
     });
 
     //dispatch
@@ -30,13 +32,14 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
     return (
         <button className="basket-button" onClick={(evt) => {
             evt.stopPropagation();
+            !goodInBasket ? dispatch(add({good: good, quantity: 1})) : dispatch(remove({good: good, quantity: 1}))
             // localStorage.setItem("cart"m)
             // console.log(good);
-            updateBasket({good: good, quantity: quantity})
-            .then(() => {
-                dispatch(addRemoveToBasket({ good: good, quantity: quantity }));
-                dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
-            })
+            // updateBasket({good: good, quantity: quantity})
+            // .then(() => {
+            //     dispatch(addRemoveToBasket({ good: good, quantity: quantity }));
+            //     dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
+            // })
         }}>
             {goodInBasket ? "Уже в корзине" : "Добавить в корзину"}
             {/* <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} /> */}

@@ -19,7 +19,7 @@ import CartContents from "./CartContents";
 
 export default function Cart() {    
     const cartState = useAppSelector((state) => {
-        return state.user.basket;
+        return state.basket.goods;
     });
 
 

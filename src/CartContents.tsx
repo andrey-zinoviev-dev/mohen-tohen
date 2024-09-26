@@ -6,11 +6,13 @@ import "./CartContents.css";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { useUpdateBasketItemMutation, useDeleteBasketItemMutation } from "./features/apiSlice";
 import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
+import { changeQuantity } from "./features/basketSlice";
 
 export default function CartContents() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
+    console.log(cartState);
 
     //functions
     function calculateTotal() {
@@ -58,6 +60,7 @@ export default function CartContents() {
                                     </div>
                                     <div className="cart__ul-li-quantity">
                                         <button className="cart__button" disabled={cartGood.quantity === 1 ? true : false} onClick={() => {
+                                            dispatch(changeQuantity({good: cartGood.good, quantity: -1}));
                                             // updateBasket({id: cartGood.good._id, quantity: -1})
                                             // .then((data) => {
                                             //     data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
@@ -67,6 +70,8 @@ export default function CartContents() {
                                         </button>
                                         <span>{cartGood.quantity}</span>
                                         <button className="cart__button" disabled={cartGood.good.batch === cartGood.quantity ? true : false} onClick={() => {
+                                            dispatch(changeQuantity({good: cartGood.good, quantity: 1}));
+
                                             // console.log(cartGood.good.batch === cartGood.quantity)
                                             // updateBasket({id: cartGood.good._id, quantity: 1})
                                             // .then((data) => {
@@ -91,9 +96,9 @@ export default function CartContents() {
                             </li>
                         })}
             </ul>
-            <span className="cart__subtotal cart__subtotal_small-font">Подытог: <span>{calculateTotal()}р.</span></span>
+            <span className="cart__subtotal cart__subtotal_small-font">Подытог: <span>р.</span></span>
             <span className="cart__subtotal cart__subtotal_small-font">Доставка: 0</span>
-            <span className="cart__subtotal">Итого: <span>{calculateTotal()}р.</span></span>
+            <span className="cart__subtotal">Итого: <span>р.</span></span>
         </>
         
     )

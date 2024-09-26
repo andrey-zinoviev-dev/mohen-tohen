@@ -22,15 +22,16 @@ import InputEl from "./InputEl";
 
 export default function Header() {
     //redux state
-    // const basketState = useAppSelector((state) => {
-    //     return state.basket;
-    // });
+    const basketState = useAppSelector((state) => {
+        return state.basket.goods;
+    });
     // const favouriteState = useAppSelector((state) => {
     //     return state.goods.favourties;
     // });
     const userState = useAppSelector((state) => {
         return state.user;
     });
+
 
     // console.log(userState);
 
@@ -94,7 +95,7 @@ export default function Header() {
                             </button>
                             <Link to="../basket">
                                 <FontAwesomeIcon icon={faShoppingBag} />
-                                <span>{userState.basket && userState.basket.length}</span>
+                                <span>{basketState && basketState.length}</span>
                             </Link>
                         </div>
                     </div>
