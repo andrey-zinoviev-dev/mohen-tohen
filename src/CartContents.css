@@ -149,12 +149,12 @@
 
 .cart__subtotal {
     align-self: flex-end;
-display: flex;
-justify-content: flex-start;
-min-width: 210px;
-justify-content: space-between;
-font-weight: 700;
-margin: 0 0 10px 0;
+    display: flex;
+    justify-content: flex-start;
+    min-width: 210px;
+    justify-content: space-between;
+    font-weight: 700;
+    margin: 0 0 10px 0;
 }
 
 .cart__subtotal_small-font {

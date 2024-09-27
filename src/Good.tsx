@@ -18,12 +18,14 @@ export default function Good({ good }:GoodComponentInterface) {
                     <ShareButton href={`${window.location.href}goods/${good._id}`} />
                 </div>
             </div>
-            <h3>{good.title}</h3>
-            <span className="goods__ul-li-author">{good.seller.name}</span>
-            {/* <p>{good.description}</p> */}
-            <div className="goods__ul-li-price-wrapper">
-                <h4>{good.price}р.</h4>
-                <BasketButton good={good} quantity={1} />
+            <div className="goods__ul-li-text-wrapper">
+                <h3>{good.title}</h3>
+                <span className="goods__ul-li-author">{good.seller.name}</span>
+                {/* <p>{good.description}</p> */}
+                <div className="goods__ul-li-price-wrapper">
+                    <h4>{good.price}р.</h4>
+                    <BasketButton good={good} quantity={1} />
+                </div>
             </div>
         </>
     )
