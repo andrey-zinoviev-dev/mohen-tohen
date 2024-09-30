@@ -6,15 +6,17 @@ import "./LikeButton.css";
 import { usePostGoodToFavouriteMutation } from "./features/apiSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { addRemoveToFavUser } from "./features/userSlice";
+import { addToFavourite, removeFromFavourite } from "./features/favouriteSlice";
+import { changeMessage } from "./features/notificationSlice";
 
 export default function LikeButton({ good }: { good: GoodInterface }) {
     //RTK
     //mutation
-    const [addToFavs] = usePostGoodToFavouriteMutation();
+    // const [addToFavs] = usePostGoodToFavouriteMutation();
 
     //redux
     const userFavState = useAppSelector((state) => {
-        return state.user.favourites;
+        return state.favourites.favouriteGoods;
     });
 
     //derived state
@@ -28,14 +30,16 @@ export default function LikeButton({ good }: { good: GoodInterface }) {
     return (
         <button className={goodInFavs ? "button-like_clicked" :  "button-like"} onClick={(evt) => {
             evt.stopPropagation();
-            addToFavs(good._id)
-            .then((data) => {
-                if(!data.data?.addedToFavs) {
-                    dispatch(addRemoveToFavUser(good))
-                } else {
-                    dispatch(addRemoveToFavUser(good))
-                }
-            })
+            dispatch(!goodInFavs ? addToFavourite(good) : removeFromFavourite(good));
+            dispatch(changeMessage(!goodInFavs ? {message: "Товар добавлен в избранное"} : {message: "Товар убран из избранного"}))
+            // addToFavs(good._id)
+            // .then((data) => {
+            //     if(!data.data?.addedToFavs) {
+            //         dispatch(addRemoveToFavUser(good))
+            //     } else {
+            //         dispatch(addRemoveToFavUser(good))
+            //     }
+            // })
         }}>
             <FontAwesomeIcon icon={faHeart} />
         </button>

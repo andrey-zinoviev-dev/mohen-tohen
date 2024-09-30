@@ -1,26 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { GoodInterface } from "../interfaces";
+import { PayloadAction } from "@reduxjs/toolkit";
+
+//local storage
+const storageFavs = localStorage.getItem('favs');
 
 export interface FavouriteSliceInterface {
-    favouriteGoods: number,
+    favouriteGoods: GoodInterface[],
 }
 
 const initialState:FavouriteSliceInterface = {
-    favouriteGoods: 0,
+    favouriteGoods: storageFavs ? JSON.parse(storageFavs) : [],
 }
+
+//functions
+function setStorageItem(favsList:GoodInterface[]) {
+    return  localStorage.setItem("favs", JSON.stringify(favsList))
+
+};
 
 export const favouriteSlice = createSlice({
     name: "favourites",
     initialState,
     reducers: {
-        addRemoveFavourite: (state) => {
-            state.favouriteGoods += 1;
+        addToFavourite: (state, action: PayloadAction<GoodInterface>) => {
+            // state.favouriteGoods += 1;
+            state.favouriteGoods.push(action.payload);
+            setStorageItem(state.favouriteGoods);
         },
-        removeFromFavourite: (state) => {
-            state.favouriteGoods -= 1;
+        removeFromFavourite: (state, action: PayloadAction<GoodInterface>) => {
+            state.favouriteGoods = state.favouriteGoods.filter((favGood) => {
+                return favGood._id !== action.payload._id;
+            })
+            setStorageItem(state.favouriteGoods);
+            // state.favouriteGoods -= 1;
         }
     }
 });
 
-export const { addRemoveFavourite, removeFromFavourite } = favouriteSlice.actions;
+export const { addToFavourite, removeFromFavourite } = favouriteSlice.actions;
 
 export default favouriteSlice.reducer;

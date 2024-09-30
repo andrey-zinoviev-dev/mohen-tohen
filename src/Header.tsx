@@ -25,9 +25,9 @@ export default function Header() {
     const basketState = useAppSelector((state) => {
         return state.basket.goods;
     });
-    // const favouriteState = useAppSelector((state) => {
-    //     return state.goods.favourties;
-    // });
+    const favouriteState = useAppSelector((state) => {
+        return state.favourites.favouriteGoods;
+    });
     const userState = useAppSelector((state) => {
         return state.user;
     });
@@ -80,7 +80,7 @@ export default function Header() {
                         <div className="header__links-navigation">
                             <Link to={`profile/${1223}/favs`}>
                                 <FontAwesomeIcon icon={faHeart} />
-                                <span>{userState.favourites && userState.favourites.length}</span>
+                                <span>{favouriteState.length}</span>
                             </Link>
                             <button onClick={() => {
                                 userState.loggedIn ? 

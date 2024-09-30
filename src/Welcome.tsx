@@ -6,7 +6,8 @@ export default function Welcome() {
     return (
         <>
             <section className="welcome">
-                <h1>Украсить интерьер - это легко с Mohen | Tohen</h1>
+                <h1>Оживи пространство — твой идеальный декор на расстоянии клика!</h1>
+                {/* <h1>Украсить интерьер - это легко с Mohen | Tohen</h1> */}
                 <button className="welcome__button">
                     <span>Приступить к украшению</span> 
                     <FontAwesomeIcon icon={faArrowDown} />
