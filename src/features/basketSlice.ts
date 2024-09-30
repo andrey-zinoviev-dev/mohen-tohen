@@ -2,16 +2,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GoodInterface, goodPageInt } from "../interfaces";
 
 //local storage
-const cartContent = localStorage.getItem("cart");
-console.log(cartContent);
+const cartContent = localStorage.getItem("basket");
+// console.log(cartContent);
 
 export interface BasketSliceInterface {
     goods: goodPageInt[],
 }
 
 const initialState:BasketSliceInterface = {
-    goods: [],
+    goods: cartContent ? JSON.parse(cartContent) : [],
 };
+
+// console.log(initialState);
 
 export const basketSlice = createSlice({
     name: "basket",
@@ -19,13 +21,19 @@ export const basketSlice = createSlice({
     reducers: {
         add: (state, action: PayloadAction<goodPageInt>) => {
             state.goods.push(action.payload);
+            // console.log(state.goods);
+            localStorage.setItem("basket", JSON.stringify(state.goods));
+
         },
         remove: (state, action: PayloadAction<goodPageInt>) => {
             const newBasket = state.goods.filter((good) => {
                 return good.good._id !== action.payload.good._id;
-            })
+            });
 
             state.goods = newBasket;
+
+            localStorage.setItem("basket", JSON.stringify(state.goods));
+
         },
         changeQuantity: (state, action: PayloadAction<goodPageInt>) => {
             const newBasket = state.goods.map((good) => {
@@ -33,21 +41,11 @@ export const basketSlice = createSlice({
             })
 
             state.goods = newBasket;
-        },
-        addOne: (state, action: PayloadAction<GoodInterface>) => {
-            // const newBasket = state.goods.map((good) => {
-            //     return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity + 1} : good;
-            // });
 
-            // state.goods = newBasket;
-        },
-        removeOne: (state, action: PayloadAction<GoodInterface>) => {
-            // const newBasket = state.goods.map((good) => {
-            //     return good.title === action.payload.title ? {...good, quantity: good.quantity && good.quantity - 1} : good;
-            // });
+            localStorage.setItem("basket", JSON.stringify(state.goods));
 
-            // state.goods = newBasket;
         },
+
         editGood: (state, action: PayloadAction<GoodInterface>) => {
             // const newBasket = state.goods.map((good) => {
             //     return good.title === action.payload.title ? {...good, selectedColor: action.payload.selectedColor} : good;
@@ -58,6 +56,6 @@ export const basketSlice = createSlice({
     }
 })
 
-export const { add, remove, changeQuantity, addOne, removeOne, editGood } = basketSlice.actions;
+export const { add, remove, changeQuantity, editGood } = basketSlice.actions;
 
 export default basketSlice.reducer;

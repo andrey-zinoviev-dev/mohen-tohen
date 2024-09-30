@@ -12,15 +12,23 @@ export default function CartContents() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
-    console.log(cartState);
+    // console.log(cartState);
 
-    //functions
-    function calculateTotal() {
-        // return cartState.reduce((result, item) => {
-        //     result = result + (item.good.price * item.quantity);
-        //     return result;
-        // }, 0);
-    }
+    // //functions
+    // function calculateTotal() {
+    //     return cartState.reduce((result, item) => {
+    //         result = result + (item.good.price * item.quantity);
+    //         return result;
+    //     }, 0);
+    // }
+
+    //variables
+    const subtotal = cartState.reduce((result, item) => {
+        result = result + (item.good.price * item.quantity);
+        return result;
+    }, 0);
+
+    const shipping = 0;
 
     //dispatch
     const dispatch = useAppDispatch();
@@ -96,9 +104,9 @@ export default function CartContents() {
                             </li>
                         })}
             </ul>
-            <span className="cart__subtotal cart__subtotal_small-font">Подытог: <span>р.</span></span>
-            <span className="cart__subtotal cart__subtotal_small-font">Доставка: 0</span>
-            <span className="cart__subtotal">Итого: <span>р.</span></span>
+            <span className="cart__subtotal cart__subtotal_small-font">Подытог: <span>{subtotal}р.</span></span>
+            <span className="cart__subtotal cart__subtotal_small-font">Доставка: <span>{shipping}р.</span></span>
+            <span className="cart__subtotal">Итого: <span>{subtotal + shipping}р.</span></span>
         </>
         
     )

@@ -8,7 +8,7 @@ export default function HomeContent() {
 
     return (
         <>
-            <Welcome></Welcome>    
+            {/* <Welcome></Welcome>     */}
             <PromoSection></PromoSection>
             <RandomGoods></RandomGoods>
             <Brands></Brands>

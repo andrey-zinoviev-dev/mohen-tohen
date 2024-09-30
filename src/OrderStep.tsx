@@ -13,7 +13,7 @@ export default function OrderStep({ inputs, step, headline, updateState  }: { in
     id?: string,
     value?: string,
     icon?: string,
-}[], headline: string, step: number, updateState: React.Dispatch<React.SetStateAction<{name: string, phone: string, email: string, address: string, zipcode: string, payment: string}>>}) {
+}[], headline: string, step: number, updateState: React.Dispatch<React.SetStateAction<{name: string, phone: string, email: string, address: string, zipcode: string}>>}) {
 
     return (
         <div className="order__form">
