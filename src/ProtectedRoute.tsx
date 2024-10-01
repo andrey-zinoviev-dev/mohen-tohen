@@ -5,15 +5,7 @@ import React from "react";
 
 export default function ProtectedRoute() {
 
-    const userLoggedIn = useAppSelector((state) => {
-        return state.user.loggedIn;
-    });
-
-    // console.log(userLoggedIn);
-
-    React.useEffect(() => {
-        console.log(userLoggedIn);
-    }, [userLoggedIn]);
+    const userLoggedIn = localStorage.getItem("loggedIn");
 
     return (
         userLoggedIn ? <Outlet></Outlet> : <Navigate to={"/"}></Navigate>

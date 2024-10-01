@@ -16,8 +16,7 @@ const initialState:FavouriteSliceInterface = {
 //functions
 function setStorageItem(favsList:GoodInterface[]) {
     return  localStorage.setItem("favs", JSON.stringify(favsList))
-
-};
+}
 
 export const favouriteSlice = createSlice({
     name: "favourites",

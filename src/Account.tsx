@@ -61,7 +61,7 @@ export default function Account() {
                 </div> */}
                 <AccountLinks></AccountLinks>
 
-                <button onClick={() => {
+                {userState.loggedIn && <button onClick={() => {
                     logout()
                     .then((data) => {
                         if(data) {
@@ -75,7 +75,7 @@ export default function Account() {
                     })
                 }}>
                     Выйти
-                </button>
+                </button>}
             </div>
 
             <div className="account__wrapper">
@@ -84,7 +84,7 @@ export default function Account() {
                         <h3>Здравствуйте, {userState.name}</h3>
                         <span>С возвращением в Mohen-Tohen!</span>
                     </div>
-                    <EditButton />
+                    {/* <EditButton /> */}
                     <ShareButton href={`${window.location.origin}/brands/${userState._id}`} />
                     {/* <button>
                         <FontAwesomeIcon icon={faPen} />

@@ -56,9 +56,9 @@ export default function Header() {
     //refs
     // const inputRef = React.useRef<HTMLInputElement | null>(null);
 
-    React.useEffect(() => {
-        console.log(phone);
-    }, [phone])
+    // React.useEffect(() => {
+    //     console.log(phone);
+    // }, [phone])
 
     return (
         <>
@@ -78,7 +78,7 @@ export default function Header() {
                             <FontAwesomeIcon icon={faArrowRight} />
                         </Link> */}
                         <div className="header__links-navigation">
-                            <Link to={`profile/${1223}/favs`}>
+                            <Link to={`profile/${userState._id}/favs`}>
                                 <FontAwesomeIcon icon={faHeart} />
                                 <span>{favouriteState.length}</span>
                             </Link>

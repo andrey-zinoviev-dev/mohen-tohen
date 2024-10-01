@@ -37,6 +37,7 @@ export const userSlice = createSlice({
     reducers: {
         login: (state, action: PayloadAction<UserInterface>) => {
             const newUser = action.payload;
+            localStorage.setItem("loggedIn", JSON.stringify({loggedIn: true}))
             return state = newUser;
         },
         addRemoveToFavUser: (state, action: PayloadAction<GoodInterface>) => {

@@ -6,7 +6,7 @@ import "./CartContents.css";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { useUpdateBasketItemMutation, useDeleteBasketItemMutation } from "./features/apiSlice";
 import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
-import { changeQuantity } from "./features/basketSlice";
+import { changeQuantity, remove } from "./features/basketSlice";
 
 export default function CartContents() {
     const cartState = useAppSelector((state) => {
@@ -92,6 +92,8 @@ export default function CartContents() {
                                     </div>
                                     <span>{cartGood.good.price}</span>
                                     <button className="cart__ul-li-delete cart__button" onClick={() => {
+                                        dispatch(remove(cartGood.good))
+                                        
                                         // deleteItem(cartGood.good._id)
                                         // .then((data) => {
                                         //     data.data && dispatch(deleteBasketGood(cartGood.good))
