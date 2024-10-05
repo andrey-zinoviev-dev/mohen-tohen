@@ -40,6 +40,7 @@
 
 .good__photos img {
     width: 100%;
+    height: 100%;
     max-width: 70px;
 }
 
@@ -287,3 +288,10 @@
     align-items: center;
     width: 100%;
 } */
+
+@media screen and (max-width: 767px) {
+    .good {
+        flex-direction: column;
+        gap: 25px;
+    }
+}

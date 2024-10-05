@@ -55,6 +55,7 @@ button {
   font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
   outline: none;
+  color: black;
   /* background-color: transparent; */
 }
 button:hover {

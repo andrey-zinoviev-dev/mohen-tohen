@@ -7,6 +7,8 @@ export default function OrderStep2() {
     //state
     const [formData, setFormData] = React.useState<{address: string, flat: string}>({address: "", flat: ""});
 
+    console.log(formData);
+
     return (
         <div className="order__form">
             <h3>Данные доставки</h3>

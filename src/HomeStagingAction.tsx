@@ -6,7 +6,7 @@ import pic from "./assets/creative-fengshui-practice-arrangement.jpg";
 import logo from "./assets/mh-1.png";
 import "./HomeStagingAction.css";
 import { createPortal } from "react-dom";
-import PortalComp from "./PortalComp";
+// import PortalComp from "./PortalComp";
 import HomeStagingForm from "./HomeStagingForm";
 import PortalMultimedia from "./PortalMultimedia";
 // import { useAppDispatch } from "./hooks";

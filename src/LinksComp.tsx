@@ -1,6 +1,6 @@
-import React from "react"
-import { Link, useLocation } from "react-router-dom"
-import { LinkInterface, LinksInterface } from "./interfaces"
+// import React from "react"
+import { Link } from "react-router-dom"
+import { LinksInterface } from "./interfaces"
 import "./LinksComp.css"
 export default function LinksComp({links, title, inAccount}:LinksInterface) {
     // const [activeLink, setActiveLink] = React.useState<LinkInterface | null>(null);

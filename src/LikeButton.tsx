@@ -3,9 +3,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GoodInterface } from "./interfaces";
 import "./LikeButton.css";
-import { usePostGoodToFavouriteMutation } from "./features/apiSlice";
+// import { usePostGoodToFavouriteMutation } from "./features/apiSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { addRemoveToFavUser } from "./features/userSlice";
+// import { addRemoveToFavUser } from "./features/userSlice";
 import { addToFavourite, removeFromFavourite } from "./features/favouriteSlice";
 import { changeMessage } from "./features/notificationSlice";
 

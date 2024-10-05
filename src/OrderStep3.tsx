@@ -16,4 +16,4 @@ export default function OrderStep3() {
             </form>
         </div>
     )
-};
+}

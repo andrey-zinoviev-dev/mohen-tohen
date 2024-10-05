@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "./Terms.css"
 import { terms } from "./utils";
 import Term from "./Term";

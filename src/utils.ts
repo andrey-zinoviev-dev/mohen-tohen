@@ -1,11 +1,11 @@
-import { BrandsInterface, DimensionTranslateInterface, GoodInterface, TermInterface, CategoryInterface, LinkInterface, OptionInterface } from "./interfaces";
+import { GoodInterface, TermInterface, CategoryInterface, LinkInterface, OptionInterface } from "./interfaces";
 import { IconDefinition, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faVk, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import seller1 from "./assets/2024-07-08 23.47.33.jpg";
-import seller2 from "./assets/2024-07-08 23.48.06.jpg";
-import selle3 from "./assets/2024-07-08 23.48.25.jpg";
-import selle4 from "./assets/2024-07-08 23.48.52.jpg";
-import { UserInterface } from "./features/userSlice";
+// import seller1 from "./assets/2024-07-08 23.47.33.jpg";
+// import seller2 from "./assets/2024-07-08 23.48.06.jpg";
+// import selle3 from "./assets/2024-07-08 23.48.25.jpg";
+// import selle4 from "./assets/2024-07-08 23.48.52.jpg";
+// import { UserInterface } from "./features/userSlice";
 import service1 from "./assets/1269_00005.png";
 import service2 from "./assets/1288 _000005.png";
 import service3 from "./assets/1289 _00005.png";
@@ -662,36 +662,36 @@ export const sellerLinks:{href: string, name: string}[] = [
   }
 ]
 
-export const dimensionTranslations:DimensionTranslateInterface[] = [
-  {
-    title: "width",
-    translation: "ширина",
-    unit: "см"
-  },
-  {
-    title: "height",
-    translation: "высота",
-    unit: "см"
+// export const dimensionTranslations:DimensionTranslateInterface[] = [
+//   {
+//     title: "width",
+//     translation: "ширина",
+//     unit: "см"
+//   },
+//   {
+//     title: "height",
+//     translation: "высота",
+//     unit: "см"
 
-  },
-  {
-    title: "volume",
-    translation: "объем",
-    unit: "мл"
+//   },
+//   {
+//     title: "volume",
+//     translation: "объем",
+//     unit: "мл"
 
-  },
-  {
-    title: "depth",
-    translation: "глубина",
-    unit: "см"
+//   },
+//   {
+//     title: "depth",
+//     translation: "глубина",
+//     unit: "см"
 
-  },
-  {
-    title: "diameter",
-    translation: "диаметр",
-    unit: "см"
-  }
-]
+//   },
+//   {
+//     title: "diameter",
+//     translation: "диаметр",
+//     unit: "см"
+//   }
+// ]
 
 export const terms:TermInterface[] = [
   {
@@ -1225,7 +1225,7 @@ export const stepsOfProcess:{title: string, descirption: string}[] = [
   }
 ]
 
-export const baseApi = "http://localhost:3001";
+export const baseApi = "https://api.mohen-tohen.ru";
 
 export const recipientInputs = [{
   name: "name",

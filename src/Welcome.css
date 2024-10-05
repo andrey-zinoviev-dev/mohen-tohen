@@ -67,5 +67,23 @@ h1 {
 @media screen and (max-width: 767px) {
     .welcome {
         padding: 25px;
+        background-image: none;
+        min-height: 50svh;
+    }
+
+    .welcome h1 {
+        color: black;
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .welcome {
+        padding: 15px;
+    }
+
+    .welcome h1 {
+        color: black;
+        font-size: 30px;
     }
 }

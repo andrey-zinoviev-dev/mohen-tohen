@@ -1,15 +1,15 @@
-import React from "react";
+// import React from "react";
 import "./Cart.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { faMinus, faPen, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { addOne, editGood, remove, removeOne } from "./features/basketSlice";
-import Popup from "./Popup";
-import { ColorInterface, GoodInterface } from "./interfaces";
-import GoodColors from "./GoodColors";
-import { openPopup } from "./features/popupSlice";
-import { deleteBasketGood, updateBasketGoodQuantity } from "./features/userSlice";
-import { useDeleteBasketItemMutation, useUpdateBasketItemMutation } from "./features/apiSlice";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAppSelector } from "./hooks";
+// import { faMinus, faPen, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+// import { addOne, editGood, remove, removeOne } from "./features/basketSlice";
+// import Popup from "./Popup";
+// import { ColorInterface, GoodInterface } from "./interfaces";
+// import GoodColors from "./GoodColors";
+// import { openPopup } from "./features/popupSlice";
+// import { deleteBasketGood, updateBasketGoodQuantity } from "./features/userSlice";
+// import { useDeleteBasketItemMutation, useUpdateBasketItemMutation } from "./features/apiSlice";
 import { Link } from "react-router-dom";
 import CartContents from "./CartContents";
 

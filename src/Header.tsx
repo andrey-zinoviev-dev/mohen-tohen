@@ -9,14 +9,14 @@ import { Link, useNavigate } from "react-router-dom";
 // import { openPopup } from "./features/popupSlice";
 // import Popup from "./Popup";
 import heading from "./assets/mh-1.png"
-import { categories, fixedHeaderLinks } from "./utils";
+import { categories } from "./utils";
 // import { CategoryInterface } from "./interfaces";
 // import LinksComp from "./LinksComp";
 import { login } from "./features/userSlice";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 // import { getOTPCode } from "./userApi";
-import { useGetOTPCodeMutation, useGetLoggedUserQuery } from "./features/apiSlice";
+import { useGetOTPCodeMutation } from "./features/apiSlice";
 import InputEl from "./InputEl";
 // import { UserInterface } from "./features/userSlice";
 

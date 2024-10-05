@@ -9,7 +9,7 @@ import { applicationCategoriesSelect, applicationCitySelect, applicationSizeSele
 import { ApplicationInterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 import ApplicationOverview from "./ApplicationOverview";
-import ApplicationFiles from "./ApplicationFiles";
+// import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
 export default function ApplicationForm() {
@@ -35,6 +35,15 @@ export default function ApplicationForm() {
     });
 
     const [files, setFiles] = React.useState<File[]>([]);
+
+    React.useEffect(() =>{
+        setFiles([]);
+    }, []);
+
+    //functinos
+    // function dummy() {
+    //     setFiles([]);
+    // }
 
     //variables
     // const readyToSubmit = 

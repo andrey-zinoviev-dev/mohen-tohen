@@ -6,7 +6,7 @@ import goodsSlice from "../features/goodsSlice";
 import notificationSlice from "../features/notificationSlice";
 import popupSlice from "../features/popupSlice";
 import { apiSlice } from "../features/apiSlice";
-import { ListenerMiddleware } from "@reduxjs/toolkit";
+// import { ListenerMiddleware } from "@reduxjs/toolkit";
 import favouriteSlice from "../features/favouriteSlice";
 // import orderSlice from "../features/orderSlice";
 export const store = configureStore({

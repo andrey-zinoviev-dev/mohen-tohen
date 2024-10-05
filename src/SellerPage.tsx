@@ -1,9 +1,9 @@
-import { useLocation, useParams } from "react-router-dom"
-import { BrandsInterface } from "./interfaces";
+import { useParams } from "react-router-dom"
+// import { BrandsInterface } from "./interfaces";
 import "./SellerPage.css";
 import Goods from "./Goods";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 import { useGetSellerQuery } from "./features/apiSlice";
 import { UserInterface } from "./features/userSlice";

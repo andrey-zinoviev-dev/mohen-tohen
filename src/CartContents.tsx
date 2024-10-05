@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 // import { goodPageInt } from "./interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import "./CartContents.css";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { useUpdateBasketItemMutation, useDeleteBasketItemMutation } from "./features/apiSlice";
-import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
+// import { useUpdateBasketItemMutation, useDeleteBasketItemMutation } from "./features/apiSlice";
+// import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
 import { changeQuantity, remove } from "./features/basketSlice";
 
 export default function CartContents() {
@@ -34,8 +34,8 @@ export default function CartContents() {
     const dispatch = useAppDispatch();
 
     //RTK
-    const [updateBasket] = useUpdateBasketItemMutation();
-    const [deleteItem] = useDeleteBasketItemMutation();
+    // const [updateBasket] = useUpdateBasketItemMutation();
+    // const [deleteItem] = useDeleteBasketItemMutation();
 
     // React.useEffect(() => {
 

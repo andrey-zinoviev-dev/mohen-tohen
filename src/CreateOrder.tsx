@@ -2,12 +2,12 @@ import React from "react"
 import OrderStep from "./OrderStep";
 
 import "./CreateOrder.css"
-import { locationInputs, paymentInputs, recipientInputs } from "./utils";
+import { locationInputs, recipientInputs } from "./utils";
 import heading from "./assets/mh-1.png"
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Cart from "./Cart";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+// import Cart from "./Cart";
 import CartContents from "./CartContents";
 import LinkCompBack from "./LinkCompBack";
 
@@ -25,7 +25,7 @@ export default function CreateOrder() {
     });
 
     //navigate
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // console.log(cartState);
 

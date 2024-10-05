@@ -1,6 +1,6 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import LinkCompAction from "./LinkCompAction";
+// import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import LinkCompAction from "./LinkCompAction";
 import "./AboutPlatform.css"
 
 export default function AboutPlatform() {

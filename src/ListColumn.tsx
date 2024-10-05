@@ -10,4 +10,4 @@ export default function ListColumn({children}: {children: React.ReactNode[]}) {
             })} */}
         </ul>
     )
-};
+}

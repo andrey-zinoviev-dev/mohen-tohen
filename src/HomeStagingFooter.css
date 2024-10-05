@@ -1,11 +1,11 @@
 .homeStagingFooter {
   background-color: #3e3e3e;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 30px 50px;
+  padding: 30px;
 }
 
 .homeStagingFooter__text-wrapper {
@@ -60,10 +60,15 @@
   .homeStagingFooter {
     flex-direction: column;
     gap: 15px;
+    align-items: flex-start;
+
   }
 
   .homeStagingFooter__links {
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .homeStagingFooter__links li a {

@@ -10,9 +10,9 @@ import { useUserLogoutMutation } from "./features/apiSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { userLogout } from "./features/userSlice";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpFromBracket, faPen } from "@fortawesome/free-solid-svg-icons";
-import EditButton from "./EditButton";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faArrowUpFromBracket, faPen } from "@fortawesome/free-solid-svg-icons";
+// import EditButton from "./EditButton";
 import ShareButton from "./ShareButton";
 
 export default function Account() {

@@ -1,8 +1,8 @@
-import { usePostGoodToBasketMutation } from "./features/apiSlice";
+// import { usePostGoodToBasketMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { addRemoveToBasket } from "./features/userSlice";
-import { changeMessage } from "./features/notificationSlice";
+// import { addRemoveToBasket } from "./features/userSlice";
+// import { changeMessage } from "./features/notificationSlice";
 import "./BasketButton.css";
 import { add, remove } from "./features/basketSlice";
 
@@ -13,7 +13,7 @@ interface goodPageInt {
 }
 
 export default function BasketButton({ good, quantity }: goodPageInt) {
-    const [updateBasket] = usePostGoodToBasketMutation();
+    // const [updateBasket] = usePostGoodToBasketMutation();
 
     //redux
     const userBasketState = useAppSelector((state) => {
@@ -32,7 +32,7 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
     return (
         <button className="basket-button" onClick={(evt) => {
             evt.stopPropagation();
-            !goodInBasket ? dispatch(add({good: good, quantity: 1})) : dispatch(remove({good: good, quantity: 1}))
+            !goodInBasket ? dispatch(add({good: good, quantity: quantity})) : dispatch(remove(good))
             // localStorage.setItem("cart"m)
             // console.log(good);
             // updateBasket({good: good, quantity: quantity})

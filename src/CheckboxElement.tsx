@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { CheckboxInterface } from "./interfaces";
 import "./CheckboxElement.css"
 export default function CheckboxElement({label, checked, updateState}:CheckboxInterface) {

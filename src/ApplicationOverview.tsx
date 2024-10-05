@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { sendApplication } from "./api";
 import ApplicationRender from "./ApplicationRender";
-import FileUpload from "./FileUpload";
-export default function ApplicationOverview({applicationData, files}:OverviewInterface){
+// import FileUpload from "./FileUpload";
+export default function ApplicationOverview({applicationData}:OverviewInterface){
     //state
     const [submitStatus, setSubmitStatus] = React.useState<{ready: boolean, submitted: boolean, filesUploaded: boolean, applicationSent: boolean, finished: boolean}>({ready: false, submitted: false, filesUploaded: false, applicationSent: false, finished: false});
 
@@ -101,7 +101,7 @@ export default function ApplicationOverview({applicationData, files}:OverviewInt
                     <FontAwesomeIcon icon={faPaperPlane} />
                 </button>
                 }
-                {submitStatus.submitted && <FileUpload files={files} submitStatus={submitStatus} updateStatus={setSubmitStatus}/>}
+                {/* {submitStatus.submitted && <FileUpload files={files} submitStatus={submitStatus} updateStatus={setSubmitStatus}/>} */}
             </>}
         </>
 

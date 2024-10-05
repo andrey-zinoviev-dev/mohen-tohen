@@ -1,5 +1,5 @@
 
-import { ReactNode, useEffect, useState } from 'react'
+// import { ReactNode, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Brands.css'
 // import { brands } from "./utils"

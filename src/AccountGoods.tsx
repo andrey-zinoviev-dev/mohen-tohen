@@ -9,7 +9,7 @@ import "./AccountGoods.css";
 // import AddButtonState from "./AddButtonState";
 import { faPlusCircle, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import LinkCompAction from "./LinkCompAction";
-import { useGetAccountGoodsQuery, useUpdateGoodBatchMutation } from "./features/apiSlice";
+import { useUpdateGoodBatchMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
 import ListColumn from "./ListColumn";
 import { createPortal } from "react-dom";
@@ -59,7 +59,7 @@ export default function AccountGoods() {
                 setGoodId(null);
             }
         })
-    };
+    }
 
     // React.useEffect(() => {
     //     goods.length > 0 && dispatch()

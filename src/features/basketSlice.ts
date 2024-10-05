@@ -46,7 +46,7 @@ export const basketSlice = createSlice({
 
         },
 
-        editGood: (state, action: PayloadAction<GoodInterface>) => {
+        editGood: () => {
             // const newBasket = state.goods.map((good) => {
             //     return good.title === action.payload.title ? {...good, selectedColor: action.payload.selectedColor} : good;
             // });
