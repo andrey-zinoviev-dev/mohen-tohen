@@ -12,6 +12,7 @@
   padding: 0;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  z-index: 55;
 }
 
 .protal_files {

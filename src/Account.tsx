@@ -61,7 +61,7 @@ export default function Account() {
                 </div> */}
                 <AccountLinks></AccountLinks>
 
-                {userState.loggedIn && <button onClick={() => {
+                {userState.loggedIn && <button className="account__logout" onClick={() => {
                     logout()
                     .then((data) => {
                         if(data) {

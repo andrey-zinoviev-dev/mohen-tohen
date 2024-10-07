@@ -9,6 +9,7 @@ import { applicationCategoriesSelect, applicationCitySelect, applicationSizeSele
 import { ApplicationInterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 import ApplicationOverview from "./ApplicationOverview";
+import ListGrid from "./ListGrid";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
@@ -231,6 +232,7 @@ export default function ApplicationForm() {
                                     <h3>
                                         <span>03</span>Фото товара
                                     </h3>
+                                    <ListGrid gridElements={[]} openInput={() => {}} removePhoto={():void => {}} />
                                     {/* <ApplicationFiles photos={applicationData.photos} files={files} updatePhotos={setApplicationData} updateFiles={setFiles}></ApplicationFiles> */}
                                 </div>
                                 <div className="application__form-div">

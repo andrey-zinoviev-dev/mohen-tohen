@@ -1,8 +1,9 @@
-import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
+// import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { GoodInterface } from "./interfaces";
 import { useAppDispatch } from "./hooks";
 import { changeMessage } from "./features/notificationSlice";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
 
 export default function ShareButton({ href }: { href: string }) {
   const dispatch = useAppDispatch();
@@ -15,7 +16,7 @@ export default function ShareButton({ href }: { href: string }) {
         dispatch(changeMessage({message: "Ссылка на товар скопирована!"}))
       })
     }}>
-      <FontAwesomeIcon icon={faArrowUpFromBracket} />
+      <FontAwesomeIcon icon={faCopy} />
     </button>
   )
 }

@@ -116,3 +116,17 @@
     aspect-ratio: 1/1;
     font-size: 14px;
 }
+
+.account__logout {
+    color: #ff565d;
+    border: 2px solid #ff565d;
+    background-color: transparent;
+    border: 2px solid #ff565d;
+    transition: all 0.25s ease-in-out;
+}
+
+.account__logout:hover {
+    background-color: #ff565d;
+    color: white;
+    border: 2px solid transparent;
+}

@@ -1,10 +1,18 @@
 .ulgrid {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(3, 200px);
   padding: 0;
   list-style: none;
   margin: 0;
+  gap: 15px; */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  padding: 0;
+  list-style: none;
+  margin: 0;
   gap: 15px;
+  align-self: flex-start;
 }
 
 .ulgrid li {

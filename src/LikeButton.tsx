@@ -28,7 +28,7 @@ export default function LikeButton({ good }: { good: GoodInterface }) {
     const dispatch = useAppDispatch();
 
     return (
-        <button className={goodInFavs ? "button-like_clicked" :  "button-like"} onClick={(evt) => {
+        <button className={goodInFavs ? "button-like_clicked button-like" :  "button-like"} onClick={(evt) => {
             evt.stopPropagation();
             dispatch(!goodInFavs ? addToFavourite(good) : removeFromFavourite(good));
             dispatch(changeMessage(!goodInFavs ? {message: "Товар добавлен в избранное"} : {message: "Товар убран из избранного"}))

@@ -11,7 +11,7 @@ export default function HomeStagingFooter() {
       </div>
       <ul className="homeStagingFooter__links">
         <li>
-          <a href="#">
+          <a href="../">
             Маркетплейс
             <FontAwesomeIcon icon={faArrowRight} />
           </a>
@@ -23,7 +23,7 @@ export default function HomeStagingFooter() {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a target="_blank" href="https://t.me/MohenITohen">
             Telegram
             <FontAwesomeIcon icon={faArrowRight} />
           </a>
@@ -36,7 +36,7 @@ export default function HomeStagingFooter() {
         </li>
         <li>
           <a href="#">
-            Whatsapp
+            Pinterest
             <FontAwesomeIcon icon={faArrowRight} />
           </a>
         </li>

@@ -227,6 +227,11 @@
     .goods__ul {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .goods__ul-li-price-wrapper button {
+        pointer-events: all;
+        opacity: 1;
+    }   
 }
 
 @media screen and (max-width: 424px) {
