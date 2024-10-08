@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { SetStateAction, useEffect } from "react";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import InputEl from "./InputEl";
@@ -12,6 +12,7 @@ import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
 // import FileUpload from "./FileUpload";
 import UploadComp from "./UploadComp";
+import { usePostGoodToServerMutation } from "./features/apiSlice";
 
 export default function AccountAddGood() {
   //states
@@ -24,13 +25,10 @@ export default function AccountAddGood() {
     price: 0,
     batch: 0,
   });
-  const [uploadStatus, setUploadStatus] = React.useState<{started: boolean, filesUplaoded: boolean, finished: boolean}>({
-    started: false,
-    filesUplaoded: false,
-    finished: false
-  });
+  const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
-  // const []
+  //RTK
+  const [addGood] = usePostGoodToServerMutation();
 
   //refs
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -60,6 +58,10 @@ export default function AccountAddGood() {
       //   return photo.name !== file.name;
       // })}
     });
+  };
+
+  function submitData(updateStatus:SetStateAction<string>) {
+   
   }
 
   const formNotCompleted = Object.values(formData).filter((entry) => {
@@ -68,9 +70,9 @@ export default function AccountAddGood() {
     return entry.length === 0;
   });
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, [uploadStatus]);
+  // }, [uploadStatus]);
 
   // console.log(formNotCompleted);
   
@@ -80,9 +82,7 @@ export default function AccountAddGood() {
       <h3>Добавление нового товара</h3>
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
-        setUploadStatus((prevValue) => {
-          return {...prevValue, started: true};
-        });
+        setUploadStarted(true);
 
         // uploadGood(formData)
         // .then((data) => {
@@ -134,10 +134,10 @@ export default function AccountAddGood() {
       <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
         processFileAdd(evt)
       }} style={{display: "none"}}></input>
-      {uploadStatus.started && createPortal(<PortalMultimedia>
+      {uploadStarted && createPortal(<PortalMultimedia>
         {/* <button></button> */}
         <PortalContainer>
-          <UploadComp formData={formData}></UploadComp>
+          <UploadComp photos={formData.photos}></UploadComp>
           {/* <FileUpload></FileUpload> */}
         </PortalContainer>
       </PortalMultimedia>, document.body)}

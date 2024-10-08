@@ -12,7 +12,7 @@ export default function Good({ good }:GoodComponentInterface) {
     return (
         <>
             <div className="goods__ul-li-actions-wrapper">
-                <img className="goods__ul-li-img" src={good.cover}></img>
+                <img className="goods__ul-li-img" src={good.photos[0].url}></img>
                 <div className="goods__ul-li-buttons">
                     <LikeButton good={ good } />
                     <ShareButton href={`${window.location.href}goods/${good._id}`} />

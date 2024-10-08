@@ -78,7 +78,7 @@ export default function AccountGoods() {
                         <span className="list-column__id-span">{good._id}</span>
                         <div className="list-column__wrapper">
                             <div className="list-column__content-wrapper">
-                                <img className="list-column__cover" src={good.cover}></img>
+                                <img className="list-column__cover" src={good.photos[0].url}></img>
                                 <div className="list-column__details-wrapper">
                                     <h3>{good.title}</h3>
                                     <div className="list-column__materials-wrapper">

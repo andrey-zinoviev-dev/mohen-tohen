@@ -5,23 +5,21 @@ import Loader from "./Loader";
 import { usePostGoodToServerMutation } from "./features/apiSlice";
 import LinkCompBack from "./LinkCompBack";
 
-export default function UploadComp({formData}: {formData: {title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number}}) {
+export default function UploadComp({photos}: {photos: {title: string, file: File}[]}) {
   // console.log(formData.photos);
   //state
   const [uploadStatus, setUploadStatus] = useState<string>("started");
 
-  //RTK
-  const [addGood] = usePostGoodToServerMutation();
-
   useEffect(() => {
     if(uploadStatus === 'files_uploaded') {
       // console.log(formData);
-      addGood(formData)
-      .then((data) => {
-        if(data) {
-          setUploadStatus("finished");
-        }
-      })
+      // addGood(formData)
+      // .then((data) => {
+      //   if(data) {
+      //     setUploadStatus("finished");
+      //   }
+      // })
+      // uploadFunction()
     }
   }, [uploadStatus]);
 
@@ -29,7 +27,7 @@ export default function UploadComp({formData}: {formData: {title: string, descri
   function showComponent() {
     switch (uploadStatus) {
       case "started":
-        return <FileUpload files={formData.photos} setUploadStatus={setUploadStatus}></FileUpload>
+        return <FileUpload files={photos} setUploadStatus={setUploadStatus}></FileUpload>
       case "files_uploaded":
         return <Loader text="Файлы загрузились, товар выгружается"></Loader>
       case "finished":
