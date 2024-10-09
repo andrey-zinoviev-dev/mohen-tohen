@@ -88,10 +88,13 @@ export const userSlice = createSlice({
         userLogout: (state) => {
             console.log(state);
             return state = initialState;
+        },
+        addNewGoodToUser: (state, action: PayloadAction<GoodInterface>) => {
+            state.goods?.push(action.payload);
         }
     },
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout, addNewGoodToUser } = userSlice.actions;
 export default userSlice.reducer;

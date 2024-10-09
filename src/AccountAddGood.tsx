@@ -1,4 +1,4 @@
-import React, { SetStateAction, useEffect } from "react";
+import React from "react";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import InputEl from "./InputEl";
@@ -13,6 +13,8 @@ import PortalContainer from "./PortalContainer";
 // import FileUpload from "./FileUpload";
 import UploadComp from "./UploadComp";
 import { usePostGoodToServerMutation } from "./features/apiSlice";
+import { useAppDispatch } from "./hooks";
+import { addNewGoodToUser } from "./features/userSlice";
 
 export default function AccountAddGood() {
   //states
@@ -26,6 +28,9 @@ export default function AccountAddGood() {
     batch: 0,
   });
   const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
+
+  //dispatch
+  const dispatch = useAppDispatch();
 
   //RTK
   const [addGood] = usePostGoodToServerMutation();
@@ -58,10 +63,14 @@ export default function AccountAddGood() {
       //   return photo.name !== file.name;
       // })}
     });
-  };
+  }
 
-  function submitData(updateStatus:SetStateAction<string>) {
-   
+  function submitData() {
+    return addGood(formData)
+    .then((data) => {
+      // console.log(data);
+      data.data && dispatch(addNewGoodToUser(data.data));
+    })
   }
 
   const formNotCompleted = Object.values(formData).filter((entry) => {
@@ -69,12 +78,6 @@ export default function AccountAddGood() {
   }).some((entry) => {
     return entry.length === 0;
   });
-
-  // useEffect(() => {
-
-  // }, [uploadStatus]);
-
-  // console.log(formNotCompleted);
   
   return (
     <>
@@ -123,6 +126,7 @@ export default function AccountAddGood() {
           </label>
 
           <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
+          {/* <button type="submit"> */}
             Отправить товар
           </button>
         </div>
@@ -137,7 +141,7 @@ export default function AccountAddGood() {
       {uploadStarted && createPortal(<PortalMultimedia>
         {/* <button></button> */}
         <PortalContainer>
-          <UploadComp photos={formData.photos}></UploadComp>
+          <UploadComp submitData={submitData} photos={formData.photos}></UploadComp>
           {/* <FileUpload></FileUpload> */}
         </PortalContainer>
       </PortalMultimedia>, document.body)}

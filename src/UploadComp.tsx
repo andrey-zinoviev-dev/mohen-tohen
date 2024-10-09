@@ -2,21 +2,28 @@ import { useEffect, useState } from "react"
 import FileUpload from "./FileUpload";
 import SuccessWrapper from "./SuccessWrapper";
 import Loader from "./Loader";
-import { usePostGoodToServerMutation } from "./features/apiSlice";
+// import { usePostGoodToServerMutation } from "./features/apiSlice";
 import LinkCompBack from "./LinkCompBack";
 
-export default function UploadComp({photos}: {photos: {title: string, file: File}[]}) {
+export default function UploadComp({photos, submitData}: {photos: {title: string, file: File}[], submitData: () => Promise<void>}) {
+  // console.log(props.);
+  // console.log(props.)
+  // console.log(UploadCompType)
   // console.log(formData.photos);
   //state
   const [uploadStatus, setUploadStatus] = useState<string>("started");
 
   useEffect(() => {
     if(uploadStatus === 'files_uploaded') {
+      submitData()
+      .then(() => {
+        setUploadStatus("finished");
+      })
+      // setUploadStatus("finished");
       // console.log(formData);
       // addGood(formData)
       // .then((data) => {
       //   if(data) {
-      //     setUploadStatus("finished");
       //   }
       // })
       // uploadFunction()
@@ -40,6 +47,9 @@ export default function UploadComp({photos}: {photos: {title: string, file: File
 
   return (
     <>
+      {/* <h2>Вот тут будет выгрузка файлов</h2>
+      <div>
+      </div> */}
       {showComponent()}
     </>
   )

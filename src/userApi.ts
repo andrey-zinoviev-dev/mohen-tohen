@@ -11,7 +11,7 @@ export function getOTPCode(phone:string) {
     .then((res) => {
         return res.json();
     })
-};
+}
 
 export function getUser(phone:string){
     return fetch(`${baseApi}/users`, {
