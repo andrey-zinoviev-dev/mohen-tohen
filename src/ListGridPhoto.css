@@ -5,7 +5,8 @@
     border: 1px solid #C8CCCF;
     overflow: hidden;
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    /* align-items: stretch; */
     justify-content: center;
     position: relative;
 }
@@ -26,6 +27,7 @@
 
 .img {
     width: 100%;
+    aspect-ratio: 1/1;
     object-fit: contain;
     /* width: 100%;
     height: 100%;

@@ -44,10 +44,16 @@ export default function AccountAddGood() {
   }
 
   function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
-    const fileuploaded = evt.target.files && evt.target.files[0];
+    const fileuploaded = evt.target.files && {title: evt.target.files[0].name, file: evt.target.files[0]};
     
     fileuploaded && setFormData((prevValue) => {
-      return {...prevValue, photos: [...prevValue.photos, {title: fileuploaded.name, file: fileuploaded}]}
+      const photoInState = prevValue.photos.find((photo) => {
+        return photo.title === fileuploaded.title;
+      });
+
+      return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
+        return photo.title !== photoInState.title;
+      }) : [...prevValue.photos, fileuploaded]}
       // return {...prevValue, photos: [...prevValue.photos, fileuploaded]}
     })
   }
@@ -59,9 +65,7 @@ export default function AccountAddGood() {
           return photo.title !== file.name;
         })
       }
-      // return {...prevValue, photos: prevValue.photos.filter((photo) => {
-      //   return photo.name !== file.name;
-      // })}
+
     });
   }
 
@@ -141,7 +145,9 @@ export default function AccountAddGood() {
       {uploadStarted && createPortal(<PortalMultimedia>
         {/* <button></button> */}
         <PortalContainer>
-          <UploadComp submitData={submitData} photos={formData.photos}></UploadComp>
+          <UploadComp submitData={submitData} photos={formData.photos.map((photo) => {
+            return photo.file;
+          })}></UploadComp>
           {/* <FileUpload></FileUpload> */}
         </PortalContainer>
       </PortalMultimedia>, document.body)}

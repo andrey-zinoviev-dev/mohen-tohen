@@ -9,6 +9,27 @@ import { createPortal } from "react-dom";
 import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
 import UploadComp from "./UploadComp";
+import { useSendApplicationMutation } from "./features/apiSlice";
+
+// // //types
+// type ConditionalProps = 
+//     |
+//     {
+//         photos: {
+//             title: string,
+//             file: File,
+//             url: never,
+//         }[] 
+//     }
+//     |
+//     {
+//         photos: {
+//             title: string,
+//             file: never,
+//             url: string,
+//         }[]
+//     };
+
 // import FileUpload from "./FileUpload";
 export default function ApplicationOverview({applicationData}:OverviewInterface){
     //state
@@ -16,39 +37,50 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
 
     const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
+    //RTK
+    const [sendApplication] = useSendApplicationMutation();
+
     //functions
     function submitData() {
         return sendApplication(applicationData)
         .then((data) => {
-                // setSubmitStatus((prevValue) => {
-                //     return {...prevValue, finished: true};
-                // })
-                console.log(data);
-                // console.log("send notification to telegram");
-            fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
-                method: "POST",
-                headers: {
-                    "Content-Type":"application/json",
-                },
-                body: JSON.stringify({
-                                // chat_id: 471930242,
-                    "chat_id": 2104151994,
-                    "text": `Новая заявка- Алекс`,
-                    "parse_mode" : "markdown",
-                    "reply_markup" : {
-                        "inline_keyboard" : [
-                            [
-                                {
-                                    "text" : "Open link",
-                                    "url" : "https://google.com"
-                                }
-                            ]
-                        ]
-                    }
-                })
-            })
+            console.log(data);
         })
     }
+
+    //functions
+    // function submitData() {
+    //     return sendApplication(applicationData)
+    //     .then((data) => {
+    //             // setSubmitStatus((prevValue) => {
+    //             //     return {...prevValue, finished: true};
+    //             // })
+    //             console.log(data);
+    //             // console.log("send notification to telegram");
+    //         fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type":"application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                             // chat_id: 471930242,
+    //                 "chat_id": 2104151994,
+    //                 "text": `Новая заявка- Алекс`,
+    //                 "parse_mode" : "markdown",
+    //                 "reply_markup" : {
+    //                     "inline_keyboard" : [
+    //                         [
+    //                             {
+    //                                 "text" : "Open link",
+    //                                 "url" : "https://google.com"
+    //                             }
+    //                         ]
+    //                     ]
+    //                 }
+    //             })
+    //         })
+    //     })
+    // }
 
     // React.useEffect(() => {
     //     if(submitStatus.submitted) {
@@ -93,7 +125,7 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
             <ApplicationRender applicationData={applicationData} showPhotos={false}>
 
             </ApplicationRender>
-             {applicationData.offerAgreement.value && applicationData.personalDataAgreement.value && applicationData.shippingPartnerAgreement.value && <>
+             {applicationData.offerAgreement && applicationData.personalDataAgreement && applicationData.shippingPartnerAgreement && <>
                 {/* <button>Анкета заполнена верно</button> */}
                 {/* {!submitStatus?.ready ? <button onClick={() => {
                     setSubmitStatus((prevValue) => {
@@ -104,8 +136,11 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
                     <FontAwesomeIcon icon={faCheck} />
                 </button> 
                     :  */}
-                <button type="submit" onClick={() => {
+                <button type="button" onClick={() => {
                     setUploadStarted(true);
+                    // sendApplication(applicationData)
+                    // console.log(applicationData);
+                    // setUploadStarted(true);
                     // setSubmitStatus((prevValue) => {
                     //     return {...prevValue, submitted: true};
                     // })
@@ -145,10 +180,10 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
             </>}
 
             {uploadStarted && createPortal(<PortalMultimedia>
-                {/* <button></button> */}
                 <PortalContainer>
-                    <UploadComp submitData={submitData} photos={[]}></UploadComp>
-                {/* <FileUpload></FileUpload> */}
+                    <UploadComp submitData={submitData} photos={applicationData.photos.map((photo) => {
+                        return photo.file;
+                    })}></UploadComp>
                 </PortalContainer>
             </PortalMultimedia>, document.body)}
         </>
