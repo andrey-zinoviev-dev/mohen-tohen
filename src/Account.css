@@ -2,7 +2,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 75px;
+    gap: 25px;
+    min-height: 65svh;
 }
 
 .account__navigation-wrapper {
@@ -11,7 +12,24 @@
     align-items: flex-start;
     gap: 25px;
     width: 100%;
-    max-width: 220px;
+    /* max-width: 220px; */
+    max-width: 320px;
+}
+
+.account__wrapper-user-text-profile {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.account__wrapper-user-text-profile h3 {
+    margin: 0;
+}
+
+.account__wrapper-user-text-avatar {
+    max-width: 90px;
+    border-radius: 50%;
+
 }
 
 .account__back {

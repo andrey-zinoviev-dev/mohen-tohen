@@ -39,26 +39,17 @@ export default function Account() {
     return (
         <section className="account">
             <div className="account__navigation-wrapper">
-                {/* <button className="account__back" onClick={() => {
-                    navigate("../");
-                }}>
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                    <span>Назад</span>
-                </button> */}
-                {/* <div>
-                    <div>
+                <div className="account__wrapper-user-text">
+                    <div className="account__wrapper-user-text-profile">
+                        <h3>Здравствуйте, {userState.name}</h3>
+                        <ShareButton href={`${window.location.origin}/brands/${userState._id}`} />
+                    </div>
+                    <span>С возвращением в Mohen-Tohen!</span>
+                    {/* <div>
+                        <img className="account__wrapper-user-text-avatar" src={userState.cover && userState.cover}></img>
                         <span>{userState.phone}</span>
-                        <span>{userState.name}</span>
-                    </div>
-                    <div>
-                        <button>
-                            <FontAwesomeIcon icon={faPen} />
-                        </button>
-                        <button>
-                            <FontAwesomeIcon icon={faArrowUpFromBracket} />
-                        </button>
-                    </div>
-                </div> */}
+                    </div> */}
+                </div>
                 <AccountLinks></AccountLinks>
 
                 {userState.loggedIn && <button className="account__logout" onClick={() => {
@@ -80,12 +71,11 @@ export default function Account() {
 
             <div className="account__wrapper">
                 <div className="account__wrapper-user">
-                    <div className="account__wrapper-user-text">
+                    {/* <div className="account__wrapper-user-text">
                         <h3>Здравствуйте, {userState.name}</h3>
                         <span>С возвращением в Mohen-Tohen!</span>
-                    </div>
+                    </div> */}
                     {/* <EditButton /> */}
-                    <ShareButton href={`${window.location.origin}/brands/${userState._id}`} />
                     {/* <button>
                         <FontAwesomeIcon icon={faPen} />
                     </button>

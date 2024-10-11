@@ -6,10 +6,6 @@ import Loader from "./Loader";
 import LinkCompBack from "./LinkCompBack";
 
 export default function UploadComp({photos, submitData}: {photos: {title: string, file: File}[], submitData: () => Promise<void>}) {
-  // console.log(props.);
-  // console.log(props.)
-  // console.log(UploadCompType)
-  // console.log(formData.photos);
   //state
   const [uploadStatus, setUploadStatus] = useState<string>("started");
 
@@ -47,9 +43,6 @@ export default function UploadComp({photos, submitData}: {photos: {title: string
 
   return (
     <>
-      {/* <h2>Вот тут будет выгрузка файлов</h2>
-      <div>
-      </div> */}
       {showComponent()}
     </>
   )

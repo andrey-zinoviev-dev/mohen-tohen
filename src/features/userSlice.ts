@@ -14,6 +14,7 @@ export interface UserInterface {
     sellsHistory: GoodInterface[],
     description?:string,
     basket: goodPageInt[],
+    cover?: string,
     // basket: 
     _id: string | null,
 }

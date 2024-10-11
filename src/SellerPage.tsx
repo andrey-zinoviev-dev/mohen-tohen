@@ -15,19 +15,19 @@ export default function SellerPage() {
   // const state = location.state as BrandsInterface;
   // console.log(state);
   const {
-    data: brand = {} as UserInterface,
+    data: seller = {} as UserInterface,
 
   } = useGetSellerQuery(brandID!);
 
-  console.log(brand);
+  // console.log(brand);
 
   return (
     <section className="seller">
       <div className="seller__warpper">
-        <img className="seller__warpper-img" src={""}></img>
+        <img className="seller__warpper-img" src={seller.cover && seller.cover}></img>
         <div className="seller__wrapper_details">
-          <h3>{brand && brand.name}</h3>
-          <p>{brand && brand.description}</p>
+          <h3>{seller && seller.name}</h3>
+          <p>{seller && seller.description}</p>
 
           {/* <div className="seller__wrapper_details-rating">
             <span>5.0</span>
@@ -39,7 +39,7 @@ export default function SellerPage() {
       </div>
       <div className="seller__goods">
         <h3>Что можно приобрести</h3>
-        <Goods goods={brand && brand.goods} />
+        <Goods goods={seller && seller.goods} />
       </div>
     </section>
   )

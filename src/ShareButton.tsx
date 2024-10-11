@@ -4,12 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch } from "./hooks";
 import { changeMessage } from "./features/notificationSlice";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
+import "./ShareButton.css"
 
 export default function ShareButton({ href }: { href: string }) {
   const dispatch = useAppDispatch();
 
   return (
-    <button onClick={(evt) => {
+    <button className="share-button" onClick={(evt) => {
       evt.stopPropagation();
       navigator.clipboard.writeText(href)
       .then(() => {

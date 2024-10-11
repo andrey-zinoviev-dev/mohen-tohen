@@ -1,18 +1,24 @@
 .button-like {
     color: transparent;
     stroke: black;
-    stroke-width: 30px;
-
+    stroke-width: 50px;
+    background-color: #F3F3F3;
     box-sizing: border-box;
     /* padding: 5px; */
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     padding: 0;
-    width: 30px;
+    width: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
+    font-size: 20px;
+    transition: all 0.25s ease-in-out;
+}
+
+.button-like:hover {
+    stroke: #FF8261;
 }
 
 .button-like_clicked {
