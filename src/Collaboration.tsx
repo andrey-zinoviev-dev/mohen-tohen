@@ -10,10 +10,10 @@ export default function Collaboration () {
     //state
     const [formData, setFormData] = React.useState<CollaborationInterface>(
         {
-            name: {value: "", textarea: false, label: "Имя"},
-            email: {value: "", textarea: false, label: "Почта"},
-            subject: {value: "", textarea: false, label: "Направление"},
-            phone: {value: "", textarea: false, label: "Телефон"},
+            name: "",
+            email: "",
+            subject: "",
+            phone: "",
             // sell: "",
         }
     );
@@ -21,11 +21,11 @@ export default function Collaboration () {
     const [formSent, setFormSent] = React.useState<boolean>(false);
 
     //variables
-    const formValues = Object.values(formData);
-    // console.log(formValues);
-    const formIsCompleted = formValues.every((entry) => {
-        return entry.value.length > 0;
-    });
+    // const formValues = Object.values(formData);
+    // // console.log(formValues);
+    // const formIsCompleted = formValues.every((entry) => {
+    //     return entry.value.length > 0;
+    // });
 
     // console.log(formIsCompleted);
 
@@ -51,7 +51,7 @@ export default function Collaboration () {
                         body: JSON.stringify({
                             // chat_id: 471930242,
                             "chat_id": 2104151994,
-                            "text": `Новая заявка на сотрудничество!\nИмя- ${formData.name.value}\nТелефон- <a href="tel:${formData.phone.value}">${formData.phone.value}</a>\nПочта- ${formData.email.value}\nНаправление- ${formData.subject?.value}
+                            "text": `Новая заявка на сотрудничество!\nИмя- ${formData.name}\nТелефон- <a href="tel:${formData.phone}">${formData.phone}</a>\nПочта- ${formData.email}\nНаправление- ${formData.subject && formData.subject}
                             `,
                             "parse_mode" : "html",
                         })
@@ -67,7 +67,7 @@ export default function Collaboration () {
                             </label>
                             <input id="name" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, name: {...prevValue.name, value: evt.target.value}};
+                                    return {...prevValue, name: evt.target.value};
                                 })
                             }} placeholder="Алексей Солдатов"></input>
                         </div>
@@ -77,7 +77,7 @@ export default function Collaboration () {
                             </label>
                             <input id="phone" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, phone: {...prevValue.phone, value: evt.target.value}};
+                                    return {...prevValue, phone: evt.target.value};
                                 })
                             }} placeholder="+79031513045"></input>
                         </div>
@@ -89,7 +89,7 @@ export default function Collaboration () {
                             </label>
                             <input id="email" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, email: {...prevValue.email, value: evt.target.value}};
+                                    return {...prevValue, email: evt.target.value};
                                 })
                             }} placeholder="example@mail.org"></input>
                         </div>
@@ -99,7 +99,7 @@ export default function Collaboration () {
                             </label>
                             <input id="subject" onChange={(evt) => {
                                 setFormData((prevValue) => {
-                                    return {...prevValue, subject: prevValue.subject && {...prevValue.subject, value: evt.target.value}}
+                                    return {...prevValue, subject: prevValue.subject && evt.target.value}
                                 })
                             }} placeholder="например, керамика"></input>
                         </div>
@@ -111,7 +111,7 @@ export default function Collaboration () {
                             
                         </div>
                     </div> */}
-                    <button className="collaboration__form-btn" disabled={formIsCompleted ? false : true}>
+                    <button className="collaboration__form-btn">
                         <span>Отправить заявку</span>
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>

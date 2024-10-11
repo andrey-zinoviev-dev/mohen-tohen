@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { decideApplication, getApplication } from "./api";
-import { ApplicationInterface, ApplicationUploadedInterface } from "./interfaces";
+// import { decideApplication, getApplication } from "./api";
+import { ApplicationUploadedInterface } from "./interfaces";
 import ApplicationRender from "./ApplicationRender";
 import "./ShowApplication.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

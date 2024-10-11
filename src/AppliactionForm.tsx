@@ -10,7 +10,7 @@ import { ApplicationNotUploadedIterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 import ApplicationOverview from "./ApplicationOverview";
 import ListGrid from "./ListGrid";
-import { useSendApplicationMutation } from "./features/apiSlice";
+// import { useSendApplicationMutation } from "./features/apiSlice";
 import InputEl from "./InputEl";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";

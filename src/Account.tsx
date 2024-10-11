@@ -14,9 +14,9 @@ import { useNavigate } from "react-router-dom";
 // import { faArrowUpFromBracket, faPen } from "@fortawesome/free-solid-svg-icons";
 // import EditButton from "./EditButton";
 import ShareButton from "./ShareButton";
-import LinkCompAction from "./LinkCompAction";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import LinkCompAction from "./LinkCompAction";
+// import { faPen } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditButton from "./EditButton";
 
 export default function Account() {
