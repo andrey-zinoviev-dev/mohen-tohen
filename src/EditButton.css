@@ -1,0 +1,17 @@
+.button-edit {
+    background-color: #F3F3F3;
+    color: transparent;
+    stroke-width: 50px;
+    stroke: black;
+    translate: 0 -5px;
+    padding: 0;
+    width: 30px;
+    aspect-ratio: 1/1;
+    transition: all 0.25s ease-in-out;
+}
+
+.button-edit:hover {
+    color: white;
+    border: 2px solid transparent;
+    stroke: #FF8261;
+}

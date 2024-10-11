@@ -27,7 +27,8 @@
 }
 
 .account__wrapper-user-text-avatar {
-    max-width: 90px;
+    max-width: 75px;
+    aspect-ratio: 1/1;
     border-radius: 50%;
 
 }
@@ -65,14 +66,32 @@
 
 .account__wrapper-user-text {
     display: flex;
+    /* flex-direction: column; */
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.account__wrapper-user-text-data {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
+}
+
+.account__wrapper-user-text-data-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.account__wrapper-user-text-data-wrapper span {
+    width: 120px;
+    text-align: left;
 }
 
 .account__wrapper-user-text span {
-    color: #949694;
+    /* color: #949694; */
 }
+
 
 .account__wrapper-user button {
     /* background-color: transparent; */
