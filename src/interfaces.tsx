@@ -133,29 +133,62 @@ export interface OptionInterface {
   label: string
 }
 
+// export interface CollaborationInterface {
+//   name: {value: string, textarea: boolean, label: string},
+//   email: {value: string, textarea: boolean, label: string},
+//   phone: {value: string, textarea: boolean, label: string},
+//   sell?: string,
+//   subject?:{value: string, textarea: boolean, label: string},
+// }
+
 export interface CollaborationInterface {
-  name: {value: string, textarea: boolean, label: string},
-  email: {value: string, textarea: boolean, label: string},
-  phone: {value: string, textarea: boolean, label: string},
+  name: string,
+  email: string,
+  phone: string,
   sell?: string,
-  subject?:{value: string, textarea: boolean, label: string},
+  subject?:string,
 }
 
+// export interface ApplicationInterface extends CollaborationInterface {
+//   approved: {value: {approved?: boolean, declined?: boolean}, approved: boolean},
+//   city: {value: string, textarea: boolean, label: string},
+//   description: {value: string, textarea: boolean, label: string} | undefined,
+//   productionLength: {value: string, textarea: boolean, label: string},
+//   productionProcess: {value: string, textarea: boolean, label: string},
+//   stock: {value: string, textarea: boolean, label: string},
+//   size: {value: string, textarea: boolean, label: string},
+//   offerAgreement: {value: boolean, checkbox: boolean},
+//   personalDataAgreement: {value: boolean, checkbox: boolean},
+//   shippingPartnerAgreement: {value: boolean, checkbox: boolean},
+//   category: {value: string[], textarea: boolean, label: string},
+//   dateOfFill: {value: string, textarea: boolean, date: boolean},
+//   photos: {value: {name: string, type: string}[], photo: boolean},
+//   showApplication?: boolean,
+// }
+
 export interface ApplicationInterface extends CollaborationInterface {
-  approved: {value: {approved?: boolean, declined?: boolean}, approved: boolean},
-  city: {value: string, textarea: boolean, label: string},
-  description: {value: string, textarea: boolean, label: string} | undefined,
-  productionLength: {value: string, textarea: boolean, label: string},
-  productionProcess: {value: string, textarea: boolean, label: string},
-  stock: {value: string, textarea: boolean, label: string},
-  size: {value: string, textarea: boolean, label: string},
-  offerAgreement: {value: boolean, checkbox: boolean},
-  personalDataAgreement: {value: boolean, checkbox: boolean},
-  shippingPartnerAgreement: {value: boolean, checkbox: boolean},
-  category: {value: string[], textarea: boolean, label: string},
-  dateOfFill: {value: string, textarea: boolean, date: boolean},
-  photos: {value: {name: string, type: string}[], photo: boolean},
+  approved: string,
+  city: string,
+  description: string | undefined,
+  productionLength: string,
+  productionProcess: string,
+  stock: string,
+  size: string,
+  offerAgreement: boolean,
+  personalDataAgreement: boolean,
+  shippingPartnerAgreement: boolean,
+  category: string[],
+  dateOfFill: string,
+  // photos: {title: string, file: File, url: never}[] | {title: string, file: never, url: string}[],
   showApplication?: boolean,
+}
+
+export interface ApplicationNotUploadedIterface extends ApplicationInterface {
+  photos: {title: string, file: File}[],
+}
+
+export interface ApplicationUploadedInterface extends ApplicationInterface {
+  photos: {title: string, url: string}[];
 }
 
 export interface SelectInterface {
@@ -172,8 +205,8 @@ export interface CheckboxInterface {
 }
 
 export interface OverviewInterface {
-  applicationData: ApplicationInterface,
-  files: File[],
+  applicationData: ApplicationNotUploadedIterface,
+  // files: File[],
   // updateFiles: React.Dispatch<React.SetStateAction<File[]>>,
   // updateApplicationData: React.Dispatch<React.SetStateAction<ApplicationInterface>>,
 }

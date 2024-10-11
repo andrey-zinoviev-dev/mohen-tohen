@@ -5,18 +5,18 @@ import { createPortal } from "react-dom";
 import PortalMultimedia from "./PortalMultimedia";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-export default function ShowApplicationPhotos({photos}: {photos: {name: string, type: string, path?: string}[]}) {
+export default function ShowApplicationPhotos({photos}: {photos: {title: string, url?: string}[]}) {
   //state
-  const [selectedPhoto, setSelectedPhoto] = React.useState<{name: string, type: string, path?: string} | null>(null);
-  console.log(selectedPhoto);
+  const [selectedPhoto, setSelectedPhoto] = React.useState<{title: string, url?: string} | null>(null);
+  // console.log(selectedPhoto);
   return (
     <>
         <ul className="photos">
           {photos.map((photo) => {
-            return <li key={photo.name} onClick={() => {
+            return <li key={photo.title} onClick={() => {
               setSelectedPhoto(photo);
             }}>
-              <img src={photo.path}></img>
+              <img src={photo.url}></img>
             </li>
           })}
         </ul>
@@ -26,7 +26,7 @@ export default function ShowApplicationPhotos({photos}: {photos: {name: string, 
             }}>
               <FontAwesomeIcon icon={faXmark} />
             </button>
-            <img src={selectedPhoto.path}></img>
+            <img src={selectedPhoto.url}></img>
         </PortalMultimedia>, document.body)}
         {/* {selectedPhoto && <ApplicationPhotoPopup photo={selectedPhoto} closePhoto={setSelectedPhoto}></ApplicationPhotoPopup>} */}
     </>

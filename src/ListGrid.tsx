@@ -17,7 +17,7 @@ export default function ListGrid({ gridElements, openInput, removePhoto }: { gri
         </li>
         {/* {children} */}
       </ul>
-
+      {/* <input type="file" style={{display: "none"}}></input> */}
     </>
 
   )

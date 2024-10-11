@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseApi } from "../utils";
 // import { UserInterface } from "./userSlice";
 
-import { GoodInterface, goodPageInt, TransactionInterface } from "../interfaces";
+import { ApplicationInterface, ApplicationUploadedInterface, GoodInterface, goodPageInt, TransactionInterface } from "../interfaces";
 import { UserInterface } from "./userSlice";
 export const apiSlice = createApi({
     reducerPath: "api",
@@ -138,7 +138,32 @@ export const apiSlice = createApi({
                 }
             })
         }),
+        getApplication: builder.query<ApplicationUploadedInterface, string>({
+            query: (id) => ({
+                url: `/applications/getApplication/${id}`
+            })
+        }),
+        sendApplication: builder.mutation<boolean, ApplicationInterface>({
+            query: (applicationData) => ({
+                url: `/applications/sendApplication`,
+                method: "POST",
+                body: {application: applicationData},
+                headers: {
+                    "Content-Type":"application/json",
+                }
+            })
+        }),
+        decideApplication: builder.mutation<{decision: string}, {id: string, decision: string}>({
+            query: ({id, decision}) => ({
+                url: `/applications/decideApplication/${id}`,
+                method: "PUT",
+                body: {decision: decision},
+                headers: {
+                    "Content-Type":"application/json",
+                }
+            })
+        })  
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetGoodQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetGoodQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation} = apiSlice;

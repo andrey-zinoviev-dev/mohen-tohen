@@ -5,7 +5,12 @@ import Loader from "./Loader";
 // import { usePostGoodToServerMutation } from "./features/apiSlice";
 import LinkCompBack from "./LinkCompBack";
 
-export default function UploadComp({photos, submitData}: {photos: {title: string, file: File}[], submitData: () => Promise<void>}) {
+export default function UploadComp({photos, submitData}: {photos: File[], submitData: () => Promise<void>}) {
+  // console.log(props.);
+  // console.log(props.)
+  // console.log(UploadCompType)
+  // console.log(formData.photos);
+
   //state
   const [uploadStatus, setUploadStatus] = useState<string>("started");
 
