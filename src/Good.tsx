@@ -5,14 +5,22 @@ import LikeButton from "./LikeButton";
 // import { useState } from "react";
 import BasketButton from "./BasketButton";
 import ShareButton from "./ShareButton";
+import { useNavigate } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
 // import BasketButton from "./BasketButton";
 // import { usePostGoodToFavouriteMutation } from "./features/apiSlice";
 export default function Good({ good }:GoodComponentInterface) {
+    //navigate
+    const navigate = useNavigate();
     return (
         <>
             <div className="goods__ul-li-actions-wrapper">
-                <img className="goods__ul-li-img" src={good.photos[0].url}></img>
+                <img className="goods__ul-li-img" onClick={() => {
+                    navigate(`/goods/${good._id}`, {
+                        state: good,
+                        preventScrollReset: false,
+                    })
+                }} src={good.photos[0].url}></img>
                 <div className="goods__ul-li-buttons">
                     <LikeButton good={ good } />
                     <ShareButton href={`${window.location.href}goods/${good._id}`} />
