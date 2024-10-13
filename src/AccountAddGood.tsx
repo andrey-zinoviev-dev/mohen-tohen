@@ -145,7 +145,7 @@ export default function AccountAddGood() {
       {uploadStarted && createPortal(<PortalMultimedia>
         {/* <button></button> */}
         <PortalContainer>
-          <UploadComp submitData={submitData} photos={formData.photos.map((photo) => {
+          <UploadComp submitData={submitData} application={false} linkBack={{text: "Назад к товарам", to: "./goods"}} photos={formData.photos.map((photo) => {
             return photo.file;
           })}></UploadComp>
           {/* <FileUpload></FileUpload> */}

@@ -4,9 +4,9 @@ import { GoodInterface, goodPageInt } from '../interfaces';
 
 export interface UserInterface {
     loggedIn: boolean,
-    name: string | null,
-    phone: string | null,
-    email: string | null,
+    name: string,
+    phone: string,
+    email: string,
     seller: boolean,
     goods?: GoodInterface[],
     favourites: GoodInterface[],
@@ -17,13 +17,14 @@ export interface UserInterface {
     cover?: string,
     // basket: 
     _id: string | null,
+    brandName?: string,
 }
 
 const initialState:UserInterface = {
     loggedIn: false,
-    name: null,
-    phone: null,
-    email: null,
+    name: "",
+    phone: "",
+    email: "",
     seller: false,
     ordersHistory: [],
     favourites: [],

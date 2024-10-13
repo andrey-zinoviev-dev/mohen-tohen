@@ -37,7 +37,7 @@ export default function Brands() {
                 })} */}
                 {brands && brands.map((brand) => {
                     return <li key={brand._id} className='brands__ul-li'>
-                        <Link to={`../brands/${brand._id}`}>{brand.name}</Link>
+                        <Link to={`../brands/${brand._id}`}>{brand.brandName && brand.brandName}</Link>
                     </li>
                 })}
             </ul>

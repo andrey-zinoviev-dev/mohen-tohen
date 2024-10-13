@@ -169,6 +169,7 @@ export interface CollaborationInterface {
 export interface ApplicationInterface extends CollaborationInterface {
   approved: string,
   city: string,
+  brandName: string,
   description: string | undefined,
   productionLength: string,
   productionProcess: string,

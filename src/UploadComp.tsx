@@ -5,7 +5,26 @@ import Loader from "./Loader";
 // import { usePostGoodToServerMutation } from "./features/apiSlice";
 import LinkCompBack from "./LinkCompBack";
 
-export default function UploadComp({photos, submitData}: {photos: File[], submitData: () => Promise<void>}) {
+type CommonProps = {
+  photos: File[],
+  submitData: () => Promise<void>,
+}
+
+type ConditionalProps = | {
+  application: true,
+  linkBack?: never,
+  // photos: File[],
+  // submitData: () => Promise<void>,
+} | {
+  application: false,
+  linkBack?: {to: string, text: string},
+  // photos: File[],
+  // submitData: () => Promise<void>,
+};
+
+// type FinalTypes = CommonProps & ConditionalProps;
+
+export default function UploadComp({application, photos, submitData, linkBack}: CommonProps & ConditionalProps) {
   // console.log(props.);
   // console.log(props.)
   // console.log(UploadCompType)
@@ -41,7 +60,14 @@ export default function UploadComp({photos, submitData}: {photos: File[], submit
       case "finished":
         return <>
           <SuccessWrapper label="Успешная выгрузка"></SuccessWrapper>
-          <LinkCompBack to="../mygoods" text="Вернуться к товарам" />
+          {application ? 
+          <>
+            <p>Поздравляем, ты большой молодец! Мы ответим в самое ближайшее время, максимум 2 дня, а пока ты можешь посмотреть наш блог, ознакомиться с нашими соц сетями </p>
+            <a href="">Подробнее о том, как мы проверяем анкеты</a>
+          </>
+          :
+          linkBack && <LinkCompBack to={linkBack.to} text={linkBack.text} />
+          }
         </>
     }
   }

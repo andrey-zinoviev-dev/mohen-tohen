@@ -40,6 +40,7 @@ export default function ApplicationForm() {
         email: "",
         phone: "",
         city: "",
+        brandName: "",
         description: "",
         category: [],
         productionLength: "",
@@ -215,7 +216,7 @@ export default function ApplicationForm() {
                                 <div className="application__form-div">
                                     <h3>
                                         <span>02</span>
-                                        Что ты производите?
+                                        Что ты производишь?
                                     </h3>
                                     <div className="application__form-data-wrapper">
                                         <label>Какие товары ты производишь?</label>
@@ -271,6 +272,11 @@ export default function ApplicationForm() {
                                             })
                                         }}>
                                         </SelectElement>
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label htmlFor="brandName">Как называется твой бренд</label>
+                                        {/* <InputEl updateState={} /> */}
+                                        <InputEl name="brandName" placeHolder="My brand" updateState={setApplicationData} />
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label htmlFor="description">Расскажи о своем творчестве</label>

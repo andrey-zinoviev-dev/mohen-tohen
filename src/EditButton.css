@@ -3,7 +3,7 @@
     color: transparent;
     stroke-width: 50px;
     stroke: black;
-    translate: 0 -5px;
+    /* translate: 0 -5px; */
     padding: 0;
     width: 30px;
     aspect-ratio: 1/1;
@@ -12,6 +12,6 @@
 
 .button-edit:hover {
     color: white;
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
     stroke: #FF8261;
 }

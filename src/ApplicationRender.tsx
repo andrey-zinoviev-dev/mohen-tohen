@@ -55,7 +55,7 @@ export default function ApplicationRender({applicationData, showPhotos}:Conditio
                         <label>Размеры товаров</label>
                         <span>{applicationData.size}</span>
                     </ApplicationDataWrapper>
-
+                    
                     {/* {valuesOfApplication.filter((value) => {
                         return !value.textarea && !value.checkbox && !value.date && !value.photo && !value.approved;
                     }).map((value) => {
@@ -65,6 +65,10 @@ export default function ApplicationRender({applicationData, showPhotos}:Conditio
                         </ApplicationDataWrapper>
                     })} */}
                 </div>
+                <ApplicationDataWrapper>
+                        <label>Название бренда</label>
+                        <span>{applicationData.brandName}</span>
+                </ApplicationDataWrapper>
                 <ApplicationDataWrapper>
                         <label>Описание продавца</label>
                         <p>{applicationData.description}</p>

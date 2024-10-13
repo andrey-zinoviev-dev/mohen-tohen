@@ -42,6 +42,7 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
 
     //functions
     function submitData() {
+        // console.log(applicationData);
         return sendApplication(applicationData)
         .then((data) => {
             console.log(data);
@@ -181,7 +182,7 @@ export default function ApplicationOverview({applicationData}:OverviewInterface)
 
             {uploadStarted && createPortal(<PortalMultimedia>
                 <PortalContainer>
-                    <UploadComp submitData={submitData} photos={applicationData.photos.map((photo) => {
+                    <UploadComp submitData={submitData} application={true} photos={applicationData.photos.map((photo) => {
                         return photo.file;
                     })}></UploadComp>
                 </PortalContainer>
