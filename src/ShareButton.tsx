@@ -40,24 +40,30 @@ export default function ShareButton({ href }: { href: string }) {
         <span>
           Поделиться
         </span>
-        <button onClick={(evt) => {
-          evt.stopPropagation();
-          navigator.clipboard.writeText(href)
-          .then(() => {
-            dispatch(changeMessage({message: "Ссылка скопирована"}))
-          })
-        }}>
-          <FontAwesomeIcon icon={faShareNodes} />
-        </button>
-        <EmailShareButton url="">
-          <EmailIcon />
-        </EmailShareButton>
-        <TelegramShareButton url="http://localhost:5173">
-          <TelegramIcon />
-        </TelegramShareButton>
-        <WhatsappShareButton url="http://localhost:5173">
-          <WhatsappIcon />
-        </WhatsappShareButton>
+        <div>
+          <button onClick={(evt) => {
+            evt.stopPropagation();
+            navigator.clipboard.writeText(href)
+            .then(() => {
+              dispatch(changeMessage({message: "Ссылка скопирована"}))
+            })
+          }}>
+            <FontAwesomeIcon icon={faShareNodes} />
+            <span>Скопировать ссылку</span>
+          </button>
+          <EmailShareButton url="">
+            <EmailIcon />
+            <span>Почта</span>
+          </EmailShareButton>
+          <TelegramShareButton url="http://localhost:5173">
+            <TelegramIcon />
+            <span>Telegram</span>
+          </TelegramShareButton>
+          <WhatsappShareButton url="http://localhost:5173">
+            <WhatsappIcon />
+            <span>Whatsapp</span>
+          </WhatsappShareButton>
+        </div>
       </PortalComp>, document.body)}
     </>
 

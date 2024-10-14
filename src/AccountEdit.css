@@ -1,0 +1,32 @@
+.form-edit {
+  display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    gap: 15px;
+}
+.form-edit label {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  gap: 10px;
+}
+
+.form-edit label input {
+  box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: white;
+    font-size: 16px;
+}
+
+.form-edit button {
+  align-self: flex-start;
+  background-color: #FF8261;
+  transition: all 0.25s ease-in-out;
+}
+
+.form-edit button:hover {
+  color: white;
+}
