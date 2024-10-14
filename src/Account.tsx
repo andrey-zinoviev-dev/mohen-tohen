@@ -102,19 +102,6 @@ export default function Account() {
             </div>
 
             <div className="account__wrapper">
-                <div className="account__wrapper-user">
-                    {/* <div className="account__wrapper-user-text">
-                        <h3>Здравствуйте, {userState.name}</h3>
-                        <span>С возвращением в Mohen-Tohen!</span>
-                    </div> */}
-                    {/* <EditButton /> */}
-                    {/* <button>
-                        <FontAwesomeIcon icon={faPen} />
-                    </button>
-                    <button>
-                        <FontAwesomeIcon icon={faArrowUpFromBracket} />
-                    </button> */}
-                </div>
                 <Outlet></Outlet>
             </div>
 

@@ -7,11 +7,11 @@ import ListColumn from "./ListColumn";
 import { TransactionInterface } from "./interfaces";
 export default function HistoryGoods() {
   //redux
-  const userState = useAppSelector((state) => {
-    return state.user;
+  const transactions = useAppSelector((state) => {
+    return state.user.ordersHistory;
   });
 
-  const { data: transactions = [] as TransactionInterface[] } = useGetTransactionsQuery(userState._id!);
+  // const { data: transactions = [] as TransactionInterface[] } = useGetTransactionsQuery(userState._id!);
   
   // console.log(goods);
   //location
@@ -52,20 +52,36 @@ export default function HistoryGoods() {
         {transactions.map((transaction) => {
           return <li key={transaction._id}>
             <span className="list-column__id-span">{transaction._id}</span>
-            <h3>{transaction._id}</h3>
+            {/* <h3>{transaction._id}</h3> */}
             <div className="list-column__wrapper">
-              <div className="list-column__content-wrapper">
-                <img className="list-column__cover"></img>
-                <div className="list-column__details-wrapper">
-                  <h3>{}</h3>
-                  {/* <div className="list-column__materials-wrapper">
-                    <span className="list-column__id-span">{}</span>
-                    <span className="list-column__id-span">{}</span>
-                  </div> */}
-                </div>
+              <div className="list-column__wrapper-column">
+                <span>Товары: {transaction.goods.length}</span>
+                {transaction.goods.map((good) => {
+                  return <img className="list-column__wrapper-column-cover" key={good._id} src={good.photos[0].url}></img>
+                })}
               </div>
-              <span className="list-column__price-span">{}</span>
-            </div>          
+              <div className="list-column__wrapper-column">
+                  <span>Бренды</span>
+                  {transaction.goods.map((good) => {
+                    return <div className="list-column__wrapper-column-brand" key={good.seller._id}>
+                      <img src={good.seller.cover}></img>
+                      <span>{good.seller.name}</span>
+                    </div>
+                  })}
+                </div>
+              <div className="list-column__wrapper-column">
+                <span>Дата</span>
+                <span>17 Октября</span>
+              </div>
+              <div className="list-column__wrapper-column">
+                <span>Сумма</span>
+                <span>{transaction.price}</span>
+              </div>
+              {/* <span className="list-column__price-span">Сумма {transaction.price}</span> */}
+            </div>  
+            {/* <button>
+              Открыть
+            </button>         */}
           </li>
         })}
       </ListColumn>

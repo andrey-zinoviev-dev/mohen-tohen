@@ -33,20 +33,28 @@ export default function AccountEdit() {
             }}>
                 <label>
                     Имя и фамилия
-                    <InputEl name="name" placeHolder="Алексей Солдатов" updateState={setFormData}></InputEl>
+                    <input name="name" value={userState.name}></input>
+                    {/* <InputEl name="name" placeHolder="Алексей Солдатов" updateState={setFormData}></InputEl> */}
                 </label>
                 <label>
                     Почта
-                    <InputEl name="email" placeHolder="email@example.com" updateState={setFormData}></InputEl>
+                    <input name="email" value={userState.email}></input>
+                    {/* <InputEl name="email" placeHolder="email@example.com" updateState={setFormData}></InputEl> */}
                 </label>
                 <label>
                     Телефон
-                    <InputEl name="phone" placeHolder="+79031513045" updateState={setFormData}></InputEl>
+                    <input name="phone" value={userState.phone}></input>
+                    {/* <InputEl name="phone" placeHolder="+79031513045" updateState={setFormData}></InputEl> */}
                 </label>
                 <label>
                     Дата рождения
-                    <InputEl name="birthday" placeHolder="ДД/ММ/ГГГГ" updateState={setFormData}></InputEl>
+                    <input name="birthday"></input>
+                    {/* <InputEl name="birthday" placeHolder="ДД/ММ/ГГГГ" updateState={setFormData}></InputEl> */}
                 </label>
+                {userState.seller && <label>
+                    Ваш Бренд
+                    <input name="brandName" value={userState.brandName}></input>    
+                </label>}
                 <button>Обновить данные</button>
             </form>
         </div>

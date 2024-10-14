@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { GoodInterface, goodPageInt } from '../interfaces';
+import { GoodInterface, goodPageInt, TransactionInterface } from '../interfaces';
 // import { toggleFavourite } from './goodsSlice';
 
 export interface UserInterface {
@@ -10,7 +10,7 @@ export interface UserInterface {
     seller: boolean,
     goods?: GoodInterface[],
     favourites: GoodInterface[],
-    ordersHistory: GoodInterface[],
+    ordersHistory: TransactionInterface[],
     sellsHistory: GoodInterface[],
     description?:string,
     basket: goodPageInt[],

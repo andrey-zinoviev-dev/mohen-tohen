@@ -54,7 +54,7 @@ export interface goodPageInt {
 
 export interface TransactionInterface {
   parties : string[],
-  goods: GoodInterface[] | string[],
+  goods: GoodInterface[],
   price: number,
   _id: string,
 }
