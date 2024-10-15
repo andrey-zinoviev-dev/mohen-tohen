@@ -36,9 +36,9 @@
 }
 
 .portal__content {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   width: 100%;
   gap: 15px;
   /* max-width: 1280px; */
@@ -48,7 +48,7 @@
   box-sizing: border-box;
   padding: 70px 35px;
   height: 100%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* max-width: 540px;
   gap: 15px;
   background-color: #F3F3F3;

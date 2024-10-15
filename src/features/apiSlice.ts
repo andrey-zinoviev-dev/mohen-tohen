@@ -162,8 +162,19 @@ export const apiSlice = createApi({
                     "Content-Type":"application/json",
                 }
             })
-        })  
+        }),
+        postCreateOrder: builder.mutation<{createdOrder: boolean}, {personalData: {name: string, phone: string, email: string, address: string, zipcode: string}, goods: goodPageInt[]}>({
+            query: ({personalData, goods}) => ({
+                url: "/transactions/create",
+                method: "POST",
+                body: {personalData: personalData, goods: goods},
+                credentials: "include",
+                headers: {
+                    "Content-Type":"application/json",
+                }
+            })
+        })
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetGoodQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetGoodQuery, useGetTransactionsQuery, useGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;

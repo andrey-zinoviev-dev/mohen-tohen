@@ -10,9 +10,13 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 // import Cart from "./Cart";
 import CartContents from "./CartContents";
 import LinkCompBack from "./LinkCompBack";
-
+import { usePostCreateOrderMutation } from "./features/apiSlice";
+import { useAppSelector } from "./hooks";
 export default function CreateOrder() {
     //redux
+    const cartState = useAppSelector((state) => {
+        return state.basket.goods;
+    });
 
     //state
     const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string}>({
@@ -23,6 +27,9 @@ export default function CreateOrder() {
         zipcode: "",
         // payment: "",
     });
+
+    //RTK
+    const [createOrder] = usePostCreateOrderMutation();
 
     //navigate
     // const navigate = useNavigate();
@@ -62,7 +69,7 @@ export default function CreateOrder() {
                     {/* <OrderStep headline="Способ оплаты" step={3} inputs={paymentInputs} updateState={setOrderDetails}></OrderStep> */}
 
                     <button className="order-create__submit-btn" onClick={() => {
-                        console.log(orderDetails);
+                        createOrder({personalData: orderDetails, goods: cartState})
                     }}>
                         Перейти к оплате
                         <FontAwesomeIcon icon={faArrowRight} />

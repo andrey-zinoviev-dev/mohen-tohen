@@ -1016,6 +1016,10 @@ export const accountLinks:LinkInterface[] = [
   },
   // {
   //   title: "Настройки",
+  //   href: "settings"
+  // }
+  // {
+  //   title: "Настройки",
   //   href: "prefs"
   // }
 ];
@@ -1041,7 +1045,10 @@ export const accountSellerLinks:LinkInterface[] = [
     title: "Избранное",
     href: "favs"
   },
-
+  // {
+  //   title: "Настройки",
+  //   href: "settings"
+  // }
   // {
   //   title: "Настройки",
   //   href: "prefs"
