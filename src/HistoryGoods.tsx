@@ -56,16 +56,16 @@ export default function HistoryGoods() {
             <div className="list-column__wrapper">
               <div className="list-column__wrapper-column">
                 <span>Товары: {transaction.goods.length}</span>
-                {/* <div> */}
+                {/* <div>
                   {transaction.goods.map((good) => {
                     return <div className="list-column__wrapper-column-brand" key={good.good.photos[0].url}>
                         <img className="list-column__wrapper-column-cover" key={good.good._id} src={good.good.photos[0].url}></img>
                         <span>{good.good.title}</span>
                     </div>
                   })}
-                {/* </div> */}
+                </div> */}
               </div>
-              {/* <div className="list-column__wrapper-column">
+              <div className="list-column__wrapper-column">
                   <span>Бренды</span>
                   {transaction.parties.map((party) => {
                     return <div className="list-column__wrapper-column-brand" key={party._id}>
@@ -73,7 +73,7 @@ export default function HistoryGoods() {
                       <span>{party.brandName}</span>
                     </div>
                   })}
-              </div> */}
+              </div>
               <div className="list-column__wrapper-column">
                 <span>Дата</span>
                 <span>17 Октября</span>
