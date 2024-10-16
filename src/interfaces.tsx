@@ -53,8 +53,8 @@ export interface goodPageInt {
 }
 
 export interface TransactionInterface {
-  parties : string[],
-  goods: GoodInterface[],
+  parties : {_id: string, brandName: string, cover: string}[],
+  goods: goodPageInt[],
   price: number,
   _id: string,
 }

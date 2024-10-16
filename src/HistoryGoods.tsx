@@ -2,9 +2,9 @@ import "./HistoryGoods.css"
 import { useAppSelector } from "./hooks"
 // import { useLocation } from "react-router-dom";
 // import { GoodInterface, TransactionInterface } from "./interfaces";
-import { useGetTransactionsQuery } from "./features/apiSlice";
+// import { useGetTransactionsQuery } from "./features/apiSlice";
 import ListColumn from "./ListColumn";
-import { TransactionInterface } from "./interfaces";
+// import { TransactionInterface } from "./interfaces";
 export default function HistoryGoods() {
   //redux
   const transactions = useAppSelector((state) => {
@@ -56,19 +56,24 @@ export default function HistoryGoods() {
             <div className="list-column__wrapper">
               <div className="list-column__wrapper-column">
                 <span>Товары: {transaction.goods.length}</span>
-                {transaction.goods.map((good) => {
-                  return <img className="list-column__wrapper-column-cover" key={good._id} src={good.photos[0].url}></img>
-                })}
-              </div>
-              <div className="list-column__wrapper-column">
-                  <span>Бренды</span>
+                {/* <div> */}
                   {transaction.goods.map((good) => {
-                    return <div className="list-column__wrapper-column-brand" key={good.seller._id}>
-                      <img src={good.seller.cover}></img>
-                      <span>{good.seller.name}</span>
+                    return <div className="list-column__wrapper-column-brand" key={good.good.photos[0].url}>
+                        <img className="list-column__wrapper-column-cover" key={good.good._id} src={good.good.photos[0].url}></img>
+                        <span>{good.good.title}</span>
                     </div>
                   })}
-                </div>
+                {/* </div> */}
+              </div>
+              {/* <div className="list-column__wrapper-column">
+                  <span>Бренды</span>
+                  {transaction.parties.map((party) => {
+                    return <div className="list-column__wrapper-column-brand" key={party._id}>
+                      <img className="list-column__wrapper-column-cover list-column__wrapper-column-cover_round" src={party.cover}></img>
+                      <span>{party.brandName}</span>
+                    </div>
+                  })}
+              </div> */}
               <div className="list-column__wrapper-column">
                 <span>Дата</span>
                 <span>17 Октября</span>
@@ -77,7 +82,6 @@ export default function HistoryGoods() {
                 <span>Сумма</span>
                 <span>{transaction.price}</span>
               </div>
-              {/* <span className="list-column__price-span">Сумма {transaction.price}</span> */}
             </div>  
             {/* <button>
               Открыть

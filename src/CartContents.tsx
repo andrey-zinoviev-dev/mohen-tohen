@@ -55,7 +55,7 @@ export default function CartContents() {
                                 
                                 <div className="cart__ul-li-details">
                                     <div className="cart__ul-li-details-params">
-                                        <img className="cart__ul-li-img" src={cartGood.good.cover}></img>
+                                        <img className="cart__ul-li-img" src={cartGood.good.photos[0].url}></img>
                                         <div className="cart__ul-li-text">
                                             <span className="cart__ul-li-text-title">{cartGood.good.title}</span>
                                             {/* <span className="cart__ul-li-text-refid">Артикул: {cartGood.good._id}</span> */}

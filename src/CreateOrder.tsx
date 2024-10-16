@@ -17,6 +17,7 @@ export default function CreateOrder() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
+    // console.log(cartState);
 
     //state
     const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string}>({
@@ -60,15 +61,16 @@ export default function CreateOrder() {
                 }}> */}
                 <LinkCompBack to="/basket" text="Корзина"></LinkCompBack>
                 <div className="order-create__block">
-                    <OrderStep headline="Ваши контактные данные" step={1} inputs={recipientInputs} updateState={setOrderDetails}>
+                    <OrderStep headline="Данные получателя" step={1} inputs={recipientInputs} updateState={setOrderDetails}>
 
                     </OrderStep>
-                    <OrderStep headline="Ваш адрес" step={2} inputs={locationInputs} updateState={setOrderDetails}>
+                    <OrderStep headline="Адрес доставки" step={2} inputs={locationInputs} updateState={setOrderDetails}>
                     </OrderStep>
 
                     {/* <OrderStep headline="Способ оплаты" step={3} inputs={paymentInputs} updateState={setOrderDetails}></OrderStep> */}
 
                     <button className="order-create__submit-btn" onClick={() => {
+                        // console.log(cartState);
                         createOrder({personalData: orderDetails, goods: cartState})
                     }}>
                         Перейти к оплате

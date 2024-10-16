@@ -30,8 +30,14 @@
   gap: 5px;
 }
 
-.list-column__wrapper-column-brand img {
+.list-column__wrapper-column-cover_round {
   max-width: 50px;
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
+
+/* .list-column__wrapper-column-brand img {
+  max-width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+} */
