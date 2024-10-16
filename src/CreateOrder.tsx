@@ -72,6 +72,10 @@ export default function CreateOrder() {
                     <button className="order-create__submit-btn" onClick={() => {
                         // console.log(cartState);
                         createOrder({personalData: orderDetails, goods: cartState})
+                        .then((data) => {
+                            console.log(data.data)
+                            // return 
+                        })
                     }}>
                         Перейти к оплате
                         <FontAwesomeIcon icon={faArrowRight} />

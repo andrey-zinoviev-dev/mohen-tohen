@@ -4,11 +4,11 @@ import { useAppSelector } from "./hooks";
 import "./AccountEdit.css";
 
 export default function AccountEdit() {
-    //RTK
+    //redux
     const userState = useAppSelector((state) => {
         return state.user;
     });
-    console.log(userState);
+    // console.log(userState);
 
     //state
     const [formData, setFormData] = useState<{name: string, email: string, phone: string, brandName: string | undefined}>({
