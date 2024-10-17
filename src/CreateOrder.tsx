@@ -11,7 +11,9 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import CartContents from "./CartContents";
 import LinkCompBack from "./LinkCompBack";
 import { usePostCreateOrderMutation } from "./features/apiSlice";
-import { useAppSelector } from "./hooks";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { useNavigate } from "react-router-dom";
+import { updateOrdersHistory } from "./features/userSlice";
 export default function CreateOrder() {
     //redux
     const cartState = useAppSelector((state) => {
@@ -31,6 +33,13 @@ export default function CreateOrder() {
 
     //RTK
     const [createOrder] = usePostCreateOrderMutation();
+
+    //navigate
+    const navigate = useNavigate();
+
+    //dispatch
+    const dispatch = useAppDispatch();
+
 
     //navigate
     // const navigate = useNavigate();
@@ -71,10 +80,12 @@ export default function CreateOrder() {
 
                     <button className="order-create__submit-btn" onClick={() => {
                         // console.log(cartState);
+
                         createOrder({personalData: orderDetails, goods: cartState})
                         .then((data) => {
-                            console.log(data.data)
-                            // return 
+                            // console.log(data.data);
+                            data.data && dispatch(updateOrdersHistory(data.data?.createdOrder))
+                            navigate("../successOrderCreate");
                         })
                     }}>
                         Перейти к оплате

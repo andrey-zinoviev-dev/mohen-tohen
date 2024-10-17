@@ -24,6 +24,7 @@ import AccountAddGood from './AccountAddGood'
 import ProtectedRoute from './ProtectedRoute'
 import CreateOrder from "./CreateOrder";
 import AccountEdit from './AccountEdit'
+import CreateOrderSuccess from './CreateOrderSuccess'
 
 function App() {
   //dispatch
@@ -107,8 +108,13 @@ function App() {
     },
     {
       path: "createOrder",
-      element: <CreateOrder />
+      element: <CreateOrder />,
+      // children:[],
       // element: <CreateOrder></CreateOrder>
+    },
+    {
+      path: "successOrderCreate",
+      element: <CreateOrderSuccess />
     },
     {
       path: "application",

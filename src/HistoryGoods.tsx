@@ -10,6 +10,7 @@ export default function HistoryGoods() {
   const transactions = useAppSelector((state) => {
     return state.user.ordersHistory;
   });
+  console.log(transactions);
 
   // const { data: transactions = [] as TransactionInterface[] } = useGetTransactionsQuery(userState._id!);
   
@@ -56,13 +57,14 @@ export default function HistoryGoods() {
             <div className="list-column__wrapper">
               <div className="list-column__wrapper-column">
                 <span>Товары: {transaction.goods.length}</span>
-                {/* <div>
-                  {transaction.goods.map((good) => {
+                {transaction.goods.map((good) => {
                     return <div className="list-column__wrapper-column-brand" key={good.good.photos[0].url}>
                         <img className="list-column__wrapper-column-cover" key={good.good._id} src={good.good.photos[0].url}></img>
                         <span>{good.good.title}</span>
                     </div>
-                  })}
+                })}
+                {/* <div>
+                  
                 </div> */}
               </div>
               <div className="list-column__wrapper-column">
