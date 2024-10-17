@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight, faBars, faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import { useAppSelector } from "./hooks";
 import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 // import { login } from "./features/userSlice";
@@ -12,12 +12,13 @@ import heading from "./assets/mh-1.png"
 import { categories } from "./utils";
 // import { CategoryInterface } from "./interfaces";
 // import LinksComp from "./LinksComp";
-import { login } from "./features/userSlice";
+// import { login } from "./features/userSlice";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 // import { getOTPCode } from "./userApi";
-import { useGetOTPCodeMutation } from "./features/apiSlice";
-import InputEl from "./InputEl";
+// import { useGetOTPCodeMutation } from "./features/apiSlice";
+// import InputEl from "./InputEl";
+import Login from "./Login";
 // import { UserInterface } from "./features/userSlice";
 
 export default function Header() {
@@ -35,12 +36,12 @@ export default function Header() {
 
     // console.log(userState);
 
-    const [getOTPCode] = useGetOTPCodeMutation();
+    // const [getOTPCode] = useGetOTPCodeMutation();
 
     // const {data: user}
 
     //dispatch
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
 
     //navigate
     const navigate = useNavigate();
@@ -49,7 +50,7 @@ export default function Header() {
     // const [popupOpened, setPopupOpened] = React.useState<boolean>(false);
     // const [category, setCategory] = React.useState<CategoryInterface | null>(null);
     const [openPortal, setOpenPortal] = React.useState<boolean>(false);
-    const [phone, setPhone] = React.useState<{tel: string}>({tel: ""});
+    // const [phone, setPhone] = React.useState<{tel: string}>({tel: ""});
     const [openMenu, setOpenMenu] = React.useState<boolean>(false);
     // const [loginStatus, setLoginStatus] = React.useState<{codeRequested: boolean, finished: boolean}>({codeRequested: false, finished: false});
 
@@ -129,8 +130,10 @@ export default function Header() {
                         {category && <LinksComp title="Что можно купить" links={category.links}></LinksComp>}
                     </div> */}
                 </div>
+                
                 {openPortal && createPortal(<PortalComp>
-                    <button className="protal__close" onClick={() => {
+                    <Login closePopup={setOpenPortal} />
+                    {/* <button className="protal__close" onClick={() => {
                         setOpenPortal(false);
                     }}>
                         <FontAwesomeIcon icon={faXmark} />
@@ -140,48 +143,26 @@ export default function Header() {
                     }}>
                         <h3>Войти или зарегистрироваться</h3>
                         
-                        {/* {!loginStatus.codeRequested ?  */}
                         
                         <>
                             <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
                             <div>
                                 <span>+7</span>
                                 <InputEl name="tel" type="tel" placeHolder="9991234567" autoFocus={true} underLine={true} updateState={setPhone}></InputEl>
-                                {/* <input autoFocus={true} type="tel" ref={inputRef} placeholder="ваш телефон..."></input> */}
                             </div>
                             <button disabled={phone.tel.length === 10 ? false : true} onClick={() => {
 
-                                // inputRef.current && getOTPCode(inputRef.current.value).unwrap()
                                 getOTPCode(phone.tel).unwrap()
                                 .then((data) => {
                                     console.log(data);
                                     dispatch(login({...data, loggedIn: true}));
                                     setOpenPortal(false);
                                 })
-        
-                                // getOTPCode(inputRef.current?.value)
-                                // .then((data) => {
-                                //     setLoginStatus((prevValue) => {
-                                //         return {...prevValue, codeRequested: true};
-                                //     });
-                                //     console.log(data);
-                                // })
-                                    
-                                    // setPopupOpened(false);
-                                    // dispatch(login(sellerUser));
+
                             }}>Войти</button>
                         </>
-
-
-                        {/* // <>
-                        //     <p>Введите проверочный код, отправленный на Ваш телефон</p>
-                        //     <input type="text" placeholder="1 2 3 4"></input>
-                            
-                        // </> */}
-                        
-
                     </form>
-                    <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>
+                    <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p> */}
                 </PortalComp>, document.body)}
             </header>
             {openMenu && createPortal(<PortalComp>

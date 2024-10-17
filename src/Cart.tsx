@@ -12,7 +12,10 @@ import { useAppSelector } from "./hooks";
 // import { useDeleteBasketItemMutation, useUpdateBasketItemMutation } from "./features/apiSlice";
 import { Link } from "react-router-dom";
 import CartContents from "./CartContents";
-
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import PortalComp from "./PortalComp";
+import Login from "./Login";
 // interface goodPageInt extends GoodInterface {
 //     quantity: number,
 // }
@@ -22,11 +25,16 @@ export default function Cart() {
         return state.basket.goods;
     });
 
+    const userState = useAppSelector((state) => {
+        return state.user._id;
+    });
+    console.log(userState);
 
     // console.log(cartState);
 
 
     //state
+    const [openedPortal, setOpenedPortal] = useState<boolean>(false);
     // const [changeSpec, setChangeSpec] = React.useState<boolean>(false);
     // const [selectedGoodName, setSelectedGoodName] = React.useState<string | null>(null);
     // const [newColor, setNewColor] = React.useState<ColorInterface | undefined>(undefined);
@@ -117,11 +125,16 @@ export default function Cart() {
                     
                 </div> */}
 
-                <Link to={"../createOrder"} onClick={() => {
-                    console.log(cartState);
-                }} className="cart__submit-btn">
+                {userState ? <Link to={"../createOrder"} className="cart__submit-btn">
                     Оформить заказ
                 </Link>
+                :
+                <button className="cart__submit-btn" onClick={() => {
+                    setOpenedPortal(true);
+                    // console.log("open login popup")
+                }}>
+                    Оформить заказ    
+                </button>}
 
                 </>
                 :
@@ -142,6 +155,9 @@ export default function Cart() {
                     }}>Обновить {selectedGood.title}</button>
                 </>} */}
             {/* </Popup>} */}
+            {openedPortal && createPortal(<PortalComp>
+                <Login closePopup={setOpenedPortal}></Login>
+            </PortalComp>, document.body)}
         </>
     )
 }

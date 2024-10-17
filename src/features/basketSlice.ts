@@ -45,7 +45,10 @@ export const basketSlice = createSlice({
             localStorage.setItem("basket", JSON.stringify(state.goods));
 
         },
-
+        clearCart: (state) => {
+            localStorage.removeItem("basket");
+            state.goods = [];
+        },
         editGood: () => {
             // const newBasket = state.goods.map((good) => {
             //     return good.title === action.payload.title ? {...good, selectedColor: action.payload.selectedColor} : good;
