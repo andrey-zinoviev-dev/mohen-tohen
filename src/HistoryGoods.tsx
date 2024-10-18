@@ -1,16 +1,27 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./HistoryGoods.css"
 import { useAppSelector } from "./hooks"
 // import { useLocation } from "react-router-dom";
 // import { GoodInterface, TransactionInterface } from "./interfaces";
 // import { useGetTransactionsQuery } from "./features/apiSlice";
 import ListColumn from "./ListColumn";
+import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+// import { testTransactions } from "./utils";
 // import { TransactionInterface } from "./interfaces";
 export default function HistoryGoods() {
   //redux
   const transactions = useAppSelector((state) => {
     return state.user.ordersHistory;
   });
-  console.log(transactions);
+  // console.log(transactions);
+
+  const transGoods = transactions.map((transaction) => {
+    return transaction.goods;
+  }).flat();
+
+  // console.log(transGoods);
+
+
 
   // const { data: transactions = [] as TransactionInterface[] } = useGetTransactionsQuery(userState._id!);
   
@@ -50,10 +61,35 @@ export default function HistoryGoods() {
       <h3>История</h3>
       {transactions.length > 0 ?
       <ListColumn>
-        {transactions.map((transaction) => {
+        {transGoods.map((transGood) => {
+          return <li className="history__li">
+            <div className="history__li-wrapper">
+              <img className="history__li-img" src={transGood.cover}></img>
+              <div className="history__li-good">
+                <span className="history__li-good-title">{transGood.title}</span>
+                <span className="history__li-good-date">25-10-2001</span>
+              </div>
+            </div>
+            <div className="history__li-wrapper">
+                <img className="history__li-img history__li-img_round" src={transGood.seller.cover}></img>
+                <span>{transGood.seller.name}</span>
+                <button>
+                  <FontAwesomeIcon icon={faUpRightFromSquare} />
+                </button>
+            </div>
+            <div className="history__li-wrapper">
+              <span>110-95-27-004</span>
+                <button>
+                <FontAwesomeIcon icon={faUpRightFromSquare} />
+              </button>
+            </div>
+            
+            <span>{transGood.price} р.</span>
+          </li>
+        })}
+        {/* {transactions.map((transaction) => {
           return <li key={transaction._id}>
             <span className="list-column__id-span">{transaction._id}</span>
-            {/* <h3>{transaction._id}</h3> */}
             <div className="list-column__wrapper">
               <div className="list-column__wrapper-column">
                 <span>Товары: {transaction.goods.length}</span>
@@ -63,9 +99,7 @@ export default function HistoryGoods() {
                         <span>{good.good.title}</span>
                     </div>
                 })}
-                {/* <div>
-                  
-                </div> */}
+    
               </div>
               <div className="list-column__wrapper-column">
                   <span>Бренды</span>
@@ -81,15 +115,18 @@ export default function HistoryGoods() {
                 <span>17 Октября</span>
               </div>
               <div className="list-column__wrapper-column">
+                <span>Трек-номер</span>
+                <a href="https://cdek.by/ru/tracking/">
+                  110-95-218-094
+                </a>
+              </div>
+              <div className="list-column__wrapper-column">
                 <span>Сумма</span>
                 <span>{transaction.price}</span>
               </div>
             </div>  
-            {/* <button>
-              Открыть
-            </button>         */}
           </li>
-        })}
+        })} */}
       </ListColumn>
 
       :

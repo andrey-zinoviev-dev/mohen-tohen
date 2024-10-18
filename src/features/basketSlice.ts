@@ -59,6 +59,6 @@ export const basketSlice = createSlice({
     }
 })
 
-export const { add, remove, changeQuantity, editGood } = basketSlice.actions;
+export const { add, remove, changeQuantity, clearCart, editGood } = basketSlice.actions;
 
 export default basketSlice.reducer;

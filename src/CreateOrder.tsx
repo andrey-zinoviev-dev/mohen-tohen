@@ -14,6 +14,7 @@ import { usePostCreateOrderMutation } from "./features/apiSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { useNavigate } from "react-router-dom";
 import { updateOrdersHistory } from "./features/userSlice";
+import { clearCart } from "./features/basketSlice";
 export default function CreateOrder() {
     //redux
     const cartState = useAppSelector((state) => {
@@ -84,7 +85,8 @@ export default function CreateOrder() {
                         createOrder({personalData: orderDetails, goods: cartState})
                         .then((data) => {
                             // console.log(data.data);
-                            data.data && dispatch(updateOrdersHistory(data.data?.createdOrder))
+                            data.data && dispatch(updateOrdersHistory(data.data?.createdOrder));
+                            data.data && dispatch(clearCart());
                             navigate("../successOrderCreate");
                         })
                     }}>

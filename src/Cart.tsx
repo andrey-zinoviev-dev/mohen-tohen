@@ -28,7 +28,7 @@ export default function Cart() {
     const userState = useAppSelector((state) => {
         return state.user._id;
     });
-    console.log(userState);
+    // console.log(userState);
 
     // console.log(cartState);
 

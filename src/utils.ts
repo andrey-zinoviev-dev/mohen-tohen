@@ -1283,3 +1283,45 @@ export const paymentInputs = [
     icon: cardLogo
   },
 ];
+
+export const testTransactions = [
+  {
+    // brands: [
+    //   {
+    //     _id: "123",
+    //     name: "SorryNotSorry",
+    //     cover: "http://cdn.mohen-tohen.ru/SleepTokenTPWBYT.jpg"
+    //   },
+    //   {
+    //     _id: "leet_133",
+    //     name: "Varuysha",
+    //     cover: "http://cdn.mohen-tohen.ru/billy.jpeg"
+    //   }
+    // ],
+    // buyer: {
+    //   _id: "buyer-123",
+    //   name: "Алексей Солдатов",
+    //   cover: "http://cdn.mohen-tohen.ru/Placeholder-_-Glossary.svg"
+    // },
+    goods: [
+      {
+        title: "Товар 1",
+        cover: "http://cdn.mohen-tohen.ru/decore-good.png",
+        seller: {
+          _id: "123",
+          name: "SorryNotSorry",
+          cover: "http://cdn.mohen-tohen.ru/SleepTokenTPWBYT.jpg"
+        },
+      }, 
+      {
+        title: "Товар 2",
+        cover: "http://cdn.mohen-tohen.ru/the-ultimate-guide-to-buying-micropone-for-recording-studio 1.png",
+        seller: {
+              _id: "leet_133",
+              name: "Varuysha",
+              cover: "http://cdn.mohen-tohen.ru/billy.jpeg"
+            }
+        }
+          ],
+      }
+]
