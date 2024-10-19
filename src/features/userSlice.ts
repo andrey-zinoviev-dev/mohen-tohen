@@ -38,7 +38,7 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         login: (state, action: PayloadAction<UserInterface>) => {
-            console.log(state);
+            // console.log(state);
             const newUser = action.payload;
             localStorage.setItem("loggedIn", JSON.stringify({loggedIn: true}))
             return state = newUser;
@@ -89,6 +89,7 @@ export const userSlice = createSlice({
         },
         userLogout: (state) => {
             console.log(state);
+            localStorage.removeItem("loggedIn");
             return state = initialState;
         },
         addNewGoodToUser: (state, action: PayloadAction<GoodInterface>) => {

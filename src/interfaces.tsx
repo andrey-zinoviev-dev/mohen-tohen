@@ -1,5 +1,7 @@
 // import { UserInterface } from "./features/userSlice";
 
+import { UserInterface } from "./features/userSlice";
+
 export interface ColorInterface  {
   title: string, 
   colorCode: string
@@ -34,7 +36,7 @@ export interface GoodInterface {
   color: string,
   favourite?: boolean,
   // herf: string,
-  seller: BrandsInterface,
+  seller: UserInterface,
   material?:string,
   // quantity?: number,
   selectedColor?: ColorInterface,
@@ -54,18 +56,8 @@ export interface goodPageInt {
 
 export interface TransactionInterface {
   // parties : {_id: string, brandName: string, cover: string}[],
-  goods: {
-    title: string,
-    _id: string,
-    cover: string,
-    quantity: number,
-    price: number,
-    seller: {
-      _id: string,
-      name: string,
-      cover: string,
-    },
-  }[],
+  goods: goodPageInt[],
+  buyer: UserInterface,
   total: number,
   _id: string,
 }

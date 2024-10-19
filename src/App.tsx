@@ -25,14 +25,22 @@ import ProtectedRoute from './ProtectedRoute'
 import CreateOrder from "./CreateOrder";
 import AccountEdit from './AccountEdit'
 import CreateOrderSuccess from './CreateOrderSuccess'
+import { skipToken } from '@reduxjs/toolkit/query'
 
 function App() {
   //dispatch
   const dispatch = useAppDispatch();
 
-  //getUser
-  const {data: user = {} as UserInterface} = useGetLoggedUserQuery();
-
+  //local storage
+  const loggedIn = localStorage.getItem("loggedIn");
+  // console.log(loggedIn);
+  const loggedInData: {
+    loggedIn: boolean
+  } = loggedIn !== null && JSON.parse(loggedIn);
+  
+  // getUser
+  const {data: user = {} as UserInterface} = useGetLoggedUserQuery(!loggedInData.loggedIn && skipToken);
+  // console.log(user);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -134,7 +142,7 @@ function App() {
     if(user._id) {
       dispatch(login({...user, loggedIn: true}))
     }
-  } ,[user])
+  } ,[user._id])
 
   return (
     <>

@@ -36,6 +36,7 @@ export const apiSlice = createApi({
             query: () => {
                 return "/users/sellers"
             }
+            
         }),
         getSeller: builder.query<UserInterface, string>({
             query: (sellerId) => {
@@ -66,7 +67,7 @@ export const apiSlice = createApi({
                 credentials: "include",
             })
         }),
-        getLoggedUser: builder.query<UserInterface, void>({
+        getLoggedUser: builder.query<UserInterface, boolean>({
             query: () => ({
                 url: `/users/me`,
                 credentials: "include",
