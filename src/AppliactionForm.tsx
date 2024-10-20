@@ -12,6 +12,8 @@ import CheckboxElement from "./CheckboxElement";
 import ListGrid from "./ListGrid";
 // import { useSendApplicationMutation } from "./features/apiSlice";
 import InputEl from "./InputEl";
+import Wizard from "./Wizard";
+import ApplicationStep from "./ApplicationStep";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
@@ -19,22 +21,6 @@ export default function ApplicationForm() {
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
     // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
     const [applicationData, setApplicationData] = React.useState<ApplicationNotUploadedIterface>({
-        // approved: {value: {approved: false, declined: false}, approved: true},
-        // name: {value: "", textarea: false, label: "Имя"},
-        // email: {value: "", textarea: false, label: "Почта"},
-        // phone: {value: "", textarea: false, label: "Телефон"},
-        // city: {value: "", textarea: false, label: "Город"},
-        // description: {value: "", textarea: true, label: "Расскажите о себе"},
-        // category: {value: [], textarea: false, label: "Что вы производите"},
-        // productionLength: {value: "", textarea: false, label: "Сколько по времени занимает производство товара"},
-        // productionProcess: {value: "", textarea: true, label: "Как происходит процесс производства"},
-        // stock: {value: "", textarea: false, label: "Тираж товаров"},
-        // size: {value: "", textarea: false, label: "Размеры твоих товаров"},
-        // offerAgreement: {value: false, checkbox: true},
-        // personalDataAgreement: {value: false, checkbox: true},
-        // shippingPartnerAgreement: {value: false, checkbox: true},
-        // dateOfFill: {value: new Date().toLocaleDateString(), textarea: false, date: true},
-        // photos: {value: [], photo: true},
         approved: "idle",
         name: "",
         email: "",
@@ -53,6 +39,8 @@ export default function ApplicationForm() {
         dateOfFill: "",
         photos: [],
     });
+
+    const [wizardStep, setWizardStep] = React.useState<number>(0);
 
     //refs
     const fileInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -91,7 +79,9 @@ export default function ApplicationForm() {
           //   return photo.name !== file.name;
           // })}
         });
-    }
+    };
+
+
 
     // const input
 
@@ -161,7 +151,29 @@ export default function ApplicationForm() {
                     :
                     <>
                         <div className="application__form-wrapper">
-                            <h3>Анкета сотрудничества</h3>
+                            <Wizard>
+                                <ApplicationStep stepTitle="Шаг 1">
+                                <div className="application__form-data-wrapper">
+                                        <label>Твое ФИО</label>
+                                        <InputEl name="name" placeHolder="Солдатов Алексей Михайлович..." updateState={setApplicationData}></InputEl>
+                                        
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label>Твоя почта</label>
+                                        <InputEl name="email" placeHolder="email@operator.org" updateState={setApplicationData} />
+                                        
+                                    </div>
+                                    <div className="application__form-data-wrapper">
+                                        <label>Твой телефон</label>
+                                        <InputEl name="phone" placeHolder="+790335153046" updateState={setApplicationData} />
+                                    </div>
+                                </ApplicationStep>
+                                <ApplicationStep stepTitle="Шаг 2" />
+                                <ApplicationStep stepTitle="Шаг 3" />
+                                <ApplicationStep stepTitle="Шаг 4" />
+                                {/* <p>Шаг 1</p> */}
+                            </Wizard>
+                            {/* <h3>Анкета сотрудничества</h3> */}
                             {/* <form onSubmit={(evt) => {
                                 evt.preventDefault();
                             }} className="application__form">
