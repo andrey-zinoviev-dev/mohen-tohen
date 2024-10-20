@@ -8,7 +8,7 @@ import SelectElement from "./SelectElement";
 import { applicationCategoriesSelect, applicationCitySelect, applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect } from "./utils";
 import { ApplicationNotUploadedIterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
-import ApplicationOverview from "./ApplicationOverview";
+// import ApplicationOverview from "./ApplicationOverview";
 import ListGrid from "./ListGrid";
 // import { useSendApplicationMutation } from "./features/apiSlice";
 import InputEl from "./InputEl";
@@ -162,13 +162,8 @@ export default function ApplicationForm() {
                     <>
                         <div className="application__form-wrapper">
                             <h3>Анкета сотрудничества</h3>
-                            <form onSubmit={(evt) => {
+                            {/* <form onSubmit={(evt) => {
                                 evt.preventDefault();
-                                console.log(applicationData);
-                                // sendApplication(applicationData)
-                                // .then((data) => {
-
-                                // })
                             }} className="application__form">
                                 <div className="application__form-div">
                                     <h3>
@@ -178,35 +173,20 @@ export default function ApplicationForm() {
                                     <div className="application__form-data-wrapper">
                                         <label>Твое ФИО</label>
                                         <InputEl name="name" placeHolder="Солдатов Алексей Михайлович..." updateState={setApplicationData}></InputEl>
-                                        {/* <input className="application__form-data-wrapper-input" onChange={(evt) => {
-                                            setApplicationData((prevValue) => {
-                                                return {...prevValue, name: evt.target.value};
-                                            })
-                                        }} placeholder="Солдатов Алексей Михайлович..." type="text"></input> */}
+                                        
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label>Твоя почта</label>
                                         <InputEl name="email" placeHolder="email@operator.org" updateState={setApplicationData} />
-                                        {/* <input className="application__form-data-wrapper-input" onChange={(evt) => {
-                                            setApplicationData((prevValue) => {
-                                                return {...prevValue, email: evt.target.value};
-                                            })
-                                        }} placeholder="email@operator.org" type="email"></input> */}
+                                        
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label>Твой телефон</label>
                                         <InputEl name="phone" placeHolder="+790335153046" updateState={setApplicationData} />
-                                        {/* <input className="application__form-data-wrapper-input" onChange={(evt) => {
-                                            setApplicationData((prevValue) => {
-                                                return {...prevValue, phone: {...prevValue. phone, value: evt.target.value}};
-                                            })
-                                        }} placeholder="+790335153046" type="phone"></input> */}
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
                                         <SelectElement label="Выбери город, в котором ты находишься" options={applicationCitySelect} updateApplication={(city:string) => {
-                                            // setApplicationData((prevValue) => {
-                                            //     return {...prevValue, city: {...prevValue.city, value: city}}
-                                            // })
+                                            
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, city: city};
                                             })
@@ -275,7 +255,6 @@ export default function ApplicationForm() {
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label htmlFor="brandName">Как называется твой бренд</label>
-                                        {/* <InputEl updateState={} /> */}
                                         <InputEl name="brandName" placeHolder="My brand" updateState={setApplicationData} />
                                     </div>
                                     <div className="application__form-data-wrapper">
@@ -290,7 +269,6 @@ export default function ApplicationForm() {
                                     <div className="application__form-data-wrapper">
                                         <label htmlFor="description">Опиши свою продукцию и процесс производства</label>
                                         <textarea onChange={(evt) => {
-                                            // applicationData.productionProcess && 
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, productionProcess: evt.target.value}
                                             })
@@ -338,11 +316,11 @@ export default function ApplicationForm() {
                                         </li>
                                     </ul>
                                 </div>
-                            </form>
+                            </form> */}
                         </div>
-                        <div className="application__wrapper-content">
+                        {/* <div className="application__wrapper-content">
                             <ApplicationOverview applicationData={applicationData}></ApplicationOverview>
-                        </div>
+                        </div> */}
                     </>}
                 </div>
             </section>

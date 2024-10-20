@@ -14,12 +14,12 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
   //state
   const [phone, setPhone] = useState<{tel: string}>({tel: ""});
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  
+  // console.log(loggedIn);
   //RTK
   const [getOTPCode] = useGetOTPCodeMutation();
   //getUser
-  const {data: user = {} as UserInterface} = useGetLoggedUserQuery(loggedIn ?? skipToken);
-  // console.log(user && user);
+  const {data: user = {} as UserInterface} = useGetLoggedUserQuery(!loggedIn && skipToken);
+  console.log(user);
   //dispatch
   const dispatch = useAppDispatch();
 
@@ -29,8 +29,9 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
   useEffect(() => {
     if(user._id) {
       dispatch(login({...user, loggedIn: true}));
+      closePopup(false);
     }
-  }, [user._id])
+  }, [user._id]);
 
   return (
     <div>
@@ -52,7 +53,6 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
           getOTPCode(phone.tel).unwrap()
           .then((data) => {
             setLoggedIn(data.loggedIn);
-            closePopup(false);
           })
         }}>Войти</button>
       </form>

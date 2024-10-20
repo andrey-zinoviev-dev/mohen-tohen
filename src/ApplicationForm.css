@@ -22,7 +22,8 @@
     /* background-color: #C8CCCF;
     border-radius: 15px; */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: 1fr;
     width: 100%;
     align-items: flex-start;
     gap:25px;
@@ -236,7 +237,7 @@
 }
 
 .application__form-wrapper {
-    border-right: 2px solid #C8CCCF;
+    /* border-right: 2px solid #C8CCCF; */
     box-sizing: border-box;
     /* border-radius: 15px; */
     /* padding: 25px 0; */
