@@ -84,7 +84,7 @@ export default function CreateOrder() {
 
                         createOrder({personalData: orderDetails, goods: cartState})
                         .then((data) => {
-                            console.log(data.data);
+                            // console.log(data.data);
                             data.data && dispatch(updateOrdersHistory(data.data?.createdOrder));
                             data.data && dispatch(clearCart());
                             navigate("../successOrderCreate");
