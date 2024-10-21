@@ -76,6 +76,10 @@
   gap: 10px;
 }
 
+.list-column__wrapper-column:first-of-type {
+  min-width: 205px;
+}
+
 .list-column__wrapper-column span {
   max-width: 150px;
   text-overflow: ellipsis;
@@ -87,8 +91,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 105px;
-  overflow: auto;
+  /* max-height: 105px;
+  overflow: auto; */
 }
 
 .list-column__wrapper-column-cover {

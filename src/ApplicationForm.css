@@ -239,6 +239,9 @@
 .application__form-wrapper {
     /* border-right: 2px solid #C8CCCF; */
     box-sizing: border-box;
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
     /* border-radius: 15px; */
     /* padding: 25px 0; */
 }
@@ -308,10 +311,11 @@
     width: 100%;
 }
 
-.application__form textarea{
+.application__form-textarea{
     width: 100%;
     box-sizing: border-box;
-    background-color: #C8CCCF;
+    /* background-color: #C8CCCF; */
+    background-color: white;
     /* background-color: transparent; */
     border: 1px solid transparent;
     /* min-height: 90px; */
@@ -324,11 +328,11 @@
     field-sizing: content;
 }
 
-.application__form textarea:focus {
+.application__form-textarea:focus {
     border: 1px solid black;
 }
 
-.application__form textarea::placeholder {
+.application__form-textarea::placeholder {
     color: #7f7f7f;
 }
 

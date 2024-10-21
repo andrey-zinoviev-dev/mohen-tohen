@@ -1,7 +1,8 @@
 import { useState } from "react";
-
-export default function Wizard({children}: {children: React.ReactNode[]}) {
+import "./Wizard.css"
+export default function Wizard({children, submitForm}: {children: React.ReactNode[], submitForm: () => void}) {
     const [currentStep, setCurrentStep] = useState<number>(0);
+
     // console.log(currentStep);
     
     const stepToRender = Array.from(children)[currentStep];
@@ -14,21 +15,21 @@ export default function Wizard({children}: {children: React.ReactNode[]}) {
             {stepToRender}
             {/* <h3>Вот тут будут шаги формы</h3>
             {children} */}
-            <div>
-                {currentStep > 0 && <button type="button" onClick={() => {
+            <div className="wizard__buttons">
+                {<button className={currentStep < 1 ? "wizard__buttons-button wizard__buttons-button_hidden" : "wizard__buttons-button"} type="button" onClick={() => {
                     setCurrentStep((prevValue) => {
                         return prevValue - 1;
                     })
                 }}>Назад</button>}
                 
                 {currentStep === children.length -1 ? 
-                <button type="button" onClick={() => {
-                    console.log("submit application");
+                <button className="wizard__buttons-button" type="button" onClick={() => {
+                    submitForm()
                 }}>
                     Отправить данные
                 </button>
                 :
-                <button type="button" onClick={() => {
+                <button className="wizard__buttons-button" type="button" onClick={() => {
                     currentStep === children.length - 1 ? console.log("submit form") : setCurrentStep((prevValue) => {
                         return prevValue + 1;
                     })

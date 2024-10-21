@@ -1,6 +1,6 @@
 import LinkCompBack from "./LinkCompBack";
 import SuccessWrapper from "./SuccessWrapper";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function CreateOrderSuccess() {
   return (

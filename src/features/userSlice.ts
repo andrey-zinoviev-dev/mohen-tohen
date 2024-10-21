@@ -98,6 +98,7 @@ export const userSlice = createSlice({
         updateOrdersHistory: (state, action: PayloadAction<TransactionInterface>) => {
             // console.log(action.payload);
             state.ordersHistory.push(action.payload);
+            return state;
         }
     },
 })

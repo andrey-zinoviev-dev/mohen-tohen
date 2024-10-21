@@ -1,0 +1,15 @@
+.wizard__buttons {
+  display: flex;
+    justify-content: space-between;
+    margin: 25px 0 0 0;
+}
+
+.wizard__buttons-button {
+  background-color: #FF8261;
+  pointer-events: all;
+}
+
+.wizard__buttons-button_hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
