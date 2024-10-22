@@ -16,16 +16,15 @@ import ShowApplication from './ShowApplication'
 import HomeStaging from './HomeStaging'
 import AccountGoods from './AccountGoods'
 
-import { useGetLoggedUserQuery } from './features/apiSlice'
+import { useLazyGetLoggedUserQuery } from './features/apiSlice'
 // import { useDispatch } from 'react-redux'
-import { login, UserInterface } from './features/userSlice'
+import { login } from './features/userSlice'
 import { useAppDispatch } from './hooks'
 import AccountAddGood from './AccountAddGood'
 import ProtectedRoute from './ProtectedRoute'
 import CreateOrder from "./CreateOrder";
 import AccountEdit from './AccountEdit'
 import CreateOrderSuccess from './CreateOrderSuccess'
-import { skipToken } from '@reduxjs/toolkit/query'
 
 function App() {
   //dispatch
@@ -39,7 +38,9 @@ function App() {
   } = loggedIn !== null && JSON.parse(loggedIn);
   
   // getUser
-  const {data: user = {} as UserInterface} = useGetLoggedUserQuery(!loggedInData.loggedIn && skipToken);
+  const [getUser] = useLazyGetLoggedUserQuery();
+  // console.log(loggedInData);
+  // const {data: user = {} as UserInterface} = useGetLoggedUserQuery(!loggedInData.loggedIn && skipToken);
   // console.log(user);
   const router = createBrowserRouter([
     {
@@ -139,10 +140,19 @@ function App() {
   ]);
 
   useEffect(() => {
-    if(user._id) {
-      dispatch(login({...user, loggedIn: true}))
-    }
-  } ,[user._id])
+    loggedInData.loggedIn && getUser(loggedInData.loggedIn)
+    .then((data) => {
+      const user = data.data;
+      user && dispatch(login({...user, loggedIn: true}));
+      // console.log(data.data);
+    })
+  }, [])
+
+  // useEffect(() => {
+  //   if(user._id) {
+  //     dispatch(login({...user, loggedIn: true}))
+  //   }
+  // } ,[user._id])
 
   return (
     <>

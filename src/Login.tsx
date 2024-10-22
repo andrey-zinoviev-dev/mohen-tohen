@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputEl from "./InputEl";
-import { useGetOTPCodeMutation } from "./features/apiSlice";
+import { useGetOTPCodeMutation, useLazyGetLoggedUserQuery } from "./features/apiSlice";
 import { useAppDispatch } from "./hooks";
 import { login } from "./features/userSlice";
-import { useGetLoggedUserQuery } from "./features/apiSlice";
-import { UserInterface } from "./features/userSlice";
-import { skipToken } from "@reduxjs/toolkit/query";
+// import { UserInterface } from "./features/userSlice";
+// import { skipToken } from "@reduxjs/toolkit/query";
 // import { skipToken } from "@reduxjs/toolkit/query";
 // import { useNavigate } from "react-router-dom";
 export default function Login({closePopup}: {closePopup: React.Dispatch<React.SetStateAction<boolean>>}) {
@@ -18,20 +17,31 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
   //RTK
   const [getOTPCode] = useGetOTPCodeMutation();
   //getUser
-  const {data: user = {} as UserInterface} = useGetLoggedUserQuery(!loggedIn && skipToken);
-  console.log(user);
+  const [getUser] = useLazyGetLoggedUserQuery();
+  // const {data: user = {} as UserInterface} = useGetLoggedUserQuery(loggedIn ?? skipToken);
+  // console.log(user);
   //dispatch
   const dispatch = useAppDispatch();
 
   // //navigate
   // const navigate = useNavigate();
 
-  useEffect(() => {
-    if(user._id) {
-      dispatch(login({...user, loggedIn: true}));
+  useEffect(() =>{
+    loggedIn && getUser(true)
+    .then((data) => {
+      const user = data.data;
+      user && dispatch(login({...user, loggedIn: true}));
       closePopup(false);
-    }
-  }, [user._id]);
+      // console.log(data);
+    })
+  }, [loggedIn]);
+
+  // useEffect(() => {
+  //   if(user._id) {
+  //     dispatch(login({...user, loggedIn: true}));
+  //     closePopup(false);
+  //   }
+  // }, [user._id]);
 
   return (
     <div>
