@@ -5,12 +5,6 @@ import InputEl from "./InputEl";
 import { useGetOTPCodeMutation, useLazyGetLoggedUserQuery } from "./features/apiSlice";
 import { useAppDispatch } from "./hooks";
 import { login } from "./features/userSlice";
-// import { useGetLoggedUserQuery } from "./features/apiSlice";
-// import { UserInterface } from "./features/userSlice";
-// import { skipToken } from "@reduxjs/toolkit/query";
-// import { getUser } from "./userApi";
-// import { skipToken } from "@reduxjs/toolkit/query";
-// import { useNavigate } from "react-router-dom";
 export default function Login({closePopup}: {closePopup: React.Dispatch<React.SetStateAction<boolean>>}) {
   //state
   const [phone, setPhone] = useState<{tel: string}>({tel: ""});
@@ -20,7 +14,6 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
   const [getOTPCode] = useGetOTPCodeMutation();
   //getUser
   const [getUser] = useLazyGetLoggedUserQuery();
-  // const {data: user = {} as UserInterface} = useGetLoggedUserQuery(!loggedIn && skipToken);
   // console.log(user);
   //dispatch
   const dispatch = useAppDispatch();
@@ -28,7 +21,7 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
   // //navigate
   // const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() =>{
     loggedIn && getUser(true)
     .then((data) => {
       const user = data.data;
@@ -36,6 +29,7 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
       closePopup(false);
     })
   }, [loggedIn])
+
 
   // useEffect(() => {
   //   if(user._id) {
