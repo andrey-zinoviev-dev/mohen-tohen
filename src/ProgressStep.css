@@ -1,0 +1,51 @@
+.progress__li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+}
+
+.progress__li:last-of-type {
+    width: fit-content;
+}
+
+.progress__li-index {
+    min-width: 30px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #c9c2c1;
+    border-radius: 50%;
+    color: #c9c2c1;
+}
+
+.progress__li_active .progress__li-index{
+    color: #FF8261;
+    border: 2px solid #FF8261;
+}
+
+.progress__li_completed .progress__li-index {
+    background-color: #FF8261;
+    color: white;
+    border: 2px solid #FF8261;
+}
+
+.progress__li-dash {
+    width: 100%;
+    height: 2px;
+    border-radius: 3px;
+    background-color: #c9c2c1;
+}
+
+.progress__li_completed .progress__li-dash {
+    background-color: #FF8261;
+}
+
+
+.progress__li:last-of-type .progress__li-dash {
+    /* visibility: hidden; */
+    display: none;
+}

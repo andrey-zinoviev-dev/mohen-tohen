@@ -1,0 +1,13 @@
+.progress {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+    overflow: hidden;
+    position: relative;
+    max-width: 360px;
+    margin: 15px auto 0 auto;
+}

@@ -19,6 +19,7 @@ import { useSendApplicationMutation } from "./features/apiSlice";
 import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
 import UploadComp from "./UploadComp";
+import { useSearchParams } from "react-router-dom";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
@@ -52,6 +53,10 @@ export default function ApplicationForm() {
 
     //refs
     const fileInputRef = React.useRef<HTMLInputElement | null>(null);
+
+    //search params
+    const [searchParams] = useSearchParams();
+    const userName = searchParams.get("name");
 
     //functions
     function openInput() {
@@ -131,14 +136,22 @@ export default function ApplicationForm() {
                 <img className="application__heading" src={heading}></img>
                 <div className="application__wrapper_welcome">
                     {!startedApplication ?
-                    <>
-                        <img src="https://i.pinimg.com/564x/27/48/e1/2748e1f1db7df1111d8c96ad2890179b.jpg"></img>
+                    <div className="application__first-stage">
+                        <img src="https://i.pinimg.com/564x/44/5b/35/445b352a5eaa916a06a5c6c373ead350.jpg"></img>
                         <div className="application__wrapper_welcome-text">
-                            <h3>Добро пожаловать, Сергей!</h3>
-                            <p>Мы рады приветствовать вас на нашей торговой площадке, где продаются особенные вещи сделанные с любовью. Здесь каждый товай - это предмет искусства!</p>
+                            <h3>Добро пожаловать, {userName}!</h3>
+                            <p>Мы рады приветствовать вас на нашей торговой площадке, где продаются особенные вещи сделанные с любовью.</p>
+                            <p>Здесь каждый товар - это предмет искусства! Также мы- это целая готовая плафторма, работа с нами дает следующие преимущества:</p>
+                            <ul className="application__first-stage-ul">
+                                <li>Огромная аудитория покупателей</li>
+                                <li>Снижение затрат на рекламу. Тебе не нужно тратить деньги на продвижение товаров, так как маркетплейс делает это за тебя</li>
+                                <li>Низкий порог входа. Начать продавать на маркетплейсе можно с минимальными вложениями, что подходит для начинающих продавцов</li>
+                                <li>Удобный личный кабинет. В личном кабинете продавцы могут управлять своими товарами, добавлять новые и отслеживать статистику продаж</li>
+                                {/* <li>Готовая платформа для начала торговли и общения с покупателями</li> */}
+                            </ul>
                             {/* <p>Мы рады пригласить тебя к сотрудничеству с нашим инновационным маркетплейсом предметного дизайна, который создан специально для того, чтобы облегчить тебе путь от творчества до продажи твоих уникальных произведений. */}
                             {/* </p> */}
-                            <div>
+                            {/* <div>
                                 <p>Регистрация на платформе состоит из 4 основных этапов:</p>
                                 <ul className="application__wrapper-progress">
                                     <li className="application__wrapper-progress-step">
@@ -153,20 +166,17 @@ export default function ApplicationForm() {
                                         <span className="application__wrapper-progress-step-index">03</span>
                                         <span>Создание твоего личного кабинета</span>
                                     </li>
-                                    {/* <li className="application__wrapper-progress-step">
-                                        <span className="application__wrapper-progress-step-index">04</span>
-                                        <span>Этап 4</span>
-                                    </li> */}
+                                    
                                 </ul>
                             </div>
-                            <p>После прохождения этих этапов анкеты вы станете частью платформы Mohen - Tohen и сможете сконцентрироваться только на творчестве и производвстве!</p>
+                            <p>После прохождения этих этапов анкеты вы станете частью платформы Mohen - Tohen и сможете сконцентрироваться только на творчестве и производвстве!</p> */}
                             <button onClick={() => {
                                 setStartedApplication(true);
                             }}>Заполнить анкету
                                 <FontAwesomeIcon icon={faArrowRight} />
                             </button>
                         </div>
-                    </>
+                    </div>
                     :
                     <>
                         <div className="application__form-wrapper">
@@ -281,7 +291,7 @@ export default function ApplicationForm() {
                                     }} style={{display: "none"}}></input>
                                 </ApplicationStep>
                                 <ApplicationStep stepTitle="Необоходимые соглашения">
-                                    <h3>Финальный шаг</h3>
+                                    {/* <h3></h3> */}
                                     <ul className="application__form-div-agreements">
                                         <li>
                                             <a href="#">Публичная офферта Mohen - Tohen</a>
