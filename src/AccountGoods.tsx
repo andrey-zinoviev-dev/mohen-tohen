@@ -20,6 +20,7 @@ import FormEl from "./FormEl";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { changeMessage } from "./features/notificationSlice";
 import { updateAccountGoodBatch } from "./features/userSlice";
+import PortalCentered from "./PortalCentered";
 export default function AccountGoods() {
     //dispatch
     const dispatch = useAppDispatch();
@@ -121,14 +122,18 @@ export default function AccountGoods() {
                 }}>
                     <FontAwesomeIcon icon={faXmarkCircle} />
                 </button>
-                <FormEl submitForm={submitForm}>
-                    <label>
-                        <InputEl name="batch" updateState={setNewBatch} placeHolder="3"/>
-                    </label>
-                    <button>
-                        Обновить тираж
-                    </button>
-                </FormEl>
+                <PortalCentered>
+                    <h3>Обновить тираж товара</h3>
+                    <FormEl submitForm={submitForm}>
+                        <label>
+                            <InputEl name="batch" updateState={setNewBatch} placeHolder="3"/>
+                        </label>
+                        <button className="form__button-batch-submit">
+                            Обновить тираж
+                        </button>
+                    </FormEl>
+                </PortalCentered>
+                
                 {/* <form onSubmit={(evt) => {
                     evt.preventDefault();
                     console.log(newBatch);

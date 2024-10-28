@@ -48,6 +48,10 @@
   box-sizing: border-box;
   padding: 70px 35px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
   /* justify-content: space-between; */
   /* max-width: 540px;
   gap: 15px;

@@ -29,3 +29,14 @@
 .addgoodbtn:hover {
   color: white;
 }
+
+.form__button-batch-submit {
+  background-color: #FF8261;
+  align-self: center;
+  /* align-self: flex-start; */
+  transition: all 0.25s ease-in-out;
+}
+
+.form__button-batch-submit:hover {
+  color: white;
+}

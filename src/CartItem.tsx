@@ -7,6 +7,8 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import DeletePopup from "./DeletePopup";
+import { remove } from "./features/basketSlice";
+import PortalCentered from "./PortalCentered";
 export default function CartItem({item}: {item: goodPageInt}) {
   //dispatch
   const dispatch = useAppDispatch();
@@ -16,11 +18,11 @@ export default function CartItem({item}: {item: goodPageInt}) {
 
   //functions
   function deleteItem() {
-    console.log(item);
+    dispatch(remove(item.good))
   }
 
   return (
-    <>
+    <div className="cart__ul-li-details">
       <div className="cart__ul-li-details-params">
                                         <img className="cart__ul-li-img" src={item.good.photos[0].url}></img>
                                         <div className="cart__ul-li-text">
@@ -71,8 +73,10 @@ export default function CartItem({item}: {item: goodPageInt}) {
                                         <FontAwesomeIcon icon={faXmark} />
                                     </button>
         {openDelete && createPortal(<PortalComp>
-          <DeletePopup submitDelete={deleteItem} closeDelete={setOpenDelete}></DeletePopup>
+            <PortalCentered>
+                <DeletePopup submitDelete={deleteItem} closeDelete={setOpenDelete}></DeletePopup>
+            </PortalCentered>
         </PortalComp>, document.body)}
-    </>
+    </div>
   )
 }

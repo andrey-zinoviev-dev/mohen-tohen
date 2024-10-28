@@ -1,0 +1,13 @@
+.portal-centered {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.portal-centered h3 {
+    margin: 0;
+}

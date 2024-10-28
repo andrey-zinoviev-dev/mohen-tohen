@@ -39,16 +39,16 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
   // }, [user._id]);
 
   return (
-    <div>
+    <>
       <button onClick={() => {
         closePopup(false);
       }}>
         <FontAwesomeIcon icon={faXmark} />
       </button>
-      <h3>Войти или зарегистрироваться</h3>
       <form className="header__popup-form" onSubmit={(evt) => {
         evt.preventDefault();
       }}>
+        <h3>Войти или зарегистрироваться</h3>
         <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
         <div>
           <span>+7</span>
@@ -62,6 +62,6 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
         }}>Войти</button>
       </form>
       <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>
-    </div>
+    </>
   )
 }
