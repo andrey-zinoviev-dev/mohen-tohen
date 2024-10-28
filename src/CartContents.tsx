@@ -1,12 +1,13 @@
 // import React from "react";
 // import { goodPageInt } from "./interfaces";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faXmark, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import "./CartContents.css";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import { useAppSelector } from "./hooks";
 // import { useUpdateBasketItemMutation, useDeleteBasketItemMutation } from "./features/apiSlice";
 // import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
-import { changeQuantity, remove } from "./features/basketSlice";
+// import { changeQuantity, remove } from "./features/basketSlice";
+import CartItem from "./CartItem";
 
 export default function CartContents() {
     const cartState = useAppSelector((state) => {
@@ -31,7 +32,7 @@ export default function CartContents() {
     const shipping = 0;
 
     //dispatch
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
 
     //RTK
     // const [updateBasket] = useUpdateBasketItemMutation();
@@ -52,13 +53,13 @@ export default function CartContents() {
                         {cartState.map((cartGood) => {
                             return <li className="cart__ul-li" 
                             key={cartGood.good._id}>
-                                
-                                <div className="cart__ul-li-details">
+                                <CartItem item={cartGood}></CartItem>
+                                {/* <div className="cart__ul-li-details">
                                     <div className="cart__ul-li-details-params">
                                         <img className="cart__ul-li-img" src={cartGood.good.photos[0].url}></img>
                                         <div className="cart__ul-li-text">
                                             <span className="cart__ul-li-text-title">{cartGood.good.title}</span>
-                                            {/* <span className="cart__ul-li-text-refid">Артикул: {cartGood.good._id}</span> */}
+                                            <span className="cart__ul-li-text-refid">Артикул: {cartGood.good._id}</span>
                                             <div className="cart__ul-li-text-specs">
                                                 <span>{cartGood.good.material && cartGood.good.material}</span>
                                                 
@@ -69,10 +70,10 @@ export default function CartContents() {
                                     <div className="cart__ul-li-quantity">
                                         <button className="cart__button" disabled={cartGood.quantity === 1 ? true : false} onClick={() => {
                                             dispatch(changeQuantity({good: cartGood.good, quantity: -1}));
-                                            // updateBasket({id: cartGood.good._id, quantity: -1})
-                                            // .then((data) => {
-                                            //     data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
-                                            // })
+                                            updateBasket({id: cartGood.good._id, quantity: -1})
+                                            .then((data) => {
+                                                data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
+                                            })
                                         }}>
                                             <FontAwesomeIcon icon={faMinus} />
                                         </button>
@@ -80,11 +81,11 @@ export default function CartContents() {
                                         <button className="cart__button" disabled={cartGood.good.batch === cartGood.quantity ? true : false} onClick={() => {
                                             dispatch(changeQuantity({good: cartGood.good, quantity: 1}));
 
-                                            // console.log(cartGood.good.batch === cartGood.quantity)
-                                            // updateBasket({id: cartGood.good._id, quantity: 1})
-                                            // .then((data) => {
-                                            //     data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
-                                            // })
+                                            console.log(cartGood.good.batch === cartGood.quantity)
+                                            updateBasket({id: cartGood.good._id, quantity: 1})
+                                            .then((data) => {
+                                                data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
+                                            })
                                         
                                         }}>
                                             <FontAwesomeIcon icon={faPlus} />
@@ -92,17 +93,18 @@ export default function CartContents() {
                                     </div>
                                     <span>{cartGood.good.price}</span>
                                     <button className="cart__ul-li-delete cart__button" onClick={() => {
+                                        
                                         dispatch(remove(cartGood.good))
                                         
-                                        // deleteItem(cartGood.good._id)
-                                        // .then((data) => {
-                                        //     data.data && dispatch(deleteBasketGood(cartGood.good))
-                                        // })
+                                        deleteItem(cartGood.good._id)
+                                        .then((data) => {
+                                            data.data && dispatch(deleteBasketGood(cartGood.good))
+                                        })
                                         
                                     }}>
                                         <FontAwesomeIcon icon={faXmark} />
                                     </button>
-                                </div>
+                                </div> */}
                             </li>
                         })}
             </ul>
