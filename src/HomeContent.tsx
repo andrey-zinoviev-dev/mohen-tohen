@@ -10,9 +10,9 @@ export default function HomeContent() {
 
     return (
         <>
-            <Welcome></Welcome>    
-            <AboutPlatform></AboutPlatform>
+            {/* <Welcome></Welcome>     */}
             <PromoSection></PromoSection>
+            <AboutPlatform></AboutPlatform>
             <NewGoods></NewGoods>
             <RandomGoods></RandomGoods>
             <Brands></Brands>

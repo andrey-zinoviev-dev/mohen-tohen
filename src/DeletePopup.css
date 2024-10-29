@@ -9,3 +9,11 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.delete__buttons button{
+    min-width: 120px;
+}
+
+.delete__buttons button:last-of-type {
+    background-color: tomato;
+}

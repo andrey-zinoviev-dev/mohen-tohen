@@ -120,10 +120,10 @@ export default function Header() {
                             
                         </li> */}
                     </ul>
-                    <Link className="header__links-homestaging" to="/homestaging">
+                    {/* <Link className="header__links-homestaging" to="/homestaging">
                         <span>Подбор декора</span>
                         <FontAwesomeIcon icon={faArrowRight} />
-                    </Link>
+                    </Link> */}
 
                     {/* <div className="header__extension">
                         <LinksComp title="Интересное" links={fixedHeaderLinks}></LinksComp>
