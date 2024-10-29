@@ -12,8 +12,8 @@ export default function HomeContent() {
         <>
             <Welcome></Welcome>    
             <AboutPlatform></AboutPlatform>
-            <NewGoods></NewGoods>
             <PromoSection></PromoSection>
+            <NewGoods></NewGoods>
             <RandomGoods></RandomGoods>
             <Brands></Brands>
             <Collaboration></Collaboration>

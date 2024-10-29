@@ -22,7 +22,7 @@ export default function ListGridPhoto({ file, removePhoto }: {file: File, remove
         }}>
           <FontAwesomeIcon icon={faXmarkCircle} />
         </button>
-        <img className="img" src={photoUrl} onLoad={() => {
+        <img className="list-img" src={photoUrl} onLoad={() => {
           window.URL.revokeObjectURL(photoUrl);
         }}></img>
       </button>
