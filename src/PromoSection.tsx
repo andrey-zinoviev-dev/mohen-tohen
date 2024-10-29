@@ -4,11 +4,10 @@
 // import { GoodInterface } from "./interfaces";
 
 import "./PromoSection.css"
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { welcomeSlides } from "./utils";
-import { faArrowLeft, faArrowRight, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import { faArrowRight, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { useRef, useState, useEffect } from "react";
 import LinkCompAction from "./LinkCompAction";
 
 export default function PromoSection() {
@@ -22,11 +21,17 @@ export default function PromoSection() {
   //state
   const [slide, setSlide] = useState<number>(0);
 
-  // useEffect(() => {
-  //   const number = scrollContainer && scrollContainer.current && scrollContainer.current.clientWidth * slide;
-  //   // scrollContainer.current && scrollContainer.current.scrollLeft
-  //   console.log(scrollContainer.current?.scrollLeft = 150);
-  // }, [slide]);
+  useEffect(() => {
+    if(scrollContainer.current) {
+      scrollContainer.current.scroll({
+        top: 0,
+        left: scrollContainer.current.clientWidth * slide,
+        behavior: "smooth",
+      })
+    }
+    // scrollContainer.current && scrollContainer.current.scrollLeft = scrollContainer.current && scrollContainer.current.clientWidth * slide;
+    // scrollContainer.current && scrollContainer.current.scrollLeft
+  }, [slide]);
 
   return (
     <section className="promo">
@@ -67,8 +72,9 @@ export default function PromoSection() {
           </div>
       </div>
       <div className="promo__wrapper-homestage">
-        <h3>Текст про хоумстейдж</h3>
-        <p>Тут вот большой текст</p>
+        <h3>Что делать с предметами декора?</h3>
+        <p>Мы предлагаем превратить ваше пространство в шедевр с помощью профессионального декорирования! Наши декораторы подберут декор для Вас, помогут составить дизайн проект, а также подскажут, что с чем лучше сочетать</p>
+        {/* <p></p> */}
         <LinkCompAction text="Декор на заказ" icon={faArrowRight} to="/homestaging"/>
       </div>
       

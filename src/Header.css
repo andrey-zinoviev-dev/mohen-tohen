@@ -328,7 +328,15 @@
     }
 
     .header__links {
-        display: none;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        left: 0;
+        margin: 0 auto;
+        background-color: white;
+        box-sizing: border-box;
+        padding: 5px 50px;
     }
 
     .header__menu {
