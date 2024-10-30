@@ -41,7 +41,7 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
             //     dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
             // })
         }}>
-            {goodInBasket ? "Уже в корзине" : "Добавить в корзину"}
+            {goodInBasket ? "Уже в корзине" : `Купить за ${good.price}р.`}
             {/* <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} /> */}
         </button>
     )
