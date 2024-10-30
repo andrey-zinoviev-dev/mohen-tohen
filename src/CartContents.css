@@ -63,6 +63,7 @@
     align-items: flex-start;
     gap: 10px;
     font-size: 16px;
+    text-align: left;
 }
 
 .cart__ul-li-text-author {
@@ -160,6 +161,15 @@
 
 .cart__subtotal_small-font {
     font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+    .cart__ul-li-details-params {
+        min-width: 100%;
+    }
+    .cart__subtotal {
+        min-width: 140px;
+    }
 }
 
 @container cart-element (max-width: 500px) {

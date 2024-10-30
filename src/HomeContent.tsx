@@ -1,4 +1,4 @@
-import Welcome from "./Welcome"
+// import Welcome from "./Welcome"
 import Brands from "./Brands"
 import Collaboration from "./Collaboration"
 import PromoSection from "./PromoSection"

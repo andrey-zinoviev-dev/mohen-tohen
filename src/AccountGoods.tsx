@@ -28,7 +28,10 @@ export default function AccountGoods() {
     //redux
     const accountGoods = useAppSelector((state) => {
         return state.user.goods;
-    })
+    });
+    // console.log(accountGoods);
+    const sortedArray = accountGoods && [...accountGoods].reverse();
+    // console.log(sortedArray);
     //RTK
     // const {
     //     data: goods = [] as GoodInterface[]
@@ -74,7 +77,7 @@ export default function AccountGoods() {
             {accountGoods && accountGoods.length > 0 ? 
             
             <ListColumn>
-                {accountGoods.map((good:GoodInterface) => {
+                {sortedArray && sortedArray.map((good:GoodInterface) => {
                     return <li key={good._id}>
                         <span className="list-column__id-span">{good._id}</span>
                         <div className="list-column__wrapper">

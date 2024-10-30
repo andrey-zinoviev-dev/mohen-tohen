@@ -1,5 +1,5 @@
 import "./ListColumn.css"
-export default function ListColumn({children}: {children: React.ReactNode[]}) {
+export default function ListColumn({children}: {children: React.ReactNode | React.ReactNode[]}) {
     return (
         <ul className="list-column">
             {children}

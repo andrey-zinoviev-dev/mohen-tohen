@@ -3,9 +3,6 @@
     flex-direction: column;
     gap: 15px;
 }
-/* .goods_inaccount {
-    padding: 0;
-}
 
 .goods h3 {
     margin: 0;
@@ -19,7 +16,7 @@
     padding: 0;
     margin: 0;
     width: 100%;
-} */
+}
 
 
 /* .goods__ul-li {
@@ -200,7 +197,8 @@
 
 @media screen and (max-width: 768px) {
     .goods__ul {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        /* grid-template-columns: repeat(2, 1fr); */
     }
 
     .goods__ul-li-price-wrapper button {
