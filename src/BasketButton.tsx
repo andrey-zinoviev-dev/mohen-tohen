@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 // import { changeMessage } from "./features/notificationSlice";
 import "./BasketButton.css";
 import { add, remove } from "./features/basketSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 
 //interface
 interface goodPageInt {
@@ -41,7 +43,10 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
             //     dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
             // })
         }}>
-            {goodInBasket ? "Уже в корзине" : `${good.price}р.`}
+            {goodInBasket ? "Уже в корзине" : <>
+                    {good.price}р.
+                    <FontAwesomeIcon icon={faShoppingBag} />
+                </>}
             {/* <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} /> */}
         </button>
     )

@@ -2,7 +2,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 25px;
+    gap: 20px;
 
     /* flex-direction: column; */
 }
@@ -10,9 +10,17 @@
 .promo__wrapper {
     display: flex;
     position: relative;
+    width: 70%;
 }
 
-.promo__ul {
+.promo__wrapper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* .promo__ul {
     display: flex;
     overflow: scroll;
     scroll-snap-type: x mandatory;
@@ -25,7 +33,7 @@
 .promo__ul::-webkit-scrollbar {
     height: 0;
     width: 0;
-}
+} */
 
 .promo__ul-li {
     width: 100%;
@@ -67,6 +75,7 @@
     align-items: center;
     gap: 5px;
     background-color: #F3F3F3;
+    z-index: 150;
 }
 
 .promo__wrapper-buttons button {
@@ -75,7 +84,8 @@
 }
 .promo__wrapper-homestage {
     min-width: 320px;
-    max-width: 360px;
+    width: 100%;
+    /* max-width: 360px; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

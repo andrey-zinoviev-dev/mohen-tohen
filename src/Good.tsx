@@ -16,7 +16,12 @@ export default function Good({ good }:GoodComponentInterface) {
     return (
         <>
             <div className="good-img-wrapper">
-                <img src={good.photos[0].url}></img>
+                <img src={good.photos[0].url} onClick={() => {
+                    navigate(`/goods/${good._id}`, {
+                        state: good,
+                        preventScrollReset: false,
+                    })
+                }}></img>
                 <div className="good-img-wrapper__actions">
                     <LikeButton good={ good } />
                     <ShareButton href={`${window.location.href}goods/${good._id}`} />
