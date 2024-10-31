@@ -98,10 +98,27 @@
     margin: 0;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1279px) {
+    .promo__wrapper {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 1023px) {
     .promo {
         flex-direction: column;
     }
+
+    .promo__wrapper {
+        width: 100%;
+    }
+    .promo__wrapper-homestage {
+        max-width: 540px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
 
     .promo__wrapper-homestage {
         min-width: 0;

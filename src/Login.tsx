@@ -22,12 +22,14 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
   // const navigate = useNavigate();
 
   useEffect(() =>{
-    loggedIn && getUser(true)
-    .then((data) => {
-      const user = data.data;
-      user && dispatch(login({...user, loggedIn: true}));
-      closePopup(false);
-    })
+    if(loggedIn) {
+      getUser(true)
+      .then((data) => {
+        const user = data.data;
+        user && dispatch(login({...user, loggedIn: true}));
+        closePopup(false);
+      })
+    } 
   }, [loggedIn])
 
 
@@ -56,8 +58,9 @@ export default function Login({closePopup}: {closePopup: React.Dispatch<React.Se
         </div>
         <button disabled={phone.tel.length === 10 ? false : true} onClick={() => {
           getOTPCode(phone.tel).unwrap()
-          .then((data) => {
-            setLoggedIn(data.loggedIn);
+          .then(() => {
+            // console.log(data);
+            setLoggedIn(true);
           })
         }}>Войти</button>
       </form>
