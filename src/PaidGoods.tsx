@@ -1,14 +1,11 @@
 import { GoodInterface } from "./interfaces";
 import { useGetGoodsQuery } from "./features/apiSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation"
-import Good from "./Good";
-import ListOverflow from "./ListOverflow";
 import SliderButton from "./SliderButton";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+// import { useState } from "react";
 import "./PaidGoods.css";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +21,7 @@ export default function PaidGoods() {
     const slidesPerView:number = 5;
 
     //state
-    const [slide, setSlide] = useState<number>(0);
+    // const [slide, setSlide] = useState<number>(0);
 
     return (
         <section className="paid-goods">
@@ -43,8 +40,8 @@ export default function PaidGoods() {
                     </SwiperSlide>
                 })}
                 <div className="paid-goods__buttons">
-                    <SliderButton left={true} handleSlideChange={setSlide} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronLeft}></SliderButton>
-                    <SliderButton handleSlideChange={setSlide} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronRight}></SliderButton>
+                    <SliderButton left={true} handleSlideChange={() => {}} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronLeft}></SliderButton>
+                    <SliderButton handleSlideChange={() => {}} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronRight}></SliderButton>
                     {/* {slide !== 0 && <SliderButton left={true} handleSlideChange={setSlide} slideslength={Math.ceil(goods.length / 5)} icon={faChevronLeft}></SliderButton>}
                     {slide !== Math.ceil(goods.length / 5) - 1 && <SliderButton handleSlideChange={setSlide} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronRight}></SliderButton>}   */}
                 </div>

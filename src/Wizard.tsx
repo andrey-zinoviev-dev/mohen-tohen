@@ -32,6 +32,7 @@ export default function Wizard({children, submitForm}: {children: React.ReactNod
             </ul> */}
             <Progress>
                 {Array.from(children).map((child, index) => {
+                    console.log(child);
                     return <ProgressStep step={currentStep} index={index}></ProgressStep>
                 })}
             </Progress>

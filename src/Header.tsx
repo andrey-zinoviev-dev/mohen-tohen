@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowRight, faBars, faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faMagnifyingGlass, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
 import { useAppSelector } from "./hooks";
 import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
