@@ -26,7 +26,7 @@ export default function SellerPage() {
       <div className="seller__warpper">
         <img className="seller__warpper-img" src={seller.cover && seller.cover}></img>
         <div className="seller__wrapper_details">
-          <h3>{seller && seller.name}</h3>
+          <h3>{seller && seller.brandName}</h3>
           <p>{seller && seller.description}</p>
 
           {/* <div className="seller__wrapper_details-rating">

@@ -8,4 +8,25 @@
   justify-content: center;
   gap: 10px;
   width: 100%;
+  transition: all 0.25s ease-in-out;
+}
+
+.basket-button:hover {
+  color: white;
+}
+
+.basket-button svg {
+  color: transparent;
+  stroke: black;
+  stroke-width: 30px;
+  transition: all 0.25s ease-in-out;
+}
+
+.basket-button:hover svg {
+  stroke: white;
+}
+
+.basket-button_clicked svg {
+  color: black;
+  stroke-width: 0;
 }

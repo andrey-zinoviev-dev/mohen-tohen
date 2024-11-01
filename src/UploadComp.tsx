@@ -4,6 +4,7 @@ import SuccessWrapper from "./SuccessWrapper";
 import Loader from "./Loader";
 // import { usePostGoodToServerMutation } from "./features/apiSlice";
 import LinkCompBack from "./LinkCompBack";
+import PortalCentered from "./PortalCentered";
 
 type CommonProps = {
   photos: File[],
@@ -58,7 +59,7 @@ export default function UploadComp({application, photos, submitData, linkBack}: 
       case "files_uploaded":
         return <Loader text="Файлы загрузились, товар выгружается"></Loader>
       case "finished":
-        return <>
+        return <PortalCentered>
           <SuccessWrapper label="Успешная выгрузка"></SuccessWrapper>
           {application ? 
           <>
@@ -68,7 +69,7 @@ export default function UploadComp({application, photos, submitData, linkBack}: 
           :
           linkBack && <LinkCompBack to={linkBack.to} text={linkBack.text} />
           }
-        </>
+        </PortalCentered>
     }
   }
 

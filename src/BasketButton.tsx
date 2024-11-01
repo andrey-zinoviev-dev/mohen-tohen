@@ -7,6 +7,7 @@ import "./BasketButton.css";
 import { add, remove } from "./features/basketSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { changeMessage } from "./features/notificationSlice";
 
 //interface
 interface goodPageInt {
@@ -32,9 +33,11 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
     })
 
     return (
-        <button className="basket-button" onClick={(evt) => {
+        <button className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
             evt.stopPropagation();
-            !goodInBasket ? dispatch(add({good: good, quantity: quantity})) : dispatch(remove(good))
+            !goodInBasket ? dispatch(add({good: good, quantity: quantity})) : dispatch(remove(good));
+            dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
+
             // localStorage.setItem("cart"m)
             // console.log(good);
             // updateBasket({good: good, quantity: quantity})
@@ -43,10 +46,17 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
             //     dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
             // })
         }}>
-            {goodInBasket ? "Уже в корзине" : <>
+            {goodInBasket ? 
+                <>
+                    Уже в корзине
+                    <FontAwesomeIcon icon={faShoppingBag} />
+                </> 
+                : 
+                <>
                     {good.price}р.
                     <FontAwesomeIcon icon={faShoppingBag} />
-                </>}
+                </>
+            }
             {/* <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} /> */}
         </button>
     )
