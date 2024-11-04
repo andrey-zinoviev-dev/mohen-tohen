@@ -568,10 +568,10 @@ export const locationInputs = [
 export const welcomeSlides = [
   {
     text: "Тут будет текст слайда 1",
-    cover: "http://cdn.mohen-tohen.ru/creative-fengshui-practice-arrangement.jpg"
+    cover: "https://cdn.mohen-tohen.ru/creative-fengshui-practice-arrangement.jpg"
   }, 
   {
     text: "Тут будет текст слайда 2",
-    cover: "http://cdn.mohen-tohen.ru/nest-good-page.png",
+    cover: "https://cdn.mohen-tohen.ru/1896499891embrace-simplicity-the-art-of-minimalism-in-interior-design.jpg",
   }
 ]

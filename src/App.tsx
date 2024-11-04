@@ -140,12 +140,19 @@ function App() {
   ]);
 
   useEffect(() => {
-    loggedInData.loggedIn && getUser(loggedInData.loggedIn)
-    .then((data) => {
-      const user = data.data;
-      user && dispatch(login({...user, loggedIn: true}));
+    if(loggedInData.loggedIn) {
+      getUser(loggedInData.loggedIn)
+      .then((data) => {
+        const user = data.data;
+        user && dispatch(login({...user, loggedIn: true}));
+      })
+    }
+    // loggedInData.loggedIn && getUser(loggedInData.loggedIn)
+    // .then((data) => {
+    //   const user = data.data;
+    //   user && dispatch(login({...user, loggedIn: true}));
 
-    })
+    // })
   }, [])
 
   // useEffect(() => {

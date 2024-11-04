@@ -15,7 +15,9 @@ export default function PromoSection() {
   return (
     <section className="promo">
       <div className="promo__wrapper">
-        <Swiper loop={true} slidesPerView={1}>
+        <Swiper loop={true} slidesPerView={1} onSlideChange={(swiper) => {
+          setSlide(swiper.realIndex);
+        }}>
           {welcomeSlides.map((slide) => {
             return <SwiperSlide key={slide.text}>
               <div className="promo__wrapper-slide">

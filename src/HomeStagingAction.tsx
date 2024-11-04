@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { links } from "./utils";
-import pic from "./assets/creative-fengshui-practice-arrangement.jpg";
+// import pic from "./assets/creative-fengshui-practice-arrangement.jpg";
 import logo from "./assets/mh-1.png";
 import "./HomeStagingAction.css";
 import { createPortal } from "react-dom";
@@ -44,7 +44,7 @@ export default function HomeStagingAction() {
                     })}
                 </ul>
             </div>
-            <img className="homestaging-action__img" src={pic}></img>
+            <img className="homestaging-action__img" src={"https://cdn.mohen-tohen.ru/creative-fengshui-practice-arrangement.jpg"}></img>
             {openedForm && createPortal(<PortalMultimedia>
                 <label></label>
                 <HomeStagingForm closePortal={setOpenedForm} />
