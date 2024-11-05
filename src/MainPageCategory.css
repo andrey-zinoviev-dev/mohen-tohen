@@ -11,3 +11,12 @@
     right: 0;
     bottom: 0;
 }
+
+@media screen and (max-width: 767px) {
+    .main-category__wrapper {
+        justify-content: flex-start;
+    }
+    /* .main-category__wrapper a {
+        position: static;
+    } */
+}

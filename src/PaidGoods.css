@@ -1,6 +1,6 @@
 .paid-goods__img {
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2/3;
     object-fit: cover;
     border-radius: 9px;
     cursor: pointer;
@@ -21,3 +21,9 @@
 .paid-goods__buttons button:hover {
     color: white;
 }
+
+/* @media screen and (max-width: 1279px) {
+    .paid-goods__img {
+        min-width: 210px;
+    }
+} */

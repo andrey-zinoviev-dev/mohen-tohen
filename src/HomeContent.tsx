@@ -2,9 +2,9 @@
 import Brands from "./Brands"
 import Collaboration from "./Collaboration"
 import PromoSection from "./PromoSection"
-import RandomGoods from "./RandomGoods"
+// import RandomGoods from "./RandomGoods"
 import AboutPlatform from "./AboutPlatform"
-import NewGoods from "./NewGoods"
+// import NewGoods from "./NewGoods"
 import PaidGoods from "./PaidGoods"
 import MainPageCategory from "./MainPageCategory"
 import { useGetGoodsQuery } from "./features/apiSlice"
@@ -20,8 +20,9 @@ export default function HomeContent() {
             {/* <Welcome></Welcome>     */}
             <PromoSection></PromoSection>
             <AboutPlatform></AboutPlatform>
-            <MainPageCategory href={"catalog"} title="Горячие предложения" goods={goods}></MainPageCategory>
-            <MainPageCategory href={"catalog"} title="Новинки" goods={goods} />
+            <PaidGoods></PaidGoods>
+            {/* <MainPageCategory href={"catalog"} title="Горячие предложения" goods={goods}></MainPageCategory> */}
+            <MainPageCategory href={"catalog?date=new"} title="Новинки" goods={goods} />
             <MainPageCategory href={"catalog"} title="Что можно приобрести" goods={goods} />
             {/* <PaidGoods></PaidGoods>
             <NewGoods></NewGoods>

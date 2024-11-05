@@ -18,7 +18,7 @@ export default function PaidGoods() {
     const navigate = useNavigate();
 
     //variables
-    const slidesPerView:number = 5;
+    const slidesPerView:number = 4;
 
     //state
     // const [slide, setSlide] = useState<number>(0);
@@ -26,7 +26,26 @@ export default function PaidGoods() {
     return (
         <section className="paid-goods">
             <h3>Горячие предложения</h3>
-            <Swiper slidesPerView={slidesPerView} loop={Math.ceil(goods.length / slidesPerView) > 1 ? true : false} spaceBetween={15}>
+            <Swiper slidesPerView={slidesPerView} breakpoints={{
+                1279: {
+                    slidesPerView: 4
+                    // width: 1279,
+
+                },
+                767: {
+                    // width: 767,
+                    slidesPerView: 3
+                },
+                425: {
+                    slidesPerView: 2,
+                },
+                375: {
+                    slidesPerView: 2,
+                },
+                300: {
+                    slidesPerView: 2
+                }
+            }} loop={Math.ceil(goods.length / slidesPerView) > 1 ? true : false} spaceBetween={15}>
                 {goods.map((good) => {
                     return <SwiperSlide key={good._id} onClick={() => {
                         navigate(`/goods/${good._id}`, {
