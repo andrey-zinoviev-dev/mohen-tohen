@@ -1,0 +1,19 @@
+.category__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 0 25px 0;
+}
+
+.category__wrapper button{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border: 1px solid #FF8261;
+    transition: all 0.25s ease-in-out;
+}
+
+.category__wrapper button:hover {
+    background-color: #FF8261;
+}

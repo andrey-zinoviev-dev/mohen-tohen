@@ -1,0 +1,13 @@
+.main-category__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0 0 25px 0;
+}
+
+.main-category__wrapper a {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

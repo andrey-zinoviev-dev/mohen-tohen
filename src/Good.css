@@ -7,7 +7,7 @@
     width: 100%;
     /* max-width: 140px; */
     align-self: center;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 2/3;
     object-fit: cover;
     border-radius: 3px;
     /* border-radius: 10px; */
@@ -59,6 +59,7 @@
 .good-text-wrapper__seller img {
     max-width: 30px;
     border-radius: 50%;
+    aspect-ratio: 1/1;
 }
 
 .good-text-wrapper__seller-name {

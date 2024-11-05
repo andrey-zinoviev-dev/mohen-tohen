@@ -25,6 +25,7 @@ import ProtectedRoute from './ProtectedRoute'
 import CreateOrder from "./CreateOrder";
 import AccountEdit from './AccountEdit'
 import CreateOrderSuccess from './CreateOrderSuccess'
+import Catalog from './Catalog'
 
 function App() {
   //dispatch
@@ -62,6 +63,10 @@ function App() {
         {
           path: "brands/:brandID",
           element: <SellerPage></SellerPage>,
+        },
+        {
+          path: "catalog",
+          element: <Catalog />
         },
         // {
         //   path: "/favs",

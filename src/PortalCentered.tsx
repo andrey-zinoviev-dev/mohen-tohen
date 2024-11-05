@@ -1,7 +1,7 @@
 import "./PortalCentered.css"
-export default function PortalCentered({children}: {children: React.ReactNode | React.ReactNode[]}) {
+export default function PortalCentered({children, top}: {children: React.ReactNode | React.ReactNode[], top?:boolean}) {
   return (
-    <div className="portal-centered">
+    <div className={top ? "portal-centered portal-centered_top" : "portal-centered"}>
       {children}
     </div>
   )

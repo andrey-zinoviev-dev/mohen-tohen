@@ -13,3 +13,13 @@
 .link-comp:hover {
     color: white;
 }
+
+.link-comp_transparent {
+    background-color: transparent;
+    border: 1px solid #FF8261;
+}
+
+.link-comp_transparent:hover {
+    background-color: #FF8261;
+    color: black;
+}
