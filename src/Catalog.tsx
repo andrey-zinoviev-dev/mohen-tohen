@@ -9,7 +9,8 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import PortalCentered from "./PortalCentered";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useSearchParams } from "react-router-dom";
+// import { faCheck } from "@fortawesome/free-solid-svg-icons";
 export default function Catalog() {
     const {
         data: goods = [] as GoodInterface[],
@@ -18,6 +19,10 @@ export default function Catalog() {
     //state
     const [openedFIlter, setOpenedFilter] = useState<boolean>(false);
 
+    //search params
+    const [searchParams] = useSearchParams();
+    const paramsType = searchParams.get("type");
+    console.log(paramsType);
     return (
         <section className="category">
             <div className="category__wrapper">
@@ -35,7 +40,7 @@ export default function Catalog() {
                 }}>
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
-                <PortalCentered top={true}>
+                <PortalCentered>
                     <Filter></Filter>
                 </PortalCentered>
             </PortalComp>, document.body)}

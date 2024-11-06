@@ -22,8 +22,8 @@ export default function HomeContent() {
             <AboutPlatform></AboutPlatform>
             <PaidGoods></PaidGoods>
             {/* <MainPageCategory href={"catalog"} title="Горячие предложения" goods={goods}></MainPageCategory> */}
-            <MainPageCategory href={"catalog?date=new"} title="Новинки" goods={goods} />
-            <MainPageCategory href={"catalog"} title="Что можно приобрести" goods={goods} />
+            <MainPageCategory href={"catalog?type=new"} title="Новинки" goods={goods} />
+            <MainPageCategory href={"catalog?type=random"} title="Что можно приобрести" goods={goods} />
             {/* <PaidGoods></PaidGoods>
             <NewGoods></NewGoods>
             <RandomGoods></RandomGoods> */}
