@@ -16,6 +16,15 @@ export default function Catalog() {
         data: goods = [] as GoodInterface[],
     } = useGetGoodsQuery();
 
+    //sellers
+    const sellersArray = goods.map((good) => {
+        return good.seller.brandName;
+    });
+
+    console.log(sellersArray);
+
+    const sellersWithNoRepeats = [...new Set(sellersArray)];
+
     //state
     const [openedFIlter, setOpenedFilter] = useState<boolean>(false);
 
@@ -41,7 +50,7 @@ export default function Catalog() {
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <PortalCentered>
-                    <Filter></Filter>
+                    <Filter sellers={sellersWithNoRepeats}></Filter>
                 </PortalCentered>
             </PortalComp>, document.body)}
         </section>
