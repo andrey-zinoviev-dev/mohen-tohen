@@ -47,6 +47,8 @@ export interface GoodInterface {
   // madeToOrder: boolean,
   _id: string,
   batch: number,
+  paid?: boolean,
+  createdAt: number,
 }
 
 export interface goodPageInt {
