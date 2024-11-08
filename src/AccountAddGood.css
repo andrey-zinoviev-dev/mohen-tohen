@@ -26,6 +26,40 @@
   align-items: flex-start;
 }
 
+.addGoodform__text-wrapper-div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.addGoodform__text-wrapper-div-categories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.addGoodform__text-wrapper-div-categories label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+
+.addGoodform__text-wrapper-div-categories label input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #C8CCCF;
+  border-radius: 4px;
+  transition: all 0.25s ease-in-out;
+}
+
+.addGoodform__text-wrapper-div-categories label input:checked {
+  /* appearance: green; */
+  background-color: #FF8261;
+}
+
 .addGoodform__text-wrapper button {
   color: black;
   border: 2px solid #FF8261;

@@ -48,24 +48,33 @@ export default function Filter({sellers}: {sellers: (string | undefined)[]}) {
                     {/* <button>Цена</button> */}
                 </li>
                 <li>
-                    <FilterItem text="Размеры" />
+                    <FilterItem text="Размеры">
+                        <label>
+                            Размеры
+                            <input placeholder="от"></input>
+                            <input placeholder="до"></input>
+                        </label>
+                    </FilterItem>
                     {/* <button>Размеры</button> */}
                 </li>
                 <li>
-                    <FilterItem text="Цвета" />
+                    <FilterItem text="Цвета">
+
+                    </FilterItem>
                     {/* <button>
                         Цвета
                     </button> */}
                 </li>
-                <li>
+                {/* <li>
                     <FilterItem text="Материалы" />
-                    {/* <button>Материалы</button> */}
-                </li>
+                    <button>Материалы</button>
+                </li> */}
                 <li>
                     <FilterItem text="Дизайнеры">
                         {sellers.map((seller) => {
                             return <label>
                                 {seller && seller}
+                                <input type="checkbox" value={seller}></input>
                             </label>
                         })}
                     </FilterItem>

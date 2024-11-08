@@ -15,11 +15,13 @@ import UploadComp from "./UploadComp";
 import { usePostGoodToServerMutation } from "./features/apiSlice";
 import { useAppDispatch } from "./hooks";
 import { addNewGoodToUser } from "./features/userSlice";
+import { categories } from "./utils";
 
 export default function AccountAddGood() {
   //states
-  const [formData, setFormData] = React.useState<{title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number}>({
+  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number}>({
     title: "",
+    category: "",
     description: "",
     material: "",
     dimensions: "",
@@ -89,7 +91,8 @@ export default function AccountAddGood() {
       <h3>Добавление нового товара</h3>
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
-        setUploadStarted(true);
+        console.log(formData);
+        // setUploadStarted(true);
 
         // uploadGood(formData)
         // .then((data) => {
@@ -97,38 +100,68 @@ export default function AccountAddGood() {
         // })
       }}>
         <div className="addGoodform__text-wrapper">
-          <label className="addGoodform__label">
-            Название
-            <InputEl name="title" placeHolder="Ночной торшер" updateState={setFormData}></InputEl>
-            {/* <input></input> */}
-          </label>
-          <label className="addGoodform__label">
-            Описание
-            <InputEl updateState={setFormData} placeHolder="Этот торшер сделан из премиальных материалов" name="description"></InputEl>
-            {/* <input></input> */}
-          </label>
-          <label className="addGoodform__label">
-            Материал
-            <InputEl updateState={setFormData} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
-            {/* <input></input> */}
-          </label>
-          <label className="addGoodform__label">
-            Цвет
-            <InputEl updateState={setFormData} placeHolder="(hex)#ffffff" name="color"></InputEl>
-          </label>
-          <label className="addGoodform__label">
-            Габариты
-            <InputEl updateState={setFormData} placeHolder="125(Ш)x60(В)x90(Г)" name="dimensions"></InputEl>
-          </label>
-          <label className="addGoodform__label">
-            Тираж
-            <InputEl updateState={setFormData} placeHolder="5" name="batch"></InputEl>
-          </label>
-          <label className="addGoodform__label">
-            Цена
-            <InputEl updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
-          </label>
-
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Название
+              <InputEl name="title" placeHolder="Ночной торшер" updateState={setFormData}></InputEl>
+              {/* <input></input> */}
+            </label>
+          </div>
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Категория
+            </label>
+            <div className="addGoodform__text-wrapper-div-categories">
+              {categories.map((category) => {
+                return <>
+                  <label>
+                    <input name="category" type="radio" value={category.title}>
+                    </input>
+                    {category.title}
+                  </label>
+                  {/* <span>{category.title}</span> */}
+                </>
+              })}
+            </div>
+          </div>
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Описание
+              <InputEl updateState={setFormData} placeHolder="Этот торшер сделан из премиальных материалов" name="description"></InputEl>
+              {/* <input></input> */}
+            </label>
+          </div>
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Материал
+              <InputEl updateState={setFormData} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
+              {/* <input></input> */}
+            </label>
+          </div>
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Цвет
+              <InputEl updateState={setFormData} placeHolder="(hex)#ffffff" name="color"></InputEl>
+            </label>
+          </div>
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Габариты
+              <InputEl updateState={setFormData} placeHolder="125(Ш)x60(В)x90(Г)" name="dimensions"></InputEl>
+            </label>
+          </div>
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Тираж
+              <InputEl updateState={setFormData} placeHolder="5" name="batch"></InputEl>
+            </label>
+          </div>
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              Цена
+              <InputEl updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
+            </label>
+          </div>
           <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
           {/* <button type="submit"> */}
             Отправить товар
