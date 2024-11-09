@@ -21,10 +21,14 @@ export default function Catalog() {
         return good.seller.brandName;
     });
 
-    console.log(sellersArray);
+    // console.log(sellersArray);
 
     const sellersWithNoRepeats = [...new Set(sellersArray)];
 
+    //colors
+    const colors = goods.map((good) => {
+        return good.color;
+    })
     //state
     const [openedFIlter, setOpenedFilter] = useState<boolean>(false);
 
@@ -50,7 +54,7 @@ export default function Catalog() {
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <PortalCentered>
-                    <Filter sellers={sellersWithNoRepeats}></Filter>
+                    <Filter sellers={sellersWithNoRepeats} colors={colors}></Filter>
                 </PortalCentered>
             </PortalComp>, document.body)}
         </section>
