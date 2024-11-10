@@ -10,7 +10,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 export default function Filter({sellers, colors}: {sellers: (string | undefined)[], colors: string[]}) {
     const [searchParams] = useSearchParams();
     const urlOjb = (Object.fromEntries([...searchParams]));
-    console.log(urlOjb);
+    // console.log(urlOjb);
     //location
     const location = useLocation();
     // console.log(`${location.pathname}?${urlOjb}`);
@@ -50,12 +50,11 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
     // const allParams = searchParams.get(searchParams.entries());
     // console.log(allParams);
 
-    useEffect(() => {
-        // createSearchParams(filterState)
-        // console.log(Object.values(filterState));
-        // const result = serialize();
-        // setSearchParams(result);
-    }, [filterState])
+    // useEffect(() => {
+    //     const entries = Object.entries(filterState);
+
+    // }, [filterState]);
+
     return (
         <div>
             <h3>Фильтры</h3>
@@ -68,6 +67,9 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
                                 return <label>
                                     <input key={category.title} onChange={(evt) => {
                                         setFilterState((prevValue) => {
+                                            // const categoriesArray = Array.from(prevValue.categories);
+                                            // console.log(categoriesArray);
+                                            // return prevValue;
                                             return {...prevValue, categories: prevValue.categories && prevValue.categories.includes(evt.target.value) ? prevValue.categories.filter((category) => {
                                                 return category !== evt.target.value
                                             }) : prevValue.categories && [...prevValue.categories, evt.target.value]}
@@ -86,9 +88,9 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
                         <label>
                             Наличие
                             <input name="stock" onChange={() => {
-                                // setFilterState((prevValue) => {
-                                //     return {...prevValue, stock: !prevValue.stock}
-                                // })
+                                setFilterState((prevValue) => {
+                                    return {...prevValue, stock: !prevValue.stock}
+                                })
                             }} type="checkbox" value={"yes"}>
                             </input>
                         </label>
@@ -143,10 +145,13 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
             </div>
             
             <button onClick={() => {
-                // console.log(JSON.stringify(filterState));
+                const result = Object.entries(filterState).map(([key, val]) => {
+                    return [key, val.toString()]
+                });
+
                 navigate({
                     pathname: `../catalog`,
-                    search: `${createSearchParams(JSON.stringify(filterState))}`
+                    search: `${createSearchParams(Object.fromEntries(result))}`
                 })
             }}>
                 <FontAwesomeIcon icon={faCheck} />
