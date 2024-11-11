@@ -30,6 +30,7 @@ export interface ColorsInterface {
 export interface GoodInterface {
   title: string,
   description: string,
+  category: string,
   cover: string,
   price: number,
   colors?: ColorInterface[],

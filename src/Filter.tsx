@@ -8,35 +8,41 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { GoodInterface } from "./interfaces";
 // import { UserInterface } from "./features/userSlice";
 
-export default function Filter({sellers, goods}: {sellers: (string | undefined)[], goods: GoodInterface[]}) {
+export default function Filter({sellers, goods, applyFilters}: {sellers: (string | undefined)[], goods: GoodInterface[], applyFilters: (good: GoodInterface[]) => {}}) {
     const [searchParams] = useSearchParams();
     const urlOjb = (Object.fromEntries([...searchParams]));
     // console.log(urlOjb);
     //url conversion
     const urlConverted = Object.fromEntries(Object.entries(urlOjb).map(([key, value]) => {
         if(key === "categories") {
-            return [key, value.split(",")];
+            return [key, value === "" ? [] : value.split(",")];
         }
         if(key === "stock") {
-            return [key, Boolean(value)]
+            return [key, Boolean(value)];
             // console.log(Boolean(value));
         }
-        return [key, value]
+        if(key === 'colors') {
+            return [key, value === "" ? [] : value.split(",")]
+            // console.log(value.split(","));
+        }
+        return [key, value.split(",")]
     }));
-
-    
 
     //navigate
     const navigate = useNavigate();
+
+    //colors
+    const colors = goods.map((good) => {
+        return good.color;
+    });
+    
     //state
     const [filterState, setFilterState] = useState<{
-        categories?: string[],
+        categories: string[],
         stock?: boolean,
-        // priceRange: {
-        //     min: number,
-        //     max: number
-        // },
-        // colors: string[]
+        minPrice: number,
+        maxPrice: number,
+        colors: string[]
     }>(
         Object.values(urlConverted).length > 0 ? 
         urlConverted
@@ -44,17 +50,103 @@ export default function Filter({sellers, goods}: {sellers: (string | undefined)[
         {
             categories: [],
             // stock: false,
-            // priceRange: {
-            //     min: 3000,
-            //     max: 100000,
-            // },
-            // colors: []
+            minPrice: 3000,
+            maxPrice: 100000,
+            colors: []
         }
     );
+    const [filteredArray, setFilteredArray] = useState<GoodInterface[]>([]);
 
     useEffect(() => {
-        console.log(filterState);
-        console.log(goods);
+        let resultArray = goods;
+        // console.log(resultArray);
+        if(filterState.categories.length > 0) {
+            // console.log(filterState.categories);
+            // console.log("filter array by categories")
+            resultArray = resultArray.filter((good) => {
+                return filterState.categories && filterState.categories.find((category) => {
+                    return category === good.category;
+                });
+            })
+        }
+        
+        if(filterState.stock) {
+            resultArray = resultArray.filter((good) => {
+                return filterState.stock ? good.batch > 0 : good.batch === 0;
+            })
+        }
+
+        if(filterState.minPrice >= 3000) {
+            // console.log('update goods min price here')
+            resultArray = resultArray.filter((good) => {
+                return good.price >= filterState.minPrice;
+            })
+            // console.log(resultArray);
+        }
+
+        if(filterState.maxPrice <= 100000) {
+            // console.log('update goods max price here')
+            resultArray = resultArray.filter((good) => {
+                return good.price <= filterState.maxPrice;
+            })
+        }
+
+        if(filterState.colors.length > 0) {
+            resultArray = resultArray.filter((good) => {
+                return filterState.colors && filterState.colors.find((color) => {
+                    return color === good.color;
+                })
+            })
+        }
+        // console.log(resultArray);
+        applyFilters(resultArray);
+    }, [])
+
+    useEffect(() => {
+        // console.log(goods);
+        // console.log(filterState);
+        let resultArray = goods;
+        // console.log(resultArray);
+        if(filterState.categories.length > 0) {
+            // console.log(filterState.categories);
+            // console.log("filter array by categories")
+            resultArray = resultArray.filter((good) => {
+                return filterState.categories && filterState.categories.find((category) => {
+                    return category === good.category;
+                });
+            })
+        }
+        
+        if(filterState.stock) {
+            resultArray = resultArray.filter((good) => {
+                return filterState.stock ? good.batch > 0 : good.batch === 0;
+            })
+        }
+
+        if(filterState.minPrice >= 3000) {
+            // console.log('update goods min price here')
+            resultArray = resultArray.filter((good) => {
+                return good.price >= filterState.minPrice;
+            })
+            // console.log(resultArray);
+        }
+
+        if(filterState.maxPrice <= 100000) {
+            // console.log('update goods max price here')
+            resultArray = resultArray.filter((good) => {
+                return good.price <= filterState.maxPrice;
+            })
+        }
+
+        if(filterState.colors.length > 0) {
+            resultArray = resultArray.filter((good) => {
+                return filterState.colors && filterState.colors.find((color) => {
+                    return color === good.color;
+                })
+            })
+        }
+        // console.log(resultArray);
+        setFilteredArray(resultArray);
     }, [filterState]);
 
     return (
@@ -66,15 +158,15 @@ export default function Filter({sellers, goods}: {sellers: (string | undefined)[
                     <FilterItem text="Категория">
                         <div>
                             {categories.map((category) => {
-                                return <label>
+                                return <label key={category.title}>
                                     <input checked={filterState.categories?.includes(category.title) && true} key={category.title} onChange={(evt) => {
                                         setFilterState((prevValue) => {
-                                            // const categoriesArray = Array.from(prevValue.categories);
-                                            // console.log(categoriesArray);
-                                            // return prevValue;
-                                            return {...prevValue, categories: prevValue.categories && prevValue.categories.includes(evt.target.value) ? prevValue.categories.filter((category) => {
+                                            return {...prevValue, categories: prevValue.categories ? prevValue.categories.includes(evt.target.value) ? prevValue.categories.filter((category) => {
                                                 return category !== evt.target.value
-                                            }) : prevValue.categories && [...prevValue.categories, evt.target.value]}
+                                            }) : prevValue.categories && [...prevValue.categories, evt.target.value]
+                                            :
+                                            [category.title]
+                                            }
                                         })
                                         // console.log(evt.target.value)
                                     }} type="checkbox" value={category.title}></input>
@@ -89,7 +181,7 @@ export default function Filter({sellers, goods}: {sellers: (string | undefined)[
                     <FilterItem text="Наличие">
                         <label>
                             Наличие
-                            <input name="stock" onChange={() => {
+                            <input checked={filterState.stock ? true : false} name="stock" onChange={() => {
                                 setFilterState((prevValue) => {
                                     return {...prevValue, stock: !prevValue.stock}
                                 })
@@ -101,10 +193,18 @@ export default function Filter({sellers, goods}: {sellers: (string | undefined)[
                 </li>
                 <li>
                     <FilterItem text="Цена">
-                        <input placeholder="от"></input>
-                        <input placeholder="до"></input>
+                        <input value={filterState.minPrice} onChange={(evt) => {
+                            setFilterState((prevValue) => {
+                                return {...prevValue, minPrice: +evt.target.value}
+                            })
+                        }} placeholder="от 3000"></input>
+                        <input value={filterState.maxPrice} onChange={(evt) => {
+                            setFilterState((prevValue) => {
+                                return {...prevValue, maxPrice: +evt.target.value}
+                            })
+                        }} placeholder="до 100.000"></input>
                     </FilterItem>
-                    {/* <button>Цена</button> */}
+                    {/* <button>Цена</button>
                 </li>
                 <li>
                     <FilterItem text="Размеры">
@@ -117,14 +217,24 @@ export default function Filter({sellers, goods}: {sellers: (string | undefined)[
                     {/* <button>Размеры</button> */}
                 </li>
                 <li>
-                    {/* <FilterItem text="Цвета">
+                    <FilterItem text="Цвета">
                         {colors.map((color) => {
-                            return <button style={{backgroundColor: color}}></button>
+                            return <button key={color} onClick={() => {
+                                setFilterState((prevValue) => {
+                                    return {...prevValue, colors: prevValue.colors ? prevValue.colors.includes(color) ? prevValue.colors.filter((prevColor) => {
+                                        return prevColor !== color
+                                    }) : [...prevValue.colors, color]
+
+                                    :
+
+                                    [color]
+                                    
+                                    }
+                                })
+                            }} style={{backgroundColor: color}}></button>
                         })}
-                    </FilterItem> */}
-                    {/* <button>
-                        Цвета
-                    </button> */}
+                    </FilterItem>
+                    
                 </li>
                 {/* <li>
                     <FilterItem text="Материалы" />
@@ -147,7 +257,9 @@ export default function Filter({sellers, goods}: {sellers: (string | undefined)[
             </div>
             
             <button onClick={() => {
+                // console.log(filteredArray);
                 const result = Object.entries(filterState).map(([key, val]) => {
+                    // console.log(val);
                     return [key, val.toString()]
                 });
 
@@ -155,8 +267,10 @@ export default function Filter({sellers, goods}: {sellers: (string | undefined)[
                     pathname: `../catalog`,
                     search: `${createSearchParams(Object.fromEntries(result))}`
                 })
+                applyFilters(filteredArray);
             }}>
-                <FontAwesomeIcon icon={faCheck} />
+                Показать ({filteredArray.length})
+                {/* <FontAwesomeIcon icon={faCheck} /> */}
             </button>
             {/* <ul></ul> */}
         </div>

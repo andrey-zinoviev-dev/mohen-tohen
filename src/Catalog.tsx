@@ -5,7 +5,7 @@ import { GoodInterface } from "./interfaces";
 import { useGetGoodsQuery } from "./features/apiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import PortalCentered from "./PortalCentered";
@@ -25,17 +25,24 @@ export default function Catalog() {
 
     const sellersWithNoRepeats = [...new Set(sellersArray)];
 
-    //colors
-    const colors = goods.map((good) => {
-        return good.color;
-    })
     //state
-    const [openedFIlter, setOpenedFilter] = useState<boolean>(false);
-
+    const [openedFilter, setOpenedFilter] = useState<boolean>(false);
+    const [catalogGoods, setCatalogGoods] = useState<GoodInterface[]>(goods);
     // //search params
     // const [searchParams] = useSearchParams();
     // const paramsType = searchParams.get("type");
     // console.log(paramsType);
+
+    //functions
+    function applyFilters(goods:GoodInterface[]) {
+        // setOpenedFilter(false);
+        setCatalogGoods(goods);
+    }
+
+    useEffect(() => {
+        goods.length > 0 && setCatalogGoods(goods);
+    }, [goods])
+
     return (
         <section className="category">
             <div className="category__wrapper">
@@ -46,15 +53,15 @@ export default function Catalog() {
                 </button>
                 <h3>Каталог</h3>
             </div>
-            <Goods goods={goods}></Goods>
-            {openedFIlter && createPortal(<PortalComp left={true}>
+            <Goods goods={catalogGoods}></Goods>
+            {openedFilter && createPortal(<PortalComp left={true}>
                 <button onClick={() => {
                     setOpenedFilter(false);
                 }}>
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <PortalCentered>
-                    <Filter goods={goods} sellers={sellersWithNoRepeats}></Filter>
+                    <Filter goods={goods} sellers={sellersWithNoRepeats} applyFilters={applyFilters}></Filter>
                 </PortalCentered>
             </PortalComp>, document.body)}
         </section>
