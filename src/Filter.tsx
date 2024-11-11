@@ -11,49 +11,49 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
     const [searchParams] = useSearchParams();
     const urlOjb = (Object.fromEntries([...searchParams]));
     // console.log(urlOjb);
-    //location
-    const location = useLocation();
-    // console.log(`${location.pathname}?${urlOjb}`);
+    //url conversion
+    const urlConverted = Object.fromEntries(Object.entries(urlOjb).map(([key, value]) => {
+        if(key === "categories") {
+            return [key, value.split(",")];
+        }
+        if(key === "stock") {
+            return [key, Boolean(value)]
+            // console.log(Boolean(value));
+        }
+        return [key, value]
+    }));
+
+    
+
     //navigate
     const navigate = useNavigate();
     //state
     const [filterState, setFilterState] = useState<{
-        categories: string[],
-        stock: boolean,
+        categories?: string[],
+        stock?: boolean,
         // priceRange: {
         //     min: number,
         //     max: number
         // },
         // colors: string[]
-    }>({
-        categories: [],
-        stock: false,
-    });
+    }>(
+        Object.values(urlConverted).length > 0 ? 
+        urlConverted
+        :
+        {
+            categories: [],
+            // stock: false,
+            // priceRange: {
+            //     min: 3000,
+            //     max: 100000,
+            // },
+            // colors: []
+        }
+    );
 
-    // const params = Object.entries(filterState);
-    // //url serialize
-    // function serialize() {
-    //     // console.log(filterState);
-    //     const params = new URLSearchParams();
-    //     params.set("categories", filterState.categories.join(","));
-    //     params.set("stock", filterState.stock.toString());
-    //     params.set("minPrice", filterState.priceRange.min.toString());
-    //     params.set("maxPrice", filterState.priceRange.max.toString());
-    //     params.set("colors", filterState.colors.join(","));
-    //     return params;
-    // }
-
-    //test variable
-    // let params = {};
-
-    // const [searchParams, setSearchParams] = useSearchParams();
-    // const allParams = searchParams.get(searchParams.entries());
-    // console.log(allParams);
-
-    // useEffect(() => {
-    //     const entries = Object.entries(filterState);
-
-    // }, [filterState]);
+    useEffect(() => {
+        console.log(filterState);
+    }, [filterState]);
 
     return (
         <div>
@@ -65,7 +65,7 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
                         <div>
                             {categories.map((category) => {
                                 return <label>
-                                    <input key={category.title} onChange={(evt) => {
+                                    <input checked={filterState.categories?.includes(category.title) && true} key={category.title} onChange={(evt) => {
                                         setFilterState((prevValue) => {
                                             // const categoriesArray = Array.from(prevValue.categories);
                                             // console.log(categoriesArray);
