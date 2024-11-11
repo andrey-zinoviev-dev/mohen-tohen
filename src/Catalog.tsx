@@ -54,7 +54,7 @@ export default function Catalog() {
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <PortalCentered>
-                    <Filter sellers={sellersWithNoRepeats} colors={colors}></Filter>
+                    <Filter goods={goods} sellers={sellersWithNoRepeats}></Filter>
                 </PortalCentered>
             </PortalComp>, document.body)}
         </section>

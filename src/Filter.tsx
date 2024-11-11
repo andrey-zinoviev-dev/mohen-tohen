@@ -5,9 +5,10 @@ import { categories } from "./utils";
 import { createSearchParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { GoodInterface } from "./interfaces";
 // import { UserInterface } from "./features/userSlice";
 
-export default function Filter({sellers, colors}: {sellers: (string | undefined)[], colors: string[]}) {
+export default function Filter({sellers, goods}: {sellers: (string | undefined)[], goods: GoodInterface[]}) {
     const [searchParams] = useSearchParams();
     const urlOjb = (Object.fromEntries([...searchParams]));
     // console.log(urlOjb);
@@ -53,6 +54,7 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
 
     useEffect(() => {
         console.log(filterState);
+        console.log(goods);
     }, [filterState]);
 
     return (
@@ -115,11 +117,11 @@ export default function Filter({sellers, colors}: {sellers: (string | undefined)
                     {/* <button>Размеры</button> */}
                 </li>
                 <li>
-                    <FilterItem text="Цвета">
+                    {/* <FilterItem text="Цвета">
                         {colors.map((color) => {
                             return <button style={{backgroundColor: color}}></button>
                         })}
-                    </FilterItem>
+                    </FilterItem> */}
                     {/* <button>
                         Цвета
                     </button> */}
