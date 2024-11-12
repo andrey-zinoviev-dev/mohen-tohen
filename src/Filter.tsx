@@ -6,6 +6,8 @@ import { createSearchParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoodInterface } from "./interfaces";
+import "./Filter.css"
+import InputEl from "./InputEl";
 // import { UserInterface } from "./features/userSlice";
 
 export default function Filter({urlConverted, sellers, goods, applyFilters, closeFilter}: {urlConverted: {
@@ -87,37 +89,36 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
     }, [filterState]);
 
     return (
-        <div>
+        <div className="filter">
             <h3>Фильтры</h3>
             <div>
-                <ul>
+                <ul className="filter__ul">
                     <li>
-                        <FilterItem text="Категория">
-                            <div>
-                                {categories.map((category) => {
-                                    return <label key={category.title}>
-                                        <input checked={filterState.categories?.includes(category.title) && true} key={category.title} onChange={(evt) => {
+                        <span>Категории</span>
+                        <ul className="filter__ul-criteria">
+                            {categories.map((category) => {
+                                return <label key={category.title}>
+                                    <input checked={filterState.categories?.includes(category.title) && true} key={category.title} onChange={(evt) => {
                                             setFilterState((prevValue) => {
                                                 return {...prevValue, categories: prevValue.categories ? prevValue.categories.includes(evt.target.value) ? prevValue.categories.filter((category) => {
                                                     return category !== evt.target.value
                                                 }) : prevValue.categories && [...prevValue.categories, evt.target.value]
-                                                :
+                                            :
                                                 [category.title]
                                                 }
                                             })
-                                            // console.log(evt.target.value)
-                                        }} type="checkbox" value={category.title}></input>
-                                        {category.title}
-                                    </label>
-                                })}
-                            </div>
-                        </FilterItem>
+                                                        // console.log(evt.target.value)
+                                    }} type="checkbox" value={category.title}></input>
+                                    {category.title}
+                                </label>
+                            })}
+                        </ul>
                         {/* <button>Категория</button> */}
                     </li>
                     <li>
                         <FilterItem text="Наличие">
                             <label>
-                                Наличие
+                                Показать в наличии
                                 <input checked={filterState.stock ? true : false} name="stock" onChange={() => {
                                     setFilterState((prevValue) => {
                                         return {...prevValue, stock: !prevValue.stock}
@@ -130,16 +131,18 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                     </li>
                     <li>
                         <FilterItem text="Цена">
-                            <input  onChange={(evt) => {
+                            <InputEl name="minPrice" value={filterState.minPrice.toString()} placeHolder="от 3000" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxprice" value={filterState.maxPrice.toString()} placeHolder="до 100.000" updateState={setFilterState}></InputEl>
+                            {/* <input  onChange={(evt) => {
                                 setFilterState((prevValue) => {
                                     return {...prevValue, minPrice: +evt.target.value}
                                 })
-                            }} placeholder="от 3000"></input>
-                            <input onChange={(evt) => {
+                            }} placeholder="от 3000"></input> */}
+                            {/* <input onChange={(evt) => {
                                 setFilterState((prevValue) => {
                                     return {...prevValue, maxPrice: +evt.target.value}
                                 })
-                            }} placeholder="до 100.000"></input>
+                            }} placeholder="до 100.000"></input> */}
                         </FilterItem>
                         {/* <button>Цена</button>
                     </li>
@@ -155,7 +158,24 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                     </li>
                     <li>
                         <FilterItem text="Цвета">
-                            {colors.map((color) => {
+                            <ul className="filter__ul-criteria">
+                                {colors.map((color) => {
+                                    return <button key={color} onClick={() => {
+                                        setFilterState((prevValue) => {
+                                            return {...prevValue, colors: prevValue.colors ? prevValue.colors.includes(color) ? prevValue.colors.filter((prevColor) => {
+                                                return prevColor !== color
+                                            }) : [...prevValue.colors, color]
+
+                                            :
+
+                                            [color]
+                                            
+                                            }
+                                        })
+                                    }} style={{backgroundColor: color}}></button>
+                                })}
+                            </ul>
+                            {/* {colors.map((color) => {
                                 return <button key={color} onClick={() => {
                                     setFilterState((prevValue) => {
                                         return {...prevValue, colors: prevValue.colors ? prevValue.colors.includes(color) ? prevValue.colors.filter((prevColor) => {
@@ -169,7 +189,7 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                                         }
                                     })
                                 }} style={{backgroundColor: color}}></button>
-                            })}
+                            })} */}
                         </FilterItem>
                         
                     </li>
@@ -192,6 +212,7 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                     </li>
                 </ul>
             </div>
+            
             
             <button onClick={() => {
                 const result = Object.entries(filterState).map(([key, val]) => {

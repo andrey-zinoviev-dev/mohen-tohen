@@ -108,6 +108,12 @@ export default function Header() {
                 </div>
                 <div className="header__row-2">
                     <ul className="header__categories">
+                        <li onClick={() => {
+                            navigate('catalog')
+                        }}>
+                            <span>Весь каталог</span>
+                            <div></div>
+                        </li>
                         {categories.map((category) => {
                             return <li key={category.title} onMouseOver={() => {
                                 // setCategory(category);

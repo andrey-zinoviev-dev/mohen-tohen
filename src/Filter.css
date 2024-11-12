@@ -1,0 +1,55 @@
+.filter {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filter__ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter ul li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px; */
+}
+
+.filter__ul-criteria {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0;
+    margin: 0;
+}
+
+.filter ul li label {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.filter ul li label input[type="checkbox"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid #C8CCCF;
+    transition: all 0.25s ease-in-out;
+}
+
+.filter ul li label input[type="checkbox"]:checked {
+    background-color: #FF8261;
+}

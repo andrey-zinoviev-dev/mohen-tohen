@@ -10,6 +10,7 @@ export default function FilterItem({text, children}: {text: string, children: Re
                     return !prevValue;
                 })
             }}>{text}</button> */}
+            <span>{text}</span>
             {children}
         </>
     )
