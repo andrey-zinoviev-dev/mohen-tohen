@@ -58,13 +58,13 @@ export default function ShareButton({ href }: { href: string }) {
               <span>Почта</span>
             </li>
             <li className="share-ul__li">
-              <TelegramShareButton className="share-icon" url="http://localhost:5173">
+              <TelegramShareButton className="share-icon" url="https://localhost:5173">
                 <TelegramIcon />
               </TelegramShareButton>
               <span>Telegram</span>
             </li>
             <li className="share-ul__li">
-              <WhatsappShareButton className="share-icon" url="http://localhost:5173">
+              <WhatsappShareButton className="share-icon" url="https://localhost:5173">
                 <WhatsappIcon />
               </WhatsappShareButton>
               <span>Whatsapp</span>

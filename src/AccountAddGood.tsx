@@ -29,7 +29,7 @@ export default function AccountAddGood() {
     price: 0,
     batch: 0,
   });
-  const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
+  const [uploadStarted] = React.useState<boolean>(false);
 
   //dispatch
   const dispatch = useAppDispatch();

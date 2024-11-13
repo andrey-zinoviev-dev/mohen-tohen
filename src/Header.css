@@ -321,7 +321,7 @@
 @media screen and (max-width: 767px) {
     .header {
         gap: 0;
-        padding: 10px 25px;
+        padding: 10px 0;
     }
     .header form {
         display: none;

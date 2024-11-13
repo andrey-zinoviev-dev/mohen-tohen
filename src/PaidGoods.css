@@ -10,16 +10,37 @@
     display: flex;
     width: fit-content;
     gap: 15px;
-    margin: 15px 0 0 0;
+    position: absolute;
+    top: 50%;
+    z-index: 200;
+    translate: 0 -100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 5px;
 }
 
 .paid-goods__buttons button {
     background-color: #FF8261;
     transition: all 0.25s ease-in-out;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    padding: 0;
+    width: 40px;
 }
 
 .paid-goods__buttons button:hover {
     color: white;
+}
+
+@media screen and (max-width: 1023px) {
+    .paid-goods__buttons {
+        translate: 0 -125%;
+    }
+    .paid-goods__buttons button {
+        width: 30px;
+    }
 }
 
 /* @media screen and (max-width: 1279px) {

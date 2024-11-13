@@ -12,32 +12,16 @@ export default function Brands() {
         data: brands,
     } = useGetSellersQuery();
 
-    // let content:ReactNode;
-
-    // console.log(brands);
-    //state
-    // const [brands, setBrands] = useState<BrandsInterface[]>([]);
-
-    // useEffect(() => {
-    //     getSellers()
-    //     .then((data) => {
-    //         // console.log(data);
-    //         setBrands(data.designers);
-    //     });
-    // }, []);
-
     return (
         <section className="brands">
             <h3>Дизайнеры</h3>
             <ul className='brands__ul'>
-                {/* {sellers.map((brand) => {
-                        return <li key={brand._id} className='brands__ul-li'>
-                            <Link to={`../brands/${brand.name}`} state={brand}>{brand.name}</Link>
-                        </li>
-                })} */}
                 {brands && brands.map((brand) => {
                     return <li key={brand._id} className='brands__ul-li'>
-                        <Link to={`../brands/${brand._id}`}>{brand.brandName && brand.brandName}</Link>
+                        <Link to={`../brands/${brand._id}`}>
+                            <img src={brand.cover}></img>
+                            <span>{brand.brandName}</span>
+                        </Link>
                     </li>
                 })}
             </ul>

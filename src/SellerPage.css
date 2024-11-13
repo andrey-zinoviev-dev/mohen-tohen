@@ -80,3 +80,9 @@
 .seller__goods h3 {
   margin: 0;
 }
+
+@media screen and (max-width: 1023px) {
+  .seller__warpper {
+    flex-direction: column;
+  }
+}

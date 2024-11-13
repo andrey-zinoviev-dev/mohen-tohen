@@ -1,7 +1,7 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Goods from "./Goods";
-import LinkCompAction from "./LinkCompAction";
-import { useGetGoodsQuery } from "./features/apiSlice";
+// import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+// import Goods from "./Goods";
+// import LinkCompAction from "./LinkCompAction";
+// import { useGetGoodsQuery } from "./features/apiSlice";
 import "./RandomGoods.css"
 
 export default function RandomGoods() {

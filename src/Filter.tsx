@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FilterItem from "./FilterItem";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { categories } from "./utils";
-import { createSearchParams, useSearchParams } from "react-router-dom";
+import { createSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoodInterface } from "./interfaces";
