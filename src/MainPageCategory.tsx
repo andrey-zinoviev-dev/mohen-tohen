@@ -4,12 +4,14 @@ import { GoodInterface } from "./interfaces";
 // import LinkCompAction from "./LinkCompAction";
 // import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Headline from "./Headline";
 export default function MainPageCategory({goods, href, title}: {goods: GoodInterface[], href: string, title: string}){
-    console.log(goods);
+    // console.log(goods);
     return (
         <section className="main-category">
             <div className="main-category__wrapper">
-                <h3>{title}</h3>
+                {/* <h3>{title}</h3> */}
+                <Headline text={title}></Headline>
                 <Link to={href}>
                     Посмотреть все
                 </Link>

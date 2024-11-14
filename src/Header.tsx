@@ -177,6 +177,16 @@ export default function Header() {
                 }}>
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
+                <ul>
+                    {categories.map((category) => {
+                        return <li key={category.title} onMouseOver={() => {
+                                    // setCategory(category);
+                        }}>
+                            <span>{category.title}</span>
+                            <div></div>
+                        </li>
+                    })} 
+                </ul>
             </PortalComp>, document.body)}
             {/* {popupOpened && <Popup setClose={setPopupOpened}>
                 <div className="header__popup-wrapper">

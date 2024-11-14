@@ -58,6 +58,32 @@
     text-align: left;
 }
 
+.brands__navigation-buttons {
+    position: absolute;
+    z-index: 200;
+    top: 50%;
+    left: 0;
+    translate: 0 -150%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+
+.brands__navigation-buttons button {
+    background-color: #FF8261;
+    transition: all 0.25s ease-in-out;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    padding: 0;
+    width: 40px;
+}
+
+.brands__navigation-buttons button:hover {
+    color: white;
+}
+
 
 @media screen and (max-width: 767px) {
     .brands__ul {

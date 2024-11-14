@@ -1,5 +1,6 @@
 import "./PromoSection.css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { welcomeSlides } from "./utils";
@@ -15,7 +16,7 @@ export default function PromoSection() {
   return (
     <section className="promo">
       <div className="promo__wrapper">
-        <Swiper loop={true} slidesPerView={1} onSlideChange={(swiper) => {
+        <Swiper autoplay={{delay: 3000}} modules={[Autoplay]} loop={true} slidesPerView={1} onSlideChange={(swiper) => {
           setSlide(swiper.realIndex);
         }}>
           {welcomeSlides.map((slide) => {

@@ -13,4 +13,4 @@ export default function SliderButton({icon, left, slideslength, handleSlideChang
             <FontAwesomeIcon icon={icon} />
         </button>
     )
-};
+}

@@ -8,6 +8,7 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 // import { useState } from "react";
 import "./PaidGoods.css";
 import { useNavigate } from "react-router-dom";
+import Headline from "./Headline";
 
 export default function PaidGoods() {
     const {
@@ -25,7 +26,8 @@ export default function PaidGoods() {
 
     return (
         <section className="paid-goods">
-            <h3>Горячие предложения</h3>
+            {/* <h3>Горячие предложения</h3> */}
+            <Headline text="Горячие предложения"></Headline>
             <Swiper slidesPerView={slidesPerView} breakpoints={{
                 1279: {
                     slidesPerView: 4
