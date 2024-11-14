@@ -16,6 +16,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import Login from "./Login";
+import Headline from "./Headline";
 // interface goodPageInt extends GoodInterface {
 //     quantity: number,
 // }
@@ -55,7 +56,8 @@ export default function Cart() {
     return (
         <>
             <section className="cart">
-                <h3>корзина</h3>
+                <Headline text="Корзина"></Headline>
+                {/* <h3>корзина</h3> */}
                 {cartState.length > 0 ? <>
                     {/* <li className="cart__ul-li cart__ul-li_first" key="parameters">
                         <span className="cart__ul-li-span">Товар</span>

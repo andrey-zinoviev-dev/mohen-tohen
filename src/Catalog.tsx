@@ -10,6 +10,7 @@ import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import PortalCentered from "./PortalCentered";
 import { useSearchParams } from "react-router-dom";
+import Headline from "./Headline";
 // import { useSearchParams } from "react-router-dom";
 // import { faCheck } from "@fortawesome/free-solid-svg-icons";
 export default function Catalog() {
@@ -96,7 +97,7 @@ export default function Catalog() {
                     })
                 }
 
-                if(urlConverted.minPrice >= 3000) {
+                if(urlConverted.minPrice >= 1500) {
                     resultArray = resultArray.filter((good) => {
                         return good.price >= urlConverted.minPrice;
                     })
@@ -132,7 +133,7 @@ export default function Catalog() {
                 }}>
                     <FontAwesomeIcon icon={faSliders} />
                 </button>
-                <h3>Каталог</h3>
+                <Headline text="Каталог"></Headline>
             </div>
             <Goods goods={catalogGoods}></Goods>
             {openedFilter && createPortal(<PortalComp left={true}>

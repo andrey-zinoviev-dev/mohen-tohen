@@ -169,6 +169,7 @@
     }
     .cart__subtotal {
         min-width: 140px;
+        width: 100%;
     }
 }
 

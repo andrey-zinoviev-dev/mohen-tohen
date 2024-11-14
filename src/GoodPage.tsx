@@ -140,7 +140,9 @@ export default function GoodPage() {
                 } */}
 
                 <h4>Материал: <span className="cvet">{good.material}</span></h4>
-                <h4>Цвет: <span className="cvet">{good.color}</span></h4>
+                <h4>Цвет: <span className="cvet"></span>
+                    <div style={{backgroundColor: good.color}}></div>
+                </h4>
                 <h4>Наличие: <span className="cvet">{good.batch}</span></h4>
                 {/* {state.colors && <div className="good__text-colors-div">
                     <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>

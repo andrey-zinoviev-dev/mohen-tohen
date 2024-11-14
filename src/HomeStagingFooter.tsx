@@ -17,8 +17,8 @@ export default function HomeStagingFooter() {
           </a>
         </li>
         <li>
-          <a href="#">
-            Блог
+          <a href="https://dzen.ru/mohen_tohen">
+            Блог Дзен
             <FontAwesomeIcon icon={faArrowRight} />
           </a>
         </li>

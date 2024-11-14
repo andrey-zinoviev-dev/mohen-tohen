@@ -6,7 +6,7 @@ import './Brands.css'
 // import { getSellers } from './userApi'
 // import { BrandsInterface } from './interfaces'
 import { Swiper, SwiperSlide} from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+// import { Navigation } from 'swiper/modules';
 import { useGetSellersQuery } from './features/apiSlice'
 // import { useState } from 'react';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';

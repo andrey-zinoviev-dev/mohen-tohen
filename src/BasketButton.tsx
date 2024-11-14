@@ -33,7 +33,7 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
     })
 
     return (
-        <button className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
+        <button style={{backgroundColor: good.batch === 0 ? `#C8CCCF` : "#FF8261"}} className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
             evt.stopPropagation();
             !goodInBasket ? dispatch(add({good: good, quantity: quantity})) : dispatch(remove(good));
             dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
@@ -53,8 +53,10 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
                 </> 
                 : 
                 <>
-                    {good.price}р.
-                    <FontAwesomeIcon icon={faShoppingBag} />
+                    {good.batch ? <>
+                        {good.price}р.
+                        <FontAwesomeIcon icon={faShoppingBag} />
+                    </> : "Скоро в наличии"}
                 </>
             }
             {/* <FontAwesomeIcon icon={goodInBasket ? faCheckCircle : faShoppingBag} /> */}

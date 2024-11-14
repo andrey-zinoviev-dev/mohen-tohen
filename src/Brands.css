@@ -47,7 +47,7 @@
     height: 100%;
     border-radius: 9px;
     object-fit: cover;
-    aspect-ratio: 2 / 3;;
+    aspect-ratio: 2 / 3;
 }
 
 .brands__ul-li a span {
@@ -63,7 +63,7 @@
     z-index: 200;
     top: 50%;
     left: 0;
-    translate: 0 -150%;
+    translate: 0 -125%;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -103,6 +103,10 @@
         min-width: 120px;
         border: 2px solid #C8CCCF;
     } */
+
+    .brands__ul-li {
+        min-width: 0;
+    }
 
     .brands__ul-li a {
         font-size: 14px;

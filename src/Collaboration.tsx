@@ -33,12 +33,12 @@ export default function Collaboration () {
         <section className="collaboration">
             <div className="collaboration__headline-wrapper">
                 <h2>Вы дизайнер? Давайте сотрудничать!</h2>
-                <a href="mailto:sttrog_810@mail.ru">
-                    sttrog_810@mail.ru
+                <a target="_blank" href="https://mohen-tohen.ru/application">
+                    Заполнить анкету сотрудничества
                     <FontAwesomeIcon icon={faArrowRight} />
                 </a>
             </div>
-            <div className="collaboration__wrapper">
+            {/* <div className="collaboration__wrapper">
                 <h3>Данные для заявки</h3>
                 {!formSent ? <form className="collaboration__form" onSubmit={(evt) => {
                     evt.preventDefault();
@@ -49,7 +49,6 @@ export default function Collaboration () {
                             "Content-Type":"application/json",
                         },
                         body: JSON.stringify({
-                            // chat_id: 471930242,
                             "chat_id": 2104151994,
                             "text": `Новая заявка на сотрудничество!\nИмя- ${formData.name}\nТелефон- <a href="tel:${formData.phone}">${formData.phone}</a>\nПочта- ${formData.email}\nНаправление- ${formData.subject && formData.subject}
                             `,
@@ -105,12 +104,7 @@ export default function Collaboration () {
                         </div>
                     </div>
                     
-                    {/* <div className="collaboration__form-inputs">
-                        <div className="colalboration__form-input-wrapper">
-                            <SelectElement name="sell" label="Продавал ли ты свои товары ранее?" options={inquerySellSelect} updateApplication={setFormData} />
-                            
-                        </div>
-                    </div> */}
+                    
                     <button className="collaboration__form-btn">
                         <span>Отправить заявку</span>
                         <FontAwesomeIcon icon={faArrowRight} />
@@ -118,13 +112,8 @@ export default function Collaboration () {
                 </form>
                 :
                 <SuccessWrapper label="Заявка успешно отправлена!"></SuccessWrapper>}
-                {/* <div className="collaboration__wrapper">
-                    <p>По кнопке ниже Вы можете ознакомиться со всеми условиями сотрудичества с нами, чтобы люди быстрее смогли приобрести Ваши товары</p>
-                    <button>
-                        <span>Ознакомиться с условиями</span>
-                    </button>
-                </div> */}
-            </div>
+               
+            </div> */}
         </section>
     )
 }

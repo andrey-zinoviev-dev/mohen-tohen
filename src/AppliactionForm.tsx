@@ -20,6 +20,7 @@ import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
 import UploadComp from "./UploadComp";
 import { useSearchParams } from "react-router-dom";
+import HomeStagingFooter from "./HomeStagingFooter";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
@@ -147,6 +148,7 @@ export default function ApplicationForm() {
                                 <li>Снижение затрат на рекламу. Тебе не нужно тратить деньги на продвижение товаров, так как маркетплейс делает это за тебя</li>
                                 <li>Низкий порог входа. Начать продавать на маркетплейсе можно с минимальными вложениями, что подходит для начинающих продавцов</li>
                                 <li>Удобный личный кабинет. В личном кабинете продавцы могут управлять своими товарами, добавлять новые и отслеживать статистику продаж</li>
+                                <li>Возможность поделиться своими работами в один клик</li>
                                 {/* <li>Готовая платформа для начала торговли и общения с покупателями</li> */}
                             </ul>
                             {/* <p>Мы рады пригласить тебя к сотрудничеству с нашим инновационным маркетплейсом предметного дизайна, который создан специально для того, чтобы облегчить тебе путь от творчества до продажи твоих уникальных произведений. */}
@@ -488,7 +490,7 @@ export default function ApplicationForm() {
                     })}></UploadComp>
                 </PortalContainer>
             </PortalMultimedia>, document.body)}
-            <Footer></Footer>
+            <HomeStagingFooter></HomeStagingFooter>
         </>
     )
 }

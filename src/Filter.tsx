@@ -39,7 +39,7 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
         {
             categories: [],
             // stock: false,
-            minPrice: 3000,
+            minPrice: 1500,
             maxPrice: 100000,
             colors: []
         }
@@ -64,7 +64,7 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
             })
         }
 
-        if(filterState.minPrice >= 3000) {
+        if(filterState.minPrice >= 1500) {
             resultArray = resultArray.filter((good) => {
                 return good.price >= filterState.minPrice;
             })

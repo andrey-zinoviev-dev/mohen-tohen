@@ -10,7 +10,7 @@ export default function Goods({ goods }:GoodsInterface) {
     <>
     {goods && goods.length > 0 ? <ul className="goods__ul">
         {goods && goods.map((good) => {
-          return <li key={good._id} className="goods__ul-li" onClick={() => {
+          return <li key={good._id} style={{pointerEvents: good.batch > 0 ? "all" : "none"}} className="goods__ul-li" onClick={() => {
             // navigate(`/goods/${good._id}`, {
             //   state: good,
             //   preventScrollReset: false,

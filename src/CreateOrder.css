@@ -45,3 +45,14 @@
 .order-create__submit-btn:hover {
     color: white;
 }
+
+@media screen and (max-width:767px) {
+    .order-create {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .order-create__block:last-of-type {
+        display: none;
+    }
+}

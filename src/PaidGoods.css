@@ -13,7 +13,7 @@
     position: absolute;
     top: 50%;
     z-index: 200;
-    translate: 0 -100%;
+    translate: 0 -125%;
     width: 100%;
     display: flex;
     justify-content: space-between;

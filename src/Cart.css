@@ -26,3 +26,7 @@
 .cart__submit-btn:hover {
     color: white;
 }
+
+@media screen and (max-width: 767px) {
+    
+}
