@@ -4,7 +4,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationForm.css"
 import heading from "./assets/mh-1.png"
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import SelectElement from "./SelectElement";
 import { applicationCategoriesSelect,  applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect } from "./utils";
 import { ApplicationNotUploadedIterface } from "./interfaces";

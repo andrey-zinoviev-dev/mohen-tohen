@@ -51,7 +51,7 @@
 .good-text-wrapper__seller {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 5px;
     overflow: hidden;
 }
@@ -65,7 +65,25 @@
 .good-text-wrapper__seller-name {
     height: 24px;
     white-space: nowrap;
-    width: 100%;
+    width: fit-content;;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: black;
+    position: relative;
+}
+
+.good-text-wrapper__seller-name::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: black;
+    transition: all 0.25s ease-in-out;
+}
+
+.good-text-wrapper__seller:hover .good-text-wrapper__seller-name::after {
+    width: 100%;
+    /* color: white; */
 }

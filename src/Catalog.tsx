@@ -51,7 +51,13 @@ export default function Catalog() {
         stock?: boolean,
         minPrice: number,
         maxPrice: number,
-        colors: string[]
+        colors: string[],
+        minWidth: number,
+        maxWidth: number,
+        minHeight: number,
+        maxHeight: number,
+        minDepth: number,
+        maxDepth: number,
     };
 
     //sellers

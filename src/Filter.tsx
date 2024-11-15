@@ -8,12 +8,19 @@ import "./Filter.css"
 import InputEl from "./InputEl";
 // import { UserInterface } from "./features/userSlice";
 
-export default function Filter({urlConverted, sellers, goods, applyFilters, closeFilter}: {urlConverted: {
-    categories: string[],
-    stock?: boolean,
-    minPrice: number,
-    maxPrice: number,
-    colors: string[]
+export default function Filter({urlConverted, sellers, goods, applyFilters, closeFilter}: {urlConverted: 
+    {
+        categories: string[],
+        stock?: boolean,
+        minPrice: number,
+        maxPrice: number,
+        minWidth: number,
+        maxWidth: number,
+        minHeight: number,
+        maxHeight: number,
+        minDepth: number,
+        maxDepth: number,
+        colors: string[]
     },
     sellers: (string | undefined)[], goods: GoodInterface[], closeFilter: React.Dispatch<React.SetStateAction<boolean>>, applyFilters: (good: GoodInterface[]) => void}) {
 
@@ -31,6 +38,12 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
         stock?: boolean,
         minPrice: number,
         maxPrice: number,
+        minWidth: number,
+        maxWidth: number,
+        minHeight: number,
+        maxHeight: number,
+        minDepth: number,
+        maxDepth: number,
         colors: string[]
     }>(
         Object.values(urlConverted).length > 0 ? 
@@ -41,6 +54,12 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
             // stock: false,
             minPrice: 1500,
             maxPrice: 100000,
+            minWidth: 10,
+            maxWidth: 500,
+            minHeight: 10,
+            maxHeight: 100,
+            minDepth: 0,
+            maxDepth: 100,
             colors: []
         }
     );
@@ -130,17 +149,7 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                     <li>
                         <FilterItem text="Цена">
                             <InputEl name="minPrice" value={filterState.minPrice.toString()} placeHolder="от 3000" updateState={setFilterState}></InputEl>
-                            <InputEl name="maxprice" value={filterState.maxPrice.toString()} placeHolder="до 100.000" updateState={setFilterState}></InputEl>
-                            {/* <input  onChange={(evt) => {
-                                setFilterState((prevValue) => {
-                                    return {...prevValue, minPrice: +evt.target.value}
-                                })
-                            }} placeholder="от 3000"></input> */}
-                            {/* <input onChange={(evt) => {
-                                setFilterState((prevValue) => {
-                                    return {...prevValue, maxPrice: +evt.target.value}
-                                })
-                            }} placeholder="до 100.000"></input> */}
+                            <InputEl name="maxPrice" value={filterState.maxPrice.toString()} placeHolder="до 100.000" updateState={setFilterState}></InputEl>
                         </FilterItem>
                         {/* <button>Цена</button>
                     </li>
@@ -153,6 +162,20 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                             </label>
                         </FilterItem>
                         {/* <button>Размеры</button> */}
+                    </li>
+                    <li>
+                        <FilterItem text="Размеры">
+                            <label>
+                                Ширина
+                                <InputEl name="width" value={filterState.minWidth.toString()} placeHolder="минимальная ширина" updateState={setFilterState}></InputEl>
+                                <InputEl name="width" value={filterState.maxWidth.toString()} placeHolder="максимальная ширина" updateState={setFilterState}></InputEl>
+                            </label>
+                            <label>
+                                Высота
+                                <InputEl name="height" value={filterState.minHeight.toString()} placeHolder="минимальная ширина" updateState={setFilterState}></InputEl>
+                                <InputEl name="height" value={filterState.maxHeight.toString()} placeHolder="максимальная ширина" updateState={setFilterState}></InputEl>
+                            </label>
+                        </FilterItem>
                     </li>
                     <li>
                         <FilterItem text="Цвета">
