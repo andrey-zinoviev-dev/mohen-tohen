@@ -28,6 +28,7 @@ import { useGetGoodQuery,
 import LikeButton from "./LikeButton"
 import BasketButton from "./BasketButton"
 import ShareButton from "./ShareButton"
+import { Swiper, SwiperSlide } from "swiper/react"
 
 export default function GoodPage() {
 
@@ -78,7 +79,7 @@ export default function GoodPage() {
 
     return (
         <section className="good">
-            <div className="good__parameters">
+            {window.innerWidth > 1023 ? <div className="good__parameters">
                 <img className="img" src={good.photos && good.photos[selectedPhoto].url}></img>
                 <ul className="good__photos">
                     {good.photos && good.photos.map((photo, index) => {
@@ -100,6 +101,18 @@ export default function GoodPage() {
                     </span>}
                 </div>
             </div>
+            :
+            <div className="good__swiper">
+                <Swiper slidesPerView={1} spaceBetween={5}>
+                    {good.photos && good.photos.map((photo) => {
+                        return <SwiperSlide>
+                            <img className="good__swiper-img" src={photo.url}></img>
+                        </SwiperSlide>
+                    })}
+                </Swiper>
+            </div>
+            
+            }
             <div className="good__text">
                 <div className="line1"> 
                     <h3>{good.title}</h3>
@@ -138,10 +151,12 @@ export default function GoodPage() {
                 :
                 <h4>Размеры: <span className="cvet">{`${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}</span></h4>
                 } */}
-
+                <h4>
+                    Размер: <span className="cvet">{good.dimensions}</span>
+                </h4>
                 <h4>Материал: <span className="cvet">{good.material}</span></h4>
                 <h4>Цвет: <span className="cvet"></span>
-                    <div style={{backgroundColor: good.color}}></div>
+                    <div style={{backgroundColor: good.color, width: 20, height: 20, borderRadius: 3}}></div>
                 </h4>
                 <h4>Наличие: <span className="cvet">{good.batch}</span></h4>
                 {/* {state.colors && <div className="good__text-colors-div">

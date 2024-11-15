@@ -22,8 +22,8 @@ export default function PromoSection() {
           {welcomeSlides.map((slide) => {
             return <SwiperSlide key={slide.text}>
               <div className="promo__wrapper-slide">
-                <img style={{width: "100%", aspectRatio: "16/9", objectFit: "cover", borderRadius: 9}} src={slide.cover}></img>
-                <span>{slide.text}</span>
+                <img style={{width: "100%", objectFit: "cover", borderRadius: 3}} src={slide.cover}></img>
+                <span className="promo__wrapper-slide-span">{slide.text}</span>
               </div>
             </SwiperSlide>
           })}

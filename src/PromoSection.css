@@ -3,14 +3,13 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
-
-    /* flex-direction: column; */
+    flex-direction: column;
 }
 
 .promo__wrapper {
     display: flex;
     position: relative;
-    width: 70%;
+    width: 100%;
 }
 
 .promo__wrapper-slide {
@@ -18,6 +17,11 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+}
+
+.promo__wrapper-slide-span {
+    text-align: left;
+    /* max-width: 240px; */
 }
 
 /* .promo__ul {

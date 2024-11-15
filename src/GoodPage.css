@@ -14,6 +14,17 @@
     width: 100%;
 }
 
+.good__swiper {
+    display: flex;
+    max-height: 65svh;
+}
+
+.good__swiper-img {
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+}
+
 .good__photos {
     display: flex;
     padding: 0;
@@ -73,6 +84,9 @@
 
 .good__text h4 {
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 3px;
 }
 
 .good__text-dimensions {

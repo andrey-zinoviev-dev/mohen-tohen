@@ -9,6 +9,7 @@ import { faVk, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import service1 from "./assets/1269_00005.png";
 import service2 from "./assets/1288 _000005.png";
 import service3 from "./assets/1289 _00005.png";
+// import { text } from "@fortawesome/fontawesome-svg-core";
   
 export const links:{icon: IconDefinition, href: string, name: string}[] = [
   {
@@ -317,32 +318,26 @@ export const categories:CategoryInterface[] = [
 ];
 
 export const subcategories:string[] = [
-  "Домашний декор",
-  "Настенный декор",
-  "Декор для ванн",
-  "Инсталляции",
-  "Ароматы для дома",
-  "Посуда",
-  "Текстиль для спальни",
-  "Текстиль для ванной",
-  "Текстиль для дома",
-  "Текстиль для кухни",
-  "Декоративный свет",
-  "Настольные лампы",
-  "Настенные светильники",
-  "Потолочные светильники",
-  "Торшеры",
-  "Уличное освещение",
-  "Мебель для хранения",
-  "Столы",
-  "Стулья",
+  "Кувшины",
+  "Подносы",
+  "Чашки, стаканы, бокалы",
+  "Тарелки, миски, блюда",
+  "Подсвечники",
+  "Вазы и кашпо",
+  "Скульптуры",
+  "Картины",
+  "Панно",
+  "Постеры",
+  "Зеркала",
+  "Свет",
+  "Текстиль",
+  "Хранение",
+  "Декоративные элементы",
   "Мягкая мебель",
-  "Фурнитура",
-  "Декоративные настенные панели",
-  "Акустические панели",
+  "Столы, стулья",
+  "Авторские открытки",
   "Подарочные наборы",
-  "Открытки",
-  "Подарочные карты"
+  "Cвечи и арома-лампы"
 ]
 
 export const fixedHeaderLinks:LinkInterface[] = [
@@ -596,11 +591,23 @@ export const locationInputs = [
 
 export const welcomeSlides = [
   {
-    text: "Тут будет текст слайда 1",
-    cover: "https://cdn.mohen-tohen.ru/creative-fengshui-practice-arrangement.jpg"
+    text: "Новая коллекция керамики из серии Просторы",
+    cover: "https://cdn.mohen-tohen.ru/КОЛЛЕКЦИЯ_1.webp"
   }, 
   {
-    text: "Тут будет текст слайда 2",
-    cover: "https://cdn.mohen-tohen.ru/1896499891embrace-simplicity-the-art-of-minimalism-in-interior-design.jpg",
+    text: "Запись на мастер-класс по рисунку в хужожественную студию",
+    cover: "https://cdn.mohen-tohen.ru/МК_1.webp",
+  },
+  {
+    text: "Открытый урок по гончарному мастерству для начинающих",
+    cover: "https://cdn.mohen-tohen.ru/МК_2.webp"
+  },
+  {
+    text: "Керамические вазы из серии Тихое место",
+    cover: "https://cdn.mohen-tohen.ru/СКИДКА_1.webp"
+  },
+  {
+    text: "Сезонная распродажа",
+    cover: "https://cdn.mohen-tohen.ru/СКИДКА_2.webp"
   }
 ]

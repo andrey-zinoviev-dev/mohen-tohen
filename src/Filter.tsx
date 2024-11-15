@@ -1,5 +1,5 @@
 import FilterItem from "./FilterItem";
-import { categories } from "./utils";
+import { subcategories } from "./utils";
 import { createSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -108,25 +108,25 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
     return (
         <div className="filter">
             <h3>Фильтры</h3>
-            <div>
+            <div className="filter__details-wrapper">
                 <ul className="filter__ul">
                     <li>
                         <span>Категории</span>
                         <ul className="filter__ul-criteria">
-                            {categories.map((category) => {
-                                return <label key={category.title}>
-                                    <input checked={filterState.categories?.includes(category.title) && true} key={category.title} onChange={(evt) => {
+                            {subcategories.map((category) => {
+                                return <label key={category}>
+                                    <input checked={filterState.categories?.includes(category) && true} key={category} onChange={(evt) => {
                                             setFilterState((prevValue) => {
                                                 return {...prevValue, categories: prevValue.categories ? prevValue.categories.includes(evt.target.value) ? prevValue.categories.filter((category) => {
                                                     return category !== evt.target.value
                                                 }) : prevValue.categories && [...prevValue.categories, evt.target.value]
                                             :
-                                                [category.title]
+                                                [category]
                                                 }
                                             })
                                                         // console.log(evt.target.value)
-                                    }} type="checkbox" value={category.title}></input>
-                                    {category.title}
+                                    }} type="checkbox" value={category}></input>
+                                    {category}
                                 </label>
                             })}
                         </ul>
@@ -151,30 +151,23 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                             <InputEl name="minPrice" value={filterState.minPrice.toString()} placeHolder="от 3000" updateState={setFilterState}></InputEl>
                             <InputEl name="maxPrice" value={filterState.maxPrice.toString()} placeHolder="до 100.000" updateState={setFilterState}></InputEl>
                         </FilterItem>
-                        {/* <button>Цена</button>
                     </li>
                     <li>
-                        <FilterItem text="Размеры">
-                            <label>
-                                Размеры
-                                <input placeholder="от"></input>
-                                <input placeholder="до"></input>
-                            </label>
+                        <FilterItem text="Ширина">
+                            <InputEl name="minWidth" value={filterState.minWidth.toString()} placeHolder="от" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxWidth" value={filterState.maxWidth.toString()} placeHolder="до" updateState={setFilterState}></InputEl>
                         </FilterItem>
-                        {/* <button>Размеры</button> */}
                     </li>
                     <li>
-                        <FilterItem text="Размеры">
-                            <label>
-                                Ширина
-                                <InputEl name="width" value={filterState.minWidth.toString()} placeHolder="минимальная ширина" updateState={setFilterState}></InputEl>
-                                <InputEl name="width" value={filterState.maxWidth.toString()} placeHolder="максимальная ширина" updateState={setFilterState}></InputEl>
-                            </label>
-                            <label>
-                                Высота
-                                <InputEl name="height" value={filterState.minHeight.toString()} placeHolder="минимальная ширина" updateState={setFilterState}></InputEl>
-                                <InputEl name="height" value={filterState.maxHeight.toString()} placeHolder="максимальная ширина" updateState={setFilterState}></InputEl>
-                            </label>
+                        <FilterItem text="Высота">
+                            <InputEl name="minHeight" value={filterState.minHeight.toString()} placeHolder="от" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxHeight" value={filterState.maxHeight.toString()} placeHolder="до" updateState={setFilterState}></InputEl>
+                        </FilterItem>
+                    </li>
+                    <li>
+                        <FilterItem text="Глубина">
+                            <InputEl name="minDepth" value={filterState.minDepth.toString()} placeHolder="от" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxDepth" value={filterState.maxDepth.toString()} placeHolder="до" updateState={setFilterState}></InputEl>
                         </FilterItem>
                     </li>
                     <li>

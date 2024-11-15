@@ -5,6 +5,11 @@
     justify-content: space-between;
 }
 
+.filter__details-wrapper {
+    max-height: 65svh;
+    overflow: auto;
+}
+
 .filter__ul {
     padding: 0;
     margin: 0;

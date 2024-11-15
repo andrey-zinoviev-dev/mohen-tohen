@@ -1,24 +1,24 @@
-import React from "react";
+// import React from "react";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Collaboration.css"
 // import SelectElement from "./SelectElement";
 // import { inquerySellSelect } from "./utils";
-import { CollaborationInterface } from "./interfaces";
-import SuccessWrapper from "./SuccessWrapper";
+// import { CollaborationInterface } from "./interfaces";
+// import SuccessWrapper from "./SuccessWrapper";
 export default function Collaboration () {
     //state
-    const [formData, setFormData] = React.useState<CollaborationInterface>(
-        {
-            name: "",
-            email: "",
-            subject: "",
-            phone: "",
-            // sell: "",
-        }
-    );
+    // const [formData, setFormData] = React.useState<CollaborationInterface>(
+    //     {
+    //         name: "",
+    //         email: "",
+    //         subject: "",
+    //         phone: "",
+    //         // sell: "",
+    //     }
+    // );
 
-    const [formSent, setFormSent] = React.useState<boolean>(false);
+    // const [formSent, setFormSent] = React.useState<boolean>(false);
 
     //variables
     // const formValues = Object.values(formData);
