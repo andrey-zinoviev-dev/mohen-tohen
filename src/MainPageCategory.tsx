@@ -8,14 +8,7 @@ export default function MainPageCategory({goods, title}: {goods: GoodInterface[]
     // console.log(goods);
     return (
         <section className="main-category">
-            <div className="main-category__wrapper">
-                {/* <h3>{title}</h3> */}
-                <Headline text={title}></Headline>
-                {/* <Link to={href}>
-                    Посмотреть все
-                </Link> */}
-                {/* <LinkCompAction text="Посмотреть все" transparent={true} to={href} icon={faArrowRight}></LinkCompAction> */}
-            </div>
+            <Headline text={title}></Headline>
             <Goods goods={goods} />
         </section>
     )

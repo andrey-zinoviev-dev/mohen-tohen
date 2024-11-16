@@ -2,7 +2,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 20px;
+    gap: 60px;
     flex-direction: column;
 }
 
@@ -10,6 +10,7 @@
     display: flex;
     position: relative;
     width: 100%;
+    max-height: 75svh;
 }
 
 .promo__wrapper-slide {
@@ -72,14 +73,17 @@
 
 .promo__wrapper-buttons {
     position: absolute;
-    bottom: 0;
-    right: 10px;
+    bottom: 15px;
+    right: 15px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     gap: 5px;
     background-color: #F3F3F3;
     z-index: 150;
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 20px;
 }
 
 .promo__wrapper-buttons button {
@@ -88,6 +92,7 @@
 }
 .promo__wrapper-homestage {
     min-width: 320px;
+    max-width: 540px;
     width: 100%;
     /* max-width: 360px; */
     display: flex;
@@ -122,8 +127,11 @@
 }
 
 @media screen and (max-width: 767px) {
-
-
+    .promo__wrapper-buttons {
+        bottom: 75px;
+        right: 10px;
+        font-size: 16px;
+    }
     .promo__wrapper-homestage {
         min-width: 0;
     }

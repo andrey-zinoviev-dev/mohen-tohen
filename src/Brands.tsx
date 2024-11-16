@@ -24,8 +24,13 @@ export default function Brands() {
     return (
         <section className="brands">
             <Headline text='Дизайнеры'></Headline> 
-            <div>
-                <Swiper breakpoints={{
+            <ul>
+                {["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"].concat(["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"]).concat(["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"]).concat(["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"]).map((brand) => {
+                    return <li>
+                        <span>{brand},</span>
+                    </li>
+                })}
+                {/* <Swiper breakpoints={{
                     1279: {
                         slidesPerView: 4
                         // width: 1279,
@@ -57,8 +62,8 @@ export default function Brands() {
                         <SliderButton handleSlideChange={() => {}} slideslength={brands && brands.length} left={true} icon={faChevronLeft}></SliderButton>
                         <SliderButton handleSlideChange={() => {}} slideslength={brands && brands.length} icon={faChevronRight}></SliderButton>
                     </div>
-                </Swiper>
-            </div>
+                </Swiper> */}
+            </ul>
             
             {/* <ul className='brands__ul'>
                 {brands && brands.map((brand) => {
