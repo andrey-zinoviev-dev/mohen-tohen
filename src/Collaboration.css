@@ -1,5 +1,5 @@
 .collaboration {
-    padding: 50px 75px;
+    padding: 50px 30px;
     /* background-color: #3D3B3A; */
     background-color: #213547;
     color: white;
@@ -19,7 +19,8 @@
 }
 
 .collaboration__headline-wrapper a {
-    color: #7c7c7c;
+    /* color: #7c7c7c; */
+    color: white;
     display: flex;
     align-items: center;
     gap: 15px;

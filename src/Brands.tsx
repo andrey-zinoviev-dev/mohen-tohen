@@ -1,22 +1,23 @@
 
 // import { ReactNode, useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './Brands.css'
 // import { brands } from "./utils"
 // import { getSellers } from './userApi'
 // import { BrandsInterface } from './interfaces'
 // import { Swiper, SwiperSlide} from 'swiper/react';
 // import { Navigation } from 'swiper/modules';
-// import { useGetSellersQuery } from './features/apiSlice'
+import { useGetSellersQuery } from './features/apiSlice'
 // import { useState } from 'react';
 // import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 // import SliderButton from './SliderButton';
-// import { UserInterface } from './features/userSlice';
+import { UserInterface } from './features/userSlice';
 import Headline from './Headline';
 export default function Brands() {
-    // const {
-    //     data: brands = [] as UserInterface[],
-    // } = useGetSellersQuery();
+    const {
+        data: brands = [] as UserInterface[],
+    } = useGetSellersQuery();
 
     //state
     // const [slide, setSlide] = useState<number>(0);
@@ -25,9 +26,11 @@ export default function Brands() {
         <section className="brands">
             <Headline text='Дизайнеры'></Headline> 
             <ul>
-                {["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"].concat(["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"]).concat(["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"]).concat(["Alexey", "Andrey", "MH-Lights", "Give-Live", "ATMOlab", "Scene with scent", "ПОЛЕ", "Пустота снаружи"]).map((brand) => {
+                {brands.map((brand) => {
                     return <li>
-                        <span>{brand},</span>
+                        <a target='_blank' href={`/brands/${brand._id}`}>
+                            <span>{brand.brandName}</span>,
+                        </a>
                     </li>
                 })}
                 {/* <Swiper breakpoints={{

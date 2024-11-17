@@ -16,12 +16,21 @@
     row-gap: 0px;
     align-items: flex-start;
     justify-content: flex-start;
-    font-size: 18px;
     font-weight: 300;
     letter-spacing: 1px;
     /* font-family: "Muller"; */
 }
 
+.brands ul a span {
+    color: #8e8e8e;
+    font-size: 24px;
+    font-weight: 400;
+    transition: all 0.25s ease-in-out;
+}
+
+.brands ul a:hover span {
+    color: black;
+}
 
 .brands__ul {
     list-style: none;

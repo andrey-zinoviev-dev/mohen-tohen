@@ -1,5 +1,5 @@
 // import React from "react";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faArrowUpFromBracket, faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Collaboration.css"
 // import SelectElement from "./SelectElement";
@@ -33,11 +33,27 @@ export default function Collaboration () {
         <section className="collaboration">
             <div className="collaboration__headline-wrapper">
                 <h2>Вы дизайнер? Давайте сотрудничать!</h2>
+                {/* <button>
+
+                </button> */}
                 <a target="_blank" href="https://mohen-tohen.ru/application">
                     Заполнить анкету сотрудничества
                     <FontAwesomeIcon icon={faArrowRight} />
                 </a>
             </div>
+            {/* <ul>
+                <h4>Что мы прделагаем взамен</h4>
+                {[
+                    "Мы предлагаем постоянную витрину для твоих работ и широкую аудиторию покупателей",
+                    "Доставку и страховане груза осуществляется нашим партнером СДЭК, поэтому можно спокойно заниматься творчеством",
+                    "Твои произведения будут доставляться в фирменной упаковке, а также сопровождаться сертификатом подлинности, что добавляет профессионализма и доверия",
+                    "Поддержка молодых авторов: наша цель — развивать российское искусство и помогать талантливым художникам"
+                ].map((advantage) => {
+                    return <li key={advantage}>
+                        <span>{advantage}</span>
+                    </li>
+                })}
+            </ul> */}
             {/* <div className="collaboration__wrapper">
                 <h3>Данные для заявки</h3>
                 {!formSent ? <form className="collaboration__form" onSubmit={(evt) => {
