@@ -1,0 +1,14 @@
+.button-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 0;
+  background-color: transparent;
+  gap: 15px;
+}
+
+.button-dot_active {
+  background-color: rgb(255, 130, 97);
+  border: 2px solid rgb(255, 130, 97);
+}

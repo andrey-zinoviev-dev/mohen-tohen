@@ -1,22 +1,22 @@
 
 // import { ReactNode, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import './Brands.css'
 // import { brands } from "./utils"
 // import { getSellers } from './userApi'
 // import { BrandsInterface } from './interfaces'
-import { Swiper, SwiperSlide} from 'swiper/react';
+// import { Swiper, SwiperSlide} from 'swiper/react';
 // import { Navigation } from 'swiper/modules';
-import { useGetSellersQuery } from './features/apiSlice'
+// import { useGetSellersQuery } from './features/apiSlice'
 // import { useState } from 'react';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import SliderButton from './SliderButton';
-import { UserInterface } from './features/userSlice';
+// import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+// import SliderButton from './SliderButton';
+// import { UserInterface } from './features/userSlice';
 import Headline from './Headline';
 export default function Brands() {
-    const {
-        data: brands = [] as UserInterface[],
-    } = useGetSellersQuery();
+    // const {
+    //     data: brands = [] as UserInterface[],
+    // } = useGetSellersQuery();
 
     //state
     // const [slide, setSlide] = useState<number>(0);

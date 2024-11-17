@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
 import { faMinus, faPlus, faArrowRight, 
@@ -29,6 +29,8 @@ import LikeButton from "./LikeButton"
 import BasketButton from "./BasketButton"
 import ShareButton from "./ShareButton"
 import { Swiper, SwiperSlide } from "swiper/react"
+// import s
+import SwiperDot from "./SwiperDot"
 
 export default function GoodPage() {
 
@@ -38,6 +40,9 @@ export default function GoodPage() {
     const {
         data: good = {} as GoodInterface
     } = useGetGoodQuery(goodID!);
+
+    //ref
+    // const swiperRef = useRef<SwiperClass | null>(null);
 
     // const location = useLocation();
     // const state = location.state as GoodInterface;
@@ -79,7 +84,8 @@ export default function GoodPage() {
 
     return (
         <section className="good">
-            {window.innerWidth > 1023 ? <div className="good__parameters">
+            {/* {window.innerWidth > 1023 ?  */}
+            {/* <div className="good__parameters">
                 <img className="img" src={good.photos && good.photos[selectedPhoto].url}></img>
                 <ul className="good__photos">
                     {good.photos && good.photos.map((photo, index) => {
@@ -94,25 +100,31 @@ export default function GoodPage() {
                 </ul>
                 <div className="good__parameters-features">
                     <span className="good__parameters-features-feature">{good.material}</span>
-                    {/* {state.colors && <span className="good__parameters-features-feature">{selectedColor?.title}</span>} */}
                     {good.dimensions && <span className="good__parameters-features-feature">
                         {good.dimensions}
-                        {/* {state.candle ? `${state.dimensions && state.dimensions.volume}мл` : `${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`} */}
                     </span>}
                 </div>
-            </div>
-            :
+            </div> */}
+            {/* : */}
             <div className="good__swiper">
-                <Swiper slidesPerView={1} spaceBetween={5}>
+                <Swiper className="good__swiper-container" onSlideChange={(data) => {
+                    setSelectedPhoto(data.realIndex);
+                }} slidesPerView={1} spaceBetween={5}>
                     {good.photos && good.photos.map((photo) => {
-                        return <SwiperSlide>
+                        return <SwiperSlide key={photo.url}>
                             <img className="good__swiper-img" src={photo.url}></img>
                         </SwiperSlide>
                     })}
+                    <div className="good__swiper-dots">
+                    {good.photos && good.photos.map((photo, index) => {
+                        return <SwiperDot setSelectedPhoto={setSelectedPhoto} index={index} key={photo.title}></SwiperDot>
+                    })}
+                </div>
                 </Swiper>
+                
             </div>
             
-            }
+            {/* } */}
             <div className="good__text">
                 <div className="line1"> 
                     <h3>{good.title}</h3>
