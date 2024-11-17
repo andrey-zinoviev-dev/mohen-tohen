@@ -16,7 +16,7 @@ export default function PromoSection() {
   return (
     <section className="promo">
       <div className="promo__wrapper">
-        <Swiper autoplay={{delay: 3000}} modules={[Autoplay]} loop={true} slidesPerView={1} onSlideChange={(swiper) => {
+        <Swiper slidesPerView={1} onSlideChange={(swiper) => {
           setSlide(swiper.realIndex);
         }}>
           {welcomeSlides.map((slide) => {

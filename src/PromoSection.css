@@ -10,7 +10,7 @@
     display: flex;
     position: relative;
     width: 100%;
-    max-height: 75svh;
+    height: 75svh;
 }
 
 .promo__wrapper-slide {
@@ -22,6 +22,17 @@
 
 .promo__wrapper-slide-span {
     text-align: left;
+    text-align: left;
+    /* max-width: 240px; */
+    /* height: 100%; */
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: #F3F3F3;
+    box-sizing: border-box;
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 18px;
     /* max-width: 240px; */
 }
 
