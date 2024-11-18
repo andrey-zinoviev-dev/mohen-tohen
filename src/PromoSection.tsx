@@ -4,33 +4,41 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { welcomeSlides } from "./utils";
-import { faArrowRight, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import LinkCompAction from "./LinkCompAction";
-import SliderButton from "./SliderButton";
+// import SliderButton from "./SliderButton";
+import SwiperDot from "./SwiperDot";
 
 export default function PromoSection() {
   //state
   const [slide, setSlide] = useState<number>(0);
 
+  console.log(slide);
+
   return (
     <section className="promo">
       <div className="promo__wrapper">
-        <Swiper slidesPerView={1} onSlideChange={(swiper) => {
+        <Swiper modules={[Autoplay]} autoplay={{
+          delay: 3000
+        }} loop={true} slidesPerView={1} onSlideChange={(swiper) => {
           setSlide(swiper.realIndex);
         }}>
           {welcomeSlides.map((slide) => {
             return <SwiperSlide key={slide.text}>
               <div className="promo__wrapper-slide">
-                <img style={{width: "100%", objectFit: "cover", borderRadius: 3}} src={slide.cover}></img>
+                <img src={slide.cover}></img>
                 <span className="promo__wrapper-slide-span">{slide.text}</span>
               </div>
             </SwiperSlide>
           })}
           <div className="promo__wrapper-buttons">
-            <SliderButton handleSlideChange={setSlide} slideslength={welcomeSlides.length} left={true} icon={faChevronLeft}></SliderButton>
+            {welcomeSlides.map((welcomeSlide, index) => {
+              return <SwiperDot key={welcomeSlide.text} setSelectedPhoto={setSlide} index={index}></SwiperDot>
+            })}
+            {/* <SliderButton handleSlideChange={setSlide} slideslength={welcomeSlides.length} left={true} icon={faChevronLeft}></SliderButton>
             <span>{slide + 1}/{welcomeSlides.length}</span>
-            <SliderButton handleSlideChange={setSlide} slideslength={welcomeSlides.length} icon={faChevronRight}></SliderButton>
+            <SliderButton handleSlideChange={setSlide} slideslength={welcomeSlides.length} icon={faChevronRight}></SliderButton> */}
         </div>
         </Swiper>
       </div>
