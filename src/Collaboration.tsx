@@ -1,5 +1,5 @@
 // import React from "react";
-import { faArrowRight, faArrowUpFromBracket, faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Collaboration.css"
 // import SelectElement from "./SelectElement";

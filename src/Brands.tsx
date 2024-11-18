@@ -1,7 +1,6 @@
 
 // import { ReactNode, useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
-import { Link } from 'react-router-dom';
 import './Brands.css'
 // import { brands } from "./utils"
 // import { getSellers } from './userApi'

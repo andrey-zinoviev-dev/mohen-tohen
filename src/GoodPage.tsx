@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
 import { faMinus, faPlus, faArrowRight, 
@@ -55,6 +55,7 @@ export default function GoodPage() {
     // const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
     const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0)
+    console.log(selectedPhoto);
 
     // const [postGoodToBasket, { isLoading }] = usePostGoodToBasketMutation();
     // const [postGoodToFavourites] = usePostGoodToFavouriteMutation();
