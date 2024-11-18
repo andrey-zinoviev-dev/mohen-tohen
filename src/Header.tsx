@@ -19,6 +19,7 @@ import PortalComp from "./PortalComp";
 // import { useGetOTPCodeMutation } from "./features/apiSlice";
 // import InputEl from "./InputEl";
 import Login from "./Login";
+import Navigation from "./Navigation";
 // import { UserInterface } from "./features/userSlice";
 
 export default function Header() {
@@ -106,26 +107,28 @@ export default function Header() {
                         <FontAwesomeIcon icon={faBars} />
                     </button>
                 </div>
-                <div className="header__row-2">
-                    <ul className="header__categories">
-                        <li onClick={() => {
+                <Navigation></Navigation>
+                {/* <div className="header__row-2"> */}
+                    {/* <ul classNa/me="header__categories"> */}
+                        {/* <li onClick={() => {
                             navigate('catalog')
                         }}>
                             <span>Весь каталог</span>
                             <div></div>
-                        </li>
-                        {categories.map((category) => {
+                        </li> */}
+                        {/* {categories.map((category) => {
                             return <li key={category.title} onMouseOver={() => {
                                 // setCategory(category);
                             }}>
                                 <span>{category.title}</span>
                                 <div></div>
                             </li>
-                        })}
+                        })} */}
+                        {/* <Navigation></Navigation> */}
                         {/* <li key={"homestage"}>
                             
                         </li> */}
-                    </ul>
+                    {/* </ul> */}
                     {/* <Link className="header__links-homestaging" to="/homestaging">
                         <span>Подбор декора</span>
                         <FontAwesomeIcon icon={faArrowRight} />
@@ -135,7 +138,7 @@ export default function Header() {
                         <LinksComp title="Интересное" links={fixedHeaderLinks}></LinksComp>
                         {category && <LinksComp title="Что можно купить" links={category.links}></LinksComp>}
                     </div> */}
-                </div>
+                {/* </div> */}
                 
                 {openPortal && createPortal(<PortalComp>
                     <Login closePopup={setOpenPortal} />

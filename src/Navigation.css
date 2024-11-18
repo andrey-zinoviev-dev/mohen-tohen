@@ -1,0 +1,31 @@
+.ul-navigation {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.ul-navigation li {
+    font-size: 18px;
+}
+
+.ul-navigation li a {
+    color: #213547;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ul-navigation li a div {
+    width: 0;
+    height: 2px;
+    background-color: #213547;
+    transition: all 0.25s ease-in-out;
+}
+
+.ul-navigation li a:hover div {
+    width: 100%;
+}
