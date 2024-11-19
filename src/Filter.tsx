@@ -1,5 +1,5 @@
 import FilterItem from "./FilterItem";
-import { categories} from "./utils";
+// import { categories} from "./utils";
 import { createSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +8,12 @@ import "./Filter.css"
 import InputEl from "./InputEl";
 // import { UserInterface } from "./features/userSlice";
 
-export default function Filter({urlConverted, goods, applyFilters, closeFilter}: {urlConverted: urlConvertedInterface, goods: GoodInterface[], closeFilter: React.Dispatch<React.SetStateAction<boolean>>, applyFilters: (good: GoodInterface[]) => void}) {
+export default function Filter({subcategories, urlConverted, goods, applyFilters, closeFilter}: {subcategories: string[] | undefined, urlConverted: urlConvertedInterface, goods: GoodInterface[], closeFilter: React.Dispatch<React.SetStateAction<boolean>>, applyFilters: (good: GoodInterface[]) => void}) {
     //sellers
-    const sellers = goods.map((good) => {
+    const sellers = [...new Set(goods.map((good) => {
         return good.seller.brandName;
-    });
-    console.log(goods);
+    }))];
+
 
     //navigate
     const navigate = useNavigate();
@@ -42,15 +42,15 @@ export default function Filter({urlConverted, goods, applyFilters, closeFilter}:
             // colors: []
         }
     );
+    // console.log(filterState);
     const [filteredArray, setFilteredArray] = useState<GoodInterface[]>([]);
 
     useEffect(() => {
         let resultArray = goods;
-      
-        if(filterState.categories && filterState.categories.length > 0) {
+        if(filterState.subcategories && filterState.subcategories.length > 0) {
 
             resultArray = resultArray.filter((good) => {
-                return filterState.categories && filterState.categories.find((category) => {
+                return filterState.subcategories && filterState.subcategories.find((category) => {
                     return category === good.category;
                 });
             })
@@ -81,6 +81,7 @@ export default function Filter({urlConverted, goods, applyFilters, closeFilter}:
                 })
             })
         }
+        // console.log(resultArray);
         setFilteredArray(resultArray);
     }, [filterState]);
 
@@ -92,20 +93,21 @@ export default function Filter({urlConverted, goods, applyFilters, closeFilter}:
                     <li>
                         <span>Категории</span>
                         <ul className="filter__ul-criteria">
-                            {categories.map((category) => {
-                                return <label key={category.title}>
-                                    <input checked={filterState.categories?.includes(category.title) && true} key={category.title} onChange={() => {
+                            {subcategories?.map((category) => {
+                                // console.log(category);
+                                return <label key={category}>
+                                    <input checked={filterState.subcategories?.includes(category) ? true : false} key={category} onChange={() => {
                                             setFilterState((prevValue) => {
-                                                return {...prevValue, categories: prevValue.categories ? prevValue.categories.includes(category.title) ? prevValue.categories.filter((prevCategory) => {
-                                                    return prevCategory !== category.title
-                                                }) : prevValue.categories && [...prevValue.categories, category.title]
+                                                return {...prevValue, subcategories: prevValue.subcategories ? prevValue.subcategories.includes(category) ? prevValue.subcategories.filter((prevCategory) => {
+                                                    return prevCategory !== category
+                                                }) : prevValue.subcategories && [...prevValue.subcategories, category]
                                             :
-                                                [category.title]
+                                                [category]
                                                 }
                                             })
                                                         // console.log(evt.target.value)
                                     }} type="checkbox"></input>
-                                    {category.title}
+                                    {category}
                                 </label>
                             })}
                         </ul>
@@ -212,12 +214,12 @@ export default function Filter({urlConverted, goods, applyFilters, closeFilter}:
                     return [key, val.toString()]
                 });
 
-                // navigate({
-                //     pathname: `../catalog`,
-                //     search: `${createSearchParams(Object.fromEntries(result))}`
-                // });
-                // closeFilter(false)
-                // applyFilters(filteredArray);
+                navigate({
+                    pathname: ``,
+                    search: `${createSearchParams(Object.fromEntries(result))}`
+                });
+                closeFilter(false)
+                applyFilters(filteredArray);
             }}>
                 Показать ({filteredArray.length})
                 {/* Показать ({filteredArray.length}) */}

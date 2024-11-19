@@ -104,7 +104,8 @@ export const terms:TermInterface[] = [
 export const categories:CategoryInterface[] = [
   {
     title: "Свет",
-    cover: "https://cdn.mohen-tohen.ru/свет_1.png"
+    cover: "https://cdn.mohen-tohen.ru/свет_1.png",
+    subcategories: ["Настольные лампы", "Торшеры", "Бра", "Подвесные светильники", "Декоративный свет", "Абажуры"],
     // links: [
     //   {
     //     title: "Лампы",
@@ -145,6 +146,7 @@ export const categories:CategoryInterface[] = [
   {
     title: "Декор",
     cover: "https://cdn.mohen-tohen.ru/декор_1.png",
+    subcategories: ["Домашний декор", "Настенный декор"]
     // links: [
     //   {
     //     title: "Скульптуры",
@@ -234,7 +236,8 @@ export const categories:CategoryInterface[] = [
   // },
   {
     title: "Текстиль",
-    cover: "https://cdn.mohen-tohen.ru/текстиль_1.png"
+    cover: "https://cdn.mohen-tohen.ru/текстиль_1.png",
+    subcategories: ["Подушки и чехлы", "Шторы", "Ковры", "Пледы и покрывала"],
     // links: [
     //   {
     //     title: "Ковры",
@@ -266,7 +269,8 @@ export const categories:CategoryInterface[] = [
   },
   {
     title: 'Мебель',
-    cover: "https://cdn.mohen-tohen.ru/мебель_1.png"
+    cover: "https://cdn.mohen-tohen.ru/мебель_1.png",
+    subcategories: ["Хранение", "Декоративные элементы", "Мягкая мебель", "Столы", "Стулья", "Фурнитура"]
     // links: [
       
     // ],
@@ -276,7 +280,8 @@ export const categories:CategoryInterface[] = [
   },
   {
     title: 'Сервировка',
-    cover: "https://cdn.mohen-tohen.ru/Сервировка_1.png"
+    cover: "https://cdn.mohen-tohen.ru/Сервировка_1.png",
+    subcategories: ["Графины и кувшины", "Подносы и подставки", "Чашки и стаканы", "Тарелки и миски"]
     // links: [
       
     // ],
@@ -286,7 +291,8 @@ export const categories:CategoryInterface[] = [
   },
   {
     title: 'Атмосфера',
-    cover: "https://cdn.mohen-tohen.ru/атмосфера_1.png"
+    cover: "https://cdn.mohen-tohen.ru/атмосфера_1.png",
+    subcategories: ["Свечи", "Диффузоры", "Арома-лампы"]
     // links: [
       
     // ],
@@ -296,7 +302,8 @@ export const categories:CategoryInterface[] = [
   },
   {
     title: 'Подарки',
-    cover: "https://cdn.mohen-tohen.ru/Подарки_1.png"
+    cover: "https://cdn.mohen-tohen.ru/Подарки_1.png",
+    subcategories: ["Наборы 'сделай сам'", "Авторские открытки", "Подарочные наборы"]
     // links: [
       
     // ],
@@ -304,26 +311,27 @@ export const categories:CategoryInterface[] = [
 
     // ]
   },
-  {
-    title: 'Идеи',
-    cover: "https://cdn.mohen-tohen.ru/Идеи_1.png"
-    // links: [
+  // {
+  //   title: 'Идеи',
+  //   cover: "https://cdn.mohen-tohen.ru/Идеи_1.png"
+  //   // links: [
       
-    // ],
-    // designers: [
+  //   // ],
+  //   // designers: [
 
-    // ]
-  },
-  {
-    title: 'Услуги',
-    cover: "https://cdn.mohen-tohen.ru/услуги_1.png"
-    // links: [
+  //   // ]
+  // },
+  // {
+  //   title: 'Услуги',
+  //   cover: "https://cdn.mohen-tohen.ru/услуги_1.png",
+  //   subcategories: [""]
+  //   // links: [
       
-    // ],
-    // designers: [
+  //   // ],
+  //   // designers: [
 
-    // ]
-  },
+  //   // ]
+  // },
 ];
 
 export const subcategories:string[] = [

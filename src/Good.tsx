@@ -24,7 +24,7 @@ export default function Good({ good }:GoodComponentInterface) {
             </div>
             <div className="good-text-wrapper">
                 <h3>{good.title}</h3>
-                {good.seller._id && <Link to={`brands/${good.seller._id}`} className="good-text-wrapper__seller">
+                {good.seller._id && <Link to={`../brands/${good.seller._id}`} className="good-text-wrapper__seller">
                     <img src={good.seller.cover}></img>
                     <span className="good-text-wrapper__seller-name">{good.seller.name}</span>
                 </Link >}

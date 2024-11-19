@@ -122,6 +122,7 @@ export interface LinksInterface {
 export interface CategoryInterface {
   title: string,
   cover: string,
+  subcategories: string[],
 }
 
 export interface AccountHistoryInterface {
@@ -228,7 +229,7 @@ export interface FileInterface {
 }
 
 export interface urlConvertedInterface {
-  categories?: string[],
+  subcategories?: string[],
   stock?: boolean,
   minPrice?: number,
   maxPrice?: number,
