@@ -121,8 +121,7 @@ export interface LinksInterface {
 
 export interface CategoryInterface {
   title: string,
-  links: LinkInterface[],
-  designers: LinkInterface[],
+  cover: string,
 }
 
 export interface AccountHistoryInterface {
@@ -226,4 +225,18 @@ export interface FileInterface {
   selectPhoto?: React.Dispatch<React.SetStateAction<File | null>>,
   addFile?: React.Dispatch<React.SetStateAction<File[]>>,
   removeFile?: React.Dispatch<React.SetStateAction<File[]>>,
+}
+
+export interface urlConvertedInterface {
+  categories?: string[],
+  stock?: boolean,
+  minPrice?: number,
+  maxPrice?: number,
+  minWidth?: number,
+  maxWidth?: number,
+  minHeight?: number,
+  maxHeight?: number,
+  minDepth?: number,
+  maxDepth?: number,
+  colors?: string[]
 }

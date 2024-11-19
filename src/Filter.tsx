@@ -1,27 +1,14 @@
 import FilterItem from "./FilterItem";
-import { subcategories } from "./utils";
+import { categories} from "./utils";
 import { createSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoodInterface } from "./interfaces";
+import { GoodInterface, urlConvertedInterface } from "./interfaces";
 import "./Filter.css"
 import InputEl from "./InputEl";
 // import { UserInterface } from "./features/userSlice";
 
-export default function Filter({urlConverted, sellers, goods, applyFilters, closeFilter}: {urlConverted: 
-    {
-        categories: string[],
-        stock?: boolean,
-        minPrice: number,
-        maxPrice: number,
-        minWidth: number,
-        maxWidth: number,
-        minHeight: number,
-        maxHeight: number,
-        minDepth: number,
-        maxDepth: number,
-        colors: string[]
-    },
+export default function Filter({urlConverted, sellers, goods, applyFilters, closeFilter}: {urlConverted: urlConvertedInterface,
     sellers: (string | undefined)[], goods: GoodInterface[], closeFilter: React.Dispatch<React.SetStateAction<boolean>>, applyFilters: (good: GoodInterface[]) => void}) {
 
     //navigate
@@ -33,34 +20,22 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
     });
     
     //state
-    const [filterState, setFilterState] = useState<{
-        categories: string[],
-        stock?: boolean,
-        minPrice: number,
-        maxPrice: number,
-        minWidth: number,
-        maxWidth: number,
-        minHeight: number,
-        maxHeight: number,
-        minDepth: number,
-        maxDepth: number,
-        colors: string[]
-    }>(
+    const [filterState, setFilterState] = useState<urlConvertedInterface>(
         Object.values(urlConverted).length > 0 ? 
         urlConverted
         :
         {
-            categories: [],
-            // stock: false,
-            minPrice: 1500,
-            maxPrice: 100000,
-            minWidth: 10,
-            maxWidth: 500,
-            minHeight: 10,
-            maxHeight: 100,
-            minDepth: 0,
-            maxDepth: 100,
-            colors: []
+            // categories: [],
+            // // stock: false,
+            // minPrice: 1500,
+            // maxPrice: 100000,
+            // minWidth: 10,
+            // maxWidth: 500,
+            // minHeight: 10,
+            // maxHeight: 100,
+            // minDepth: 0,
+            // maxDepth: 100,
+            // colors: []
         }
     );
     const [filteredArray, setFilteredArray] = useState<GoodInterface[]>([]);
@@ -83,15 +58,15 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
             })
         }
 
-        if(filterState.minPrice >= 1500) {
+        if(filterState.minPrice && filterState.minPrice>= 1500) {
             resultArray = resultArray.filter((good) => {
-                return good.price >= filterState.minPrice;
+                return filterState.minPrice && good.price >= filterState.minPrice;
             })
         }
 
-        if(filterState.maxPrice <= 100000) {
+        if(filterState.maxPrice && filterState.maxPrice <= 100000) {
             resultArray = resultArray.filter((good) => {
-                return good.price <= filterState.maxPrice;
+                return filterState.maxPrice && good.price <= filterState.maxPrice;
             })
         }
 
@@ -113,20 +88,20 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                     <li>
                         <span>Категории</span>
                         <ul className="filter__ul-criteria">
-                            {subcategories.map((category) => {
-                                return <label key={category}>
-                                    <input checked={filterState.categories?.includes(category) && true} key={category} onChange={(evt) => {
+                            {categories.map((category) => {
+                                return <label key={category.title}>
+                                    <input checked={filterState.categories?.includes(category.title) && true} key={category.title} onChange={() => {
                                             setFilterState((prevValue) => {
-                                                return {...prevValue, categories: prevValue.categories ? prevValue.categories.includes(evt.target.value) ? prevValue.categories.filter((category) => {
-                                                    return category !== evt.target.value
-                                                }) : prevValue.categories && [...prevValue.categories, evt.target.value]
+                                                return {...prevValue, categories: prevValue.categories ? prevValue.categories.includes(category.title) ? prevValue.categories.filter((prevCategory) => {
+                                                    return prevCategory !== category.title
+                                                }) : prevValue.categories && [...prevValue.categories, category.title]
                                             :
-                                                [category]
+                                                [category.title]
                                                 }
                                             })
                                                         // console.log(evt.target.value)
-                                    }} type="checkbox" value={category}></input>
-                                    {category}
+                                    }} type="checkbox"></input>
+                                    {category.title}
                                 </label>
                             })}
                         </ul>
@@ -148,26 +123,26 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                     </li>
                     <li>
                         <FilterItem text="Цена">
-                            <InputEl name="minPrice" value={filterState.minPrice.toString()} placeHolder="от 3000" updateState={setFilterState}></InputEl>
-                            <InputEl name="maxPrice" value={filterState.maxPrice.toString()} placeHolder="до 100.000" updateState={setFilterState}></InputEl>
+                            <InputEl name="minPrice" placeHolder="от 3000" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxPrice" placeHolder="до 100.000" updateState={setFilterState}></InputEl>
                         </FilterItem>
                     </li>
                     <li>
                         <FilterItem text="Ширина">
-                            <InputEl name="minWidth" value={filterState.minWidth.toString()} placeHolder="от" updateState={setFilterState}></InputEl>
-                            <InputEl name="maxWidth" value={filterState.maxWidth.toString()} placeHolder="до" updateState={setFilterState}></InputEl>
+                            <InputEl name="minWidth" placeHolder="от" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxWidth" placeHolder="до" updateState={setFilterState}></InputEl>
                         </FilterItem>
                     </li>
                     <li>
                         <FilterItem text="Высота">
-                            <InputEl name="minHeight" value={filterState.minHeight.toString()} placeHolder="от" updateState={setFilterState}></InputEl>
-                            <InputEl name="maxHeight" value={filterState.maxHeight.toString()} placeHolder="до" updateState={setFilterState}></InputEl>
+                            <InputEl name="minHeight" placeHolder="от" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxHeight" placeHolder="до" updateState={setFilterState}></InputEl>
                         </FilterItem>
                     </li>
                     <li>
                         <FilterItem text="Глубина">
-                            <InputEl name="minDepth" value={filterState.minDepth.toString()} placeHolder="от" updateState={setFilterState}></InputEl>
-                            <InputEl name="maxDepth" value={filterState.maxDepth.toString()} placeHolder="до" updateState={setFilterState}></InputEl>
+                            <InputEl name="minDepth" placeHolder="от" updateState={setFilterState}></InputEl>
+                            <InputEl name="maxDepth" placeHolder="до" updateState={setFilterState}></InputEl>
                         </FilterItem>
                     </li>
                     <li>
@@ -233,12 +208,12 @@ export default function Filter({urlConverted, sellers, goods, applyFilters, clos
                     return [key, val.toString()]
                 });
 
-                navigate({
-                    pathname: `../catalog`,
-                    search: `${createSearchParams(Object.fromEntries(result))}`
-                });
-                closeFilter(false)
-                applyFilters(filteredArray);
+                // navigate({
+                //     pathname: `../catalog`,
+                //     search: `${createSearchParams(Object.fromEntries(result))}`
+                // });
+                // closeFilter(false)
+                // applyFilters(filteredArray);
             }}>
                 Показать ({filteredArray.length})
                 {/* Показать ({filteredArray.length}) */}

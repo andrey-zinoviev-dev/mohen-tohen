@@ -104,73 +104,75 @@ export const terms:TermInterface[] = [
 export const categories:CategoryInterface[] = [
   {
     title: "Свет",
-    links: [
-      {
-        title: "Лампы",
-        href: "",
-      },
-      {
-        title: "Люстры",
-        href: "",
-      },
-      {
-        title: "Наружное освещение",
-        href: ""
-      },
-      {
-        title: "Настенное освещение",
-        href: "",
-      },
-      {
-        title: "Настольное освещение",
-        href: "",
-      }
-    ],
-    designers: [
-      {
-        title: "Алексей Солдатов",
-        href: "",
-      },
-      {
-        title: "Варвара Алексеева",
-        href: "",
-      },
-      {
-        title: "Сати Альбретовна",
-        href: "",
-      }
-    ]
+    cover: "https://cdn.mohen-tohen.ru/свет_1.png"
+    // links: [
+    //   {
+    //     title: "Лампы",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Люстры",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Наружное освещение",
+    //     href: ""
+    //   },
+    //   {
+    //     title: "Настенное освещение",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Настольное освещение",
+    //     href: "",
+    //   }
+    // ],
+    // designers: [
+    //   {
+    //     title: "Алексей Солдатов",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Варвара Алексеева",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Сати Альбретовна",
+    //     href: "",
+    //   }
+    // ]
   },
   {
     title: "Декор",
-    links: [
-      {
-        title: "Скульптуры",
-        href: "",
-      },
-      {
-        title: "Вазы",
-        href: "",
-      },
-      {
-        title: "Подсвечники",
-        href: ""
-      },
-    ],
-    designers: [
-      {
-        title: "Андрей Зиновьев",
-        href: ""
-      },
-      {
-        title: "Sergey Sergo",
-        href: "",
-      },
-      {
-        title: "Le Gontieux",
-        href: "",
-      }
-    ]
+    cover: "https://cdn.mohen-tohen.ru/декор_1.png",
+    // links: [
+    //   {
+    //     title: "Скульптуры",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Вазы",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Подсвечники",
+    //     href: ""
+    //   },
+    // ],
+    // designers: [
+    //   {
+    //     title: "Андрей Зиновьев",
+    //     href: ""
+    //   },
+    //   {
+    //     title: "Sergey Sergo",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Le Gontieux",
+    //     href: "",
+    //   }
+    // ]
   },
   // {
   //   title: "Настенный декор",
@@ -232,88 +234,95 @@ export const categories:CategoryInterface[] = [
   // },
   {
     title: "Текстиль",
-    links: [
-      {
-        title: "Ковры",
-        href: "",
-      },
-      {
-        title: "Постельное белье",
-        href: "",
-      },
-      {
-        title: "Пледы",
-        href: ""
-      },
-    ],
-    designers: [
-      {
-        title: "Stiff Boots",
-        href: "",
-      },
-      {
-        title: "Elektrozavod",
-        href: "",
-      },
-      {
-        title: "Байкал",
-        href: "",
-      }
-    ]
+    cover: "https://cdn.mohen-tohen.ru/текстиль_1.png"
+    // links: [
+    //   {
+    //     title: "Ковры",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Постельное белье",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Пледы",
+    //     href: ""
+    //   },
+    // ],
+    // designers: [
+    //   {
+    //     title: "Stiff Boots",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Elektrozavod",
+    //     href: "",
+    //   },
+    //   {
+    //     title: "Байкал",
+    //     href: "",
+    //   }
+    // ]
   },
   {
     title: 'Мебель',
-    links: [
+    cover: "https://cdn.mohen-tohen.ru/мебель_1.png"
+    // links: [
       
-    ],
-    designers: [
+    // ],
+    // designers: [
 
-    ]
+    // ]
   },
   {
     title: 'Сервировка',
-    links: [
+    cover: "https://cdn.mohen-tohen.ru/Сервировка_1.png"
+    // links: [
       
-    ],
-    designers: [
+    // ],
+    // designers: [
 
-    ]
+    // ]
   },
   {
     title: 'Атмосфера',
-    links: [
+    cover: "https://cdn.mohen-tohen.ru/атмосфера_1.png"
+    // links: [
       
-    ],
-    designers: [
+    // ],
+    // designers: [
 
-    ]
+    // ]
   },
   {
     title: 'Подарки',
-    links: [
+    cover: "https://cdn.mohen-tohen.ru/Подарки_1.png"
+    // links: [
       
-    ],
-    designers: [
+    // ],
+    // designers: [
 
-    ]
+    // ]
   },
   {
     title: 'Идеи',
-    links: [
+    cover: "https://cdn.mohen-tohen.ru/Идеи_1.png"
+    // links: [
       
-    ],
-    designers: [
+    // ],
+    // designers: [
 
-    ]
+    // ]
   },
   {
     title: 'Услуги',
-    links: [
+    cover: "https://cdn.mohen-tohen.ru/услуги_1.png"
+    // links: [
       
-    ],
-    designers: [
+    // ],
+    // designers: [
 
-    ]
+    // ]
   },
 ];
 

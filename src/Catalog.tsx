@@ -1,7 +1,7 @@
 import "./Catalog.css"
 import Filter from "./Filter"
 import Goods from "./Goods"
-import { GoodInterface } from "./interfaces";
+import { GoodInterface, urlConvertedInterface } from "./interfaces";
 import { useGetGoodsQuery } from "./features/apiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -46,19 +46,7 @@ export default function Catalog() {
             return [key, +value];
         }
         return [key, value.split(",")]
-    })) as {
-        categories: string[],
-        stock?: boolean,
-        minPrice: number,
-        maxPrice: number,
-        colors: string[],
-        minWidth: number,
-        maxWidth: number,
-        minHeight: number,
-        maxHeight: number,
-        minDepth: number,
-        maxDepth: number,
-    };
+    })) as urlConvertedInterface;
 
     //sellers
     const sellersArray = goods.map((good) => {
@@ -103,16 +91,16 @@ export default function Catalog() {
                     })
                 }
 
-                if(urlConverted.minPrice >= 1500) {
+                if(urlConverted.minPrice && urlConverted.minPrice >= 1500) {
                     resultArray = resultArray.filter((good) => {
-                        return good.price >= urlConverted.minPrice;
+                        return urlConverted.minPrice && good.price >= urlConverted.minPrice;
                     })
                 }
 
-                if(urlConverted.maxPrice <= 100000) {
+                if(urlConverted.maxPrice && urlConverted.maxPrice <= 100000) {
                     // console.log('update goods max price here')
                     resultArray = resultArray.filter((good) => {
-                        return good.price <= urlConverted.maxPrice;
+                        return urlConverted.maxPrice && good.price <= urlConverted.maxPrice;
                     })
                 }
 
@@ -139,7 +127,7 @@ export default function Catalog() {
                 }}>
                     <FontAwesomeIcon icon={faSliders} />
                 </button>
-                <Headline text="Каталог"></Headline>
+                <Headline text="Что можно приобрести"></Headline>
             </div>
             <Goods goods={catalogGoods}></Goods>
             {openedFilter && createPortal(<PortalComp left={true}>
