@@ -2,3 +2,14 @@
   width: 100%;
   border-radius: 9px;
 }
+
+.category__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
+.category__wrapper button {
+  color: #FF8261;
+}

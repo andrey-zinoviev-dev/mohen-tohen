@@ -601,22 +601,22 @@ export const locationInputs = [
 export const welcomeSlides = [
   {
     text: "Новая коллекция керамики из серии Просторы",
-    cover: "https://cdn.mohen-tohen.ru/КОЛЛЕКЦИЯ_1.webp"
+    cover: "https://cdn.mohen-tohen.ru/КОЛЛЕКЦИЯ_11.png"
   }, 
   {
     text: "Запись на мастер-класс по рисунку в хужожественную студию",
-    cover: "https://cdn.mohen-tohen.ru/МК_1.webp",
+    cover: "https://cdn.mohen-tohen.ru/МК_11.png",
   },
   {
     text: "Открытый урок по гончарному мастерству для начинающих",
-    cover: "https://cdn.mohen-tohen.ru/МК_2.webp"
+    cover: "https://cdn.mohen-tohen.ru/МК_22.png"
   },
   {
     text: "Керамические вазы из серии Тихое место",
-    cover: "https://cdn.mohen-tohen.ru/СКИДКА_1.webp"
+    cover: "https://cdn.mohen-tohen.ru/КОЛЛЕКЦИЯ_22.png"
   },
   {
     text: "Сезонная распродажа",
-    cover: "https://cdn.mohen-tohen.ru/СКИДКА_2.webp"
+    cover: "https://cdn.mohen-tohen.ru/СКИДКА_22.png"
   }
 ]

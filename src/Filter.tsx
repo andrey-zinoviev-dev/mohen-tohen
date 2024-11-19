@@ -8,8 +8,12 @@ import "./Filter.css"
 import InputEl from "./InputEl";
 // import { UserInterface } from "./features/userSlice";
 
-export default function Filter({urlConverted, sellers, goods, applyFilters, closeFilter}: {urlConverted: urlConvertedInterface,
-    sellers: (string | undefined)[], goods: GoodInterface[], closeFilter: React.Dispatch<React.SetStateAction<boolean>>, applyFilters: (good: GoodInterface[]) => void}) {
+export default function Filter({urlConverted, goods, applyFilters, closeFilter}: {urlConverted: urlConvertedInterface, goods: GoodInterface[], closeFilter: React.Dispatch<React.SetStateAction<boolean>>, applyFilters: (good: GoodInterface[]) => void}) {
+    //sellers
+    const sellers = goods.map((good) => {
+        return good.seller.brandName;
+    });
+    console.log(goods);
 
     //navigate
     const navigate = useNavigate();

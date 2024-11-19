@@ -1,7 +1,8 @@
 .headline {
   font-size: 32px;
-    font-weight: 400;
-    margin: 0 0 25px 0;
+  font-weight: 400;
+  margin: 0;
+    /* margin: 0 0 25px 0; */
     /* margin: 0 auto 0 0; */
   text-align: left;
 }
