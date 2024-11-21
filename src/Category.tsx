@@ -159,7 +159,7 @@ export default function Category() {
       <img className="category__cover" src={category?.cover}></img>
       <div className="category__wrapper">
         <Headline text="Что можно приобрести"></Headline>
-        <button onClick={() => {
+        <button className="category__wrapper-button" onClick={() => {
           setOpenedFilter(true);
         }}>
           <FontAwesomeIcon icon={faSliders} />

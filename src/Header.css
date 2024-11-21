@@ -72,6 +72,12 @@
     color: #FF8261;
 } */
 
+.header__nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .header__links {
     display: flex;
     align-items: center;
@@ -324,6 +330,10 @@
         padding: 10px 0;
     }
     .header form {
+        display: none;
+    }
+
+    .header__nav-wrapper {
         display: none;
     }
 

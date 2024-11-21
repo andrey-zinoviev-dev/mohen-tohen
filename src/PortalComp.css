@@ -12,7 +12,7 @@
   padding: 0;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  z-index: 55;
+  z-index: 200;
 }
 
 .portal_left {
@@ -63,6 +63,20 @@
   border-radius: 9px;
   box-sizing: border-box;
   padding: 25px; */
+}
+
+.portal__logo-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#menu-logo  {
+  aspect-ratio: unset;
+  width: 100%;
+  max-width: 50px;
+  margin: 0;
 }
 
 .portal__content_files {

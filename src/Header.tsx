@@ -5,22 +5,11 @@ import "./Header.css";
 import { useAppSelector } from "./hooks";
 import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-// import { login } from "./features/userSlice";
-// import { openPopup } from "./features/popupSlice";
-// import Popup from "./Popup";
 import heading from "./assets/mh-1.png"
-import { categories } from "./utils";
-// import { CategoryInterface } from "./interfaces";
-// import LinksComp from "./LinksComp";
-// import { login } from "./features/userSlice";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
-// import { getOTPCode } from "./userApi";
-// import { useGetOTPCodeMutation } from "./features/apiSlice";
-// import InputEl from "./InputEl";
 import Login from "./Login";
 import Navigation from "./Navigation";
-// import { UserInterface } from "./features/userSlice";
 
 export default function Header() {
     //redux state
@@ -69,16 +58,11 @@ export default function Header() {
                     <form>
                         <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                         <input className="header__search" placeholder="Поиск"></input>
-                        {/* <InputEl name="find" type="text" placeHolder="Поиск" autoFocus={true} underLine={true} updateState={setPhone}></InputEl> */}
                     </form>
                     <Link className="header__home" to={`../`}>
                         <img className="header__img" src={heading}></img>
                     </Link>
                     <div className="header__links">
-                        {/* <Link className="header__links-homestaging" to="/homestaging">
-                            <span>Подбор декора</span>
-                            <FontAwesomeIcon icon={faArrowRight} />
-                        </Link> */}
                         <div className="header__links-navigation">
                             <Link to={`profile/${userState._id}/favs`}>
                                 <FontAwesomeIcon icon={faHeart} />
@@ -86,14 +70,11 @@ export default function Header() {
                             </Link>
                             <button onClick={() => {
                                 userState.loggedIn ? 
-                                    navigate(`profile/${userState._id}/history`)
-                                    :
-                                    setOpenPortal(true);
-
-                                    // setPopupOpened(true);
-                                // dispatch(login({name: "Андрей", email: "sttrog_810@mail.ru", favourites: [], phone: "+79588280774", seller: false, loggedIn: true}))
+                                navigate(`profile/${userState._id}/history`)
+                                :
+                                setOpenPortal(true);
                             }}>
-                                {!userState.loggedIn ? <span>Войти</span> : <span>{userState.name && userState.name[0]} <FontAwesomeIcon icon={faUser} /></span>}
+                                {!userState.loggedIn ? <FontAwesomeIcon icon={faUser} /> : <span>{userState.name && userState.name[0]} <FontAwesomeIcon icon={faUser} /></span>}
                             </button>
                             <Link to="../basket">
                                 <FontAwesomeIcon icon={faShoppingBag} />
@@ -107,7 +88,9 @@ export default function Header() {
                         <FontAwesomeIcon icon={faBars} />
                     </button>
                 </div>
-                <Navigation></Navigation>
+                <div className="header__nav-wrapper">
+                    <Navigation></Navigation>
+                </div>
                 {/* <div className="header__row-2"> */}
                     {/* <ul classNa/me="header__categories"> */}
                         {/* <li onClick={() => {
@@ -175,12 +158,16 @@ export default function Header() {
                 </PortalComp>, document.body)}
             </header>
             {openMenu && createPortal(<PortalComp>
-                <button className="protal__close" onClick={() => {
-                    setOpenMenu(false);
-                }}>
-                    <FontAwesomeIcon icon={faXmark} />
-                </button>
-                <ul>
+                <div className="portal__logo-wrapper">
+                    <img id="menu-logo" src="https://cdn.mohen-tohen.ru/Frame_234.png"></img>
+                    <button className="protal__close" onClick={() => {
+                        setOpenMenu(false);
+                    }}>
+                        <FontAwesomeIcon icon={faXmark} />
+                    </button>
+                </div>
+                <Navigation></Navigation>
+                {/* <ul>
                     {categories.map((category) => {
                         return <li key={category.title} onMouseOver={() => {
                                     // setCategory(category);
@@ -189,32 +176,8 @@ export default function Header() {
                             <div></div>
                         </li>
                     })} 
-                </ul>
+                </ul> */}
             </PortalComp>, document.body)}
-            {/* {popupOpened && <Popup setClose={setPopupOpened}>
-                <div className="header__popup-wrapper">
-                    <button onClick={() => {
-                        setPopupOpened(false);
-                        }} className="header__popup-close">
-                            <FontAwesomeIcon icon={faXmark} />
-                    </button>
-                    <form className="header__popup-form" onSubmit={(evt) => {
-                            evt.preventDefault();
-                        }}>
-                            <h3>Войти или зарегистрироваться</h3>
-                            <p>Введите номер телефона для входа или регистрации на платформе. Отправим код по СМС либо в Telegram</p>
-                            <div>
-                                <span>+7</span>
-                                <input type="tel" placeholder="ваш телефон..."></input>
-                            </div>
-                            <button type="button" onClick={() => {
-                                setPopupOpened(false);
-                                dispatch(login(sellerUser));
-                            }}>Получить код</button>
-                    </form>
-                    <p className="header__popup-wrapper-p">Нажимая на кнопку "Получить код", Вы даете согласие на обработку персональных данных в соответствии с <a href="">политикой обработки персональных данных</a></p>
-                </div>
-            </Popup>} */}
         </>
 
     )
