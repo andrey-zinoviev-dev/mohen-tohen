@@ -178,7 +178,6 @@ export default function GoodPage() {
                 </div>
                 } */}
                 <div className="good__text-quantity">
-                    
                     <button disabled={quantity < 2 ? true : false} onClick={() => {
                         setQuantity((prevValue) => {
                             return prevValue - 1;

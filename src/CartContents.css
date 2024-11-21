@@ -5,32 +5,42 @@
     gap: 15px;
     padding: 0;
     list-style: none;
-    /* max-width: 1024px; */
-    max-width: 1280px;
+    /* max-width: 1280px; */
     width: 100%;
     margin: 0 auto;
 }
 
 .cart__ul-li {
-    display: flex;
+    display: grid;
+    grid-template-columns: 100px 1fr 150px;
+    align-items: center;
+    gap: 0 25px;
+    background-color: white;
+    border-radius: 9px;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 10px;
+    /* display: flex;
     align-items: stretch;
     justify-content: space-between;
     box-sizing: border-box;
-    /* padding: 7px 0 30px 0; */
     padding: 10px 0;
     flex-direction: column;
-    width: 100%;
+    width: 100%; */
 
 }
+
+.cart__ul-li img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
 .cart__ul-li:not(:last-of-type) {
     border-bottom: 2px solid rgb(96,96,96);
 }
-.cart__ul-li:hover {
-    /* box-shadow: 2px 2px 9px rgba(96,96,96, 0.5) */
-}
-.cart__ul-li-delete {
-    /* align-self: flex-end; */
-}
+
 
 .cart__ul-li-details {
     display: flex;

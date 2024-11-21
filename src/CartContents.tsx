@@ -8,6 +8,8 @@ import { useAppSelector } from "./hooks";
 // import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
 // import { changeQuantity, remove } from "./features/basketSlice";
 import CartItem from "./CartItem";
+import Headline from "./Headline";
+import InputEl from "./InputEl";
 
 export default function CartContents() {
     const cartState = useAppSelector((state) => {
@@ -44,73 +46,22 @@ export default function CartContents() {
 
     return (
         <>
-            <ul className="cart__ul">
-                        {/* <li className="cart__ul-li cart__ul-li_first" key="parameters">
-                            <span className="cart__ul-li-span">Товар</span>
-                            <span>Количество</span>
-                            <span>Цена</span>
-                        </li> */}
-                        {cartState.map((cartGood) => {
-                            return <li className="cart__ul-li" 
-                            key={cartGood.good._id}>
-                                <CartItem item={cartGood}></CartItem>
-                                {/* <div className="cart__ul-li-details">
-                                    <div className="cart__ul-li-details-params">
-                                        <img className="cart__ul-li-img" src={cartGood.good.photos[0].url}></img>
-                                        <div className="cart__ul-li-text">
-                                            <span className="cart__ul-li-text-title">{cartGood.good.title}</span>
-                                            <span className="cart__ul-li-text-refid">Артикул: {cartGood.good._id}</span>
-                                            <div className="cart__ul-li-text-specs">
-                                                <span>{cartGood.good.material && cartGood.good.material}</span>
-                                                
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="cart__ul-li-quantity">
-                                        <button className="cart__button" disabled={cartGood.quantity === 1 ? true : false} onClick={() => {
-                                            dispatch(changeQuantity({good: cartGood.good, quantity: -1}));
-                                            updateBasket({id: cartGood.good._id, quantity: -1})
-                                            .then((data) => {
-                                                data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
-                                            })
-                                        }}>
-                                            <FontAwesomeIcon icon={faMinus} />
-                                        </button>
-                                        <span>{cartGood.quantity}</span>
-                                        <button className="cart__button" disabled={cartGood.good.batch === cartGood.quantity ? true : false} onClick={() => {
-                                            dispatch(changeQuantity({good: cartGood.good, quantity: 1}));
-
-                                            console.log(cartGood.good.batch === cartGood.quantity)
-                                            updateBasket({id: cartGood.good._id, quantity: 1})
-                                            .then((data) => {
-                                                data.data && dispatch(updateBasketGoodQuantity({ good: data.data.good, quantity: data.data.quantity }))
-                                            })
-                                        
-                                        }}>
-                                            <FontAwesomeIcon icon={faPlus} />
-                                        </button>
-                                    </div>
-                                    <span>{cartGood.good.price}</span>
-                                    <button className="cart__ul-li-delete cart__button" onClick={() => {
-                                        
-                                        dispatch(remove(cartGood.good))
-                                        
-                                        deleteItem(cartGood.good._id)
-                                        .then((data) => {
-                                            data.data && dispatch(deleteBasketGood(cartGood.good))
-                                        })
-                                        
-                                    }}>
-                                        <FontAwesomeIcon icon={faXmark} />
-                                    </button>
-                                </div> */}
-                            </li>
-                        })}
+           {cartState.length > 0  ? <ul className="cart__ul">
+                {cartState.map((cartGood) => {
+                    return <li className="cart__ul-li" 
+                        key={cartGood.good._id}>
+                            <CartItem item={cartGood}></CartItem>
+                    </li>
+                })}
             </ul>
-            <span className="cart__subtotal cart__subtotal_small-font">Подытог: <span>{subtotal}р.</span></span>
+            :
+            <p>Ваша корзина пуста, но ее можно наполнить</p>
+
+            }
+
+            {/* <span className="cart__subtotal cart__subtotal_small-font">Подытог: <span>{subtotal}р.</span></span>
             <span className="cart__subtotal cart__subtotal_small-font">Доставка: <span>{shipping}р.</span></span>
-            <span className="cart__subtotal">Итого: <span>{subtotal + shipping}р.</span></span>
+            <span className="cart__subtotal">Итого: <span>{subtotal + shipping}р.</span></span> */}
         </>
         
     )

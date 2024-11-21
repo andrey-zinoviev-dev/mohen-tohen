@@ -17,25 +17,18 @@ import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import Login from "./Login";
 import Headline from "./Headline";
+import CartDetails from "./CartDetails";
 // interface goodPageInt extends GoodInterface {
 //     quantity: number,
 // }
 
 export default function Cart() {    
-    const cartState = useAppSelector((state) => {
-        return state.basket.goods;
-    });
-
-    const userState = useAppSelector((state) => {
-        return state.user._id;
-    });
     // console.log(userState);
 
     // console.log(cartState);
 
 
     //state
-    const [openedPortal, setOpenedPortal] = useState<boolean>(false);
     // const [changeSpec, setChangeSpec] = React.useState<boolean>(false);
     // const [selectedGoodName, setSelectedGoodName] = React.useState<string | null>(null);
     // const [newColor, setNewColor] = React.useState<ColorInterface | undefined>(undefined);
@@ -56,15 +49,17 @@ export default function Cart() {
     return (
         <>
             <section className="cart">
-                <Headline text="Корзина"></Headline>
-                {/* <h3>корзина</h3> */}
-                {cartState.length > 0 ? <>
+                <h3>корзина</h3>
+                {/* {cartState.length > 0 ? <> */}
                     {/* <li className="cart__ul-li cart__ul-li_first" key="parameters">
                         <span className="cart__ul-li-span">Товар</span>
                         <span>Количество</span>
                         <span>Цена</span>
                     </li> */}
-                    <CartContents />
+                    <div className="cart__wrapper">
+                        <CartContents />
+                        <CartDetails></CartDetails>
+                    </div>
                     {/* <ul className="cart__ul">
                     <li className="cart__ul-li cart__ul-li_first" key="parameters">
                         <span className="cart__ul-li-span">Товар</span>
@@ -127,39 +122,13 @@ export default function Cart() {
                     
                 </div> */}
 
-                {userState ? <Link to={"../createOrder"} className="cart__submit-btn">
-                    Оформить заказ
-                </Link>
-                :
-                <button className="cart__submit-btn" onClick={() => {
-                    setOpenedPortal(true);
-                    // console.log("open login popup")
-                }}>
-                    Оформить заказ    
-                </button>}
 
-                </>
+
+                {/* </>
                 :
                 <p>Ваша корзина пуста, но ее можно наполнить</p>
-                }
+                } */}
             </section>
-            
-            {/* {changeSpec && <Popup setClose={closePopup}> */}
-                {/* <h3>Редактировать товар в корзине</h3> */}
-                {/* <h3>{selectedGood?.title}</h3>
-                {selectedGood?.colors && 
-                <>
-                    <h5>Цвет- <span>{selectedGood.selectedColor?.title}</span></h5>
-                    <GoodColors updateColor={setNewColor} colors={selectedGood.colors}></GoodColors>
-                    <button onClick={() => {
-                        dispatch(editGood({...selectedGood, selectedColor: newColor}));
-                        closePopup();
-                    }}>Обновить {selectedGood.title}</button>
-                </>} */}
-            {/* </Popup>} */}
-            {openedPortal && createPortal(<PortalComp>
-                <Login closePopup={setOpenedPortal}></Login>
-            </PortalComp>, document.body)}
         </>
     )
 }
