@@ -8,8 +8,8 @@ import { useAppSelector } from "./hooks";
 // import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
 // import { changeQuantity, remove } from "./features/basketSlice";
 import CartItem from "./CartItem";
-import Headline from "./Headline";
-import InputEl from "./InputEl";
+// import Headline from "./Headline";
+// import InputEl from "./InputEl";
 
 export default function CartContents() {
     const cartState = useAppSelector((state) => {
@@ -26,12 +26,12 @@ export default function CartContents() {
     // }
 
     //variables
-    const subtotal = cartState.reduce((result, item) => {
-        result = result + (item.good.price * item.quantity);
-        return result;
-    }, 0);
+    // const subtotal = cartState.reduce((result, item) => {
+    //     result = result + (item.good.price * item.quantity);
+    //     return result;
+    // }, 0);
 
-    const shipping = 0;
+    // const shipping = 0;
 
     //dispatch
     // const dispatch = useAppDispatch();

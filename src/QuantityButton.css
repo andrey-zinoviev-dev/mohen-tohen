@@ -1,0 +1,22 @@
+.button-quantity {
+  background-color: transparent;
+  border: 2px solid black;
+  box-sizing: border-box;
+  padding: 0;
+  width: 30px;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  transition: all 0.25s ease-in-out;
+}
+
+.button-quantity:disabled {
+  color: #CCCDD0;
+  border: 2px solid #CCCDD0;
+  pointer-events: none;
+}
+
+.button-quantity:hover {
+  border: 2px solid #FF8261;
+  color: #FF8261;
+}
+

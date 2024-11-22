@@ -1,6 +1,6 @@
 import { goodPageInt } from "./interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "./hooks";
 import { changeQuantity } from "./features/basketSlice";
 import { useState } from "react";
@@ -10,43 +10,64 @@ import DeletePopup from "./DeletePopup";
 import { remove } from "./features/basketSlice";
 import PortalCentered from "./PortalCentered";
 import "./CartItem.css";
+import QuantityButton from "./QuantityButton";
 export default function CartItem({item}: {item: goodPageInt}) {
-  //dispatch
-  const dispatch = useAppDispatch();
+    //dispatch
+    const dispatch = useAppDispatch();
 
-  //state
-  const [openDelete, setOpenDelete] = useState<boolean>(false);
+    //state
+    // const [openDelete, setOpenDelete] = useState<boolean>(false);
+    const [itemQuantity, setItemQuantity] = useState<number>(item.quantity);
 
-  //functions
-  function deleteItem() {
-    dispatch(remove(item.good))
-  }
+    //functions
+    function deleteItem() {
+        dispatch(remove(item.good))
+    }
 
-  return (
-    <>
-        <img src={item.good.photos[0].url}></img>
-        <div className="cart-item__wrapper">
-            <span>{item.good.title}</span>
-            <div>
-                <span>{item.good.material}</span>
-                <span>{item.good.dimensions}</span>
-                <div style={{backgroundColor: item.good.color}}></div>
+    function minusOne() {
+        return setItemQuantity((prevValue) => {
+            return prevValue - 1;
+        })
+    }
+
+    function plusOne() {
+        return setItemQuantity((prevValue) => {
+            return prevValue + 1;
+        })
+    }
+
+    return (
+        <>
+            <img className="cart-item__cover" src={item.good.photos[0].url}></img>
+            <div className="cart-item__wrapper">
+                {item.good.title}
+                <div className="cart-item__wrapper-details">
+                    <span>{item.good.material}</span>
+                    <span>{item.good.dimensions}</span>
+                    <div className="cart-item__color" style={{backgroundColor: item.good.color}}></div>
+                </div>
+                <div className="cart-item__wrapper-buttons">
+                    <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={itemQuantity} stock={item.good.batch}></QuantityButton>
+                    <span>{itemQuantity}</span>
+                    <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={itemQuantity} stock={item.good.batch}></QuantityButton>
+                    {/* <button>
+                        <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                    {0}
+                    <button>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button> */}
+                </div>
+                
             </div>
-            <div className="cart-item__wrapper-buttons">
-                <button>
-                    <FontAwesomeIcon icon={faMinus} />
+            <div className="cart-item__wrapper-delete">
+                <button className="cart-item__delete">
+                    <FontAwesomeIcon icon={faXmark} />
                 </button>
-                {0}
-                <button>
-                    <FontAwesomeIcon icon={faPlus} />
-                </button>
+                <span className="cart-item__price">{item.good.price}&#8381;</span>
             </div>
-            
-        </div>
-        <span>
-            {item.good.price}&#8381;
-        </span>
-    </>
+
+        </>
     // <div className="cart__ul-li-details">
     //   <div className="cart__ul-li-details-params">
     //                                     <img className="cart__ul-li-img" src={item.good.photos[0].url}></img>
@@ -84,5 +105,5 @@ export default function CartItem({item}: {item: goodPageInt}) {
     //         </PortalCentered>
     //     </PortalComp>, document.body)}
     // </div>
-  )
+    )
 }

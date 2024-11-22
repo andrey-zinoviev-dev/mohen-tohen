@@ -31,6 +31,7 @@ import ShareButton from "./ShareButton"
 import { Swiper, SwiperSlide } from "swiper/react"
 // import s
 import SwiperDot from "./SwiperDot"
+import QuantityButton from "./QuantityButton"
 
 export default function GoodPage() {
 
@@ -56,6 +57,19 @@ export default function GoodPage() {
     const [quantity, setQuantity] = React.useState<number>(1);
     const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0)
     console.log(selectedPhoto);
+
+    //functions
+    function minusOne() {
+        return setQuantity((prevValue) => {
+            return prevValue - 1;
+        })
+    }
+
+    function plusOne() {
+        return setQuantity((prevValue) => {
+            return prevValue + 1;
+        })
+    }
 
     // const [postGoodToBasket, { isLoading }] = usePostGoodToBasketMutation();
     // const [postGoodToFavourites] = usePostGoodToFavouriteMutation();
@@ -85,28 +99,6 @@ export default function GoodPage() {
 
     return (
         <section className="good">
-            {/* {window.innerWidth > 1023 ?  */}
-            {/* <div className="good__parameters">
-                <img className="img" src={good.photos && good.photos[selectedPhoto].url}></img>
-                <ul className="good__photos">
-                    {good.photos && good.photos.map((photo, index) => {
-                        return <li key={photo.url}>
-                            <button onClick={() => {
-                                setSelectedPhoto(index);
-                            }}>
-                                <img src={photo.url}></img>
-                            </button>
-                        </li>
-                    })}
-                </ul>
-                <div className="good__parameters-features">
-                    <span className="good__parameters-features-feature">{good.material}</span>
-                    {good.dimensions && <span className="good__parameters-features-feature">
-                        {good.dimensions}
-                    </span>}
-                </div>
-            </div> */}
-            {/* : */}
             <div className="good__swiper">
                 <Swiper className="good__swiper-container" onSlideChange={(data) => {
                     setSelectedPhoto(data.realIndex);
@@ -129,15 +121,7 @@ export default function GoodPage() {
             <div className="good__text">
                 <div className="line1"> 
                     <h3>{good.title}</h3>
-                    {/* <button className="good__text-button" onClick={() => {
-                        dispatch(toggleFavourite(state));
-                        setClickedFavourite((prevValue) => {
-                            return !prevValue;
-                        })
-                        dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
-                    }}>
-                        <FontAwesomeIcon className="good__text-button-svg" style={{color: clickedFavourite ? "#FF8261" : "#F7F7F7"}} icon={faHeart} />
-                    </button> */}
+
                 </div>
                 <h4>Цена: <span className="cvet">{good.price}</span></h4>
                 <Link to={`/brands/${good.seller && good.seller._id}`}>
@@ -147,23 +131,9 @@ export default function GoodPage() {
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
-                {/* <Link to={`/brands/${good && good.seller._id}`} preventScrollReset={false}>
-                    <div className="good__text-a-name">
-                        <span>{good.seller.name && good.seller.name}</span>
-                        <div></div>
-                    </div>
-                    <FontAwesomeIcon icon={faArrowRight} />
-                </Link> */}
+
                 <p>{good.description}</p>
-                {/* <div className="good__text-delivery">
-                    <FontAwesomeIcon icon={state.stock > 0 ? faCheckCircle : faTruckRampBox} />
-                    <span>{!state.madeToOrder ? `В наличии ${state.stock}` : "Товар делается под заказ и будет доставлен в течение 2-5 дней после производства"}</span>
-                </div> */}
-                {/* <span>Материал{}</span> */}
-                {/* {state.candle ? <h4>Объем: <span className="cvet">{state.dimensions && state.dimensions.volume}мл</span></h4>
-                :
-                <h4>Размеры: <span className="cvet">{`${state.dimensions && state.dimensions.width}x${state.dimensions && state.dimensions.height}x${state.dimensions && state.dimensions.depth}см`}</span></h4>
-                } */}
+
                 <h4>
                     Размер: <span className="cvet">{good.dimensions}</span>
                 </h4>
@@ -172,13 +142,12 @@ export default function GoodPage() {
                     <div style={{backgroundColor: good.color, width: 20, height: 20, borderRadius: 3}}></div>
                 </h4>
                 <h4>Наличие: <span className="cvet">{good.batch}</span></h4>
-                {/* {state.colors && <div className="good__text-colors-div">
-                    <h4>Цвет: <span className="cvet">{selectedColor?.title}</span></h4>
-                    <GoodColors updateColor={setSelectedColor} colors={state.colors} />
-                </div>
-                } */}
+
                 <div className="good__text-quantity">
-                    <button disabled={quantity < 2 ? true : false} onClick={() => {
+                    <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={minusOne} minus={true}></QuantityButton>
+                    <span>{quantity}</span>
+                    <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
+                    {/* <button disabled={quantity < 2 ? true : false} onClick={() => {
                         setQuantity((prevValue) => {
                             return prevValue - 1;
                         })
@@ -192,7 +161,7 @@ export default function GoodPage() {
                         })
                     }}>
                         <FontAwesomeIcon icon={faPlus} />
-                    </button>
+                    </button> */}
                 </div>
                 <div className="good__text-buttons">
                     <BasketButton good={good} quantity={quantity} />
