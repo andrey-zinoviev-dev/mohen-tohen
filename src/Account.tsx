@@ -42,15 +42,9 @@ export default function Account() {
 
     return (
         <section className="account">
-            <div className="account__navigation-wrapper">
-            {/* <h3>Здравствуйте, c возвращением в Mohen-Tohen!</h3> */}
+            {userState.loggedIn && <div className="account__navigation-wrapper">
                 <div className="account__wrapper-user-text">
-                    {/* <div className="account__wrapper-user-text-profile">
-                        <h3>Здравствуйте, {userState.name}</h3>
-                        <ShareButton href={`${window.location.origin}/brands/${userState._id}`} />
-                    </div> */}
-                    {/* <span>С возвращением в Mohen-Tohen!</span> */}
-                    {/* <div className=""> */}
+
                     
                         <img className="account__wrapper-user-text-avatar" src={userState.cover && userState.cover}></img>
                         <div className="account__wrapper-user-text-data">
@@ -67,21 +61,10 @@ export default function Account() {
                             </div>
                             
 
-                            {/* <button>
-                                Редактировать
-                            </button> */}
-                            {/* <LinkCompAction to="profile/edit" text="Редактировать" icon={faPen} /> */}
+                       
                         </div>
-                    {/* </div> */}
                 </div>
-                {/* <div> */}
-                {/* <h3>Здравствуйте, c возвращением в Mohen-Tohen!</h3> */}
 
-                {/* <div className="account__wrapper-user-text-profile"> */}
-                    {/* <span></span> */}
-                        {/* <ShareButton href={`${window.location.origin}/brands/${userState._id}`} /> */}
-                {/* </div>  */}
-                {/* </div> */}
                 <AccountLinks></AccountLinks>
 
                 {userState.loggedIn && <button className="account__logout" onClick={() => {
@@ -92,14 +75,11 @@ export default function Account() {
                             navigate('/');
                             navigate(0);
                         }
-                        // if(data.loggedOut) {
-
-                        // }
                     })
                 }}>
                     Выйти
                 </button>}
-            </div>
+            </div>}
 
             <div className="account__wrapper">
                 <Outlet></Outlet>
