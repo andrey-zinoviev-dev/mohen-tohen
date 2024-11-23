@@ -20,6 +20,7 @@
     box-sizing: border-box;
     overflow: hidden;
     padding: 10px 25px;
+    position: relative;
     /* display: flex;
     align-items: stretch;
     justify-content: space-between;
@@ -180,9 +181,15 @@
     } */
 
     .cart__ul-li {
-        padding: 5px;
-        grid-template-columns: 50px 1fr 75px;
+        padding: 5px 10px;
+        grid-template-columns: 90px 1fr;
         gap: 0 10px;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .cart__ul-li {
+        grid-template-columns: 60px 1fr;
     }
 }
 
