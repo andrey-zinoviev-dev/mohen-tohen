@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faMinus, faPlus, faArrowRight, 
+import { faArrowRight, 
     // faTruckRampBox 
 } from "@fortawesome/free-solid-svg-icons"
 import { 

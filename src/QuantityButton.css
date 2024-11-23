@@ -20,3 +20,9 @@
   color: #FF8261;
 }
 
+@media screen and (max-width:767px) {
+  .button-quantity {
+    width: 23px;
+    font-size: 14px;
+  }
+}
