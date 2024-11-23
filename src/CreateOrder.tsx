@@ -8,7 +8,7 @@ import heading from "./assets/mh-1.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 // import Cart from "./Cart";
-import CartContents from "./CartContents";
+// import CartContents from "./CartContents";
 import LinkCompBack from "./LinkCompBack";
 import { usePostCreateOrderMutation } from "./features/apiSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
