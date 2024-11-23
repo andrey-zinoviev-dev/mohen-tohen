@@ -35,7 +35,7 @@ export default function CartDetails() {
             <span>Товаров в корзине: {cartState.length}</span>
             <div className="cart-details__input-wrapper">
                 <InputEl name="promocode" placeHolder="Промокод" updateState={setPromocode}></InputEl>
-                    {promocode.promocode.length > 0 && <button className="cart-details__input-button">
+                {promocode.promocode.length > 0 && <button className="cart-details__input-button">
                     <FontAwesomeIcon icon={faArrowRight} />
                 </button>}
             </div>

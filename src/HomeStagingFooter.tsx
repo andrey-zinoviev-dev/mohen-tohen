@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./HomeStagingFooter.css";
-import logo from "./assets/LOGO-02.png"
+import logo from "./assets/mh-1.png"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 export default function HomeStagingFooter() {
   return (

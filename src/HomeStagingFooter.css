@@ -1,12 +1,13 @@
 .homeStagingFooter {
   /* background-color: #3e3e3e; */
-  background-color: #213547;
+  /* background-color: #213547; */
+  background-color: white;
   border-radius: 0 0 5px 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 50px;
 }
 
 .homeStagingFooter__text-wrapper {
@@ -16,6 +17,7 @@
   color: white;
   max-width: 320px;
   text-align: left;
+  gap: 15px;
 }
 
 .homeStagingFooter__text-wrapper p {
@@ -24,7 +26,7 @@
 
 .homeStagingFooter__logo {
   max-width: 240px;
-  translate: -10px;
+  translate: -5px;
 }
 
 .homeStagingFooter__links {
@@ -36,7 +38,7 @@
   /* max-width: 420px; */
   max-width: 540px;
   /* margin: 0 0 0 auto; */
-  color: white;
+  /* color: white; */
   gap: 5px;
   margin: 0;
 }
@@ -46,15 +48,37 @@
   align-items: center;
   justify-content: space-between;
   gap: 5px;
-  color: white;
+  color: black;
+  position: relative;
+  /* color: white; */
 }
 
-.homeStagingFooter__links li a:hover {
-  color: #FF8261;
+.homeStagingFooter__links li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: 0.25s ease-in-out;
+}
+
+.homeStagingFooter__links li a:hover::after{
+  width: 100%;
+  /* color: #FF8261; */
 }
 
 .homeStagingFooter__links li svg {
   rotate: -45deg;
+}
+
+@media screen and (max-width:1023px) {
+  .homeStagingFooter__links {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -62,7 +86,7 @@
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
-
+    padding: 50px 25px;
   }
 
   .homeStagingFooter__links {

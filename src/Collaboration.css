@@ -1,14 +1,15 @@
 .collaboration {
-    padding: 50px 30px;
+    padding: 50px;
     /* background-color: #3D3B3A; */
-    background-color: #213547;
-    color: white;
+    /* background-color: #213547; */
+    /* color: white; */
+    background-color: white;
     display: flex;
     /* flex-direction: column; */
     /* align-items: flex-start; */
-    align-items: stretch;
+    align-items: flex-start;
     justify-content: space-between;
-    border-radius: 5px 5px 0 0;
+    border-radius: 9px 9px 0 0;
 }
 
 .collaboration__headline-wrapper {
@@ -37,11 +38,52 @@
 
 .collaboration h2 {
     font-size: 36px;
-    font-weight: 200;
+    font-weight: 400;
     max-width: 420px;
     text-align: left;
     line-height: 1.5;
     margin: 0;
+}
+
+.collaboration__text-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.collboration__input-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    /* padding: 10px 30px; */
+    position: relative;
+    margin: 10px 0 0 0;
+}
+
+.collboration__input-wrapper button {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 5px;
+    background-color: #FF8261;
+}
+
+.collaboration__link {
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    background-color: #FF8261;
+    box-sizing: border-box;
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+
+.collaboration__link svg {
+    rotate: -45deg;
 }
 
 .collaboration__wrapper {
@@ -152,7 +194,7 @@
 
 @media screen and (max-width: 1279px) {
     .collaboration {
-        padding: 30px;
+        /* padding: 30px; */
         gap: 15px;
     }
 }
@@ -164,11 +206,20 @@
 }
 
 @media screen and (max-width: 767px) {
+    .collaboration {
+        padding: 50px 25px;
+    }
     .collaboration h2 {
         font-size: 24px;
         max-width: 360px;
     }
-    .collaboration__form-inputs {
-        flex-direction: column;
+    .collaboration__link {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .collaboration__link {
+        font-size: 14px;
     }
 }

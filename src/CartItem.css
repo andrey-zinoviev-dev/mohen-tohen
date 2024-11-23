@@ -69,6 +69,14 @@
     text-align: right;
 }
 
+@media screen and (max-width: 767px) {
+    /* .cart-item__delete {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    } */
+}
+
 @media screen and (max-width: 424px) {
     .cart-item__color {
         min-width: 20px;

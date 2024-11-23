@@ -1,13 +1,19 @@
 // import React from "react";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Collaboration.css"
+import InputEl from "./InputEl";
+import { useEffect, useState } from "react";
 // import SelectElement from "./SelectElement";
 // import { inquerySellSelect } from "./utils";
 // import { CollaborationInterface } from "./interfaces";
 // import SuccessWrapper from "./SuccessWrapper";
 export default function Collaboration () {
     //state
+    const [name, setName] = useState<{sellerName: string}>({
+        sellerName: '',
+    });
+    const [nameProvided, setNameProvided] = useState<boolean>(false)
     // const [formData, setFormData] = React.useState<CollaborationInterface>(
     //     {
     //         name: "",
@@ -29,18 +35,36 @@ export default function Collaboration () {
 
     // console.log(formIsCompleted);
 
+    useEffect(() => {
+        name.sellerName.length === 0 && setNameProvided(false);
+    }, [name.sellerName])
+
     return (
         <section className="collaboration">
-            <div className="collaboration__headline-wrapper">
-                <h2>Вы дизайнер? Давайте сотрудничать!</h2>
+            <h2>Вы дизайнер? Давайте сотрудничать!</h2>
                 {/* <button>
 
                 </button> */}
-                <a target="_blank" href="https://mohen-tohen.ru/application">
+                {/* <a target="_blank" href="https://mohen-tohen.ru/application">
                     Заполнить анкету сотрудничества
                     <FontAwesomeIcon icon={faArrowRight} />
-                </a>
+                </a> */}
+            <div className="collaboration__text-wrapper">
+                <div className="collboration__input-wrapper">
+                    <InputEl name="sellerName" placeHolder="Ваше имя" updateState={setName}></InputEl>
+                    {name.sellerName.length > 0 && <button onClick={() => {
+                        setNameProvided(true);
+                    }}>
+                        <FontAwesomeIcon icon={!nameProvided ? faArrowRight : faCheck} />
+                    </button>}
+                    
+                </div>
+                {nameProvided && <a className="collaboration__link" target="_blank" href={`https://mohen-tohen.ru/application?name=${name.sellerName}`}>
+                    Заполнить анкету сотрудничества
+                    <FontAwesomeIcon icon={faArrowRight} />
+                </a>}
             </div>
+
             {/* <ul>
                 <h4>Что мы прделагаем взамен</h4>
                 {[

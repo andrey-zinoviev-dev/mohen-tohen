@@ -121,6 +121,9 @@
 
 
 @media screen and (max-width: 767px) {
+    .brands {
+        padding: 50px 25px;
+    }
     .brands__ul {
         overflow: auto;
         box-sizing: border-box;

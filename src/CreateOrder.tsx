@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 import { useNavigate } from "react-router-dom";
 import { updateOrdersHistory } from "./features/userSlice";
 import { clearCart } from "./features/basketSlice";
+import CartDetails from "./CartDetails";
 export default function CreateOrder() {
     //redux
     const cartState = useAppSelector((state) => {
@@ -94,11 +95,11 @@ export default function CreateOrder() {
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>
                 </div>
-                <div className="order-create__block">
+                <CartDetails></CartDetails>
+                {/* <div className="order-create__block">
                     <h3>Что в корзине</h3>
                     <CartContents />
-                    {/* <Cart /> */}
-                </div>
+                </div> */}
             </div>
         </section>
     )
