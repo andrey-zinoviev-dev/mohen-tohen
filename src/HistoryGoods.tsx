@@ -142,7 +142,7 @@ export default function HistoryGoods() {
       </ListColumn>
 
       :
-      <span>История товаров пуста, но вы всегда можете ее заполнить</span>}
+      <span className="history__empty-span">История товаров пуста, но вы всегда можете ее заполнить</span>}
     </>
   )
 }

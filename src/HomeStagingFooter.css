@@ -21,7 +21,8 @@
 }
 
 .homeStagingFooter__text-wrapper p {
-  color: #a4a4a4;
+  /* color: #a4a4a4; */
+  color: #5f5f5f;
 }
 
 .homeStagingFooter__logo {

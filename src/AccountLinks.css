@@ -13,19 +13,32 @@
 }
 
 .account__links-li-link {
-    color: #213547;
-    box-sizing: border-box;
+    color: #757373;
+    position: relative;
+    transition: all 0.25s ease-in-out;
+    /* box-sizing: border-box;
     padding: 10px 10px;
     border-radius: 30px;
     border: 1px solid transparent;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out; */
 }
 
+/* .account__links-li-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #213547;
+} */
+
 .account__links-li-link:hover {
-    border: 1px solid #213547;
+    color: #213547;
 }
 
 .account__links-li-link_active {
-    background-color: rgb(33, 53, 71);
-    color: white;
+    color: #213547;
+    /* background-color: rgb(33, 53, 71);
+    color: white; */
 }

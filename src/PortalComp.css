@@ -105,6 +105,12 @@
 
 @media screen and (max-width: 425px) {
   .portal__content {
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .portal__content {
     max-width: 280px;
   }
 }

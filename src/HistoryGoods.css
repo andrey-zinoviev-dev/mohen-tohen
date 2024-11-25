@@ -130,6 +130,10 @@
   color: #FF8261;
 }
 
+.history__empty-span {
+  text-align: left;
+}
+
 /* .list-column__wrapper-column-brand img {
   max-width: 50px;
   aspect-ratio: 1/1;
