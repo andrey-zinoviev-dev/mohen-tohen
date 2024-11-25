@@ -575,8 +575,8 @@ export const stepsOfProcess:{title: string, descirption: string}[] = [
   }
 ]
 
-// export const baseApi = "https://api.mohen-tohen.ru";
-export const baseApi = "http://localhost:3000";
+export const baseApi = "https://api.mohen-tohen.ru";
+// export const baseApi = "http://localhost:3000";
 
 export const recipientInputs = [{
   name: "name",
@@ -621,7 +621,7 @@ export const welcomeSlides = [
   },
   {
     text: "Керамические вазы из серии Тихое место",
-    cover: "https://cdn.mohen-tohen.ru/КОЛЛЕКЦИЯ_22.png"
+    cover: "https://cdn.mohen-tohen.ru/вазы.png"
   },
   {
     text: "Сезонная распродажа",

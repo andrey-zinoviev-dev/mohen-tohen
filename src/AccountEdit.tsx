@@ -2,27 +2,29 @@ import { useEffect, useState } from "react";
 // import InputEl from "./InputEl";
 import { useAppSelector } from "./hooks";
 import "./AccountEdit.css";
+import { usePutUserEditMutation } from "./features/apiSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 
 export default function AccountEdit() {
     //redux
     const userState = useAppSelector((state) => {
         return state.user;
     });
+
+    //RTK
+    const [sendData] = usePutUserEditMutation();
     // console.log(userState);
 
     //state
-    const [formData, setFormData] = useState<{name: string, email: string, phone: string, brandName: string | undefined}>({
-        name: "",
-        email: "",
-        phone: "",
-        brandName: "",
+    const [formData, setFormData] = useState<{name?: string, email?: string, brandName?: string | undefined}>({
         // birthday: "",
     });
 
     useEffect(() => {
         if(userState.name.length > 0) {
             setFormData((prevValue) => {
-                return {...prevValue, name: userState.name, email: userState.email, phone: userState.phone, brandName: userState.brandName};
+                return {...prevValue, name: userState.name, email: userState.email, brandName: userState.brandName};
             })
         }
     }, [userState.name, userState.brandName]);
@@ -32,7 +34,8 @@ export default function AccountEdit() {
             <h3>Мой профиль</h3>
             <form className="form-edit" onSubmit={(evt) => {
                 evt.preventDefault();
-                console.log(formData);
+                // console.log(formData);
+                sendData(formData)
             }}>
                 <label>
                     Имя и фамилия
@@ -54,11 +57,17 @@ export default function AccountEdit() {
                 </label>
                 <label>
                     Телефон
-                    <input name="phone" onChange={(evt) => {
+                    <input disabled={true} name="phone" onChange={(evt) => {
                         setFormData((prevValue) => {
                             return {...prevValue, phone: evt.target.value};
                         })
-                    }} value={formData.phone}></input>
+                    }} value={userState.phone}></input>
+                    <div className="form-edit__note-wrapper">
+                        <div className="form-edit__note">
+                            <FontAwesomeIcon icon={faExclamation} />
+                        </div>
+                        <p>Пожалуйста, обратитесь в службу поддержки для смены номера</p>
+                    </div>
                     {/* <InputEl name="phone" placeHolder="+79031513045" updateState={setFormData}></InputEl> */}
                 </label>
                 {/* <label>

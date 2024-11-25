@@ -147,66 +147,12 @@ export default function GoodPage() {
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={minusOne} minus={true}></QuantityButton>
                     <span>{quantity}</span>
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
-                    {/* <button disabled={quantity < 2 ? true : false} onClick={() => {
-                        setQuantity((prevValue) => {
-                            return prevValue - 1;
-                        })
-                    }}>
-                        <FontAwesomeIcon icon={faMinus} />
-                    </button>
-                    <span>{quantity}</span>
-                    <button disabled={quantity < good.batch ? false : true} onClick={() => {
-                        setQuantity((prevValue) => {
-                            return prevValue + 1;
-                        })
-                    }}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </button> */}
                 </div>
                 <div className="good__text-buttons">
                     <BasketButton good={good} quantity={quantity} />
-                    {/* <button className="butt" onClick={() => {
-                        userState._id && postGoodToBasket({good: {...state, selectedColor: selectedColor, quantity: quantity}, userId: userState._id})
-                        .then((data) => {
-                            console.log(data);
-                            // !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
-                            // :
-                            // dispatch(addRemoveToBasket(state));
-                        
-                            // dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
-                        })
-                        !goodInBasket ? dispatch(addRemoveToBasket({ ...state, selectedColor: selectedColor, quantity: 1 }))
-                        :
-                        dispatch(addRemoveToBasket(state));
-                     
-                        dispatch(changeMessage({message: goodInBasket ? `Товар ${state.title} убран из корзины` : `Товар ${state.title} добавлен в корзину`}))
-
-                    }}>
-                        Добавить в корзину
-                        <span>{!goodInBasket ? "Добавить в корзину" : "Товар добавлен"}</span>
-                    </button> */}
-                    {/* <button className="good__text-button" onClick={() => {
-                        console.log(state, quantity);
-                        dispatch(addRemoveToFavUser(state));
-
-                        dispatch(toggleFavourite(state));
-                        setClickedFavourite((prevValue) => {
-                            return !prevValue;
-                        })
-
-                        dispatch(changeMessage({message: goodInFavourites ? `Товар ${state.title} убран из избранных` : `Товар ${state.title} добавлен в избранное`}))
-
-                        dispatch(changeMessage(`Товар ${state.title} добавлен в избранное`))
-                    }}>
-                        <FontAwesomeIcon className="good__text-button-svg" icon={faHeart} style={{color: goodInFavourites ? "#FF8261" : "#F7F7F7"}}/>
-                    </button> */}
                     <LikeButton good={good}></LikeButton>
-                    <ShareButton href={window.location.href} />
-                    {/* <button>
-                        <FontAwesomeIcon icon={faShareNodes} />
-                    </button> */}
+                    <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} />
                 </div>
-
                 <Terms></Terms>
             </div>
         </section>

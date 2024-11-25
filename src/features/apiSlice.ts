@@ -78,6 +78,17 @@ export const apiSlice = createApi({
                 credentials: "include",
             })
         }),
+        putUserEdit: builder.mutation<UserInterface, {name?: string, email?: string, phone?: string, brandName?: string | undefined}>({
+            query: (editBody) => ({
+                url: "/users/me/edit",
+                method: "PUT",
+                body: {editBody: editBody},
+                credentials: "include",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            })
+        }),
         postGoodToFavourite: builder.mutation<{addedToFavs: boolean}, string>({
             query: (id) => ({
                 url:`/users/me/favourites`,
@@ -183,4 +194,4 @@ export const apiSlice = createApi({
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, usePutUserEditMutation, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;

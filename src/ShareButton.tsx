@@ -49,22 +49,22 @@ export default function ShareButton({ href }: { href: string }) {
                     }}>
                   <FontAwesomeIcon icon={faShareNodes} />
               </button>
-              <span>Сылка</span>
+              <span>Сcылка</span>
             </li>
             <li className="share-ul__li">
-              <EmailShareButton className="share-icon" url="">
+              <EmailShareButton className="share-icon" url={href}>
                 <EmailIcon />
               </EmailShareButton>
               <span>Почта</span>
             </li>
             <li className="share-ul__li">
-              <TelegramShareButton className="share-icon" url="https://mohen-tohen.ru">
+              <TelegramShareButton className="share-icon" url={href}>
                 <TelegramIcon />
               </TelegramShareButton>
               <span>Telegram</span>
             </li>
             <li className="share-ul__li">
-              <WhatsappShareButton className="share-icon" url="https://mohen-tohen.ru">
+              <WhatsappShareButton className="share-icon" url={href}>
                 <WhatsappIcon />
               </WhatsappShareButton>
               <span>Whatsapp</span>

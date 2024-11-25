@@ -21,6 +21,28 @@
     font-size: 16px;
 }
 
+.form-edit label input:disabled {
+  background-color: transparent;
+}
+
+.form-edit__note-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.form-edit__note {
+  width: 25px;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: black; */
+  color: black;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
 .form-edit button {
   align-self: flex-start;
   background-color: #FF8261;

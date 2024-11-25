@@ -19,7 +19,7 @@ export default function Good({ good }:GoodComponentInterface) {
                 }}></img>
                 <div className="good-img-wrapper__actions">
                     <LikeButton good={ good } />
-                    <ShareButton href={`${window.location.href}goods/${good._id}`} />
+                    <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} />
                 </div>
             </div>
             <div className="good-text-wrapper">

@@ -57,7 +57,7 @@ export default function Account() {
                                 <span>
                                     {userState.name}
                                 </span>
-                                <ShareButton href={`${window.location.origin}/brands/${userState._id}`} />
+                                <ShareButton href={`https://mohen-tohen.ru/brands/${userState._id}`} />
                             </div>
                             
 
