@@ -35,9 +35,10 @@ export const basketSlice = createSlice({
             localStorage.setItem("basket", JSON.stringify(state.goods));
 
         },
-        changeQuantity: (state, action: PayloadAction<goodPageInt>) => {
+        changeQuantity: (state, action: PayloadAction<{good: goodPageInt, plus: boolean}>) => {
+            // console.log(action.payload);
             const newBasket = state.goods.map((good) => {
-                return good.good._id === action.payload.good._id ? {...good, quantity: good.quantity + action.payload.quantity} : good; 
+                return good.good._id === action.payload.good.good._id ? {...good, quantity: action.payload.plus ?  good.quantity + 1 : good.quantity - 1 } : good; 
             })
 
             state.goods = newBasket;

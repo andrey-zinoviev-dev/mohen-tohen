@@ -5,12 +5,17 @@ import "./AccountEdit.css";
 import { usePutUserEditMutation } from "./features/apiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { useAppDispatch } from "./hooks";
+import { changeMessage } from "./features/notificationSlice";
 
 export default function AccountEdit() {
     //redux
     const userState = useAppSelector((state) => {
         return state.user;
     });
+
+    //dispatch
+    const dispatch = useAppDispatch();
 
     //RTK
     const [sendData] = usePutUserEditMutation();
@@ -35,7 +40,10 @@ export default function AccountEdit() {
             <form className="form-edit" onSubmit={(evt) => {
                 evt.preventDefault();
                 // console.log(formData);
-                sendData(formData)
+                sendData(formData).unwrap()
+                .then(() => {
+                    dispatch(changeMessage({message: "Данные успешно обновлены"}));
+                })
             }}>
                 <label>
                     Имя и фамилия

@@ -62,7 +62,7 @@ export default function FileUpload({ files, setUploadStatus }: { files: File[], 
 
   return (
     <>
-      <h3>Вот тут будет вся логика выгрузки файлов и форм</h3>
+      {/* <h3>Вот тут будет вся логика выгрузки файлов и форм</h3> */}
       <p>Название: {files[index] && files[index].name}</p>
       <progress max={100} value={uploadProgress}></progress>
       </>

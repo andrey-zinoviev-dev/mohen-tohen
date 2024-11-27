@@ -14,18 +14,20 @@ type CommonProps = {
 type ConditionalProps = | {
   application: true,
   linkBack?: never,
+  close?:never,
   // photos: File[],
   // submitData: () => Promise<void>,
 } | {
   application: false,
   linkBack?: {to: string, text: string},
+  close?: () => void,
   // photos: File[],
   // submitData: () => Promise<void>,
 };
 
 // type FinalTypes = CommonProps & ConditionalProps;
 
-export default function UploadComp({application, photos, submitData, linkBack}: CommonProps & ConditionalProps) {
+export default function UploadComp({application, photos, submitData, linkBack, close}: CommonProps & ConditionalProps) {
   // console.log(props.);
   // console.log(props.)
   // console.log(UploadCompType)
@@ -67,7 +69,11 @@ export default function UploadComp({application, photos, submitData, linkBack}: 
             <a href="">Подробнее о том, как мы проверяем анкеты</a>
           </>
           :
-          linkBack && <LinkCompBack to={linkBack.to} text={linkBack.text} />
+          <>
+            {linkBack && <LinkCompBack to={linkBack.to} text={linkBack.text} />}
+            {close && <button onClick={close}>Закрыть</button>}
+          </>
+          
           }
         </PortalCentered>
     }

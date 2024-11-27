@@ -575,3 +575,42 @@
 /* .application__form-div input::placeholder {
     color: #7f7f7f;
 } */
+
+@media screen and (max-width: 1279px) {
+    .application__first-stage img {
+        max-width: 420px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .application {
+        gap: 15px;
+        padding: 0 0 50px 0;
+    }
+    .application__first-stage {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        box-sizing: border-box;
+        padding: 0 50px;
+    }
+    .application__first-stage img {
+        max-width: 100%;
+        aspect-ratio: 16/9;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .application__heading {
+        max-width: 320px;
+    }
+    .application__first-stage {
+        padding: 0;
+    }
+
+    .application__wrapper_welcome-text {
+        padding: 0;
+    }
+}

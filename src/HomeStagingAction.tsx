@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { links } from "./utils";
 // import pic from "./assets/creative-fengshui-practice-arrangement.jpg";
-import logo from "./assets/mh-1.png";
+// import logo from "./assets/mh-1.png";
 import "./HomeStagingAction.css";
 import { createPortal } from "react-dom";
 // import PortalComp from "./PortalComp";
 import HomeStagingForm from "./HomeStagingForm";
 import PortalMultimedia from "./PortalMultimedia";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { useAppDispatch } from "./hooks";
 // import { openForm } from "./features/homeStagingSlice";
 export default function HomeStagingAction() {
@@ -20,9 +20,9 @@ export default function HomeStagingAction() {
     return (
         <section className="homestaging-action">
             <div className="homestaging-action__text">
-                <Link className="header__home" to={`../`}>
+                {/* <Link className="header__home" to={`../`}>
                     <img className="homestaging-action__logo" src={logo}></img>
-                </Link>
+                </Link> */}
                 {/* <img className="homestaging-action__logo" src={logo}></img> */}
                 <div className="homestaging-action__text-wrapper">
                     <h2>Превратите ваше жильё в объект <span className="homestaging-action__text-span">мечты</span> с нашим хоумстэйджингом!</h2>

@@ -1,39 +1,35 @@
 import { goodPageInt } from "./interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-// import { useAppDispatch } from "./hooks";
+import { useAppDispatch } from "./hooks";
 // import { changeQuantity } from "./features/basketSlice";
-import { useState } from "react";
+// import { useState } from "react";
 // import { createPortal } from "react-dom";
 // import PortalComp from "./PortalComp";
 // import DeletePopup from "./DeletePopup";
-// import { remove } from "./features/basketSlice";
+import { changeQuantity, remove } from "./features/basketSlice";
 // import PortalCentered from "./PortalCentered";
 import "./CartItem.css";
 import QuantityButton from "./QuantityButton";
 export default function CartItem({item}: {item: goodPageInt}) {
     //dispatch
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
     //state
     // const [openDelete, setOpenDelete] = useState<boolean>(false);
-    const [itemQuantity, setItemQuantity] = useState<number>(item.quantity);
+    // const [itemQuantity, setItemQuantity] = useState<number>(item.quantity);
 
     //functions
-    // function deleteItem() {
-    //     dispatch(remove(item.good))
-    // }
+    function deleteItem() {
+        dispatch(remove(item.good))
+    }
 
     function minusOne() {
-        return setItemQuantity((prevValue) => {
-            return prevValue - 1;
-        })
+        dispatch(changeQuantity({good: item, plus: false}))
     }
 
     function plusOne() {
-        return setItemQuantity((prevValue) => {
-            return prevValue + 1;
-        })
+        dispatch(changeQuantity({good: item, plus: true}))
     }
 
     return (
@@ -48,14 +44,14 @@ export default function CartItem({item}: {item: goodPageInt}) {
                         <div className="cart-item__color" style={{backgroundColor: item.good.color}}></div>
                     </div>
                     <div className="cart-item__wrapper-buttons">
-                        <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={itemQuantity} stock={item.good.batch}></QuantityButton>
-                        <span>{itemQuantity}</span>
-                        <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={itemQuantity} stock={item.good.batch}></QuantityButton>
+                        <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>
+                        <span>{item.quantity}</span>
+                        <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>
                     </div>
                 </div>
                 <span className="cart-item__price">{item.good.price}&#8381;</span>
             </div>
-            <button className="cart-item__delete">
+            <button onClick={deleteItem} className="cart-item__delete">
                 <FontAwesomeIcon icon={faXmark} />
             </button>
         </>

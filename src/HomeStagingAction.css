@@ -109,6 +109,7 @@
 @media screen and (max-width: 767px) {
     .homestaging-action {
         grid-template-columns: 1fr;
+        padding: 0;
     }
     .homestaging-action__text {
         padding: 0;

@@ -99,10 +99,14 @@ export const userSlice = createSlice({
             // console.log(action.payload);
             state.ordersHistory.push(action.payload);
             return state;
+        },
+        updateUserCover: (state, action: PayloadAction<string>) => {
+            state.cover = action.payload;
+            return state;
         }
     },
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout, addNewGoodToUser, updateOrdersHistory } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout, addNewGoodToUser, updateOrdersHistory, updateUserCover, } = userSlice.actions;
 export default userSlice.reducer;

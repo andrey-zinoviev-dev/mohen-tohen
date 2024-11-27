@@ -68,6 +68,10 @@ function App() {
           path: "category/:categoryName",
           element: <Category></Category>
         },
+        {
+          path: "/homestaging",
+          element: <HomeStaging></HomeStaging>,
+        },
         // {
         //   path: "/favs",
         //   element: <Favourites></Favourites>
@@ -138,10 +142,7 @@ function App() {
       path: "showApplication/:applicationID",
       element: <ShowApplication />
     },
-    {
-      path: "/homestaging",
-      element: <HomeStaging></HomeStaging>,
-    },
+
   ]);
 
   useEffect(() => {

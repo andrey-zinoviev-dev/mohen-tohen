@@ -7,6 +7,31 @@
     gap: 50px;
 }
 
+.account__avatar-wrapper {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+.account__avatar-wrapper button {
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: white;
+    opacity: 0;
+    transition: all 0.25s ease-in-out;
+}
+
+.account__avatar-wrapper:hover button {
+    opacity: 1;
+}
+
 .account__navigation-wrapper {
     display: flex;
     flex-direction: column;
@@ -29,9 +54,20 @@
 
 .account__wrapper-user-text-avatar {
     max-width: 75px;
+    max-height: 75px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     object-fit: cover;
+    margin: 0;
+}
+
+#account__wrapper-user-text-avatar {
+    max-width: 120px;
+    max-height: 120px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0;
 }
 
 .account__back {
