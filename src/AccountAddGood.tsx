@@ -29,13 +29,16 @@ export default function AccountAddGood() {
     price: 0,
     batch: 0,
   });
-  const [uploadStarted] = React.useState<boolean>(false);
+  const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
   //dispatch
   const dispatch = useAppDispatch();
 
   //RTK
   const [addGood] = usePostGoodToServerMutation();
+
+  //state
+  // const [updloadStarted, setUploadStarted] = useState<boolean>(false);
 
   //refs
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -79,11 +82,13 @@ export default function AccountAddGood() {
     })
   }
 
-  const formNotCompleted = Object.values(formData).filter((entry) => {
-    return typeof entry === 'string';
-  }).some((entry) => {
-    return entry.length === 0;
-  });
+  // const formNotCompleted = Object.values(formData).filter((entry) => {
+  //   return typeof entry === 'string';
+  // }).some((entry) => {
+  //   return entry.length === 0;
+  // });
+
+  // console.log(formNotCompleted);
   
   return (
     <>
@@ -91,8 +96,8 @@ export default function AccountAddGood() {
       <h3>Добавление нового товара</h3>
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
-        console.log(formData);
-        // setUploadStarted(true);
+        // console.log(formData);
+        setUploadStarted(true);
 
         // uploadGood(formData)
         // .then((data) => {
@@ -162,10 +167,12 @@ export default function AccountAddGood() {
               <InputEl updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
-          <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
-          {/* <button type="submit"> */}
+          <button type="submit">
             Отправить товар
           </button>
+          {/* <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
+            Отправить товар
+          </button> */}
         </div>
         <div className="addGoodform__files-wrapper">
           <span>Фото</span>

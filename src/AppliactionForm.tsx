@@ -100,9 +100,30 @@ export default function ApplicationForm() {
     }
 
     function submitData(){
-        return sendApplication(applicationData)
+        return sendApplication(applicationData).unwrap()
         .then((data) => {
-            console.log(data);
+                    fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify({
+                                // chat_id: 471930242,
+                    "chat_id": 2104151994,
+                    "text": `Новая заявка- ${applicationData.name}. Телефон- ${applicationData.phone}`,
+                    "parse_mode" : "markdown",
+                    "reply_markup" : {
+                        "inline_keyboard" : [
+                            [
+                                {
+                                    "text" : "Open link",
+                                    "url" : `https://mohen-tohen.ru/showApplication/${data._id}`
+                                }
+                            ]
+                        ]
+                    }
+                })
+            })
         })
     }
 

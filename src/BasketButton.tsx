@@ -54,7 +54,7 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
                 : 
                 <>
                     {good.batch ? <>
-                        {good.price}р.
+                        {good.category === "services" ? `от ${good.price}` : good.price}р.
                         <FontAwesomeIcon icon={faShoppingBag} />
                     </> : "Скоро в наличии"}
                 </>

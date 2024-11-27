@@ -188,6 +188,7 @@ export interface ApplicationInterface extends CollaborationInterface {
   dateOfFill: string,
   // photos: {title: string, file: File, url: never}[] | {title: string, file: never, url: string}[],
   showApplication?: boolean,
+  _id?:string,
 }
 
 export interface ApplicationNotUploadedIterface extends ApplicationInterface {

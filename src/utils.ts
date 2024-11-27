@@ -311,6 +311,11 @@ export const categories:CategoryInterface[] = [
 
     // ]
   },
+  {
+    title: "Услуги",
+    cover: "",
+    subcategories: [],
+  }
   // {
   //   title: 'Идеи',
   //   cover: "https://cdn.mohen-tohen.ru/Идеи_1.png"
@@ -575,8 +580,8 @@ export const stepsOfProcess:{title: string, descirption: string}[] = [
   }
 ]
 
-// export const baseApi = "https://api.mohen-tohen.ru";
-export const baseApi = "http://localhost:3000";
+export const baseApi = "https://api.mohen-tohen.ru";
+// export const baseApi = "http://localhost:3000";
 
 export const recipientInputs = [{
   name: "name",

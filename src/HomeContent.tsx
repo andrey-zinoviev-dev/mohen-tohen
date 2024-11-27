@@ -9,6 +9,7 @@ import PaidGoods from "./PaidGoods"
 import MainPageCategory from "./MainPageCategory"
 import { useGetGoodsQuery } from "./features/apiSlice"
 import { GoodInterface } from "./interfaces"
+import Services from "./Services"
 // import
 export default function HomeContent() {
     const {
@@ -39,6 +40,7 @@ export default function HomeContent() {
             {/* <MainPageCategory href={"catalog"} title="Горячие предложения" goods={goods}></MainPageCategory> */}
             <MainPageCategory href={"catalog"} title="Новинки" goods={newGoods} />
             <MainPageCategory href={"catalog"} title="Что можно приобрести" goods={goods} />
+            <Services></Services>
             {/* <PaidGoods></PaidGoods>
             <NewGoods></NewGoods>
             <RandomGoods></RandomGoods> */}

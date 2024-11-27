@@ -168,7 +168,7 @@ export const apiSlice = createApi({
                 url: `/applications/getApplication/${id}`
             })
         }),
-        sendApplication: builder.mutation<boolean, ApplicationInterface>({
+        sendApplication: builder.mutation<ApplicationInterface, ApplicationInterface>({
             query: (applicationData) => ({
                 url: `/applications/sendApplication`,
                 method: "POST",
