@@ -6,7 +6,7 @@ import "./ApplicationForm.css"
 // import heading from "./assets/mh-1.png"
 // import Footer from "./Footer";
 import SelectElement from "./SelectElement";
-import { applicationCategoriesSelect,  applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect } from "./utils";
+import { applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect, categories } from "./utils";
 import { ApplicationNotUploadedIterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 // import ApplicationOverview from "./ApplicationOverview";
@@ -24,7 +24,6 @@ import { useSearchParams } from "react-router-dom";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
 export default function ApplicationForm() {
-    console.log(import.meta.env.VITE_TG_BOT_TOKEN);
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
     // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
     const [applicationData, setApplicationData] = React.useState<ApplicationNotUploadedIterface>({
@@ -102,8 +101,6 @@ export default function ApplicationForm() {
     function submitData(){
         return sendApplication(applicationData).unwrap()
         .then((data) => {
-            console.log(data);
-            console.log(import.meta.env.VITE_TG_BOT_TOKEN);
                 fetch(`https://api.telegram.org/bot${import.meta.env.VITE_TG_BOT_TOKEN}/sendMessage`, {
                 method: "POST",
                 headers: {
@@ -112,7 +109,9 @@ export default function ApplicationForm() {
                 body: JSON.stringify({
                                 // chat_id: 471930242,
                     "chat_id": 2104151994,
-                    "text": `Новая заявка- ${applicationData.name}. Телефон- ${applicationData.phone}`,
+                    "text": `Новая заявка на сотрудничество!\nИмя: ${applicationData.name}.\nТелефон- ${applicationData.phone}\nНаправления- ${applicationData.category.map((category) => {
+                        return ` ${category}`
+                    }).join(",")}`,
                     "parse_mode" : "markdown",
                     "reply_markup" : {
                         "inline_keyboard" : [
@@ -235,19 +234,19 @@ export default function ApplicationForm() {
                                     <div className="application__form-data-wrapper">
                                         <label>Какие товары ты производишь?</label>
                                         <ul className="application__form-data-wrapper-categories">
-                                            {applicationCategoriesSelect.map((option) => {
+                                            {categories.map((option) => {
                                                 return <li>
                                                     <button onClick={() => {
                                                         setApplicationData((prevValue) => {
                                                             return {...prevValue, category: prevValue.category.find((prevCategory) => {
-                                                                return prevCategory === option.label; 
+                                                                return prevCategory === option.title; 
                                                             }) ? prevValue.category.filter((prevCategory) => {
-                                                                return prevCategory !== option.label;
-                                                            }) : [...prevValue.category, option.label]}
+                                                                return prevCategory !== option.title;
+                                                            }) : [...prevValue.category, option.title]}
                                                         })
                                                     }} className={applicationData.category.find((category) => {
-                                                        return category === option.label; 
-                                                    }) ? "application__form-data-wrapper-categories-button_active application__form-data-wrapper-button" : "application__form-data-wrapper-button"}>{option.label}</button>
+                                                        return category === option.title; 
+                                                    }) ? "application__form-data-wrapper-categories-button_active application__form-data-wrapper-button" : "application__form-data-wrapper-button"}>{option.title}</button>
                                                 </li>
                                             })}
                                         </ul>

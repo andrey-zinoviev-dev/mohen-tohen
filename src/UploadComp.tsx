@@ -7,7 +7,7 @@ import LinkCompBack from "./LinkCompBack";
 import PortalCentered from "./PortalCentered";
 // import { Link } from "react-router-dom";
 import LinkCompAction from "./LinkCompAction";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+// import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 type CommonProps = {
   photos: File[],
