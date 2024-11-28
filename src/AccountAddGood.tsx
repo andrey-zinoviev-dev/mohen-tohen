@@ -82,11 +82,11 @@ export default function AccountAddGood() {
     })
   }
 
-  // const formNotCompleted = Object.values(formData).filter((entry) => {
-  //   return typeof entry === 'string';
-  // }).some((entry) => {
-  //   return entry.length === 0;
-  // });
+  const formNotCompleted = Object.values(formData).filter((entry) => {
+    return typeof entry === 'string';
+  }).some((entry) => {
+    return entry.length === 0;
+  });
 
   // console.log(formNotCompleted);
   
@@ -120,7 +120,11 @@ export default function AccountAddGood() {
               {categories.map((category) => {
                 return <>
                   <label>
-                    <input name="category" type="radio" value={category.title}>
+                    <input name="category" onChange={() => {
+                      setFormData((prevValue) => {
+                        return {...prevValue, category: category.title};
+                      })
+                    }} type="radio" value={category.title}>
                     </input>
                     {category.title}
                   </label>
@@ -167,12 +171,12 @@ export default function AccountAddGood() {
               <InputEl updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
-          <button type="submit">
-            Отправить товар
-          </button>
-          {/* <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
+          {/* <button type="submit">
             Отправить товар
           </button> */}
+          <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
+            Отправить товар
+          </button>
         </div>
         <div className="addGoodform__files-wrapper">
           <span>Фото</span>
