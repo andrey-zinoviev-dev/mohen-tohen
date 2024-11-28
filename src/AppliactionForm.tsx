@@ -128,7 +128,9 @@ export default function ApplicationForm() {
         })
     }
 
-
+    // useEffect(() => {
+    //     console.log(applicationData);
+    // }, [applicationData])
 
     // const input
 
@@ -208,21 +210,21 @@ export default function ApplicationForm() {
                                 <ApplicationStep stepTitle="Персональные данные">
                                     <div className="application__form-data-wrapper">
                                         <label>Твое ФИО</label>
-                                        <InputEl name="name" placeHolder="Солдатов Алексей Михайлович..." updateState={setApplicationData}></InputEl>
+                                        <InputEl name="name" value={applicationData.name} placeHolder="Солдатов Алексей Михайлович..." updateState={setApplicationData}></InputEl>
                                         
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label>Твоя почта</label>
-                                        <InputEl name="email" placeHolder="email@operator.org" updateState={setApplicationData} />
+                                        <InputEl name="email" value={applicationData.email} placeHolder="email@operator.org" updateState={setApplicationData} />
                                         
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label>Твой телефон</label>
-                                        <InputEl name="phone" placeHolder="+790335153046" updateState={setApplicationData} />
+                                        <InputEl name="phone" value={applicationData.phone} placeHolder="+790335153046" updateState={setApplicationData} />
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
                                         <label>В каком городе ты находишься</label>
-                                        <InputEl name="city" placeHolder="Москва" updateState={setApplicationData}></InputEl>
+                                        <InputEl name="city" value={applicationData.city} placeHolder="Москва" updateState={setApplicationData}></InputEl>
                                         {/* <SelectElement label="Выбери город, в котором ты находишься" options={applicationCitySelect} updateApplication={(city:string) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, city: city};
@@ -288,11 +290,11 @@ export default function ApplicationForm() {
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label htmlFor="brandName">Как называется твой бренд</label>
-                                        <InputEl name="brandName" placeHolder="My brand" updateState={setApplicationData} />
+                                        <InputEl value={applicationData.brandName} name="brandName" placeHolder="My brand" updateState={setApplicationData} />
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label htmlFor="description">Расскажи о своем творчестве</label>
-                                        <textarea className="application__form-textarea" onChange={(evt) => {
+                                        <textarea value={applicationData.description} className="application__form-textarea" onChange={(evt) => {
                                             setApplicationData((prevValue) => {
                                                 
                                                 return {...prevValue, description: evt.target.value};
@@ -301,7 +303,7 @@ export default function ApplicationForm() {
                                     </div>
                                     <div className="application__form-data-wrapper">
                                         <label htmlFor="description">Опиши свою продукцию и процесс производства</label>
-                                        <textarea className="application__form-textarea" onChange={(evt) => {
+                                        <textarea value={applicationData.productionProcess} className="application__form-textarea" onChange={(evt) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, productionProcess: evt.target.value}
                                             })

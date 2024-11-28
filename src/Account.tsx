@@ -135,7 +135,7 @@ export default function Account() {
                                 setSelectedAvatar([file]);
                             }   
 
-                        }} ref={avatarInputRef} type="file"></input>
+                        }} ref={avatarInputRef} accept=".png, .jpg" type="file"></input>
                         <button onClick={() => {
                             avatarInputRef.current?.click();
                         }}>
