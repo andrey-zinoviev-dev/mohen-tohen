@@ -13,9 +13,23 @@
   margin: 0;
   gap: 15px;
   align-self: flex-start;
+  width: 100%;
 }
 
 .ulgrid li {
   height: 280px;
   /* min-height: 280px; */
+}
+
+@media screen and (max-width: 767px) {
+  .ulgrid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .ulgrid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -116,3 +116,25 @@
   align-items: flex-start;
 }
 
+@media screen and (max-width:1279px) {
+  .addGoodform {
+    flex-direction: column;
+    max-width: 420px;
+  }
+
+  .addGoodform__text-wrapper {
+    max-width: 100%;
+    order: 2;
+  }
+
+  .addGoodform__files-wrapper {
+    order: 1;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .addGoodform {
+    min-width: 280px;
+  }
+}
