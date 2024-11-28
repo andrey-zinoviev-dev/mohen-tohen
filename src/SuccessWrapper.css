@@ -21,3 +21,9 @@
   color: #F87545;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 767px){
+  .success-wrapper svg {
+    font-size: 36px;
+  }
+}

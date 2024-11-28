@@ -69,6 +69,10 @@ function App() {
           element: <Category></Category>
         },
         {
+          path: "application",
+          element: <ApplicationForm></ApplicationForm>
+        },
+        {
           path: "/homestaging",
           element: <HomeStaging></HomeStaging>,
         },
@@ -134,10 +138,7 @@ function App() {
       path: "successOrderCreate",
       element: <CreateOrderSuccess />
     },
-    {
-      path: "application",
-      element: <ApplicationForm></ApplicationForm>
-    },
+
     {
       path: "showApplication/:applicationID",
       element: <ShowApplication />

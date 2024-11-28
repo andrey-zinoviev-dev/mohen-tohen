@@ -102,8 +102,8 @@ section {
   }
 }
 
-@media screen and (max-width: 424px) {
+/* @media screen and (max-width: 424px) {
   #root {
     padding: 1rem 7px 50px 7px;
   }
-}
+} */

@@ -30,3 +30,9 @@
   color: black;
   stroke-width: 0;
 }
+
+@media screen and (max-width:424px) {
+  .basket-button {
+    font-size: 14px;
+  }
+}

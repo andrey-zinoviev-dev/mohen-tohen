@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationForm.css"
-import heading from "./assets/mh-1.png"
+// import heading from "./assets/mh-1.png"
 // import Footer from "./Footer";
 import SelectElement from "./SelectElement";
 import { applicationCategoriesSelect,  applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect } from "./utils";
@@ -20,11 +20,11 @@ import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
 import UploadComp from "./UploadComp";
 import { useSearchParams } from "react-router-dom";
-import HomeStagingFooter from "./HomeStagingFooter";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
 export default function ApplicationForm() {
+    console.log(import.meta.env.VITE_TG_BOT_TOKEN);
     const [startedApplication, setStartedApplication] = React.useState<boolean>(false);
     // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
     const [applicationData, setApplicationData] = React.useState<ApplicationNotUploadedIterface>({
@@ -102,7 +102,9 @@ export default function ApplicationForm() {
     function submitData(){
         return sendApplication(applicationData).unwrap()
         .then((data) => {
-                    fetch(`https://api.telegram.org/bot${import.meta.env.VITE_bot_token}/sendMessage`, {
+            console.log(data);
+            console.log(import.meta.env.VITE_TG_BOT_TOKEN);
+                fetch(`https://api.telegram.org/bot${import.meta.env.VITE_TG_BOT_TOKEN}/sendMessage`, {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",
@@ -155,7 +157,7 @@ export default function ApplicationForm() {
     return (
         <>
             <section className="application">
-                <img className="application__heading" src={heading}></img>
+                {/* <img className="application__heading" src={heading}></img> */}
                 <div className="application__wrapper_welcome">
                     {!startedApplication ?
                     <div className="application__first-stage">
@@ -511,7 +513,6 @@ export default function ApplicationForm() {
                     })}></UploadComp>
                 </PortalContainer>
             </PortalMultimedia>, document.body)}
-            <HomeStagingFooter></HomeStagingFooter>
         </>
     )
 }

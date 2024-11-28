@@ -97,20 +97,26 @@
 }
 
 @media screen and (max-width: 768px) {
-  .portal__content {
+  /* .portal__content {
     max-width: 320px;
     padding: 30px;
+  } */
+  .portal__content {
+    /* max-width: 420px; */
+    max-width: 360px;
+    padding: 15px;
   }
+
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
   .portal__content {
     max-width: 320px;
   }
-}
+} */
 
-@media screen and (max-width: 424px) {
+/* @media screen and (max-width: 424px) {
   .portal__content {
-    max-width: 280px;
+    max-width: 360px;
   }
-}
+} */

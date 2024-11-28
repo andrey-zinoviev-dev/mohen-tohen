@@ -10,3 +10,9 @@
     display: flex;
     justify-content: center;
 }
+
+@media screen and (max-width: 1023px) {
+    .portal__container {
+        max-height: 70svh;
+    }
+}

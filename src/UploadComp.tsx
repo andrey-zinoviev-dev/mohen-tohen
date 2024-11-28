@@ -5,6 +5,9 @@ import Loader from "./Loader";
 // import { usePostGoodToServerMutation } from "./features/apiSlice";
 import LinkCompBack from "./LinkCompBack";
 import PortalCentered from "./PortalCentered";
+// import { Link } from "react-router-dom";
+import LinkCompAction from "./LinkCompAction";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 type CommonProps = {
   photos: File[],
@@ -67,6 +70,7 @@ export default function UploadComp({application, photos, submitData, linkBack, c
           <>
             <p>Поздравляем, ты большой молодец! Мы ответим в самое ближайшее время, максимум 2 дня, а пока ты можешь посмотреть наш блог, ознакомиться с нашими соц сетями </p>
             <a href="">Подробнее о том, как мы проверяем анкеты</a>
+            <LinkCompAction to="../" text="Назад в маркетплейс"></LinkCompAction>
           </>
           :
           <>
