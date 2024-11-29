@@ -14,6 +14,7 @@ export default function HistoryGoods() {
   const userState = useAppSelector((state) => {
     return state.user;
   });
+  // console.log(userState);
   // console.log(transactions);
 
   // const transGoods = transactions.map((transaction) => {
@@ -62,7 +63,6 @@ export default function HistoryGoods() {
       <h3>История</h3>
       {userState.ordersHistory.length > 0 ?
       <ListColumn>
-        {}
         {/* {transGoods.map((transGood) => {
           return <li className="history__li">
             <div className="history__li-wrapper">
@@ -91,9 +91,10 @@ export default function HistoryGoods() {
         })} */}
         {userState.ordersHistory.map((transaction) => {
           return <li key={transaction._id}>
-            {/* <span className="list-column__id-span">{transaction._id}</span> */}
-            <div className="list-column__wrapper">
-              <div className="list-column__wrapper-column">
+            {/* <div className="list-column__wrapper">
+              
+            </div>   */}
+            <div className="list-column__wrapper-column">
                 <span>Товары: {transaction.goods.length}</span>
                 <div className="list-column__wrapper-column-pics">
                   {transaction.goods.map((good) => {
@@ -104,15 +105,11 @@ export default function HistoryGoods() {
                   })}
                 </div>
               </div>
-              <div className="list-column__wrapper-column">
+              <div className="list-column__wrapper-column list-column__wrapper-column_brands">
                   <span>Бренды</span>
                   <div className="list-column__wrapper-column-pics">
                     {transaction.goods.map((good) => {
-                      // return <button className="list-column__wrapper-column-brand" key={good.good._id}>
-                      //   <img className="list-column__wrapper-column-cover list-column__wrapper-column-cover_round" src={good.good.seller.cover}></img>
-                      //   <span>{good.good.seller.brandName}</span>
-                      //   <FontAwesomeIcon icon={faUpRightFromSquare} />
-                      // </button>
+                      
                       return <Link className="list-column__wrapper-column-link" to={""}>
                         <img className="list-column__wrapper-column-cover list-column__wrapper-column-cover_round" src={good.good.seller.cover}></img>
                         <span>{good.good.seller.brandName}</span>
@@ -136,7 +133,6 @@ export default function HistoryGoods() {
                 <span>Сумма</span>
                 <span>{transaction.total}</span>
               </div>
-            </div>  
           </li>
         })}
       </ListColumn>

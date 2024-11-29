@@ -7,7 +7,7 @@ export default function CreateOrderSuccess() {
     <section>
       <h3>Тут будет успешная страница</h3>
       <SuccessWrapper label="Все прошло отлично!"></SuccessWrapper>
-      <LinkCompBack to="../" text="На главную" />
+      <LinkCompBack reload={true} to="../" text="На главную" />
     </section>
   )
 }

@@ -12,7 +12,8 @@
   gap: 75px; */
   /* justify-content: space-around; */
   display: grid;
-  grid-template-columns: 1fr 520px;
+  /* grid-template-columns: 1fr 520px; */
+  grid-template-columns: 520px 1fr;
   gap: 25px;
 }
 

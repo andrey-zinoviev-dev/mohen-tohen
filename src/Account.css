@@ -206,9 +206,19 @@
     border: 2px solid transparent;
 }
 
+@media screen and (max-width: 1279px) {
+    .account  {
+        gap: 15px;
+    }
+
+    .list-column li {
+        padding: 10px;
+    }
+}
+
 @media screen and (max-width:  1023px) {
     .account {
-        gap: 25px;
+        flex-wrap: wrap;
     }
     .account__wrapper-user-text {
         flex-direction: column;
