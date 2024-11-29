@@ -103,6 +103,11 @@ export const terms:TermInterface[] = [
 
 export const categories:CategoryInterface[] = [
   {
+    title: "Услуги",
+    cover: "",
+    subcategories: [],
+  },
+  {
     title: "Свет",
     cover: "https://cdn.mohen-tohen.ru/свет_1.png",
     subcategories: ["Настольные лампы", "Торшеры", "Бра", "Подвесные светильники", "Декоративный свет", "Абажуры"],
@@ -311,11 +316,7 @@ export const categories:CategoryInterface[] = [
 
     // ]
   },
-  {
-    title: "Услуги",
-    cover: "",
-    subcategories: [],
-  }
+
   // {
   //   title: 'Идеи',
   //   cover: "https://cdn.mohen-tohen.ru/Идеи_1.png"

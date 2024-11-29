@@ -26,7 +26,7 @@ export default function Brands() {
             <Headline text='Дизайнеры'></Headline> 
             <ul>
                 {brands.map((brand) => {
-                    return <li>
+                    return <li key={brand._id}>
                         <a target='_blank' href={`/brands/${brand._id}`}>
                             <span>{brand.brandName}</span>,
                         </a>

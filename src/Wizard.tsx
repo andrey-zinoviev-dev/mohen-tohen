@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Wizard.css"
 // import Progress
 import ProgressStep from "./ProgressStep";
@@ -9,6 +9,10 @@ export default function Wizard({children, submitForm}: {children: React.ReactNod
     // console.log(currentStep);
     
     const stepToRender = Array.from(children)[currentStep];
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentStep]);
 
     return (
         <>

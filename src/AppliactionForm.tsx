@@ -39,6 +39,8 @@ export default function ApplicationForm() {
         productionProcess: "",
         stock: "",
         size: "",
+        minPrice: "",
+        maxPrice: "",
         offerAgreement: false,
         personalDataAgreement: false,
         shippingPartnerAgreement: false,
@@ -127,33 +129,6 @@ export default function ApplicationForm() {
             })
         })
     }
-
-    // useEffect(() => {
-    //     console.log(applicationData);
-    // }, [applicationData])
-
-    // const input
-
-    // const [files, setFiles] = React.useState<File[]>([]);
-
-    // React.useEffect(() =>{
-    //     setFiles([]);
-    // }, []);
-
-    //functinos
-
-    // function dummy() {
-    //     setFiles([]);
-    // }
-
-    //variables
-    // const readyToSubmit = 
-
-    //functions
-    // function updateCity<T>(arg: T):T {
-    //     return arg;
-    //     // console.log(city);
-    // }
     
     return (
         <>
@@ -258,30 +233,38 @@ export default function ApplicationForm() {
                                         <div className="application__form-data-wrapper-price">
                                             <label>
                                                 от
-                                                <input className="application__form-data-wrapper-input" type="number" min={1000} placeholder="1000"></input>
+                                                <input value={applicationData.minPrice} className="application__form-data-wrapper-input" onChange={(evt) => {
+                                                    setApplicationData((prevValue) => {
+                                                        return {...prevValue, minPrice: evt.target.value}
+                                                    })
+                                                }} type="number" min={1000} placeholder="1000"></input>
                                             </label>
                                             <label>
                                                 до
-                                                <input className="application__form-data-wrapper-input" type="number" max={100000} placeholder="100 000"></input>
+                                                <input value={applicationData.maxPrice} className="application__form-data-wrapper-input" onChange={(evt) => {
+                                                    setApplicationData((prevValue) => {
+                                                        return {...prevValue, maxPrice: evt.target.value}
+                                                    })
+                                                }} type="number" max={100000} placeholder="100 000"></input>
                                             </label>
                                         </div>
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
-                                        <SelectElement label="Какой тираж у твоей продукции?" updateApplication={(stock) => {
+                                        <SelectElement selectedOption={applicationData.stock} label="Какой тираж у твоей продукции?" updateApplication={(stock) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, stock: stock};
                                             })
                                         }} options={applicationStockSelect} />
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
-                                        <SelectElement label="Какие габариты у твоей продукции?" options={applicationSizeSelect} updateApplication={(size) => {
+                                        <SelectElement selectedOption={applicationData.size} label="Какие габариты у твоей продукции?" options={applicationSizeSelect} updateApplication={(size) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, size: size};
                                             })
                                         }}></SelectElement>
                                     </div>
                                     <div className="application__form-data-wrapper application__form-data-wrapper_fit-content">
-                                        <SelectElement label="Сколько по времени ты производишь продукцию?" options={applicationProdTimeSelect} updateApplication={(time) => {
+                                        <SelectElement selectedOption={applicationData.productionLength} label="Сколько по времени ты производишь продукцию?" options={applicationProdTimeSelect} updateApplication={(time) => {
                                             setApplicationData((prevValue) => {
                                                 return {...prevValue, productionLength: time};
                                             })

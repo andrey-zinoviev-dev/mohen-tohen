@@ -186,6 +186,8 @@ export interface ApplicationInterface extends CollaborationInterface {
   shippingPartnerAgreement: boolean,
   category: string[],
   dateOfFill: string,
+  minPrice: string,
+  maxPrice: string,
   // photos: {title: string, file: File, url: never}[] | {title: string, file: never, url: string}[],
   showApplication?: boolean,
   _id?:string,
@@ -202,6 +204,7 @@ export interface ApplicationUploadedInterface extends ApplicationInterface {
 export interface SelectInterface {
   label: string,
   options: OptionInterface[],
+  selectedOption: string,
   updateApplication: (arg:string) => void,
   // updateApplication: React.Dispatch<React.SetStateAction<ApplicationInterface>>
 }

@@ -7,14 +7,15 @@ export default function ListGrid({ gridElements, openInput, removePhoto }: { gri
   return (
     <>
       <ul className="ulgrid">
+        <li key={"add-photo"}>
+          <AddButton openInput={openInput}></AddButton>
+        </li>
         {gridElements.map((gridElement) => {
           return <li key={gridElement.title}>
             <ListGridPhoto file={gridElement.file} removePhoto={removePhoto}></ListGridPhoto>
           </li>
         })}
-        <li key={"add-photo"}>
-          <AddButton openInput={openInput}></AddButton>
-        </li>
+
         {/* {children} */}
       </ul>
       {/* <input type="file" style={{display: "none"}}></input> */}

@@ -3,11 +3,16 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { OptionInterface, SelectInterface } from "./interfaces";
 import React from "react"
-export default function SelectElement({label, options, updateApplication}:SelectInterface) {
+export default function SelectElement({label, options, selectedOption, updateApplication}:SelectInterface) {
   //states
   // const [openedSelect, setOpenedSelect] = React.useState<boolean>(false);
   // const [selectedOption, setSelectedOption] = React.useState<OptionInterface>(options[0])
-  const [selectState, setSelectState] = React.useState<{opened: boolean, selectedOption: OptionInterface}>({opened: false, selectedOption: options[0]})
+  const [selectState, setSelectState] = React.useState<{opened: boolean, selectedOption: OptionInterface | undefined}>({opened: false, selectedOption: options.find((option) => {
+    return option.label === selectedOption;
+  }) ? options.find((option) => {
+    return option.label === selectedOption;
+  }) : options[0]});
+
   return(
     <>
       <label>{label}</label>
@@ -17,7 +22,7 @@ export default function SelectElement({label, options, updateApplication}:Select
         })
         // setOpenedSelect(!openedSelect);
       }}>
-        {selectState.selectedOption.label}
+        {selectState.selectedOption && selectState.selectedOption.label}
         <FontAwesomeIcon icon={faAngleDown} />
       </button>
       {selectState.opened && <ul className="select">
