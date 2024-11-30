@@ -79,29 +79,34 @@ export default function AccountGoods() {
             <ListColumn>
                 {sortedArray && sortedArray.map((good:GoodInterface) => {
                     return <li key={good._id}>
-                        <span className="list-column__id-span">{good._id}</span>
-                        <div className="list-column__wrapper">
-                            <div className="list-column__content-wrapper">
-                                <img className="list-column__cover" src={good.photos[0].url}></img>
-                                <div className="list-column__details-wrapper">
+                        {/* <span className="list-column__id-span">{good._id}</span> */}
+                        <div className="account-goods__item-wrapper">
+                            <div className="account-goods__item-title-wrapper">
+                                <img className="account-goods__item-cover" src={good.photos[0].url}></img>
+                                <div className="account-goods__item-details">
                                     <h3>{good.title}</h3>
-                                    <div className="list-column__materials-wrapper">
+                                    <span>Наличие: {good.batch}</span>
+                                    <div className="account-goods__item-details-materials">
                                         <span className="list-column__id-span">{good.material}</span>
                                         <span className="list-column__id-span">{good.dimensions}</span>
+                                        <div style={{backgroundColor: good.color}}></div>
                                     </div>
                                 </div>
                             </div>
-                            <span>Наличие: {good.batch}</span>
+                           
+              
+                            
                             <div className="list-column__price-wrapper">
                                 <span className="list-column__price-span">{good.price}</span>
                                 <button onClick={() => {
-                                    // setAddNewGood(true);
+                                        // setAddNewGood(true);
                                     setGoodId(good._id);
                                 }}>
                                     Обновить наличие
                                 </button>
                             </div>
                         </div>
+                        
                     </li>
                 })}
             </ListColumn>

@@ -94,45 +94,48 @@ export default function HistoryGoods() {
             {/* <div className="list-column__wrapper">
               
             </div>   */}
-            <div className="list-column__wrapper-column">
-                <span>Товары: {transaction.goods.length}</span>
-                <div className="list-column__wrapper-column-pics">
-                  {transaction.goods.map((good) => {
-                      return <div className="list-column__wrapper-column-brand" key={good.good._id}>
-                          <img className="list-column__wrapper-column-cover" key={good.good._id} src={good.good.photos[0].url}></img>
-                          <span>{good.good.title}</span>
-                      </div>
-                  })}
-                </div>
-              </div>
-              <div className="list-column__wrapper-column list-column__wrapper-column_brands">
-                  <span>Бренды</span>
+            <div className="history-goods__li-wrapper">
+              <div className="list-column__wrapper-column">
+                  <span>Товары: {transaction.goods.length}</span>
                   <div className="list-column__wrapper-column-pics">
                     {transaction.goods.map((good) => {
-                      
-                      return <Link className="list-column__wrapper-column-link" to={""}>
-                        <img className="list-column__wrapper-column-cover list-column__wrapper-column-cover_round" src={good.good.seller.cover}></img>
-                        <span>{good.good.seller.brandName}</span>
-                        <FontAwesomeIcon icon={faUpRightFromSquare} />
-                      </Link>
+                        return <div className="list-column__wrapper-column-brand" key={good.good._id}>
+                            <img className="list-column__wrapper-column-cover" key={good.good._id} src={good.good.photos[0].url}></img>
+                            <span>{good.good.title}</span>
+                        </div>
                     })}
                   </div>
               </div>
-              <div className="list-column__wrapper-column">
-                <span>Дата</span>
-                <span>17 Октября</span>
+              <div className="list-column__wrapper-column list-column__wrapper-column_brands">
+                    <span>Бренды</span>
+                    <div className="list-column__wrapper-column-pics">
+                      {transaction.goods.map((good) => {
+                        
+                        return <Link className="list-column__wrapper-column-link" to={""}>
+                          <img className="list-column__wrapper-column-cover list-column__wrapper-column-cover_round" src={good.good.seller.cover}></img>
+                          <span>{good.good.seller.brandName}</span>
+                          <FontAwesomeIcon icon={faUpRightFromSquare} />
+                        </Link>
+                      })}
+                    </div>
               </div>
               <div className="list-column__wrapper-column">
-                <span>Трек-номер</span>
-                <a className="list-column__wrapper-column-link" href="https://cdek.by/ru/tracking/">
-                  110-95-218-094
-                  <FontAwesomeIcon icon={faUpRightFromSquare} />
-                </a>
+                  <span>Дата</span>
+                  <span>17 Октября</span>
               </div>
               <div className="list-column__wrapper-column">
-                <span>Сумма</span>
-                <span>{transaction.total}</span>
+                  <span>Трек-номер</span>
+                  <a className="list-column__wrapper-column-link" href="https://cdek.by/ru/tracking/">
+                    110-95-218-094
+                    <FontAwesomeIcon icon={faUpRightFromSquare} />
+                  </a>
               </div>
+              <div className="list-column__wrapper-column">
+                  <span>Сумма</span>
+                  <span>{transaction.total}</span>
+              </div>
+            </div>
+            
           </li>
         })}
       </ListColumn>

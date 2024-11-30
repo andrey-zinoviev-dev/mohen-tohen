@@ -132,7 +132,7 @@ export default function GoodPage() {
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
 
-                <p>{good.description}</p>
+                <p className="good__text-description">{good.description}</p>
 
                 <h4>
                     Размер: <span className="cvet">{good.dimensions}</span>

@@ -125,6 +125,10 @@
     gap: 3px;
 }
 
+.good__text-description {
+    white-space: pre-wrap;
+}
+
 .good__text-dimensions {
     display: flex;
     flex-direction: column;

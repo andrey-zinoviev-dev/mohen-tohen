@@ -136,8 +136,12 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Описание
-              {/* <textarea></textarea> */}
-              <InputEl updateState={setFormData} placeHolder="Этот торшер сделан из премиальных материалов" name="description"></InputEl>
+              <textarea className="addGoodform__textarea" name="description" onChange={(evt) => {
+                setFormData((prevValue) => {
+                  return {...prevValue, description: evt.target.value}
+                })
+              }} placeholder="Описание товара"></textarea>
+              {/* <InputEl updateState={setFormData} placeHolder="Этот торшер сделан из премиальных материалов" name="description"></InputEl> */}
               {/* <input></input> */}
             </label>
           </div>

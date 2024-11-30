@@ -50,6 +50,10 @@
   margin: 0;
 }
 
+.seller__wrapper_details p {
+  white-space: pre-wrap;
+}
+
 .seller__warpper-button {
   /* background-color: transparent; */
   background-color: #213547;

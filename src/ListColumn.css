@@ -10,12 +10,14 @@
 }
 
 .list-column li {
-    display: grid;
-    grid-template-columns: 1fr 1fr 85px 140px 75px;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 85px 140px 75px; */
     border: 2px solid #C8CCCF;
     border-radius: 12px;
     box-sizing: border-box;
     padding: 15px 15px;
+    /* gap: 15px; */
+
     /* display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -104,7 +106,7 @@
 
 @media screen and (max-width: 767px) {
     .list-column li {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 70px;
         padding: 15px;
         gap: 10px;
     }
