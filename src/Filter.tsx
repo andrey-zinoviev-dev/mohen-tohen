@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { GoodInterface, urlConvertedInterface } from "./interfaces";
 import "./Filter.css"
 import InputEl from "./InputEl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 // import { UserInterface } from "./features/userSlice";
 
 export default function Filter({subcategories, urlConverted, goods, applyFilters, closeFilter}: {subcategories: string[] | undefined, urlConverted: urlConvertedInterface, goods: GoodInterface[], closeFilter: React.Dispatch<React.SetStateAction<boolean>>, applyFilters: (good: GoodInterface[]) => void}) {
@@ -167,7 +169,9 @@ export default function Filter({subcategories, urlConverted, goods, applyFilters
                                             
                                             }
                                         })
-                                    }} style={{backgroundColor: color}}></button>
+                                    }} style={{backgroundColor: color, fontSize: 12}}>
+                                        {filterState.colors && filterState.colors.includes(color) && <FontAwesomeIcon icon={faCheck} />}
+                                    </button>
                                 })}
                             </ul>
                             {/* {colors.map((color) => {

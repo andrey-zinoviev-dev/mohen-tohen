@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import "./ApplicationDataWrapper.css";
 
-export default function ApplicationDataWrapper({ children }:{children: ReactElement[]}){
+export default function ApplicationDataWrapper({ children }:{children: ReactNode[]}){
     // console.log(Array.isArray(data), label);
     return (
         <div className="application__data-wrapper">

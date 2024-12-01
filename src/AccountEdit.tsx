@@ -22,14 +22,14 @@ export default function AccountEdit() {
     // console.log(userState);
 
     //state
-    const [formData, setFormData] = useState<{name?: string, email?: string, brandName?: string | undefined}>({
+    const [formData, setFormData] = useState<{name?: string, email?: string, description?: string, brandName?: string | undefined}>({
         // birthday: "",
     });
 
     useEffect(() => {
         if(userState.name.length > 0) {
             setFormData((prevValue) => {
-                return {...prevValue, name: userState.name, email: userState.email, brandName: userState.brandName};
+                return {...prevValue, name: userState.name, email: userState.email, description: userState.description, brandName: userState.brandName};
             })
         }
     }, [userState.name, userState.brandName]);
@@ -86,14 +86,24 @@ export default function AccountEdit() {
                                             })
                     }}></input>
                 </label> */}
-                {userState.seller && <label>
-                    Ваш Бренд
-                    <input name="brandName" placeholder="My_brand или Мой бренд" onChange={(evt) => {
-                        setFormData((prevValue) => {
-                            return {...prevValue, brandName: evt.target.value};
-                        })
-                    }} value={formData.brandName}></input>    
-                </label>}
+                {userState.seller && <>
+                    <label>
+                        Ваш Бренд
+                        <input name="brandName" placeholder="My_brand или Мой бренд" onChange={(evt) => {
+                            setFormData((prevValue) => {
+                                return {...prevValue, brandName: evt.target.value};
+                            })
+                        }} value={formData.brandName}></input>    
+                    </label>
+                    <label>
+                        Описание бренда
+                        <textarea value={formData.description} name="description" onChange={(evt) => {
+                            setFormData((prevValue) => {
+                                return {...prevValue, description: evt.target.value}
+                            })
+                        }}></textarea>
+                    </label>
+                </>}
                 <button>Обновить данные</button>
             </form>
         </>

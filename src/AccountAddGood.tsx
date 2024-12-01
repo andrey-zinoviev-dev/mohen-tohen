@@ -16,10 +16,14 @@ import { usePostGoodToServerMutation } from "./features/apiSlice";
 import { useAppDispatch } from "./hooks";
 import { addNewGoodToUser } from "./features/userSlice";
 import { categories } from "./utils";
+// import { IColor } from "react-color-palette";
+
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 
 export default function AccountAddGood() {
   //states
-  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number}>({
+  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number, color?: string}>({
     title: "",
     category: "",
     description: "",
@@ -29,6 +33,8 @@ export default function AccountAddGood() {
     price: 0,
     batch: 0,
   });
+  const [color, setColor] = useColor("#ffffff");
+
   const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
   //dispatch
@@ -97,6 +103,10 @@ export default function AccountAddGood() {
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
         // console.log(formData);
+        // console.log(color);
+        formData.color = color.hex;
+        // console.log(formData);
+
         setUploadStarted(true);
 
         // uploadGood(formData)
@@ -154,8 +164,13 @@ export default function AccountAddGood() {
           </div>
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
-              Цвет
-              <InputEl updateState={setFormData} placeHolder="(hex)#ffffff" name="color"></InputEl>
+              
+              <div className="addGoodform__color-wrapper">
+                <span>Цвет из палитры</span>
+                <ColorPicker color={color} onChange={setColor}>
+                </ColorPicker>
+              </div>
+              {/* <InputEl updateState={setFormData} placeHolder="(hex)#ffffff" name="color"></InputEl> */}
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">
@@ -179,7 +194,7 @@ export default function AccountAddGood() {
           {/* <button type="submit">
             Отправить товар
           </button> */}
-          <button disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
+          <button className="addGoodform__button-submit" disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
             Отправить товар
           </button>
         </div>

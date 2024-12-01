@@ -99,6 +99,7 @@
   max-width: 50px;
   aspect-ratio: 1/1;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .list-column__wrapper-column-brand {
@@ -143,6 +144,7 @@
 .history-goods__li-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 85px 140px 75px;
+  gap: 15px;
 }
 
 @media screen and (max-width: 767px) {

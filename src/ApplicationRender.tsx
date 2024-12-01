@@ -41,7 +41,13 @@ export default function ApplicationRender({applicationData, showPhotos}:Conditio
                     </ApplicationDataWrapper>
                     <ApplicationDataWrapper>
                         <label>Что произодит продавец</label>
-                        <span>{applicationData.category}</span>
+                        {applicationData.category.map((category) => {
+                            return <span>{category}</span>
+                        })}
+                    </ApplicationDataWrapper>
+                    <ApplicationDataWrapper>
+                        <label>Сколько стоит продукция</label>
+                        <span>От {applicationData.minPrice} до {applicationData.maxPrice}</span> 
                     </ApplicationDataWrapper>
                     <ApplicationDataWrapper>
                         <label>Сколько времени произовдится товар</label>

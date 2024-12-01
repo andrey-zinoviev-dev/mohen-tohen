@@ -633,4 +633,16 @@ export const welcomeSlides = [
     text: "Сезонная распродажа",
     cover: "https://cdn.mohen-tohen.ru/СКИДКА_22.png"
   }
+];
+
+export const commonColors = [
+  "black",
+  "white",
+  "red",
+  "green",
+  "yellow",
+  "brown",
+  "orange",
+  "blue",
+  "violet",
 ]

@@ -25,6 +25,22 @@
   background-color: transparent;
 }
 
+.form-edit label textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid transparent;
+  min-height: 120px;
+  padding: 20px;
+  outline: none;
+  border-radius: 10px;
+  resize: none;
+  font-size: 16px;
+  field-sizing: content;
+  border: 1px solid #C8CCCF;
+  white-space: pre-wrap;
+}
+
 .form-edit__note-wrapper {
   display: flex;
   gap: 10px;
