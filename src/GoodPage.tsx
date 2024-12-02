@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faArrowRight, 
+import { faArrowRight
     // faTruckRampBox 
 } from "@fortawesome/free-solid-svg-icons"
 import { 
@@ -32,6 +32,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 // import s
 import SwiperDot from "./SwiperDot"
 import QuantityButton from "./QuantityButton"
+import NoteWrapper from "./NoteWrapper"
 
 export default function GoodPage() {
 
@@ -133,13 +134,13 @@ export default function GoodPage() {
                 </Link>
 
                 <p className="good__text-description">{good.description}</p>
-
+                {good.madeToOrder && <NoteWrapper text="Внимание! Этот товар делается на заказ"></NoteWrapper>}
                 <h4>
                     Размер: <span className="cvet">{good.dimensions}</span>
                 </h4>
                 <h4>Материал: <span className="cvet">{good.material}</span></h4>
                 <h4>Цвет: <span className="cvet"></span>
-                    <div style={{backgroundColor: good.color, width: 20, height: 20, borderRadius: 3}}></div>
+                    <div className="good__text-color" style={{backgroundColor: good.color}}></div>
                 </h4>
                 <h4>Наличие: <span className="cvet">{good.batch}</span></h4>
 

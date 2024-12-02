@@ -90,14 +90,20 @@
   flex-wrap: wrap;
 }
 
+.addGoodform__text-wrapper-div-made-to-order {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .addGoodform__text-wrapper-div-categories label {
   display: flex;
   gap: 5px;
   align-items: center;
 }
 
-
-.addGoodform__text-wrapper-div-categories label input {
+.addGoodform__text-wrapper-div-categories label input, .addGoodform__text-wrapper-div-made-to-order input {
   appearance: none;
   -webkit-appearance: none;
   width: 20px;
@@ -107,7 +113,7 @@
   transition: all 0.25s ease-in-out;
 }
 
-.addGoodform__text-wrapper-div-categories label input:checked {
+.addGoodform__text-wrapper-div-categories label input:checked, .addGoodform__text-wrapper-div-made-to-order input:checked {
   /* appearance: green; */
   background-color: #FF8261;
 }

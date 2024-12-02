@@ -19,8 +19,8 @@ export default function PromoSection() {
   return (
     <section className="promo">
       <div className="promo__wrapper">
-        <Swiper modules={[Autoplay]} autoplay={{
-          delay: 3000
+        <Swiper modules={[Autoplay]} speed={850} autoplay={{
+          delay: 5000,
         }} loop={true} slidesPerView={1} onSlideChange={(swiper) => {
           setSlide(swiper.realIndex);
         }}>

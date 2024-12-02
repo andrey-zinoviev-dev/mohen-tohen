@@ -1,0 +1,40 @@
+.custom-order {
+    display: flex;    
+    flex-direction: column;
+    gap: 15px;
+    /* background-color: #F3F3F3; */
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 420px;
+    height: 100%;
+    justify-content: center;
+}
+
+.custom-order h4 {
+    margin: 0;
+}
+
+.custom-order h4 span {
+    font-weight: 400;
+}
+
+.custom-order__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.custom-order__form button {
+    background-color: rgb(255, 130, 97);
+}
+
+.custom-order__form button:disabled {
+    background-color: rgb(200, 204, 207);
+}
+
+@media screen and (max-width: 1023px) {
+    .custom-order {
+        padding: 0;
+    }
+}

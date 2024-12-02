@@ -65,6 +65,11 @@
   padding: 25px; */
 }
 
+.portal__content_fit-content {
+  max-width: 100%;
+  width: fit-content;
+}
+
 .portal__logo-wrapper {
   display: flex;
   align-items: center;

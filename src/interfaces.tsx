@@ -45,7 +45,7 @@ export interface GoodInterface {
   photos: {title: string, url: string}[],
   // candle?: boolean,
   // stock: number,
-  // madeToOrder: boolean,
+  madeToOrder: boolean,
   _id: string,
   batch: number,
   paid?: boolean,

@@ -1,0 +1,7 @@
+.portal-close {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    align-self: flex-end;
+}

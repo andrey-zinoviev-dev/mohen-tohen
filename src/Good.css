@@ -12,6 +12,7 @@
     border-radius: 3px;
     /* border-radius: 10px; */
     margin: auto 0;
+    cursor: pointer;
 }
 
 .good-img-wrapper__actions {

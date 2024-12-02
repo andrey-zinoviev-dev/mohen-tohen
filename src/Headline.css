@@ -6,3 +6,9 @@
     /* margin: 0 auto 0 0; */
   text-align: left;
 }
+
+@media screen and (max-width: 1023px) {
+  .headline {
+    font-size: 28px;
+  }
+}

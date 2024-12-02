@@ -23,7 +23,7 @@ import "react-color-palette/css";
 
 export default function AccountAddGood() {
   //states
-  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number, color?: string}>({
+  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number, color?: string, madeToOrder: boolean}>({
     title: "",
     category: "",
     description: "",
@@ -32,6 +32,7 @@ export default function AccountAddGood() {
     photos: [],
     price: 0,
     batch: 0,
+    madeToOrder: false,
   });
   const [color, setColor] = useColor("#ffffff");
 
@@ -182,7 +183,17 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Тираж
-              <InputEl updateState={setFormData} placeHolder="5" name="batch"></InputEl>
+              <InputEl disabled={formData.madeToOrder} updateState={setFormData} placeHolder="5" name="batch"></InputEl>
+            </label>
+            <label className="addGoodform__label">
+              <div className="addGoodform__text-wrapper-div-made-to-order">
+                <input type="checkbox" onInput={() => {
+                  setFormData((prevValue) => {
+                    return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: 0};
+                  })
+                }}></input>
+                Товар на заказ
+              </div>
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">

@@ -257,10 +257,10 @@
     font-weight: 400;
 }
 
-.cvet div {
-    background-color: rgb(253, 176, 108);
-    width: 25px;
-    height: 25px;
+.good__text-color {
+    /* background-color: rgb(253, 176, 108); */
+    width: 20px;
+    height: 20px;
     border-radius: 5px;
 }
 
