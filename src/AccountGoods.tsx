@@ -7,7 +7,7 @@ import React from "react";
 import "./AccountGoods.css";
 // import AddButton from "./AddButton";
 // import AddButtonState from "./AddButtonState";
-import { faPlusCircle, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faSliders, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import LinkCompAction from "./LinkCompAction";
 import { useUpdateGoodBatchMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
@@ -98,12 +98,12 @@ export default function AccountGoods() {
                             
                             <div className="list-column__price-wrapper">
                                 <span className="list-column__price-span">{good.price}</span>
-                                <button onClick={() => {
-                                        // setAddNewGood(true);
+                                <LinkCompAction state={good} to={`../goods/${good._id}/edit`} text="Редактировать" icon={faSliders} />
+                                {/* <button onClick={() => {
                                     setGoodId(good._id);
                                 }}>
                                     Обновить наличие
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                         

@@ -113,6 +113,10 @@ function App() {
                   element: <AccountAddGood></AccountAddGood>
                 },
                 {
+                  path: "goods/:goodID/edit",
+                  element: <AccountAddGood></AccountAddGood>
+                },
+                {
                   path: "history",
                   element: <HistoryGoods></HistoryGoods>
                 },

@@ -20,10 +20,19 @@ import { categories } from "./utils";
 
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
+import { useLocation } from "react-router-dom";
 
 export default function AccountAddGood() {
+  //location
+  const location = useLocation();
+  const state = location.state as {title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, url: string}[], price: number, batch: number, color?: string, madeToOrder: boolean};
+  // console.log(state);
   //states
-  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number, color?: string, madeToOrder: boolean}>({
+  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number, color?: string, madeToOrder: boolean}>(
+    state ? 
+    {...state, photos: []}
+    :
+    {
     title: "",
     category: "",
     description: "",
@@ -34,7 +43,10 @@ export default function AccountAddGood() {
     batch: 0,
     madeToOrder: false,
   });
-  const [color, setColor] = useColor("#ffffff");
+
+  const [oldPhotos, setOldPhotos] = React.useState<{title: string, url: string}[]>(state ? state.photos : []);
+  
+  const [color, setColor] = useColor(state && state.color ? state.color : "#ffffff");
 
   const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
@@ -81,6 +93,15 @@ export default function AccountAddGood() {
     });
   }
 
+  function removeOldPhoto(url: string) {
+   
+    setOldPhotos((prevValue) => {
+      return prevValue.filter((prevPhoto) => {
+        return prevPhoto.url !== url;
+      })
+    })
+  }
+
   function submitData() {
     return addGood(formData)
     .then((data) => {
@@ -100,7 +121,7 @@ export default function AccountAddGood() {
   return (
     <>
       <LinkCompBack to="../mygoods" text="Назад к товарам"></LinkCompBack>
-      <h3>Добавление нового товара</h3>
+      {state ? <h3>Редактирование товара</h3> : <h3>Добавление нового товара</h3>}
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
         // console.log(formData);
@@ -108,7 +129,7 @@ export default function AccountAddGood() {
         formData.color = color.hex;
         // console.log(formData);
 
-        setUploadStarted(true);
+        state ? console.log("update good here") : setUploadStarted(true);
 
         // uploadGood(formData)
         // .then((data) => {
@@ -119,7 +140,7 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Название
-              <InputEl name="title" placeHolder="Ночной торшер" updateState={setFormData}></InputEl>
+              <InputEl name="title" value={formData.title} placeHolder="Ночной торшер" updateState={setFormData}></InputEl>
               {/* <input></input> */}
             </label>
           </div>
@@ -131,7 +152,7 @@ export default function AccountAddGood() {
               {categories.map((category) => {
                 return <>
                   <label>
-                    <input name="category" onChange={() => {
+                    <input checked={state && state.category === category.title && true } name="category" onChange={() => {
                       setFormData((prevValue) => {
                         return {...prevValue, category: category.title};
                       })
@@ -147,7 +168,7 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Описание
-              <textarea className="addGoodform__textarea" name="description" onChange={(evt) => {
+              <textarea value={formData.description} className="addGoodform__textarea" name="description" onChange={(evt) => {
                 setFormData((prevValue) => {
                   return {...prevValue, description: evt.target.value}
                 })
@@ -159,7 +180,7 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Материал
-              <InputEl updateState={setFormData} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
+              <InputEl value={formData.material} updateState={setFormData} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
               {/* <input></input> */}
             </label>
           </div>
@@ -177,19 +198,19 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Габариты
-              <InputEl updateState={setFormData} placeHolder="125(Ш)x60(В)x90(Г)" name="dimensions"></InputEl>
+              <InputEl value={formData.dimensions} updateState={setFormData} placeHolder="125(Ш)x60(В)x90(Г)" name="dimensions"></InputEl>
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Тираж
-              <InputEl disabled={formData.madeToOrder} updateState={setFormData} placeHolder="5" name="batch"></InputEl>
+              <InputEl value={formData.batch.toString()} disabled={formData.madeToOrder} updateState={setFormData} placeHolder="5" name="batch"></InputEl>
             </label>
             <label className="addGoodform__label">
               <div className="addGoodform__text-wrapper-div-made-to-order">
-                <input type="checkbox" onInput={() => {
+                <input checked={formData.madeToOrder} type="checkbox" onInput={() => {
                   setFormData((prevValue) => {
-                    return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: 0};
+                    return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: prevValue.batch? prevValue.batch : 0};
                   })
                 }}></input>
                 Товар на заказ
@@ -199,19 +220,16 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Цена
-              <InputEl updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
+              <InputEl value={formData.price.toString()} updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
-          {/* <button type="submit">
-            Отправить товар
-          </button> */}
-          <button className="addGoodform__button-submit" disabled={!formNotCompleted && formData.photos.length > 0 ? false : true} type="submit">
+          <button className="addGoodform__button-submit" disabled={(!formNotCompleted && formData.photos.length > 0 ) || (!formNotCompleted && oldPhotos.length > 0 )  ? false : true} type="submit">
             Отправить товар
           </button>
         </div>
         <div className="addGoodform__files-wrapper">
           <span>Фото</span>
-          <ListGrid gridElements={formData.photos} openInput={openInput} removePhoto={removePhoto} />
+          <ListGrid removeOldPhoto={removeOldPhoto} oldPics={oldPhotos} gridElements={formData.photos} openInput={openInput} removePhoto={removePhoto} />
         </div>
       </form>
       <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {

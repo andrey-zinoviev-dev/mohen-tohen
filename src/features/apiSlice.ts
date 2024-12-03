@@ -130,9 +130,20 @@ export const apiSlice = createApi({
                 },
             })
         }),
+        updateGood: builder.mutation<GoodInterface, {title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, url: string}[], price: number, batch: number, color?: string, madeToOrder: boolean, _id: string}>({
+            query: (goodData) => ({
+                url: `/goods/${goodData._id}/edit`,
+                method: "PUT",
+                body: {goodData: goodData},
+                credentials: "include",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+            })
+        }),
         updateGoodBatch: builder.mutation<{updatedBatch: number}, {id: string, batchSize: number}>({
             query:(batchParams) => ({
-                url: `/goods//updateBatch/${batchParams.id}`,
+                url: `/goods/updateBatch/${batchParams.id}`,
                 method: "PUT",
                 body: {id: batchParams.id, size: batchParams.batchSize},
                 credentials: "include",
@@ -202,4 +213,4 @@ export const apiSlice = createApi({
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, usePutUserEditMutation, usePutAvatarEditMutation, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, usePutUserEditMutation, usePutAvatarEditMutation, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;
