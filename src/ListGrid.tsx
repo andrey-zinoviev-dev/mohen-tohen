@@ -3,7 +3,7 @@ import AddButton from "./AddButton";
 import "./ListGrid.css";
 import ListGridOldPhoto from "./ListGridOldPhoto";
 import ListGridPhoto from "./ListGridPhoto";
-export default function ListGrid({ oldPics, gridElements, openInput, removeOldPhoto, removePhoto }: { oldPics: {title: string, url: string}[], gridElements: {title: string, file: File}[], openInput: () => void, removeOldPhoto: (url: string) => void, removePhoto: (file: File) => void }) {
+export default function ListGrid({ oldPics, gridElements, openInput, removeOldPhoto, removePhoto }: { oldPics: string[], gridElements: File[], openInput: () => void, removeOldPhoto: (url: string) => void, removePhoto: (file: File) => void }) {
   
   return (
     <>
@@ -12,13 +12,13 @@ export default function ListGrid({ oldPics, gridElements, openInput, removeOldPh
           <AddButton openInput={openInput}></AddButton>
         </li>
         {oldPics.map((pic) => {
-          return <li key={pic.url}>
+          return <li key={pic}>
             <ListGridOldPhoto removePhoto={removeOldPhoto} image={pic}></ListGridOldPhoto>
           </li>
         })}
         {gridElements.map((gridElement) => {
-          return <li key={gridElement.title}>
-            <ListGridPhoto file={gridElement.file} removePhoto={removePhoto}></ListGridPhoto>
+          return <li key={gridElement.name}>
+            <ListGridPhoto file={gridElement} removePhoto={removePhoto}></ListGridPhoto>
           </li>
         })}
 

@@ -119,7 +119,7 @@ export const apiSlice = createApi({
                 },
             })
         }),
-        postGoodToServer: builder.mutation<GoodInterface, {title: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number}>({
+        postGoodToServer: builder.mutation<GoodInterface, {title: string, description: string, material: string, dimensions: string, price: number}>({
             query: (good) => ({
                 url: "/goods/add",
                 method: "POST",
@@ -130,11 +130,11 @@ export const apiSlice = createApi({
                 },
             })
         }),
-        updateGood: builder.mutation<GoodInterface, {title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, url: string}[], price: number, batch: number, color?: string, madeToOrder: boolean, _id: string}>({
-            query: (goodData) => ({
-                url: `/goods/${goodData._id}/edit`,
+        updateGood: builder.mutation<GoodInterface, {title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean, _id?: string | undefined}>({
+            query: (good) => ({
+                url: `/goods/${good._id}/edit`,
                 method: "PUT",
-                body: {goodData: goodData},
+                body: {good: good},
                 credentials: "include",
                 headers: {
                     "Content-Type":"application/json",

@@ -12,7 +12,7 @@ import PortalMultimedia from "./PortalMultimedia";
 import PortalContainer from "./PortalContainer";
 // import FileUpload from "./FileUpload";
 import UploadComp from "./UploadComp";
-import { usePostGoodToServerMutation } from "./features/apiSlice";
+import { usePostGoodToServerMutation, useUpdateGoodMutation } from "./features/apiSlice";
 import { useAppDispatch } from "./hooks";
 import { addNewGoodToUser } from "./features/userSlice";
 import { categories } from "./utils";
@@ -25,10 +25,10 @@ import { useLocation } from "react-router-dom";
 export default function AccountAddGood() {
   //location
   const location = useLocation();
-  const state = location.state as {title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, url: string}[], price: number, batch: number, color?: string, madeToOrder: boolean};
+  const state = location.state as {title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean, _id: string};
   // console.log(state);
   //states
-  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: {title: string, file: File}[], price: number, batch: number, color?: string, madeToOrder: boolean}>(
+  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean ,_id?: string}>(
     state ? 
     {...state, photos: []}
     :
@@ -44,7 +44,9 @@ export default function AccountAddGood() {
     madeToOrder: false,
   });
 
-  const [oldPhotos, setOldPhotos] = React.useState<{title: string, url: string}[]>(state ? state.photos : []);
+  const [photos, setPhotos] = React.useState<File[]>([]);
+
+  const [oldPhotos, setOldPhotos] = React.useState<string[]>(state ? state.photos : []);
   
   const [color, setColor] = useColor(state && state.color ? state.color : "#ffffff");
 
@@ -55,7 +57,8 @@ export default function AccountAddGood() {
 
   //RTK
   const [addGood] = usePostGoodToServerMutation();
-
+  const [editGood] = useUpdateGoodMutation();
+  
   //state
   // const [updloadStarted, setUploadStarted] = useState<boolean>(false);
 
@@ -68,36 +71,43 @@ export default function AccountAddGood() {
   }
 
   function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
-    const fileuploaded = evt.target.files && {title: evt.target.files[0].name, file: evt.target.files[0]};
-    
-    fileuploaded && setFormData((prevValue) => {
-      const photoInState = prevValue.photos.find((photo) => {
-        return photo.title === fileuploaded.title;
-      });
-
-      return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
-        return photo.title !== photoInState.title;
-      }) : [...prevValue.photos, fileuploaded]}
-      // return {...prevValue, photos: [...prevValue.photos, fileuploaded]}
+    const fileuploaded = evt.target.files && evt.target.files[0];
+    fileuploaded && setPhotos((prevValue) => {
+      return [...prevValue, fileuploaded];
     })
+    // fileuploaded && setFormData((prevValue) => {
+    //   const photoInState = prevValue.photos.find((photo) => {
+    //     return photo.title === fileuploaded.title;
+    //   });
+
+    //   return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
+    //     return photo.title !== photoInState.title;
+    //   }) : [...prevValue.photos, fileuploaded]}
+    //   // return {...prevValue, photos: [...prevValue.photos, fileuploaded]}
+    // })
   }
 
   function removePhoto(file:File) {
-    setFormData((prevValue) => {
-      return {
-        ...prevValue, photos: prevValue.photos.filter((photo) => {
-          return photo.title !== file.name;
-        })
-      }
+    setPhotos((prevValue) => {
+      return prevValue.filter((prevPhoto) => {
+        return prevPhoto.name !== file.name;
+      })
+    })
+    // setFormData((prevValue) => {
+    //   return {
+    //     ...prevValue, photos: prevValue.photos.filter((photo) => {
+    //       return photo.title !== file.name;
+    //     })
+    //   }
 
-    });
+    // });
   }
 
   function removeOldPhoto(url: string) {
    
     setOldPhotos((prevValue) => {
       return prevValue.filter((prevPhoto) => {
-        return prevPhoto.url !== url;
+        return prevPhoto !== url;
       })
     })
   }
@@ -107,6 +117,13 @@ export default function AccountAddGood() {
     .then((data) => {
       // console.log(data);
       data.data && dispatch(addNewGoodToUser(data.data));
+    })
+  }
+
+  function submitEditData() {
+    return editGood(formData).unwrap()
+    .then((data) => {
+      console.log(data);
     })
   }
 
@@ -129,7 +146,31 @@ export default function AccountAddGood() {
         formData.color = color.hex;
         // console.log(formData);
 
-        state ? console.log("update good here") : setUploadStarted(true);
+        if (!state) {
+          // console.log(photos);
+          // console.log(formData);
+          const photosStrings = photos.map((photo) => {
+            return `https://cdn.mohen-tohen.ru/${photo.name}`;
+          });
+          formData.photos = photosStrings;
+          setUploadStarted(true);
+          // console.log(formData);
+        } else if (state) {
+          // console.log('edit good here');
+
+          formData.photos = [...oldPhotos, ...photos.map((photo) => {
+            return `https://cdn.mohen-tohen.ru/${photo.name}`;
+          })];
+          photos.length > 0 ? 
+          setUploadStarted(true) 
+          : 
+          submitEditData()
+          // .then
+          // console.log(formData);
+        }
+
+
+        // state ? console.log("update good here") : setUploadStarted(true);
 
         // uploadGood(formData)
         // .then((data) => {
@@ -223,13 +264,13 @@ export default function AccountAddGood() {
               <InputEl value={formData.price.toString()} updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
-          <button className="addGoodform__button-submit" disabled={(!formNotCompleted && formData.photos.length > 0 ) || (!formNotCompleted && oldPhotos.length > 0 )  ? false : true} type="submit">
+          <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && oldPhotos.length > 0 )  ? false : true} type="submit">
             Отправить товар
           </button>
         </div>
         <div className="addGoodform__files-wrapper">
           <span>Фото</span>
-          <ListGrid removeOldPhoto={removeOldPhoto} oldPics={oldPhotos} gridElements={formData.photos} openInput={openInput} removePhoto={removePhoto} />
+          <ListGrid removeOldPhoto={removeOldPhoto} oldPics={oldPhotos} gridElements={photos} openInput={openInput} removePhoto={removePhoto} />
         </div>
       </form>
       <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
@@ -238,9 +279,7 @@ export default function AccountAddGood() {
       {uploadStarted && createPortal(<PortalMultimedia>
         {/* <button></button> */}
         <PortalContainer>
-          <UploadComp submitData={submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={formData.photos.map((photo) => {
-            return photo.file;
-          })}></UploadComp>
+          <UploadComp submitData={state ? submitEditData : submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={photos}></UploadComp>
           {/* <FileUpload></FileUpload> */}
         </PortalContainer>
       </PortalMultimedia>, document.body)}

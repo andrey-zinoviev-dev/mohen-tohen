@@ -42,7 +42,7 @@ export interface GoodInterface {
   // quantity?: number,
   selectedColor?: ColorInterface,
   dimensions: string,
-  photos: {title: string, url: string}[],
+  photos: string[],
   // candle?: boolean,
   // stock: number,
   madeToOrder: boolean,

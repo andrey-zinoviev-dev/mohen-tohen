@@ -7,23 +7,23 @@ import React from "react";
 import "./AccountGoods.css";
 // import AddButton from "./AddButton";
 // import AddButtonState from "./AddButtonState";
-import { faPlusCircle, faSliders, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faSliders } from "@fortawesome/free-solid-svg-icons";
 import LinkCompAction from "./LinkCompAction";
-import { useUpdateGoodBatchMutation } from "./features/apiSlice";
+// import { useUpdateGoodBatchMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
 import ListColumn from "./ListColumn";
-import { createPortal } from "react-dom";
-import PortalComp from "./PortalComp";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import InputEl from "./InputEl";
-import FormEl from "./FormEl";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { changeMessage } from "./features/notificationSlice";
-import { updateAccountGoodBatch } from "./features/userSlice";
-import PortalCentered from "./PortalCentered";
+// import { createPortal } from "react-dom";
+// import PortalComp from "./PortalComp";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import InputEl from "./InputEl";
+// import FormEl from "./FormEl";
+import { useAppSelector } from "./hooks";
+// import { changeMessage } from "./features/notificationSlice";
+// import { updateAccountGoodBatch } from "./features/userSlice";
+// import PortalCentered from "./PortalCentered";
 export default function AccountGoods() {
     //dispatch
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
 
     //redux
     const accountGoods = useAppSelector((state) => {
@@ -37,7 +37,7 @@ export default function AccountGoods() {
     //     data: goods = [] as GoodInterface[]
     // } = useGetAccountGoodsQuery();
 
-    const [updateBatch] = useUpdateGoodBatchMutation();
+    // const [updateBatch] = useUpdateGoodBatchMutation();
 
     // console.log("yes");
     // const { data: goods } = useGetSellerQuery(); 
@@ -50,20 +50,20 @@ export default function AccountGoods() {
 
     //state
     // const [addNewGood, setAddNewGood] = React.useState<boolean>(false);
-    const [newBatch, setNewBatch] = React.useState<{batch: number}>({batch: 0});
-    const [goodId, setGoodId] = React.useState<string | null>(null);
+    // const [newBatch, setNewBatch] = React.useState<{batch: number}>({batch: 0});
+    // const [goodId, setGoodId] = React.useState<string | null>(null);
 
     //functions
-    function submitForm() {
-        goodId && updateBatch({id: goodId, batchSize: newBatch.batch})
-        .then((data) => {
-            if(data.data?.updatedBatch) {
-                dispatch(updateAccountGoodBatch({id: goodId, batchSize: data.data?.updatedBatch}))
-                dispatch(changeMessage({message: "Остаток товара обновлен!"}));
-                setGoodId(null);
-            }
-        })
-    }
+    // function submitForm() {
+    //     goodId && updateBatch({id: goodId, batchSize: newBatch.batch})
+    //     .then((data) => {
+    //         if(data.data?.updatedBatch) {
+    //             dispatch(updateAccountGoodBatch({id: goodId, batchSize: data.data?.updatedBatch}))
+    //             dispatch(changeMessage({message: "Остаток товара обновлен!"}));
+    //             setGoodId(null);
+    //         }
+    //     })
+    // }
 
     // React.useEffect(() => {
     //     goods.length > 0 && dispatch()
@@ -82,7 +82,7 @@ export default function AccountGoods() {
                         {/* <span className="list-column__id-span">{good._id}</span> */}
                         <div className="account-goods__item-wrapper">
                             <div className="account-goods__item-title-wrapper">
-                                <img className="account-goods__item-cover" src={good.photos[0].url}></img>
+                                <img className="account-goods__item-cover" src={good.photos[0]}></img>
                                 <div className="account-goods__item-details">
                                     <h3>{good.title}</h3>
                                     <span>Наличие: {good.batch}</span>
@@ -123,14 +123,13 @@ export default function AccountGoods() {
                 <span>Добавить товар</span>
                 <FontAwesomeIcon icon={faPlusCircle} />
             </Link> */}
-            {goodId && createPortal(<PortalComp>
-                <button onClick={() => {
+            {/* {goodId && createPortal(<PortalComp> */}
+                {/* <button onClick={() => {
                     setGoodId(null);
-                    // setAddNewGood(false);
                 }}>
                     <FontAwesomeIcon icon={faXmarkCircle} />
-                </button>
-                <PortalCentered>
+                </button> */}
+                {/* <PortalCentered>
                     <h3>Обновить тираж товара</h3>
                     <FormEl submitForm={submitForm}>
                         <label>
@@ -140,7 +139,7 @@ export default function AccountGoods() {
                             Обновить тираж
                         </button>
                     </FormEl>
-                </PortalCentered>
+                </PortalCentered> */}
                 
                 {/* <form onSubmit={(evt) => {
                     evt.preventDefault();
@@ -153,7 +152,7 @@ export default function AccountGoods() {
                         Обновить тираж
                     </button>
                 </form> */}
-            </PortalComp>, document.body)}
+            {/* </PortalComp>, document.body)} */}
         </>
     )
 }
