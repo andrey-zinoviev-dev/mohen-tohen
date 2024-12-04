@@ -56,7 +56,7 @@ export default function PaidGoods() {
                         })
                     }}>
                         {/* <Good good={good} /> */}
-                        <img className="paid-goods__img" src={good.photos[0].url}></img>
+                        <img className="paid-goods__img" src={good.photos[0]}></img>
                         <span>{good.title}</span>
                     </SwiperSlide>
                 })}

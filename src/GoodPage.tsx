@@ -105,13 +105,13 @@ export default function GoodPage() {
                     setSelectedPhoto(data.realIndex);
                 }} slidesPerView={1} spaceBetween={5}>
                     {good.photos && good.photos.map((photo) => {
-                        return <SwiperSlide key={photo.url}>
-                            <img className="good__swiper-img" src={photo.url}></img>
+                        return <SwiperSlide key={photo}>
+                            <img className="good__swiper-img" src={photo}></img>
                         </SwiperSlide>
                     })}
                     <div className="good__swiper-dots">
                     {good.photos && good.photos.map((photo, index) => {
-                        return <SwiperDot setSelectedPhoto={setSelectedPhoto} index={index} key={photo.title}></SwiperDot>
+                        return <SwiperDot setSelectedPhoto={setSelectedPhoto} index={index} key={photo}></SwiperDot>
                     })}
                 </div>
                 </Swiper>

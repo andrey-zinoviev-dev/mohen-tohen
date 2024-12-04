@@ -11,7 +11,7 @@ export default function Good({ good }:GoodComponentInterface) {
     return (
         <>
             <div className="good-img-wrapper">
-                <img src={good.photos[0].url} onClick={() => {
+                <img src={good.photos[0]} onClick={() => {
                     navigate(`/goods/${good._id}`, {
                         state: good,
                         preventScrollReset: false,

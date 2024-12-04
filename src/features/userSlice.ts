@@ -103,10 +103,20 @@ export const userSlice = createSlice({
         updateUserCover: (state, action: PayloadAction<string>) => {
             state.cover = action.payload;
             return state;
+        },
+        updateGoodData: (state, action: PayloadAction<GoodInterface>) => {
+            console.log(action.payload);
+            console.log(state);
+            const newGoods = state.goods?.map((good) => {
+                return good._id === action.payload._id ? action.payload : good;
+            });
+
+            state.goods = newGoods;
+            return state;
         }
     },
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout, addNewGoodToUser, updateOrdersHistory, updateUserCover, } = userSlice.actions;
+export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout, addNewGoodToUser, updateOrdersHistory, updateUserCover, updateGoodData } = userSlice.actions;
 export default userSlice.reducer;

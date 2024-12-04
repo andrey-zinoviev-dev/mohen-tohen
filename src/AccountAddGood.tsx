@@ -14,13 +14,14 @@ import PortalContainer from "./PortalContainer";
 import UploadComp from "./UploadComp";
 import { usePostGoodToServerMutation, useUpdateGoodMutation } from "./features/apiSlice";
 import { useAppDispatch } from "./hooks";
-import { addNewGoodToUser } from "./features/userSlice";
+import { addNewGoodToUser, updateGoodData } from "./features/userSlice";
 import { categories } from "./utils";
 // import { IColor } from "react-color-palette";
 
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import { useLocation } from "react-router-dom";
+import { changeMessage } from "./features/notificationSlice";
 
 export default function AccountAddGood() {
   //location
@@ -113,17 +114,19 @@ export default function AccountAddGood() {
   }
 
   function submitData() {
-    return addGood(formData)
+    return addGood(formData).unwrap()
     .then((data) => {
       // console.log(data);
-      data.data && dispatch(addNewGoodToUser(data.data));
+      data && dispatch(addNewGoodToUser(data));
+      dispatch(changeMessage({message: "Товар успешно добавлен!"}))
     })
   }
 
   function submitEditData() {
     return editGood(formData).unwrap()
     .then((data) => {
-      console.log(data);
+      dispatch(updateGoodData(data));
+      dispatch(changeMessage({message: "Товар успешно обновлен!"}))
     })
   }
 
