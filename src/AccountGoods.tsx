@@ -98,12 +98,7 @@ export default function AccountGoods() {
                             
                             <div className="list-column__price-wrapper">
                                 <span className="list-column__price-span">{good.price}</span>
-                                <LinkCompAction state={good} to={`../goods/${good._id}/edit`} text="Редактировать" icon={faSliders} />
-                                {/* <button onClick={() => {
-                                    setGoodId(good._id);
-                                }}>
-                                    Обновить наличие
-                                </button> */}
+                                {/* <LinkCompAction state={good._id} to={`../goods/${good._id}/edit`} text="Редактировать" icon={faSliders} /> */}
                             </div>
                         </div>
                         

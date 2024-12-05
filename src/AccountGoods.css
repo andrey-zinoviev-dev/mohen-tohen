@@ -68,6 +68,13 @@
   align-items: flex-start;
 }
 
+.account-goods__item-details h3 {
+  max-width: 420px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .account-goods__item-details-materials {
   display: flex;
   align-items: center;
@@ -91,6 +98,7 @@
   }
   .account-goods__item-details h3 {
     font-size: 14px;
+    max-width: 245px;
   }
   .account-goods__item-details-materials {
     display: none;
@@ -98,5 +106,11 @@
   .list-column__price-wrapper {
     flex-direction: row-reverse;
     /* justify-content:; */
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .account-goods__item-details h3 {
+    max-width: 180px;
   }
 }

@@ -13,7 +13,7 @@ import PortalContainer from "./PortalContainer";
 // import FileUpload from "./FileUpload";
 import UploadComp from "./UploadComp";
 import { usePostGoodToServerMutation, useUpdateGoodMutation } from "./features/apiSlice";
-import { useAppDispatch } from "./hooks";
+import { useAppDispatch, useAppSelector } from "./hooks";
 import { addNewGoodToUser, updateGoodData } from "./features/userSlice";
 import { categories } from "./utils";
 // import { IColor } from "react-color-palette";
@@ -22,34 +22,48 @@ import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import { useLocation } from "react-router-dom";
 import { changeMessage } from "./features/notificationSlice";
+import { AccountGoodInterface } from "./interfaces";
 
 export default function AccountAddGood() {
   //location
   const location = useLocation();
-  const state = location.state as {title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean, _id: string};
+  const state = location.state as string;
+
+  //redux
+  const userStateGoods = useAppSelector((state) => {
+    return state.user.goods;
+  });
+
+  const goodToEdit = userStateGoods && userStateGoods.find((good) => {
+    return good._id === state;
+  }) ? userStateGoods.find((good) => {
+    return good._id === state;
+  }) as AccountGoodInterface : undefined;
+  // const state = location.state as {title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean, _id: string};
   // console.log(state);
   //states
-  const [formData, setFormData] = React.useState<{title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean ,_id?: string}>(
-    state ? 
-    {...state, photos: []}
-    :
-    {
-    title: "",
-    category: "",
-    description: "",
-    material: "",
-    dimensions: "",
-    photos: [],
-    price: 0,
-    batch: 0,
-    madeToOrder: false,
-  });
+  const [formData, setFormData] = React.useState<AccountGoodInterface>(
+  //   state ? 
+  //   {...state}
+  //   :
+      {
+      title: "",
+      category: "",
+      description: "",
+      material: "",
+      dimensions: "",
+      photos: [],
+      price: 0,
+      batch: 0,
+      madeToOrder: false,
+    }
+  );
 
   const [photos, setPhotos] = React.useState<File[]>([]);
 
-  const [oldPhotos, setOldPhotos] = React.useState<string[]>(state ? state.photos : []);
+  // const [oldPhotos, setOldPhotos] = React.useState<string[]>(state ? state.photos : []);
   
-  const [color, setColor] = useColor(state && state.color ? state.color : "#ffffff");
+  const [color, setColor] = useColor(goodToEdit && goodToEdit.color ? goodToEdit.color : "#ffffff");
 
   const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
@@ -105,16 +119,24 @@ export default function AccountAddGood() {
   }
 
   function removeOldPhoto(url: string) {
-   
-    setOldPhotos((prevValue) => {
-      return prevValue.filter((prevPhoto) => {
+    setFormData((prevValue) => {
+      return {...prevValue, photos: prevValue.photos.filter((prevPhoto) => {
         return prevPhoto !== url;
-      })
+      })}
     })
+    // setOldPhotos((prevValue) => {
+    //   return prevValue.filter((prevPhoto) => {
+    //     return prevPhoto !== url;
+    //   })
+    // })
   }
 
   function submitData() {
-    return addGood(formData).unwrap()
+    const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
+      return `https://cdn.mohen-tohen.ru/${photo.name}`;
+    }), ...formData.photos]};
+    // console.log(dataToSend);
+    return addGood(dataToSend).unwrap()
     .then((data) => {
       // console.log(data);
       data && dispatch(addNewGoodToUser(data));
@@ -123,7 +145,12 @@ export default function AccountAddGood() {
   }
 
   function submitEditData() {
-    return editGood(formData).unwrap()
+    const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
+      return `https://cdn.mohen-tohen.ru/${photo.name}`;
+    }), ...formData.photos]};
+    // console.log(dataToSend);
+
+    return editGood(dataToSend).unwrap()
     .then((data) => {
       dispatch(updateGoodData(data));
       dispatch(changeMessage({message: "Товар успешно обновлен!"}))
@@ -137,6 +164,12 @@ export default function AccountAddGood() {
   });
 
   // console.log(formNotCompleted);
+
+  React.useEffect(() => {
+    if(goodToEdit) {
+      setFormData(goodToEdit);
+    }
+  }, [goodToEdit]);
   
   return (
     <>
@@ -146,28 +179,33 @@ export default function AccountAddGood() {
         evt.preventDefault();
         // console.log(formData);
         // console.log(color);
-        formData.color = color.hex;
+        // formData.color = color.hex;
         // console.log(formData);
 
-        if (!state) {
+        if (!goodToEdit) {
+          // submitData();
           // console.log(photos);
           // console.log(formData);
-          const photosStrings = photos.map((photo) => {
-            return `https://cdn.mohen-tohen.ru/${photo.name}`;
-          });
-          formData.photos = photosStrings;
+          // const photosStrings = photos.map((photo) => {
+          //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+          // });
+          // formData.photos = photosStrings;
           setUploadStarted(true);
           // console.log(formData);
-        } else if (state) {
-          // console.log('edit good here');
-
-          formData.photos = [...oldPhotos, ...photos.map((photo) => {
-            return `https://cdn.mohen-tohen.ru/${photo.name}`;
-          })];
+        } else if (goodToEdit) {
           photos.length > 0 ? 
           setUploadStarted(true) 
           : 
           submitEditData()
+          // console.log('edit good here');
+
+          // formData.photos = [...oldPhotos, ...photos.map((photo) => {
+          //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+          // })];
+          // photos.length > 0 ? 
+          // setUploadStarted(true) 
+          // : 
+          // submitEditData()
           // .then
           // console.log(formData);
         }
@@ -196,7 +234,7 @@ export default function AccountAddGood() {
               {categories.map((category) => {
                 return <>
                   <label>
-                    <input checked={state && state.category === category.title && true } name="category" onChange={() => {
+                    <input checked={goodToEdit && goodToEdit.category === category.title && true } name="category" onChange={() => {
                       setFormData((prevValue) => {
                         return {...prevValue, category: category.title};
                       })
@@ -267,23 +305,21 @@ export default function AccountAddGood() {
               <InputEl value={formData.price.toString()} updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
-          <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && oldPhotos.length > 0 )  ? false : true} type="submit">
+          <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && formData.photos.length > 0 )  ? false : true} type="submit">
             Отправить товар
           </button>
         </div>
         <div className="addGoodform__files-wrapper">
           <span>Фото</span>
-          <ListGrid removeOldPhoto={removeOldPhoto} oldPics={oldPhotos} gridElements={photos} openInput={openInput} removePhoto={removePhoto} />
+          <ListGrid removeOldPhoto={removeOldPhoto} oldPics={formData.photos} gridElements={photos} openInput={openInput} removePhoto={removePhoto} />
         </div>
       </form>
       <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
         processFileAdd(evt)
       }} style={{display: "none"}}></input>
       {uploadStarted && createPortal(<PortalMultimedia>
-        {/* <button></button> */}
         <PortalContainer>
-          <UploadComp submitData={state ? submitEditData : submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={photos}></UploadComp>
-          {/* <FileUpload></FileUpload> */}
+          <UploadComp submitData={goodToEdit ? submitEditData : submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={photos}></UploadComp>
         </PortalContainer>
       </PortalMultimedia>, document.body)}
     </>
