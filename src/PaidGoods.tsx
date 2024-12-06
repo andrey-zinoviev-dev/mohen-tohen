@@ -9,6 +9,7 @@ import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons
 import "./PaidGoods.css";
 import { useNavigate } from "react-router-dom";
 import Headline from "./Headline";
+import Good from "./Good";
 
 export default function PaidGoods() {
     const {
@@ -56,16 +57,18 @@ export default function PaidGoods() {
                         })
                     }}>
                         {/* <Good good={good} /> */}
-                        <img className="paid-goods__img" src={good.photos[0]}></img>
-                        <span>{good.title}</span>
+                        {/* <img className="paid-goods__img" src={good.photos[0]}></img>
+                        <span>{good.title}</span> */}
+                        <Good good={good} />
                     </SwiperSlide>
                 })}
                 <div className="paid-goods__buttons">
-                    <SliderButton left={true} handleSlideChange={() => {}} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronLeft}></SliderButton>
-                    <SliderButton handleSlideChange={() => {}} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronRight}></SliderButton>
+                   
                     {/* {slide !== 0 && <SliderButton left={true} handleSlideChange={setSlide} slideslength={Math.ceil(goods.length / 5)} icon={faChevronLeft}></SliderButton>}
                     {slide !== Math.ceil(goods.length / 5) - 1 && <SliderButton handleSlideChange={setSlide} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronRight}></SliderButton>}   */}
                 </div>
+                <SliderButton left={true} handleSlideChange={() => {}} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronLeft}></SliderButton>
+                <SliderButton handleSlideChange={() => {}} slideslength={Math.ceil(goods.length / slidesPerView)} icon={faChevronRight}></SliderButton>
             </Swiper>
             {/* <ListOverflow listItems={goods}>
 

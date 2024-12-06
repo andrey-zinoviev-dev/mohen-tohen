@@ -34,7 +34,7 @@ export default function CartItem({item}: {item: goodPageInt}) {
 
     return (
         <>
-            <img className="cart-item__cover" src={item.good.photos[0].url}></img>
+            <img className="cart-item__cover" src={item.good.photos[0]}></img>
             <div className="cart-item__wrapper">
                 <div className="cart-item__params">
                     <span>{item.good.title}</span>

@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 // import { addRemoveToBasket } from "./features/userSlice";
 // import { changeMessage } from "./features/notificationSlice";
 import "./BasketButton.css";
-import { add, remove } from "./features/basketSlice";
+import { add } from "./features/basketSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { changeMessage } from "./features/notificationSlice";
@@ -14,6 +14,7 @@ import PortalComp from "./PortalComp";
 import PortalCentered from "./PortalCentered";
 import CustomOrderForm from "./CustomOrderForm";
 import PortalCloseButton from "./PortalCloseButton";
+import { useNavigate } from "react-router-dom";
 
 //interface
 interface goodPageInt {
@@ -22,6 +23,9 @@ interface goodPageInt {
 }
 
 export default function BasketButton({ good, quantity }: goodPageInt) {
+    //navigate
+    const navigate = useNavigate();
+    
     //state
     const [openOrderForm, setOpenOrderForm] = useState<boolean>(false);
     // const [updateBasket] = usePostGoodToBasketMutation();
@@ -46,8 +50,8 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
                 evt.stopPropagation();
 
                 if(!good.madeToOrder) {
-                    !goodInBasket ? dispatch(add({good: good, quantity: quantity})) : dispatch(remove(good));
-                    dispatch(changeMessage({message: goodInBasket ? "Товар убран из корзины" : "Товар добавлен в корзину"}))
+                    !goodInBasket ? dispatch(add({good: good, quantity: quantity})) : navigate("../basket");
+                    dispatch(changeMessage({message: "Товар добавлен в корзину"}))
                 } else {
                     setOpenOrderForm(true);
                     // console.log("open make to order form");

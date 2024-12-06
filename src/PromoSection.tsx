@@ -4,9 +4,9 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { welcomeSlides } from "./utils";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+// import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import LinkCompAction from "./LinkCompAction";
+// import LinkCompAction from "./LinkCompAction";
 // import SliderButton from "./SliderButton";
 import SwiperDot from "./SwiperDot";
 
@@ -42,12 +42,12 @@ export default function PromoSection() {
         </div>
         </Swiper>
       </div>
-      <div className="promo__wrapper-homestage">
+      {/* <div className="promo__wrapper-homestage">
         <h3>От идеи до реализации!</h3>
         <p>Создайте уникальное пространство, отражающее ваш внутренний мир: наши дизайнеры и художники готовы разработать персональный проект под ключ, включая мебель и эксклюзивные элементы декора, чтобы сделать ваш дом неповторимым.
         </p>
         <LinkCompAction text="Декор на заказ" icon={faArrowRight} to="/homestaging"/>
-      </div>
+      </div> */}
     </section>
   )
 }

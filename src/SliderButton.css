@@ -1,0 +1,28 @@
+.button-slider {
+  z-index: 150;
+  translate: 0 -100%;
+  background-color: #FF8261;
+  transition: all 0.25s ease-in-out;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+}
+
+.button-slider_left {
+  right: 100%;
+  left: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  .button-slider {
+    right: 5px;
+    translate: 0 -125%;
+  }
+  .button-slider_left {
+    left: 5px;
+  }
+}
