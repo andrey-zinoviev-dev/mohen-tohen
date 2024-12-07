@@ -23,6 +23,9 @@ import "react-color-palette/css";
 import { useLocation } from "react-router-dom";
 import { changeMessage } from "./features/notificationSlice";
 import { AccountGoodInterface } from "./interfaces";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import NoteWrapper from "./NoteWrapper";
+import GoodConstructorStart from "./GoodConstructorStart";
 
 export default function AccountAddGood() {
   //location
@@ -219,6 +222,18 @@ export default function AccountAddGood() {
         // })
       }}>
         <div className="addGoodform__text-wrapper">
+          <label className="addGoodform__label">
+                  <div className="addGoodform__text-wrapper-div-made-to-order">
+                    <input checked={formData.madeToOrder} type="checkbox" onInput={() => {
+                      setFormData((prevValue) => {
+                        return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: prevValue.batch? prevValue.batch : 0};
+                      })
+                    }}></input>
+                    {/* Товар на заказ */}
+                    <NoteWrapper text="Товар на заказ"></NoteWrapper>
+                  </div>
+          </label>
+          {formData.madeToOrder && <GoodConstructorStart />}
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Название
@@ -259,11 +274,11 @@ export default function AccountAddGood() {
               {/* <input></input> */}
             </label>
           </div>
+          {/* {formData.madeToOrder && <GoodConstructorStart />} */}
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Материал
               <InputEl value={formData.material} updateState={setFormData} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
-              {/* <input></input> */}
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">
@@ -287,16 +302,6 @@ export default function AccountAddGood() {
             <label className="addGoodform__label">
               Тираж
               <InputEl value={formData.batch.toString()} disabled={formData.madeToOrder} updateState={setFormData} placeHolder="5" name="batch"></InputEl>
-            </label>
-            <label className="addGoodform__label">
-              <div className="addGoodform__text-wrapper-div-made-to-order">
-                <input checked={formData.madeToOrder} type="checkbox" onInput={() => {
-                  setFormData((prevValue) => {
-                    return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: prevValue.batch? prevValue.batch : 0};
-                  })
-                }}></input>
-                Товар на заказ
-              </div>
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">

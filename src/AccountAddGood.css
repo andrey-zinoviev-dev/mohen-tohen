@@ -111,6 +111,7 @@
   border: 1px solid #C8CCCF;
   border-radius: 4px;
   transition: all 0.25s ease-in-out;
+  cursor: pointer;
 }
 
 .addGoodform__text-wrapper-div-categories label input:checked, .addGoodform__text-wrapper-div-made-to-order input:checked {
