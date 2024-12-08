@@ -23,7 +23,7 @@ import "react-color-palette/css";
 import { useLocation } from "react-router-dom";
 import { changeMessage } from "./features/notificationSlice";
 import { AccountGoodInterface } from "./interfaces";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NoteWrapper from "./NoteWrapper";
 import GoodConstructorStart from "./GoodConstructorStart";
 
@@ -69,6 +69,8 @@ export default function AccountAddGood() {
   const [color, setColor] = useColor(goodToEdit && goodToEdit.color ? goodToEdit.color : "#ffffff");
 
   const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
+
+  const [options, setOptions] = React.useState<boolean>(false);
 
   //dispatch
   const dispatch = useAppDispatch();
@@ -160,6 +162,10 @@ export default function AccountAddGood() {
     })
   }
 
+  function showOptions(options: {colors?: {title: string, options: string[], }}) {
+    console.log(options);
+  }
+
   const formNotCompleted = Object.values(formData).filter((entry) => {
     return typeof entry === 'string';
   }).some((entry) => {
@@ -169,9 +175,13 @@ export default function AccountAddGood() {
   // console.log(formNotCompleted);
 
   React.useEffect(() => {
-    if(goodToEdit) {
-      setFormData(goodToEdit);
-    }
+    console.log(formData);
+  },[formData])
+
+  React.useEffect(() => {
+    // if(goodToEdit) {
+    //   setFormData(goodToEdit);
+    // }
   }, [goodToEdit]);
   
   return (
@@ -222,18 +232,19 @@ export default function AccountAddGood() {
         // })
       }}>
         <div className="addGoodform__text-wrapper">
-          <label className="addGoodform__label">
-                  <div className="addGoodform__text-wrapper-div-made-to-order">
-                    <input checked={formData.madeToOrder} type="checkbox" onInput={() => {
-                      setFormData((prevValue) => {
-                        return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: prevValue.batch? prevValue.batch : 0};
-                      })
-                    }}></input>
-                    {/* Товар на заказ */}
-                    <NoteWrapper text="Товар на заказ"></NoteWrapper>
-                  </div>
-          </label>
-          {formData.madeToOrder && <GoodConstructorStart />}
+          <div className="addGoodform__text-wrapper-div">
+            <label className="addGoodform__label">
+              <div className="addGoodform__text-wrapper-div-made-to-order">
+                <input checked={formData.madeToOrder} type="checkbox" onChange={() => {
+                  setFormData((prevValue) => {
+                    return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: prevValue.batch? prevValue.batch : 0};
+                  })
+                }}></input>
+                Товар на заказ
+              </div>
+              <NoteWrapper text="Если Вы делаете товар на заказ, то тираж вашего товара - 1 штука. Если в Вашем товаре есть дополнительные параметры - нажмите галочку 'Товар на заказ'. Опции можно указать внизу"></NoteWrapper>
+            </label>
+          </div>
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Название
@@ -310,6 +321,20 @@ export default function AccountAddGood() {
               <InputEl value={formData.price.toString()} updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
+          {formData.madeToOrder && <div className="addGoodform__text-wrapper-div">
+            <NoteWrapper text="Если Вы делаете товар с опциями, их можно добавить в полях ввода ниже"></NoteWrapper>
+            {<label className="addGoodform__label">
+              <div className="addGoodform__text-wrapper-div-made-to-order">
+                <input type="checkbox" onChange={() => {
+                  setOptions(!options);
+                }}>
+                </input>
+                  Добавить опции к товару
+              </div>
+            </label>}
+            {options && <GoodConstructorStart />}
+          </div>}
+
           <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && formData.photos.length > 0 )  ? false : true} type="submit">
             Отправить товар
           </button>

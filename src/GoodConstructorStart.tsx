@@ -1,6 +1,6 @@
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 export default function GoodConstructorStart() {
   //state
@@ -9,6 +9,10 @@ export default function GoodConstructorStart() {
     title: "",
     options: [],
   });
+
+  //refs
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   return (
     <div>
       <h3>Что в товаре можно поменять</h3>
@@ -16,12 +20,30 @@ export default function GoodConstructorStart() {
         {options.map((option) => {
           return <li key={option.title}>
             <span>{option.title}</span>
-              <input type="text" value={option.options.map((selectedOption) => {
+            
+            {option.options.map((currentOption) => {
+              return <div>
+                <span>{currentOption}</span>
+                <button type="button" onClick={() => {
+                  setOptions((prevValue) => {
+                    return prevValue.map((prevOption) => {
+                      return prevOption.title === option.title ? {...option, options: prevOption.options.filter((optionToRemove) => {
+                        return optionToRemove !== currentOption
+                      })} : prevOption
+                    })
+                  })
+                }}>
+                  <FontAwesomeIcon icon={faXmark} />
+                </button>
+              </div>
+            })}
+            
+            {/* <input type="text" value={option.options.map((selectedOption) => {
                 return `${selectedOption}`
-              })}></input>
+            })}></input> */}
           </li>
         })}
-        <li key={"new-option"}>
+        {/* <li key={"new-option"}>
           <input onChange={(evt) => {
             setNewOption((prevValue) => {
               return {...prevValue, title: evt.target.value}
@@ -29,7 +51,7 @@ export default function GoodConstructorStart() {
           }} type="text" placeholder="Название опции"></input>
           <input onChange={(evt) => {
             setNewOption((prevValue) => {
-              return {...prevValue, options: [...prevValue.options, ...evt.target.value.split(", ")]}
+              return {...prevValue, options: evt.target.value.split(", ")}
             })
           }} type="text" placeholder="Значения опции через запятую, если их больше 1"></input>
           <button onClick={() => {
@@ -43,8 +65,32 @@ export default function GoodConstructorStart() {
           }} type="button">
             <FontAwesomeIcon icon={faPlus} />
           </button>
-        </li>
+        </li> */}
       </ul>
+      <form ref={formRef}>
+        <input onChange={(evt) => {
+          setNewOption((prevValue) => {
+            return {...prevValue, title: evt.target.value}
+          })
+        }} type="text" placeholder="Название опции"></input>
+        <input onChange={(evt) => {
+          setNewOption((prevValue) => {
+            return {...prevValue, options: evt.target.value.split(", ")}
+          })
+        }} type="text" placeholder="Значения опции через запятую, если их больше 1"></input>
+        <button onClick={() => {
+          setOptions((prevValue) => {
+            return [...prevValue, newOption];
+          });
+          setNewOption({
+              title: "",
+              options: []
+          });
+          formRef.current?.reset();
+        }} type="button">
+            <FontAwesomeIcon icon={faPlus} />
+        </button>
+      </form>
     </div>
   )
 }

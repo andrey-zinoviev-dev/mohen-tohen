@@ -3,10 +3,14 @@
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 9px;
+    background-color: white;
 }
 
 .note-wrapper__svg-div {
-    width: 25px;
+    min-width: 20px;
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
@@ -15,4 +19,8 @@
     border-radius: 50%;
     font-size: 18px;
 
+}
+
+.note-wrapper span {
+    text-align: left;
 }

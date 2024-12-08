@@ -21,7 +21,8 @@
 
 .addGoodform__text-wrapper {
   width: 100%;
-  max-width: 420px;
+  /* max-width: 420px; */
+  max-width: 460px;
   /* min-width: 280px; */
   display: flex;
   flex-direction: column;
@@ -108,7 +109,7 @@
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  border: 1px solid #C8CCCF;
+  border: 2px solid #C8CCCF;
   border-radius: 4px;
   transition: all 0.25s ease-in-out;
   cursor: pointer;

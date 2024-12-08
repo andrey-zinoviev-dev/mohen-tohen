@@ -247,5 +247,15 @@ export interface urlConvertedInterface {
 }
 
 export interface AccountGoodInterface {
-  title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean ,_id?: string
+  title: string, 
+  category: string, 
+  description: string, 
+  material: string, 
+  dimensions: string, 
+  photos: string[], 
+  price: number, 
+  batch: number, 
+  color?: string, 
+  madeToOrder: boolean ,
+  _id?: string
 }
