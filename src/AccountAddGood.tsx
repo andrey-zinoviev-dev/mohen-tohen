@@ -25,7 +25,7 @@ import { changeMessage } from "./features/notificationSlice";
 import { AccountGoodInterface } from "./interfaces";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NoteWrapper from "./NoteWrapper";
-import GoodConstructorStart from "./GoodConstructorStart";
+import GoodConstructor from "./GoodConstructor";
 
 export default function AccountAddGood() {
   //location
@@ -162,9 +162,9 @@ export default function AccountAddGood() {
     })
   }
 
-  function showOptions(options: {colors?: {title: string, options: string[], }}) {
-    console.log(options);
-  }
+  // function showOptions(options: {colors?: {title: string, options: string[], }}) {
+  //   console.log(options);
+  // }
 
   const formNotCompleted = Object.values(formData).filter((entry) => {
     return typeof entry === 'string';
@@ -174,14 +174,14 @@ export default function AccountAddGood() {
 
   // console.log(formNotCompleted);
 
-  React.useEffect(() => {
-    console.log(formData);
-  },[formData])
+  // React.useEffect(() => {
+  //   console.log(formData);
+  // },[formData])
 
   React.useEffect(() => {
-    // if(goodToEdit) {
-    //   setFormData(goodToEdit);
-    // }
+    if(goodToEdit) {
+      setFormData(goodToEdit);
+    }
   }, [goodToEdit]);
   
   return (
@@ -332,7 +332,7 @@ export default function AccountAddGood() {
                   Добавить опции к товару
               </div>
             </label>}
-            {options && <GoodConstructorStart />}
+            {options && <GoodConstructor />}
           </div>}
 
           <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && formData.photos.length > 0 )  ? false : true} type="submit">

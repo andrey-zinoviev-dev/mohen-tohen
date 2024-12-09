@@ -2,10 +2,10 @@ import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react"
 
-export default function GoodConstructorStart() {
+export default function GoodConstructor() {
   //state
-  const [options, setOptions] = useState<{title: string, options: string[]}[]>([]);
-  const [newOption, setNewOption] = useState<{title: string, options: string[]}>({
+  const [options, setOptions] = useState<{title: string, options: {title: string, price: number}[]}[]>([]);
+  const [newOption, setNewOption] = useState<{title: string, options: {title: string, price: number}[]}>({
     title: "",
     options: [],
   });
@@ -20,15 +20,21 @@ export default function GoodConstructorStart() {
         {options.map((option) => {
           return <li key={option.title}>
             <span>{option.title}</span>
-            
+            {/* <span>{option.price}</span> */}
             {option.options.map((currentOption) => {
               return <div>
-                <span>{currentOption}</span>
+                {option.title.includes("Цвет") || option.title.includes("Цвета") ? 
+                <div style={{backgroundColor: currentOption.title, width: 20, height: 20, borderRadius: 5}}>
+
+                </div>
+                :
+                <span>{currentOption.title}</span>}
+                <span>{currentOption.price}</span>
                 <button type="button" onClick={() => {
                   setOptions((prevValue) => {
                     return prevValue.map((prevOption) => {
                       return prevOption.title === option.title ? {...option, options: prevOption.options.filter((optionToRemove) => {
-                        return optionToRemove !== currentOption
+                        return optionToRemove.title !== currentOption.title
                       })} : prevOption
                     })
                   })
@@ -67,27 +73,40 @@ export default function GoodConstructorStart() {
           </button>
         </li> */}
       </ul>
-      <form ref={formRef}>
+      <form onSubmit={(evt) => {
+        evt.preventDefault();
+        // console.log(evt.currentTarget.)
+      }} ref={formRef}>
         <input onChange={(evt) => {
           setNewOption((prevValue) => {
             return {...prevValue, title: evt.target.value}
           })
         }} type="text" placeholder="Название опции"></input>
         <input onChange={(evt) => {
+          const values = evt.target.value.split(", ").map((value) => {
+            return {title: value, price: 0};
+          });
           setNewOption((prevValue) => {
-            return {...prevValue, options: evt.target.value.split(", ")}
+            return {...prevValue, options: values}
           })
         }} type="text" placeholder="Значения опции через запятую, если их больше 1"></input>
-        <button onClick={() => {
+        <input type="number" placeholder="Цена опции" onChange={(evt) => {
+          setNewOption((prevValue) => {
+            return {...prevValue, options: prevValue.options.map((prevOption) => {
+              return {...prevOption, price: evt.target.valueAsNumber};
+            })}
+          })
+        }}></input>
+        <button type="button" onClick={() => {
           setOptions((prevValue) => {
             return [...prevValue, newOption];
           });
           setNewOption({
               title: "",
-              options: []
+              options: [],
           });
           formRef.current?.reset();
-        }} type="button">
+        }}>
             <FontAwesomeIcon icon={faPlus} />
         </button>
       </form>
