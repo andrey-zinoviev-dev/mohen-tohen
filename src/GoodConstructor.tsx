@@ -1,6 +1,7 @@
 import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react"
+import GoodConstructorOption from "./GoodConstructorOption";
 
 export default function GoodConstructor() {
   //state
@@ -9,7 +10,9 @@ export default function GoodConstructor() {
     title: "",
     options: [],
   });
+  const [selectedOptionType, setSelectedOptionType] = useState<{type: string} | null>(null);
 
+  // const [selectedOptionType, setSelectedOptionType] = useState<{}>();
   //refs
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -17,10 +20,19 @@ export default function GoodConstructor() {
     <div>
       <h3>Что в товаре можно поменять</h3>
       <ul>
-        {options.map((option) => {
+        <li>
+          <GoodConstructorOption title="Цвет" />
+        </li>
+        <li>
+          <GoodConstructorOption title="Размер" />
+
+        </li>
+        <li>
+          <GoodConstructorOption title="Материал" />
+        </li>
+        {/* {options.map((option) => {
           return <li key={option.title}>
             <span>{option.title}</span>
-            {/* <span>{option.price}</span> */}
             {option.options.map((currentOption) => {
               return <div>
                 {option.title.includes("Цвет") || option.title.includes("Цвета") ? 
@@ -44,38 +56,14 @@ export default function GoodConstructor() {
               </div>
             })}
             
-            {/* <input type="text" value={option.options.map((selectedOption) => {
-                return `${selectedOption}`
-            })}></input> */}
+           
           </li>
-        })}
-        {/* <li key={"new-option"}>
-          <input onChange={(evt) => {
-            setNewOption((prevValue) => {
-              return {...prevValue, title: evt.target.value}
-            })
-          }} type="text" placeholder="Название опции"></input>
-          <input onChange={(evt) => {
-            setNewOption((prevValue) => {
-              return {...prevValue, options: evt.target.value.split(", ")}
-            })
-          }} type="text" placeholder="Значения опции через запятую, если их больше 1"></input>
-          <button onClick={() => {
-            setOptions((prevValue) => {
-              return [...prevValue, newOption];
-            });
-            setNewOption({
-              title: "",
-              options: []
-            })
-          }} type="button">
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
-        </li> */}
+        })} */}
+
       </ul>
-      <form onSubmit={(evt) => {
+      
+      {/* <form onSubmit={(evt) => {
         evt.preventDefault();
-        // console.log(evt.currentTarget.)
       }} ref={formRef}>
         <input onChange={(evt) => {
           setNewOption((prevValue) => {
@@ -109,7 +97,7 @@ export default function GoodConstructor() {
         }}>
             <FontAwesomeIcon icon={faPlus} />
         </button>
-      </form>
+      </form> */}
     </div>
   )
 }
