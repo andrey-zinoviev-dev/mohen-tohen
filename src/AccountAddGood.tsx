@@ -49,7 +49,7 @@ export default function AccountAddGood() {
   //   state ? 
   //   {...state}
   //   :
-      {
+    {
       title: "",
       category: "",
       description: "",
@@ -70,8 +70,9 @@ export default function AccountAddGood() {
 
   const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
-  const [options, setOptions] = React.useState<boolean>(false);
-
+  const [optionsOpened, setOptionsOpened] = React.useState<boolean>(false);
+  
+  const [goodOptions, setGoodOptions] = React.useState<{title: string, price: number, type: string}[]>([])
   //dispatch
   const dispatch = useAppDispatch();
 
@@ -136,10 +137,14 @@ export default function AccountAddGood() {
     // })
   }
 
+  // function getOptions(goodOptions) {
+  //   console.log(goodOptions)
+  // }
+
   function submitData() {
     const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
       return `https://cdn.mohen-tohen.ru/${photo.name}`;
-    }), ...formData.photos]};
+    }), ...formData.photos], goodOptions: goodOptions};
     // console.log(dataToSend);
     return addGood(dataToSend).unwrap()
     .then((data) => {
@@ -172,12 +177,6 @@ export default function AccountAddGood() {
     return entry.length === 0;
   });
 
-  // console.log(formNotCompleted);
-
-  // React.useEffect(() => {
-  //   console.log(formData);
-  // },[formData])
-
   React.useEffect(() => {
     if(goodToEdit) {
       setFormData(goodToEdit);
@@ -190,10 +189,6 @@ export default function AccountAddGood() {
       {state ? <h3>Редактирование товара</h3> : <h3>Добавление нового товара</h3>}
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
-        // console.log(formData);
-        // console.log(color);
-        // formData.color = color.hex;
-        // console.log(formData);
 
         if (!goodToEdit) {
           // submitData();
@@ -203,22 +198,26 @@ export default function AccountAddGood() {
           //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
           // });
           // formData.photos = photosStrings;
+
+          // getOptions();
+
           setUploadStarted(true);
+
           // console.log(formData);
         } else if (goodToEdit) {
-          photos.length > 0 ? 
-          setUploadStarted(true) 
-          : 
-          submitEditData()
+          // photos.length > 0 ? 
+          // setUploadStarted(true) 
+          // : 
+          // submitEditData()
           // console.log('edit good here');
 
           // formData.photos = [...oldPhotos, ...photos.map((photo) => {
           //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
           // })];
-          // photos.length > 0 ? 
-          // setUploadStarted(true) 
-          // : 
-          // submitEditData()
+          photos.length > 0 ? 
+          setUploadStarted(true) 
+          : 
+          submitEditData()
           // .then
           // console.log(formData);
         }
@@ -326,13 +325,13 @@ export default function AccountAddGood() {
             {<label className="addGoodform__label">
               <div className="addGoodform__text-wrapper-div-made-to-order">
                 <input type="checkbox" onChange={() => {
-                  setOptions(!options);
+                  setOptionsOpened(!optionsOpened);
                 }}>
                 </input>
                   Добавить опции к товару
               </div>
             </label>}
-            {options && <GoodConstructor />}
+            {optionsOpened && <GoodConstructor options={goodOptions} changeOption={setGoodOptions} />}
           </div>}
 
           <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && formData.photos.length > 0 )  ? false : true} type="submit">

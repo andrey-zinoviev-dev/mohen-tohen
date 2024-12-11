@@ -2,14 +2,16 @@ import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react"
 import ColorOption from "./ColorOption";
+import SizeOption from "./SizeOption";
 
-export default function GoodConstructorOption({title}: {title: string}) {
+export default function GoodConstructorOption({ title, options, optionType, changeOption }: {title: string, options: {title: string, price: number, type: string}[], optionType: string, changeOption: React.Dispatch<React.SetStateAction<{title: string, price: number, type: string}[]>>}) {
     //state
     const [optionClicked, setOptionClicked] = useState<boolean>(false);
-    const [options, setOptions] = useState<{title: string, price: number}[]>([]);
-    const [newOption, setNewOption] = useState<{title: string, price: number}>({
+    // const [options, setOptions] = useState<{title: string, price: number}[]>([]);
+    const [newOption, setNewOption] = useState<{title: string, price: number, type: string}>({
         title: "",
         price: 0,
+        type: optionType
     });
     
     return (
@@ -20,9 +22,28 @@ export default function GoodConstructorOption({title}: {title: string}) {
                 {title}
             </button>
             <ul>
-                {options.map((option) => {
+                {options.filter((option) => {
+                    return option.type === optionType
+                }).map((option) => {
                     return <li key={option.title}>
-                        {title === "Цвет" ? <ColorOption color={option.title}></ColorOption> : <span>{option.title}</span>}
+                        {optionType === "color" ? 
+                            <ColorOption color={option.title}></ColorOption>
+                            :
+                            optionType === "size" ?
+                            <SizeOption size={option.title}></SizeOption>
+                            :
+                            <span>{option.title}</span>
+                        }
+                        {/* <span>{option.title}</span> */}
+                        <span>{option.price}&#8381;</span>
+                        <span>{option.type}</span>
+                    </li>
+                })}
+                {/* {options.map((option) => {
+                    return <li key={option.title}>
+                        {title === "Цвет" ? <ColorOption color={option.title}></ColorOption> 
+                        : 
+                        title === "Размер" ? <SizeOption size={option.title} /> : <span>{option.title}</span>}
                         <span>{option.price}&#8381;</span>
                         <button onClick={() => {
                             setOptions((prevValue) => {
@@ -34,7 +55,7 @@ export default function GoodConstructorOption({title}: {title: string}) {
                             <FontAwesomeIcon icon={faXmark} />
                         </button>
                     </li>
-                })}
+                })} */}
             </ul>
             {optionClicked && <>
                 <input type="text" onChange={(evt) => {
@@ -48,12 +69,17 @@ export default function GoodConstructorOption({title}: {title: string}) {
                     })
                 }} placeholder="Сколько опция стоит"></input>
                 <button type="button" onClick={() => {
-                    setOptions((prevValue) => {
+                    changeOption((prevValue) => {
                         return [...prevValue, newOption]
-                    });
+                    })
+                    // console.log(newOption);
+                    // setOptions((prevValue) => {
+                    //     return [...prevValue, newOption]
+                    // });
                     setNewOption({
                         title: "",
                         price: 0,
+                        type: optionType,
                     })
                 }}>
                     <FontAwesomeIcon icon={faPlus} />
