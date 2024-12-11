@@ -318,7 +318,7 @@ export default function ApplicationForm() {
                                     </div>
                                 </ApplicationStep>
                                 <ApplicationStep stepTitle="Фото товара">
-                                    <ListGrid removeOldPhoto={() => {}} oldPics={[]} gridElements={applicationData.photos} openInput={openInput} removePhoto={removePhoto} />
+                                    {/* <ListGrid removeOldPhoto={() => {}} oldPics={[]} gridElements={applicationData.photos} openInput={openInput} removePhoto={removePhoto} /> */}
                                     <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
                                         processFileAdd(evt)
                                     }} style={{display: "none"}}></input>

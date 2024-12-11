@@ -57,7 +57,7 @@ export default function AccountAddGood() {
       dimensions: "",
       photos: [],
       price: 0,
-      batch: 0,
+      batch: 1,
       madeToOrder: false,
     }
   );
