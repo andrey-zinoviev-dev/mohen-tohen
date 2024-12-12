@@ -58,11 +58,12 @@ export default function GoodPage() {
     // const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
     const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0);
-    const [selectedColor, setSelectedColor] = React.useState<string>("")
+    const [selectedColor, setSelectedColor] = React.useState<{title: string, price: number}>({title: "", price: 0})
     console.log(selectedColor);
     console.log(selectedPhoto);
 
-    // //memo values
+    //memo values
+
     // const memoColors = React.useMemo(() => {
     //     return good.goodOptions?.filter((option) => {
     //         return option.type === "color";
@@ -105,7 +106,7 @@ export default function GoodPage() {
     // console.log(goodInFavourites, goodInBasket);
 
     React.useEffect(() => {
-        good.color && setSelectedColor(good.color);
+        good.color && setSelectedColor({title: good.color, price: 0});
     }, [good])
 
     return (
@@ -153,17 +154,23 @@ export default function GoodPage() {
                     <div className="good__text-parameter-wrapper">
                         {/* {} */}
                         <button onClick={() => {
-                            setSelectedColor(good.color)
-                        }} className="good__text-parameter-item">
-                            <ColorOption color={good.color} />
+                            setSelectedColor({title: good.color, price: 0})
+                        }} className={"good__text-parameter-item"} 
+                        // style={{border: selectedColor === good.color ? `1px solid ${selectedColor}` : "1px solid transparent"}}
+                        >
+                            <ColorOption active={selectedColor.title === good.color} color={good.color} />
+                            <span>+0&#8381;</span>
                         </button>
                         {good.goodOptions && good.goodOptions.filter((option) => {
                             return option.type === "color"
                         }).map((option) => {
                             return <button onClick={() => {
-                                setSelectedColor(option.title);
-                            }} className="good__text-parameter-item" key={option.title}>
-                                <ColorOption color={option.title} />
+                                setSelectedColor(option);
+                            }} 
+                            className={"good__text-parameter-item"} 
+                            // style={{border: selectedColor === option.title ? `1px solid ${selectedColor}` : "1px solid transparent"}}
+                            key={option.title}>
+                                <ColorOption active={selectedColor.title === option.title} color={option.title} />
                                 <span>+{option.price}&#8381;</span>
                             </button>
                         })}
