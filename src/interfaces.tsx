@@ -49,6 +49,7 @@ export interface GoodInterface {
   _id: string,
   batch: number,
   paid?: boolean,
+  goodOptions?: {title: string, price: number, type: string}[]
   createdAt: number,
 }
 

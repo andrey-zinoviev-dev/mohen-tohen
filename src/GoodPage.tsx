@@ -33,6 +33,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperDot from "./SwiperDot"
 import QuantityButton from "./QuantityButton"
 import NoteWrapper from "./NoteWrapper"
+import ColorOption from "./ColorOption"
 
 export default function GoodPage() {
 
@@ -56,8 +57,17 @@ export default function GoodPage() {
     // const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
     // const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
-    const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0)
+    const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0);
+    const [selectedColor, setSelectedColor] = React.useState<string>("")
+    console.log(selectedColor);
     console.log(selectedPhoto);
+
+    // //memo values
+    // const memoColors = React.useMemo(() => {
+    //     return good.goodOptions?.filter((option) => {
+    //         return option.type === "color";
+    //     })
+    // }, [good.goodOptions]);
 
     //functions
     function minusOne() {
@@ -94,9 +104,9 @@ export default function GoodPage() {
 
     // console.log(goodInFavourites, goodInBasket);
 
-    // React.useEffect(() => {
-    //     console.log(good);
-    // }, [good])
+    React.useEffect(() => {
+        good.color && setSelectedColor(good.color);
+    }, [good])
 
     return (
         <section className="good">
@@ -140,8 +150,26 @@ export default function GoodPage() {
                 </h4>
                 <h4>Материал: <span className="cvet">{good.material}</span></h4>
                 <h4>Цвет: <span className="cvet"></span>
-                    <div className="good__text-color" style={{backgroundColor: good.color}}></div>
+                    <div className="good__text-parameter-wrapper">
+                        {/* {} */}
+                        <button onClick={() => {
+                            setSelectedColor(good.color)
+                        }} className="good__text-parameter-item">
+                            <ColorOption color={good.color} />
+                        </button>
+                        {good.goodOptions && good.goodOptions.filter((option) => {
+                            return option.type === "color"
+                        }).map((option) => {
+                            return <button onClick={() => {
+                                setSelectedColor(option.title);
+                            }} className="good__text-parameter-item" key={option.title}>
+                                <ColorOption color={option.title} />
+                                <span>+{option.price}&#8381;</span>
+                            </button>
+                        })}
+                    </div>
                 </h4>
+                
                 <h4>Наличие: <span className="cvet">{good.batch}</span></h4>
 
                 <div className="good__text-quantity">

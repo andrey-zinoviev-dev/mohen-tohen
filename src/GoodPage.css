@@ -329,6 +329,23 @@
     color: #FF8261;
 }
 
+.good__text-parameter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* gap: 5px; */
+}
+
+.good__text-parameter-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: transparent;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
 /* .good__text-terms {
     display: flex;
     flex-direction: column;
