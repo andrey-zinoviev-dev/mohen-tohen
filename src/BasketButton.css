@@ -11,9 +11,9 @@
   transition: all 0.25s ease-in-out;
 }
 
-.basket-button:hover {
+/* .basket-button:hover {
   color: white;
-}
+} */
 
 .basket-button svg {
   color: transparent;
@@ -22,9 +22,9 @@
   transition: all 0.25s ease-in-out;
 }
 
-.basket-button:hover svg {
+/* .basket-button:hover svg {
   stroke: white;
-}
+} */
 
 .basket-button_clicked svg {
   color: black;

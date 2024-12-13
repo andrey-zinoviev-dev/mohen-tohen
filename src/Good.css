@@ -61,6 +61,7 @@
     max-width: 30px;
     border-radius: 50%;
     aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .good-text-wrapper__seller-name {
@@ -87,4 +88,8 @@
 .good-text-wrapper__seller:hover .good-text-wrapper__seller-name::after {
     width: 100%;
     /* color: white; */
+}
+
+.good-text-wrapper__price {
+    font-weight: 700;
 }

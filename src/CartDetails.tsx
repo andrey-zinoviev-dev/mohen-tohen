@@ -21,7 +21,7 @@ export default function CartDetails() {
 
     //total
     const total = cartState.reduce((result, item) => {
-        return result + (item.quantity * item.good.price);
+        return result + (item.quantity * item.price);
     }, 0);
 
     //state

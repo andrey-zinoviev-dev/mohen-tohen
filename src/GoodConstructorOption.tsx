@@ -27,7 +27,7 @@ export default function GoodConstructorOption({ title, options, optionType, chan
                 }).map((option) => {
                     return <li key={option.title}>
                         {optionType === "color" ? 
-                            <ColorOption color={option.title}></ColorOption>
+                            <ColorOption active={false} color={option.title}></ColorOption>
                             :
                             optionType === "size" ?
                             <SizeOption size={option.title}></SizeOption>

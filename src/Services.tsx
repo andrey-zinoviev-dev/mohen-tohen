@@ -6,7 +6,7 @@ import { GoodInterface } from "./interfaces";
 export default function Services() {
     const {
         data: goods = [] as GoodInterface[]
-    } = useGetCategoryQuery("services");
+    } = useGetCategoryQuery("Услуги");
 
     return (
         <section className="services">

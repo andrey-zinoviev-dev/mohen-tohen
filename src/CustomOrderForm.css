@@ -25,11 +25,11 @@
     gap: 15px;
 }
 
-.custom-order__form button {
+.custom-order__form-button {
     background-color: rgb(255, 130, 97);
 }
 
-.custom-order__form button:disabled {
+.custom-order__form-button:disabled {
     background-color: rgb(200, 204, 207);
 }
 

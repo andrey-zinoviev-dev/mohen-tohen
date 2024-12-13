@@ -50,9 +50,14 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
             <button style={{backgroundColor: good.batch === 0 && !good.madeToOrder ? `#C8CCCF` : "#FF8261", pointerEvents: good.batch > 0 || good.madeToOrder ? "all" : "none"}} className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
                 evt.stopPropagation();
 
-                // if(!good.category !== ) {
+                if(good.category === "Услуги") {
+                    setOpenOrderForm(true);
+                } else {
                     !goodInBasket ? dispatch(add({good: good, quantity: quantity, price: price})) : navigate("../basket");
                     dispatch(changeMessage({message: "Товар добавлен в корзину"}))
+                }
+                // if(!good.category !== ) {
+
                 // } else {
                 //     setOpenOrderForm(true);
                 //     // console.log("open make to order form");
@@ -69,18 +74,18 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
             }}>
                 {goodInBasket ? 
                     <>
-                        Уже в корзине
+                        Товар в корзине
                         <FontAwesomeIcon icon={faShoppingBag} />
                     </> 
                     : 
                     <>
                         {
-                            good.madeToOrder ? 
-                            <>
-                                от {price}&#8381;
-                                <FontAwesomeIcon icon={faShoppingBag} />
-                            </>
-                            : 
+                            // good.madeToOrder ? 
+                            // <>
+                            //     от {price}&#8381;
+                            //     <FontAwesomeIcon icon={faShoppingBag} />
+                            // </>
+                            // : 
                             <>
                                 {good.batch > 0 ? <>
                                     {price}&#8381;

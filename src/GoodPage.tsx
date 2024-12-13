@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./GoodPage.css"
-import { faArrowRight
+import { faArrowRight, faXmarkCircle
     // faTruckRampBox 
 } from "@fortawesome/free-solid-svg-icons"
 import { 
@@ -34,7 +34,9 @@ import SwiperDot from "./SwiperDot"
 import QuantityButton from "./QuantityButton"
 import NoteWrapper from "./NoteWrapper"
 import ColorOption from "./ColorOption"
-
+import { createPortal } from "react-dom"
+import PortalMultimedia from "./PortalMultimedia"
+import PortalContainer from "./PortalContainer"
 export default function GoodPage() {
 
     const { goodID } = useParams();
@@ -58,20 +60,14 @@ export default function GoodPage() {
     // const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     const [quantity, setQuantity] = React.useState<number>(1);
     const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0);
-    const [selectedColor, setSelectedColor] = React.useState<{title: string, price: number}>({title: "", price: 0})
-    console.log(selectedColor);
-    // console.log(selectedPhoto);
+    const [selectedColor, setSelectedColor] = React.useState<{title: string, price: number}>({title: "", price: 0});
+    // const [selectedMaterial, setSelectedMaterial] = React.useState<{title: string, price: number}>({title: "", price: 0})
+    const [imageClicked, setImageClicked] = useState<boolean>(false);
 
     //memo values
-    // const finalPrice = useMemo(() => {
-    //     // console.log(good.price, selectedColor.price)
-    //     return good.price && good.price + selectedColor.price;
-    // }, [selectedColor.price])
-    // const memoColors = React.useMemo(() => {
-    //     return good.goodOptions?.filter((option) => {
-    //         return option.type === "color";
-    //     })
-    // }, [good.goodOptions]);
+    const optionsPrice = React.useMemo(() => {
+        return selectedColor.price
+    }, [selectedColor.price]);
 
     //functions
     function minusOne() {
@@ -89,7 +85,7 @@ export default function GoodPage() {
     React.useEffect(() => {
         // console.log(good);
         good.color && setSelectedColor({title: good.color, price: 0});
-    }, [good])
+    }, [good]);
 
     return (
         <section className="good">
@@ -99,7 +95,9 @@ export default function GoodPage() {
                 }} slidesPerView={1} spaceBetween={5}>
                     {good.photos && good.photos.map((photo) => {
                         return <SwiperSlide key={photo}>
-                            <img className="good__swiper-img" src={photo}></img>
+                            <img onClick={() => {
+                                setImageClicked(true);
+                            }} className="good__swiper-img" src={photo}></img>
                         </SwiperSlide>
                     })}
                     <div className="good__swiper-dots">
@@ -117,7 +115,7 @@ export default function GoodPage() {
                     <h3>{good.title}</h3>
 
                 </div>
-                <h4>Цена: <span className="cvet">{good.price + selectedColor.price}&#8381;</span></h4>
+                <h4>Цена: <span className="cvet">{good.price + optionsPrice}&#8381;</span></h4>
                 <Link to={`/brands/${good.seller && good.seller._id}`}>
                     <div className="good__text-a-name">
                         <span>{good.seller && good.seller.name}</span>
@@ -167,12 +165,20 @@ export default function GoodPage() {
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton good={good} quantity={quantity} price={good.price + selectedColor.price} />
+                    <BasketButton good={good} quantity={quantity} price={good.price + optionsPrice} />
                     <LikeButton good={good}></LikeButton>
                     <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} />
                 </div>
                 <Terms></Terms>
             </div>
+            {imageClicked && createPortal(<PortalMultimedia>
+                <button onClick={() => {
+                    setImageClicked(false);
+                }}>
+                <FontAwesomeIcon icon={faXmarkCircle} />
+                </button>
+                <img src={good.photos[selectedPhoto]} />
+            </PortalMultimedia>, document.body)}
         </section>
     )
 }

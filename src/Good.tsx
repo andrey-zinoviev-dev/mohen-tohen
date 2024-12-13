@@ -4,6 +4,8 @@ import LikeButton from "./LikeButton";
 import BasketButton from "./BasketButton";
 import ShareButton from "./ShareButton";
 import { Link, useNavigate } from "react-router-dom";
+import MadeToOrderLink from "./MadeToOrderLink";
+import NoteWrapper from "./NoteWrapper";
 
 export default function Good({ good }:GoodComponentInterface) {
     //navigate
@@ -24,11 +26,13 @@ export default function Good({ good }:GoodComponentInterface) {
             </div>
             <div className="good-text-wrapper">
                 <h3>{good.title}</h3>
+                {/* {good.madeToOrder && <NoteWrapper text="Товар на заказ" />} */}
                 {good.seller._id && <Link to={`../brands/${good.seller._id}`} className="good-text-wrapper__seller">
                     <img src={good.seller.cover}></img>
                     <span className="good-text-wrapper__seller-name">{good.seller.brandName}</span>
                 </Link >}
-                <BasketButton price={good.price} good={good} quantity={1} />
+                {/* {good.madeToOrder ? <span className="good-text-wrapper__price">от {good.price} &#8381;</span> : <span className="good-text-wrapper__price">{good.price} &#8381;</span>} */}
+                {good.madeToOrder ? <MadeToOrderLink id={good._id} price={good.price} /> : <BasketButton price={good.price} good={good} quantity={1} />}
             </div>
         </>
     )
