@@ -13,7 +13,7 @@ type ConditionalProps = | {
 }
 
 export default function ApplicationRender({applicationData, showPhotos}:ConditionalProps) {
-    // console.log(applicationData);
+    console.log(applicationData);
     //variables
     // const valuesOfApplication:{value: string, textarea?: boolean, label?: string, checkbox?: boolean, date?: boolean, photo? :boolean, approved?: boolean}[] = Object.values(applicationData);
     // console.log(valuesOfApplication);
@@ -41,7 +41,7 @@ export default function ApplicationRender({applicationData, showPhotos}:Conditio
                     </ApplicationDataWrapper>
                     <ApplicationDataWrapper>
                         <label>Что произодит продавец</label>
-                        {applicationData.category.map((category) => {
+                        {applicationData.category && applicationData.category.map((category) => {
                             return <span>{category}</span>
                         })}
                     </ApplicationDataWrapper>

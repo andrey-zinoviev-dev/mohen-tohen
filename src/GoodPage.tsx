@@ -36,7 +36,7 @@ import NoteWrapper from "./NoteWrapper"
 import ColorOption from "./ColorOption"
 import { createPortal } from "react-dom"
 import PortalMultimedia from "./PortalMultimedia"
-import PortalContainer from "./PortalContainer"
+// import PortalContainer from "./PortalContainer"
 export default function GoodPage() {
 
     const { goodID } = useParams();

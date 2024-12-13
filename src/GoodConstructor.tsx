@@ -5,7 +5,7 @@ export default function GoodConstructor({ options, changeOption }: { options:{ti
   //state
   // const [options, setOptions] = useState<{title: string, price: number}[]>([]);
 
-
+  console.log(options);
   return (
     <div>
       <h3>Что в товаре можно поменять</h3>

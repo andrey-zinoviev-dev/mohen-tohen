@@ -59,6 +59,7 @@ export default function AccountAddGood() {
       price: 0,
       batch: 1,
       madeToOrder: false,
+      goodOptions: [],
     }
   );
 
@@ -180,6 +181,9 @@ export default function AccountAddGood() {
   React.useEffect(() => {
     if(goodToEdit) {
       setFormData(goodToEdit);
+      console.log(goodToEdit.goodOptions)
+      goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setOptionsOpened(true)
+      goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setGoodOptions(goodToEdit.goodOptions);
     }
   }, [goodToEdit]);
   
@@ -236,7 +240,7 @@ export default function AccountAddGood() {
               <div className="addGoodform__text-wrapper-div-made-to-order">
                 <input checked={formData.madeToOrder} type="checkbox" onChange={() => {
                   setFormData((prevValue) => {
-                    return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: prevValue.batch? prevValue.batch : 0};
+                    return {...prevValue, madeToOrder: !prevValue.madeToOrder, batch: prevValue.batch? prevValue.batch : 1};
                   })
                 }}></input>
                 Товар на заказ
@@ -324,7 +328,7 @@ export default function AccountAddGood() {
             <NoteWrapper text="Если Вы делаете товар с опциями, их можно добавить в полях ввода ниже"></NoteWrapper>
             {<label className="addGoodform__label">
               <div className="addGoodform__text-wrapper-div-made-to-order">
-                <input type="checkbox" onChange={() => {
+                <input checked={formData.goodOptions && true} type="checkbox" onChange={() => {
                   setOptionsOpened(!optionsOpened);
                 }}>
                 </input>

@@ -16,7 +16,7 @@ export default function ShowApplication() {
     const {
         data: application = {} as ApplicationUploadedInterface
     } = useGetApplicationQuery(applicationID!);
-    // console.log(application);
+    console.log(application);
 
     const [decideApplication] = useDecideApplicationMutation();
 

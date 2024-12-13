@@ -196,11 +196,11 @@ export interface ApplicationInterface extends CollaborationInterface {
 }
 
 export interface ApplicationNotUploadedIterface extends ApplicationInterface {
-  photos: {title: string, file: File}[],
+  photos: string[],
 }
 
 export interface ApplicationUploadedInterface extends ApplicationInterface {
-  photos: {title: string, url: string}[];
+  photos: string[];
 }
 
 export interface SelectInterface {
@@ -258,6 +258,7 @@ export interface AccountGoodInterface {
   price: number, 
   batch: number, 
   color?: string, 
-  madeToOrder: boolean ,
+  madeToOrder: boolean,
+  goodOptions?: {title: string, price: number, type: string}[],
   _id?: string
 }
