@@ -60,10 +60,13 @@ export default function GoodPage() {
     const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0);
     const [selectedColor, setSelectedColor] = React.useState<{title: string, price: number}>({title: "", price: 0})
     console.log(selectedColor);
-    console.log(selectedPhoto);
+    // console.log(selectedPhoto);
 
     //memo values
-
+    // const finalPrice = useMemo(() => {
+    //     // console.log(good.price, selectedColor.price)
+    //     return good.price && good.price + selectedColor.price;
+    // }, [selectedColor.price])
     // const memoColors = React.useMemo(() => {
     //     return good.goodOptions?.filter((option) => {
     //         return option.type === "color";
@@ -83,29 +86,8 @@ export default function GoodPage() {
         })
     }
 
-    // const [postGoodToBasket, { isLoading }] = usePostGoodToBasketMutation();
-    // const [postGoodToFavourites] = usePostGoodToFavouriteMutation();
-
-    // const userState = useAppSelector((state) => {
-    //     return state.user;
-    // });
-
-    //derived state
-    // const goodInFavourites = userState.favourites && userState.favourites.find((favGood) => {
-    //     return favGood.title === state.title;
-    // });
-    
-    // const goodInBasket = userState.basket && userState.basket.find((basketGood) => {
-    //     return basketGood.title === state.title;
-    // });
-
-    // console.log(userStateFavs, );
-
-    // console.log(state);
-
-    // console.log(goodInFavourites, goodInBasket);
-
     React.useEffect(() => {
+        // console.log(good);
         good.color && setSelectedColor({title: good.color, price: 0});
     }, [good])
 
@@ -135,7 +117,7 @@ export default function GoodPage() {
                     <h3>{good.title}</h3>
 
                 </div>
-                <h4>Цена: <span className="cvet">{good.price}</span></h4>
+                <h4>Цена: <span className="cvet">{good.price + selectedColor.price}&#8381;</span></h4>
                 <Link to={`/brands/${good.seller && good.seller._id}`}>
                     <div className="good__text-a-name">
                         <span>{good.seller && good.seller.name}</span>
@@ -185,7 +167,7 @@ export default function GoodPage() {
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton good={good} quantity={quantity} />
+                    <BasketButton good={good} quantity={quantity} price={good.price + selectedColor.price} />
                     <LikeButton good={good}></LikeButton>
                     <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} />
                 </div>

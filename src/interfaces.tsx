@@ -56,6 +56,7 @@ export interface GoodInterface {
 export interface goodPageInt {
   good: GoodInterface,
   quantity: number,
+  price: number
 }
 
 export interface TransactionInterface {

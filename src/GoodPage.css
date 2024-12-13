@@ -346,10 +346,9 @@
     background-color: transparent;
     padding: 0;
     box-sizing: border-box;
-    border: 1px solid transparent;
+    border: none;
     min-width: 70px;
 }
-
 .good__text-parameter-item span {
     font-size: 12px;
     font-weight: 700;

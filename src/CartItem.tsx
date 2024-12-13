@@ -49,7 +49,7 @@ export default function CartItem({item}: {item: goodPageInt}) {
                         <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>
                     </div>
                 </div>
-                <span className="cart-item__price">{item.good.price}&#8381;</span>
+                <span className="cart-item__price">{item.price}&#8381;</span>
             </div>
             <button onClick={deleteItem} className="cart-item__delete">
                 <FontAwesomeIcon icon={faXmark} />

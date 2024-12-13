@@ -28,7 +28,7 @@ export default function Good({ good }:GoodComponentInterface) {
                     <img src={good.seller.cover}></img>
                     <span className="good-text-wrapper__seller-name">{good.seller.brandName}</span>
                 </Link >}
-                <BasketButton good={good} quantity={1} />
+                <BasketButton price={good.price} good={good} quantity={1} />
             </div>
         </>
     )

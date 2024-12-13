@@ -20,6 +20,7 @@ export const basketSlice = createSlice({
     initialState: initialState,
     reducers: {
         add: (state, action: PayloadAction<goodPageInt>) => {
+            // console.log(action.payload);
             state.goods.push(action.payload);
             // console.log(state.goods);
             localStorage.setItem("basket", JSON.stringify(state.goods));

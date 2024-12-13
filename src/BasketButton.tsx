@@ -20,9 +20,10 @@ import { useNavigate } from "react-router-dom";
 interface goodPageInt {
     good: GoodInterface,
     quantity: number,
+    price: number
 }
 
-export default function BasketButton({ good, quantity }: goodPageInt) {
+export default function BasketButton({ good, quantity, price }: goodPageInt) {
     //navigate
     const navigate = useNavigate();
     
@@ -49,13 +50,13 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
             <button style={{backgroundColor: good.batch === 0 && !good.madeToOrder ? `#C8CCCF` : "#FF8261", pointerEvents: good.batch > 0 || good.madeToOrder ? "all" : "none"}} className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
                 evt.stopPropagation();
 
-                if(!good.madeToOrder) {
-                    !goodInBasket ? dispatch(add({good: good, quantity: quantity})) : navigate("../basket");
+                // if(!good.category !== ) {
+                    !goodInBasket ? dispatch(add({good: good, quantity: quantity, price: price})) : navigate("../basket");
                     dispatch(changeMessage({message: "Товар добавлен в корзину"}))
-                } else {
-                    setOpenOrderForm(true);
-                    // console.log("open make to order form");
-                }
+                // } else {
+                //     setOpenOrderForm(true);
+                //     // console.log("open make to order form");
+                // }
 
 
                 // localStorage.setItem("cart"m)
@@ -76,13 +77,13 @@ export default function BasketButton({ good, quantity }: goodPageInt) {
                         {
                             good.madeToOrder ? 
                             <>
-                                от {good.price}&#8381;
+                                от {price}&#8381;
                                 <FontAwesomeIcon icon={faShoppingBag} />
                             </>
                             : 
                             <>
                                 {good.batch > 0 ? <>
-                                    {good.price}&#8381;
+                                    {price}&#8381;
                                     <FontAwesomeIcon icon={faShoppingBag} />
                                 </> : `Скоро в наличии`}
                             </>
