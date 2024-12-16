@@ -33,7 +33,7 @@ export default function CartItem({item}: {item: goodPageInt}) {
     }
 
     return (
-        <>
+        <div className="cart__ul-item">
             <img className="cart-item__cover" src={item.good.photos[0]}></img>
             <div className="cart-item__wrapper">
                 <div className="cart-item__params">
@@ -54,7 +54,7 @@ export default function CartItem({item}: {item: goodPageInt}) {
             <button onClick={deleteItem} className="cart-item__delete">
                 <FontAwesomeIcon icon={faXmark} />
             </button>
-        </>
+        </div>
     // <div className="cart__ul-li-details">
     //   <div className="cart__ul-li-details-params">
     //                                     <img className="cart__ul-li-img" src={item.good.photos[0].url}></img>

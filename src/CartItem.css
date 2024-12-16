@@ -3,6 +3,11 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 5px;
+
+    /* max-width: 140px;
+    border-radius: 9px;
+    aspect-ratio: 1/1;
+    object-fit: cover; */
 }
 
 .cart-item__wrapper {
@@ -82,6 +87,10 @@
 }
 
 @media screen and (max-width: 767px) {
+    .cart-item__cover {
+        max-width: 75px;
+
+    }
     .cart-item__wrapper {
         align-items: flex-end;
     }

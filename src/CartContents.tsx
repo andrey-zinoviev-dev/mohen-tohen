@@ -8,6 +8,7 @@ import { useAppSelector } from "./hooks";
 // import { updateBasketGoodQuantity, deleteBasketGood } from "./features/userSlice";
 // import { changeQuantity, remove } from "./features/basketSlice";
 import CartItem from "./CartItem";
+import ListElementGeneric from "./ListElementGeneric";
 // import Headline from "./Headline";
 // import InputEl from "./InputEl";
 
@@ -46,14 +47,18 @@ export default function CartContents() {
 
     return (
         <>
-           {cartState.length > 0  ? <ul className="cart__ul">
-                {cartState.map((cartGood) => {
-                    return <li className="cart__ul-li" 
-                        key={cartGood.good._id}>
-                            <CartItem item={cartGood}></CartItem>
-                    </li>
-                })}
-            </ul>
+            {cartState.length > 0  ? 
+                <ListElementGeneric classUl="cart__ul" items={cartState} renderItems={(item) => {
+                    return <CartItem item={item}></CartItem>
+                }} />
+        //    <ul className="cart__ul">
+        //         {cartState.map((cartGood) => {
+        //             return <li className="cart__ul-li" 
+        //                 key={cartGood.good._id}>
+        //                     <CartItem item={cartGood}></CartItem>
+        //             </li>
+        //         })}
+        //     </ul>
             :
             <p>Ваша корзина пуста, но ее можно наполнить</p>
 

@@ -8,17 +8,13 @@ export default function Goods({ goods }:GoodsInterface) {
 
   return (
     <>
-    {goods && goods.length > 0 ? <ul className="goods__ul">
-        {goods && goods.map((good) => {
-          return <li key={good._id} className="goods__ul-li" onClick={() => {
-            // navigate(`/goods/${good._id}`, {
-            //   state: good,
-            //   preventScrollReset: false,
-            // })
-          }}>
+    {goods && goods.length > 0 ? 
+      <ul className="goods__ul">
+        {/* {goods && goods.map((good) => {
+          return <li key={good._id} className="goods__ul-li">
             <Good good={good}></Good>
           </li>
-        })}
+        })} */}
       </ul>
       :
       <p>Товаров пока нет, но их всегда можно добавить</p>
