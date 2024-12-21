@@ -1,7 +1,7 @@
 import { GoodsInterface } from "./interfaces"
 import './Goods.css'
 // import { useNavigate } from "react-router-dom"
-import Good from "./Good"
+// import Good from "./Good"
 
 export default function Goods({ goods }:GoodsInterface) {
   // const navigate = useNavigate();

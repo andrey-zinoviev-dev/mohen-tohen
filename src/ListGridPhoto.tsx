@@ -4,28 +4,36 @@ import { createPortal } from "react-dom";
 import PortalMultimedia from "./PortalMultimedia";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
-export default function ListGridPhoto({ file, removePhoto }: {file: File, removePhoto: (file: File) => void}) {
+
+interface ListGridPhotoInterface {
+  url: string,
+  // name: string,
+  removePhoto: () => void,
+}
+
+export default function ListGridPhoto({ url, removePhoto }: ListGridPhotoInterface) {
+// export default function ListGridPhoto({ file, removePhoto }: {file: File, removePhoto: (file: File) => void}) {
   // console.log(file);
-  const photoUrl = window.URL.createObjectURL(file);
+  // const photoUrl = window.URL.createObjectURL(file);
   // console.log(photoUrl);
   //state
-  const [selectedPhoto, setSelectedPhoto] = React.useState<File | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = React.useState<string | null>(null);
 
   return (
     <>
-      <button className="button" type="button" onClick={() => {
-        setSelectedPhoto(file);
+      <div className="button" onClick={() => {
+        // setSelectedPhoto(file);
       }}>
         <button className="button__close" onClick={(evt) => {
           evt.stopPropagation();
-          removePhoto(file)
+          removePhoto()
         }}>
           <FontAwesomeIcon icon={faXmarkCircle} />
         </button>
-        <img className="list-img" src={photoUrl} onLoad={() => {
-          window.URL.revokeObjectURL(photoUrl);
-        }}></img>
-      </button>
+        <img className="list-img" onClick={() => {
+          setSelectedPhoto(url)
+        }} src={ url }></img>
+      </div>
       
       {selectedPhoto && createPortal(<PortalMultimedia>
         <button onClick={() => {
@@ -33,8 +41,8 @@ export default function ListGridPhoto({ file, removePhoto }: {file: File, remove
         }}>
           <FontAwesomeIcon icon={faXmarkCircle} />
         </button>
-        <img src={photoUrl} onLoad={() => {
-          window.URL.revokeObjectURL(photoUrl);
+        <img src={ url } onLoad={() => {
+          window.URL.revokeObjectURL( url );
         }}>
         </img>
       </PortalMultimedia>, document.body)}

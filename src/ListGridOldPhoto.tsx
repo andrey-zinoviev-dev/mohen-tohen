@@ -4,7 +4,7 @@ import "./ListGridPhoto.css";
 export default function ListGridOldPhoto({ image, removePhoto }: { image: string, removePhoto: (url: string) => void}) {
   return (
     <>
-      <button className="button" type="button" onClick={() => {
+      <div className="button" onClick={() => {
         // setSelectedPhoto(file);
       }}>
         <button className="button__close" type="button" onClick={() => {
@@ -16,7 +16,7 @@ export default function ListGridOldPhoto({ image, removePhoto }: { image: string
         </button>
         <img className="list-img" src={image} onLoad={() => {
         }}></img>
-      </button>
+      </div>
     </>
   )
 }

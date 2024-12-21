@@ -5,7 +5,8 @@ import "./MadeToOrderLink.css"
 export default function MadeToOrderLink({id, price}: {id: string, price: number}) {
     return (
         <Link className="order-link" to={`./goods/${id}`}>
-            от {price}&#8381;
+            {/* от {price}&#8381; */}
+            <span>Заказать</span>
             {/* <FontAwesomeIcon icon={faEye} /> */}
         </Link>
     )

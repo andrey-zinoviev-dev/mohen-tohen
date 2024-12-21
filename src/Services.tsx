@@ -1,6 +1,6 @@
 import { useGetCategoryQuery } from "./features/apiSlice";
 import Good from "./Good";
-import Goods from "./Goods";
+// import Goods from "./Goods";
 import Headline from "./Headline";
 import { GoodInterface } from "./interfaces";
 import ListElementGeneric from "./ListElementGeneric";

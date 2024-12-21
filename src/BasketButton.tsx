@@ -47,7 +47,7 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
 
     return (
         <>
-            <button style={{backgroundColor: good.batch === 0 && !good.madeToOrder ? `#C8CCCF` : "#FF8261", pointerEvents: good.batch > 0 || good.madeToOrder ? "all" : "none"}} className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
+            <button style={{backgroundColor: good.batch === 0 && !good.madeToOrder ? `#C8CCCF` : "#ff9a7f", pointerEvents: good.batch > 0 || good.madeToOrder ? "all" : "none"}} className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
                 evt.stopPropagation();
 
                 if(good.category === "Услуги") {
@@ -75,7 +75,7 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
                 {goodInBasket ? 
                     <>
                         Товар в корзине
-                        <FontAwesomeIcon icon={faShoppingBag} />
+                        {/* <FontAwesomeIcon icon={faShoppingBag} /> */}
                     </> 
                     : 
                     <>
@@ -88,9 +88,10 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
                             // : 
                             <>
                                 {good.batch > 0 ? <>
-                                    {price}&#8381;
-                                    <FontAwesomeIcon icon={faShoppingBag} />
-                                </> : `Скоро в наличии`}
+                                    <span>Добавить в корзину</span>
+                                    {/* {price}&#8381; */}
+                                    {/* <FontAwesomeIcon icon={faShoppingBag} /> */}
+                                </> : <span>Скоро в наличии</span>}
                             </>
                         }
                         {/* {good.batch ? <>

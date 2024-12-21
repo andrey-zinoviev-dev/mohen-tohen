@@ -1,6 +1,6 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState } from "react";
+// import { createPortal } from "react-dom";
+import { faArrowRight, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationForm.css"
 // import heading from "./assets/mh-1.png"
@@ -10,16 +10,18 @@ import { applicationSizeSelect, applicationStockSelect, applicationProdTimeSelec
 import { ApplicationNotUploadedIterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 // import ApplicationOverview from "./ApplicationOverview";
-import ListGrid from "./ListGrid";
-// import { useSendApplicationMutation } from "./features/apiSlice";
+// import ListGrid from "./ListGrid";
+import { useSendApplicationMutation } from "./features/apiSlice";
 import InputEl from "./InputEl";
 import Wizard from "./Wizard";
 import ApplicationStep from "./ApplicationStep";
-import { useSendApplicationMutation } from "./features/apiSlice";
-import PortalMultimedia from "./PortalMultimedia";
-import PortalContainer from "./PortalContainer";
-import UploadComp from "./UploadComp";
+// import { useSendApplicationMutation } from "./features/apiSlice";
+// import PortalMultimedia from "./PortalMultimedia";
+// import PortalContainer from "./PortalContainer";
+// import UploadComp from "./UploadComp";
 import { useSearchParams } from "react-router-dom";
+import InputFileGeneric from "./InputFileGeneric";
+import InputFileButton from "./InputFileButton";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
@@ -47,7 +49,9 @@ export default function ApplicationForm() {
         dateOfFill: "",
         photos: [],
     });
-    const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
+
+    const [files, setFiles] = useState<File[]>([]);
+    // const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
 
     //RTK
@@ -61,43 +65,55 @@ export default function ApplicationForm() {
     const userName = searchParams.get("name");
 
     //functions
-    function openInput() {
-        fileInputRef.current && fileInputRef.current.click();
-    }
+    // function openInput() {
+    //     fileInputRef.current && fileInputRef.current.click();
+    // }
     
     function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
-        const fileuploaded = evt.target.files && {title: evt.target.files[0].name, file: evt.target.files[0]};
-        
-        fileuploaded && setApplicationData((prevValue) => {
-            const photoInState = prevValue.photos.find((photo) => {
-                return photo.title === fileuploaded.title;
-            });
+        const fileuploaded = evt.target.files && evt.target.files[0];
+        fileuploaded && setFiles((prevValue) => {
+            return [...prevValue, fileuploaded]
+        })
+        // fileuploaded && setApplicationData((prevValue) => {
+        //     return prevValue
+        //     // const photoInState = prevValue.photos.find((photo) => {
+        //     //     return photo.title === fileuploaded.title;
+        //     // });
 
-            return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
-                return photo.title !==  fileuploaded.title;
-            }) : [...prevValue.photos, fileuploaded]};
+        //     // return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
+        //     //     return photo.title !==  fileuploaded.title;
+        //     // }) : [...prevValue.photos, fileuploaded]};
 
-            // return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
-            //     return photo.title !== fileuploaded.name;
-            // }) : [...prevValue.photos, fileuploaded]}
+        //     // return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
+        //     //     return photo.title !== fileuploaded.name;
+        //     // }) : [...prevValue.photos, fileuploaded]}
+        // })
+    }
+
+    function removeFile(name: string) {
+        setFiles((prevValue) => {
+            return prevValue.filter((prevFile) => {
+                return prevFile.name !== name;
+            })
         })
     }
     
-    function removePhoto(file:File) {
-        setApplicationData((prevValue) => {
-          return {
-            ...prevValue, photos: prevValue.photos.filter((photo) => {
-              return photo.title !== file.name;
-            })
-          }
-          // return {...prevValue, photos: prevValue.photos.filter((photo) => {
-          //   return photo.name !== file.name;
-          // })}
-        });
-    }
+    // function removePhoto(file:File) {
+    //     setApplicationData((prevValue) => {
+    //         return prevValue
+    //     //   return {
+    //     //     ...prevValue, photos: prevValue.photos.filter((photo) => {
+    //     //       return photo.title !== file.name;
+    //     //     })
+    //     //   }
+    //       // return {...prevValue, photos: prevValue.photos.filter((photo) => {
+    //       //   return photo.name !== file.name;
+    //       // })}
+    //     });
+    // }
 
     function startDataSubmit(){
-        setUploadStarted(true);
+        // setUploadStarted(true);
     }
 
     function submitData(){
@@ -129,6 +145,9 @@ export default function ApplicationForm() {
             })
         })
     }
+
+    // console.log(files);
+    // useEffect
     
     return (
         <>
@@ -318,10 +337,15 @@ export default function ApplicationForm() {
                                     </div>
                                 </ApplicationStep>
                                 <ApplicationStep stepTitle="Фото товара">
+                                    <InputFileGeneric handleInputChange={() => {}} ref={fileInputRef} />
+                                    
+                                    {/* <FilesGeneric filesList={files} addFile={processFileAdd} removeFile={removeFile}>
+
+                                    </FilesGeneric> */}
                                     {/* <ListGrid removeOldPhoto={() => {}} oldPics={[]} gridElements={applicationData.photos} openInput={openInput} removePhoto={removePhoto} /> */}
-                                    <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
+                                    {/* <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
                                         processFileAdd(evt)
-                                    }} style={{display: "none"}}></input>
+                                    }} style={{display: "none"}}></input> */}
                                 </ApplicationStep>
                                 <ApplicationStep stepTitle="Необоходимые соглашения">
                                     {/* <h3></h3> */}
@@ -352,7 +376,6 @@ export default function ApplicationForm() {
                                         </li>
                                     </ul>
                                 </ApplicationStep>
-                                {/* <p>Шаг 1</p> */}
                             </Wizard>
 
                         </div>

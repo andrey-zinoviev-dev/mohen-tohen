@@ -14,10 +14,15 @@
 .button__close {
     position: absolute;
     top: 5px;
-    right: 15px;
+    right: 5px;
     padding: 0;
     border: 0;
     transition: all 0.25 ease-in-out;
+    width: fit-content;
+    display: flex;
+    font-size: 20px;
+    background-color: transparent;
+    color: #F89D85;
 }
 
 .button__close:hover {
@@ -27,8 +32,10 @@
 
 .list-img {
     width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    /* aspect-ratio: 1/1; */
+    /* object-fit: contain; */
     /* width: 100%;
     height: 100%;
     object-fit: cover; */

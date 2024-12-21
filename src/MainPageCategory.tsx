@@ -1,5 +1,5 @@
 import "./MainPageCategory.css"
-import Goods from "./Goods";
+// import Goods from "./Goods";
 import { GoodInterface } from "./interfaces";
 // import LinkCompAction from "./LinkCompAction";
 // import { faArrowRight } from "@fortawesome/free-solid-svg-icons";

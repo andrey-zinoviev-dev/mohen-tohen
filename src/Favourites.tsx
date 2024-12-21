@@ -1,8 +1,8 @@
 import "./Favourites.css"
 import Good from "./Good";
-import Goods from "./Goods";
+// import Goods from "./Goods";
 import { useAppSelector } from "./hooks"
-import { GoodInterface } from "./interfaces";
+// import { GoodInterface } from "./interfaces";
 import ListElementGeneric from "./ListElementGeneric";
 export default function Favourites() {
     const favsState = useAppSelector((state) => {

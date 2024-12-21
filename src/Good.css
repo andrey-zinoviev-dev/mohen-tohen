@@ -15,6 +15,16 @@
     cursor: pointer;
 }
 
+.good__made-to-order-note {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    box-sizing: border-box;
+    background-color: #F3F3F3;
+    border-radius: 4px;
+    padding: 3px 7px;
+}
+
 .good-img-wrapper__actions {
     position: absolute;
     top: 10px;
@@ -35,9 +45,15 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    gap: 10px;
+    /* gap: 10px; */
     width: 100%;
     text-align: left;
+}
+
+.good-text-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .good-text-wrapper h3 {
@@ -47,6 +63,8 @@
     white-space: nowrap;
     width: 100%;
     margin: 0;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .good-text-wrapper__seller {
@@ -70,8 +88,9 @@
     width: fit-content;;
     text-overflow: ellipsis;
     overflow: hidden;
-    color: black;
+    color: #969696;
     position: relative;
+    font-size: 14px;
 }
 
 .good-text-wrapper__seller-name::after {
@@ -92,4 +111,5 @@
 
 .good-text-wrapper__price {
     font-weight: 700;
+    font-size: 14px;
 }

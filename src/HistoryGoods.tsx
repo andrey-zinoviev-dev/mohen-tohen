@@ -1,12 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./HistoryGoods.css"
 import { useAppSelector } from "./hooks"
 // import { useLocation } from "react-router-dom";
 // import { GoodInterface, TransactionInterface } from "./interfaces";
 // import { useGetTransactionsQuery } from "./features/apiSlice";
-import ListColumn from "./ListColumn";
-import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+// import ListColumn from "./ListColumn";
+// import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+// import { Link } from "react-router-dom";
 import ListElementGeneric from "./ListElementGeneric";
 import "./ListColumn.css"
 import HistoryGood from "./HistoryGood";

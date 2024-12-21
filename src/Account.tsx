@@ -26,6 +26,9 @@ import PortalComp from "./PortalComp";
 import PortalCentered from "./PortalCentered";
 
 import UploadComp from "./UploadComp";
+import InputFileGeneric from "./InputFileGeneric";
+// import FileGeneric from "./FileGeneric";
+import AccountAvatarEdit from "./AccountAvatarEdit";
 
 export default function Account() {
     const [logout] = useUserLogoutMutation();
@@ -55,18 +58,45 @@ export default function Account() {
     const avatarInputRef = useRef<HTMLInputElement | null>(null);
 
     //state
-    const [selectedAvatar, setSelectedAvatar] = useState<File[]>([]);
+    // const [selectedAvatar, setSelectedAvatar] = useState<File | null>(null);
     const [editAvatar, setEditAvatar] = useState<boolean>(false);
-    // const [userAvatar, setUserAvatar] = useState<string>(userState.cover ? userState.cover : "");
-    // const [finishedAvatarChange, setFinishedAvatarChange] = useState<boolean>(false);
+    // // const [userAvatar, setUserAvatar] = useState<string>(userState.cover ? userState.cover : "");
+    // // const [finishedAvatarChange, setFinishedAvatarChange] = useState<boolean>(false);
     // const [coverUploadStarted, setCoverUploadStarted] = useState<boolean>(false);
+
+    // function addFile(evt:React.ChangeEvent<HTMLInputElement>) {
+    //     const fileuploaded = evt.target.files && evt.target.files[0];
+
+    //     fileuploaded && setSelectedAvatar((prevValue) => {
+    //         return [...prevValue, fileuploaded]
+    //     })
+    // }
+
+    // function removeFile(name: string) {
+    //     setSelectedAvatar((prevValue) => {
+    //         return prevValue.filter((prevFile) => {
+    //             return prevFile.name !== name;
+    //         })
+    //     })
+    // }
 
     //functions
     function submitData() {
-        return updateCover(`https://cdn.mohen-tohen.ru/${selectedAvatar[0].name}`).unwrap()
-        .then((data) => {
-            dispatch(updateUserCover(data));
-        })
+        // return updateCover(`https://cdn.mohen-tohen.ru/${selectedAvatar ? selectedAvatar.name : ''}`).unwrap()
+        // .then((data) => {
+        //     dispatch(updateUserCover(data));
+        //     // setSelectedAvatar(null);
+        // })
+        // setCoverUploadStarted(true);
+        // console.log(selectedAvatar)
+        // if(selectedAvatar) {
+        //     return updateCover(`https://cdn.mohen-tohen.ru/${selectedAvatar.name}`).unwrap()
+        //     .then((data) => {
+        //         dispatch(updateUserCover(data));
+        //     })
+        // } else {
+        //     return
+        // }
     }
 
     return (
@@ -124,30 +154,27 @@ export default function Account() {
                     }}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
-                    {selectedAvatar.length === 0 ? <>
-                        <img id="account__wrapper-user-text-avatar" ref={avatarImgRef}></img>
-                        <input style={{display: "none"}} onChange={(evt) => {
-                            const file = evt.target.files && evt.target.files[0];
-                            const clientPath = file && window.URL.createObjectURL(file);
 
-                            if(avatarImgRef.current && clientPath) {
-                                avatarImgRef.current.src = clientPath;
-                                setSelectedAvatar([file]);
-                            }   
+                    <AccountAvatarEdit profileCover={userState.cover}></AccountAvatarEdit>
 
-                        }} ref={avatarInputRef} accept=".png, .jpg" type="file"></input>
+                    {/* {selectedAvatar ? 
+                    <>
                         <button onClick={() => {
-                            avatarInputRef.current?.click();
-                        }}>
-                            Выбрать картинку
-                        </button>
+                            setCoverUploadStarted(true)
+                        }}>Обновить</button>
+                        <button onClick={cancelInputFile}>Отменить</button>
                     </>
                     :
+
                     <>
-                        <UploadComp application={false} photos={selectedAvatar} submitData={submitData} close={() => {
-                            setEditAvatar(false);
-                        }}></UploadComp>
-                    </>}
+                        
+                     
+                    </> */}
+                    
+                
+                    {/* {coverUploadStarted && selectedAvatar &&  <UploadComp application={false} photos={[selectedAvatar]} submitData={submitData} close={() => {
+                        setEditAvatar(false);
+                    }}></UploadComp>} */}
                 </PortalCentered>
             </PortalComp>, document.body)}
         </section>

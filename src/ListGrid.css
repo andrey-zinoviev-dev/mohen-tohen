@@ -15,10 +15,14 @@
   align-self: flex-start;
   width: 100%;
   justify-content: space-between;
+  min-height: 280px;
+  grid-auto-rows: 280px;
 }
 
 .ulgrid li {
-  height: 280px;
+  display: flex;
+  min-height: 280px;
+  /* height: 280px; */
   /* min-height: 280px; */
 }
 

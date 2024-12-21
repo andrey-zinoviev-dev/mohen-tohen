@@ -3,7 +3,8 @@ import React from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import InputEl from "./InputEl";
 import "./AccountAddGood.css"
-import ListGrid from "./ListGrid";
+import "./ListGrid.css"
+// import ListGrid from "./ListGrid";
 import LinkCompBack from "./LinkCompBack";
 // import { usePostGoodToServerMutation } from "./features/apiSlice";
 import { createPortal } from "react-dom";
@@ -26,6 +27,11 @@ import { AccountGoodInterface } from "./interfaces";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NoteWrapper from "./NoteWrapper";
 import GoodConstructor from "./GoodConstructor";
+// import ListElementGeneric from "./ListElementGeneric";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import ListElementGeneric from "./ListElementGeneric";
+import ListGridOldPhoto from "./ListGridOldPhoto";
 
 export default function AccountAddGood() {
   //location
@@ -88,9 +94,9 @@ export default function AccountAddGood() {
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
   //functions
-  function openInput() {
-    fileInputRef.current && fileInputRef.current.click();
-  }
+  // function openInput() {
+  //   fileInputRef.current && fileInputRef.current.click();
+  // }
 
   function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
     const fileuploaded = evt.target.files && evt.target.files[0];
@@ -109,10 +115,10 @@ export default function AccountAddGood() {
     // })
   }
 
-  function removePhoto(file:File) {
+  function removePhoto(name: string) {
     setPhotos((prevValue) => {
       return prevValue.filter((prevPhoto) => {
-        return prevPhoto.name !== file.name;
+        return prevPhoto.name !== name;
       })
     })
     // setFormData((prevValue) => {
@@ -125,18 +131,18 @@ export default function AccountAddGood() {
     // });
   }
 
-  function removeOldPhoto(url: string) {
-    setFormData((prevValue) => {
-      return {...prevValue, photos: prevValue.photos.filter((prevPhoto) => {
-        return prevPhoto !== url;
-      })}
-    })
-    // setOldPhotos((prevValue) => {
-    //   return prevValue.filter((prevPhoto) => {
-    //     return prevPhoto !== url;
-    //   })
-    // })
-  }
+  // function removeOldPhoto(url: string) {
+  //   setFormData((prevValue) => {
+  //     return {...prevValue, photos: prevValue.photos.filter((prevPhoto) => {
+  //       return prevPhoto !== url;
+  //     })}
+  //   })
+  //   // setOldPhotos((prevValue) => {
+  //   //   return prevValue.filter((prevPhoto) => {
+  //   //     return prevPhoto !== url;
+  //   //   })
+  //   // })
+  // }
 
   // function getOptions(goodOptions) {
   //   console.log(goodOptions)
@@ -191,6 +197,14 @@ export default function AccountAddGood() {
     <>
       <LinkCompBack to="../mygoods" text="Назад к товарам"></LinkCompBack>
       {state ? <h3>Редактирование товара</h3> : <h3>Добавление нового товара</h3>}
+      {goodToEdit?.photos && <ListElementGeneric classUl="ulgrid" items={goodToEdit.photos} renderItems={(photo) => {
+        return <ListGridOldPhoto image={photo} removePhoto={(photo) => {
+          
+        }}></ListGridOldPhoto>
+      }}></ListElementGeneric>}
+      {/* <FilesGeneric filesList={photos} addFile={processFileAdd} removeFile={removePhoto}>
+
+      </FilesGeneric> */}
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
 
@@ -299,7 +313,7 @@ export default function AccountAddGood() {
             <label className="addGoodform__label">
               
               <div className="addGoodform__color-wrapper">
-                <span>Цвет из палитры</span>
+                <span>Основной цвет товара</span>
                 <ColorPicker color={color} onChange={setColor}>
                 </ColorPicker>
               </div>
@@ -343,18 +357,27 @@ export default function AccountAddGood() {
           </button>
         </div>
         <div className="addGoodform__files-wrapper">
-          <span>Фото</span>
-          <ListGrid removeOldPhoto={removeOldPhoto} oldPics={formData.photos} gridElements={photos} openInput={openInput} removePhoto={removePhoto} />
+          {/* <span>Фото</span>
+          <ListElementGeneric classUl="" items={formData.photos} renderItems={(item) => {
+            return <>
+              <img src={item}></img>
+            </>
+          }} /> */}
+          {/* <button type="button">
+            <FontAwesomeIcon icon={faPlus} />
+          </button> */}
+          {/* <ListGrid removeOldPhoto={removeOldPhoto} oldPics={formData.photos} gridElements={photos} openInput={openInput} removePhoto={removePhoto} /> */}
         </div>
       </form>
-      <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
+      {/* <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
         processFileAdd(evt)
-      }} style={{display: "none"}}></input>
-      {uploadStarted && createPortal(<PortalMultimedia>
+      }} style={{display: "none"}}></input> */}
+
+      {/* {uploadStarted && createPortal(<PortalMultimedia>
         <PortalContainer>
           <UploadComp submitData={goodToEdit ? submitEditData : submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={photos}></UploadComp>
         </PortalContainer>
-      </PortalMultimedia>, document.body)}
+      </PortalMultimedia>, document.body)} */}
     </>
   )
 }
