@@ -262,3 +262,8 @@ export interface AccountGoodInterface {
   goodOptions?: {title: string, price: number, type: string}[],
   _id?: string
 }
+
+export interface FileUrlInterface {
+  url: string,
+  file: File,
+}

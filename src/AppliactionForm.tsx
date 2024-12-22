@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 // import { createPortal } from "react-dom";
-import { faArrowRight, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ApplicationForm.css"
 // import heading from "./assets/mh-1.png"
 // import Footer from "./Footer";
 import SelectElement from "./SelectElement";
 import { applicationSizeSelect, applicationStockSelect, applicationProdTimeSelect, categories } from "./utils";
-import { ApplicationNotUploadedIterface } from "./interfaces";
+import { ApplicationNotUploadedIterface, FileUrlInterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 // import ApplicationOverview from "./ApplicationOverview";
 // import ListGrid from "./ListGrid";
@@ -21,7 +21,10 @@ import ApplicationStep from "./ApplicationStep";
 // import UploadComp from "./UploadComp";
 import { useSearchParams } from "react-router-dom";
 import InputFileGeneric from "./InputFileGeneric";
-import InputFileButton from "./InputFileButton";
+// import InputFileButton from "./InputFileButton";
+import ListElementGeneric from "./ListElementGeneric";
+import ListGridPhoto from "./ListGridPhoto";
+import InputPlusButton from "./InputPlusButton";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
@@ -50,14 +53,14 @@ export default function ApplicationForm() {
         photos: [],
     });
 
-    const [files, setFiles] = useState<File[]>([]);
+    const [files, setFiles] = useState<FileUrlInterface[]>([]);
     // const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
 
     //RTK
     const [sendApplication] = useSendApplicationMutation();
 
-    //refs
+    // //refs
     const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
     //search params
@@ -65,14 +68,16 @@ export default function ApplicationForm() {
     const userName = searchParams.get("name");
 
     //functions
-    // function openInput() {
-    //     fileInputRef.current && fileInputRef.current.click();
-    // }
+    function openInput() {
+        fileInputRef.current && fileInputRef.current.click();
+    }
     
     function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
         const fileuploaded = evt.target.files && evt.target.files[0];
-        fileuploaded && setFiles((prevValue) => {
-            return [...prevValue, fileuploaded]
+        const url = fileuploaded && window.URL.createObjectURL(fileuploaded);
+        // console.log(fileuploaded);
+        fileuploaded && url && setFiles((prevValue) => {
+            return [...prevValue, {file: fileuploaded, url: url}]
         })
         // fileuploaded && setApplicationData((prevValue) => {
         //     return prevValue
@@ -90,13 +95,13 @@ export default function ApplicationForm() {
         // })
     }
 
-    function removeFile(name: string) {
-        setFiles((prevValue) => {
-            return prevValue.filter((prevFile) => {
-                return prevFile.name !== name;
-            })
-        })
-    }
+    // function removeFile(name: string) {
+    //     setFiles((prevValue) => {
+    //         return prevValue.filter((prevFile) => {
+    //             return prevFile.name !== name;
+    //         })
+    //     })
+    // }
     
     // function removePhoto(file:File) {
     //     setApplicationData((prevValue) => {
@@ -148,6 +153,10 @@ export default function ApplicationForm() {
 
     // console.log(files);
     // useEffect
+
+    useEffect(() => {
+        console.log(files);
+    }, [files])
     
     return (
         <>
@@ -337,7 +346,21 @@ export default function ApplicationForm() {
                                     </div>
                                 </ApplicationStep>
                                 <ApplicationStep stepTitle="Фото товара">
-                                    <InputFileGeneric handleInputChange={() => {}} ref={fileInputRef} />
+                                    <ListElementGeneric classUl="ulgrid" items={files} renderItems={(item) => {
+                                        return <ListGridPhoto url={item.url} removePhoto={() => {
+                                            window.URL.revokeObjectURL(item.url)
+                                            setFiles((prevValue) => {
+                                                return prevValue.filter((prevFile) => {
+                                                    return prevFile.file.name !== item.file.name
+                                                })
+                                            })
+                                        }}/>
+                                    }}>
+                                        <InputFileGeneric ref={fileInputRef} handleInputChange={processFileAdd}></InputFileGeneric>
+                                        <InputPlusButton openInput={openInput}></InputPlusButton>
+                                    </ListElementGeneric>
+                                    {/* <InputFileGeneric ref={fileInputRef} handleInputChange={processFileAdd}></InputFileGeneric> */}
+                                    {/* <InputFileGeneric handleInputChange={() => {}} ref={fileInputRef} /> */}
                                     
                                     {/* <FilesGeneric filesList={files} addFile={processFileAdd} removeFile={removeFile}>
 

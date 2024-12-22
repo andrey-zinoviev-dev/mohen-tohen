@@ -1,4 +1,4 @@
-import { AccountGoodInterface, GoodInterface, goodPageInt, TransactionInterface } from "./interfaces";
+import { AccountGoodInterface, FileUrlInterface, GoodInterface, goodPageInt, TransactionInterface } from "./interfaces";
 
 //interface
 interface GenericListInterface<T> {
@@ -8,7 +8,7 @@ interface GenericListInterface<T> {
     children?: React.ReactNode | React.ReactNode[],
 }
 
-export default function ListElementGeneric<T extends GoodInterface | AccountGoodInterface | TransactionInterface | goodPageInt | string | File | {url: string, name: string}>({ items, renderItems, classUl, children }: GenericListInterface<T>) {
+export default function ListElementGeneric<T extends GoodInterface | AccountGoodInterface | TransactionInterface | goodPageInt | string | File | FileUrlInterface>({ items, renderItems, classUl, children }: GenericListInterface<T>) {
 
     return (
         <ul className={classUl}>

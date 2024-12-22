@@ -6,8 +6,11 @@ type InputPlusButtonType = React.ComponentProps<typeof InputFileButton>
 
 export default function InputPlusButton({ openInput }: InputPlusButtonType) {
     return (
-        <InputFileButton openInput={openInput}>
-            <FontAwesomeIcon icon={faPlus} />
-        </InputFileButton>
+        <>
+            <InputFileButton openInput={openInput}>
+                <FontAwesomeIcon icon={faPlus} />
+            </InputFileButton>
+        </>
+
     )
 }

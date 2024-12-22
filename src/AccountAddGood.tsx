@@ -23,7 +23,7 @@ import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import { useLocation } from "react-router-dom";
 import { changeMessage } from "./features/notificationSlice";
-import { AccountGoodInterface } from "./interfaces";
+import { AccountGoodInterface, FileUrlInterface } from "./interfaces";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NoteWrapper from "./NoteWrapper";
 import GoodConstructor from "./GoodConstructor";
@@ -32,6 +32,9 @@ import GoodConstructor from "./GoodConstructor";
 // import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ListElementGeneric from "./ListElementGeneric";
 import ListGridOldPhoto from "./ListGridOldPhoto";
+import ListGridPhoto from "./ListGridPhoto";
+import InputPlusButton from "./InputPlusButton";
+import InputFileGeneric from "./InputFileGeneric";
 
 export default function AccountAddGood() {
   //location
@@ -69,7 +72,7 @@ export default function AccountAddGood() {
     }
   );
 
-  const [photos, setPhotos] = React.useState<File[]>([]);
+  const [photos, setPhotos] = React.useState<FileUrlInterface[]>([]);
 
   // const [oldPhotos, setOldPhotos] = React.useState<string[]>(state ? state.photos : []);
   
@@ -94,14 +97,16 @@ export default function AccountAddGood() {
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
   //functions
-  // function openInput() {
-  //   fileInputRef.current && fileInputRef.current.click();
-  // }
+  function openInput() {
+    fileInputRef.current && fileInputRef.current.click();
+  }
 
   function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
     const fileuploaded = evt.target.files && evt.target.files[0];
-    fileuploaded && setPhotos((prevValue) => {
-      return [...prevValue, fileuploaded];
+    const url = fileuploaded && window.URL.createObjectURL(fileuploaded);
+
+    fileuploaded && url && setPhotos((prevValue) => {
+      return [...prevValue, {file: fileuploaded, url: url}];
     })
     // fileuploaded && setFormData((prevValue) => {
     //   const photoInState = prevValue.photos.find((photo) => {
@@ -202,6 +207,19 @@ export default function AccountAddGood() {
           
         }}></ListGridOldPhoto>
       }}></ListElementGeneric>}
+      <ListElementGeneric classUl="ulgrid" items={photos} renderItems={(photo) => {
+        return <ListGridPhoto url={photo.url} removePhoto={() => {
+          window.URL.revokeObjectURL(photo.url)
+          setPhotos((prevValue) => {
+            return prevValue.filter((prevPhoto) => {
+              return prevPhoto.file.name !== photo.file.name
+            })
+          })
+        }} />
+      }}>
+        <InputPlusButton openInput={openInput} />
+        <InputFileGeneric ref={fileInputRef} handleInputChange={processFileAdd} />
+      </ListElementGeneric>
       {/* <FilesGeneric filesList={photos} addFile={processFileAdd} removeFile={removePhoto}>
 
       </FilesGeneric> */}
