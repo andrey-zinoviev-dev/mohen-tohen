@@ -25,6 +25,7 @@ import InputFileGeneric from "./InputFileGeneric";
 import ListElementGeneric from "./ListElementGeneric";
 import ListGridPhoto from "./ListGridPhoto";
 import InputPlusButton from "./InputPlusButton";
+import ListFiles from "./ListFiles";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
 
@@ -346,29 +347,7 @@ export default function ApplicationForm() {
                                     </div>
                                 </ApplicationStep>
                                 <ApplicationStep stepTitle="Фото товара">
-                                    <ListElementGeneric classUl="ulgrid" items={files} renderItems={(item) => {
-                                        return <ListGridPhoto url={item.url} removePhoto={() => {
-                                            window.URL.revokeObjectURL(item.url)
-                                            setFiles((prevValue) => {
-                                                return prevValue.filter((prevFile) => {
-                                                    return prevFile.file.name !== item.file.name
-                                                })
-                                            })
-                                        }}/>
-                                    }}>
-                                        <InputFileGeneric ref={fileInputRef} handleInputChange={processFileAdd}></InputFileGeneric>
-                                        <InputPlusButton openInput={openInput}></InputPlusButton>
-                                    </ListElementGeneric>
-                                    {/* <InputFileGeneric ref={fileInputRef} handleInputChange={processFileAdd}></InputFileGeneric> */}
-                                    {/* <InputFileGeneric handleInputChange={() => {}} ref={fileInputRef} /> */}
-                                    
-                                    {/* <FilesGeneric filesList={files} addFile={processFileAdd} removeFile={removeFile}>
-
-                                    </FilesGeneric> */}
-                                    {/* <ListGrid removeOldPhoto={() => {}} oldPics={[]} gridElements={applicationData.photos} openInput={openInput} removePhoto={removePhoto} /> */}
-                                    {/* <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
-                                        processFileAdd(evt)
-                                    }} style={{display: "none"}}></input> */}
+                                    <ListFiles files={files} updateFiles={setFiles}></ListFiles>
                                 </ApplicationStep>
                                 <ApplicationStep stepTitle="Необоходимые соглашения">
                                     {/* <h3></h3> */}

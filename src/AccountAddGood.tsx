@@ -35,6 +35,7 @@ import ListGridOldPhoto from "./ListGridOldPhoto";
 import ListGridPhoto from "./ListGridPhoto";
 import InputPlusButton from "./InputPlusButton";
 import InputFileGeneric from "./InputFileGeneric";
+import ListFiles from "./ListFiles";
 
 export default function AccountAddGood() {
   //location
@@ -93,39 +94,14 @@ export default function AccountAddGood() {
   //state
   // const [updloadStarted, setUploadStarted] = useState<boolean>(false);
 
-  //refs
-  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
-
   //functions
-  function openInput() {
-    fileInputRef.current && fileInputRef.current.click();
-  }
-
-  function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
-    const fileuploaded = evt.target.files && evt.target.files[0];
-    const url = fileuploaded && window.URL.createObjectURL(fileuploaded);
-
-    fileuploaded && url && setPhotos((prevValue) => {
-      return [...prevValue, {file: fileuploaded, url: url}];
-    })
-    // fileuploaded && setFormData((prevValue) => {
-    //   const photoInState = prevValue.photos.find((photo) => {
-    //     return photo.title === fileuploaded.title;
-    //   });
-
-    //   return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
-    //     return photo.title !== photoInState.title;
-    //   }) : [...prevValue.photos, fileuploaded]}
-    //   // return {...prevValue, photos: [...prevValue.photos, fileuploaded]}
-    // })
-  }
 
   function removePhoto(name: string) {
-    setPhotos((prevValue) => {
-      return prevValue.filter((prevPhoto) => {
-        return prevPhoto.name !== name;
-      })
-    })
+    // setPhotos((prevValue) => {
+    //   return prevValue.filter((prevPhoto) => {
+    //     return prevPhoto.name !== name;
+    //   })
+    // })
     // setFormData((prevValue) => {
     //   return {
     //     ...prevValue, photos: prevValue.photos.filter((photo) => {
@@ -154,29 +130,29 @@ export default function AccountAddGood() {
   // }
 
   function submitData() {
-    const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
-      return `https://cdn.mohen-tohen.ru/${photo.name}`;
-    }), ...formData.photos], goodOptions: goodOptions};
-    // console.log(dataToSend);
-    return addGood(dataToSend).unwrap()
-    .then((data) => {
-      // console.log(data);
-      data && dispatch(addNewGoodToUser(data));
-      dispatch(changeMessage({message: "Товар успешно добавлен!"}))
-    })
+    // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
+    //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+    // }), ...formData.photos], goodOptions: goodOptions};
+    // // console.log(dataToSend);
+    // return addGood(dataToSend).unwrap()
+    // .then((data) => {
+    //   // console.log(data);
+    //   data && dispatch(addNewGoodToUser(data));
+    //   dispatch(changeMessage({message: "Товар успешно добавлен!"}))
+    // })
   }
 
   function submitEditData() {
-    const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
-      return `https://cdn.mohen-tohen.ru/${photo.name}`;
-    }), ...formData.photos]};
-    // console.log(dataToSend);
+    // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
+    //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+    // }), ...formData.photos]};
+    // // console.log(dataToSend);
 
-    return editGood(dataToSend).unwrap()
-    .then((data) => {
-      dispatch(updateGoodData(data));
-      dispatch(changeMessage({message: "Товар успешно обновлен!"}))
-    })
+    // return editGood(dataToSend).unwrap()
+    // .then((data) => {
+    //   dispatch(updateGoodData(data));
+    //   dispatch(changeMessage({message: "Товар успешно обновлен!"}))
+    // })
   }
 
   // function showOptions(options: {colors?: {title: string, options: string[], }}) {
@@ -202,12 +178,17 @@ export default function AccountAddGood() {
     <>
       <LinkCompBack to="../mygoods" text="Назад к товарам"></LinkCompBack>
       {state ? <h3>Редактирование товара</h3> : <h3>Добавление нового товара</h3>}
-      {goodToEdit?.photos && <ListElementGeneric classUl="ulgrid" items={goodToEdit.photos} renderItems={(photo) => {
+      {goodToEdit?.photos && <ListElementGeneric classUl="ulgrid" items={formData.photos} renderItems={(photo) => {
         return <ListGridOldPhoto image={photo} removePhoto={(photo) => {
-          
+          setFormData((prevValue) => {
+            return {...prevValue, photos: prevValue.photos.filter((prevPhoto) => {
+              return prevPhoto !== photo;
+            })}
+          })
         }}></ListGridOldPhoto>
       }}></ListElementGeneric>}
-      <ListElementGeneric classUl="ulgrid" items={photos} renderItems={(photo) => {
+      <ListFiles files={photos} updateFiles={setPhotos}></ListFiles>
+      {/* <ListElementGeneric classUl="ulgrid" items={photos} renderItems={(photo) => {
         return <ListGridPhoto url={photo.url} removePhoto={() => {
           window.URL.revokeObjectURL(photo.url)
           setPhotos((prevValue) => {
@@ -219,7 +200,7 @@ export default function AccountAddGood() {
       }}>
         <InputPlusButton openInput={openInput} />
         <InputFileGeneric ref={fileInputRef} handleInputChange={processFileAdd} />
-      </ListElementGeneric>
+      </ListElementGeneric> */}
       {/* <FilesGeneric filesList={photos} addFile={processFileAdd} removeFile={removePhoto}>
 
       </FilesGeneric> */}

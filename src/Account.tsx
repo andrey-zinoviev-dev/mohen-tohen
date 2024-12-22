@@ -32,7 +32,7 @@ import AccountAvatarEdit from "./AccountAvatarEdit";
 
 export default function Account() {
     const [logout] = useUserLogoutMutation();
-    const [updateCover] = usePutAvatarEditMutation();
+    // const [updateCover] = usePutAvatarEditMutation();
     //redux
     const userState = useAppSelector((state) => {
         return state.user;
@@ -154,27 +154,7 @@ export default function Account() {
                     }}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
-
-                    <AccountAvatarEdit profileCover={userState.cover}></AccountAvatarEdit>
-
-                    {/* {selectedAvatar ? 
-                    <>
-                        <button onClick={() => {
-                            setCoverUploadStarted(true)
-                        }}>Обновить</button>
-                        <button onClick={cancelInputFile}>Отменить</button>
-                    </>
-                    :
-
-                    <>
-                        
-                     
-                    </> */}
-                    
-                
-                    {/* {coverUploadStarted && selectedAvatar &&  <UploadComp application={false} photos={[selectedAvatar]} submitData={submitData} close={() => {
-                        setEditAvatar(false);
-                    }}></UploadComp>} */}
+                    <AccountAvatarEdit closeAvatarEdit={setEditAvatar} profileCover={userState.cover}></AccountAvatarEdit>
                 </PortalCentered>
             </PortalComp>, document.body)}
         </section>
