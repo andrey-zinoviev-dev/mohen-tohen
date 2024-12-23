@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import InputEl from "./InputEl";
@@ -34,6 +34,10 @@ import ListElementGeneric from "./ListElementGeneric";
 import ListGridOldPhoto from "./ListGridOldPhoto";
 
 import ListFiles from "./ListFiles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import ColorOption from "./ColorOption";
+import OptionWrapper from "./OptionWrapper";
 
 export default function AccountAddGood() {
   //location
@@ -81,7 +85,9 @@ export default function AccountAddGood() {
 
   const [optionsOpened, setOptionsOpened] = React.useState<boolean>(false);
   
-  const [goodOptions, setGoodOptions] = React.useState<{title: string, price: number, type: string}[]>([])
+  const [goodOptions, setGoodOptions] = React.useState<{title: string, price: number, type: string}[]>([]);
+
+  const [colors, setColors] = useState<string[]>([]);
   //dispatch
   const dispatch = useAppDispatch();
 
@@ -241,7 +247,7 @@ export default function AccountAddGood() {
                 }}></input>
                 Товар на заказ
               </div>
-              <NoteWrapper text="Если Вы делаете товар на заказ, то тираж вашего товара - 1 штука. Если в Вашем товаре есть дополнительные параметры - нажмите галочку 'Товар на заказ'. Опции можно указать внизу"></NoteWrapper>
+              <NoteWrapper text="Если Вы делаете товар на заказ, то тираж вашего товара - 1 штука"></NoteWrapper>
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">
@@ -295,9 +301,47 @@ export default function AccountAddGood() {
             <label className="addGoodform__label">
               
               <div className="addGoodform__color-wrapper">
-                <span>Основной цвет товара</span>
-                <ColorPicker color={color} onChange={setColor}>
+                <span>Цвет товара</span>
+                <ColorPicker hideAlpha hideInput={["hsv", "rgb"]} color={color} onChange={setColor}>
                 </ColorPicker>
+                <div>
+                  <NoteWrapper text="Выберите цвет в палитре и добавьте его, нажав на кнопку +"></NoteWrapper>
+                  <button style={{backgroundColor: color.hex}} type="button" onClick={() => {
+                    setColors((prevValue) => {
+                      return [...prevValue, color.hex]
+                    });
+                    setColor({hex: "#ffffff", rgb: {r: 255, g: 255, b: 255, a: 1}, hsv: {h: 0, s: 0, v: 100, a: 1} })
+                  }}>
+                    <FontAwesomeIcon icon={faPlus} />
+                  </button>
+                </div>
+                {/* <button type="button"></button> */}
+                {/* <input type="text" onChange={(evt) => {
+                  // console.log(evt.target.value);
+                  // setFormData((prevValue) => {})
+                }}></input>
+                <input type="text"></input>
+                <button style={{backgroundColor: color.hex}} type="button" onClick={() => {
+
+                }}>
+                  <FontAwesomeIcon icon={faPlus} />
+                </button> */}
+
+                {/* <ListElementGeneric classUl="ul-options" items={colors} renderItems={(color) => {
+                  return <OptionWrapper removeOption={() => {
+                    setColors((prevValue) => {
+                      return prevValue.filter((prevColor) => {
+                        return prevColor !== color
+                      })
+                    })
+                  }}>
+                    <ColorOption color={color} active={false}></ColorOption>
+                  </OptionWrapper>
+                }}>
+
+                </ListElementGeneric> */}
+
+                {/* <InputEl placeHolder="#ffffff" name= updateState={setFormData}></InputEl> */}
               </div>
               {/* <InputEl updateState={setFormData} placeHolder="(hex)#ffffff" name="color"></InputEl> */}
             </label>
@@ -320,7 +364,7 @@ export default function AccountAddGood() {
               <InputEl value={formData.price.toString()} updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
-          {formData.madeToOrder && <div className="addGoodform__text-wrapper-div">
+          {/* {formData.madeToOrder && <div className="addGoodform__text-wrapper-div">
             <NoteWrapper text="Если Вы делаете товар с опциями, их можно добавить в полях ввода ниже"></NoteWrapper>
             {<label className="addGoodform__label">
               <div className="addGoodform__text-wrapper-div-made-to-order">
@@ -332,7 +376,7 @@ export default function AccountAddGood() {
               </div>
             </label>}
             {optionsOpened && <GoodConstructor options={goodOptions} changeOption={setGoodOptions} />}
-          </div>}
+          </div>} */}
 
           <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && formData.photos.length > 0 )  ? false : true} type="submit">
             Отправить товар
