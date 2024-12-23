@@ -32,9 +32,7 @@ import GoodConstructor from "./GoodConstructor";
 // import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ListElementGeneric from "./ListElementGeneric";
 import ListGridOldPhoto from "./ListGridOldPhoto";
-import ListGridPhoto from "./ListGridPhoto";
-import InputPlusButton from "./InputPlusButton";
-import InputFileGeneric from "./InputFileGeneric";
+
 import ListFiles from "./ListFiles";
 
 export default function AccountAddGood() {
@@ -188,22 +186,7 @@ export default function AccountAddGood() {
         }}></ListGridOldPhoto>
       }}></ListElementGeneric>}
       <ListFiles files={photos} updateFiles={setPhotos}></ListFiles>
-      {/* <ListElementGeneric classUl="ulgrid" items={photos} renderItems={(photo) => {
-        return <ListGridPhoto url={photo.url} removePhoto={() => {
-          window.URL.revokeObjectURL(photo.url)
-          setPhotos((prevValue) => {
-            return prevValue.filter((prevPhoto) => {
-              return prevPhoto.file.name !== photo.file.name
-            })
-          })
-        }} />
-      }}>
-        <InputPlusButton openInput={openInput} />
-        <InputFileGeneric ref={fileInputRef} handleInputChange={processFileAdd} />
-      </ListElementGeneric> */}
-      {/* <FilesGeneric filesList={photos} addFile={processFileAdd} removeFile={removePhoto}>
 
-      </FilesGeneric> */}
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
 

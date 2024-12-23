@@ -1,5 +1,7 @@
 import { GoodsInterface } from "./interfaces"
 import './Goods.css'
+import ListElementGeneric from "./ListElementGeneric"
+import Good from "./Good"
 // import { useNavigate } from "react-router-dom"
 // import Good from "./Good"
 
@@ -9,13 +11,9 @@ export default function Goods({ goods }:GoodsInterface) {
   return (
     <>
     {goods && goods.length > 0 ? 
-      <ul className="goods__ul">
-        {/* {goods && goods.map((good) => {
-          return <li key={good._id} className="goods__ul-li">
-            <Good good={good}></Good>
-          </li>
-        })} */}
-      </ul>
+      <ListElementGeneric classUl="goods__ul" items={goods} renderItems={(good) => {
+        return <Good good={good}></Good>
+      }}></ListElementGeneric>
       :
       <p>Товаров пока нет, но их всегда можно добавить</p>
       }
