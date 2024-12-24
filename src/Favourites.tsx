@@ -14,7 +14,7 @@ export default function Favourites() {
         //     <Goods goods={favsState}></Goods>
         // </div>
         <>
-            <h3>Избранное</h3>
+            {/* <h3>Избранное</h3> */}
             {<ListElementGeneric classUl="goods__ul" items={favsState} renderItems={(favItem) => {
                 return <Good good={favItem} />
             }} />}

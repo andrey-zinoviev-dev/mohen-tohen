@@ -72,7 +72,7 @@ export default function AccountGoods() {
 
     return (
         <>
-            <h3>Мои товары</h3>
+            {/* <h3>Мои товары</h3> */}
             <LinkCompAction to="../AddGood" text="Добавить товар" icon={faPlusCircle} />
             {accountGoods && accountGoods.length > 0 ? 
             

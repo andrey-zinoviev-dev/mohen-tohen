@@ -112,7 +112,10 @@ export default function Account() {
                             <FontAwesomeIcon icon={faPen} />
                         </button>
                     </div>
-                    <div className="account__wrapper-user-text-data">
+                    <span>
+                        {userState.name}
+                    </span>
+                    {/* <div className="account__wrapper-user-text-data">
                         <div className="account__wrapper-user-text-data-wrapper">
                             <span className="account__wrapper-user-text-data-span">{userState.phone}
                             </span>
@@ -124,12 +127,16 @@ export default function Account() {
                             </span>
                             {userState.seller && <ShareButton href={`https://mohen-tohen.ru/brands/${userState._id}`} />}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
-                <AccountLinks></AccountLinks>
+                <div className="account__buttons-wrapper">
+                    <button className="account__button">Настройки профиля</button>
+                    <button className="account__button">Поделиться</button>
+                </div>
 
-                {userState.loggedIn && <button className="account__logout" onClick={() => {
+
+                {/* {userState.loggedIn && <button className="account__logout" onClick={() => {
                     logout()
                     .then((data) => {
                         if(data) {
@@ -140,10 +147,12 @@ export default function Account() {
                     })
                 }}>
                     Выйти
-                </button>}
+                </button>} */}
             </div>}
 
             <div className="account__wrapper">
+            <AccountLinks></AccountLinks>
+
                 <Outlet></Outlet>
             </div>
 

@@ -63,7 +63,7 @@ export default function HistoryGoods() {
     // </div>
     <>
       {/* <h3>{state.headline}</h3> */}
-      <h3>История</h3>
+      {/* <h3>История</h3> */}
       {userState.ordersHistory.length > 0 ?
         <ListElementGeneric classUl="list-column" items={userState.ordersHistory} renderItems={(transaction) => {
           return <HistoryGood transaction={transaction} />

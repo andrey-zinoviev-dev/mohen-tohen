@@ -51,6 +51,7 @@ export function AccountLinks () {
                         // setSelectedlink(link); 
                     }} to={link.href} className={matchedLink?.title === link.title ? "account__links-li-link_active account__links-li-link" : "account__links-li-link"}>
                         {link.title}
+                        <div className="account__links-li-link-underline"></div>
                     </Link>}
                 </li>
             })}

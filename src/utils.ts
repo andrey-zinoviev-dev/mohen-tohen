@@ -391,10 +391,6 @@ export const accountLinks:LinkInterface[] = [
 
 export const accountSellerLinks:LinkInterface[] = [
   {
-    title: "История",
-    href: "history"
-  },
-  {
     title: "Мои товары",
     href: "mygoods",
   },
@@ -402,6 +398,11 @@ export const accountSellerLinks:LinkInterface[] = [
     title: "Избранное",
     href: "favs"
   },
+  {
+    title: "История",
+    href: "history"
+  },
+
 ];
 
 export const inquerySellSelect: OptionInterface[] = [
