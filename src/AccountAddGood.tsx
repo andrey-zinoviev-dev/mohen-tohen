@@ -183,15 +183,16 @@ export default function AccountAddGood() {
       <LinkCompBack to="../mygoods" text="Назад к товарам"></LinkCompBack>
       {state ? <h3>Редактирование товара</h3> : <h3>Добавление нового товара</h3>}
       {goodToEdit?.photos && <ListElementGeneric classUl="ulgrid" items={formData.photos} renderItems={(photo) => {
-        return <ListGridOldPhoto image={photo} removePhoto={(photo) => {
-          setFormData((prevValue) => {
-            return {...prevValue, photos: prevValue.photos.filter((prevPhoto) => {
-              return prevPhoto !== photo;
-            })}
-          })
-        }}></ListGridOldPhoto>
-      }}></ListElementGeneric>}
-      <ListFiles files={photos} updateFiles={setPhotos}></ListFiles>
+          return <ListGridOldPhoto image={photo} removePhoto={(photo) => {
+            setFormData((prevValue) => {
+              return {...prevValue, photos: prevValue.photos.filter((prevPhoto) => {
+                return prevPhoto !== photo;
+              })}
+            })
+          }}></ListGridOldPhoto>
+        }}></ListElementGeneric>}
+        <ListFiles files={photos} updateFiles={setPhotos}></ListFiles>
+      
 
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
@@ -304,7 +305,7 @@ export default function AccountAddGood() {
                 <span>Цвет товара</span>
                 <ColorPicker hideAlpha hideInput={["hsv", "rgb"]} color={color} onChange={setColor}>
                 </ColorPicker>
-                <div>
+                <div className="addGoodform__option-wrapper">
                   <NoteWrapper text="Выберите цвет в палитре и добавьте его, нажав на кнопку +"></NoteWrapper>
                   <button style={{backgroundColor: color.hex}} type="button" onClick={() => {
                     setColors((prevValue) => {
@@ -315,19 +316,8 @@ export default function AccountAddGood() {
                     <FontAwesomeIcon icon={faPlus} />
                   </button>
                 </div>
-                {/* <button type="button"></button> */}
-                {/* <input type="text" onChange={(evt) => {
-                  // console.log(evt.target.value);
-                  // setFormData((prevValue) => {})
-                }}></input>
-                <input type="text"></input>
-                <button style={{backgroundColor: color.hex}} type="button" onClick={() => {
 
-                }}>
-                  <FontAwesomeIcon icon={faPlus} />
-                </button> */}
-
-                {/* <ListElementGeneric classUl="ul-options" items={colors} renderItems={(color) => {
+                <ListElementGeneric classUl="ul-options" items={colors} renderItems={(color) => {
                   return <OptionWrapper removeOption={() => {
                     setColors((prevValue) => {
                       return prevValue.filter((prevColor) => {
@@ -335,11 +325,11 @@ export default function AccountAddGood() {
                       })
                     })
                   }}>
-                    <ColorOption color={color} active={false}></ColorOption>
+                    <ColorOption color={color} active={true}></ColorOption>
                   </OptionWrapper>
                 }}>
 
-                </ListElementGeneric> */}
+                </ListElementGeneric>
 
                 {/* <InputEl placeHolder="#ffffff" name= updateState={setFormData}></InputEl> */}
               </div>
