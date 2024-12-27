@@ -6,32 +6,36 @@ import "./Account.css";
 import { Outlet } from "react-router-dom";
 // import LinksComp from "./LinksComp";
 import { AccountLinks } from "./AccountLinks";
-import { usePutAvatarEditMutation, useUserLogoutMutation } from "./features/apiSlice";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { updateUserCover, userLogout } from "./features/userSlice";
-import { useNavigate } from "react-router-dom";
+// import { useUserLogoutMutation } from "./features/apiSlice";
+import { 
+    // useAppDispatch,
+     useAppSelector } from "./hooks";
+// import { updateUserCover, userLogout } from "./features/userSlice";
+// import { useNavigate } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faArrowUpFromBracket, faPen } from "@fortawesome/free-solid-svg-icons";
 // import EditButton from "./EditButton";
-import ShareButton from "./ShareButton";
+// import ShareButton from "./ShareButton";
 // import LinkCompAction from "./LinkCompAction";
 // import { faPen } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import EditButton from "./EditButton";
+// import EditButton from "./EditButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import { 
+    // useRef, 
+    useState } from "react";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import PortalCentered from "./PortalCentered";
 
-import UploadComp from "./UploadComp";
-import InputFileGeneric from "./InputFileGeneric";
+// import UploadComp from "./UploadComp";
+// import InputFileGeneric from "./InputFileGeneric";
 // import FileGeneric from "./FileGeneric";
 import AccountAvatarEdit from "./AccountAvatarEdit";
 
 export default function Account() {
-    const [logout] = useUserLogoutMutation();
+    // const [logout] = useUserLogoutMutation();
     // const [updateCover] = usePutAvatarEditMutation();
     //redux
     const userState = useAppSelector((state) => {
@@ -48,14 +52,14 @@ export default function Account() {
     // console.log(address);
     // console.log(userState);
     //navigate
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    //dispatch
-    const dispatch = useAppDispatch();
+    // //dispatch
+    // const dispatch = useAppDispatch();
 
-    //refs
-    const avatarImgRef = useRef<HTMLImageElement | null>(null);
-    const avatarInputRef = useRef<HTMLInputElement | null>(null);
+    // //refs
+    // const avatarImgRef = useRef<HTMLImageElement | null>(null);
+    // const avatarInputRef = useRef<HTMLInputElement | null>(null);
 
     //state
     // const [selectedAvatar, setSelectedAvatar] = useState<File | null>(null);
@@ -81,23 +85,23 @@ export default function Account() {
     // }
 
     //functions
-    function submitData() {
-        // return updateCover(`https://cdn.mohen-tohen.ru/${selectedAvatar ? selectedAvatar.name : ''}`).unwrap()
-        // .then((data) => {
-        //     dispatch(updateUserCover(data));
-        //     // setSelectedAvatar(null);
-        // })
-        // setCoverUploadStarted(true);
-        // console.log(selectedAvatar)
-        // if(selectedAvatar) {
-        //     return updateCover(`https://cdn.mohen-tohen.ru/${selectedAvatar.name}`).unwrap()
-        //     .then((data) => {
-        //         dispatch(updateUserCover(data));
-        //     })
-        // } else {
-        //     return
-        // }
-    }
+    // function submitData() {
+    //     // return updateCover(`https://cdn.mohen-tohen.ru/${selectedAvatar ? selectedAvatar.name : ''}`).unwrap()
+    //     // .then((data) => {
+    //     //     dispatch(updateUserCover(data));
+    //     //     // setSelectedAvatar(null);
+    //     // })
+    //     // setCoverUploadStarted(true);
+    //     // console.log(selectedAvatar)
+    //     // if(selectedAvatar) {
+    //     //     return updateCover(`https://cdn.mohen-tohen.ru/${selectedAvatar.name}`).unwrap()
+    //     //     .then((data) => {
+    //     //         dispatch(updateUserCover(data));
+    //     //     })
+    //     // } else {
+    //     //     return
+    //     // }
+    // }
 
     return (
         <section className="account">

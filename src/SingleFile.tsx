@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import InputFileButton from "./InputFileButton";
+// import InputFileButton from "./InputFileButton";
 import InputFileGeneric from "./InputFileGeneric";
 import { FileUrlInterface } from "./interfaces";
 import InputTextButton from "./InputTextButton";

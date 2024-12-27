@@ -11,7 +11,7 @@ import { ApplicationNotUploadedIterface, FileUrlInterface } from "./interfaces";
 import CheckboxElement from "./CheckboxElement";
 // import ApplicationOverview from "./ApplicationOverview";
 // import ListGrid from "./ListGrid";
-import { useSendApplicationMutation } from "./features/apiSlice";
+// import { useSendApplicationMutation } from "./features/apiSlice";
 import InputEl from "./InputEl";
 import Wizard from "./Wizard";
 import ApplicationStep from "./ApplicationStep";
@@ -20,11 +20,11 @@ import ApplicationStep from "./ApplicationStep";
 // import PortalContainer from "./PortalContainer";
 // import UploadComp from "./UploadComp";
 import { useSearchParams } from "react-router-dom";
-import InputFileGeneric from "./InputFileGeneric";
+// import InputFileGeneric from "./InputFileGeneric";
 // import InputFileButton from "./InputFileButton";
-import ListElementGeneric from "./ListElementGeneric";
-import ListGridPhoto from "./ListGridPhoto";
-import InputPlusButton from "./InputPlusButton";
+// import ListElementGeneric from "./ListElementGeneric";
+// import ListGridPhoto from "./ListGridPhoto";
+// import InputPlusButton from "./InputPlusButton";
 import ListFiles from "./ListFiles";
 // import ApplicationFiles from "./ApplicationFiles";
 // import ApplicationPhotoPopup from "./ApplicationPhotoPopup";
@@ -58,43 +58,43 @@ export default function ApplicationForm() {
     // const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
 
-    //RTK
-    const [sendApplication] = useSendApplicationMutation();
+    // //RTK
+    // const [sendApplication] = useSendApplicationMutation();
 
-    // //refs
-    const fileInputRef = React.useRef<HTMLInputElement | null>(null);
+    // // //refs
+    // const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
     //search params
     const [searchParams] = useSearchParams();
     const userName = searchParams.get("name");
 
     //functions
-    function openInput() {
-        fileInputRef.current && fileInputRef.current.click();
-    }
+    // function openInput() {
+    //     fileInputRef.current && fileInputRef.current.click();
+    // }
     
-    function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
-        const fileuploaded = evt.target.files && evt.target.files[0];
-        const url = fileuploaded && window.URL.createObjectURL(fileuploaded);
-        // console.log(fileuploaded);
-        fileuploaded && url && setFiles((prevValue) => {
-            return [...prevValue, {file: fileuploaded, url: url}]
-        })
-        // fileuploaded && setApplicationData((prevValue) => {
-        //     return prevValue
-        //     // const photoInState = prevValue.photos.find((photo) => {
-        //     //     return photo.title === fileuploaded.title;
-        //     // });
+    // function processFileAdd(evt:React.ChangeEvent<HTMLInputElement>) {
+    //     const fileuploaded = evt.target.files && evt.target.files[0];
+    //     const url = fileuploaded && window.URL.createObjectURL(fileuploaded);
+    //     // console.log(fileuploaded);
+    //     fileuploaded && url && setFiles((prevValue) => {
+    //         return [...prevValue, {file: fileuploaded, url: url}]
+    //     })
+    //     // fileuploaded && setApplicationData((prevValue) => {
+    //     //     return prevValue
+    //     //     // const photoInState = prevValue.photos.find((photo) => {
+    //     //     //     return photo.title === fileuploaded.title;
+    //     //     // });
 
-        //     // return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
-        //     //     return photo.title !==  fileuploaded.title;
-        //     // }) : [...prevValue.photos, fileuploaded]};
+    //     //     // return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
+    //     //     //     return photo.title !==  fileuploaded.title;
+    //     //     // }) : [...prevValue.photos, fileuploaded]};
 
-        //     // return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
-        //     //     return photo.title !== fileuploaded.name;
-        //     // }) : [...prevValue.photos, fileuploaded]}
-        // })
-    }
+    //     //     // return {...prevValue, photos: photoInState ? prevValue.photos.filter((photo) => {
+    //     //     //     return photo.title !== fileuploaded.name;
+    //     //     // }) : [...prevValue.photos, fileuploaded]}
+    //     // })
+    // }
 
     // function removeFile(name: string) {
     //     setFiles((prevValue) => {
@@ -122,35 +122,35 @@ export default function ApplicationForm() {
         // setUploadStarted(true);
     }
 
-    function submitData(){
-        return sendApplication(applicationData).unwrap()
-        .then((data) => {
-                fetch(`https://api.telegram.org/bot${import.meta.env.VITE_TG_BOT_TOKEN}/sendMessage`, {
-                method: "POST",
-                headers: {
-                    "Content-Type":"application/json",
-                },
-                body: JSON.stringify({
-                                // chat_id: 471930242,
-                    "chat_id": 2104151994,
-                    "text": `Новая заявка на сотрудничество!\nИмя: ${applicationData.name}.\nТелефон- ${applicationData.phone}\nНаправления- ${applicationData.category.map((category) => {
-                        return ` ${category}`
-                    }).join(",")}`,
-                    "parse_mode" : "markdown",
-                    "reply_markup" : {
-                        "inline_keyboard" : [
-                            [
-                                {
-                                    "text" : "Open link",
-                                    "url" : `https://mohen-tohen.ru/showApplication/${data._id}`
-                                }
-                            ]
-                        ]
-                    }
-                })
-            })
-        })
-    }
+    // function submitData(){
+    //     return sendApplication(applicationData).unwrap()
+    //     .then((data) => {
+    //             fetch(`https://api.telegram.org/bot${import.meta.env.VITE_TG_BOT_TOKEN}/sendMessage`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type":"application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                             // chat_id: 471930242,
+    //                 "chat_id": 2104151994,
+    //                 "text": `Новая заявка на сотрудничество!\nИмя: ${applicationData.name}.\nТелефон- ${applicationData.phone}\nНаправления- ${applicationData.category.map((category) => {
+    //                     return ` ${category}`
+    //                 }).join(",")}`,
+    //                 "parse_mode" : "markdown",
+    //                 "reply_markup" : {
+    //                     "inline_keyboard" : [
+    //                         [
+    //                             {
+    //                                 "text" : "Open link",
+    //                                 "url" : `https://mohen-tohen.ru/showApplication/${data._id}`
+    //                             }
+    //                         ]
+    //                     ]
+    //                 }
+    //             })
+    //         })
+    //     })
+    // }
 
     // console.log(files);
     // useEffect

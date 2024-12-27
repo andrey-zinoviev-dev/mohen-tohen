@@ -39,8 +39,10 @@
     align-items: center;
     /* align-items: flex-start; */
     gap: 20px;
+    width: 100%;
+    max-width: 220px;
     /* width: fit-content; */
-    min-width: 240px;
+    /* min-width: 240px; */
     /* max-width: 220px; */
     /* max-width: 320px; */
 }
@@ -251,7 +253,7 @@
 
     .account__navigation-wrapper {
         align-self: center;
-        min-width: 360px;
+        /* min-width: 360px; */
     }
 }
 
@@ -285,13 +287,13 @@
     /* .account__buttons-wrapper {
         grid-template-columns: repeat(2, 1fr);
     } */
-    .account__button {
+    /* .account__button {
         font-size: 13px;
-    }
+    } */
 }
 
 @media screen and (max-width: 424px) {
-    .account__navigation-wrapper {
+    /* .account__navigation-wrapper {
         min-width: 100%;
-    }
+    } */
 }

@@ -7,26 +7,26 @@ import "./ListGrid.css"
 // import ListGrid from "./ListGrid";
 import LinkCompBack from "./LinkCompBack";
 // import { usePostGoodToServerMutation } from "./features/apiSlice";
-import { createPortal } from "react-dom";
-// import PortalComp from "./PortalComp";
-import PortalMultimedia from "./PortalMultimedia";
-import PortalContainer from "./PortalContainer";
-// import FileUpload from "./FileUpload";
-import UploadComp from "./UploadComp";
-import { usePostGoodToServerMutation, useUpdateGoodMutation } from "./features/apiSlice";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { addNewGoodToUser, updateGoodData } from "./features/userSlice";
+// import { createPortal } from "react-dom";
+// // import PortalComp from "./PortalComp";
+// import PortalMultimedia from "./PortalMultimedia";
+// import PortalContainer from "./PortalContainer";
+// // import FileUpload from "./FileUpload";
+// import UploadComp from "./UploadComp";
+// import { usePostGoodToServerMutation, useUpdateGoodMutation } from "./features/apiSlice";
+// import { useAppDispatch, useAppSelector } from "./hooks";
+// import { addNewGoodToUser, updateGoodData } from "./features/userSlice";
 import { categories } from "./utils";
 // import { IColor } from "react-color-palette";
-
+import { useAppSelector } from "./hooks";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import { useLocation } from "react-router-dom";
-import { changeMessage } from "./features/notificationSlice";
+// import { changeMessage } from "./features/notificationSlice";
 import { AccountGoodInterface, FileUrlInterface } from "./interfaces";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NoteWrapper from "./NoteWrapper";
-import GoodConstructor from "./GoodConstructor";
+// import GoodConstructor from "./GoodConstructor";
 // import ListElementGeneric from "./ListElementGeneric";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -35,7 +35,7 @@ import ListGridOldPhoto from "./ListGridOldPhoto";
 
 import ListFiles from "./ListFiles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ColorOption from "./ColorOption";
 import OptionWrapper from "./OptionWrapper";
 
@@ -81,40 +81,41 @@ export default function AccountAddGood() {
   
   const [color, setColor] = useColor(goodToEdit && goodToEdit.color ? goodToEdit.color : "#ffffff");
 
-  const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
+  // const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
-  const [optionsOpened, setOptionsOpened] = React.useState<boolean>(false);
+  // const [optionsOpened, setOptionsOpened] = React.useState<boolean>(false);
   
-  const [goodOptions, setGoodOptions] = React.useState<{title: string, price: number, type: string}[]>([]);
+  // const [goodOptions, setGoodOptions] = React.useState<{title: string, price: number, type: string}[]>([]);
 
   const [colors, setColors] = useState<string[]>([]);
-  //dispatch
-  const dispatch = useAppDispatch();
 
-  //RTK
-  const [addGood] = usePostGoodToServerMutation();
-  const [editGood] = useUpdateGoodMutation();
+  // //dispatch
+  // const dispatch = useAppDispatch();
+
+  // //RTK
+  // const [addGood] = usePostGoodToServerMutation();
+  // const [editGood] = useUpdateGoodMutation();
   
   //state
   // const [updloadStarted, setUploadStarted] = useState<boolean>(false);
 
   //functions
 
-  function removePhoto(name: string) {
-    // setPhotos((prevValue) => {
-    //   return prevValue.filter((prevPhoto) => {
-    //     return prevPhoto.name !== name;
-    //   })
-    // })
-    // setFormData((prevValue) => {
-    //   return {
-    //     ...prevValue, photos: prevValue.photos.filter((photo) => {
-    //       return photo.title !== file.name;
-    //     })
-    //   }
+  // function removePhoto(name: string) {
+  //   // setPhotos((prevValue) => {
+  //   //   return prevValue.filter((prevPhoto) => {
+  //   //     return prevPhoto.name !== name;
+  //   //   })
+  //   // })
+  //   // setFormData((prevValue) => {
+  //   //   return {
+  //   //     ...prevValue, photos: prevValue.photos.filter((photo) => {
+  //   //       return photo.title !== file.name;
+  //   //     })
+  //   //   }
 
-    // });
-  }
+  //   // });
+  // }
 
   // function removeOldPhoto(url: string) {
   //   setFormData((prevValue) => {
@@ -133,31 +134,31 @@ export default function AccountAddGood() {
   //   console.log(goodOptions)
   // }
 
-  function submitData() {
-    // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
-    //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
-    // }), ...formData.photos], goodOptions: goodOptions};
-    // // console.log(dataToSend);
-    // return addGood(dataToSend).unwrap()
-    // .then((data) => {
-    //   // console.log(data);
-    //   data && dispatch(addNewGoodToUser(data));
-    //   dispatch(changeMessage({message: "Товар успешно добавлен!"}))
-    // })
-  }
+  // function submitData() {
+  //   // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
+  //   //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+  //   // }), ...formData.photos], goodOptions: goodOptions};
+  //   // // console.log(dataToSend);
+  //   // return addGood(dataToSend).unwrap()
+  //   // .then((data) => {
+  //   //   // console.log(data);
+  //   //   data && dispatch(addNewGoodToUser(data));
+  //   //   dispatch(changeMessage({message: "Товар успешно добавлен!"}))
+  //   // })
+  // }
 
-  function submitEditData() {
-    // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
-    //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
-    // }), ...formData.photos]};
-    // // console.log(dataToSend);
+  // function submitEditData() {
+  //   // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
+  //   //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+  //   // }), ...formData.photos]};
+  //   // // console.log(dataToSend);
 
-    // return editGood(dataToSend).unwrap()
-    // .then((data) => {
-    //   dispatch(updateGoodData(data));
-    //   dispatch(changeMessage({message: "Товар успешно обновлен!"}))
-    // })
-  }
+  //   // return editGood(dataToSend).unwrap()
+  //   // .then((data) => {
+  //   //   dispatch(updateGoodData(data));
+  //   //   dispatch(changeMessage({message: "Товар успешно обновлен!"}))
+  //   // })
+  // }
 
   // function showOptions(options: {colors?: {title: string, options: string[], }}) {
   //   console.log(options);
@@ -173,8 +174,8 @@ export default function AccountAddGood() {
     if(goodToEdit) {
       setFormData(goodToEdit);
       console.log(goodToEdit.goodOptions)
-      goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setOptionsOpened(true)
-      goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setGoodOptions(goodToEdit.goodOptions);
+      // goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setOptionsOpened(true)
+      // goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setGoodOptions(goodToEdit.goodOptions);
     }
   }, [goodToEdit]);
   
@@ -197,37 +198,37 @@ export default function AccountAddGood() {
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
 
-        if (!goodToEdit) {
-          // submitData();
-          // console.log(photos);
-          // console.log(formData);
-          // const photosStrings = photos.map((photo) => {
-          //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
-          // });
-          // formData.photos = photosStrings;
+        // if (!goodToEdit) {
+        //   // submitData();
+        //   // console.log(photos);
+        //   // console.log(formData);
+        //   // const photosStrings = photos.map((photo) => {
+        //   //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+        //   // });
+        //   // formData.photos = photosStrings;
 
-          // getOptions();
+        //   // getOptions();
 
-          setUploadStarted(true);
+        //   setUploadStarted(true);
 
-          // console.log(formData);
-        } else if (goodToEdit) {
-          // photos.length > 0 ? 
-          // setUploadStarted(true) 
-          // : 
-          // submitEditData()
-          // console.log('edit good here');
+        //   // console.log(formData);
+        // } else if (goodToEdit) {
+        //   // photos.length > 0 ? 
+        //   // setUploadStarted(true) 
+        //   // : 
+        //   // submitEditData()
+        //   // console.log('edit good here');
 
-          // formData.photos = [...oldPhotos, ...photos.map((photo) => {
-          //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
-          // })];
-          photos.length > 0 ? 
-          setUploadStarted(true) 
-          : 
-          submitEditData()
-          // .then
-          // console.log(formData);
-        }
+        //   // formData.photos = [...oldPhotos, ...photos.map((photo) => {
+        //   //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
+        //   // })];
+        //   photos.length > 0 ? 
+        //   setUploadStarted(true) 
+        //   : 
+        //   submitEditData()
+        //   // .then
+        //   // console.log(formData);
+        // }
 
 
         // state ? console.log("update good here") : setUploadStarted(true);

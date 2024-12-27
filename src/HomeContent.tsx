@@ -1,9 +1,9 @@
 // import Welcome from "./Welcome"
 import Brands from "./Brands"
 import Collaboration from "./Collaboration"
-import PromoSection from "./PromoSection"
+// import PromoSection from "./PromoSection"
 // import RandomGoods from "./RandomGoods"
-import AboutPlatform from "./AboutPlatform"
+// import AboutPlatform from "./AboutPlatform"
 // import NewGoods from "./NewGoods"
 import PaidGoods from "./PaidGoods"
 import MainPageCategory from "./MainPageCategory"
@@ -34,8 +34,8 @@ export default function HomeContent() {
     return (
         <>
             {/* <Welcome></Welcome>     */}
-            <PromoSection></PromoSection>
-            <AboutPlatform></AboutPlatform>
+            {/* <PromoSection></PromoSection> */}
+            {/* <AboutPlatform></AboutPlatform> */}
             <PaidGoods></PaidGoods>
             {/* <MainPageCategory href={"catalog"} title="Горячие предложения" goods={goods}></MainPageCategory> */}
             <MainPageCategory href={"catalog"} title="Новинки" goods={newGoods} />

@@ -1,10 +1,10 @@
 import "./Good.css";
 import { GoodComponentInterface } from "./interfaces";
 import LikeButton from "./LikeButton";
-import BasketButton from "./BasketButton";
-import ShareButton from "./ShareButton";
+// import BasketButton from "./BasketButton";
+// import ShareButton from "./ShareButton";
 import { Link, useNavigate } from "react-router-dom";
-import MadeToOrderLink from "./MadeToOrderLink";
+// import MadeToOrderLink from "./MadeToOrderLink";
 // import NoteWrapper from "./NoteWrapper";
 
 export default function Good({ good }:GoodComponentInterface) {
