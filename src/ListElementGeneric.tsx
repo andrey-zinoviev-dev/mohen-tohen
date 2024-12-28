@@ -8,7 +8,7 @@ interface GenericListInterface<T> {
     children?: React.ReactNode | React.ReactNode[],
 }
 
-export default function ListElementGeneric<T extends GoodInterface | AccountGoodInterface | TransactionInterface | goodPageInt | string | File | FileUrlInterface>({ items, renderItems, classUl, children }: GenericListInterface<T>) {
+export default function ListElementGeneric<T extends GoodInterface | AccountGoodInterface | TransactionInterface | goodPageInt | string | File | FileUrlInterface | {color: string, price: number} | {material: string, price: number}>({ items, renderItems, classUl, children }: GenericListInterface<T>) {
 
     return (
         <ul className={classUl}>

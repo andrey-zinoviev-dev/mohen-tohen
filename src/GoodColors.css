@@ -1,0 +1,8 @@
+.color-new {
+  background-color: transparent;
+  border: 2px solid black;
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  min-width: 40px;
+}

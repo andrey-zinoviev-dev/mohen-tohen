@@ -1,8 +1,10 @@
 .option-wrapper {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* justify-content: space-between; */
     align-items: center;
-    max-width: 360px;
+    /* max-width: 360px; */
+    max-width: 300px;
     gap: 15px;
 }

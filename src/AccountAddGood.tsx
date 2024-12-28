@@ -19,7 +19,7 @@ import LinkCompBack from "./LinkCompBack";
 import { categories } from "./utils";
 // import { IColor } from "react-color-palette";
 import { useAppSelector } from "./hooks";
-import { ColorPicker, useColor } from "react-color-palette";
+// import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import { useLocation } from "react-router-dom";
 // import { changeMessage } from "./features/notificationSlice";
@@ -34,9 +34,7 @@ import ListElementGeneric from "./ListElementGeneric";
 import ListGridOldPhoto from "./ListGridOldPhoto";
 
 import ListFiles from "./ListFiles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import ColorOption from "./ColorOption";
+import GoodColors from "./GoodColors";
 import OptionWrapper from "./OptionWrapper";
 
 export default function AccountAddGood() {
@@ -79,7 +77,7 @@ export default function AccountAddGood() {
 
   // const [oldPhotos, setOldPhotos] = React.useState<string[]>(state ? state.photos : []);
   
-  const [color, setColor] = useColor(goodToEdit && goodToEdit.color ? goodToEdit.color : "#ffffff");
+  // const [color, setColor] = useColor(goodToEdit && goodToEdit.color ? goodToEdit.color : "#ffffff");
 
   // const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
@@ -87,8 +85,10 @@ export default function AccountAddGood() {
   
   // const [goodOptions, setGoodOptions] = React.useState<{title: string, price: number, type: string}[]>([]);
 
-  const [colors, setColors] = useState<string[]>([]);
-
+  const [colors, setColors] = useState<{ color: string, price: number }[]>([]);
+  const [materials, setMaterials] = useState<{ material: string, price: number}[]>([]);
+  //test
+  const [newMaterial, setNewMaterial] = useState<{ material: string, price: number}>({material: "", price: 0})
   // //dispatch
   // const dispatch = useAppDispatch();
 
@@ -100,6 +100,19 @@ export default function AccountAddGood() {
   // const [updloadStarted, setUploadStarted] = useState<boolean>(false);
 
   //functions
+  function addColor(color: {color: string, price: number}) {
+    setColors((prevValue) => {
+      return [...prevValue, color];
+    })
+  }
+
+  function removeColor(color:{color: string, price: number}) {
+    setColors((prevValue) => {
+      return prevValue.filter((prevColor) => {
+        return prevColor.color !== color.color;
+      })
+    })
+  }
 
   // function removePhoto(name: string) {
   //   // setPhotos((prevValue) => {
@@ -296,7 +309,21 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Материал
-              <InputEl value={formData.material} updateState={setFormData} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
+              {<ListElementGeneric classUl="ul-options" renderItems={(item) => {
+                return <OptionWrapper removeOption={() => {}}>
+                  <div>
+                    <span>{item.material}</span>
+                    <span>{item.price}&#8381;</span>
+                  </div>
+                </OptionWrapper>
+              }} items={materials}></ListElementGeneric>}
+              {/* <input type="text" name="material" placeholder="Материал товара" onChange={() => {}}></input> */}
+              <InputEl value={newMaterial.material} updateState={setNewMaterial} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
+              <button onClick={() => {
+                setMaterials((prevValue) => {
+                  return [...prevValue, newMaterial]
+                })
+              }}>Добавить материал</button>
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">
@@ -304,7 +331,9 @@ export default function AccountAddGood() {
               
               <div className="addGoodform__color-wrapper">
                 <span>Цвет товара</span>
-                <ColorPicker hideAlpha hideInput={["hsv", "rgb"]} color={color} onChange={setColor}>
+                <NoteWrapper text="Выбреите цвет в палитре, добавьте цену опции, если она увеличивает стоимость товара и нажмите кнопку +"></NoteWrapper>
+                <GoodColors colors={colors} addColor={addColor} removeColor={removeColor} />
+                {/* <ColorPicker hideAlpha hideInput={["hsv", "rgb"]} color={color} onChange={setColor}>
                 </ColorPicker>
                 <div className="addGoodform__option-wrapper">
                   <NoteWrapper text="Выберите цвет в палитре и добавьте его, нажав на кнопку +"></NoteWrapper>
@@ -330,11 +359,9 @@ export default function AccountAddGood() {
                   </OptionWrapper>
                 }}>
 
-                </ListElementGeneric>
+                </ListElementGeneric> */}
 
-                {/* <InputEl placeHolder="#ffffff" name= updateState={setFormData}></InputEl> */}
               </div>
-              {/* <InputEl updateState={setFormData} placeHolder="(hex)#ffffff" name="color"></InputEl> */}
             </label>
           </div>
           <div className="addGoodform__text-wrapper-div">
