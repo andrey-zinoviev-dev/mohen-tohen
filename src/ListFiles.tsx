@@ -21,6 +21,7 @@ export default function ListFiles({ files, updateFiles }: ListFilesInterface) {
 
     return (
         <>
+            <span>Фото товара</span>
             <InputFileGeneric ref={fileInputRef} handleInputChange={(evt) => {
                 const fileuploaded = evt.target.files && evt.target.files[0];
                 const url = fileuploaded && window.URL.createObjectURL(fileuploaded);

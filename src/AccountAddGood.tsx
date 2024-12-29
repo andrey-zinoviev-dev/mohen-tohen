@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import InputEl from "./InputEl";
@@ -7,13 +7,13 @@ import "./ListGrid.css"
 // import ListGrid from "./ListGrid";
 import LinkCompBack from "./LinkCompBack";
 // import { usePostGoodToServerMutation } from "./features/apiSlice";
-// import { createPortal } from "react-dom";
+import { createPortal } from "react-dom";
 // // import PortalComp from "./PortalComp";
-// import PortalMultimedia from "./PortalMultimedia";
-// import PortalContainer from "./PortalContainer";
+import PortalMultimedia from "./PortalMultimedia";
+import PortalContainer from "./PortalContainer";
 // // import FileUpload from "./FileUpload";
-// import UploadComp from "./UploadComp";
-// import { usePostGoodToServerMutation, useUpdateGoodMutation } from "./features/apiSlice";
+import UploadComp from "./UploadComp";
+import { usePostGoodToServerMutation } from "./features/apiSlice";
 // import { useAppDispatch, useAppSelector } from "./hooks";
 // import { addNewGoodToUser, updateGoodData } from "./features/userSlice";
 import { categories } from "./utils";
@@ -35,7 +35,10 @@ import ListGridOldPhoto from "./ListGridOldPhoto";
 
 import ListFiles from "./ListFiles";
 import GoodColors from "./GoodColors";
-import OptionWrapper from "./OptionWrapper";
+// import OptionWrapper from "./OptionWrapper";
+// import NonSizeOption from "./NonSizeOption";
+// import GoodOptionsGeneric from "./GoodOptionsGeneric";
+import TextOptions from "./TextOptions";
 
 export default function AccountAddGood() {
   //location
@@ -56,20 +59,14 @@ export default function AccountAddGood() {
   // console.log(state);
   //states
   const [formData, setFormData] = React.useState<AccountGoodInterface>(
-  //   state ? 
-  //   {...state}
-  //   :
     {
       title: "",
       category: "",
       description: "",
-      material: "",
-      dimensions: "",
       photos: [],
       price: 0,
       batch: 1,
       madeToOrder: false,
-      goodOptions: [],
     }
   );
 
@@ -79,37 +76,56 @@ export default function AccountAddGood() {
   
   // const [color, setColor] = useColor(goodToEdit && goodToEdit.color ? goodToEdit.color : "#ffffff");
 
-  // const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
+  const [uploadStarted, setUploadStarted] = React.useState<boolean>(false);
 
   // const [optionsOpened, setOptionsOpened] = React.useState<boolean>(false);
   
   // const [goodOptions, setGoodOptions] = React.useState<{title: string, price: number, type: string}[]>([]);
 
-  const [colors, setColors] = useState<{ color: string, price: number }[]>([]);
-  const [materials, setMaterials] = useState<{ material: string, price: number}[]>([]);
+  const [colors, setColors] = useState<{ option: string, price: number }[]>([]);
+  const [materials, setMaterials] = useState<{ option: string, price: number}[]>([]);
+  const [dimensions, setDimensions] = useState<{ option: string, price: number}[]>([]);
+
   //test
-  const [newMaterial, setNewMaterial] = useState<{ material: string, price: number}>({material: "", price: 0})
+  // const [newMaterial, setNewMaterial] = useState<{ material: string, price: number}>({material: "", price: 0})
   // //dispatch
   // const dispatch = useAppDispatch();
 
   // //RTK
-  // const [addGood] = usePostGoodToServerMutation();
+  const [addGood] = usePostGoodToServerMutation();
   // const [editGood] = useUpdateGoodMutation();
   
-  //state
-  // const [updloadStarted, setUploadStarted] = useState<boolean>(false);
+  const formNotCompleted = Object.values(formData).filter((entry) => {
+    return typeof entry === 'string';
+  }).some((entry) => {
+    return entry.length === 0;
+  });
+
+  //useMemo
+  const filesToUpload = useMemo(() => {
+    return photos.map((photo) => {
+      return photo.file;
+    })
+  }, [photos.length])
+  // console.log(filesToUpload);
+
+  const linksOfPhotos = useMemo(() => {
+    return photos.map((photo) => {
+      return `https://cdn.mohen-tohen.ru/${photo.file.name}`
+    })
+  }, [photos.length])
 
   //functions
-  function addColor(color: {color: string, price: number}) {
+  function addColor({option, price}: {option: string, price: number}) {
     setColors((prevValue) => {
-      return [...prevValue, color];
+      return [...prevValue, {option, price}];
     })
   }
 
-  function removeColor(color:{color: string, price: number}) {
+  function removeColor( option: string ) {
     setColors((prevValue) => {
       return prevValue.filter((prevColor) => {
-        return prevColor.color !== color.color;
+        return prevColor.option !== option;
       })
     })
   }
@@ -147,18 +163,16 @@ export default function AccountAddGood() {
   //   console.log(goodOptions)
   // }
 
-  // function submitData() {
-  //   // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
-  //   //   return `https://cdn.mohen-tohen.ru/${photo.name}`;
-  //   // }), ...formData.photos], goodOptions: goodOptions};
-  //   // // console.log(dataToSend);
-  //   // return addGood(dataToSend).unwrap()
-  //   // .then((data) => {
-  //   //   // console.log(data);
-  //   //   data && dispatch(addNewGoodToUser(data));
-  //   //   dispatch(changeMessage({message: "Товар успешно добавлен!"}))
-  //   // })
-  // }
+  function submitData() {
+    const dataToSend = {...formData, colors: colors, materials: materials, dimensions: dimensions, photos: [...linksOfPhotos, ...formData.photos]};
+    // console.log(dataToSend);
+    return addGood(dataToSend).unwrap()
+    .then((data) => {
+      console.log(data);
+      // data && dispatch(addNewGoodToUser(data));
+      // dispatch(changeMessage({message: "Товар успешно добавлен!"}))
+    })
+  }
 
   // function submitEditData() {
   //   // const dataToSend = {...formData, color: color.hex, photos: [...photos.map((photo) => {
@@ -177,18 +191,11 @@ export default function AccountAddGood() {
   //   console.log(options);
   // }
 
-  const formNotCompleted = Object.values(formData).filter((entry) => {
-    return typeof entry === 'string';
-  }).some((entry) => {
-    return entry.length === 0;
-  });
 
+  // console.log(linksOfPhotos);
   React.useEffect(() => {
     if(goodToEdit) {
       setFormData(goodToEdit);
-      console.log(goodToEdit.goodOptions)
-      // goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setOptionsOpened(true)
-      // goodToEdit.goodOptions && goodToEdit.goodOptions.length > 0 && setGoodOptions(goodToEdit.goodOptions);
     }
   }, [goodToEdit]);
   
@@ -210,8 +217,12 @@ export default function AccountAddGood() {
 
       <form className="addGoodform" onSubmit={(evt) => {
         evt.preventDefault();
-
-        // if (!goodToEdit) {
+        // console.log(formData);
+        // console.log(colors);
+        // console.log(dimensions);
+        // console.log(materials);
+        // console.log(photos);
+        if (!goodToEdit) {
         //   // submitData();
         //   // console.log(photos);
         //   // console.log(formData);
@@ -222,10 +233,10 @@ export default function AccountAddGood() {
 
         //   // getOptions();
 
-        //   setUploadStarted(true);
+          setUploadStarted(true);
 
         //   // console.log(formData);
-        // } else if (goodToEdit) {
+        } else if (goodToEdit) {
         //   // photos.length > 0 ? 
         //   // setUploadStarted(true) 
         //   // : 
@@ -241,7 +252,7 @@ export default function AccountAddGood() {
         //   submitEditData()
         //   // .then
         //   // console.log(formData);
-        // }
+        }
 
 
         // state ? console.log("update good here") : setUploadStarted(true);
@@ -309,22 +320,19 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Материал
-              {<ListElementGeneric classUl="ul-options" renderItems={(item) => {
-                return <OptionWrapper removeOption={() => {}}>
-                  <div>
-                    <span>{item.material}</span>
-                    <span>{item.price}&#8381;</span>
-                  </div>
-                </OptionWrapper>
-              }} items={materials}></ListElementGeneric>}
-              {/* <input type="text" name="material" placeholder="Материал товара" onChange={() => {}}></input> */}
-              <InputEl value={newMaterial.material} updateState={setNewMaterial} placeHolder="Акрил, металл и стекло" name="material"></InputEl>
-              <button onClick={() => {
-                setMaterials((prevValue) => {
-                  return [...prevValue, newMaterial]
-                })
-              }}>Добавить материал</button>
             </label>
+            <TextOptions options={materials} addOptionText="Добавить материал" addOption={({option, price}) => {
+              setMaterials((prevValue) => {
+                return [...prevValue, {option, price}];
+              })
+            }} removeOption={(option) => {
+              setMaterials((prevValue) => {
+                return prevValue.filter((prevOption) => {
+                  return prevOption.option !== option;
+                })
+              })
+            }}></TextOptions>
+
           </div>
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
@@ -332,34 +340,8 @@ export default function AccountAddGood() {
               <div className="addGoodform__color-wrapper">
                 <span>Цвет товара</span>
                 <NoteWrapper text="Выбреите цвет в палитре, добавьте цену опции, если она увеличивает стоимость товара и нажмите кнопку +"></NoteWrapper>
+
                 <GoodColors colors={colors} addColor={addColor} removeColor={removeColor} />
-                {/* <ColorPicker hideAlpha hideInput={["hsv", "rgb"]} color={color} onChange={setColor}>
-                </ColorPicker>
-                <div className="addGoodform__option-wrapper">
-                  <NoteWrapper text="Выберите цвет в палитре и добавьте его, нажав на кнопку +"></NoteWrapper>
-                  <button style={{backgroundColor: color.hex}} type="button" onClick={() => {
-                    setColors((prevValue) => {
-                      return [...prevValue, color.hex]
-                    });
-                    setColor({hex: "#ffffff", rgb: {r: 255, g: 255, b: 255, a: 1}, hsv: {h: 0, s: 0, v: 100, a: 1} })
-                  }}>
-                    <FontAwesomeIcon icon={faPlus} />
-                  </button>
-                </div>
-
-                <ListElementGeneric classUl="ul-options" items={colors} renderItems={(color) => {
-                  return <OptionWrapper removeOption={() => {
-                    setColors((prevValue) => {
-                      return prevValue.filter((prevColor) => {
-                        return prevColor !== color
-                      })
-                    })
-                  }}>
-                    <ColorOption color={color} active={true}></ColorOption>
-                  </OptionWrapper>
-                }}>
-
-                </ListElementGeneric> */}
 
               </div>
             </label>
@@ -367,8 +349,20 @@ export default function AccountAddGood() {
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
               Габариты
-              <InputEl value={formData.dimensions} updateState={setFormData} placeHolder="125(Ш)x60(В)x90(Г)" name="dimensions"></InputEl>
+              {/* <InputEl value={formData.dimensions} updateState={setFormData} placeHolder="125(Ш)x60(В)x90(Г)" name="dimensions"></InputEl> */}
             </label>
+            <TextOptions options={dimensions} addOptionText="Добавить материал" addOption={({option, price}) => {
+              setDimensions((prevValue) => {
+                return [...prevValue, {option, price}];
+              })
+            }} removeOption={(option) => {
+              setDimensions((prevValue) => {
+                return prevValue.filter((prevOption) => {
+                  return prevOption.option !== option;
+                })
+              })
+            }}></TextOptions>
+
           </div>
           <div className="addGoodform__text-wrapper-div">
             <label className="addGoodform__label">
@@ -382,46 +376,20 @@ export default function AccountAddGood() {
               <InputEl value={formData.price.toString()} updateState={setFormData} placeHolder="12500" name="price" type={"number"}></InputEl>
             </label>
           </div>
-          {/* {formData.madeToOrder && <div className="addGoodform__text-wrapper-div">
-            <NoteWrapper text="Если Вы делаете товар с опциями, их можно добавить в полях ввода ниже"></NoteWrapper>
-            {<label className="addGoodform__label">
-              <div className="addGoodform__text-wrapper-div-made-to-order">
-                <input checked={formData.goodOptions && true} type="checkbox" onChange={() => {
-                  setOptionsOpened(!optionsOpened);
-                }}>
-                </input>
-                  Добавить опции к товару
-              </div>
-            </label>}
-            {optionsOpened && <GoodConstructor options={goodOptions} changeOption={setGoodOptions} />}
-          </div>} */}
-
           <button className="addGoodform__button-submit" disabled={(!formNotCompleted && photos.length > 0 ) || (!formNotCompleted && formData.photos.length > 0 )  ? false : true} type="submit">
             Отправить товар
           </button>
         </div>
-        <div className="addGoodform__files-wrapper">
-          {/* <span>Фото</span>
-          <ListElementGeneric classUl="" items={formData.photos} renderItems={(item) => {
-            return <>
-              <img src={item}></img>
-            </>
-          }} /> */}
-          {/* <button type="button">
-            <FontAwesomeIcon icon={faPlus} />
-          </button> */}
-          {/* <ListGrid removeOldPhoto={removeOldPhoto} oldPics={formData.photos} gridElements={photos} openInput={openInput} removePhoto={removePhoto} /> */}
-        </div>
       </form>
-      {/* <input type="file" accept=".png, .jpg" ref={fileInputRef} onChange={(evt) => {
-        processFileAdd(evt)
-      }} style={{display: "none"}}></input> */}
 
-      {/* {uploadStarted && createPortal(<PortalMultimedia>
+
+      {uploadStarted && createPortal(<PortalMultimedia>
         <PortalContainer>
-          <UploadComp submitData={goodToEdit ? submitEditData : submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={photos}></UploadComp>
+          <UploadComp submitData={submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={filesToUpload}></UploadComp>
+
+          {/* <UploadComp submitData={goodToEdit ? submitEditData : submitData} application={false} linkBack={{text: "Назад к товарам", to: "../mygoods"}} photos={photos.map((photo) =>)}></UploadComp> */}
         </PortalContainer>
-      </PortalMultimedia>, document.body)} */}
+      </PortalMultimedia>, document.body)}
     </>
   )
 }

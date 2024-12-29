@@ -119,7 +119,27 @@ export const apiSlice = createApi({
                 },
             })
         }),
-        postGoodToServer: builder.mutation<GoodInterface, {title: string, description: string, material: string, dimensions: string, price: number}>({
+        postGoodToServer: builder.mutation<GoodInterface, {
+            colors: {
+                option: string,
+                price: number,
+            }[],materials: {
+                option: string,
+                price: number,
+            }[],
+            dimensions: {
+                option: string,
+                price: number,
+            }[],
+            photos: string[],
+            title: string,
+            category: string,
+            description: string,
+            price: number,
+            batch: number,
+            madeToOrder: boolean,
+            _id?: string,
+        }>({
             query: (good) => ({
                 url: "/goods/add",
                 method: "POST",

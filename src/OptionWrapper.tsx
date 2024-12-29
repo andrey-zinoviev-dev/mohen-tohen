@@ -5,17 +5,14 @@ interface OptionWrapperInterface{
     children: React.ReactNode | React.ReactNode[],
     removeOption: () => void,
     deleteButton?: boolean,
+    price: number,
 }
 
-export default function OptionWrapper({ children, removeOption, deleteButton }: OptionWrapperInterface) {
+export default function OptionWrapper({ children, removeOption, deleteButton, price }: OptionWrapperInterface) {
     return (
         <div className="option-wrapper">
             {children}
-            {/* <span>{}</span> */}
-            {/* <InputEl name=""></InputEl> */}
-            {/* <input type="number" onChange={((evt) => {
-                console.log(evt.target.value);
-            })} placeholder="цена опции"></input> */}
+            <span>{price}&#8381;</span>
             {deleteButton && <button type="button" onClick={() => {
                 removeOption()
             }}>

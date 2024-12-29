@@ -33,15 +33,15 @@ export interface GoodInterface {
   category: string,
   cover: string,
   price: number,
-  colors?: ColorInterface[],
-  color: string,
-  favourite?: boolean,
+  colors: OptionInterface[],
+  // color: string,
+  // favourite?: boolean,
   // herf: string,
   seller: UserInterface,
-  material?:string,
+  materials: OptionInterface[],
   // quantity?: number,
-  selectedColor?: ColorInterface,
-  dimensions: string,
+  // selectedColor?: ColorInterface,
+  dimensions: OptionInterface[],
   photos: string[],
   // candle?: boolean,
   // stock: number,
@@ -49,7 +49,7 @@ export interface GoodInterface {
   _id: string,
   batch: number,
   paid?: boolean,
-  goodOptions?: {title: string, price: number, type: string}[]
+  // goodOptions?: {title: string, price: number, type: string}[]
   createdAt: number,
 }
 
@@ -252,18 +252,23 @@ export interface AccountGoodInterface {
   title: string, 
   category: string, 
   description: string, 
-  material: string, 
-  dimensions: string, 
+  // material: string, 
+  // dimensions: string, 
   photos: string[], 
   price: number, 
   batch: number, 
-  color?: string, 
+  // color?: string, 
   madeToOrder: boolean,
-  goodOptions?: {title: string, price: number, type: string}[],
+  // goodOptions?: {title: string, price: number, type: string}[],
   _id?: string
 }
 
 export interface FileUrlInterface {
   url: string,
   file: File,
+}
+
+export interface OptionInterface {
+  option: string,
+  price: number,
 }
