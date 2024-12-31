@@ -26,6 +26,7 @@ import CreateOrder from "./CreateOrder";
 import AccountEdit from './AccountEdit'
 import CreateOrderSuccess from './CreateOrderSuccess'
 import Category from './Category'
+import AccountEditGood from './AccountEditGood'
 
 function App() {
   //dispatch
@@ -114,7 +115,7 @@ function App() {
                 },
                 {
                   path: "goods/:goodID/edit",
-                  element: <AccountAddGood></AccountAddGood>
+                  element: <AccountEditGood />
                 },
                 {
                   path: "history",

@@ -31,10 +31,13 @@ export default function GoodColors({ colors, addColor, removeColor }: GoodColorI
         <div className="options__new-wrapper">
           <div className="color-new" style={{backgroundColor: color.hex}} >
           </div>
-          <InputEl value={optionPrice.price.toString()} name="price" placeHolder="Стоимость опции" updateState={setOptionPrice}></InputEl>
+          <InputEl value={optionPrice.price > 0 ? optionPrice.price.toString() : ""} name="price" placeHolder="Стоимость опции" updateState={setOptionPrice}></InputEl>
         </div>
-        <button className="options__button-add" type="button" onClick={() => {
-          addColor({option: color.hex, price: optionPrice.price })
+        <button disabled={optionPrice.price > 0 ? false : true} className="options__button-add" type="button" onClick={() => {
+          addColor({option: color.hex, price: optionPrice.price });
+          setOptionPrice(() => {
+            return {price: 0};
+          })
         }}>
           Добавить цвет
         </button>
