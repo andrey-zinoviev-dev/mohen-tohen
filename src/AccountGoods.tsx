@@ -19,7 +19,7 @@ import ListColumn from "./ListColumn";
 // import FormEl from "./FormEl";
 import { useAppSelector } from "./hooks";
 import ColorOption from "./ColorOption";
-import ListElementGeneric from "./ListElementGeneric";
+// import ListElementGeneric from "./ListElementGeneric";
 // import { changeMessage } from "./features/notificationSlice";
 // import { updateAccountGoodBatch } from "./features/userSlice";
 // import PortalCentered from "./PortalCentered";
@@ -107,7 +107,7 @@ export default function AccountGoods() {
                             
                             <div className="list-column__price-wrapper">
                                 <span className="list-column__price-span">{good.price}</span>
-                                <LinkCompAction state={good._id} to={`../goods/${good._id}/edit`} text="Редактировать" icon={faSliders} />
+                                <LinkCompAction state={good} to={`../goods/${good._id}/edit`} text="Редактировать" icon={faSliders} />
                             </div>
                         </div>
                         

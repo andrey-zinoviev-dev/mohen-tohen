@@ -21,7 +21,7 @@ export default function TextOptions({ options, addOptionText, addOption, removeO
                     <InputEl value={newTextOption.option} name="option" updateState={setNewTextOption} placeHolder="Название опции"></InputEl>
                     <InputEl value={newTextOption.price.toString()} name="price" type="number" updateState={setNewTextOption} placeHolder="Стоимость опции"></InputEl>
                 </div>
-                <button disabled={newTextOption.option.length > 0 && newTextOption.price > 0 ? false : true} className="options__button-add" type="button" onClick={() => {
+                <button disabled={newTextOption.option.length > 0 ? false : true} className="options__button-add" type="button" onClick={() => {
                     addOption(newTextOption);
                     setNewTextOption({option: "", price: 0})
                 }}>{addOptionText}</button>

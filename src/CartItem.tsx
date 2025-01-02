@@ -39,9 +39,9 @@ export default function CartItem({item}: {item: goodPageInt}) {
                 <div className="cart-item__params">
                     <span>{item.good.title}</span>
                     <div className="cart-item__wrapper-details">
-                        <span>{item.good.material}</span>
-                        <span>{item.good.dimensions}</span>
-                        <div className="cart-item__color" style={{backgroundColor: item.good.color}}></div>
+                        {/* <span>{item.good.materials}</span>
+                        <span>{item.good.dimensions}</span> */}
+                        {/* <div className="cart-item__color" style={{backgroundColor: item.good.color}}></div> */}
                     </div>
                     <div className="cart-item__wrapper-buttons">
                         <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>

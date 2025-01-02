@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseApi } from "../utils";
 // import { UserInterface } from "./userSlice";
 
-import { ApplicationInterface, ApplicationUploadedInterface, GoodInterface, goodPageInt, TransactionInterface } from "../interfaces";
+import { AccountGoodInterface, ApplicationInterface, ApplicationUploadedInterface, GoodInterface, goodPageInt, TransactionInterface } from "../interfaces";
 import { UserInterface } from "./userSlice";
 export const apiSlice = createApi({
     reducerPath: "api",
@@ -150,7 +150,7 @@ export const apiSlice = createApi({
                 },
             })
         }),
-        updateGood: builder.mutation<GoodInterface, {title: string, category: string, description: string, material: string, dimensions: string, photos: string[], price: number, batch: number, color?: string, madeToOrder: boolean, _id?: string | undefined}>({
+        updateGood: builder.mutation<GoodInterface, AccountGoodInterface>({
             query: (good) => ({
                 url: `/goods/${good._id}/edit`,
                 method: "PUT",

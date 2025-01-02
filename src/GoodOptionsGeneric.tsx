@@ -1,7 +1,7 @@
-import { ComponentType, useEffect, useState } from "react";
+// import { ComponentType, useEffect, useState } from "react";
 import ListElementGeneric from "./ListElementGeneric";
 import OptionWrapper from "./OptionWrapper";
-import InputEl from "./InputEl";
+// import InputEl from "./InputEl";
 import NonSizeOption from "./NonSizeOption";
 import ColorOption from "./ColorOption";
 

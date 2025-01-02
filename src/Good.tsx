@@ -36,8 +36,6 @@ export default function Good({ good }:GoodComponentInterface) {
                     <span className="good-text-wrapper__seller-name">{good.seller.brandName}</span>
                 </Link >}
                 {good.madeToOrder ? <span className="good-text-wrapper__price">От {good.price}&#8381;</span> : <span className="good-text-wrapper__price">{good.price}&#8381;</span>}
-                {/* {good.madeToOrder ? <span className="good-text-wrapper__price">от {good.price} &#8381;</span> : <span className="good-text-wrapper__price">{good.price} &#8381;</span>} */}
-                {/* {good.madeToOrder ? <MadeToOrderLink id={good._id} price={good.price} /> : <BasketButton price={good.price} good={good} quantity={1} />} */}
             </div>
         </>
     )

@@ -252,9 +252,10 @@ export interface AccountGoodInterface {
   title: string, 
   category: string, 
   description: string, 
-  // material: string, 
-  // dimensions: string, 
+  materials: OptionInterface[], 
+  dimensions: OptionInterface[], 
   photos: string[], 
+  colors: OptionInterface[]
   price: number, 
   batch: number, 
   // color?: string, 

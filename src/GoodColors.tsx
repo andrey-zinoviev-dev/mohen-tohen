@@ -10,18 +10,35 @@ import "./GoodColors.css"
 // import OptionWrapper from "./OptionWrapper";
 import InputEl from "./InputEl";
 import GoodOptionsGeneric from "./GoodOptionsGeneric";
+import { AccountGoodInterface } from "./interfaces";
 
-interface GoodColorInterface {
+interface GoodColorInterface<T> {
   colors: {option: string, price: number}[],
-  addColor: ({option, price}: {option: string, price: number}) => void,
-  removeColor: (option: string) => void,
+  updateColors: React.Dispatch<React.SetStateAction<T>>
+  // addColor: ({option, price}: {option: string, price: number}) => void,
+  // removeColor: (option: string) => void,
 }
 
-export default function GoodColors({ colors, addColor, removeColor }: GoodColorInterface) {
+export default function GoodColors<T extends AccountGoodInterface>({ colors, updateColors }: GoodColorInterface<T>) {
   //color state
   const [color, setColor] = useColor("#ffffff");
 
   const [optionPrice, setOptionPrice] = useState<{price: number}>({price: 0});
+
+  //functions
+  function addColor() {
+    updateColors((prevValue) => {
+      return {...prevValue, colors: [...prevValue.colors, {option: color.hex, price: optionPrice.price}]}
+    })
+  }
+
+  function removeColor(colorToRemove: string) {
+    updateColors((prevValue) => {
+      return {...prevValue, colors: prevValue.colors.filter((prevColor) => {
+        return prevColor.option !== colorToRemove; 
+      })}
+    })
+  }
 
   return (
     <>
@@ -31,10 +48,10 @@ export default function GoodColors({ colors, addColor, removeColor }: GoodColorI
         <div className="options__new-wrapper">
           <div className="color-new" style={{backgroundColor: color.hex}} >
           </div>
-          <InputEl value={optionPrice.price > 0 ? optionPrice.price.toString() : ""} name="price" placeHolder="Стоимость опции" updateState={setOptionPrice}></InputEl>
+          <InputEl value={optionPrice.price.toString()} name="price" placeHolder="Стоимость опции" updateState={setOptionPrice}></InputEl>
         </div>
-        <button disabled={optionPrice.price > 0 ? false : true} className="options__button-add" type="button" onClick={() => {
-          addColor({option: color.hex, price: optionPrice.price });
+        <button className="options__button-add" type="button" onClick={() => {
+          addColor();
           setOptionPrice(() => {
             return {price: 0};
           })
@@ -42,27 +59,6 @@ export default function GoodColors({ colors, addColor, removeColor }: GoodColorI
           Добавить цвет
         </button>
       </GoodOptionsGeneric>
-      {/* <ListElementGeneric classUl="ul-options" items={colors} renderItems={(item) => {
-        return <OptionWrapper price={item.price} deleteButton removeOption={() => {
-          removeColor(item)
-        }} >
-          <ColorOption color={item.color} active={true}></ColorOption>
-          <span>{item.price}&#8381;</span>
-        </OptionWrapper>
-      }}>
-        <div>
-          <button className="color-new" style={{backgroundColor: color.hex}} type="button" onClick={() => {
-              addColor({color: color.hex, price: optionPrice.price })
-              setColor({hex: "#ffffff", rgb: {r: 255, g: 255, b: 255, a: 1}, hsv: {h: 0, s: 0, v: 100, a: 1} })
-              setOptionPrice({price: 0})
-          }}>
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
-          <InputEl value={optionPrice.price.toString()} name="price" placeHolder="Стоимость опции" updateState={setOptionPrice}></InputEl>
-        </div>
-
-      </ListElementGeneric> */}
-
     </>
   )
 }

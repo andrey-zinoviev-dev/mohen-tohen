@@ -11,7 +11,7 @@ import LinkCompAction from "./LinkCompAction";
 
 type CommonProps = {
   photos: File[],
-  submitData: () => Promise<void>,
+  submitData: (photos: string[]) => Promise<void>,
 }
 
 type ConditionalProps = | {
@@ -41,7 +41,9 @@ export default function UploadComp({application, photos, submitData, linkBack, c
 
   useEffect(() => {
     if(uploadStatus === 'files_uploaded') {
-      submitData()
+      submitData(photos.map((photo) => {
+        return `https://cdn.mohen-tohen.ru/${photo.name}`
+      }))
       .then(() => {
         setUploadStatus("finished");
       })
