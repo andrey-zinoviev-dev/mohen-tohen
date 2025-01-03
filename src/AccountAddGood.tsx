@@ -33,13 +33,6 @@ export default function AccountAddGood() {
       dispatch(addNewGoodToUser(data))
     })
   }
-  // function addColor({option, price}: OptionInterface) {
-  //   console.log({option, price});
-  // }
-
-  // useEffect(() => {
-  //   console.log(newGood);
-  // }, [newGood])
 
   return (
     <>

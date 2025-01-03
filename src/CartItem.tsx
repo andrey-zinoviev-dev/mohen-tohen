@@ -21,7 +21,7 @@ export default function CartItem({item}: {item: goodPageInt}) {
 
     //functions
     function deleteItem() {
-        dispatch(remove(item.good))
+        dispatch(remove(item))
     }
 
     function minusOne() {
@@ -39,9 +39,11 @@ export default function CartItem({item}: {item: goodPageInt}) {
                 <div className="cart-item__params">
                     <span>{item.good.title}</span>
                     <div className="cart-item__wrapper-details">
+                        <span>{item.good.selectedMaterial.option}</span>
+                        <span>{item.good.selectedDimension.option}</span>
                         {/* <span>{item.good.materials}</span>
                         <span>{item.good.dimensions}</span> */}
-                        {/* <div className="cart-item__color" style={{backgroundColor: item.good.color}}></div> */}
+                        <div className="cart-item__color" style={{backgroundColor: item.good.selectedColor.option}}></div>
                     </div>
                     <div className="cart-item__wrapper-buttons">
                         <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>

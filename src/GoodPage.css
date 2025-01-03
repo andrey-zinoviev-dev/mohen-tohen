@@ -371,10 +371,22 @@
 
 .good__option-button {
     background-color: transparent;
-    padding: 5px;
+    /* padding: 2px 5px; */
     display: flex;
     padding: 0;
-    border: none;
+    border: 2px solid transparent;
+}
+
+.good__option-button:hover {
+    border: 2px solid black;
+}
+
+.good__option-button_text {
+    padding: 2px 5px;
+}
+
+.good__option-button_active {
+    border: 2px solid black;
 }
 
 /* .good__text-terms {

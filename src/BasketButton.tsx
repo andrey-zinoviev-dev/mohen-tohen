@@ -1,5 +1,5 @@
 // import { usePostGoodToBasketMutation } from "./features/apiSlice";
-import { GoodInterface } from "./interfaces";
+import { goodPageInt } from "./interfaces";
 import { useAppDispatch, useAppSelector } from "./hooks";
 // import { addRemoveToBasket } from "./features/userSlice";
 // import { changeMessage } from "./features/notificationSlice";
@@ -17,11 +17,11 @@ import PortalCloseButton from "./PortalCloseButton";
 import { useNavigate } from "react-router-dom";
 
 //interface
-interface goodPageInt {
-    good: GoodInterface,
-    quantity: number,
-    price: number
-}
+// interface goodPageInt {
+//     good: GoodInterface,
+//     quantity: number,
+//     price: number
+// }
 
 export default function BasketButton({ good, quantity, price }: goodPageInt) {
     //navigate
@@ -29,6 +29,7 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
     
     //state
     const [openOrderForm, setOpenOrderForm] = useState<boolean>(false);
+    // const [goodToAdd, setGoodToAdd]
     // const [updateBasket] = usePostGoodToBasketMutation();
 
     //redux
@@ -105,7 +106,7 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
             {openOrderForm && createPortal(<PortalComp fitContent={true}>
                 <PortalCentered>
                     <PortalCloseButton close={setOpenOrderForm} />
-                    <CustomOrderForm good={good}></CustomOrderForm>
+                    {/* <CustomOrderForm good={good}></CustomOrderForm> */}
 
                     {/* <HomeStagingForm closePortal={setOpenOrderForm}></HomeStagingForm> */}
                 </PortalCentered>

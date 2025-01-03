@@ -10,7 +10,8 @@ import {
      useParams } from "react-router-dom"
 import { 
     // ColorInterface, 
-GoodInterface } from "./interfaces";
+GoodInterface, 
+OptionInterface} from "./interfaces";
 
 import { Link } from "react-router-dom"
 // import { toggleFavourite } from "./features/goodsSlice";
@@ -61,7 +62,18 @@ export default function GoodPage() {
     // const [addedToBasket, setAddedToBasket] = React.useState<boolean>(false);
     // const [selectedColor, setSelectedColor] = React.useState<undefined | ColorInterface>(state.colors && state.colors[0]);
     // const [selectedMaterial, setSelectedMaterial] = useState<string | null>(null);
-    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+    const [selectedMaterial, setSelectedMaterial] = useState<OptionInterface>({
+        option: "",
+        price: 0,
+    });
+    const [selectedColor, setSelectedColor] = useState<OptionInterface>({
+        option: "",
+        price: 0,
+    });
+    const [selectedDimension, setSelectedDimension] = useState<OptionInterface>({
+        option: "",
+        price: 0,
+    })
     const [quantity, setQuantity] = React.useState<number>(1);
     const [selectedPhoto, setSelectedPhoto] = React.useState<number>(0);
     // const [selectedColor, setSelectedColor] = React.useState<{title: string, price: number}>({title: "", price: 0});
@@ -69,9 +81,9 @@ export default function GoodPage() {
     const [imageClicked, setImageClicked] = useState<boolean>(false);
 
     // //memo values
-    // const optionsPrice = React.useMemo(() => {
-    //     return selectedColor.price
-    // }, [selectedColor.price]);
+    const optionsPrice = React.useMemo(() => {
+        return selectedColor.price + selectedDimension.price + selectedMaterial.price
+    }, [selectedColor.price, selectedDimension.price, selectedMaterial.price]);
 
     //functions
     function minusOne() {
@@ -88,8 +100,9 @@ export default function GoodPage() {
 
     React.useEffect(() => {
         // console.log(good);
-        good.colors && setSelectedColor(good.colors[0].option);
-        good.materials && setSelectedColor(good.materials[0].option);
+        good.colors && setSelectedColor(good.colors[0]);
+        good.materials && setSelectedMaterial(good.materials[0])
+        good.dimensions && setSelectedDimension(good.dimensions[0]);
     }, [good]);
 
     return (
@@ -136,8 +149,10 @@ export default function GoodPage() {
                 {good.madeToOrder && <NoteWrapper text="Внимание! Этот товар делается на заказ"></NoteWrapper>}
                 <h4>
                     Размер: 
-                    {good.materials && <ListElementGeneric classUl="good__page-options" items={good.materials} renderItems={(item) => {
-                        return <button className="good__option-button">
+                    {good.dimensions && <ListElementGeneric classUl="good__page-options" items={good.dimensions} renderItems={(item) => {
+                        return <button className={item.option === selectedDimension.option ? "good__option-button_active good__option-button good__option-button_text" : "good__option-button good__option-button_text"} onClick={() => {
+                            setSelectedDimension(item)
+                        }}>
                             <NonSizeOption option={item.option}></NonSizeOption>
                         </button>
                     }}></ListElementGeneric>}
@@ -145,7 +160,9 @@ export default function GoodPage() {
                 </h4>
                 <h4>Материал:
                     {good.materials && <ListElementGeneric classUl="good__page-options" items={good.materials} renderItems={(item) => {
-                        return <button className="good__option-button">
+                        return <button className={item.option === selectedMaterial.option ? "good__option-button_active good__option-button good__option-button_text" : "good__option-button good__option-button_text"} onClick={() => {
+                            setSelectedMaterial(item);
+                        }}>
                             <NonSizeOption option={item.option}></NonSizeOption>
                         </button>
                     }}></ListElementGeneric>}
@@ -154,36 +171,12 @@ export default function GoodPage() {
                 <h4>Цвет: 
                     {good.colors && <ListElementGeneric classUl="good__page-options" items={good.colors} renderItems={(item) => {
                         return <button onClick={() => {
-                            setSelectedColor(item.option)
+                            setSelectedColor(item)
                         }} className="good__option-button">
-                            <ColorOption active={item.option === selectedColor} color={item.option}></ColorOption>
+                            <ColorOption active={item.option === selectedColor.option} color={item.option}></ColorOption>
                             {/* <span>+{item.price}&#8381;</span> */}
                         </button>
                     }}></ListElementGeneric>}
-                    <div className="good__text-parameter-wrapper">
-                        {/* {} */}
-                        {/* <button onClick={() => {
-                            setSelectedColor({title: good.color, price: 0})
-                        }} className={"good__text-parameter-item"} 
-                        style={{border: selectedColor === good.color ? `1px solid ${selectedColor}` : "1px solid transparent"}}
-                        >
-                            <ColorOption active={selectedColor.title === good.color} color={good.color} />
-                            <span>+0&#8381;</span>
-                        </button> */}
-                        {/*  */}
-                        {/* {good.goodOptions && good.goodOptions.filter((option) => {
-                            return option.type === "color"
-                        }).map((option) => {
-                            return <button onClick={() => {
-                                setSelectedColor(option);
-                            }} 
-                            className={"good__text-parameter-item"} 
-                            key={option.title}>
-                                <ColorOption active={selectedColor.title === option.title} color={option.title} />
-                                <span>+{option.price}&#8381;</span>
-                            </button>
-                        })} */}
-                    </div>
                 </h4>
                 
                 <h4>Наличие: <span className="cvet">{good.batch}</span></h4>
@@ -194,7 +187,7 @@ export default function GoodPage() {
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton good={good} quantity={quantity} price={good.price} />
+                    <BasketButton good={{...good, selectedColor: selectedColor, selectedMaterial: selectedMaterial, selectedDimension: selectedDimension}} quantity={quantity} price={(good.price * quantity) + optionsPrice} />
                     <LikeButton good={good}></LikeButton>
                     <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} />
                 </div>

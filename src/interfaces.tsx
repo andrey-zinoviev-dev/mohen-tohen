@@ -53,8 +53,17 @@ export interface GoodInterface {
   createdAt: number,
 }
 
+//Omit
+type GoodWithoutOptionsType = Omit<GoodInterface, "colors" | "materials" | "dimensions">
+
+export interface BasketGoodInterface extends GoodWithoutOptionsType {
+  selectedColor: OptionInterface,
+  selectedMaterial: OptionInterface,
+  selectedDimension: OptionInterface
+}
+
 export interface goodPageInt {
-  good: GoodInterface,
+  good: BasketGoodInterface,
   quantity: number,
   price: number
 }
@@ -136,9 +145,11 @@ export interface GoodComponentInterface {
 }
 
 export interface OptionInterface {
-  value?: string, 
-  id: string, 
-  label: string
+  option: string,
+  price: number,
+  // value?: string, 
+  // id: string, 
+  // label: string
 }
 
 // export interface CollaborationInterface {

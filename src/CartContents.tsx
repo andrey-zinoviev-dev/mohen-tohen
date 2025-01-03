@@ -16,7 +16,7 @@ export default function CartContents() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
-    // console.log(cartState);
+    console.log(cartState);
 
     // //functions
     // function calculateTotal() {

@@ -26,9 +26,9 @@ export const basketSlice = createSlice({
             localStorage.setItem("basket", JSON.stringify(state.goods));
 
         },
-        remove: (state, action: PayloadAction<GoodInterface>) => {
+        remove: (state, action: PayloadAction<goodPageInt>) => {
             const newBasket = state.goods.filter((good) => {
-                return good.good._id !== action.payload._id;
+                return good.good._id !== action.payload.good._id;
             });
 
             state.goods = newBasket;
