@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import OrderStep from "./OrderStep";
 
 import "./CreateOrder.css"
@@ -42,6 +42,15 @@ export default function CreateOrder() {
     //dispatch
     const dispatch = useAppDispatch();
 
+    //memo
+    const totalPrice = useMemo(() => {
+        return cartState.map((good) => {
+            return good.price;
+        }).reduce((currentTotal, currentPrice) => {
+            return currentTotal + currentPrice;
+        }, 0)
+    }, [])
+
 
     //navigate
     // const navigate = useNavigate();
@@ -71,6 +80,7 @@ export default function CreateOrder() {
                     navigate(-1);
                 }}> */}
                 <LinkCompBack to="/basket" text="Корзина"></LinkCompBack>
+                
                 <div className="order-create__block">
                     <OrderStep headline="Данные получателя" step={1} inputs={recipientInputs} updateState={setOrderDetails}>
 
@@ -80,6 +90,8 @@ export default function CreateOrder() {
 
                     {/* <OrderStep headline="Способ оплаты" step={3} inputs={paymentInputs} updateState={setOrderDetails}></OrderStep> */}
 
+                </div>
+                <CartDetails>
                     <button className="order-create__submit-btn" onClick={() => {
                         // console.log(cartState);
 
@@ -91,11 +103,10 @@ export default function CreateOrder() {
                             navigate("../successOrderCreate");
                         })
                     }}>
-                        Перейти к оплате
+                        Оплатить {totalPrice}&#8381;
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>
-                </div>
-                <CartDetails></CartDetails>
+                </CartDetails>
                 {/* <div className="order-create__block">
                     <h3>Что в корзине</h3>
                     <CartContents />

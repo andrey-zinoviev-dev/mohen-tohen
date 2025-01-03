@@ -9,8 +9,13 @@ import "./CartDetails.css"
 import InputEl from "./InputEl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import LinkCompAction from "./LinkCompAction";
-export default function CartDetails() {
+// import LinkCompAction from "./LinkCompAction";
+
+interface CartDetailsInterface {
+    children: React.ReactNode
+}
+
+export default function CartDetails({ children }: CartDetailsInterface) {
     const userState = useAppSelector((state) => {
         return state.user._id;
     });
@@ -39,17 +44,7 @@ export default function CartDetails() {
                     <FontAwesomeIcon icon={faArrowRight} />
                 </button>}
             </div>
-            {userState ? <LinkCompAction to="../createOrder" text="Оформить заказ" icon={faArrowRight} />
-                :
-                <button className="" onClick={() => {
-                    setOpenedPortal(true);
-                    // console.log("open login popup")
-                }}>
-                    Оформить заказ    
-                </button>}
-            {openedPortal && createPortal(<PortalComp>
-                <Login closePopup={setOpenedPortal}></Login>
-            </PortalComp>, document.body)}
+            {children}
         </div>
     )
 }

@@ -11,6 +11,7 @@ import { changeQuantity, remove } from "./features/basketSlice";
 // import PortalCentered from "./PortalCentered";
 import "./CartItem.css";
 import QuantityButton from "./QuantityButton";
+import ColorOption from "./ColorOption";
 export default function CartItem({item}: {item: goodPageInt}) {
     //dispatch
     const dispatch = useAppDispatch();
@@ -43,7 +44,8 @@ export default function CartItem({item}: {item: goodPageInt}) {
                         <span>{item.good.selectedDimension.option}</span>
                         {/* <span>{item.good.materials}</span>
                         <span>{item.good.dimensions}</span> */}
-                        <div className="cart-item__color" style={{backgroundColor: item.good.selectedColor.option}}></div>
+                        <ColorOption active={true} color={item.good.selectedColor.option}></ColorOption>
+                        {/* <div className="cart-item__color" style={{backgroundColor: item.good.selectedColor.option}}></div> */}
                     </div>
                     <div className="cart-item__wrapper-buttons">
                         <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>

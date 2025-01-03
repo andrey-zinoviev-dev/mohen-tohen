@@ -133,7 +133,7 @@ export default function GoodPage() {
                     <h3>{good.title}</h3>
 
                 </div>
-                <h4>Цена: <span className="cvet">{good.price}&#8381;</span></h4>
+                <h4>Цена: <span className="cvet">{(good.price * quantity) + optionsPrice}&#8381;</span></h4>
                 <h4>Бренд: <Link to={`/brands/${good.seller && good.seller._id}`}>
                     <div className="good__text-a-name">
                         <span>{good.seller && good.seller.name}</span>
@@ -172,8 +172,8 @@ export default function GoodPage() {
                     {good.colors && <ListElementGeneric classUl="good__page-options" items={good.colors} renderItems={(item) => {
                         return <button onClick={() => {
                             setSelectedColor(item)
-                        }} className="good__option-button">
-                            <ColorOption active={item.option === selectedColor.option} color={item.option}></ColorOption>
+                        }} className={item.option === selectedColor.option ? "good__option-button_active good__option-button" : "good__option-button"}>
+                            <ColorOption active={false} color={item.option}></ColorOption>
                             {/* <span>+{item.price}&#8381;</span> */}
                         </button>
                     }}></ListElementGeneric>}
