@@ -19,6 +19,7 @@ import ListColumn from "./ListColumn";
 // import FormEl from "./FormEl";
 import { useAppSelector } from "./hooks";
 import ColorOption from "./ColorOption";
+import NonSizeOption from "./NonSizeOption";
 // import ListElementGeneric from "./ListElementGeneric";
 // import { changeMessage } from "./features/notificationSlice";
 // import { updateAccountGoodBatch } from "./features/userSlice";
@@ -88,22 +89,12 @@ export default function AccountGoods() {
                                 <div className="account-goods__item-details">
                                     <h3>{good.title}</h3>
                                     <span>Наличие: {good.batch}</span>
-   
-                                    <ul>
-                                        {good.colors.map((color) => {
-                                            return <ColorOption color={color.option} active={false}></ColorOption>
-                                        })} 
-                                    </ul>
-
-                                    <div className="account-goods__item-details-materials">
-                                        {/* <span className="list-column__id-span">{good.material}</span>
-                                        <span className="list-column__id-span">{good.dimensions}</span> */}
-                                        {/* <div style={{backgroundColor: good.colors[0].option}}></div> */}
-                                    </div>
+    
                                 </div>
+                                
                             </div>
                            
-              
+
                             
                             <div className="list-column__price-wrapper">
                                 <span className="list-column__price-span">{good.price}</span>

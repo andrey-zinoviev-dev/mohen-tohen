@@ -13,7 +13,13 @@ import { EmailIcon, TelegramIcon, WhatsappIcon, EmailShareButton, TelegramShareB
 import PortalCentered from "./PortalCentered";
 // import { faNode } from "@fortawesome/free-brands-svg-icons";
 
-export default function ShareButton({ href }: { href: string }) {
+export interface ShareButtonInterface {
+  children: React.ReactNode;
+  href: string,
+  classParam: string,
+}
+
+export default function ShareButton({ href, children, classParam }: ShareButtonInterface) {
   const dispatch = useAppDispatch();
 
   //state
@@ -21,11 +27,12 @@ export default function ShareButton({ href }: { href: string }) {
 
   return (
     <>
-      <button className="share-button" onClick={(evt) => {
+      <button className={classParam} onClick={(evt) => {
         evt.stopPropagation();
         setOpenedShare(true);
       }}>
-        <FontAwesomeIcon icon={faArrowUpFromBracket} />
+        {children}
+        {/* <FontAwesomeIcon icon={faArrowUpFromBracket} /> */}
       </button>
       {openedShare && createPortal(<PortalComp>
         <button onClick={(evt) => {

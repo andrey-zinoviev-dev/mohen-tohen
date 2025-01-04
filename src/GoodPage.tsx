@@ -39,6 +39,7 @@ import { createPortal } from "react-dom"
 import PortalMultimedia from "./PortalMultimedia"
 import ListElementGeneric from "./ListElementGeneric"
 import NonSizeOption from "./NonSizeOption"
+import ShareButtonIcon from "./ShareButtonIcon"
 // import PortalContainer from "./PortalContainer"
 export default function GoodPage() {
 
@@ -189,7 +190,8 @@ export default function GoodPage() {
                 <div className="good__text-buttons">
                     <BasketButton good={{...good, selectedColor: selectedColor, selectedMaterial: selectedMaterial, selectedDimension: selectedDimension}} quantity={quantity} price={(good.price * quantity) + optionsPrice} />
                     <LikeButton good={good}></LikeButton>
-                    <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} />
+                    <ShareButtonIcon classParam="good__button-like" href={`https://mohen-tohen.ru/goods/${good._id}`}></ShareButtonIcon>
+                    {/* <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} /> */}
                 </div>
                 <Terms></Terms>
             </div>

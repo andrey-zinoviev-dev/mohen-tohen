@@ -7,10 +7,12 @@ const cartContent = localStorage.getItem("basket");
 
 export interface BasketSliceInterface {
     goods: goodPageInt[],
+    coupon: string,
 }
 
 const initialState:BasketSliceInterface = {
     goods: cartContent ? JSON.parse(cartContent) : [],
+    coupon: "",
 };
 
 // console.log(initialState);

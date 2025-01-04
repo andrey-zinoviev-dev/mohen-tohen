@@ -390,6 +390,17 @@
     border: 2px solid black;
 }
 
+.good__button-like {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.good__button-like:hover {
+    color: #FF8261;
+    transition: all 0.25s ease-in-out;
+}
+
 /* .good__text-terms {
     display: flex;
     flex-direction: column;

@@ -147,9 +147,6 @@ export interface GoodComponentInterface {
 export interface OptionInterface {
   option: string,
   price: number,
-  // value?: string, 
-  // id: string, 
-  // label: string
 }
 
 // export interface CollaborationInterface {
