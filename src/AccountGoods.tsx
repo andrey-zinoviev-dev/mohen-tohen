@@ -7,7 +7,6 @@
 import "./AccountGoods.css";
 // import AddButton from "./AddButton";
 // import AddButtonState from "./AddButtonState";
-import { faPlusCircle, faSliders } from "@fortawesome/free-solid-svg-icons";
 import LinkCompAction from "./LinkCompAction";
 // import { useUpdateGoodBatchMutation } from "./features/apiSlice";
 import { GoodInterface } from "./interfaces";
@@ -18,8 +17,8 @@ import ListColumn from "./ListColumn";
 // import InputEl from "./InputEl";
 // import FormEl from "./FormEl";
 import { useAppSelector } from "./hooks";
-import ColorOption from "./ColorOption";
-import NonSizeOption from "./NonSizeOption";
+// import ColorOption from "./ColorOption";
+// import NonSizeOption from "./NonSizeOption";
 // import ListElementGeneric from "./ListElementGeneric";
 // import { changeMessage } from "./features/notificationSlice";
 // import { updateAccountGoodBatch } from "./features/userSlice";
@@ -76,7 +75,7 @@ export default function AccountGoods() {
     return (
         <>
             {/* <h3>Мои товары</h3> */}
-            <LinkCompAction to="../AddGood" text="Добавить товар" icon={faPlusCircle} />
+            <LinkCompAction to="../AddGood" text="Добавить товар" />
             {accountGoods && accountGoods.length > 0 ? 
             
             <ListColumn>
@@ -98,7 +97,7 @@ export default function AccountGoods() {
                             
                             <div className="list-column__price-wrapper">
                                 <span className="list-column__price-span">{good.price}</span>
-                                <LinkCompAction state={good} to={`../goods/${good._id}/edit`} text="Редактировать" icon={faSliders} />
+                                <LinkCompAction state={good} to={`../goods/${good._id}/edit`} text="Редактировать" />
                             </div>
                         </div>
                         

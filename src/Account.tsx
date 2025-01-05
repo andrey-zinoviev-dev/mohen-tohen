@@ -33,10 +33,8 @@ import PortalCentered from "./PortalCentered";
 // import InputFileGeneric from "./InputFileGeneric";
 // import FileGeneric from "./FileGeneric";
 import AccountAvatarEdit from "./AccountAvatarEdit";
-import ShareButton from "./ShareButton";
-import ShareButtonIcon from "./ShareButtonIcon";
 import ShareButtonText from "./ShareButtonText";
-import LinkCompAction from "./LinkCompAction";
+import LinkCompTransparent from "./LinkCompTransparent";
 
 export default function Account() {
     // const [logout] = useUserLogoutMutation();
@@ -139,11 +137,10 @@ export default function Account() {
                 </div>
 
                 <div className="account__buttons-wrapper">
-                    <LinkCompAction text="Настройки профиля" to={"./edit"}></LinkCompAction>
-                    {/* <button className="account__button">Настройки профиля</button> */}
+                    <LinkCompTransparent href="./edit">
+                        <span>Настройки профиля</span>
+                    </LinkCompTransparent>
                     <ShareButtonText classParam="account__button" href={`https://mohen-tohen.ru/brands/${userState._id}`} text={"Поделиться"}></ShareButtonText>
-                    {/* <ShareButton href={`https://mohen-tohen.ru/brands/${userState._id}`}></ShareButton> */}
-                    {/* <button className="account__button">Поделиться</button> */}
                 </div>
 
 

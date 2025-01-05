@@ -233,6 +233,10 @@
     padding: 10px 15px;
 }
 
+.account__button:hover {
+    border: 1px solid #3D3B3A;
+}
+
 @media screen and (max-width: 1279px) {
     .account  {
         gap: 15px;

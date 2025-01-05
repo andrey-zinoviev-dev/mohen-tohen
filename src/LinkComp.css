@@ -1,6 +1,6 @@
 .link-comp {
     /* background-color: #FF8261; */
-    /* background-color: #F89D85; */
+    background-color: #F89D85;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,18 +10,21 @@
     padding: 10px 15px;
     color: black;
     border-radius: 8px;
+    border: 1px solid transparent;
 }
 
 .link-comp:hover {
-    color: white;
+    /* background-color: #3D3B3A;
+    color: white; */
+    /* color: white; */
 }
 
 .link-comp_transparent {
     background-color: transparent;
-    border: 1px solid #FF8261;
+    border: 1px solid #3D3B3A;
 }
 
-.link-comp_transparent:hover {
+/* .link-comp_transparent:hover {
     background-color: #FF8261;
     color: black;
-}
+} */
