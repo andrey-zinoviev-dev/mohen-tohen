@@ -100,17 +100,16 @@ export default function CreateOrder() {
                             // console.log(data.data);
                             data.data && dispatch(updateOrdersHistory(data.data?.createdOrder));
                             data.data && dispatch(clearCart());
-                            navigate("../successOrderCreate");
+                            navigate("../successOrderCreate", {
+                                state: data.data?.createdOrder
+                            });
                         })
                     }}>
                         Оплатить {totalPrice}&#8381;
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>
                 </CartDetails>
-                {/* <div className="order-create__block">
-                    <h3>Что в корзине</h3>
-                    <CartContents />
-                </div> */}
+                
             </div>
         </section>
     )

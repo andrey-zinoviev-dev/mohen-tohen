@@ -72,7 +72,8 @@ export interface TransactionInterface {
   // parties : {_id: string, brandName: string, cover: string}[],
   goods: goodPageInt[],
   buyer: UserInterface,
-  total: number,
+  createdAt: Date,
+  // total: number,
   _id: string,
 }
 
