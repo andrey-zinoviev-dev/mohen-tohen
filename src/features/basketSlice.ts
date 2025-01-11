@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GoodInterface, goodPageInt } from "../interfaces";
+import { goodPageInt } from "../interfaces";
 
 //local storage
 const cartContent = localStorage.getItem("basket");

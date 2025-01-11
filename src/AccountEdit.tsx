@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "./hooks";
 import { changeMessage } from "./features/notificationSlice";
-import LinkCompBack from "./LinkCompBack";
+// import LinkCompBack from "./LinkCompBack";
 
 export default function AccountEdit() {
     //redux

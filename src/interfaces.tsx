@@ -68,12 +68,22 @@ export interface goodPageInt {
   price: number
 }
 
+export interface TransactionGoodInterface {
+  good: string,
+  seller: string | null,
+  color: OptionInterface,
+  dimension: OptionInterface,
+  material: OptionInterface,
+  quantity: number,
+  price: number,
+}
+
 export interface TransactionInterface {
   // parties : {_id: string, brandName: string, cover: string}[],
-  goods: goodPageInt[],
+  goods: TransactionGoodInterface[],
   buyer: UserInterface,
   createdAt: Date,
-  // total: number,
+  total: number,
   _id: string,
 }
 

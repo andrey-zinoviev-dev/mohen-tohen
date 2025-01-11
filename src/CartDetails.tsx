@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { createPortal } from "react-dom";
+// import { createPortal } from "react-dom";
 import { useAppSelector } from "./hooks";
 // import { Link } from "react-router-dom";
-import PortalComp from "./PortalComp";
-import Login from "./Login";
+// import PortalComp from "./PortalComp";
+// import Login from "./Login";
 import Headline from "./Headline";
 import "./CartDetails.css"
 import InputEl from "./InputEl";
@@ -12,25 +12,17 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 // import LinkCompAction from "./LinkCompAction";
 
 interface CartDetailsInterface {
-    children: React.ReactNode
+    children: React.ReactNode,
+    total: number,
 }
 
-export default function CartDetails({ children }: CartDetailsInterface) {
-    const userState = useAppSelector((state) => {
-        return state.user._id;
-    });
-
+export default function CartDetails({ total, children }: CartDetailsInterface) {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
 
-    //total
-    const total = cartState.reduce((result, item) => {
-        return result + (item.quantity * item.price);
-    }, 0);
-
     //state
-    const [openedPortal, setOpenedPortal] = useState<boolean>(false);
+    // const [openedPortal, setOpenedPortal] = useState<boolean>(false);
     const [promocode, setPromocode] = useState<{promocode: string}>({promocode: ""});
 
     return (

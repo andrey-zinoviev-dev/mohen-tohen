@@ -1,13 +1,13 @@
 import "./Cart.css"
 import { createPortal } from "react-dom";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+// import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import LinkCompAction from "./LinkCompAction";
 
 import CartContents from "./CartContents";
 
 import CartDetails from "./CartDetails";
 import { useAppSelector } from "./hooks";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Login from "./Login";
 import PortalComp from "./PortalComp";
 // import Login from "./Login";
@@ -25,14 +25,23 @@ export default function Cart() {
     //state
     const [openedPortal, setOpenedPortal] = useState<boolean>(false);
 
+    //memo
+    const totalPrice = useMemo(() => {
+        return cartState.map((good) => {
+            return good.price * good.quantity;
+        }).reduce((currentTotal, currentPrice) => {
+            return currentTotal + currentPrice;
+        }, 0)
+    }, [cartState])
+
     return (
         <>
             <section className="cart">
                 <h3>корзина</h3>
                 <div className="cart__wrapper">
                     <CartContents />
-                    {cartState.length > 0 && <CartDetails>
-                        {userState._id ? <LinkCompAction to="../createOrder" text="Оформить заказ" icon={faArrowRight} /> : <button className="" onClick={() => {
+                    {cartState.length > 0 && <CartDetails total={totalPrice}>
+                        {userState._id ? <LinkCompAction state={totalPrice} to="../createOrder" text="Оформить заказ" /> : <button className="" onClick={() => {
                             setOpenedPortal(true);
                             // console.log("open login popup")
                         }}>
@@ -40,14 +49,6 @@ export default function Cart() {
                     </button>
                 }
                     </CartDetails>}
-                    {/* {userState ? <LinkCompAction to="../createOrder" text="Оформить заказ" icon={faArrowRight} />
-                :
-                <button className="" onClick={() => {
-                    setOpenedPortal(true);
-                    // console.log("open login popup")
-                }}>
-                    Оформить заказ    
-                </button>} */}
                 </div>
             </section>
             {openedPortal && createPortal(<PortalComp>

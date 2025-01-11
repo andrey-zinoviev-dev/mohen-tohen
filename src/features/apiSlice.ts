@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseApi } from "../utils";
 // import { UserInterface } from "./userSlice";
 
-import { AccountGoodInterface, ApplicationInterface, ApplicationUploadedInterface, GoodInterface, goodPageInt, TransactionInterface } from "../interfaces";
+import { AccountGoodInterface, ApplicationInterface, ApplicationUploadedInterface, GoodInterface, goodPageInt, TransactionInterface, TransactionGoodInterface } from "../interfaces";
 import { UserInterface } from "./userSlice";
 export const apiSlice = createApi({
     reducerPath: "api",
@@ -65,6 +65,12 @@ export const apiSlice = createApi({
                 url: `/transactions/${id}/show`,
                 credentials: "include"
             })
+        }),
+        getTransaction: builder.query<TransactionInterface, string>({
+            query: (id) => ({
+                url: `transactions/${id}`,
+                credentials: "include",
+            }),
         }),
         getAccountGoods: builder.query<GoodInterface[], void>({
             query: () => ({
@@ -219,11 +225,11 @@ export const apiSlice = createApi({
                 }
             })
         }),
-        postCreateOrder: builder.mutation<{createdOrder: TransactionInterface}, {personalData: {name: string, phone: string, email: string, address: string, zipcode: string}, goods: goodPageInt[]}>({
-            query: ({personalData, goods}) => ({
+        postCreateOrder: builder.mutation<{createdOrder: TransactionInterface}, {personalData: {name: string, phone: string, email: string, address: string, zipcode: string}, goods: TransactionGoodInterface[], total: number}>({
+            query: ({personalData, goods, total}) => ({
                 url: "/transactions/create",
                 method: "POST",
-                body: {personalData: personalData, goods: goods},
+                body: {personalData: personalData, goods: goods, total: total},
                 credentials: "include",
                 headers: {
                     "Content-Type":"application/json",
@@ -233,4 +239,4 @@ export const apiSlice = createApi({
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, usePutUserEditMutation, usePutAvatarEditMutation, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, usePutUserEditMutation, usePutAvatarEditMutation, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useGetTransactionQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;

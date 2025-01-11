@@ -12,10 +12,11 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import LinkCompBack from "./LinkCompBack";
 import { usePostCreateOrderMutation } from "./features/apiSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { updateOrdersHistory } from "./features/userSlice";
 import { clearCart } from "./features/basketSlice";
 import CartDetails from "./CartDetails";
+import { TransactionGoodInterface } from "./interfaces";
 export default function CreateOrder() {
     //redux
     const cartState = useAppSelector((state) => {
@@ -36,6 +37,10 @@ export default function CreateOrder() {
     //RTK
     const [createOrder] = usePostCreateOrderMutation();
 
+    //location
+    const location = useLocation();
+    const total = location.state as number;
+
     //navigate
     const navigate = useNavigate();
 
@@ -43,13 +48,18 @@ export default function CreateOrder() {
     const dispatch = useAppDispatch();
 
     //memo
-    const totalPrice = useMemo(() => {
+    const goodsToSend:TransactionGoodInterface[] = useMemo(() => {
         return cartState.map((good) => {
-            return good.price;
-        }).reduce((currentTotal, currentPrice) => {
-            return currentTotal + currentPrice;
-        }, 0)
-    }, [])
+            return {good: good.good._id, 
+                seller: good.good.seller._id, 
+                color: good.good.selectedColor, 
+                material: good.good.selectedMaterial, 
+                dimension: good.good.selectedDimension, 
+                quantity: good.quantity,
+                price: good.price,
+            }
+        })
+    },[]);
 
 
     //navigate
@@ -91,21 +101,24 @@ export default function CreateOrder() {
                     {/* <OrderStep headline="Способ оплаты" step={3} inputs={paymentInputs} updateState={setOrderDetails}></OrderStep> */}
 
                 </div>
-                <CartDetails>
+                <CartDetails total={total}>
                     <button className="order-create__submit-btn" onClick={() => {
-                        // console.log(cartState);
-
-                        createOrder({personalData: orderDetails, goods: cartState})
+                        createOrder({personalData: orderDetails, goods: goodsToSend, total: total}).unwrap()
                         .then((data) => {
-                            // console.log(data.data);
-                            data.data && dispatch(updateOrdersHistory(data.data?.createdOrder));
-                            data.data && dispatch(clearCart());
+                            dispatch(updateOrdersHistory(data.createdOrder));
+                            dispatch(clearCart());
                             navigate("../successOrderCreate", {
-                                state: data.data?.createdOrder
+                                state: data.createdOrder._id
                             });
+                            // console.log(data.data);
+                            // data.data && dispatch(updateOrdersHistory(data.data?.createdOrder));
+                            // data.data && dispatch(clearCart());
+                            // navigate("../successOrderCreate", {
+                            //     state: data.data?.createdOrder
+                            // });
                         })
                     }}>
-                        Оплатить {totalPrice}&#8381;
+                        Оплатить {total}&#8381;
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>
                 </CartDetails>
