@@ -48,18 +48,18 @@ export default function CreateOrder() {
     const dispatch = useAppDispatch();
 
     //memo
-    const goodsToSend:TransactionGoodInterface[] = useMemo(() => {
-        return cartState.map((good) => {
-            return {good: good.good._id, 
-                seller: good.good.seller._id, 
-                color: good.good.selectedColor, 
-                material: good.good.selectedMaterial, 
-                dimension: good.good.selectedDimension, 
-                quantity: good.quantity,
-                price: good.price,
-            }
-        })
-    },[]);
+    // const goodsToSend:TransactionGoodInterface[] = useMemo(() => {
+    //     return cartState.map((good) => {
+    //         return {good: good.good._id, 
+    //             seller: good.good.seller._id, 
+    //             color: good.good.selectedColor, 
+    //             material: good.good.selectedMaterial, 
+    //             dimension: good.good.selectedDimension, 
+    //             quantity: good.quantity,
+    //             price: good.price,
+    //         }
+    //     })
+    // },[]);
 
 
     //navigate
@@ -103,13 +103,15 @@ export default function CreateOrder() {
                 </div>
                 <CartDetails total={total}>
                     <button className="order-create__submit-btn" onClick={() => {
-                        createOrder({personalData: orderDetails, goods: goodsToSend, total: total}).unwrap()
+                        // console.log(cartState);
+                        createOrder({personalData: orderDetails, goods: cartState, total: total}).unwrap()
                         .then((data) => {
                             dispatch(updateOrdersHistory(data.createdOrder));
-                            dispatch(clearCart());
                             navigate("../successOrderCreate", {
-                                state: data.createdOrder._id
+                                state: {transactionData: data.createdOrder, goods: cartState},
                             });
+                            dispatch(clearCart());
+
                             // console.log(data.data);
                             // data.data && dispatch(updateOrdersHistory(data.data?.createdOrder));
                             // data.data && dispatch(clearCart());

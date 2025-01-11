@@ -225,7 +225,7 @@ export const apiSlice = createApi({
                 }
             })
         }),
-        postCreateOrder: builder.mutation<{createdOrder: TransactionInterface}, {personalData: {name: string, phone: string, email: string, address: string, zipcode: string}, goods: TransactionGoodInterface[], total: number}>({
+        postCreateOrder: builder.mutation<{createdOrder: TransactionInterface}, {personalData: {name: string, phone: string, email: string, address: string, zipcode: string}, goods: goodPageInt[], total: number}>({
             query: ({personalData, goods, total}) => ({
                 url: "/transactions/create",
                 method: "POST",

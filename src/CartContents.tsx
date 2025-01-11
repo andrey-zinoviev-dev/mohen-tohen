@@ -16,34 +16,6 @@ export default function CartContents() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
-    console.log(cartState);
-
-    // //functions
-    // function calculateTotal() {
-    //     return cartState.reduce((result, item) => {
-    //         result = result + (item.good.price * item.quantity);
-    //         return result;
-    //     }, 0);
-    // }
-
-    //variables
-    // const subtotal = cartState.reduce((result, item) => {
-    //     result = result + (item.good.price * item.quantity);
-    //     return result;
-    // }, 0);
-
-    // const shipping = 0;
-
-    //dispatch
-    // const dispatch = useAppDispatch();
-
-    //RTK
-    // const [updateBasket] = useUpdateBasketItemMutation();
-    // const [deleteItem] = useDeleteBasketItemMutation();
-
-    // React.useEffect(() => {
-
-    // }, [])
 
     return (
         <>
