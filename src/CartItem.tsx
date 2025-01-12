@@ -1,4 +1,4 @@
-import { goodPageInt } from "./interfaces";
+import { BasketGoodInterface } from "./interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "./hooks";
@@ -12,7 +12,7 @@ import { changeQuantity, remove } from "./features/basketSlice";
 import "./CartItem.css";
 import QuantityButton from "./QuantityButton";
 import ColorOption from "./ColorOption";
-export default function CartItem({item}: {item: goodPageInt}) {
+export default function CartItem({good, selectedColor, selectedDimension, selectedMaterial, quantity}: BasketGoodInterface) {
     //dispatch
     const dispatch = useAppDispatch();
 
@@ -22,38 +22,36 @@ export default function CartItem({item}: {item: goodPageInt}) {
 
     //functions
     function deleteItem() {
-        dispatch(remove(item))
+        dispatch(remove({good, selectedColor, selectedDimension, selectedMaterial, quantity}))
     }
 
     function minusOne() {
-        dispatch(changeQuantity({good: item, plus: false}))
+        dispatch(changeQuantity({good: {good, selectedColor, selectedDimension, selectedMaterial, quantity}, plus: false}))
     }
 
     function plusOne() {
-        dispatch(changeQuantity({good: item, plus: true}))
+        dispatch(changeQuantity({good: {good, selectedColor, selectedDimension, selectedMaterial, quantity}, plus: true}))
     }
 
     return (
         <div className="cart__ul-item">
-            <img className="cart-item__cover" src={item.good.photos[0]}></img>
+            <img className="cart-item__cover" src={good.photos[0]}></img>
             <div className="cart-item__wrapper">
                 <div className="cart-item__params">
-                    <span>{item.good.title}</span>
+                    <span>{good.title}</span>
                     <div className="cart-item__wrapper-details">
-                        <span>{item.good.selectedMaterial.option}</span>
-                        <span>{item.good.selectedDimension.option}</span>
-                        {/* <span>{item.good.materials}</span>
-                        <span>{item.good.dimensions}</span> */}
-                        <ColorOption active={true} color={item.good.selectedColor.option}></ColorOption>
-                        {/* <div className="cart-item__color" style={{backgroundColor: item.good.selectedColor.option}}></div> */}
+                        <span>{selectedMaterial.option}</span>
+                        <span>{selectedDimension.option}</span>
+
+                        <ColorOption active={true} color={selectedColor.option}></ColorOption>
                     </div>
                     <div className="cart-item__wrapper-buttons">
-                        <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>
-                        <span>{item.quantity}</span>
-                        <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={item.quantity} stock={item.good.batch}></QuantityButton>
+                        <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={quantity} stock={good.batch}></QuantityButton>
+                        <span>{quantity}</span>
+                        <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={quantity} stock={good.batch}></QuantityButton>
                     </div>
                 </div>
-                <span className="cart-item__price">{item.price}&#8381;</span>
+                <span className="cart-item__price">{good.price}&#8381;</span>
             </div>
             <button onClick={deleteItem} className="cart-item__delete">
                 <FontAwesomeIcon icon={faXmark} />

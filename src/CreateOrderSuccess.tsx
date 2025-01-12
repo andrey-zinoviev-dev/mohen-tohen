@@ -1,15 +1,15 @@
 import { useLocation } from "react-router-dom";
 import LinkCompBack from "./LinkCompBack";
 import SuccessWrapper from "./SuccessWrapper";
-import { GoodInterface, goodPageInt, TransactionInterface } from "./interfaces";
-import { useGetTransactionQuery } from "./features/apiSlice";
+import { BasketGoodInterface, goodPageInt, TransactionInterface } from "./interfaces";
+// import { useGetTransactionQuery } from "./features/apiSlice";
 // import { useMemo } from "react";
 // import { useNavigate } from "react-router-dom";
 
 export default function CreateOrderSuccess() {
   //location
   const location = useLocation();
-  const order = location.state as {goods: goodPageInt[], transactionData: TransactionInterface};
+  const order = location.state as {goods: BasketGoodInterface[], transactionData: TransactionInterface};
 
   // console.log(order);
   
@@ -34,12 +34,12 @@ export default function CreateOrderSuccess() {
           <ul>
             {order.goods.map((good) => {
               return <li key={good.good._id}>
-                <span>{good.good.title}</span>
+                {/* <span>{good.good.title}</span>
                 <span>{good.good.selectedColor.option}</span>
                 <span>{good.good.selectedDimension.option}</span>
                 <span>{good.good.selectedMaterial.option}</span>
-                <span>{good.quantity}</span>
-                <span>{good.price}</span>
+                <span>{good.quantity}</span> */}
+                {/* <span>{good.price}</span> */}
               </li>
             })}
           </ul>

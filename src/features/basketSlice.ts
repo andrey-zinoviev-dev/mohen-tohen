@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { goodPageInt } from "../interfaces";
+import { BasketGoodInterface } from "../interfaces";
 
 //local storage
 const cartContent = localStorage.getItem("basket");
 // console.log(cartContent);
 
 export interface BasketSliceInterface {
-    goods: goodPageInt[],
+    goods: BasketGoodInterface[],
     coupon: string,
 }
 
@@ -21,14 +21,14 @@ export const basketSlice = createSlice({
     name: "basket",
     initialState: initialState,
     reducers: {
-        add: (state, action: PayloadAction<goodPageInt>) => {
+        add: (state, action: PayloadAction<BasketGoodInterface>) => {
             // console.log(action.payload);
             state.goods.push(action.payload);
             // console.log(state.goods);
             localStorage.setItem("basket", JSON.stringify(state.goods));
 
         },
-        remove: (state, action: PayloadAction<goodPageInt>) => {
+        remove: (state, action: PayloadAction<BasketGoodInterface>) => {
             const newBasket = state.goods.filter((good) => {
                 return good.good._id !== action.payload.good._id;
             });
@@ -38,7 +38,7 @@ export const basketSlice = createSlice({
             localStorage.setItem("basket", JSON.stringify(state.goods));
 
         },
-        changeQuantity: (state, action: PayloadAction<{good: goodPageInt, plus: boolean}>) => {
+        changeQuantity: (state, action: PayloadAction<{good: BasketGoodInterface, plus: boolean}>) => {
             // console.log(action.payload);
             const newBasket = state.goods.map((good) => {
                 return good.good._id === action.payload.good.good._id ? {...good, quantity: action.payload.plus ?  good.quantity + 1 : good.quantity - 1 } : good; 

@@ -28,7 +28,7 @@ import { useGetGoodQuery,
 } from "./features/apiSlice";
 import LikeButton from "./LikeButton"
 import BasketButton from "./BasketButton"
-import ShareButton from "./ShareButton"
+// import ShareButton from "./ShareButton"
 import { Swiper, SwiperSlide } from "swiper/react"
 // import s
 import SwiperDot from "./SwiperDot"
@@ -188,7 +188,7 @@ export default function GoodPage() {
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton good={{...good, selectedColor: selectedColor, selectedMaterial: selectedMaterial, selectedDimension: selectedDimension}} quantity={quantity} price={(good.price * quantity) + optionsPrice} />
+                    <BasketButton quantity={quantity} good={{title: good.title, _id: good._id, seller: good.seller, price: good.price, photos: good.photos, batch: good.batch}} selectedColor={selectedColor} selectedDimension={selectedDimension} selectedMaterial={selectedMaterial} />
                     <LikeButton good={good}></LikeButton>
                     <ShareButtonIcon classParam="good__button-like" href={`https://mohen-tohen.ru/goods/${good._id}`}></ShareButtonIcon>
                     {/* <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} /> */}

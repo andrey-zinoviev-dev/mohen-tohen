@@ -17,6 +17,7 @@ export default function Cart() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
+    // console.log(cartState);
 
     const userState = useAppSelector((state) => {
         return state.user;
@@ -28,7 +29,7 @@ export default function Cart() {
     //memo
     const totalPrice = useMemo(() => {
         return cartState.map((good) => {
-            return good.price * good.quantity;
+            return good.good.price * good.quantity;
         }).reduce((currentTotal, currentPrice) => {
             return currentTotal + currentPrice;
         }, 0)

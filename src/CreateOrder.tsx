@@ -16,13 +16,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { updateOrdersHistory } from "./features/userSlice";
 import { clearCart } from "./features/basketSlice";
 import CartDetails from "./CartDetails";
-import { TransactionGoodInterface } from "./interfaces";
+// import { TransactionGoodInterface } from "./interfaces";
 export default function CreateOrder() {
     //redux
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
-    // console.log(cartState);
+    console.log(cartState);
 
     //state
     const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string}>({
@@ -112,12 +112,6 @@ export default function CreateOrder() {
                             });
                             dispatch(clearCart());
 
-                            // console.log(data.data);
-                            // data.data && dispatch(updateOrdersHistory(data.data?.createdOrder));
-                            // data.data && dispatch(clearCart());
-                            // navigate("../successOrderCreate", {
-                            //     state: data.data?.createdOrder
-                            // });
                         })
                     }}>
                         Оплатить {total}&#8381;

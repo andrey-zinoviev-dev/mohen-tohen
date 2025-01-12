@@ -21,7 +21,7 @@ export default function CartContents() {
         <>
             {cartState.length > 0  ? 
                 <ListElementGeneric classUl="cart__ul" items={cartState} renderItems={(item) => {
-                    return <CartItem item={item}></CartItem>
+                    return <CartItem good={item.good} selectedColor={item.selectedColor} selectedDimension={item.selectedDimension} selectedMaterial={item.selectedMaterial} quantity={item.quantity}></CartItem>
                 }} />
         //    <ul className="cart__ul">
         //         {cartState.map((cartGood) => {

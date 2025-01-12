@@ -1,5 +1,5 @@
 // import { usePostGoodToBasketMutation } from "./features/apiSlice";
-import { goodPageInt } from "./interfaces";
+import { GoodWithoutOptionsType, OptionInterface } from "./interfaces";
 import { useAppDispatch, useAppSelector } from "./hooks";
 // import { addRemoveToBasket } from "./features/userSlice";
 // import { changeMessage } from "./features/notificationSlice";
@@ -12,18 +12,20 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import PortalComp from "./PortalComp";
 import PortalCentered from "./PortalCentered";
-import CustomOrderForm from "./CustomOrderForm";
+// import CustomOrderForm from "./CustomOrderForm";
 import PortalCloseButton from "./PortalCloseButton";
 import { useNavigate } from "react-router-dom";
 
 //interface
-// interface goodPageInt {
-//     good: GoodInterface,
-//     quantity: number,
-//     price: number
-// }
+interface BasketButtonInterface {
+      good: GoodWithoutOptionsType,
+      selectedColor: OptionInterface,
+      selectedMaterial: OptionInterface,
+      selectedDimension: OptionInterface,
+      quantity: number,
+}
 
-export default function BasketButton({ good, quantity, price }: goodPageInt) {
+export default function BasketButton({ good, selectedColor, selectedMaterial, selectedDimension, quantity }: BasketButtonInterface) {
     //navigate
     const navigate = useNavigate();
     
@@ -44,19 +46,25 @@ export default function BasketButton({ good, quantity, price }: goodPageInt) {
     //variables
     const goodInBasket = userBasketState.find((basketGood) => {
         return basketGood.good._id === good._id;
-    })
+        // return basketGood.good._id === good._id;
+        // return goodInterface.good._id === basketGood.good.
+    });
 
     return (
         <>
-            <button style={{backgroundColor: good.batch === 0 && !good.madeToOrder ? `#C8CCCF` : "#ff9a7f", pointerEvents: good.batch > 0 || good.madeToOrder ? "all" : "none"}} className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
+            {/* <button style={{backgroundColor: good.batch === 0 && !good.madeToOrder ? `#C8CCCF` : "#ff9a7f", pointerEvents: good.batch > 0 || good.madeToOrder ? "all" : "none"}} className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => { */}
+            <button className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
+   
                 evt.stopPropagation();
+                !goodInBasket ? dispatch(add({good: good, quantity: quantity, selectedColor: selectedColor, selectedDimension: selectedDimension, selectedMaterial: selectedMaterial})) : navigate("../basket");
+                 dispatch(changeMessage({message: "Товар добавлен в корзину"}))
+                // if(good.category === "Услуги") {
+                //     setOpenOrderForm(true);
+                // } else {
+                //     !goodInBasket ? dispatch(add({good: good, quantity: quantity, price: price})) : navigate("../basket");
+                //     dispatch(changeMessage({message: "Товар добавлен в корзину"}))
+                // }
 
-                if(good.category === "Услуги") {
-                    setOpenOrderForm(true);
-                } else {
-                    !goodInBasket ? dispatch(add({good: good, quantity: quantity, price: price})) : navigate("../basket");
-                    dispatch(changeMessage({message: "Товар добавлен в корзину"}))
-                }
                 // if(!good.category !== ) {
 
                 // } else {
