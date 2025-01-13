@@ -17,7 +17,7 @@ export default function Cart() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
-    // console.log(cartState);
+    console.log(cartState);
 
     const userState = useAppSelector((state) => {
         return state.user;
@@ -27,13 +27,13 @@ export default function Cart() {
     const [openedPortal, setOpenedPortal] = useState<boolean>(false);
 
     //memo
-    const totalPrice = useMemo(() => {
-        return cartState.map((good) => {
-            return good.good.price * good.quantity;
-        }).reduce((currentTotal, currentPrice) => {
-            return currentTotal + currentPrice;
-        }, 0)
-    }, [cartState])
+    // const totalPrice = useMemo(() => {
+    //     return cartState.map((good) => {
+    //         return good.good.price * good.quantity;
+    //     }).reduce((currentTotal, currentPrice) => {
+    //         return currentTotal + currentPrice;
+    //     }, 0)
+    // }, [cartState])
 
     return (
         <>
@@ -41,8 +41,8 @@ export default function Cart() {
                 <h3>корзина</h3>
                 <div className="cart__wrapper">
                     <CartContents />
-                    {cartState.length > 0 && <CartDetails total={totalPrice}>
-                        {userState._id ? <LinkCompAction state={totalPrice} to="../createOrder" text="Оформить заказ" /> : <button className="" onClick={() => {
+                    {cartState.length > 0 && <CartDetails>
+                        {userState._id ? <LinkCompAction to="../createOrder" text="Оформить заказ" /> : <button className="" onClick={() => {
                             setOpenedPortal(true);
                             // console.log("open login popup")
                         }}>

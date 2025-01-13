@@ -16,12 +16,13 @@ export default function CartContents() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
+    // console.log(cartState);
 
     return (
         <>
             {cartState.length > 0  ? 
                 <ListElementGeneric classUl="cart__ul" items={cartState} renderItems={(item) => {
-                    return <CartItem good={item.good} selectedColor={item.selectedColor} selectedDimension={item.selectedDimension} selectedMaterial={item.selectedMaterial} quantity={item.quantity}></CartItem>
+                    return <CartItem good={item}></CartItem>
                 }} />
         //    <ul className="cart__ul">
         //         {cartState.map((cartGood) => {

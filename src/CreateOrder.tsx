@@ -22,7 +22,7 @@ export default function CreateOrder() {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
-    console.log(cartState);
+    // console.log(cartState);
 
     //state
     const [orderDetails, setOrderDetails] = React.useState<{name: string, phone: string, email: string, address: string, zipcode: string}>({
@@ -37,15 +37,24 @@ export default function CreateOrder() {
     //RTK
     const [createOrder] = usePostCreateOrderMutation();
 
-    //location
-    const location = useLocation();
-    const total = location.state as number;
+    // //location
+    // const location = useLocation();
+    // const total = location.state as number;
 
     //navigate
     const navigate = useNavigate();
 
     //dispatch
     const dispatch = useAppDispatch();
+
+    //memo
+    const total = useMemo(() => {
+        return cartState.map((cartitem) => {
+            return (cartitem.price + cartitem.selectedColor.price + cartitem.selectedDimension.price + cartitem.selectedMaterial.price) * cartitem.quantity;
+        }).reduce((prevValue, currentValue) => {
+            return prevValue + currentValue;
+        }, 0);
+    }, [cartState]);
 
     //memo
     // const goodsToSend:TransactionGoodInterface[] = useMemo(() => {
@@ -101,21 +110,21 @@ export default function CreateOrder() {
                     {/* <OrderStep headline="Способ оплаты" step={3} inputs={paymentInputs} updateState={setOrderDetails}></OrderStep> */}
 
                 </div>
-                <CartDetails total={total}>
+                <CartDetails>
                     <button className="order-create__submit-btn" onClick={() => {
                         // console.log(cartState);
                         createOrder({personalData: orderDetails, goods: cartState, total: total}).unwrap()
                         .then((data) => {
                             dispatch(updateOrdersHistory(data.createdOrder));
                             navigate("../successOrderCreate", {
-                                state: {transactionData: data.createdOrder, goods: cartState},
+                                state: data.createdOrder,
                             });
                             dispatch(clearCart());
 
                         })
                     }}>
                         Оплатить {total}&#8381;
-                        <FontAwesomeIcon icon={faArrowRight} />
+                        {/* <FontAwesomeIcon icon={faArrowRight} /> */}
                     </button>
                 </CartDetails>
                 

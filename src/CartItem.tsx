@@ -12,7 +12,12 @@ import { changeQuantity, remove } from "./features/basketSlice";
 import "./CartItem.css";
 import QuantityButton from "./QuantityButton";
 import ColorOption from "./ColorOption";
-export default function CartItem({good, selectedColor, selectedDimension, selectedMaterial, quantity}: BasketGoodInterface) {
+
+interface CartItemInterface {
+    good: BasketGoodInterface
+}
+
+export default function CartItem({ good }: CartItemInterface) {
     //dispatch
     const dispatch = useAppDispatch();
 
@@ -22,15 +27,15 @@ export default function CartItem({good, selectedColor, selectedDimension, select
 
     //functions
     function deleteItem() {
-        dispatch(remove({good, selectedColor, selectedDimension, selectedMaterial, quantity}))
+        dispatch(remove(good))
     }
 
     function minusOne() {
-        dispatch(changeQuantity({good: {good, selectedColor, selectedDimension, selectedMaterial, quantity}, plus: false}))
+        dispatch(changeQuantity({good: good, plus: false}))
     }
 
     function plusOne() {
-        dispatch(changeQuantity({good: {good, selectedColor, selectedDimension, selectedMaterial, quantity}, plus: true}))
+        dispatch(changeQuantity({good: good, plus: true}))
     }
 
     return (
@@ -40,18 +45,18 @@ export default function CartItem({good, selectedColor, selectedDimension, select
                 <div className="cart-item__params">
                     <span>{good.title}</span>
                     <div className="cart-item__wrapper-details">
-                        <span>{selectedMaterial.option}</span>
-                        <span>{selectedDimension.option}</span>
+                        <span>{good.selectedMaterial.option}</span>
+                        <span>{good.selectedDimension.option}</span>
 
-                        <ColorOption active={true} color={selectedColor.option}></ColorOption>
+                        <ColorOption active={true} color={good.selectedColor.option}></ColorOption>
                     </div>
                     <div className="cart-item__wrapper-buttons">
-                        <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={quantity} stock={good.batch}></QuantityButton>
-                        <span>{quantity}</span>
-                        <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={quantity} stock={good.batch}></QuantityButton>
+                        <QuantityButton minus={true} updateQuantity={minusOne} numberInBasket={good.quantity} stock={good.batch}></QuantityButton>
+                        <span>{good.quantity}</span>
+                        <QuantityButton minus={false} updateQuantity={plusOne} numberInBasket={good.quantity} stock={good.batch}></QuantityButton>
                     </div>
                 </div>
-                <span className="cart-item__price">{good.price}&#8381;</span>
+                <span className="cart-item__price">{good.price + good.selectedColor.price + good.selectedDimension.price + good.selectedMaterial.price}&#8381;</span>
             </div>
             <button onClick={deleteItem} className="cart-item__delete">
                 <FontAwesomeIcon icon={faXmark} />

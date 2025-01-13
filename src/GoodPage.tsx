@@ -188,7 +188,7 @@ export default function GoodPage() {
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton good={{title: good.title, _id: good._id, seller: good.seller, batch: good.batch, photos: good.photos, price: good.price, quantity: quantity, goodTotalPrice: (optionsPrice + good.price) * quantity, selectedColor, selectedDimension, selectedMaterial}} />
+                    <BasketButton good={{title: good.title, _id: good._id, seller: good.seller, batch: good.batch, photos: good.photos, price: good.price, quantity: quantity, selectedColor, selectedDimension, selectedMaterial}} />
                     <LikeButton good={good}></LikeButton>
                     <ShareButtonIcon classParam="good__button-like" href={`https://mohen-tohen.ru/goods/${good._id}`}></ShareButtonIcon>
                     {/* <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} /> */}

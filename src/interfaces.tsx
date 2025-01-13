@@ -62,7 +62,7 @@ export interface BasketGoodInterface extends GoodWithoutOptionsType {
   selectedMaterial: OptionInterface,
   selectedDimension: OptionInterface,
   quantity: number,
-  goodTotalPrice: number,
+  // goodTotalPrice: number,
 }
 
 // export interface goodPageInt {
@@ -72,11 +72,9 @@ export interface BasketGoodInterface extends GoodWithoutOptionsType {
 // }
 
 export interface TransactionGoodInterface {
-  good: {
-    _id: string,
-    title: string,
-  },
-  // seller: string | null,
+  _id: string,
+  title: string,
+  seller: string | null,
   color: OptionInterface,
   dimension: OptionInterface,
   material: OptionInterface,
@@ -91,6 +89,7 @@ export interface TransactionInterface {
   createdAt: Date,
   total: number,
   _id: string,
+  personalData: {name: string, phone: string, email: string, address: string, zipcode: string},
 }
 
 export interface GoodsInterface {

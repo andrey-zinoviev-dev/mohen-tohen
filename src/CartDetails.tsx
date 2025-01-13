@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 // import { createPortal } from "react-dom";
 import { useAppSelector } from "./hooks";
 // import { Link } from "react-router-dom";
@@ -13,13 +13,23 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface CartDetailsInterface {
     children: React.ReactNode,
-    total: number,
+    // total: number,
 }
 
-export default function CartDetails({ total, children }: CartDetailsInterface) {
+export default function CartDetails({ children }: CartDetailsInterface) {
     const cartState = useAppSelector((state) => {
         return state.basket.goods;
     });
+    console.log(cartState);
+
+    // //memo
+    const total = useMemo(() => {
+        return cartState.map((cartitem) => {
+            return (cartitem.price + cartitem.selectedColor.price + cartitem.selectedDimension.price + cartitem.selectedMaterial.price) * cartitem.quantity;
+        }).reduce((prevValue, currentValue) => {
+            return prevValue + currentValue;
+        }, 0);
+    }, [cartState]);
 
     //state
     // const [openedPortal, setOpenedPortal] = useState<boolean>(false);
