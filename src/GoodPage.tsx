@@ -134,7 +134,7 @@ export default function GoodPage() {
                     <h3>{good.title}</h3>
 
                 </div>
-                <h4>Цена: <span className="cvet">{(good.price * quantity) + optionsPrice}&#8381;</span></h4>
+                <h4>Цена: <span className="cvet">{good.price + optionsPrice}&#8381;</span></h4>
                 <h4>Бренд: <Link to={`/brands/${good.seller && good.seller._id}`}>
                     <div className="good__text-a-name">
                         <span>{good.seller && good.seller.name}</span>
@@ -188,7 +188,7 @@ export default function GoodPage() {
                     <QuantityButton stock={good.batch} numberInBasket={quantity} updateQuantity={plusOne} minus={false}></QuantityButton>
                 </div>
                 <div className="good__text-buttons">
-                    <BasketButton quantity={quantity} good={{title: good.title, _id: good._id, seller: good.seller, price: good.price, photos: good.photos, batch: good.batch}} selectedColor={selectedColor} selectedDimension={selectedDimension} selectedMaterial={selectedMaterial} />
+                    <BasketButton good={{title: good.title, _id: good._id, seller: good.seller, batch: good.batch, photos: good.photos, price: good.price, quantity: quantity, goodTotalPrice: (optionsPrice + good.price) * quantity, selectedColor, selectedDimension, selectedMaterial}} />
                     <LikeButton good={good}></LikeButton>
                     <ShareButtonIcon classParam="good__button-like" href={`https://mohen-tohen.ru/goods/${good._id}`}></ShareButtonIcon>
                     {/* <ShareButton href={`https://mohen-tohen.ru/goods/${good._id}`} /> */}

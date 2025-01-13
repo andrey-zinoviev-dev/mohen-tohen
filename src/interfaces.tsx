@@ -56,12 +56,13 @@ export interface GoodInterface {
 //Pick
 export type GoodWithoutOptionsType = Pick<GoodInterface, "title" | "_id" | "seller" | "price" | "photos" | "batch"> 
 
-export interface BasketGoodInterface {
-  good: GoodWithoutOptionsType,
+export interface BasketGoodInterface extends GoodWithoutOptionsType {
+  // good: GoodWithoutOptionsType,
   selectedColor: OptionInterface,
   selectedMaterial: OptionInterface,
   selectedDimension: OptionInterface,
   quantity: number,
+  goodTotalPrice: number,
 }
 
 // export interface goodPageInt {

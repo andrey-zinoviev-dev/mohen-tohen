@@ -1,5 +1,5 @@
 // import { usePostGoodToBasketMutation } from "./features/apiSlice";
-import { GoodWithoutOptionsType, OptionInterface } from "./interfaces";
+import { BasketGoodInterface } from "./interfaces";
 import { useAppDispatch, useAppSelector } from "./hooks";
 // import { addRemoveToBasket } from "./features/userSlice";
 // import { changeMessage } from "./features/notificationSlice";
@@ -18,14 +18,10 @@ import { useNavigate } from "react-router-dom";
 
 //interface
 interface BasketButtonInterface {
-      good: GoodWithoutOptionsType,
-      selectedColor: OptionInterface,
-      selectedMaterial: OptionInterface,
-      selectedDimension: OptionInterface,
-      quantity: number,
+    good: BasketGoodInterface,
 }
 
-export default function BasketButton({ good, selectedColor, selectedMaterial, selectedDimension, quantity }: BasketButtonInterface) {
+export default function BasketButton({ good }: BasketButtonInterface) {
     //navigate
     const navigate = useNavigate();
     
@@ -45,7 +41,7 @@ export default function BasketButton({ good, selectedColor, selectedMaterial, se
 
     //variables
     const goodInBasket = userBasketState.find((basketGood) => {
-        return basketGood.good._id === good._id;
+        return basketGood._id === good._id;
         // return basketGood.good._id === good._id;
         // return goodInterface.good._id === basketGood.good.
     });
@@ -56,8 +52,10 @@ export default function BasketButton({ good, selectedColor, selectedMaterial, se
             <button className={goodInBasket ? "basket-button_clicked basket-button" : "basket-button"} onClick={(evt) => {
    
                 evt.stopPropagation();
-                !goodInBasket ? dispatch(add({good: good, quantity: quantity, selectedColor: selectedColor, selectedDimension: selectedDimension, selectedMaterial: selectedMaterial})) : navigate("../basket");
+                
+                !goodInBasket ? dispatch(add(good)) : navigate("../basket");
                  dispatch(changeMessage({message: "Товар добавлен в корзину"}))
+
                 // if(good.category === "Услуги") {
                 //     setOpenOrderForm(true);
                 // } else {

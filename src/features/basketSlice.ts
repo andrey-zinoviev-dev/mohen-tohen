@@ -30,7 +30,7 @@ export const basketSlice = createSlice({
         },
         remove: (state, action: PayloadAction<BasketGoodInterface>) => {
             const newBasket = state.goods.filter((good) => {
-                return good.good._id !== action.payload.good._id;
+                return good._id !== action.payload._id;
             });
 
             state.goods = newBasket;
@@ -41,7 +41,7 @@ export const basketSlice = createSlice({
         changeQuantity: (state, action: PayloadAction<{good: BasketGoodInterface, plus: boolean}>) => {
             // console.log(action.payload);
             const newBasket = state.goods.map((good) => {
-                return good.good._id === action.payload.good.good._id ? {...good, quantity: action.payload.plus ?  good.quantity + 1 : good.quantity - 1 } : good; 
+                return good._id === action.payload.good._id ? {...good, quantity: action.payload.plus ?  good.quantity + 1 : good.quantity - 1 } : good; 
             })
 
             state.goods = newBasket;

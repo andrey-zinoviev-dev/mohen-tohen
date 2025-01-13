@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseApi } from "../utils";
 // import { UserInterface } from "./userSlice";
 
-import { AccountGoodInterface, ApplicationInterface, ApplicationUploadedInterface, GoodInterface, goodPageInt, TransactionInterface, TransactionGoodInterface } from "../interfaces";
+import { AccountGoodInterface, ApplicationInterface, ApplicationUploadedInterface, BasketGoodInterface, GoodInterface, TransactionInterface } from "../interfaces";
 import { UserInterface } from "./userSlice";
 export const apiSlice = createApi({
     reducerPath: "api",
@@ -178,17 +178,17 @@ export const apiSlice = createApi({
                 },
             })
         }),
-        updateBasketItem: builder.mutation<goodPageInt, {id: string, quantity: number}>({
-            query: (basketItem) => ({
-                url: `/users/me/basket/updateItem`,
-                method: "PUT",
-                body: {id: basketItem.id, quantity: basketItem.quantity},
-                credentials: "include",
-                headers: {
-                    "Content-Type":"application/json",
-                }
-            })
-        }),
+        // updateBasketItem: builder.mutation<goodPageInt, {id: string, quantity: number}>({
+        //     query: (basketItem) => ({
+        //         url: `/users/me/basket/updateItem`,
+        //         method: "PUT",
+        //         body: {id: basketItem.id, quantity: basketItem.quantity},
+        //         credentials: "include",
+        //         headers: {
+        //             "Content-Type":"application/json",
+        //         }
+        //     })
+        // }),
         deleteBasketItem: builder.mutation<boolean, string>({
             query: (basketItemId) => ({
                 url: `/users/me/basket/deleteItem`,
@@ -225,7 +225,7 @@ export const apiSlice = createApi({
                 }
             })
         }),
-        postCreateOrder: builder.mutation<{createdOrder: TransactionInterface}, {personalData: {name: string, phone: string, email: string, address: string, zipcode: string}, goods: goodPageInt[], total: number}>({
+        postCreateOrder: builder.mutation<{createdOrder: TransactionInterface}, {personalData: {name: string, phone: string, email: string, address: string, zipcode: string}, goods: BasketGoodInterface[], total: number}>({
             query: ({personalData, goods, total}) => ({
                 url: "/transactions/create",
                 method: "POST",
@@ -239,4 +239,4 @@ export const apiSlice = createApi({
     })
 });
 
-export const { useGetOTPCodeMutation, useGetSellersQuery, usePutUserEditMutation, usePutAvatarEditMutation, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useGetTransactionQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodMutation, useUpdateGoodBatchMutation, useUpdateBasketItemMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;
+export const { useGetOTPCodeMutation, useGetSellersQuery, usePutUserEditMutation, usePutAvatarEditMutation, useGetSellerQuery, useGetGoodsQuery, useGetAccountGoodsQuery, useGetCategoryQuery, useGetGoodQuery, useGetTransactionsQuery, useGetTransactionQuery, useLazyGetLoggedUserQuery, usePostGoodToBasketMutation, usePostGoodToFavouriteMutation, useUserLogoutMutation, usePostGoodToServerMutation, useUpdateGoodMutation, useUpdateGoodBatchMutation, useDeleteBasketItemMutation, useGetApplicationQuery, useSendApplicationMutation, useDecideApplicationMutation, usePostCreateOrderMutation} = apiSlice;
