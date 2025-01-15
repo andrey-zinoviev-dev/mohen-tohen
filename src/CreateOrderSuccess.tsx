@@ -21,6 +21,8 @@ export default function CreateOrderSuccess() {
 
   const orderTime = new Date(order.createdAt);
 
+  const deliveryConst = 3500;
+
   // console.log(transaction);
 
   return (
@@ -29,38 +31,51 @@ export default function CreateOrderSuccess() {
       <SuccessWrapper label="Спасибо, Андрей, ваш заказ успешно создан!"></SuccessWrapper>
       <span>Номер заказа: {order._id}</span>
       <div>
-        <span>{order.personalData.name}</span>
-        <span>{order.personalData.email}</span>
-        <span>{order.personalData.address}</span>
-        <span>{order.personalData.zipcode}</span>
-        <span>{order.total}</span>
+        <div>
+          <span>{order.personalData.name}</span>
+          <span>sttrog_810@mail.ru</span>
+          <span>{order.personalData.phone}</span>
+          <span>{order.personalData.address}</span>
+          <span>117335</span>
+        </div>
+        <span>{order.total}&#8381;</span>
       </div>
       {Object.keys(order).length > 0 && <div>
-        <span>Дата: {orderTime.toLocaleDateString()}</span>
-        <span>Вемя: {orderTime.toLocaleTimeString()}</span>
-        <span>Сумма заказа: {order.total}</span>
-        <div>
+        {/* <span>Дата: {orderTime.toLocaleDateString()}</span>
+        <span>Вемя: {orderTime.toLocaleTimeString()}</span> */}
+        {/* <span>Сумма заказа: {order.total}&#8381;</span> */}
+        {/* <div>
           <span>Что в заказе</span>
-          {/* <ListElementGeneric items={order.goods} renderItems={(item) => {
-            return <CartItem good={item}></CartItem>
-          }}></ListElementGeneric> */}
           <ul>
             {order.goods.map((good) => {
               return <li key={good._id}>
-                {/* <img src={good}></img> */}
                 <span>{good.title}</span>
                 <ColorOption active={true} color={good.color.option}></ColorOption>
-                {/* <span>{good.color.option}</span> */}
                 <span>{good.dimension.option}</span>
                 <span>{good.material.option}</span>
                 <span>{good.quantity}</span>
-                <span>{good.price + good.color.price + good.dimension.price + good.material.price}</span>
+                <span>{good.price + good.color.price + good.dimension.price + good.material.price}&#8381;</span>
               </li>
             })}
           </ul>
-          
-        </div>
+
+        </div> */}
+
       </div>}
+      <div>
+        <div>
+          <span>Сумма за товары</span>
+          <span>{order.total}&#8381;</span>
+        </div>
+        <div>
+          <span>Сумма за доставку</span>
+          <span>{deliveryConst}&#8381;</span>
+        </div>
+        <div>
+          <span>Итого</span>
+          <span>{order.total + deliveryConst}&#8381;</span>
+        </div>
+      </div>
       <LinkCompBack reload={true} to="../" text="На главную" />
     </section>
   )
