@@ -28,6 +28,13 @@
 .success-order__main-data-payment__total {
   font-size: 28px;
   font-weight: 500;
+  line-height: 1;
+}
+
+.success-order__headline {
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
 }
 
 .success-order__totals {
@@ -54,4 +61,10 @@
     flex-direction: column;
     min-width: 180px;
     align-items: stretch;
+}
+
+@media screen and (max-width: 767px) {
+  .success-order__main-data {
+    padding: 15px 20px;
+  }
 }

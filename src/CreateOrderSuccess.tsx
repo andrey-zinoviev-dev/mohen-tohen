@@ -1,11 +1,12 @@
 import { useLocation } from "react-router-dom";
 import LinkCompBack from "./LinkCompBack";
 import SuccessWrapper from "./SuccessWrapper";
-import { BasketGoodInterface, goodPageInt, TransactionInterface } from "./interfaces";
+import { TransactionInterface } from "./interfaces";
 import ListElementGeneric from "./ListElementGeneric";
 import CartItem from "./CartItem";
 import ColorOption from "./ColorOption";
 import "./CreateOrderSuccess.css";
+import CreatedOrderItem from "./CreatedOrderItem";
 // import { useGetTransactionQuery } from "./features/apiSlice";
 // import { useMemo } from "react";
 // import { useNavigate } from "react-router-dom";
@@ -48,31 +49,12 @@ export default function CreateOrderSuccess() {
           {/* <span>1408</span> */}
         </div>
       </div>
-      {Object.keys(order).length > 0 && <div>
-                        <ListElementGeneric classUl="cart__ul" items={order.goods} renderItems={(item) => {
-                            return <CartItem good={item}></CartItem>
-                        }} />
-        {/* <span>Дата: {orderTime.toLocaleDateString()}</span>
-        <span>Вемя: {orderTime.toLocaleTimeString()}</span> */}
-        {/* <span>Сумма заказа: {order.total}&#8381;</span> */}
-        {/* <div>
-          <span>Что в заказе</span>
-          <ul>
-            {order.goods.map((good) => {
-              return <li key={good._id}>
-                <span>{good.title}</span>
-                <ColorOption active={true} color={good.color.option}></ColorOption>
-                <span>{good.dimension.option}</span>
-                <span>{good.material.option}</span>
-                <span>{good.quantity}</span>
-                <span>{good.price + good.color.price + good.dimension.price + good.material.price}&#8381;</span>
-              </li>
-            })}
-          </ul>
-
-        </div> */}
-
-      </div>}
+      <div>
+        <h4 className="success-order__headline">Что в заказе</h4>
+        <ListElementGeneric classUl="cart__ul" items={order.goods} renderItems={(item) => {
+          return <CreatedOrderItem item={item}></CreatedOrderItem>
+        }}></ListElementGeneric>
+      </div>
       <div className="success-order__totals">
         <div className="success-order__totals-param">
           <span>Сумма за товары</span>
