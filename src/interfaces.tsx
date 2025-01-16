@@ -54,7 +54,7 @@ export interface GoodInterface {
 }
 
 //Pick
-export type GoodWithoutOptionsType = Pick<GoodInterface, "title" | "_id" | "seller" | "price" | "photos" | "batch"> 
+export type GoodWithoutOptionsType = Pick<GoodInterface, "title" | "_id" | "seller" | "price" | "batch"> 
 
 export interface BasketGoodInterface extends GoodWithoutOptionsType {
   // good: GoodWithoutOptionsType,
@@ -62,6 +62,7 @@ export interface BasketGoodInterface extends GoodWithoutOptionsType {
   selectedMaterial: OptionInterface,
   selectedDimension: OptionInterface,
   quantity: number,
+  cover: string,
   // goodTotalPrice: number,
 }
 
@@ -71,20 +72,20 @@ export interface BasketGoodInterface extends GoodWithoutOptionsType {
 //   // price: number
 // }
 
-export interface TransactionGoodInterface {
-  _id: string,
-  title: string,
-  seller: string | null,
-  color: OptionInterface,
-  dimension: OptionInterface,
-  material: OptionInterface,
-  quantity: number,
-  price: number,
-}
+// export interface TransactionGoodInterface {
+//   _id: string,
+//   title: string,
+//   seller: string | null,
+//   color: OptionInterface,
+//   dimension: OptionInterface,
+//   material: OptionInterface,
+//   quantity: number,
+//   price: number,
+// }
 
 export interface TransactionInterface {
   // parties : {_id: string, brandName: string, cover: string}[],
-  goods: TransactionGoodInterface[],
+  goods: BasketGoodInterface[],
   buyer: UserInterface,
   createdAt: Date,
   total: number,

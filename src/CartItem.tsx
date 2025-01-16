@@ -40,7 +40,7 @@ export default function CartItem({ good }: CartItemInterface) {
 
     return (
         <div className="cart__ul-item">
-            <img className="cart-item__cover" src={good.photos[0]}></img>
+            <img className="cart-item__cover" src={good.cover}></img>
             <div className="cart-item__wrapper">
                 <div className="cart-item__params">
                     <span>{good.title}</span>

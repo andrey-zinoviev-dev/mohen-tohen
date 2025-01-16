@@ -77,6 +77,16 @@ function App() {
           path: "/homestaging",
           element: <HomeStaging></HomeStaging>,
         },
+        {
+          path: "createOrder",
+          element: <CreateOrder />,
+          // children:[],
+          // element: <CreateOrder></CreateOrder>
+        },
+        {
+          path: "successOrderCreate",
+          element: <CreateOrderSuccess />
+        },
         // {
         //   path: "/favs",
         //   element: <Favourites></Favourites>
@@ -133,16 +143,7 @@ function App() {
         },
       ]
     },
-    {
-      path: "createOrder",
-      element: <CreateOrder />,
-      // children:[],
-      // element: <CreateOrder></CreateOrder>
-    },
-    {
-      path: "successOrderCreate",
-      element: <CreateOrderSuccess />
-    },
+
 
     {
       path: "showApplication/:applicationID",

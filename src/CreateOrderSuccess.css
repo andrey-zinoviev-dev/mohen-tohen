@@ -1,0 +1,57 @@
+.success-order {
+  display: grid;
+  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 25px;
+}
+
+.success-order__main-data {
+  box-sizing: border-box;
+    padding: 25px 50px;
+    background-color: #e2e2e2;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.success-order__main-data-personal {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: left;
+  gap: 5px;
+}
+
+.success-order__main-data-payment__total {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.success-order__totals {
+  display: grid
+  ;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      border-top: 2px solid #e2e2e2;
+      border-bottom: 2px solid #e2e2e2;
+      box-sizing: border-box;
+      padding: 25px 0;
+}
+
+.success-order__totals-param {
+  display: flex;
+  justify-content: space-between;
+}
+
+.success-order__back {
+  display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 180px;
+    align-items: stretch;
+}

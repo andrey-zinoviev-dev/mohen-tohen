@@ -5,14 +5,12 @@ import "./CreateOrder.css"
 import { locationInputs, recipientInputs } from "./utils";
 import heading from "./assets/mh-1.png"
 // import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 // import Cart from "./Cart";
 // import CartContents from "./CartContents";
 import LinkCompBack from "./LinkCompBack";
 import { usePostCreateOrderMutation } from "./features/apiSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { updateOrdersHistory } from "./features/userSlice";
 import { clearCart } from "./features/basketSlice";
 import CartDetails from "./CartDetails";
