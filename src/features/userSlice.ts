@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { GoodInterface, goodPageInt, TransactionInterface } from '../interfaces';
+import { GoodInterface, TransactionInterface } from '../interfaces';
 // import { toggleFavourite } from './goodsSlice';
 
 export interface UserInterface {
@@ -13,7 +13,7 @@ export interface UserInterface {
     ordersHistory: TransactionInterface[],
     sellsHistory: GoodInterface[],
     description?:string,
-    basket: goodPageInt[],
+    // basket: goodPageInt[],
     cover?: string,
     // basket: 
     _id: string | null,
@@ -29,7 +29,7 @@ const initialState:UserInterface = {
     ordersHistory: [],
     favourites: [],
     sellsHistory: [],
-    basket: [],
+    // basket: [],
     _id: null,
 }
 
@@ -57,31 +57,31 @@ export const userSlice = createSlice({
                 state.favourites.push(action.payload);
             }
         },
-        addRemoveToBasket: (state, action: PayloadAction<goodPageInt>) => {
-            if(state.basket.find((fav) => {
-                return fav.good._id === action.payload.good._id
-            })) {
-                const newFavourites = state.basket.filter((fav) => {
-                    return fav.good._id !== action.payload.good._id;
-                });
+        // addRemoveToBasket: (state, action: PayloadAction<goodPageInt>) => {
+        //     if(state.basket.find((fav) => {
+        //         return fav.good._id === action.payload.good._id
+        //     })) {
+        //         const newFavourites = state.basket.filter((fav) => {
+        //             return fav.good._id !== action.payload.good._id;
+        //         });
 
-                state.basket = newFavourites;
-            } else {
-                state.basket.push(action.payload);
-            }        
-        },
-        deleteBasketGood: (state, action: PayloadAction<GoodInterface>) => {
-            const newBasket = state.basket.filter((basketItem) => {
-                return basketItem.good._id !== action.payload._id;
-            });
-            state.basket = newBasket;
-        },
-        updateBasketGoodQuantity: (state, action: PayloadAction<goodPageInt>) => {
-            const newBasket = state.basket.map((basketItem) => {
-                return basketItem.good._id === action.payload.good._id ? {...basketItem, quantity: action.payload.quantity} : basketItem;
-            });
-            state.basket = newBasket;
-        },
+        //         state.basket = newFavourites;
+        //     } else {
+        //         state.basket.push(action.payload);
+        //     }        
+        // },
+        // deleteBasketGood: (state, action: PayloadAction<GoodInterface>) => {
+        //     const newBasket = state.basket.filter((basketItem) => {
+        //         return basketItem.good._id !== action.payload._id;
+        //     });
+        //     state.basket = newBasket;
+        // },
+        // updateBasketGoodQuantity: (state, action: PayloadAction<goodPageInt>) => {
+        //     const newBasket = state.basket.map((basketItem) => {
+        //         return basketItem.good._id === action.payload.good._id ? {...basketItem, quantity: action.payload.quantity} : basketItem;
+        //     });
+        //     state.basket = newBasket;
+        // },
         updateAccountGoodBatch: (state, action: PayloadAction<{id: string, batchSize: number}>) => {
             state.goods = state.goods && state.goods.map((good) => {
                 return good._id === action.payload.id ? {...good, batch: action.payload.batchSize} : good;
@@ -118,5 +118,5 @@ export const userSlice = createSlice({
 })
 
 // export const { loggin } = UserSlice.actions;
-export const { login, addRemoveToFavUser, addRemoveToBasket, deleteBasketGood, updateBasketGoodQuantity, updateAccountGoodBatch, userLogout, addNewGoodToUser, updateOrdersHistory, updateUserCover, updateGoodData } = userSlice.actions;
+export const { login, addRemoveToFavUser, updateAccountGoodBatch, userLogout, addNewGoodToUser, updateOrdersHistory, updateUserCover, updateGoodData } = userSlice.actions;
 export default userSlice.reducer;

@@ -15,7 +15,7 @@ export default function CreateOrderSuccess() {
   //location
   const location = useLocation();
   const order = location.state as TransactionInterface;
-  console.log(order);
+  // console.log(order);
   // console.log(order);
   
   // //RTK

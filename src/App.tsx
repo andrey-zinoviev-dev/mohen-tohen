@@ -28,6 +28,8 @@ import CreateOrderSuccess from './CreateOrderSuccess'
 import Category from './Category'
 import AccountEditGood from './AccountEditGood'
 
+import { socket } from './socketio'
+
 function App() {
   //dispatch
   const dispatch = useAppDispatch();
@@ -160,10 +162,18 @@ function App() {
         user && dispatch(login({...user, loggedIn: true}));
       })
     }
-    // loggedInData.loggedIn && getUser(loggedInData.loggedIn)
-    // .then((data) => {
-    //   const user = data.data;
-    //   user && dispatch(login({...user, loggedIn: true}));
+
+    //socket
+    function getBatchUpdate(data: string) {
+      // console.log("update stock here");
+      console.log(data);
+    };
+
+    socket.on("stockUpdate", getBatchUpdate)
+
+    return () => {
+      socket.off("stockUpdate", getBatchUpdate)
+    }
 
     // })
   }, [])

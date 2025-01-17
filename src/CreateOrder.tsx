@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { updateOrdersHistory } from "./features/userSlice";
 import { clearCart } from "./features/basketSlice";
 import CartDetails from "./CartDetails";
+import { socket } from "./socketio";
 // import { TransactionGoodInterface } from "./interfaces";
 export default function CreateOrder() {
     //redux
@@ -53,49 +54,12 @@ export default function CreateOrder() {
             return prevValue + currentValue;
         }, 0);
     }, [cartState]);
-
-    //memo
-    // const goodsToSend:TransactionGoodInterface[] = useMemo(() => {
-    //     return cartState.map((good) => {
-    //         return {good: good.good._id, 
-    //             seller: good.good.seller._id, 
-    //             color: good.good.selectedColor, 
-    //             material: good.good.selectedMaterial, 
-    //             dimension: good.good.selectedDimension, 
-    //             quantity: good.quantity,
-    //             price: good.price,
-    //         }
-    //     })
-    // },[]);
-
-
-    //navigate
-    // const navigate = useNavigate();
-
-    // console.log(cartState);
-
-    //state
-    // const [step, setStep] = React.useState<number>(0);
-
-    //functions
-    // function showStepResults (data) {
-    //     console.log(data);
-    // }
-    // function renderStep() {
-    //     switch (step) {
-    //         case 0: 
-    //         return <OrderStep1 showResults={showStepResults} />
-    //     }
-    // 
     
     return (
         <section>
             <img className="order-logo" src={heading}></img>
             <h2>Создание заказа</h2>
             <div className="order-create">
-                {/* <button onClick={() => {
-                    navigate(-1);
-                }}> */}
                 <LinkCompBack to="/basket" text="Корзина"></LinkCompBack>
                 
                 <div className="order-create__block">
@@ -105,7 +69,6 @@ export default function CreateOrder() {
                     <OrderStep headline="Адрес доставки" step={2} inputs={locationInputs} updateState={setOrderDetails}>
                     </OrderStep>
 
-                    {/* <OrderStep headline="Способ оплаты" step={3} inputs={paymentInputs} updateState={setOrderDetails}></OrderStep> */}
 
                 </div>
                 <CartDetails>
@@ -118,7 +81,7 @@ export default function CreateOrder() {
                                 state: data.createdOrder,
                             });
                             dispatch(clearCart());
-
+                            socket.emit("newBatch", data.createdOrder.goods)
                         })
                     }}>
                         Оплатить {total}&#8381;
